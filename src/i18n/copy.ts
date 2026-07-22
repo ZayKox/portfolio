@@ -32,7 +32,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
       description:
-        "Portfolio d’Ethan Brosselard, alias ZayKo. Projets logiciels, expériences web et Android, architecture et explorations autour de l’IA.",
+        "Portfolio d’Ethan Brosselard. Projets logiciels, expériences web et Android, architecture et explorations autour de l’IA.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
@@ -61,7 +61,7 @@ export const copy = {
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
-        "Je m’appelle Ethan Brosselard, aussi connu sous le pseudo ZayKo. Ce site documente ce que je construis, pourquoi je le construis et les compromis techniques que je prends.",
+        "Je m’appelle Ethan Brosselard. Ce site documente ce que je construis, pourquoi je le construis et les compromis techniques que je prends.",
       interestsLabel: "Hors du code",
       interests: "Jeux vidéo · Films & séries · Manga · Lecture",
       aboutCta: "En savoir plus",
@@ -80,7 +80,7 @@ export const copy = {
     about: {
       eyebrow: "À propos",
       title: "Je préfère garder le champ des possibles ouvert.",
-      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et également connu sous le pseudo ZayKo.",
+      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
       paragraphs: [
         "Je développe aujourd’hui des produits web et Android, sans vouloir limiter la suite à ces deux domaines. Je choisis les outils en fonction du problème et j’élargis progressivement mon terrain de jeu vers l’intelligence artificielle.",
         "Ce portfolio est un journal de construction : il montre les produits, mais aussi les décisions, contraintes, tests et apprentissages qui se trouvent derrière.",
@@ -135,7 +135,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Software developer & digital maker",
       description:
-        "Portfolio of Ethan Brosselard, also known as ZayKo. Software projects, web and Android experiences, architecture, and AI explorations.",
+        "Portfolio of Ethan Brosselard. Software projects, web and Android experiences, architecture, and AI explorations.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
@@ -164,7 +164,7 @@ export const copy = {
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
-        "I’m Ethan Brosselard, also known as ZayKo. This site documents what I build, why I build it, and the technical trade-offs behind it.",
+        "I’m Ethan Brosselard. This site documents what I build, why I build it, and the technical trade-offs behind it.",
       interestsLabel: "Beyond code",
       interests: "Video games · Movies & TV · Manga · Books",
       aboutCta: "Learn more",
@@ -183,7 +183,7 @@ export const copy = {
     about: {
       eyebrow: "About",
       title: "I prefer to keep the field wide open.",
-      lead: "I’m Ethan Brosselard, a software developer based in Paris and also known as ZayKo.",
+      lead: "I’m Ethan Brosselard, a software developer based in Paris.",
       paragraphs: [
         "I currently build web and Android products without limiting what comes next to those two fields. I choose tools around the problem and am gradually expanding my playground toward artificial intelligence.",
         "This portfolio is a building journal: it shows the products, but also the decisions, constraints, tests, and lessons behind them.",

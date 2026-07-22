@@ -79,7 +79,7 @@ Toutes les réponses PUBLIC — VALIDÉ ont été relues : non
 | Champ              | Réponse actuelle                                        | Statut              | Priorité |
 | ------------------ | ------------------------------------------------------- | ------------------- | -------- |
 | Nom affiché        | Ethan Brosselard                                        | `PUBLIC — VALIDÉ`   | A        |
-| Pseudo             | ZayKo                                                   | `PUBLIC — VALIDÉ`   | A        |
+| Pseudo             | Ne pas afficher sur le site ni dans les métadonnées     | `PUBLIC — VALIDÉ`   | A        |
 | Localisation       | Paris, France                                           | `PUBLIC — VALIDÉ`   | A        |
 | Email              | ethan.brosselard@gmail.com                              | `PUBLIC — VALIDÉ`   | A        |
 | GitHub             | https://github.com/ZayKox                               | `PUBLIC — VALIDÉ`   | A        |
@@ -105,8 +105,8 @@ Statut : NON APPLICABLE
 Forme courte préférée du nom : À REMPLIR
 Statut : À CONFIRMER
 
-Faut-il afficher le pseudo partout, seulement à certains endroits ou jamais ? : À REMPLIR
-Statut : À CONFIRMER
+Faut-il afficher le pseudo partout, seulement à certains endroits ou jamais ? : jamais ; seule l’URL GitHub peut contenir le nom du compte
+Statut : PUBLIC — VALIDÉ
 
 Localisation exacte à afficher (Paris / Île-de-France / France) : Paris, France
 Statut : PUBLIC — VALIDÉ
@@ -747,9 +747,11 @@ Image de partage disponible : non
 Statut : À REMPLIR
 
 Nom à utiliser dans le JSON-LD : Ethan Brosselard
-Pseudo à utiliser dans le JSON-LD : ZayKo
+Pseudo à utiliser dans le JSON-LD : aucun — ne pas publier de `alternateName`
+Statut de l’identité JSON-LD : PUBLIC — VALIDÉ
+
 Conserver l’email dans le JSON-LD malgré le risque de scraping : oui/non
-Statut : À DÉCIDER
+Statut de l’email JSON-LD : À DÉCIDER
 
 Statut global de la section SEO et partage : À CONFIRMER
 ```
@@ -861,7 +863,7 @@ Statut global du ton et de la version anglaise : À CONFIRMER
 À remplir uniquement quand les sections concernées sont terminées.
 
 ```text
-Je confirme que mon nom, mon pseudo, ma localisation et mes liens sont corrects : oui/non
+Je confirme que mon nom, ma localisation et mes liens sont corrects, et que mon pseudo reste absent : oui/non
 Je confirme que les expériences et formations sont exactes : oui/non
 Je confirme que les rôles et dates de projets sont exacts : oui/non
 Je confirme que les métriques ont un contexte et une source : oui/non

@@ -1,6 +1,6 @@
 export const profile = {
   name: "Ethan Brosselard",
-  handle: "ZayKo",
+  monogram: "EB",
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
   languages: ["fr", "en"],

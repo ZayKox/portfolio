@@ -7,6 +7,8 @@ const root = process.cwd();
 const outputDirectory = path.join(root, "dist");
 const errors = [];
 const internalReferences = new Set();
+const allowedGitHubProfileUrl = "https://github.com/ZayKox";
+const privateUsername = new URL(allowedGitHubProfileUrl).pathname.slice(1).replace(/x$/i, "");
 
 const expectedRoutes = [
   "/",
@@ -416,6 +418,20 @@ function validateDocument(html, relativePath, route) {
   for (const placeholder of forbiddenPlaceholders) {
     if (html.includes(placeholder)) {
       errors.push(`${relativePath}: visible placeholder: ${placeholder}`);
+    }
+  }
+
+  for (const match of html.matchAll(new RegExp(privateUsername, "gi"))) {
+    const urlStart = match.index - "https://github.com/".length;
+    const urlEnd = urlStart + allowedGitHubProfileUrl.length;
+    const nextCharacter = html[urlEnd];
+    const isExactApprovedLink =
+      html.slice(urlStart, urlEnd) === allowedGitHubProfileUrl &&
+      (nextCharacter === undefined || /["'<\s]/.test(nextCharacter));
+
+    if (!isExactApprovedLink) {
+      errors.push(`${relativePath}: private username is exposed outside the approved GitHub link`);
+      break;
     }
   }
 

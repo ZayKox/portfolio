@@ -7,7 +7,7 @@
 | Élément                     | Valeur                                                       |
 | --------------------------- | ------------------------------------------------------------ |
 | Propriétaire                | Ethan Brosselard                                             |
-| Dépôt                       | `ZayKox/portfolio`                                           |
+| Dépôt                       | <https://github.com/ZayKox/portfolio>                        |
 | Branche de travail actuelle | `develop`                                                    |
 | Branche de production       | `main`                                                       |
 | Hébergement cible           | Cloudflare Pages, site Astro statique                        |
@@ -99,7 +99,7 @@ Choix structurants :
 - [x] Canonical, `hreflang`, métadonnées sociales de base et JSON-LD préparés dans le layout.
 - [x] CI GitHub de base : installation propre, format, contrôle Astro/TypeScript et build.
 - [x] Dependabot configuré.
-- [x] Remote local corrigé vers `git@github-zaykox:ZayKox/portfolio.git`.
+- [x] Remote local corrigé vers le dépôt GitHub attendu.
 - [x] Auteur du commit initial : `Ethan Brosselard <ethan.brosselard@gmail.com>`.
 - [x] `main` suit `origin/main` localement.
 
@@ -141,7 +141,7 @@ Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jal
 - [ ] `[Ethan]` Valider le titre temporaire « Développeur logiciel & créateur numérique », ou fournir le titre final.
 - [ ] `[Ethan]` Valider qu’aucune recherche d’emploi n’est affichée.
 - [ ] `[Ethan]` Valider que l’intérêt pour l’IA reste secondaire tant qu’aucun projet public ne le démontre.
-- [ ] `[Ethan]` Confirmer les faits déjà publics : nom, pseudo, Paris/France, français/anglais, email, GitHub et LinkedIn.
+- [ ] `[Ethan]` Confirmer les faits déjà publics : nom, Paris/France, français/anglais, email, GitHub et LinkedIn ; conserver le pseudo absent du site.
 - [ ] `[Ethan]` Choisir si le portrait reste absent au lancement ; conserver le monogramme s’il n’y en a pas.
 - [ ] `[Ethan]` Décider si le CV et les études de cas complètes sont requis pour le premier lancement.
 - [ ] `[Dev]` Inscrire la décision de périmètre en haut de ce document.
@@ -156,8 +156,8 @@ Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jal
 
 - [x] `[QA]` Vérifier l’URL du remote local avec `git remote -v`.
 - [x] `[QA]` Vérifier le nom et l’email du commit initial.
-- [ ] `[Ethan]` Tester la clé dédiée avec `ssh -T git@github-zaykox`.
-- [ ] `[Ethan]` Vérifier dans GitHub que le dépôt appartient bien à `ZayKox`.
+- [ ] `[Ethan]` Tester la clé SSH dédiée avec l’alias configuré localement.
+- [ ] `[Ethan]` Vérifier dans GitHub que le dépôt appartient bien au compte lié depuis le portfolio.
 - [ ] `[Ethan]` Activer l’authentification à deux facteurs du compte GitHub.
 - [ ] `[Dev]` Publier `develop` et lui ajouter son upstream : `git push -u origin develop`.
 - [ ] `[QA]` Vérifier sur GitHub que `main` et `develop` pointent vers les commits attendus.

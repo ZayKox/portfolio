@@ -37,7 +37,6 @@ const personUrl = Astro.site ? new URL(routes[locale].home, Astro.site).href : u
 const person = {
   "@type": "Person",
   name: profile.name,
-  alternateName: profile.handle,
   homeLocation: {
     "@type": "Place",
     name: profile.location,

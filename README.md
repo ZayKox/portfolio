@@ -1,6 +1,6 @@
 # Portfolio — Ethan Brosselard
 
-Portfolio bilingue d’Ethan Brosselard, alias ZayKo. La base utilise Astro, TypeScript strict, Tailwind CSS et des collections MDX typées.
+Portfolio bilingue d’Ethan Brosselard. La base utilise Astro, TypeScript strict, Tailwind CSS et des collections MDX typées.
 
 ## Démarrer
 
