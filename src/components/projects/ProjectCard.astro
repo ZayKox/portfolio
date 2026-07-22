@@ -27,14 +27,13 @@ const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${
     <div class="project-card-meta">
       <span>{String(index + 1).padStart(2, "0")}</span>
       <span>{entry.data.kind}</span>
-      <span>{entry.data.year}</span>
     </div>
     <div class="project-card-heading">
       <div>
         <p class="eyebrow">{entry.data.eyebrow}</p>
         <h3><a href={href}>{entry.data.title}</a></h3>
       </div>
-      <span class="status-pill">{entry.data.status}</span>
+      <span class="status-pill">{t.projects.teaser}</span>
     </div>
     <p class="project-summary">{entry.data.summary}</p>
     <ul class="tag-list" aria-label={t.project.stack}>

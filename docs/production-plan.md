@@ -171,8 +171,8 @@ Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jal
 - [ ] `[Ethan]` Exiger le check GitHub Actions `verify`.
 - [ ] `[Ethan]` Bloquer les force-pushes et la suppression de `main`.
 - [ ] `[Ethan]` Appliquer les règles aux administrateurs si le plan GitHub le permet.
-- [ ] `[Dev]` Ajouter l’événement `push` sur `develop` à la CI si l’on veut aussi valider chaque intégration distante.
-- [ ] `[Dev]` Épingler les actions GitHub sur des SHA complets et laisser Dependabot proposer leurs mises à jour.
+- [x] `[Dev]` Ajouter l’événement `push` sur `develop` à la CI si l’on veut aussi valider chaque intégration distante.
+- [x] `[Dev]` Épingler les actions GitHub sur des SHA complets et laisser Dependabot proposer leurs mises à jour.
 - [ ] `[QA]` Ouvrir une pull request de test vers `main` et confirmer que la fusion est bloquée tant que la CI n’est pas verte.
 
 Convention :
@@ -400,20 +400,20 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 
 - [ ] `[Ethan]` Acheter le domaine après une dernière vérification de disponibilité et de prix.
 - [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [ ] `[Dev]` Ajouter `site: "https://ethanbrosselard.dev"` dans `astro.config.mjs`, ou le domaine finalement choisi.
-- [ ] `[Dev]` Installer et configurer `@astrojs/sitemap`.
-- [ ] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
-- [ ] `[Dev]` Ajouter `<link rel="sitemap">`.
-- [ ] `[Dev]` Ajouter `x-default` aux alternates de langue.
-- [ ] `[QA]` Vérifier canonical absolu et `hreflang` réciproque sur chaque paire FR/EN.
-- [ ] `[QA]` Exclure du sitemap les pages réellement `noindex`.
+- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans Cloudflare avec l’origine HTTPS du domaine finalement choisi.
+- [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
+- [x] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
+- [x] `[Dev]` Ajouter `<link rel="sitemap">` lorsque `SITE_URL` est défini.
+- [x] `[Dev]` Ajouter `x-default` aux alternates de langue.
+- [x] `[QA]` Vérifier automatiquement canonical absolu et `hreflang` réciproque sur chaque paire FR/EN avec une origine de test ; répéter sur le domaine final.
+- [x] `[QA]` Exclure du sitemap les pages réellement `noindex` et le contrôler dans le build avec domaine de test.
 - [ ] `[Dev]` Ajouter `og:image`, dimensions, type MIME et texte alternatif social lorsque pertinent.
 - [ ] `[Dev]` Choisir `summary_large_image` quand l’image 1200 × 630 est prête.
 - [ ] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies.
 - [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
-- [ ] `[QA]` Vérifier que chaque route importante est atteignable par des liens HTML depuis l’accueil.
+- [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
 - [ ] `[QA]` Tester les liens internes et externes, redirections comprises.
-- [ ] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
+- [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
 - [ ] `[QA]` Vérifier que Cloudflare sert réellement cette page avec un statut 404.
 
 **Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
@@ -446,19 +446,19 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 
 Le site est statique et n’a besoin d’aucun secret en production. Toute future variable secrète doit rester côté serveur et ne jamais être préfixée pour être exposée au client.
 
-- [ ] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
+- [x] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
 - [ ] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
-- [ ] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline fonctionnent grâce aux hashes générés, sans `unsafe-inline`.
-- [ ] `[Dev]` Ajouter `public/_headers` pour les en-têtes servis par Cloudflare Pages.
-- [ ] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
-- [ ] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
-- [ ] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
-- [ ] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
-- [ ] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
+- [x] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline sont placés après la CSP, couverts par leurs hashes exacts et sans `unsafe-inline`.
+- [x] `[Dev]` Ajouter `public/_headers` pour les en-têtes servis par Cloudflare Pages.
+- [x] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
+- [x] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
+- [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
+- [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
+- [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
 - [ ] `[QA]` Vérifier les en-têtes avec `curl -I` sur la prévisualisation et la production.
 - [ ] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
-- [ ] `[QA]` Rechercher les secrets et données personnelles dans les fichiers suivis et le build `dist/`.
-- [ ] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur.
+- [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
+- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 22 juillet 2026.
 - [ ] `[Ethan]` Activer 2FA sur Cloudflare et utiliser des jetons à privilèges minimaux si une automatisation est ajoutée.
 - [ ] `[QA]` Confirmer que les previews Cloudflare ne sont pas indexables.
 - [ ] `[Dev]` Rediriger le domaine de production `*.pages.dev` vers le domaine canonique après connexion du domaine.
@@ -473,6 +473,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 
 ### Automatisation
 
+- [x] `[Dev]` Contrôler dans le build les contrastes des principaux tokens clair/sombre, le lien d’évitement, les noms de boutons, les alternatives d’images et les identifiants dupliqués.
 - [ ] `[Dev]` Ajouter Playwright.
 - [ ] `[Dev]` Ajouter `@axe-core/playwright`.
 - [ ] `[Dev]` Tester toutes les routes publiques FR/EN.
@@ -505,14 +506,16 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 
 ### Tests à ajouter
 
+- [x] `[Dev]` Ajouter une validation statique de toutes les routes et des budgets HTML/CSS/JS.
 - [ ] `[Dev]` Ajouter `npm run test:e2e`.
 - [ ] `[Dev]` Ajouter un smoke test de chaque route publique.
-- [ ] `[Dev]` Tester que chaque lien de langue mène à l’équivalent attendu.
+- [x] `[Dev]` Tester que chaque lien de langue mène à l’équivalent attendu.
 - [ ] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
 - [ ] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
-- [ ] `[Dev]` Tester les canonical, alternates, titres et descriptions.
+- [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
 - [ ] `[Dev]` Tester la page 404 et son statut en environnement Cloudflare.
-- [ ] `[Dev]` Ajouter un contrôle des liens internes et externes avec une gestion explicite des faux positifs réseau.
+- [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
+- [ ] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [ ] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
 - [ ] `[Dev]` Ajouter ESLint seulement avec un jeu de règles utile et sans dupliquer les contrôles Astro/TypeScript.
 - [ ] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.

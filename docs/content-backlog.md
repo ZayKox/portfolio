@@ -18,6 +18,7 @@ Cette liste n’est pas affichée sur le site.
 
 ## MyVerse
 
+- Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
 - Motivation et problème personnel initial.
 - Rôle exact, dates et temps consacré.
 - État public, lien de démonstration et visibilité du dépôt.
@@ -28,6 +29,7 @@ Cette liste n’est pas affichée sur le site.
 
 ## FiltreAppels
 
+- Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
 - Motivation, rôle exact et dates.
 - État Play Console et date de publication visée.
 - Appareils, constructeurs et appels réels testés.
@@ -39,7 +41,7 @@ Cette liste n’est pas affichée sur le site.
 ## Publication
 
 - Domaine recommandé : `ethanbrosselard.dev`. Le registre `.dev` ne retournait aucune inscription le 22 juillet 2026 ; revérifier au moment de l’achat. `zayko.dev` est déjà enregistré.
-- Ajouter le domaine à `astro.config.mjs` avant de générer sitemap et URL canoniques.
+- Définir `SITE_URL` avec le domaine final dans l’environnement Cloudflare ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
 - Rédiger les mentions légales adaptées au statut de l’éditeur.
 - Décider si une mesure d’audience est réellement utile.
 - Créer une image Open Graph finale après stabilisation de la direction artistique.

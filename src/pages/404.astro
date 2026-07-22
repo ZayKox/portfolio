@@ -2,16 +2,28 @@
 import { getCopy } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const t = getCopy("fr");
+const fr = getCopy("fr");
+const en = getCopy("en");
 ---
 
-<BaseLayout locale="fr" currentPath="/404/" alternatePath="/en/" title="404" noindex>
+<BaseLayout
+  locale="fr"
+  currentPath="/404.html"
+  alternatePath="/en/"
+  title="404 — Page introuvable / Page not found"
+  description={`${fr.notFound.text} / ${en.notFound.text}`}
+  noindex
+>
   <section class="not-found section-grid">
     <div class="container not-found-inner">
-      <p class="not-found-code">404</p>
-      <h1>{t.notFound.title}</h1>
-      <p>{t.notFound.text}</p>
-      <a class="button button--primary" href="/">{t.notFound.cta}</a>
+      <p class="not-found-code" aria-hidden="true">404</p>
+      <h1>{fr.notFound.title}</h1>
+      <p>{fr.notFound.text}</p>
+      <p lang="en"><strong>{en.notFound.title}</strong> {en.notFound.text}</p>
+      <div class="not-found-actions">
+        <a class="button button--primary" href="/">{fr.notFound.cta}</a>
+        <a class="button button--secondary" href="/en/" lang="en">{en.notFound.cta}</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -1203,7 +1203,7 @@ h3 {
 
 .case-facts-grid {
   display: grid;
-  grid-template-columns: 0.7fr 0.5fr 1.8fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -1350,8 +1350,19 @@ h3 {
 }
 
 .not-found-inner > p:not(.not-found-code) {
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   color: var(--text-muted);
+}
+
+.not-found-inner > p[lang="en"] {
+  margin-bottom: 2rem;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 @supports (animation-timeline: view()) {

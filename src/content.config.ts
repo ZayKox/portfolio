@@ -17,8 +17,6 @@ const projects = defineCollection({
     publication: z.enum(["draft", "teaser", "published"]),
     eyebrow: z.string(),
     kind: z.string(),
-    status: z.string(),
-    year: z.string(),
     summary: z.string(),
     stack: z.array(z.string()).min(1),
     visual: z.enum(["myverse", "calls"]),

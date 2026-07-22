@@ -7,8 +7,6 @@ featured: true
 publication: teaser
 eyebrow: Application Android
 kind: Produit mobile local-first
-status: MVP fonctionnel
-year: "2026"
 summary: Une application Android native qui applique localement des règles pour autoriser, silencier ou bloquer les appels entrants.
 stack:
   - Kotlin
@@ -16,13 +14,6 @@ stack:
   - CallScreeningService
   - Coroutines
   - DataStore
-metrics:
-  - value: "100 %"
-    label: local et sans compte
-  - value: "22"
-    label: plages ARCEP intégrées
-  - value: "≈ 2,65 Mo"
-    label: APK release documenté
 visual: calls
 ---
 
@@ -42,4 +33,4 @@ La normalisation prend en charge les formats français et plusieurs territoires 
 
 Le service Telecom ne lit ni le disque ni le réseau pendant la décision. Il consulte un snapshot immuable compilé en mémoire et répond avant la mise à jour asynchrone des statistiques. Une entrée invalide ou une erreur inattendue autorise l’appel par défaut.
 
-Le MVP reste à valider sur davantage d’appareils, de constructeurs et de situations d’appels réels avant une publication large.
+La validation doit encore couvrir davantage d’appareils, de constructeurs et de situations d’appels réels avant une publication large.

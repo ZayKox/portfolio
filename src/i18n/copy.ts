@@ -73,9 +73,9 @@ export const copy = {
       eyebrow: "Projets",
       title: "Des produits, pas seulement des stacks.",
       intro:
-        "Chaque étude de cas présente le problème, les choix d’architecture, les compromis et la validation technique. Le récit s’enrichira avec les retours et résultats réels.",
+        "Chaque aperçu présente le problème traité, le socle technique, les décisions d’architecture et les limites actuellement vérifiables.",
       viewProject: "Voir le projet",
-      teaser: "Étude en construction",
+      teaser: "Aperçu technique",
     },
     about: {
       eyebrow: "À propos",
@@ -89,9 +89,9 @@ export const copy = {
       nowLabel: "Maintenant",
       nowText:
         "Faire évoluer MyVerse, préparer FiltreAppels à une publication plus large et explorer de nouveaux usages autour de l’IA.",
-      futureLabel: "Cette page évoluera",
-      futureText:
-        "Le parcours, les expériences et les formations seront ajoutés lorsqu’ils auront été rédigés et validés.",
+      proofLabel: "Ce que montre ce portfolio",
+      proofText:
+        "Des produits documentés par leurs choix d’architecture, leurs validations techniques et leurs limites actuelles.",
     },
     contact: {
       eyebrow: "Contact",
@@ -105,8 +105,6 @@ export const copy = {
     },
     project: {
       back: "Tous les projets",
-      status: "Statut",
-      year: "Année",
       stack: "Socle technique",
       evidence: "Validation technique documentée",
       evidenceNote: "Mesures locales, distinctes de résultats utilisateurs ou de production.",
@@ -117,7 +115,7 @@ export const copy = {
     },
     notFound: {
       title: "Cette page n’existe pas.",
-      text: "Le chemin a peut-être changé, ou le contenu n’est pas encore public.",
+      text: "Vérifiez l’adresse ou choisissez un point de départ.",
       cta: "Retour à l’accueil",
     },
   },
@@ -178,9 +176,9 @@ export const copy = {
       eyebrow: "Projects",
       title: "Products, not just stacks.",
       intro:
-        "Each case study covers the problem, architecture decisions, trade-offs, and technical validation. The stories will grow with real feedback and outcomes.",
+        "Each overview covers the problem being addressed, its technical foundation, architecture decisions, and currently verifiable limits.",
       viewProject: "View project",
-      teaser: "Case study in progress",
+      teaser: "Technical overview",
     },
     about: {
       eyebrow: "About",
@@ -194,9 +192,9 @@ export const copy = {
       nowLabel: "Now",
       nowText:
         "Evolving MyVerse, preparing FiltreAppels for a wider release, and exploring new uses for AI.",
-      futureLabel: "This page will evolve",
-      futureText:
-        "Career history, experience, and education will be added once they have been written and reviewed.",
+      proofLabel: "What this portfolio shows",
+      proofText:
+        "Products documented through their architecture decisions, technical validation, and current limitations.",
     },
     contact: {
       eyebrow: "Contact",
@@ -210,8 +208,6 @@ export const copy = {
     },
     project: {
       back: "All projects",
-      status: "Status",
-      year: "Year",
       stack: "Technical foundation",
       evidence: "Documented technical validation",
       evidenceNote: "Local measurements, separate from user or production outcomes.",
@@ -222,7 +218,7 @@ export const copy = {
     },
     notFound: {
       title: "This page does not exist.",
-      text: "The path may have changed, or the content is not public yet.",
+      text: "Check the address or choose a starting point.",
       cta: "Back home",
     },
   },

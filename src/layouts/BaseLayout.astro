@@ -2,7 +2,7 @@
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import { profile } from "@/data/profile";
-import { getCopy, type Locale } from "@/i18n/copy";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
 import "@/styles/global.css";
 
 interface Props {
@@ -27,21 +27,27 @@ const {
 const t = getCopy(locale);
 const pageTitle = title ? `${title} — ${profile.name}` : t.meta.title;
 const pageDescription = description ?? t.meta.description;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const canonical = !noindex && Astro.site ? new URL(currentPath, Astro.site) : undefined;
+const currentUrl = canonical ?? currentPath;
 const alternateUrl = Astro.site ? new URL(alternatePath, Astro.site) : alternatePath;
+const defaultPath = locale === "fr" ? currentPath : alternatePath;
+const defaultUrl = Astro.site ? new URL(defaultPath, Astro.site) : defaultPath;
+const sitemapUrl = Astro.site ? new URL("sitemap-index.xml", Astro.site).href : undefined;
+const personUrl = Astro.site ? new URL(routes[locale].home, Astro.site).href : undefined;
 const person = {
   "@type": "Person",
   name: profile.name,
   alternateName: profile.handle,
-  email: `mailto:${profile.email}`,
   homeLocation: {
     "@type": "Place",
     name: profile.location,
   },
   sameAs: [profile.socials.github, profile.socials.linkedin],
+  ...(personUrl && { url: personUrl }),
 };
-const jsonLd =
-  schemaType === "ProfilePage"
+const jsonLd = noindex
+  ? undefined
+  : schemaType === "ProfilePage"
     ? {
         "@context": "https://schema.org",
         "@type": schemaType,
@@ -49,6 +55,7 @@ const jsonLd =
         description: pageDescription,
         inLanguage: locale,
         mainEntity: person,
+        ...(canonical && { url: canonical.href }),
       }
     : {
         "@context": "https://schema.org",
@@ -57,7 +64,25 @@ const jsonLd =
         description: pageDescription,
         inLanguage: locale,
         author: person,
+        ...(canonical && { url: canonical.href }),
       };
+const jsonLdSource = jsonLd
+  ? JSON.stringify(jsonLd)
+      .replace(/</g, "\\u003c")
+      .replace(/\u2028/g, "\\u2028")
+      .replace(/\u2029/g, "\\u2029")
+  : undefined;
+const themeBootstrap =
+  'try{const savedTheme=localStorage.getItem("portfolio-theme");const systemTheme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=savedTheme||systemTheme}catch{}';
+const scriptHash = async (source: string) => {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(source));
+  const base64 = btoa(String.fromCharCode(...new Uint8Array(digest)));
+  return `sha256-${base64}` as `sha256-${string}`;
+};
+
+for (const source of [themeBootstrap, jsonLdSource]) {
+  if (source) Astro.csp?.insertScriptHash(await scriptHash(source));
+}
 ---
 
 <!doctype html>
@@ -72,27 +97,31 @@ const jsonLd =
     <meta name="description" content={pageDescription} />
     <meta name="author" content={profile.name} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
-    <meta property="og:locale" content={locale === "fr" ? "fr_FR" : "en_US"} />
-    <meta property="og:locale:alternate" content={locale === "fr" ? "en_US" : "fr_FR"} />
-    <meta name="twitter:card" content="summary" />
-    {canonical && <link rel="canonical" href={canonical} />}
-    <link rel="alternate" hreflang={locale === "fr" ? "en" : "fr"} href={alternateUrl} />
-    <link rel="alternate" hreflang={locale} href={canonical ?? currentPath} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    <script is:inline>
-      try {
-        const savedTheme = localStorage.getItem("portfolio-theme");
-        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = savedTheme || systemTheme;
-      } catch {
-        // The CSS media query remains the no-storage fallback.
-      }
-    </script>
+    {
+      !noindex && (
+        <>
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
+          <meta property="og:site_name" content={profile.name} />
+          <meta property="og:locale" content={locale === "fr" ? "fr_FR" : "en_US"} />
+          <meta property="og:locale:alternate" content={locale === "fr" ? "en_US" : "fr_FR"} />
+          {canonical && <meta property="og:url" content={canonical.href} />}
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+          {canonical && <link rel="canonical" href={canonical.href} />}
+          {sitemapUrl && <link rel="sitemap" href={sitemapUrl} />}
+          <link rel="alternate" hreflang={locale === "fr" ? "en" : "fr"} href={alternateUrl} />
+          <link rel="alternate" hreflang={locale} href={currentUrl} />
+          <link rel="alternate" hreflang="x-default" href={defaultUrl} />
+        </>
+      )
+    }
   </head>
   <body>
+    <script is:inline set:html={themeBootstrap} />
+    {jsonLdSource && <script is:inline type="application/ld+json" set:html={jsonLdSource} />}
     <a class="skip-link" href="#main-content">{t.skipLink}</a>
     <Header {locale} {currentPath} {alternatePath} />
     <main id="main-content">

@@ -16,6 +16,12 @@ npm run dev
 npm run verify
 ```
 
+La vérification teste le site avec une origine HTTPS réservée, puis recrée `dist/` sans faux domaine afin de contrôler les canonical, le sitemap et `robots.txt` sans laisser un artefact trompeur. En production, définir `SITE_URL` avec l’origine finale, sans chemin :
+
+```sh
+SITE_URL=https://votre-domaine.example npm run build
+```
+
 ## Architecture
 
 - `src/pages/` contient les routes françaises et anglaises.
