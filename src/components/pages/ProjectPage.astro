@@ -1,0 +1,94 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import ProjectVisual from "@/components/projects/ProjectVisual.astro";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  locale: Locale;
+  alternatePath: string;
+  entry: CollectionEntry<"projects">;
+}
+
+const { locale, alternatePath, entry } = Astro.props;
+const t = getCopy(locale);
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  {locale}
+  currentPath={locale === "fr"
+    ? `/projets/${entry.data.slug}/`
+    : `/en/projects/${entry.data.slug}/`}
+  {alternatePath}
+  title={entry.data.title}
+  description={entry.data.summary}
+>
+  <article class="case-study">
+    <header class="case-hero section-grid">
+      <div class="container">
+        <a class="back-link" href={routes[locale].projects}>← {t.project.back}</a>
+        <div class="case-hero-grid">
+          <div class="case-title reveal">
+            <p class="eyebrow">{entry.data.eyebrow}</p>
+            <h1>{entry.data.title}</h1>
+            <p class="page-lead">{entry.data.summary}</p>
+          </div>
+          <ProjectVisual visual={entry.data.visual} />
+        </div>
+      </div>
+    </header>
+
+    <section class="case-facts section--bordered">
+      <div class="container case-facts-grid">
+        <div>
+          <span>{t.project.status}</span>
+          <strong>{entry.data.status}</strong>
+        </div>
+        <div>
+          <span>{t.project.year}</span>
+          <strong>{entry.data.year}</strong>
+        </div>
+        <div class="case-stack">
+          <span>{t.project.stack}</span>
+          <ul class="tag-list">
+            {entry.data.stack.map((technology) => <li>{technology}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {
+      entry.data.metrics && (
+        <section class="section case-metrics">
+          <div class="container">
+            <div class="case-section-heading reveal">
+              <p class="eyebrow">{t.project.evidence}</p>
+              <p>{t.project.evidenceNote}</p>
+            </div>
+            <div class="metric-grid">
+              {entry.data.metrics.map((metric) => (
+                <div class="metric-card reveal">
+                  <strong>{metric.value}</strong>
+                  <span>{metric.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="section case-body-section section--bordered">
+      <div class="container case-body-grid">
+        <aside class="case-body-index">
+          <span>{String(entry.data.order).padStart(2, "0")}</span>
+          <p>{entry.data.kind}</p>
+        </aside>
+        <div class="case-prose prose reveal">
+          <Content />
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

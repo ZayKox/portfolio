@@ -1,0 +1,60 @@
+---
+import { profile } from "@/data/profile";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  locale: Locale;
+  alternatePath: string;
+}
+
+const { locale, alternatePath } = Astro.props;
+const t = getCopy(locale);
+---
+
+<BaseLayout
+  {locale}
+  currentPath={routes[locale].about}
+  {alternatePath}
+  title={t.nav.about}
+  description={t.about.lead}
+  schemaType="ProfilePage"
+>
+  <section class="page-hero section-grid">
+    <div class="container page-hero-inner reveal">
+      <p class="eyebrow">{t.about.eyebrow}</p>
+      <h1>{t.about.title}</h1>
+      <p class="page-lead">{t.about.lead}</p>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="container about-page-grid">
+      <aside class="identity-card reveal">
+        <div class="identity-monogram" aria-hidden="true">EB</div>
+        <div>
+          <strong>{profile.name}</strong>
+          <span>@{profile.handle}</span>
+        </div>
+        <p>{profile.location}</p>
+        <p>FR · EN</p>
+      </aside>
+      <div class="prose-large reveal">
+        {t.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-note-grid">
+      <article class="note-card reveal">
+        <p class="eyebrow">{t.about.nowLabel}</p>
+        <p>{t.about.nowText}</p>
+      </article>
+      <article class="note-card reveal">
+        <p class="eyebrow">{t.about.futureLabel}</p>
+        <p>{t.about.futureText}</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

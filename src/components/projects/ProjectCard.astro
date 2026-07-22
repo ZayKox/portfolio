@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "@/i18n/copy";
+import { getCopy } from "@/i18n/copy";
+import ProjectVisual from "./ProjectVisual.astro";
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+  locale: Locale;
+  index: number;
+}
+
+const { entry, locale, index } = Astro.props;
+const t = getCopy(locale);
+const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
+---
+
+<article class="project-card reveal">
+  <a
+    class="project-card-visual"
+    href={href}
+    aria-label={`${t.projects.viewProject} — ${entry.data.title}`}
+  >
+    <ProjectVisual visual={entry.data.visual} />
+  </a>
+  <div class="project-card-content">
+    <div class="project-card-meta">
+      <span>{String(index + 1).padStart(2, "0")}</span>
+      <span>{entry.data.kind}</span>
+      <span>{entry.data.year}</span>
+    </div>
+    <div class="project-card-heading">
+      <div>
+        <p class="eyebrow">{entry.data.eyebrow}</p>
+        <h3><a href={href}>{entry.data.title}</a></h3>
+      </div>
+      <span class="status-pill">{entry.data.status}</span>
+    </div>
+    <p class="project-summary">{entry.data.summary}</p>
+    <ul class="tag-list" aria-label={t.project.stack}>
+      {entry.data.stack.slice(0, 5).map((technology) => <li>{technology}</li>)}
+    </ul>
+    <a class="text-link" href={href}>
+      {t.projects.viewProject}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</article>

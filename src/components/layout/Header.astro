@@ -1,0 +1,97 @@
+---
+import { profile } from "@/data/profile";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+  alternatePath: string;
+}
+
+const { locale, currentPath, alternatePath } = Astro.props;
+const t = getCopy(locale);
+const localizedRoutes = routes[locale];
+const items = [
+  { label: t.nav.home, href: localizedRoutes.home },
+  { label: t.nav.projects, href: localizedRoutes.projects },
+  { label: t.nav.about, href: localizedRoutes.about },
+  { label: t.nav.contact, href: localizedRoutes.contact },
+];
+
+const isActive = (href: string) =>
+  href === localizedRoutes.home ? currentPath === href : currentPath.startsWith(href);
+---
+
+<header class="site-header" data-site-header>
+  <div class="container header-inner">
+    <a class="brand" href={localizedRoutes.home} aria-label={`${profile.name} — ${t.nav.home}`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>{profile.handle}</span>
+    </a>
+
+    <nav
+      class="main-nav"
+      aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"}
+    >
+      {
+        items.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class="language-switch"
+        href={alternatePath}
+        lang={locale === "fr" ? "en" : "fr"}
+        hreflang={locale === "fr" ? "en" : "fr"}
+        aria-label={locale === "fr" ? "View this page in English" : "Voir cette page en français"}
+      >
+        {t.alternateLocale}
+      </a>
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label={t.themeLabel}
+        data-theme-toggle
+        data-light-label={t.themeLight}
+        data-dark-label={t.themeDark}
+      >
+        <span class="theme-toggle-symbol" aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const themeButton = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+
+  function syncThemeButton(button: HTMLButtonElement) {
+    const isDark = document.documentElement.dataset.theme === "dark";
+    button.setAttribute("aria-pressed", String(isDark));
+    button.setAttribute(
+      "aria-label",
+      isDark
+        ? (button.dataset.lightLabel ?? "Light theme")
+        : (button.dataset.darkLabel ?? "Dark theme"),
+    );
+  }
+
+  if (themeButton && themeButton.dataset.ready !== "true") {
+    themeButton.dataset.ready = "true";
+    syncThemeButton(themeButton);
+    themeButton.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      try {
+        localStorage.setItem("portfolio-theme", nextTheme);
+      } catch {
+        // The selected theme still applies for the current page.
+      }
+      syncThemeButton(themeButton);
+    });
+  }
+</script>

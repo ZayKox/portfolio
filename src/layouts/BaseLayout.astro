@@ -1,0 +1,103 @@
+---
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import { profile } from "@/data/profile";
+import { getCopy, type Locale } from "@/i18n/copy";
+import "@/styles/global.css";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+  alternatePath: string;
+  title?: string;
+  description?: string;
+  schemaType?: "ProfilePage" | "CollectionPage" | "ContactPage" | "WebPage";
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  currentPath,
+  alternatePath,
+  title,
+  description,
+  schemaType = "WebPage",
+  noindex = false,
+} = Astro.props;
+const t = getCopy(locale);
+const pageTitle = title ? `${title} — ${profile.name}` : t.meta.title;
+const pageDescription = description ?? t.meta.description;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const alternateUrl = Astro.site ? new URL(alternatePath, Astro.site) : alternatePath;
+const person = {
+  "@type": "Person",
+  name: profile.name,
+  alternateName: profile.handle,
+  email: `mailto:${profile.email}`,
+  homeLocation: {
+    "@type": "Place",
+    name: profile.location,
+  },
+  sameAs: [profile.socials.github, profile.socials.linkedin],
+};
+const jsonLd =
+  schemaType === "ProfilePage"
+    ? {
+        "@context": "https://schema.org",
+        "@type": schemaType,
+        name: pageTitle,
+        description: pageDescription,
+        inLanguage: locale,
+        mainEntity: person,
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": schemaType,
+        name: pageTitle,
+        description: pageDescription,
+        inLanguage: locale,
+        author: person,
+      };
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#6d28d9" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content={profile.name} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:locale" content={locale === "fr" ? "fr_FR" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "fr" ? "en_US" : "fr_FR"} />
+    <meta name="twitter:card" content="summary" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="alternate" hreflang={locale === "fr" ? "en" : "fr"} href={alternateUrl} />
+    <link rel="alternate" hreflang={locale} href={canonical ?? currentPath} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || systemTheme;
+      } catch {
+        // The CSS media query remains the no-storage fallback.
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{t.skipLink}</a>
+    <Header {locale} {currentPath} {alternatePath} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer {locale} />
+  </body>
+</html>

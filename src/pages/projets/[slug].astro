@@ -1,0 +1,24 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ProjectPage from "@/components/pages/ProjectPage.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection(
+    "projects",
+    ({ data }) => data.locale === "fr" && data.publication !== "draft",
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+
+const { entry } = Astro.props;
+---
+
+<ProjectPage locale="fr" alternatePath={`/en/projects/${entry.data.slug}/`} {entry} />

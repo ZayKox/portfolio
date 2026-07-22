@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Portfolio"
+  short_description: "Keep the bilingual portfolio consistent"
+  default_prompt: "Use $maintain-portfolio to add or update portfolio content safely."

@@ -1,0 +1,17 @@
+---
+import { getCopy } from "@/i18n/copy";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const t = getCopy("fr");
+---
+
+<BaseLayout locale="fr" currentPath="/404/" alternatePath="/en/" title="404" noindex>
+  <section class="not-found section-grid">
+    <div class="container not-found-inner">
+      <p class="not-found-code">404</p>
+      <h1>{t.notFound.title}</h1>
+      <p>{t.notFound.text}</p>
+      <a class="button button--primary" href="/">{t.notFound.cta}</a>
+    </div>
+  </section>
+</BaseLayout>

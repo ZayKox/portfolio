@@ -1,0 +1,45 @@
+---
+title: FiltreAppels
+slug: filtre-appels
+locale: en
+order: 2
+featured: true
+publication: teaser
+eyebrow: Android application
+kind: Local-first mobile product
+status: Functional MVP
+year: "2026"
+summary: A native Android application that applies local rules to allow, silence, or block incoming calls.
+stack:
+  - Kotlin
+  - Jetpack Compose
+  - CallScreeningService
+  - Coroutines
+  - DataStore
+metrics:
+  - value: "100%"
+    label: local and account-free
+  - value: "22"
+    label: integrated ARCEP ranges
+  - value: "≈ 2.65 MB"
+    label: documented release APK
+visual: calls
+---
+
+## Screen calls without collecting them
+
+FiltreAppels lets people define exact-number or prefix rules, then allow, silence, or block matching calls. The app works without an account, subscription, server, or Internet permission.
+
+Incoming numbers are never logged or stored. Local statistics only contain aggregated actions and rule identifiers.
+
+## A deterministic decision engine
+
+Allow exceptions take priority over broader rules. The engine then compares exact numbers before selecting the longest blocking or silencing prefix. A built-in tester explains the decision without changing statistics.
+
+Normalization supports French formats and several overseas territories. A versioned list of ARCEP ranges can be explicitly enabled by the user.
+
+## A protected critical path
+
+The Telecom service performs no disk or network access while making a decision. It reads an immutable compiled in-memory snapshot and responds before statistics are updated asynchronously. Invalid input or unexpected failure allows the call by default.
+
+The MVP still needs validation across more devices, manufacturers, and real-call scenarios before a wider release.
