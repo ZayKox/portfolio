@@ -24,7 +24,8 @@ npm run verify
 - `src/data/profile.ts` contient les faits publics et les liens d’Ethan.
 - `src/i18n/copy.ts` centralise les textes d’interface.
 - `src/styles/global.css` contient les tokens et le système visuel.
-- `docs/content-backlog.md` liste les informations restant à fournir.
+- [`docs/content-backlog.md`](docs/content-backlog.md) liste les informations restant à fournir.
+- [`docs/production-plan.md`](docs/production-plan.md) pilote toutes les étapes jusqu’à la mise en production et sa maintenance.
 - `skills/maintain-portfolio/` guide les futures modifications assistées.
 
 Le contenu des dépôts MyVerse et FiltreAppels est curaté dans ce dépôt. Le build ne dépend jamais de chemins locaux vers les projets sources.
