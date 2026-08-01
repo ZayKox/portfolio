@@ -40,6 +40,8 @@ Le statut réel, les dates et les métriques produit restent absents tant qu’E
 
 Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes restent relatifs et aucun canonical ou sitemap n’est émis. Avec une origine HTTPS finale dans `SITE_URL`, Astro produit les canonical, `og:url`, URL JSON-LD, `robots.txt` et le sitemap officiel. La 404 est exclue du sitemap.
 
+Une répétition technique utilise `SITE_NOINDEX=true`. Toutes les pages deviennent alors `noindex, nofollow`, `robots.txt` interdit le crawl et aucun sitemap, canonical, alternate, JSON-LD ou aperçu social n'est généré. `npm run verify` contrôle séparément ce mode, la production indexable et le build sans origine. Cette défense contre l'indexation accidentelle ne remplace pas une authentification ou une restriction réseau de la preview.
+
 ## Sécurité
 
 Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP compatibles Cloudflare Pages. Pour le chemin VPS, `nginx.conf` sert les mêmes en-têtes depuis un conteneur non privilégié ; Coolify termine TLS et ne publie que le port HTTP interne `8080`.
@@ -55,7 +57,7 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation statique
 
-`npm run verify` contrôle le format, les types Astro, un build avec une origine HTTPS de test, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, structure HTML de base, contrastes des tokens principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
+`npm run verify` contrôle le format, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, structure HTML de base, contrastes des tokens principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
 
 ## Validation navigateur
 
@@ -63,7 +65,7 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation du conteneur
 
-`npm run test:container` construit l'image de production avec une origine HTTPS de test, démarre Nginx sur un port local aléatoire, attend le healthcheck et contrôle l'accueil, les en-têtes de sécurité, la vraie réponse 404 et les endpoints SEO. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
+`npm run test:container` construit l'image publique de production tandis que `npm run test:container:preview` construit sa variante `noindex`. Chaque contrôle démarre Nginx sur un port local aléatoire, attend le healthcheck et vérifie l'accueil, les en-têtes de sécurité, la vraie réponse 404 et les endpoints SEO attendus pour son mode. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
 
 ## Contenu futur
 

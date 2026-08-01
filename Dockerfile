@@ -7,6 +7,8 @@ RUN npm ci
 COPY . .
 ARG SITE_URL
 ENV SITE_URL=$SITE_URL
+ARG SITE_NOINDEX=false
+ENV SITE_NOINDEX=$SITE_NOINDEX
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.29-alpine

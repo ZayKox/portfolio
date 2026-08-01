@@ -6,6 +6,7 @@ import process from "node:process";
 const root = process.cwd();
 const outputDirectory = path.join(root, "dist");
 const errors = [];
+const previewMode = process.env.SITE_NOINDEX === "true";
 const internalReferences = new Set();
 const allowedGitHubProfileUrl = "https://github.com/ZayKox";
 const privateUsername = new URL(allowedGitHubProfileUrl).pathname.slice(1).replace(/x$/i, "");
@@ -240,6 +241,15 @@ function validateDocument(html, relativePath, route) {
     (tag) => attribute(tag, "name")?.toLowerCase() === "robots",
   );
   const noindex = attribute(robotsTag ?? "", "content")?.includes("noindex") ?? false;
+  if (previewMode && !noindex) {
+    errors.push(`${relativePath}: preview page is missing noindex`);
+  }
+  if (!previewMode && relativePath !== "404.html" && noindex) {
+    errors.push(`${relativePath}: public page unexpectedly has noindex`);
+  }
+  if (previewMode && attribute(robotsTag ?? "", "content") !== "noindex, nofollow") {
+    errors.push(`${relativePath}: preview page must use noindex, nofollow`);
+  }
 
   const h1Count = (html.match(/<h1\b/gi) ?? []).length;
   if (h1Count !== 1) errors.push(`${relativePath}: expected one h1, found ${h1Count}`);
@@ -582,11 +592,24 @@ for (const header of [
 }
 
 const robots = await readFile(path.join(outputDirectory, "robots.txt"), "utf8").catch(() => "");
-if (!robots.includes("User-agent: *") || !robots.includes("Allow: /")) {
-  errors.push("dist/robots.txt: expected public crawler policy is missing");
+if (!robots.includes("User-agent: *")) {
+  errors.push("dist/robots.txt: user-agent policy is missing");
 }
 
-if (process.env.SITE_URL) {
+if (previewMode) {
+  if (
+    !robots.includes("Disallow: /") ||
+    robots.includes("Allow: /") ||
+    robots.includes("Sitemap:")
+  ) {
+    errors.push("dist/robots.txt: preview crawler policy is not fully restrictive");
+  }
+  if (allFiles.some((file) => path.basename(file).startsWith("sitemap"))) {
+    errors.push("dist: sitemap generated for a noindex preview");
+  }
+} else if (!robots.includes("Allow: /")) {
+  errors.push("dist/robots.txt: expected public crawler policy is missing");
+} else if (process.env.SITE_URL) {
   const expectedSitemapUrl = new URL("sitemap-index.xml", process.env.SITE_URL).href;
   if (!robots.includes(`Sitemap: ${expectedSitemapUrl}`)) {
     errors.push(`dist/robots.txt: missing ${expectedSitemapUrl}`);

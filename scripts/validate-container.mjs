@@ -1,10 +1,12 @@
 import { spawnSync } from "node:child_process";
 import process from "node:process";
 
+const previewMode = process.argv.includes("--preview");
+const mode = previewMode ? "preview" : "public";
 const suffix = `${process.pid}-${Date.now()}`;
-const image = `portfolio-smoke:${suffix}`;
-const container = `portfolio-smoke-${suffix}`;
-const siteUrl = "https://portfolio.example";
+const image = `portfolio-smoke-${mode}:${suffix}`;
+const container = `portfolio-smoke-${mode}-${suffix}`;
+const siteUrl = previewMode ? "https://preview.portfolio.example" : "https://portfolio.example";
 
 function docker(args, { quiet = false } = {}) {
   const result = spawnSync("docker", args, {
@@ -53,8 +55,18 @@ async function validateResponse(origin, pathname, expectedStatus) {
 }
 
 try {
-  console.log("Building the production container...");
-  docker(["build", "--quiet", "--build-arg", `SITE_URL=${siteUrl}`, "--tag", image, "."]);
+  console.log(`Building the ${mode} production container...`);
+  docker([
+    "build",
+    "--quiet",
+    "--build-arg",
+    `SITE_URL=${siteUrl}`,
+    "--build-arg",
+    `SITE_NOINDEX=${previewMode}`,
+    "--tag",
+    image,
+    ".",
+  ]);
 
   console.log("Starting the production container on a random loopback port...");
   docker(["run", "--detach", "--name", container, "--publish", "127.0.0.1::8080", image]);
@@ -87,12 +99,33 @@ try {
   assert(notFound.body.includes("This page does not exist."), "404 page is missing English copy");
 
   const robots = await validateResponse(origin, "/robots.txt", 200);
-  assert(
-    robots.body.includes(`${siteUrl}/sitemap-index.xml`),
-    "robots.txt does not reference the expected sitemap",
-  );
+  if (previewMode) {
+    assert(
+      home.body.includes('<meta name="robots" content="noindex, nofollow">'),
+      "preview home page is missing noindex, nofollow",
+    );
+    for (const forbiddenSignal of [
+      'rel="canonical"',
+      'rel="alternate"',
+      'rel="sitemap"',
+      'type="application/ld+json"',
+      'property="og:',
+    ]) {
+      assert(!home.body.includes(forbiddenSignal), `preview exposes ${forbiddenSignal}`);
+    }
+    assert(robots.body.includes("Disallow: /"), "preview robots.txt does not block crawling");
+    assert(!robots.body.includes("Sitemap:"), "preview robots.txt exposes a sitemap");
+    await validateResponse(origin, "/sitemap-index.xml", 404);
+  } else {
+    assert(
+      robots.body.includes(`${siteUrl}/sitemap-index.xml`),
+      "robots.txt does not reference the expected sitemap",
+    );
+  }
 
-  console.log(`Validated container health, headers, 404 handling, and SEO endpoints at ${origin}.`);
+  console.log(
+    `Validated ${mode} container health, headers, 404 handling, and SEO endpoints at ${origin}.`,
+  );
 } finally {
   const removeContainer = spawnSync("docker", ["rm", "--force", container], {
     encoding: "utf8",

@@ -24,15 +24,22 @@ const {
   schemaType = "WebPage",
   noindex = false,
 } = Astro.props;
+const isNoindex = noindex || __SITE_NOINDEX__;
+const robotsContent = __SITE_NOINDEX__
+  ? "noindex, nofollow"
+  : noindex
+    ? "noindex, follow"
+    : undefined;
 const t = getCopy(locale);
 const pageTitle = title ? `${title} — ${profile.name}` : t.meta.title;
 const pageDescription = description ?? t.meta.description;
-const canonical = !noindex && Astro.site ? new URL(currentPath, Astro.site) : undefined;
+const canonical = !isNoindex && Astro.site ? new URL(currentPath, Astro.site) : undefined;
 const currentUrl = canonical ?? currentPath;
 const alternateUrl = Astro.site ? new URL(alternatePath, Astro.site) : alternatePath;
 const defaultPath = locale === "fr" ? currentPath : alternatePath;
 const defaultUrl = Astro.site ? new URL(defaultPath, Astro.site) : defaultPath;
-const sitemapUrl = Astro.site ? new URL("sitemap-index.xml", Astro.site).href : undefined;
+const sitemapUrl =
+  !isNoindex && Astro.site ? new URL("sitemap-index.xml", Astro.site).href : undefined;
 const personUrl = Astro.site ? new URL(routes[locale].home, Astro.site).href : undefined;
 const person = {
   "@type": "Person",
@@ -44,7 +51,7 @@ const person = {
   sameAs: [profile.socials.github, profile.socials.linkedin],
   ...(personUrl && { url: personUrl }),
 };
-const jsonLd = noindex
+const jsonLd = isNoindex
   ? undefined
   : schemaType === "ProfilePage"
     ? {
@@ -95,9 +102,9 @@ for (const source of [themeBootstrap, jsonLdSource]) {
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="author" content={profile.name} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {robotsContent && <meta name="robots" content={robotsContent} />}
     {
-      !noindex && (
+      !isNoindex && (
         <>
           <meta property="og:type" content="website" />
           <meta property="og:title" content={pageTitle} />

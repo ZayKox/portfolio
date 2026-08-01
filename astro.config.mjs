@@ -4,6 +4,12 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 const site = process.env.SITE_URL ? new URL(process.env.SITE_URL) : undefined;
+const noindexValue = process.env.SITE_NOINDEX;
+const noindexSite = noindexValue === "true";
+
+if (noindexValue && !["true", "false"].includes(noindexValue)) {
+  throw new Error("SITE_NOINDEX must be either true or false when defined.");
+}
 
 if (
   site &&
@@ -44,7 +50,7 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    ...(site
+    ...(site && !noindexSite
       ? [
           sitemap({
             filter: (page) => new URL(page).pathname !== "/404.html",
@@ -53,6 +59,9 @@ export default defineConfig({
       : []),
   ],
   vite: {
+    define: {
+      __SITE_NOINDEX__: JSON.stringify(noindexSite),
+    },
     plugins: [tailwindcss()],
   },
 });

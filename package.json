@@ -17,11 +17,13 @@
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
     "test:container": "node scripts/validate-container.mjs",
+    "test:container:preview": "node scripts/validate-container.mjs --preview",
     "check:links": "npm run build && node scripts/check-external-links.mjs",
     "validate:build": "node scripts/validate-build.mjs",
-    "verify:site": "cross-env SITE_URL=https://portfolio.example npm run build && cross-env SITE_URL=https://portfolio.example npm run validate:build",
-    "verify:no-site": "cross-env SITE_URL= npm run build && cross-env SITE_URL= npm run validate:build",
-    "verify": "npm run format:check && npm run check && npm run verify:site && npm run verify:no-site"
+    "verify:site": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run validate:build",
+    "verify:preview": "cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run build && cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run validate:build",
+    "verify:no-site": "cross-env SITE_URL= SITE_NOINDEX=false npm run build && cross-env SITE_URL= SITE_NOINDEX=false npm run validate:build",
+    "verify": "npm run format:check && npm run check && npm run verify:site && npm run verify:preview && npm run verify:no-site"
   },
   "dependencies": {
     "@astrojs/mdx": "7.0.3",

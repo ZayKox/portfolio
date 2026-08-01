@@ -468,6 +468,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 2 août 2026.
 - [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
       utiliser des jetons à privilèges minimaux.
+- [x] `[Dev]` Ajouter et valider dans le build statique et le conteneur un mode `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le crawl des previews.
 - [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
 - [ ] `[Dev]` Refuser l'indexation de toute URL technique Coolify et rediriger
       `www` vers le domaine canonique choisi.
@@ -614,6 +615,7 @@ Configuration attendue :
 | Service             | `portfolio`                              |
 | Port interne        | `8080`                                   |
 | Variable de build   | `SITE_URL=https://domaine-final.example` |
+| Indexation          | `SITE_NOINDEX=false`                     |
 | Secrets applicatifs | aucun                                    |
 
 ### Première répétition privée
@@ -622,7 +624,7 @@ Configuration attendue :
 - [ ] `[QA]` Noter l’URL, l’identifiant du déploiement et le SHA Git.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
 - [ ] `[QA]` Garder la ressource non publique ou utiliser un domaine de test
-      protégé et `noindex` pendant la recette.
+      protégé et définir `SITE_NOINDEX=true` pendant la recette ; `noindex` seul ne remplace pas la protection d'accès.
 - [ ] `[QA]` Vérifier que le build ne dépend d’aucun fichier non suivi.
 
 ### Domaine et DNS

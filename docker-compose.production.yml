@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         SITE_URL: ${SITE_URL:?Set SITE_URL to the final HTTPS origin}
+        SITE_NOINDEX: ${SITE_NOINDEX:-false}
     restart: unless-stopped
     expose:
       - "8080"

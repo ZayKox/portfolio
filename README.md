@@ -15,6 +15,7 @@ npm run dev
 ```sh
 npm run verify
 npm run test:container
+npm run test:container:preview
 npx playwright install --with-deps chromium firefox webkit
 npm run test:e2e
 npm run check:links
@@ -24,18 +25,20 @@ La vérification teste le site avec une origine HTTPS réservée, puis recrée `
 
 Les tests Playwright parcourent toutes les routes publiques en clair et sombre sur Chromium, Firefox, WebKit et leurs émulations mobiles. Le contrôle axe bloque les violations sérieuses ou critiques ; la suite vérifie aussi le fonctionnement sans JavaScript, le mouvement réduit, les cibles tactiles, le CLS et un budget de transfert synthétique. Le contrôle des liens externes échoue uniquement lorsqu'une cible est confirmée absente (`404` ou `410`) afin de ne pas confondre limitation réseau et lien cassé.
 
-Le smoke test Docker construit l'image réellement utilisée par Coolify, attend son healthcheck, puis vérifie les en-têtes Nginx, le statut de la 404 et les endpoints SEO avant de supprimer son conteneur et son image temporaires.
+Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Coolify, attendent leur healthcheck, puis vérifient les en-têtes Nginx, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
 
 ```sh
 SITE_URL=https://votre-domaine.example npm run build
 ```
+
+Pour une répétition sur une URL technique, définir également `SITE_NOINDEX=true`. Ce mode ajoute `noindex, nofollow` à toutes les pages, interdit le crawl dans `robots.txt` et supprime sitemap, canonical, alternates, JSON-LD et métadonnées sociales. Il ne remplace pas une protection d'accès Coolify. La production finale doit utiliser `SITE_NOINDEX=false`.
 
 ## Déployer sur le VPS OVHcloud
 
 `docker-compose.production.yml` construit le site avec son domaine final, puis
 le sert depuis un conteneur Nginx non privilégié sur le port interne `8080`.
 Dans Coolify, créer une ressource Docker Compose depuis ce dépôt, définir
-`SITE_URL=https://votre-domaine.example`, puis associer le domaine au service
+`SITE_URL=https://votre-domaine.example` et `SITE_NOINDEX=false`, puis associer le domaine au service
 `portfolio` et au port `8080`. Le conteneur ne contient ni base de données ni
 secret applicatif.
 

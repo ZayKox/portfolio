@@ -40,6 +40,9 @@ jobs:
       - name: Smoke test production container
         run: npm run test:container
 
+      - name: Smoke test noindex preview container
+        run: npm run test:container:preview
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
 
