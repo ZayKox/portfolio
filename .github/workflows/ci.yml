@@ -37,6 +37,9 @@ jobs:
       - name: Verify
         run: npm run verify
 
+      - name: Smoke test production container
+        run: npm run test:container
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
 

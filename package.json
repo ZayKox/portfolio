@@ -16,6 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
+    "test:container": "node scripts/validate-container.mjs",
     "check:links": "npm run build && node scripts/check-external-links.mjs",
     "validate:build": "node scripts/validate-build.mjs",
     "verify:site": "cross-env SITE_URL=https://portfolio.example npm run build && cross-env SITE_URL=https://portfolio.example npm run validate:build",

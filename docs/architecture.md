@@ -61,6 +61,10 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 `npm run test:e2e` démarre une prévisualisation du build puis teste les routes publiques dans Chromium, Firefox, WebKit et des émulations mobiles Chromium et WebKit. La suite contrôle le rendu, les erreurs JavaScript et CSP, les deux thèmes, la persistance du choix, les principaux liens, le statut 404, le lien d'évitement au clavier, l'absence de débordement à 320 px et les violations axe sérieuses ou critiques. `npm run check:links` contrôle séparément les liens HTTPS externes et distingue les cibles réellement absentes des refus ou incidents réseau non concluants.
 
+## Validation du conteneur
+
+`npm run test:container` construit l'image de production avec une origine HTTPS de test, démarre Nginx sur un port local aléatoire, attend le healthcheck et contrôle l'accueil, les en-têtes de sécurité, la vraie réponse 404 et les endpoints SEO. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
+
 ## Contenu futur
 
 Le modèle pourra accueillir sans refonte des expériences IA, outils, articles ou projets dans d’autres domaines. Le positionnement ne dépend donc pas d’une stack particulière.

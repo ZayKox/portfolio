@@ -461,10 +461,11 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
-- [ ] `[QA]` Vérifier les en-têtes avec `curl -I` sur la prévisualisation et la production.
+- [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
+- [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
-- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 22 juillet 2026.
+- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 2 août 2026.
 - [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
       utiliser des jetons à privilèges minimaux.
 - [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
@@ -521,7 +522,8 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
 - [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
-- [ ] `[Dev]` Tester la page 404 et son statut derrière Nginx et Coolify.
+- [x] `[Dev]` Tester la page 404 et son statut derrière Nginx local.
+- [ ] `[QA]` Répéter le contrôle de la 404 sur Coolify.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
@@ -549,6 +551,7 @@ Commandes à rendre disponibles avant la release :
 
 ```sh
 npm run test:e2e
+npm run test:container
 npm run check:links
 ```
 
