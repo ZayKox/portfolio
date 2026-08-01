@@ -488,6 +488,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Tester toutes les routes publiques FR/EN dans les deux thèmes.
 - [x] `[QA]` Refuser les violations axe `serious` et `critical`.
 - [x] `[QA]` Conserver le rapport comme preuve de release en cas d'échec CI.
+- [x] `[QA]` Contrôler automatiquement le lien d'évitement, le mouvement réduit, les cibles tactiles et le reflow à 320 px.
 
 ### Recette humaine
 
@@ -569,16 +570,17 @@ Budgets de référence au 75e percentile réel après collecte suffisante :
 
 Pour la recette synthétique avant lancement : viser un score Lighthouse d’au moins 95 sur performance, accessibilité, bonnes pratiques et SEO pour les pages représentatives, sans considérer le score comme une preuve suffisante à lui seul.
 
-- [ ] `[Dev]` Garder le JavaScript client au strict nécessaire.
+- [x] `[Dev]` Garder le JavaScript client au strict nécessaire pour le thème progressif.
 - [ ] `[Dev]` Dimensionner chaque image et utiliser les formats modernes.
 - [ ] `[Dev]` Charger les médias sous la ligne de flottaison paresseusement.
-- [ ] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré.
-- [ ] `[Dev]` Auto-héberger les polices retenues et limiter graisses/sous-ensembles, ou conserver la pile système.
-- [ ] `[QA]` Mesurer accueil, liste de projets, chaque étude et CV en mobile et desktop.
+- [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
+- [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
+- [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.
+- [ ] `[QA]` Mesurer LCP, INP et Lighthouse sur les pages représentatives, puis le CV s'il est publié.
 - [ ] `[QA]` Tester sous réseau et CPU ralentis.
-- [ ] `[QA]` Vérifier l’absence de CLS lors du chargement des polices, images et vidéos.
-- [ ] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact doivent rester utiles.
-- [ ] `[QA]` Vérifier le poids total des pages et documenter toute exception média.
+- [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
+- [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
+- [x] `[QA]` Refuser plus de 300 Kio encodés sur une page représentative actuelle ; documenter toute future exception média.
 - [ ] `[QA]` Tester la répétition privée Coolify, pas seulement `localhost`.
 
 **Gate 12 :** budgets synthétiques atteints ou écarts expliqués et acceptés, aucune régression visible sur réseau lent.

@@ -110,6 +110,86 @@ test("keyboard navigation exposes the skip link", async ({ page }) => {
   await expect(page).toHaveURL(/\/#main-content$/);
 });
 
+test("reduced motion shortens transitions", async ({ browser }) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto("/");
+
+  const durations = await page.locator("[data-theme-toggle]").evaluate((element) =>
+    getComputedStyle(element)
+      .transitionDuration.split(",")
+      .map((value) => value.trim())
+      .map((value) =>
+        value.endsWith("ms") ? Number.parseFloat(value) : Number.parseFloat(value) * 1_000,
+      ),
+  );
+  expect(durations.every((duration) => duration <= 0.1)).toBe(true);
+  await context.close();
+});
+
+test("navigation and contact remain useful without JavaScript", async ({ browser }, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "One progressive-enhancement proof is enough");
+
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await page.getByRole("link", { name: "Explorer mes projets" }).click();
+  await expect(page).toHaveURL(/\/projets\/$/);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  await page.goto("/contact/");
+  await expect(page.getByRole("link", { name: /ethan\.brosselard@gmail\.com/ })).toHaveAttribute(
+    "href",
+    "mailto:ethan.brosselard@gmail.com",
+  );
+  await context.close();
+});
+
+test("representative pages stay within CLS and transfer budgets", async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.includes("chromium"), "Chromium performance metrics only");
+
+  await page.addInitScript(() => {
+    const state = { cls: 0 };
+    Object.assign(globalThis, { __portfolioPerformance: state });
+    new PerformanceObserver((entries) => {
+      for (const entry of entries.getEntries()) {
+        const shift = entry as PerformanceEntry & {
+          hadRecentInput: boolean;
+          value: number;
+        };
+        if (!shift.hadRecentInput) state.cls += shift.value;
+      }
+    }).observe({ type: "layout-shift", buffered: true });
+  });
+
+  for (const route of ["/", "/projets/", "/projets/myverse/", "/projets/filtre-appels/"] as const) {
+    await page.goto(route);
+    await page.waitForTimeout(250);
+    const metrics = await page.evaluate(() => {
+      const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
+      const navigation = performance.getEntriesByType(
+        "navigation",
+      )[0] as PerformanceNavigationTiming;
+      const state = globalThis as typeof globalThis & {
+        __portfolioPerformance?: { cls: number };
+      };
+      return {
+        cls: state.__portfolioPerformance?.cls ?? 0,
+        encodedBytes:
+          navigation.encodedBodySize +
+          resources.reduce((total, resource) => total + resource.encodedBodySize, 0),
+      };
+    });
+
+    expect(metrics.cls, `${route} CLS`).toBeLessThanOrEqual(0.1);
+    expect(metrics.encodedBytes, `${route} encoded transfer budget`).toBeLessThanOrEqual(
+      300 * 1_024,
+    );
+  }
+});
+
 test("mobile pages do not overflow horizontally", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile"), "Mobile project only");
 
@@ -122,5 +202,20 @@ test("mobile pages do not overflow horizontally", async ({ page }, testInfo) => 
     expect(dimensions.scrollWidth, `${route} should not overflow`).toBeLessThanOrEqual(
       dimensions.clientWidth,
     );
+  }
+});
+
+test("primary mobile controls keep 44px touch targets", async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith("mobile"), "Mobile project only");
+
+  for (const route of publicRoutes) {
+    await page.goto(route);
+    const controls = page.locator(".language-switch, [data-theme-toggle], .button");
+    for (let index = 0; index < (await controls.count()); index += 1) {
+      const box = await controls.nth(index).boundingBox();
+      expect(box, `${route} control ${index} should be rendered`).not.toBeNull();
+      expect(box?.width ?? 0, `${route} control ${index} width`).toBeGreaterThanOrEqual(44);
+      expect(box?.height ?? 0, `${route} control ${index} height`).toBeGreaterThanOrEqual(44);
+    }
   }
 });
