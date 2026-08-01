@@ -42,9 +42,16 @@ Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes rest
 
 ## Sécurité
 
-Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP compatibles Cloudflare Pages, notamment l’interdiction d’embarquement, `nosniff`, une politique de référent et une Permissions Policy restrictive.
+Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP compatibles Cloudflare Pages. Pour le chemin VPS, `nginx.conf` sert les mêmes en-têtes depuis un conteneur non privilégié ; Coolify termine TLS et ne publie que le port HTTP interne `8080`.
 
 Le site ne charge aucun script tiers, n’expose aucun secret et ne contient ni formulaire ni service dynamique. Toute évolution de ce périmètre doit mettre à jour la CSP et les contrôles du build.
+
+## Hébergement
+
+Le déploiement VPS est un build multi-étapes : Node.js 22 génère `dist/`, puis
+Nginx sert uniquement les fichiers statiques. `SITE_URL` est une donnée de
+build et tout changement de domaine impose donc une reconstruction. Cloudflare
+Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation statique
 

@@ -10,10 +10,10 @@
 | Dépôt                       | <https://github.com/ZayKox/portfolio>                        |
 | Branche de travail actuelle | `develop`                                                    |
 | Branche de production       | `main`                                                       |
-| Hébergement cible           | Cloudflare Pages, site Astro statique                        |
+| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Coolify et conteneur Nginx        |
 | Domaine recommandé          | `ethanbrosselard.dev`, à acheter et à revérifier avant achat |
 | Langues                     | Français à la racine, anglais sous `/en/`                    |
-| Dernière mise à jour        | 22 juillet 2026                                              |
+| Dernière mise à jour        | 1er août 2026                                                |
 
 ### Légende
 
@@ -62,15 +62,16 @@ Ethan / contributeurs
         │
         ▼
 GitHub : feature/* ou codex/* → develop → PR vers main
-        │                              │
-        │                              ├── GitHub Actions : format + types + build + tests
-        │                              │
-        ▼                              ▼
-Cloudflare Preview               Cloudflare Production
-URL de prévisualisation          ethanbrosselard.dev
+                                       │
+                                       ├── GitHub Actions : format + types + build + tests
+                                       ▼
+                             Coolify sur le VPS OVHcloud
                                        │
                                        ▼
-                         HTML/CSS/JS/images statiques dans dist/
+                         Nginx non privilégié, port interne 8080
+                                       │
+                                       ▼
+                              ethanbrosselard.dev
 ```
 
 Choix structurants :
@@ -78,9 +79,12 @@ Choix structurants :
 - Astro en génération statique, sans serveur, base de données, authentification ni CMS pour la V1.
 - Tailwind CSS et TypeScript strict conservés.
 - Contenus versionnés dans Git : faits partagés dans `src/data/`, interface dans `src/i18n/`, projets dans les fichiers MDX FR/EN.
-- GitHub Actions valide le code ; Cloudflare Pages construit et sert `dist/`.
+- GitHub Actions valide le code ; Coolify construit l'image et Nginx sert
+  `dist/` derrière le proxy TLS.
 - `main` représente exactement la production. `develop` sert à intégrer les changements avant une pull request de release.
-- Les déploiements de prévisualisation servent à la recette ; ils ne deviennent jamais la référence canonique.
+- Faute de serveur de staging séparé, la recette se fait localement puis sur
+  une ressource Coolify temporairement non publique, avec un domaine de test
+  `noindex` si une vérification distante devient nécessaire.
 - Aucun chemin local vers MyVerse ou FiltreAppels ne doit être requis pendant le build.
 
 ## État initial constaté
@@ -112,7 +116,8 @@ Choix structurants :
 - [ ] Ajouter pages légales et confidentialité adaptées.
 - [ ] Durcir les en-têtes et activer/tester la CSP.
 - [ ] Ajouter les tests navigateur, accessibilité et liens.
-- [ ] Faire la recette complète sur une prévisualisation Cloudflare.
+- [ ] Faire la recette complète localement puis sur la ressource Coolify non
+      publique avant l'ouverture du domaine.
 - [ ] Tester le déploiement et le retour arrière.
 
 ## Chemin critique
@@ -124,7 +129,7 @@ Périmètre de lancement validé
   → URL finale injectée dans Astro
   → SEO + légal + sécurité terminés
   → tests automatisés et recette humaine
-  → preview Cloudflare acceptée
+  → répétition privée Coolify acceptée
   → PR develop → main
   → déploiement production
   → smoke test
@@ -400,7 +405,7 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 
 - [ ] `[Ethan]` Acheter le domaine après une dernière vérification de disponibilité et de prix.
 - [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans Cloudflare avec l’origine HTTPS du domaine finalement choisi.
+- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans Coolify avec l’origine HTTPS du domaine finalement choisi.
 - [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
 - [x] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
 - [x] `[Dev]` Ajouter `<link rel="sitemap">` lorsque `SITE_URL` est défini.
@@ -414,7 +419,7 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
 - [ ] `[QA]` Tester les liens internes et externes, redirections comprises.
 - [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
-- [ ] `[QA]` Vérifier que Cloudflare sert réellement cette page avec un statut 404.
+- [ ] `[QA]` Vérifier que Nginx sert réellement cette page avec un statut 404.
 
 **Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
 
@@ -449,7 +454,8 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
 - [ ] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
 - [x] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline sont placés après la CSP, couverts par leurs hashes exacts et sans `unsafe-inline`.
-- [x] `[Dev]` Ajouter `public/_headers` pour les en-têtes servis par Cloudflare Pages.
+- [x] `[Dev]` Ajouter `public/_headers` pour Cloudflare Pages et `nginx.conf`
+      pour servir les mêmes protections sur le VPS.
 - [x] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
 - [x] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
 - [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
@@ -459,9 +465,11 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [ ] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 22 juillet 2026.
-- [ ] `[Ethan]` Activer 2FA sur Cloudflare et utiliser des jetons à privilèges minimaux si une automatisation est ajoutée.
-- [ ] `[QA]` Confirmer que les previews Cloudflare ne sont pas indexables.
-- [ ] `[Dev]` Rediriger le domaine de production `*.pages.dev` vers le domaine canonique après connexion du domaine.
+- [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
+      utiliser des jetons à privilèges minimaux.
+- [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
+- [ ] `[Dev]` Refuser l'indexation de toute URL technique Coolify et rediriger
+      `www` vers le domaine canonique choisi.
 
 **Gate 9 :** aucune fuite de secret, aucune violation CSP fonctionnelle, en-têtes confirmés sur le réseau et previews non indexées.
 
@@ -513,7 +521,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [ ] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
 - [ ] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
-- [ ] `[Dev]` Tester la page 404 et son statut en environnement Cloudflare.
+- [ ] `[Dev]` Tester la page 404 et son statut derrière Nginx et Coolify.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [ ] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [ ] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
@@ -568,55 +576,63 @@ Pour la recette synthétique avant lancement : viser un score Lighthouse d’au 
 - [ ] `[QA]` Vérifier l’absence de CLS lors du chargement des polices, images et vidéos.
 - [ ] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact doivent rester utiles.
 - [ ] `[QA]` Vérifier le poids total des pages et documenter toute exception média.
-- [ ] `[QA]` Tester la prévisualisation Cloudflare, pas seulement `localhost`.
+- [ ] `[QA]` Tester la répétition privée Coolify, pas seulement `localhost`.
 
 **Gate 12 :** budgets synthétiques atteints ou écarts expliqués et acceptés, aucune régression visible sur réseau lent.
 
-## Phase 13 — configurer Cloudflare Pages
+## Phase 13 — configurer Coolify sur le VPS
 
 **Priorité : P0**
 
-Astro étant entièrement statique, aucun adaptateur Cloudflare n’est nécessaire.
+Astro reste entièrement statique. `Dockerfile` construit `dist/` puis le sert
+avec Nginx non privilégié ; `docker-compose.production.yml` est le point
+d'entrée de Coolify.
 
-### Compte et projet
+### Serveur et ressource
 
-- [ ] `[Ethan]` Créer ou sécuriser le compte Cloudflare avec 2FA.
-- [ ] `[Ethan]` Dans Workers & Pages, créer un projet Pages connecté au dépôt GitHub.
-- [ ] `[Ethan]` Autoriser uniquement le dépôt nécessaire dans l’application GitHub Cloudflare.
-- [ ] `[Ethan]` Choisir `main` comme branche de production.
-- [ ] `[Ethan]` Activer les previews pour les pull requests et `develop`.
-- [ ] `[Ethan]` Choisir le preset Astro ou saisir les paramètres manuels ci-dessous.
+- [ ] `[Ethan]` Sécuriser l'accès SSH au VPS avec une clé et conserver un accès
+      de secours testé.
+- [ ] `[Ethan]` Installer et sécuriser Coolify, puis connecter uniquement le
+      dépôt GitHub nécessaire.
+- [ ] `[Ethan]` Créer une ressource Docker Compose utilisant
+      `docker-compose.production.yml` sur `main`.
+- [ ] `[Ethan]` Définir `SITE_URL` avec l'origine HTTPS finale, sans chemin.
+- [ ] `[QA]` Vérifier que seul le port interne `8080` du service `portfolio` est
+      routé par le proxy et qu'aucun port applicatif n'est publié sur l'hôte.
 
 Configuration attendue :
 
-| Paramètre              | Valeur                                            |
-| ---------------------- | ------------------------------------------------- |
-| Production branch      | `main`                                            |
-| Build command          | `npm run build`                                   |
-| Build output directory | `dist`                                            |
-| Root directory         | `/`                                               |
-| Node.js                | version compatible avec `.nvmrc`, actuellement 22 |
-| Variables secrètes     | aucune                                            |
+| Paramètre           | Valeur                                   |
+| ------------------- | ---------------------------------------- |
+| Branche             | `main`                                   |
+| Fichier Compose     | `docker-compose.production.yml`          |
+| Service             | `portfolio`                              |
+| Port interne        | `8080`                                   |
+| Variable de build   | `SITE_URL=https://domaine-final.example` |
+| Secrets applicatifs | aucun                                    |
 
-### Premier déploiement de prévisualisation
+### Première répétition privée
 
-- [ ] `[QA]` Vérifier que `npm ci` et le build réussissent dans les logs Cloudflare.
+- [ ] `[QA]` Vérifier que `npm ci` et le build réussissent dans les logs Coolify.
 - [ ] `[QA]` Noter l’URL, l’identifiant du déploiement et le SHA Git.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
-- [ ] `[QA]` Confirmer que les previews portent une directive `noindex`.
+- [ ] `[QA]` Garder la ressource non publique ou utiliser un domaine de test
+      protégé et `noindex` pendant la recette.
 - [ ] `[QA]` Vérifier que le build ne dépend d’aucun fichier non suivi.
 
 ### Domaine et DNS
 
-- [ ] `[Ethan]` Ajouter le domaine apex dans Cloudflare Pages > Custom domains.
-- [ ] `[Ethan]` Si l’apex est utilisé, ajouter la zone Cloudflare et configurer les nameservers demandés.
+- [ ] `[Ethan]` Faire pointer le domaine apex vers l'IPv4 du VPS.
+- [ ] `[Ethan]` Associer le domaine final à la ressource Coolify et laisser le
+      proxy obtenir le certificat TLS.
 - [ ] `[Ethan]` Ajouter `www` comme domaine secondaire si souhaité.
 - [ ] `[Ethan]` Choisir un canonical unique : apex recommandé.
-- [ ] `[Dev]` Rediriger `www` vers l’apex et le domaine Pages de production vers l’apex.
+- [ ] `[Dev]` Rediriger `www` et toute URL technique publique vers l'apex.
 - [ ] `[QA]` Vérifier DNS, certificat TLS, HTTP → HTTPS et absence de boucle de redirection.
 - [ ] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
 
-**Gate 13 :** preview validée, domaine actif en HTTPS, canonical unique et configuration Cloudflare documentée sans secret.
+**Gate 13 :** répétition privée validée, domaine actif en HTTPS, canonical
+unique et configuration Coolify documentée sans secret.
 
 ## Phase 14 — répétition de release
 
@@ -633,8 +649,9 @@ Configuration attendue :
 - [ ] `[QA]` Vérifier les deux thèmes et la matrice d’écrans.
 - [ ] `[QA]` Vérifier la console et les en-têtes réseau.
 - [ ] `[QA]` Vérifier le contenu de `dist/` pour les secrets et placeholders.
-- [ ] `[QA]` Faire un test de restauration Cloudflare vers un ancien déploiement de production non critique, ou documenter la procédure avant la première prod.
-- [ ] `[Ethan]` Donner un GO explicite sur l’URL de preview.
+- [ ] `[QA]` Tester le redéploiement d'une image issue du dernier SHA valide ou
+      documenter précisément cette procédure avant la première production.
+- [ ] `[Ethan]` Donner un GO explicite sur la répétition privée.
 
 **Gate 14 :** toutes les preuves P0 sont réunies et le GO d’Ethan est enregistré.
 
@@ -647,13 +664,13 @@ Configuration attendue :
 - [ ] `[Dev]` Ouvrir une pull request `develop` vers `main`.
 - [ ] `[QA]` Vérifier le diff complet, particulièrement contenu, scripts, dépendances, workflow et configuration.
 - [ ] `[QA]` Vérifier que la CI requise est verte sur le dernier SHA.
-- [ ] `[Ethan]` Relire la preview attachée à la pull request.
+- [ ] `[Ethan]` Relire le build de répétition attaché au dernier SHA.
 - [ ] `[Ethan]` Approuver la release.
 
 ### Publication
 
 - [ ] `[Dev]` Fusionner la pull request vers `main`.
-- [ ] `[QA]` Suivre le déploiement Cloudflare jusqu’au succès.
+- [ ] `[QA]` Suivre le déploiement Coolify jusqu’au succès.
 - [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné.
 - [ ] `[QA]` Exécuter le smoke test production immédiatement.
 - [ ] `[QA]` Tester accueil FR/EN, projets, contact, légal, confidentialité, 404, thème et langue.
@@ -669,9 +686,9 @@ Version :
 Date et heure Europe/Paris :
 SHA Git :
 Pull request :
-URL de preview validée :
+URL de répétition validée :
 URL de production :
-Identifiant Cloudflare :
+Identifiant du déploiement Coolify :
 CI :
 E2E / axe / liens :
 Lighthouse :
@@ -688,8 +705,9 @@ Observations :
 Déclencher un rollback en cas de page blanche, navigation principale cassée, fuite de donnée, violation CSP bloquante, erreur de domaine/canonical, régression d’accessibilité majeure ou taux élevé d’erreurs constaté.
 
 1. Suspendre toute nouvelle fusion vers `main`.
-2. Identifier le dernier déploiement de production Cloudflare validé.
-3. Dans Pages > Deployments, sélectionner ce déploiement puis **Rollback to this deployment**.
+2. Identifier le dernier SHA et l'image de production Coolify validés.
+3. Dans Coolify, redéployer cette révision ou cette image sans reconstruire le
+   commit défectueux.
 4. Vérifier immédiatement domaine, accueil FR/EN, navigation, contact et en-têtes.
 5. Revenir dans Git avec un commit de revert sur une branche dédiée, puis passer par une PR ; ne pas réécrire l’historique de `main`.
 6. Corriger, refaire les gates concernés et redéployer normalement.
@@ -697,9 +715,10 @@ Déclencher un rollback en cas de page blanche, navigation principale cassée, f
 
 Notes :
 
-- Cloudflare ne permet de cibler pour un rollback que des déploiements de production déjà construits avec succès ; une preview n’est pas une cible de rollback.
-- Ne pas supprimer le projet Cloudflare, le dépôt ou les enregistrements DNS pour corriger un incident applicatif.
-- Le rollback Cloudflare remet le site en ligne rapidement ; le revert Git remet ensuite `main` en cohérence avec la production.
+- Ne pas supprimer la ressource Coolify, le dépôt, le volume Docker ou les
+  enregistrements DNS pour corriger un incident applicatif.
+- Le redéploiement du dernier artefact valide remet le site en ligne ; le
+  revert Git remet ensuite `main` en cohérence avec la production.
 
 ## Phase 16 — indexation et suivi post-lancement
 
@@ -727,7 +746,7 @@ Notes :
 ### Chaque mois
 
 - [ ] Examiner et fusionner prudemment les PR Dependabot.
-- [ ] Vérifier les alertes de sécurité GitHub et Cloudflare.
+- [ ] Vérifier les alertes de sécurité GitHub et l'état du serveur Coolify.
 - [ ] Vérifier les formulaires de contact inexistants ou, s’ils sont ajoutés, leur bon fonctionnement.
 - [ ] Contrôler les principaux liens externes.
 
@@ -808,9 +827,13 @@ npm run check:links
 curl -I https://ethanbrosselard.dev/
 ```
 
-Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le DNS ou publier sur Cloudflare sans l’action ou l’accord explicite d’Ethan.
+Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le
+DNS ou publier sur Coolify sans l’action ou l’accord explicite d’Ethan.
 
 ## Références officielles
+
+- [Installer Coolify](https://coolify.io/docs/get-started/installation)
+- [Déployer avec Docker Compose dans Coolify](https://coolify.io/docs/knowledge-base/docker/compose)
 
 - [Déployer Astro sur Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Déploiements de prévisualisation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/preview-deployments/)

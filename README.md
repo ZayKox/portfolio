@@ -22,6 +22,19 @@ La vérification teste le site avec une origine HTTPS réservée, puis recrée `
 SITE_URL=https://votre-domaine.example npm run build
 ```
 
+## Déployer sur le VPS OVHcloud
+
+`docker-compose.production.yml` construit le site avec son domaine final, puis
+le sert depuis un conteneur Nginx non privilégié sur le port interne `8080`.
+Dans Coolify, créer une ressource Docker Compose depuis ce dépôt, définir
+`SITE_URL=https://votre-domaine.example`, puis associer le domaine au service
+`portfolio` et au port `8080`. Le conteneur ne contient ni base de données ni
+secret applicatif.
+
+Cloudflare Pages reste une alternative gratuite particulièrement adaptée à ce
+site statique. Le chemin VPS permet toutefois d'héberger les trois projets sur
+le serveur déjà acheté sans modifier l'architecture Astro.
+
 ## Architecture
 
 - `src/pages/` contient les routes françaises et anglaises.
