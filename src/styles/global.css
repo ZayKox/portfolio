@@ -1155,7 +1155,7 @@ h3 {
 }
 
 .contact-card--email > span:first-child {
-  color: color-mix(in srgb, var(--accent-contrast) 72%, transparent);
+  color: var(--accent-contrast);
 }
 
 .contact-socials {
@@ -1382,11 +1382,9 @@ h3 {
 @keyframes reveal {
   from {
     transform: translateY(0.75rem);
-    opacity: 0.35;
   }
   to {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 

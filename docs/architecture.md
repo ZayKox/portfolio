@@ -57,6 +57,10 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 `npm run verify` contrôle le format, les types Astro, un build avec une origine HTTPS de test, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, structure HTML de base, contrastes des tokens principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
 
+## Validation navigateur
+
+`npm run test:e2e` démarre une prévisualisation du build puis teste les routes publiques dans Chromium, Firefox, WebKit et des émulations mobiles Chromium et WebKit. La suite contrôle le rendu, les erreurs JavaScript et CSP, les deux thèmes, la persistance du choix, les principaux liens, le statut 404, le lien d'évitement au clavier, l'absence de débordement à 320 px et les violations axe sérieuses ou critiques. `npm run check:links` contrôle séparément les liens HTTPS externes et distingue les cibles réellement absentes des refus ou incidents réseau non concluants.
+
 ## Contenu futur
 
 Le modèle pourra accueillir sans refonte des expériences IA, outils, articles ou projets dans d’autres domaines. Le positionnement ne dépend donc pas d’une stack particulière.

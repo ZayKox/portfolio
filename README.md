@@ -14,9 +14,14 @@ npm run dev
 
 ```sh
 npm run verify
+npx playwright install --with-deps chromium firefox webkit
+npm run test:e2e
+npm run check:links
 ```
 
 La vérification teste le site avec une origine HTTPS réservée, puis recrée `dist/` sans faux domaine afin de contrôler les canonical, le sitemap et `robots.txt` sans laisser un artefact trompeur. En production, définir `SITE_URL` avec l’origine finale, sans chemin :
+
+Les tests Playwright parcourent toutes les routes publiques en clair et sombre sur Chromium, Firefox, WebKit et leurs émulations mobiles. Le contrôle axe bloque les violations sérieuses ou critiques ; le contrôle des liens externes échoue uniquement lorsqu'une cible est confirmée absente (`404` ou `410`) afin de ne pas confondre limitation réseau et lien cassé.
 
 ```sh
 SITE_URL=https://votre-domaine.example npm run build

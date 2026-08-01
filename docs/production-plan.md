@@ -13,7 +13,7 @@
 | Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Coolify et conteneur Nginx        |
 | Domaine recommandé          | `ethanbrosselard.dev`, à acheter et à revérifier avant achat |
 | Langues                     | Français à la racine, anglais sous `/en/`                    |
-| Dernière mise à jour        | 1er août 2026                                                |
+| Dernière mise à jour        | 2 août 2026                                                  |
 
 ### Légende
 
@@ -115,7 +115,7 @@ Choix structurants :
 - [ ] Ajouter sitemap, `robots.txt` final et images sociales.
 - [ ] Ajouter pages légales et confidentialité adaptées.
 - [ ] Durcir les en-têtes et activer/tester la CSP.
-- [ ] Ajouter les tests navigateur, accessibilité et liens.
+- [x] Ajouter les tests navigateur, accessibilité et liens.
 - [ ] Faire la recette complète localement puis sur la ressource Coolify non
       publique avant l'ouverture du domaine.
 - [ ] Tester le déploiement et le retour arrière.
@@ -462,7 +462,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
 - [ ] `[QA]` Vérifier les en-têtes avec `curl -I` sur la prévisualisation et la production.
-- [ ] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
+- [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 22 juillet 2026.
 - [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
@@ -482,11 +482,11 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 ### Automatisation
 
 - [x] `[Dev]` Contrôler dans le build les contrastes des principaux tokens clair/sombre, le lien d’évitement, les noms de boutons, les alternatives d’images et les identifiants dupliqués.
-- [ ] `[Dev]` Ajouter Playwright.
-- [ ] `[Dev]` Ajouter `@axe-core/playwright`.
-- [ ] `[Dev]` Tester toutes les routes publiques FR/EN.
-- [ ] `[QA]` Refuser les violations axe `serious` et `critical`.
-- [ ] `[QA]` Conserver le rapport comme preuve de release.
+- [x] `[Dev]` Ajouter Playwright.
+- [x] `[Dev]` Ajouter `@axe-core/playwright`.
+- [x] `[Dev]` Tester toutes les routes publiques FR/EN dans les deux thèmes.
+- [x] `[QA]` Refuser les violations axe `serious` et `critical`.
+- [x] `[QA]` Conserver le rapport comme preuve de release en cas d'échec CI.
 
 ### Recette humaine
 
@@ -515,23 +515,23 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 ### Tests à ajouter
 
 - [x] `[Dev]` Ajouter une validation statique de toutes les routes et des budgets HTML/CSS/JS.
-- [ ] `[Dev]` Ajouter `npm run test:e2e`.
-- [ ] `[Dev]` Ajouter un smoke test de chaque route publique.
+- [x] `[Dev]` Ajouter `npm run test:e2e`.
+- [x] `[Dev]` Ajouter un smoke test de chaque route publique.
 - [x] `[Dev]` Tester que chaque lien de langue mène à l’équivalent attendu.
-- [ ] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
-- [ ] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
+- [x] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
+- [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
 - [ ] `[Dev]` Tester la page 404 et son statut derrière Nginx et Coolify.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
-- [ ] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
-- [ ] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
+- [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
+- [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
 - [ ] `[Dev]` Ajouter ESLint seulement avec un jeu de règles utile et sans dupliquer les contrôles Astro/TypeScript.
-- [ ] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.
+- [x] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.
 
 ### Matrice navigateur
 
-- [ ] Chromium desktop et mobile.
-- [ ] Firefox desktop.
+- [x] Chromium desktop et mobile.
+- [x] Firefox desktop.
 - [ ] WebKit desktop et émulation mobile.
 - [ ] Au moins un téléphone réel Android.
 - [ ] Safari/iPhone réel si disponible ; sinon noter explicitement l’absence de preuve réelle.
