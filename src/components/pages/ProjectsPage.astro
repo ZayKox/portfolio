@@ -36,7 +36,7 @@ const projects = (
   </section>
   <section class="section page-projects">
     <div class="container project-list">
-      {projects.map((entry, index) => <ProjectCard {entry} {locale} {index} />)}
+      {projects.map((entry, index) => <ProjectCard {entry} {locale} {index} headingLevel={2} />)}
     </div>
   </section>
 </BaseLayout>

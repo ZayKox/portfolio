@@ -16,6 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
+    "test:lighthouse": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && node scripts/run-lighthouse.mjs",
     "test:container": "node scripts/validate-container.mjs",
     "test:container:preview": "node scripts/validate-container.mjs --preview",
     "check:links": "npm run build && node scripts/check-external-links.mjs",
@@ -37,6 +38,7 @@
     "@axe-core/playwright": "4.10.2",
     "@playwright/test": "1.62.1",
     "cross-env": "10.1.0",
+    "lighthouse": "13.4.1",
     "prettier": "3.6.2",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "5.9.3"

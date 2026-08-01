@@ -685,12 +685,12 @@ h3 {
   margin-bottom: 1.4rem;
 }
 
-.project-card-heading h3 {
+.project-card-heading :is(h2, h3) {
   margin-bottom: 0;
   font-size: clamp(2.3rem, 4vw, 4.1rem);
 }
 
-.project-card-heading h3 a {
+.project-card-heading :is(h2, h3) a {
   text-decoration: none;
   view-transition-name: var(--project-transition, none);
 }

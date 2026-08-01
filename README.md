@@ -17,6 +17,7 @@ npm run verify
 npm run test:container
 npm run test:container:preview
 npx playwright install --with-deps chromium firefox webkit
+npm run test:lighthouse
 npm run test:e2e
 npm run check:links
 ```
@@ -24,6 +25,8 @@ npm run check:links
 La vérification teste le site avec une origine HTTPS réservée, puis recrée `dist/` sans faux domaine afin de contrôler les canonical, le sitemap et `robots.txt` sans laisser un artefact trompeur. En production, définir `SITE_URL` avec l’origine finale, sans chemin :
 
 Les tests Playwright parcourent toutes les routes publiques en clair et sombre sur Chromium, Firefox, WebKit et leurs émulations mobiles. Le contrôle axe bloque les violations sérieuses ou critiques ; la suite vérifie aussi le fonctionnement sans JavaScript, le mouvement réduit, les cibles tactiles, le CLS et un budget de transfert synthétique. Le contrôle des liens externes échoue uniquement lorsqu'une cible est confirmée absente (`404` ou `410`) afin de ne pas confondre limitation réseau et lien cassé.
+
+L'audit Lighthouse mobile couvre l'accueil, la liste des projets et les deux aperçus avec le ralentissement synthétique standard et une origine HTTPS réservée pour reproduire les métadonnées de production. Il exige au moins 95 pour la performance, l'accessibilité, les bonnes pratiques et le SEO, ainsi qu'un LCP maximal de 2,5 s, un CLS maximal de 0,1 et un TBT maximal de 200 ms. Les rapports locaux sont écrits dans `lighthouse-reports/` sans être versionnés.
 
 Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Coolify, attendent leur healthcheck, puis vérifient les en-têtes Nginx, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
 

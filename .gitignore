@@ -16,4 +16,5 @@ Thumbs.db
 coverage/
 playwright-report/
 test-results/
+lighthouse-reports/
 *.log

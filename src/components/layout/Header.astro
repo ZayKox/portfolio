@@ -24,7 +24,11 @@ const isActive = (href: string) =>
 
 <header class="site-header" data-site-header>
   <div class="container header-inner">
-    <a class="brand" href={localizedRoutes.home} aria-label={`${profile.name} — ${t.nav.home}`}>
+    <a
+      class="brand"
+      href={localizedRoutes.home}
+      aria-label={`${profile.monogram} — ${profile.name} — ${t.nav.home}`}
+    >
       <span class="brand-mark" aria-hidden="true"></span>
       <span>{profile.monogram}</span>
     </a>

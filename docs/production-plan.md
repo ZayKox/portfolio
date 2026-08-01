@@ -114,7 +114,7 @@ Choix structurants :
 - [ ] Ajouter l’URL de production à Astro.
 - [ ] Ajouter sitemap, `robots.txt` final et images sociales.
 - [ ] Ajouter pages légales et confidentialité adaptées.
-- [ ] Durcir les en-têtes et activer/tester la CSP.
+- [x] Durcir les en-têtes et activer/tester la CSP localement.
 - [x] Ajouter les tests navigateur, accessibilité et liens.
 - [ ] Faire la recette complète localement puis sur la ressource Coolify non
       publique avant l'ouverture du domaine.
@@ -417,9 +417,9 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [ ] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies.
 - [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
-- [ ] `[QA]` Tester les liens internes et externes, redirections comprises.
+- [x] `[QA]` Tester les liens internes et externes, redirections comprises.
 - [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
-- [ ] `[QA]` Vérifier que Nginx sert réellement cette page avec un statut 404.
+- [x] `[QA]` Vérifier que Nginx sert réellement cette page avec un statut 404.
 
 **Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
 
@@ -452,7 +452,7 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 Le site est statique et n’a besoin d’aucun secret en production. Toute future variable secrète doit rester côté serveur et ne jamais être préfixée pour être exposée au client.
 
 - [x] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
-- [ ] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
+- [x] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
 - [x] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline sont placés après la CSP, couverts par leurs hashes exacts et sans `unsafe-inline`.
 - [x] `[Dev]` Ajouter `public/_headers` pour Cloudflare Pages et `nginx.conf`
       pour servir les mêmes protections sur le VPS.
@@ -554,6 +554,7 @@ Commandes à rendre disponibles avant la release :
 ```sh
 npm run test:e2e
 npm run test:container
+npm run test:lighthouse
 npm run check:links
 ```
 
@@ -577,8 +578,8 @@ Pour la recette synthétique avant lancement : viser un score Lighthouse d’au 
 - [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
 - [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
 - [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.
-- [ ] `[QA]` Mesurer LCP, INP et Lighthouse sur les pages représentatives, puis le CV s'il est publié.
-- [ ] `[QA]` Tester sous réseau et CPU ralentis.
+- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
+- [x] `[QA]` Tester Lighthouse sous réseau et CPU ralentis.
 - [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
 - [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
 - [x] `[QA]` Refuser plus de 300 Kio encodés sur une page représentative actuelle ; documenter toute future exception média.

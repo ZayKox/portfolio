@@ -8,19 +8,21 @@ interface Props {
   entry: CollectionEntry<"projects">;
   locale: Locale;
   index: number;
+  headingLevel?: 2 | 3;
 }
 
-const { entry, locale, index } = Astro.props;
+const { entry, locale, index, headingLevel = 3 } = Astro.props;
 const t = getCopy(locale);
 const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
+const Heading = headingLevel === 2 ? "h2" : "h3";
+const visualLabel =
+  entry.data.visual === "myverse"
+    ? `MV, Film, Game, Book, Anime, Manga, Series — ${t.projects.viewProject} — ${entry.data.title}`
+    : `+33, Allow, Silence, Block, Rule 04 — ${t.projects.viewProject} — ${entry.data.title}`;
 ---
 
 <article class="project-card reveal">
-  <a
-    class="project-card-visual"
-    href={href}
-    aria-label={`${t.projects.viewProject} — ${entry.data.title}`}
-  >
+  <a class="project-card-visual" href={href} aria-label={visualLabel}>
     <ProjectVisual visual={entry.data.visual} />
   </a>
   <div class="project-card-content">
@@ -31,7 +33,7 @@ const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${
     <div class="project-card-heading">
       <div>
         <p class="eyebrow">{entry.data.eyebrow}</p>
-        <h3><a href={href}>{entry.data.title}</a></h3>
+        <Heading><a href={href}>{entry.data.title}</a></Heading>
       </div>
       <span class="status-pill">{t.projects.teaser}</span>
     </div>

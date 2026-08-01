@@ -39,7 +39,7 @@ export default defineConfig({
         "img-src 'self' data:",
         "font-src 'self'",
         "media-src 'self'",
-        "connect-src 'none'",
+        "connect-src 'self'",
         "manifest-src 'self'",
         "worker-src 'none'",
       ],
