@@ -65,6 +65,26 @@ try {
   if (!service.tmpfs?.some((entry) => entry.startsWith("/tmp:"))) {
     throw new Error("portfolio does not provide a bounded writable /tmp filesystem");
   }
+  if (JSON.stringify(service.expose) !== JSON.stringify(["8080"])) {
+    throw new Error("portfolio must expose only the internal port 8080");
+  }
+  for (const field of ["ports", "volumes", "secrets", "configs", "environment", "devices"]) {
+    if (service[field]?.length || Object.keys(service[field] ?? {}).length) {
+      throw new Error(`portfolio must not define ${field}`);
+    }
+  }
+  if (service.privileged || [service.network_mode, service.pid, service.ipc].includes("host")) {
+    throw new Error("portfolio enables a privileged or host namespace mode");
+  }
+  if (
+    service.build?.args?.SITE_URL !== siteUrl ||
+    service.build?.args?.SITE_NOINDEX !== String(previewMode)
+  ) {
+    throw new Error("portfolio build arguments do not match the requested deployment mode");
+  }
+  if (service.restart !== "unless-stopped") {
+    throw new Error("portfolio restart policy must remain unless-stopped");
+  }
 
   console.log(`Building the ${mode} production container...`);
   docker([
@@ -96,6 +116,12 @@ try {
     "127.0.0.1::8080",
     image,
   ]);
+  const runtimeUser = docker(["inspect", "--format", "{{.Config.User}}", container], {
+    quiet: true,
+  });
+  if (!runtimeUser || /^(?:0|root)(?::|$)/.test(runtimeUser)) {
+    throw new Error(`portfolio image runs as a privileged user: ${runtimeUser || "(unset)"}`);
+  }
   await waitForHealthy();
 
   const portOutput = docker(["port", container, "8080/tcp"], { quiet: true });

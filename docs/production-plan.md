@@ -466,6 +466,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
 - [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.
 - [x] `[Dev]` Confiner le service Compose avec une racine en lecture seule, aucune capability Linux, `no-new-privileges` et un `/tmp` borné ; les smoke tests appliquent les mêmes restrictions.
+- [x] `[QA]` Refuser localement tout port hôte, volume, secret, environnement d'exécution, device ou namespace privilégié dans Compose et confirmer l'utilisateur non-root de l'image.
 - [x] `[Dev]` Figer les images de base Node et Nginx par digest multi-architecture et confier leurs mises à jour mensuelles à Dependabot.
 - [x] `[Dev]` Forcer la revalidation des pages HTML et mettre en cache un an uniquement les ressources Astro hashées ; contrôler cette politique localement et à distance.
 - [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
