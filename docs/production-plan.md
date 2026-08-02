@@ -420,7 +420,7 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [x] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies ; le build et les smoke tests imposent le type attendu par route, la parité avec le titre, la description et la langue visibles, la liste exacte des faits `Person` validés et l'absence d'email ou de propriété supplémentaire.
 - [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
-- [x] `[QA]` Tester les liens internes et externes, redirections comprises.
+- [x] `[QA]` Tester les liens internes et externes, redirections comprises ; GitHub répond `200` et le refus LinkedIn `999` reste explicitement non concluant dans `docs/qa/external-links-review-2026-08-02.md`.
 - [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
 - [x] `[QA]` Vérifier que Nginx sert réellement cette page avec un statut 404.
 
