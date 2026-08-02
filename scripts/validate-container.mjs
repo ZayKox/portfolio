@@ -79,6 +79,11 @@ try {
 
   const home = await validateResponse(origin, "/", 200);
   assert(home.body.includes("Ethan Brosselard"), "home page does not contain the public name");
+  const favicon = await validateResponse(origin, "/favicon.png", 200);
+  assert(
+    favicon.response.headers.get("content-type")?.startsWith("image/png"),
+    "favicon does not use the image/png content type",
+  );
 
   const expectedHeaders = {
     "content-security-policy": ["frame-ancestors 'none'", "upgrade-insecure-requests"],
@@ -115,11 +120,25 @@ try {
     }
     assert(robots.body.includes("Disallow: /"), "preview robots.txt does not block crawling");
     assert(!robots.body.includes("Sitemap:"), "preview robots.txt exposes a sitemap");
+    assert(!home.body.includes("social-card.png"), "preview exposes the social sharing image");
     await validateResponse(origin, "/sitemap-index.xml", 404);
   } else {
     assert(
       robots.body.includes(`${siteUrl}/sitemap-index.xml`),
       "robots.txt does not reference the expected sitemap",
+    );
+    assert(
+      home.body.includes(`<meta property="og:image" content="${siteUrl}/social-card.png">`),
+      "home page does not expose the expected Open Graph image",
+    );
+    assert(
+      home.body.includes('<meta name="twitter:card" content="summary_large_image">'),
+      "home page does not use a large Twitter card",
+    );
+    const socialCard = await validateResponse(origin, "/social-card.png", 200);
+    assert(
+      socialCard.response.headers.get("content-type")?.startsWith("image/png"),
+      "social card does not use the image/png content type",
     );
   }
 

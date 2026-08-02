@@ -44,4 +44,4 @@ Cette liste n’est pas affichée sur le site.
 - Définir `SITE_URL` avec le domaine final dans l’environnement Cloudflare ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
 - Rédiger les mentions légales adaptées au statut de l’éditeur.
 - Décider si une mesure d’audience est réellement utile.
-- Créer une image Open Graph finale après stabilisation de la direction artistique.
+- Valider visuellement la carte Open Graph Violet Field déjà intégrée.

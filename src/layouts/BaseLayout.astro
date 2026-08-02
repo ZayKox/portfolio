@@ -40,6 +40,8 @@ const defaultPath = locale === "fr" ? currentPath : alternatePath;
 const defaultUrl = Astro.site ? new URL(defaultPath, Astro.site) : defaultPath;
 const sitemapUrl =
   !isNoindex && Astro.site ? new URL("sitemap-index.xml", Astro.site).href : undefined;
+const socialImageUrl =
+  !isNoindex && Astro.site ? new URL("social-card.png", Astro.site).href : undefined;
 const personUrl = Astro.site ? new URL(routes[locale].home, Astro.site).href : undefined;
 const person = {
   "@type": "Person",
@@ -99,6 +101,8 @@ for (const source of [themeBootstrap, jsonLdSource]) {
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#6d28d9" />
     <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="author" content={profile.name} />
@@ -113,7 +117,18 @@ for (const source of [themeBootstrap, jsonLdSource]) {
           <meta property="og:locale" content={locale === "fr" ? "fr_FR" : "en_US"} />
           <meta property="og:locale:alternate" content={locale === "fr" ? "en_US" : "fr_FR"} />
           {canonical && <meta property="og:url" content={canonical.href} />}
-          <meta name="twitter:card" content="summary" />
+          {socialImageUrl && (
+            <>
+              <meta property="og:image" content={socialImageUrl} />
+              <meta property="og:image:width" content="1200" />
+              <meta property="og:image:height" content="630" />
+              <meta property="og:image:type" content="image/png" />
+              <meta property="og:image:alt" content={t.meta.socialImageAlt} />
+              <meta name="twitter:image" content={socialImageUrl} />
+              <meta name="twitter:image:alt" content={t.meta.socialImageAlt} />
+            </>
+          )}
+          <meta name="twitter:card" content={socialImageUrl ? "summary_large_image" : "summary"} />
           <meta name="twitter:title" content={pageTitle} />
           <meta name="twitter:description" content={pageDescription} />
           {canonical && <link rel="canonical" href={canonical.href} />}

@@ -78,6 +78,14 @@ function tags(html, name) {
   return [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, "gi"))].map(([tag]) => tag);
 }
 
+function pngDimensions(contents) {
+  const signature = "89504e470d0a1a0a";
+  if (contents.length < 24 || contents.subarray(0, 8).toString("hex") !== signature) {
+    return undefined;
+  }
+  return { width: contents.readUInt32BE(16), height: contents.readUInt32BE(20) };
+}
+
 function pathname(reference) {
   if (typeof reference !== "string") return undefined;
 
@@ -237,6 +245,24 @@ function validateDocument(html, relativePath, route) {
   const description = descriptionTag && attribute(descriptionTag, "content")?.trim();
   if (!description) errors.push(`${relativePath}: missing meta description`);
 
+  const favicon = tags(html, "link").find((tag) => attribute(tag, "rel")?.toLowerCase() === "icon");
+  if (
+    attribute(favicon ?? "", "href") !== "/favicon.png" ||
+    attribute(favicon ?? "", "type") !== "image/png" ||
+    attribute(favicon ?? "", "sizes") !== "64x64"
+  ) {
+    errors.push(`${relativePath}: favicon metadata is incomplete`);
+  }
+  const appleTouchIcon = tags(html, "link").find(
+    (tag) => attribute(tag, "rel")?.toLowerCase() === "apple-touch-icon",
+  );
+  if (
+    attribute(appleTouchIcon ?? "", "href") !== "/apple-touch-icon.png" ||
+    attribute(appleTouchIcon ?? "", "sizes") !== "180x180"
+  ) {
+    errors.push(`${relativePath}: Apple touch icon metadata is incomplete`);
+  }
+
   const robotsTag = tags(html, "meta").find(
     (tag) => attribute(tag, "name")?.toLowerCase() === "robots",
   );
@@ -343,6 +369,13 @@ function validateDocument(html, relativePath, route) {
   const openGraphUrlTag = tags(html, "meta").find(
     (tag) => attribute(tag, "property")?.toLowerCase() === "og:url",
   );
+  const socialMeta = (attributeName, value) =>
+    tags(html, "meta").find(
+      (tag) => attribute(tag, attributeName)?.toLowerCase() === value.toLowerCase(),
+    );
+  const openGraphImageTag = socialMeta("property", "og:image");
+  const twitterImageTag = socialMeta("name", "twitter:image");
+  const twitterCardTag = socialMeta("name", "twitter:card");
   if (!noindex && process.env.SITE_URL) {
     const expectedUrl = new URL(route, process.env.SITE_URL).href;
     if (attribute(canonicalTag ?? "", "href") !== expectedUrl) {
@@ -355,8 +388,38 @@ function validateDocument(html, relativePath, route) {
     if (attribute(sitemapTag ?? "", "href") !== expectedSitemapUrl) {
       errors.push(`${relativePath}: sitemap link does not match ${expectedSitemapUrl}`);
     }
+    const expectedSocialImageUrl = new URL("social-card.png", process.env.SITE_URL).href;
+    for (const [attributeName, name, expectedContent] of [
+      ["property", "og:image", expectedSocialImageUrl],
+      ["property", "og:image:width", "1200"],
+      ["property", "og:image:height", "630"],
+      ["property", "og:image:type", "image/png"],
+      ["name", "twitter:image", expectedSocialImageUrl],
+      ["name", "twitter:card", "summary_large_image"],
+    ]) {
+      const tag = socialMeta(attributeName, name);
+      if (attribute(tag ?? "", "content") !== expectedContent) {
+        errors.push(`${relativePath}: ${name} does not match ${expectedContent}`);
+      }
+    }
+    for (const [attributeName, name] of [
+      ["property", "og:image:alt"],
+      ["name", "twitter:image:alt"],
+    ]) {
+      const tag = socialMeta(attributeName, name);
+      if (!attribute(tag ?? "", "content")?.trim()) {
+        errors.push(`${relativePath}: ${name} is missing alt text`);
+      }
+    }
   } else if (!noindex && (canonicalTag || openGraphUrlTag || sitemapTag)) {
     errors.push(`${relativePath}: absolute metadata exists without SITE_URL`);
+  } else if (!noindex) {
+    if (openGraphImageTag || twitterImageTag) {
+      errors.push(`${relativePath}: absolute social image metadata exists without SITE_URL`);
+    }
+    if (attribute(twitterCardTag ?? "", "content") !== "summary") {
+      errors.push(`${relativePath}: no-site build must use the summary Twitter card`);
+    }
   }
 
   const jsonLdBlocks = [
@@ -455,6 +518,26 @@ function validateDocument(html, relativePath, route) {
 const allFiles = await walk(outputDirectory);
 const htmlFiles = allFiles.filter((file) => file.endsWith(".html"));
 const documents = new Map();
+
+for (const [filename, expectedWidth, expectedHeight, maximumBytes] of [
+  ["favicon.png", 64, 64, 32 * 1024],
+  ["apple-touch-icon.png", 180, 180, 64 * 1024],
+  ["social-card.png", 1200, 630, 300 * 1024],
+]) {
+  const assetPath = path.join(outputDirectory, filename);
+  const contents = await readFile(assetPath).catch(() => undefined);
+  if (!contents) {
+    errors.push(`dist/${filename}: required brand asset is missing`);
+    continue;
+  }
+  const dimensions = pngDimensions(contents);
+  if (dimensions?.width !== expectedWidth || dimensions?.height !== expectedHeight) {
+    errors.push(`dist/${filename}: expected ${expectedWidth}x${expectedHeight} PNG`);
+  }
+  if (contents.length > maximumBytes) {
+    errors.push(`dist/${filename}: exceeds the ${Math.round(maximumBytes / 1024)} KiB budget`);
+  }
+}
 
 for (const route of expectedRoutes) {
   const candidates = routeCandidates(route);

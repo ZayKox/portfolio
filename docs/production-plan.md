@@ -354,8 +354,8 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [ ] `[Dev]` Formaliser palette, typographies, espacements, rayons, bordures, ombres et mouvement dans les tokens existants.
 - [ ] `[Ethan]` Choisir entre la pile système et des polices auto-hébergées avec licences vérifiées.
 - [ ] `[Dev]` Finaliser le monogramme/signature si aucun logo n’est fourni.
-- [ ] `[Dev]` Créer favicon SVG/PNG et icône Apple touch.
-- [ ] `[Dev]` Créer une image Open Graph globale de 1200 × 630 px.
+- [x] `[Dev]` Créer favicon PNG et icône Apple touch depuis une source déterministe.
+- [x] `[Dev]` Créer une image Open Graph globale de 1200 × 630 px.
 - [ ] `[Dev]` Créer une image Open Graph par projet si les visuels sont assez solides.
 - [ ] `[Dev]` Intégrer les captures sans surcharger l’interface.
 - [ ] `[Dev]` Présenter les compétences par domaines et preuves, jamais en pourcentages.
@@ -412,8 +412,8 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [x] `[Dev]` Ajouter `x-default` aux alternates de langue.
 - [x] `[QA]` Vérifier automatiquement canonical absolu et `hreflang` réciproque sur chaque paire FR/EN avec une origine de test ; répéter sur le domaine final.
 - [x] `[QA]` Exclure du sitemap les pages réellement `noindex` et le contrôler dans le build avec domaine de test.
-- [ ] `[Dev]` Ajouter `og:image`, dimensions, type MIME et texte alternatif social lorsque pertinent.
-- [ ] `[Dev]` Choisir `summary_large_image` quand l’image 1200 × 630 est prête.
+- [x] `[Dev]` Ajouter `og:image`, dimensions, type MIME et texte alternatif social lorsque pertinent.
+- [x] `[Dev]` Choisir `summary_large_image` quand l’image 1200 × 630 est prête.
 - [ ] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies.
 - [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.

@@ -33,6 +33,8 @@ export const copy = {
       title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
       description:
         "Portfolio d’Ethan Brosselard. Projets logiciels, expériences web et Android, architecture et explorations autour de l’IA.",
+      socialImageAlt:
+        "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec son monogramme EB.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
@@ -136,6 +138,8 @@ export const copy = {
       title: "Ethan Brosselard — Software developer & digital maker",
       description:
         "Portfolio of Ethan Brosselard. Software projects, web and Android experiences, architecture, and AI explorations.",
+      socialImageAlt:
+        "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his EB monogram.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",

@@ -1,0 +1,271 @@
+import { mkdir, readFile } from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
+
+import { chromium } from "@playwright/test";
+
+const outputDirectory = path.join(process.cwd(), "public");
+const globalStyles = await readFile(
+  path.join(process.cwd(), "src", "styles", "global.css"),
+  "utf8",
+);
+const lightTokenBlock = globalStyles.match(/:root\s*\{([\s\S]*?)\}/)?.[1];
+const darkTokenBlock = globalStyles.match(/:root\[data-theme="dark"\]\s*\{([\s\S]*?)\}/)?.[1];
+
+function token(block, name) {
+  const value = block?.match(new RegExp(`--${name}:\\s*([^;]+);`))?.[1]?.trim();
+  if (!value) throw new Error(`Could not resolve --${name} from the Violet Field tokens.`);
+  return value;
+}
+
+const brandVariables = `
+  --brand-bg: ${token(darkTokenBlock, "bg")};
+  --brand-surface: ${token(darkTokenBlock, "surface")};
+  --brand-soft: ${token(darkTokenBlock, "accent-soft")};
+  --brand-text: ${token(darkTokenBlock, "text")};
+  --brand-muted: ${token(darkTokenBlock, "text-muted")};
+  --brand-border: ${token(darkTokenBlock, "border")};
+  --brand-accent: ${token(darkTokenBlock, "accent")};
+  --brand-grid: ${token(darkTokenBlock, "grid-line")};
+  --brand-accent-strong: ${token(lightTokenBlock, "accent")};
+`;
+
+function document(content, styles) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+      body { ${styles} }
+    </style>
+  </head>
+  <body>${content}</body>
+</html>`;
+}
+
+function iconMarkup() {
+  return `<div class="mark"><span class="dot"></span><strong>EB</strong></div>`;
+}
+
+const iconStyles = `
+  ${brandVariables}
+  display: grid;
+  place-items: center;
+  background: var(--brand-bg);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  .mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 76%;
+    aspect-ratio: 1;
+    border: max(1px, 1.5vw) solid color-mix(in srgb, var(--brand-accent) 55%, transparent);
+    border-radius: 24%;
+    color: var(--brand-text);
+    background: linear-gradient(145deg, var(--brand-soft), var(--brand-surface) 68%);
+  }
+  .mark::before {
+    position: absolute;
+    inset: 12%;
+    border: max(1px, 0.9vw) solid color-mix(in srgb, var(--brand-accent) 20%, transparent);
+    border-radius: 20%;
+    content: "";
+  }
+  .dot {
+    position: absolute;
+    top: 11%;
+    right: 11%;
+    width: 11%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--brand-accent);
+  }
+  strong {
+    position: relative;
+    font-size: 27vw;
+    font-weight: 750;
+    letter-spacing: -0.09em;
+    line-height: 1;
+    transform: translateX(-0.04em);
+  }
+`;
+
+const socialMarkup = `
+  <div class="grid"></div>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <main>
+    <div class="identity">
+      <p class="kicker">PORTFOLIO / 2026</p>
+      <h1>ETHAN<br>BROSSELARD</h1>
+      <p class="fields">WEB <span>·</span> MOBILE <span>·</span> SYSTEMS <span>·</span> AI / NEXT</p>
+    </div>
+    <div class="field" aria-hidden="true">
+      <div class="orbit orbit-outer"></div>
+      <div class="orbit orbit-inner"></div>
+      <div class="core">EB</div>
+      <span class="node node-one">BUILD</span>
+      <span class="node node-two">LEARN</span>
+      <span class="node node-three">EVOLVE</span>
+    </div>
+  </main>`;
+
+const socialStyles = `
+  ${brandVariables}
+  position: relative;
+  color: var(--brand-text);
+  background: var(--brand-bg);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  .grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image:
+      linear-gradient(var(--brand-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brand-grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+  .glow-one {
+    top: -260px;
+    right: -140px;
+    width: 720px;
+    height: 720px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--brand-accent-strong) 42%, transparent),
+      transparent 68%
+    );
+  }
+  .glow-two {
+    bottom: -360px;
+    left: -180px;
+    width: 760px;
+    height: 760px;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--brand-accent) 18%, transparent),
+      transparent 70%
+    );
+  }
+  main {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 72px 82px;
+  }
+  .kicker, .fields, .node {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    letter-spacing: 0.13em;
+  }
+  .kicker {
+    margin: 0 0 28px;
+    color: var(--brand-accent);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  h1 {
+    margin: 0;
+    font-size: 82px;
+    font-weight: 720;
+    letter-spacing: -0.07em;
+    line-height: 0.88;
+  }
+  .fields {
+    margin: 38px 0 0;
+    color: var(--brand-muted);
+    font-size: 15px;
+    font-weight: 650;
+  }
+  .fields span { color: var(--brand-accent); }
+  .field {
+    position: relative;
+    display: grid;
+    place-items: center;
+    justify-self: end;
+    width: 420px;
+    aspect-ratio: 1;
+  }
+  .orbit {
+    position: absolute;
+    border: 2px solid color-mix(in srgb, var(--brand-accent) 34%, transparent);
+    border-radius: 50%;
+  }
+  .orbit-outer { width: 94%; aspect-ratio: 1; }
+  .orbit-inner { width: 58%; aspect-ratio: 1; }
+  .core {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 142px;
+    aspect-ratio: 1;
+    border: 2px solid color-mix(in srgb, var(--brand-accent) 72%, transparent);
+    border-radius: 50%;
+    color: var(--brand-accent);
+    background: var(--brand-surface);
+    font-size: 48px;
+    font-weight: 760;
+    letter-spacing: -0.07em;
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.35);
+  }
+  .node {
+    position: absolute;
+    padding: 9px 13px;
+    border: 1px solid var(--brand-border);
+    border-radius: 8px;
+    color: var(--brand-muted);
+    background: var(--brand-surface);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .node-one { top: 38px; left: 178px; }
+  .node-two { right: -5px; bottom: 110px; }
+  .node-three { bottom: 22px; left: 70px; }
+`;
+
+async function capture(page, { width, height, content, styles, filename }) {
+  await page.setViewportSize({ width, height });
+  await page.setContent(document(content, styles), { waitUntil: "load" });
+  await page.screenshot({ path: path.join(outputDirectory, filename), type: "png" });
+}
+
+await mkdir(outputDirectory, { recursive: true });
+const browser = await chromium.launch({ headless: true });
+
+try {
+  const page = await browser.newPage({ deviceScaleFactor: 1 });
+  await capture(page, {
+    width: 64,
+    height: 64,
+    content: iconMarkup(),
+    styles: iconStyles,
+    filename: "favicon.png",
+  });
+  await capture(page, {
+    width: 180,
+    height: 180,
+    content: iconMarkup(),
+    styles: iconStyles,
+    filename: "apple-touch-icon.png",
+  });
+  await capture(page, {
+    width: 1200,
+    height: 630,
+    content: socialMarkup,
+    styles: socialStyles,
+    filename: "social-card.png",
+  });
+} finally {
+  await browser.close();
+}
+
+console.log("Generated favicon.png, apple-touch-icon.png, and social-card.png.");

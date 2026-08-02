@@ -14,6 +14,7 @@ npm run dev
 
 ```sh
 npm run verify
+npm run generate:brand-assets
 npm run test:container
 npm run test:container:preview
 npx playwright install --with-deps chromium firefox webkit
@@ -23,6 +24,8 @@ npm run check:links
 ```
 
 La vérification teste le site avec une origine HTTPS réservée, puis recrée `dist/` sans faux domaine afin de contrôler les canonical, le sitemap et `robots.txt` sans laisser un artefact trompeur. En production, définir `SITE_URL` avec l’origine finale, sans chemin :
+
+Les favicon, icône Apple touch et carte sociale sont des PNG déterministes générés depuis le langage visuel Violet Field avec `npm run generate:brand-assets`. Les fichiers finaux restent versionnés dans `public/` pour que le build de production ne dépende pas d’un navigateur.
 
 Les tests Playwright parcourent toutes les routes publiques en clair et sombre sur Chromium, Firefox, WebKit et leurs émulations mobiles. Le contrôle axe bloque les violations sérieuses ou critiques ; la suite vérifie aussi le fonctionnement sans JavaScript, le mouvement réduit, les cibles tactiles, le CLS et un budget de transfert synthétique. Le contrôle des liens externes échoue uniquement lorsqu'une cible est confirmée absente (`404` ou `410`) afin de ne pas confondre limitation réseau et lien cassé.
 

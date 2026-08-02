@@ -38,7 +38,9 @@ Le statut réel, les dates et les métriques produit restent absents tant qu’E
 
 ## Domaine et SEO
 
-Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes restent relatifs et aucun canonical ou sitemap n’est émis. Avec une origine HTTPS finale dans `SITE_URL`, Astro produit les canonical, `og:url`, URL JSON-LD, `robots.txt` et le sitemap officiel. La 404 est exclue du sitemap.
+Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes restent relatifs et aucun canonical, sitemap ou URL d’image sociale n’est émis. Avec une origine HTTPS finale dans `SITE_URL`, Astro produit les canonical, `og:url`, URL JSON-LD, `robots.txt`, le sitemap officiel et l’URL absolue de la carte sociale. La 404 est exclue du sitemap.
+
+`scripts/generate-brand-assets.mjs` rend le favicon 64 × 64, l’icône Apple touch 180 × 180 et la carte sociale 1200 × 630 depuis du HTML/CSS déterministe fondé sur les tokens Violet Field et le monogramme public. Les PNG générés sont versionnés dans `public/` ; le build n’exécute pas Chromium. La validation contrôle leur présence, leur format, leurs dimensions, leur poids et leurs métadonnées FR/EN.
 
 Une répétition technique utilise `SITE_NOINDEX=true`. Toutes les pages deviennent alors `noindex, nofollow`, `robots.txt` interdit le crawl et aucun sitemap, canonical, alternate, JSON-LD ou aperçu social n'est généré. `npm run verify` contrôle séparément ce mode, la production indexable et le build sans origine. Cette défense contre l'indexation accidentelle ne remplace pas une authentification ou une restriction réseau de la preview.
 
