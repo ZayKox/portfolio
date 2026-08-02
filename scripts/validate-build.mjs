@@ -227,13 +227,22 @@ function validateLanguageLinks(html, relativePath, route) {
       `${relativePath}: language switch points to ${actualSwitchPath ?? "nothing"}, expected ${expectedSwitchPath}`,
     );
   }
+  if (attribute(languageSwitch ?? "", "lang") !== otherLanguage) {
+    errors.push(`${relativePath}: language switch is missing lang=${otherLanguage}`);
+  }
+  if (!attribute(languageSwitch ?? "", "aria-label")?.trim()) {
+    errors.push(`${relativePath}: language switch has no accessible name`);
+  }
 }
 
 function validateDocument(html, relativePath, route) {
   const htmlTag = tags(html, "html")[0];
   const locale = htmlTag && attribute(htmlTag, "lang");
+  const expectedLocale = route.startsWith("/en/") ? "en" : "fr";
   if (!locale || !["fr", "en"].includes(locale)) {
     errors.push(`${relativePath}: missing or unsupported html lang`);
+  } else if (locale !== expectedLocale) {
+    errors.push(`${relativePath}: html lang=${locale}, expected ${expectedLocale}`);
   }
 
   const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
@@ -279,8 +288,49 @@ function validateDocument(html, relativePath, route) {
 
   const h1Count = (html.match(/<h1\b/gi) ?? []).length;
   if (h1Count !== 1) errors.push(`${relativePath}: expected one h1, found ${h1Count}`);
-  const mainCount = (html.match(/<main\b/gi) ?? []).length;
-  if (mainCount !== 1) errors.push(`${relativePath}: expected one main, found ${mainCount}`);
+  const headingLevels = [...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+  for (let index = 1; index < headingLevels.length; index += 1) {
+    if (headingLevels[index] > headingLevels[index - 1] + 1) {
+      errors.push(
+        `${relativePath}: heading level jumps from h${headingLevels[index - 1]} to h${headingLevels[index]}`,
+      );
+    }
+  }
+
+  const mainTags = tags(html, "main");
+  if (mainTags.length !== 1) {
+    errors.push(`${relativePath}: expected one main, found ${mainTags.length}`);
+  } else if (attribute(mainTags[0], "id") !== "main-content") {
+    errors.push(`${relativePath}: main landmark is not the skip-link target`);
+  }
+  const siteHeaderCount = tags(html, "header").filter((tag) =>
+    /\bdata-site-header(?:\s|>|=)/i.test(tag),
+  ).length;
+  if (siteHeaderCount !== 1) {
+    errors.push(`${relativePath}: expected one site header, found ${siteHeaderCount}`);
+  }
+  const navigationTags = tags(html, "nav");
+  if (navigationTags.length !== 1) {
+    errors.push(
+      `${relativePath}: expected one navigation landmark, found ${navigationTags.length}`,
+    );
+  } else if (!attribute(navigationTags[0], "aria-label")?.trim()) {
+    errors.push(`${relativePath}: navigation landmark has no accessible name`);
+  }
+  const footerCount = tags(html, "footer").length;
+  if (footerCount !== 1) {
+    errors.push(`${relativePath}: expected one footer landmark, found ${footerCount}`);
+  }
+  if (relativePath !== "404.html") {
+    const currentPageCount = tags(html, "a").filter(
+      (tag) => attribute(tag, "aria-current") === "page",
+    ).length;
+    if (currentPageCount !== 1) {
+      errors.push(
+        `${relativePath}: expected one current navigation link, found ${currentPageCount}`,
+      );
+    }
+  }
   const viewportTag = tags(html, "meta").find(
     (tag) => attribute(tag, "name")?.toLowerCase() === "viewport",
   );
@@ -482,6 +532,12 @@ function validateDocument(html, relativePath, route) {
     const textContent = match[2].replace(/<[^>]+>/g, "").trim();
     if (!attribute(openingTag, "aria-label") && !textContent) {
       errors.push(`${relativePath}: button has no accessible name`);
+    }
+  }
+  const themeToggle = tags(html, "button").find((tag) => /\bdata-theme-toggle\b/i.test(tag));
+  for (const attributeName of ["aria-label", "data-light-label", "data-dark-label"]) {
+    if (!attribute(themeToggle ?? "", attributeName)?.trim()) {
+      errors.push(`${relativePath}: theme toggle is missing ${attributeName}`);
     }
   }
 

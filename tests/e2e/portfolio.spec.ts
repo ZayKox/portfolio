@@ -64,6 +64,48 @@ test("theme follows the system preference and persists the visitor choice", asyn
   await context.close();
 });
 
+test("localized navigation controls expose names and states", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "One browser proof is enough");
+
+  for (const expectation of [
+    {
+      route: "/",
+      locale: "fr",
+      navigationName: "Navigation principale",
+      switchLanguage: "en",
+      switchName: "View this page in English",
+      initialThemeName: "Activer le thème sombre",
+      toggledThemeName: "Activer le thème clair",
+    },
+    {
+      route: "/en/",
+      locale: "en",
+      navigationName: "Main navigation",
+      switchLanguage: "fr",
+      switchName: "Voir cette page en français",
+      initialThemeName: "Use dark theme",
+      toggledThemeName: "Use light theme",
+    },
+  ] as const) {
+    await page.goto(expectation.route);
+    await expect(page.locator("html")).toHaveAttribute("lang", expectation.locale);
+    await expect(page.getByRole("navigation", { name: expectation.navigationName })).toBeVisible();
+
+    const languageSwitch = page.getByRole("link", { name: expectation.switchName });
+    await expect(languageSwitch).toHaveAttribute("lang", expectation.switchLanguage);
+    await expect(languageSwitch).toHaveAttribute("hreflang", expectation.switchLanguage);
+
+    const themeToggle = page.getByRole("button", { name: expectation.initialThemeName });
+    await expect(themeToggle).toHaveAttribute("aria-pressed", "false");
+    await themeToggle.click();
+    await expect(page.getByRole("button", { name: expectation.toggledThemeName })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await page.evaluate(() => localStorage.removeItem("portfolio-theme"));
+  }
+});
+
 test("primary links expose the expected destinations", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("link", { name: "Explorer mes projets" })).toHaveAttribute(
