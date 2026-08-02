@@ -26,6 +26,8 @@ npm run check:links
 
 La vérification teste le site avec une origine HTTPS réservée, puis recrée `dist/` sans faux domaine afin de contrôler les canonical, le sitemap et `robots.txt` sans laisser un artefact trompeur. En production, définir `SITE_URL` avec l’origine finale, sans chemin :
 
+`npm run check:toolchain`, inclus dans cette vérification, maintient l'alignement de Node et npm entre le poste local, GitHub Actions et Docker. Il exige aussi les digests des images, les actions GitHub épinglées, la CI complète, la couverture Dependabot et les exclusions sensibles du contexte Docker.
+
 Les favicon, icône Apple touch et carte sociale sont des PNG déterministes générés depuis le langage visuel Violet Field avec `npm run generate:brand-assets`. Les fichiers finaux restent versionnés dans `public/` pour que le build de production ne dépende pas d’un navigateur.
 
 Le manifeste [`docs/media-provenance.json`](docs/media-provenance.json) consigne leur origine et leur empreinte SHA-256. `npm run check:media`, inclus dans `npm run verify`, refuse tout média publiable non inventorié, toute modification non revue de ces fichiers et toute police embarquée tant que la politique reste fondée sur la pile système.

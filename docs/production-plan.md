@@ -540,6 +540,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
+- [x] `[QA]` Contrôler automatiquement l'alignement Node/npm entre `.nvmrc`, les moteurs, le lockfile, Docker et la CI, ainsi que l'épinglage des actions et images de build.
 - [ ] `[Dev]` Ajouter ESLint seulement avec un jeu de règles utile et sans dupliquer les contrôles Astro/TypeScript.
 - [x] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.
 

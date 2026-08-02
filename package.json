@@ -24,11 +24,12 @@
     "check:links": "npm run build && node scripts/check-external-links.mjs",
     "check:content": "node scripts/validate-content-parity.mjs",
     "check:media": "node scripts/validate-media-provenance.mjs",
+    "check:toolchain": "node scripts/validate-toolchain.mjs",
     "validate:build": "node scripts/validate-build.mjs",
     "verify:site": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run validate:build",
     "verify:preview": "cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run build && cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run validate:build",
     "verify:no-site": "cross-env SITE_URL= SITE_NOINDEX=false npm run build && cross-env SITE_URL= SITE_NOINDEX=false npm run validate:build",
-    "verify": "npm run format:check && npm run check:content && npm run check:media && npm run check && npm run verify:site && npm run verify:preview && npm run verify:no-site"
+    "verify": "npm run format:check && npm run check:toolchain && npm run check:content && npm run check:media && npm run check && npm run verify:site && npm run verify:preview && npm run verify:no-site"
   },
   "dependencies": {
     "@astrojs/mdx": "7.0.3",
