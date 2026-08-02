@@ -5,7 +5,7 @@ Ce document décrit la réponse opératoire du portfolio statique sur Coolify. I
 ## Périmètre technique
 
 - La production est la ressource Git Coolify construite depuis `docker-compose.production.yml` sur `main`.
-- Le service `portfolio` expose uniquement le port interne `8080` et ne possède ni volume, base de données ou secret applicatif.
+- Le service `portfolio` expose uniquement le port interne `8080` et ne possède ni volume, base de données ou secret applicatif. Il s'exécute sans capability Linux, sans possibilité d'acquérir de nouveaux privilèges et avec une racine en lecture seule.
 - `SITE_URL` et `SITE_NOINDEX` sont injectés au build. Un retour arrière doit conserver les valeurs de production validées.
 - Coolify peut revenir à une version précédente uniquement lorsque l’image Docker correspondante est encore disponible localement. L’action ne doit donc jamais être supposée disponible sans vérification préalable.
 

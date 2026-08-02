@@ -9,5 +9,12 @@ services:
         SITE_URL: ${SITE_URL:?Set SITE_URL to the final HTTPS origin}
         SITE_NOINDEX: ${SITE_NOINDEX:-false}
     restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,nosuid,noexec,size=16m,mode=1777
     expose:
       - "8080"

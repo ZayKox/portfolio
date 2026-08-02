@@ -72,7 +72,8 @@ le sert depuis un conteneur Nginx non privilégié sur le port interne `8080`.
 Dans Coolify, créer une ressource Docker Compose depuis ce dépôt, définir
 `SITE_URL=https://votre-domaine.example` et `SITE_NOINDEX=false`, puis associer le domaine au service
 `portfolio` et au port `8080`. Le conteneur ne contient ni base de données ni
-secret applicatif.
+secret applicatif. Son système de fichiers racine est en lecture seule, toutes
+les capabilities Linux sont retirées et seul un `/tmp` borné reste inscriptible.
 
 Cloudflare Pages reste une alternative gratuite particulièrement adaptée à ce
 site statique. Le chemin VPS permet toutefois d'héberger les trois projets sur

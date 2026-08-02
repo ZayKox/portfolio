@@ -13,6 +13,11 @@ const siteUrl = previewMode ? "https://preview.portfolio.example" : "https://por
 function docker(args, { quiet = false } = {}) {
   const result = spawnSync("docker", args, {
     encoding: "utf8",
+    env: {
+      ...process.env,
+      SITE_URL: siteUrl,
+      SITE_NOINDEX: String(previewMode),
+    },
     maxBuffer: 50 * 1024 * 1024,
   });
   if (result.status !== 0) {
@@ -44,6 +49,23 @@ async function waitForHealthy() {
 }
 
 try {
+  const compose = JSON.parse(
+    docker(["compose", "--file", "docker-compose.production.yml", "config", "--format", "json"], {
+      quiet: true,
+    }),
+  );
+  const service = compose.services?.portfolio;
+  if (!service) throw new Error("Docker Compose does not define the portfolio service");
+  if (service.read_only !== true) throw new Error("portfolio root filesystem is not read-only");
+  if (!service.cap_drop?.includes("ALL"))
+    throw new Error("portfolio does not drop all capabilities");
+  if (!service.security_opt?.includes("no-new-privileges:true")) {
+    throw new Error("portfolio does not enforce no-new-privileges");
+  }
+  if (!service.tmpfs?.some((entry) => entry.startsWith("/tmp:"))) {
+    throw new Error("portfolio does not provide a bounded writable /tmp filesystem");
+  }
+
   console.log(`Building the ${mode} production container...`);
   docker([
     "build",
@@ -58,7 +80,22 @@ try {
   ]);
 
   console.log("Starting the production container on a random loopback port...");
-  docker(["run", "--detach", "--name", container, "--publish", "127.0.0.1::8080", image]);
+  docker([
+    "run",
+    "--detach",
+    "--name",
+    container,
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges=true",
+    "--tmpfs",
+    "/tmp:rw,nosuid,noexec,size=16m,mode=1777",
+    "--publish",
+    "127.0.0.1::8080",
+    image,
+  ]);
   await waitForHealthy();
 
   const portOutput = docker(["port", container, "8080/tcp"], { quiet: true });

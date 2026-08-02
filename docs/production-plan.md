@@ -464,6 +464,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
 - [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.
+- [x] `[Dev]` Confiner le service Compose avec une racine en lecture seule, aucune capability Linux, `no-new-privileges` et un `/tmp` borné ; les smoke tests appliquent les mêmes restrictions.
 - [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
 - [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
@@ -625,6 +626,7 @@ Configuration attendue :
 | Variable de build   | `SITE_URL=https://domaine-final.example` |
 | Indexation          | `SITE_NOINDEX=false`                     |
 | Secrets applicatifs | aucun                                    |
+| Confinement         | racine read-only, capabilities retirées  |
 
 ### Première répétition privée
 
