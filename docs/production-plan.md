@@ -351,7 +351,7 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 
 **Priorité : P0 pour la cohérence actuelle, P1 pour les médias avancés**
 
-- [ ] `[Dev]` Formaliser palette, typographies, espacements, rayons, bordures, ombres et mouvement dans les tokens existants.
+- [x] `[Dev]` Formaliser palette, typographies, espacements, rayons, bordures, ombres et mouvement dans les tokens existants.
 - [ ] `[Ethan]` Choisir entre la pile système et des polices auto-hébergées avec licences vérifiées.
 - [ ] `[Dev]` Finaliser le monogramme/signature si aucun logo n’est fourni.
 - [x] `[Dev]` Créer favicon PNG et icône Apple touch depuis une source déterministe.

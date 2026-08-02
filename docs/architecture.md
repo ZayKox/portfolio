@@ -8,6 +8,8 @@
 4. N’afficher aucun champ incomplet et ne jamais inventer de contenu personnel.
 5. Ajouter du JavaScript uniquement pour une amélioration progressive utile.
 
+Le système visuel effectivement implémenté est décrit dans `docs/design-system.md`. `src/styles/global.css` reste la source exécutable de ses tokens.
+
 ## Flux de contenu
 
 ```text
@@ -59,7 +61,7 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation statique
 
-`npm run verify` contrôle le format, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, structure HTML de base, contrastes des tokens principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
+`npm run verify` contrôle le format, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, structure HTML de base, présence des tokens Violet Field requis, parité du thème sombre explicite/système, contrastes principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
 
 ## Validation navigateur
 

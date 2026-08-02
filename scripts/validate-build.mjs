@@ -632,16 +632,62 @@ for (const accessibilityRule of [":focus-visible", "prefers-reduced-motion", "da
   }
 }
 
+const requiredThemeTokens = [
+  "bg",
+  "surface",
+  "surface-subtle",
+  "text",
+  "text-muted",
+  "border",
+  "accent",
+  "accent-hover",
+  "accent-soft",
+  "accent-contrast",
+  "info",
+  "danger",
+  "selection",
+  "shadow",
+  "grid-line",
+  "header-bg",
+];
+const requiredSharedTokens = [
+  "font-display",
+  "font-body",
+  "font-mono",
+  "display",
+  "h1",
+  "h2",
+  "h3",
+  "body-large",
+  "radius-control",
+  "radius-card",
+  "container",
+  "gutter",
+  "duration-fast",
+  "duration-base",
+  "duration-reveal",
+  "ease-out",
+];
+const lightThemeBlock = bundledCss.match(/:root\{(--bg:[^}]*)\}/)?.[1];
+const darkThemeBlock = bundledCss.match(/:root\[data-theme=dark\]\{([^}]*)\}/)?.[1];
+const systemDarkThemeBlock = bundledCss.match(/:root:not\(\[data-theme\]\)\{([^}]*)\}/)?.[1];
+const declaration = (block, name) =>
+  block?.match(new RegExp(`--${name}:([^;}]+)`, "i"))?.[1].trim();
 const themeBlocks = [
-  ["light", bundledCss.match(/:root\{(--bg:[^}]*)\}/)?.[1]],
-  ["dark", bundledCss.match(/:root\[data-theme=dark\]\{([^}]*)\}/)?.[1]],
+  ["light", lightThemeBlock],
+  ["dark", darkThemeBlock],
 ];
 for (const [theme, block] of themeBlocks) {
   if (!block) {
     errors.push(`bundled CSS: missing ${theme} theme tokens`);
     continue;
   }
-  const color = (name) => block.match(new RegExp(`--${name}:(#[0-9a-f]{3,6})`, "i"))?.[1];
+  for (const token of requiredThemeTokens) {
+    if (!declaration(block, token)) {
+      errors.push(`bundled CSS: missing ${theme} --${token} token`);
+    }
+  }
+  const color = (name) => declaration(block, name)?.match(/^#[0-9a-f]{3,6}$/i)?.[0];
   for (const [foregroundName, backgroundName] of [
     ["text", "bg"],
     ["text-muted", "bg"],
@@ -660,6 +706,54 @@ for (const [theme, block] of themeBlocks) {
         `bundled CSS: ${theme} ${foregroundName}/${backgroundName} contrast is ${ratio.toFixed(2)}:1`,
       );
     }
+  }
+}
+
+for (const token of requiredSharedTokens) {
+  if (!declaration(lightThemeBlock, token)) {
+    errors.push(`bundled CSS: missing shared --${token} token`);
+  }
+}
+
+if (!systemDarkThemeBlock) {
+  errors.push("bundled CSS: missing system dark theme tokens");
+} else {
+  for (const token of requiredThemeTokens) {
+    const explicitValue = declaration(darkThemeBlock, token);
+    const systemValue = declaration(systemDarkThemeBlock, token);
+    if (!systemValue) {
+      errors.push(`bundled CSS: missing system dark --${token} token`);
+    } else if (explicitValue && systemValue !== explicitValue) {
+      errors.push(`bundled CSS: system dark --${token} differs from explicit dark theme`);
+    }
+  }
+}
+
+const sourceCss = await readFile(path.join(root, "src/styles/global.css"), "utf8");
+const designSystem = await readFile(path.join(root, "docs/design-system.md"), "utf8");
+const sourceLightThemeBlock = sourceCss.match(/^:root\s*\{([^}]*)\}/m)?.[1];
+const sourceDarkThemeBlock = sourceCss.match(/:root\[data-theme="dark"\]\s*\{([^}]*)\}/)?.[1];
+for (const token of requiredThemeTokens) {
+  const row = designSystem
+    .split("\n")
+    .find((line) => line.trimStart().startsWith(`| \`--${token}\``));
+  if (!row) {
+    errors.push(`design system: missing --${token} color row`);
+    continue;
+  }
+  for (const [theme, block] of [
+    ["light", sourceLightThemeBlock],
+    ["dark", sourceDarkThemeBlock],
+  ]) {
+    const value = declaration(block, token);
+    if (!value || !row.includes(`\`${value}\``)) {
+      errors.push(`design system: --${token} ${theme} value differs from source CSS`);
+    }
+  }
+}
+for (const token of requiredSharedTokens) {
+  if (!designSystem.includes(`\`--${token}\``)) {
+    errors.push(`design system: missing shared --${token} reference`);
   }
 }
 
