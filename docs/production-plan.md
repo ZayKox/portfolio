@@ -491,6 +491,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[QA]` Refuser les violations axe `serious` et `critical`.
 - [x] `[QA]` Conserver le rapport comme preuve de release en cas d'échec CI.
 - [x] `[QA]` Contrôler automatiquement le lien d'évitement, le mouvement réduit, les cibles tactiles et le reflow à 320 px.
+- [x] `[QA]` Contrôler automatiquement l'ordre DOM de tabulation et la visibilité du focus sur chaque route en clair et sombre.
 
 ### Recette humaine
 

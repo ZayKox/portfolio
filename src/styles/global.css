@@ -148,6 +148,12 @@ button {
   outline-offset: 0.22rem;
 }
 
+:root.theme-switching *,
+:root.theme-switching *::before,
+:root.theme-switching *::after {
+  transition: none !important;
+}
+
 h1,
 h2,
 h3,

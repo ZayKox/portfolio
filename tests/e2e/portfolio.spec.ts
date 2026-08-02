@@ -110,6 +110,105 @@ test("keyboard navigation exposes the skip link", async ({ page }) => {
   await expect(page).toHaveURL(/\/#main-content$/);
 });
 
+test("keyboard focus follows DOM order and stays visible in both themes", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "One desktop browser proof is enough");
+  test.slow();
+
+  const focusableSelector = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled]):not([type='hidden'])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])",
+  ].join(",");
+
+  for (const route of publicRoutes) {
+    for (const theme of ["light", "dark"] as const) {
+      await page.goto(route);
+      const focusableCount = await page.evaluate(
+        ({ selector, selectedTheme }) => {
+          document.documentElement.dataset.theme = selectedTheme;
+          if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+          window.scrollTo(0, 0);
+
+          const elements = [...document.querySelectorAll<HTMLElement>(selector)].filter(
+            (element) => {
+              const style = getComputedStyle(element);
+              return (
+                style.display !== "none" &&
+                style.visibility !== "hidden" &&
+                element.getClientRects().length > 0 &&
+                !element.closest("[inert]")
+              );
+            },
+          );
+
+          elements.forEach((element, index) => {
+            element.dataset.testFocusOrder = String(index);
+          });
+          return elements.length;
+        },
+        { selector: focusableSelector, selectedTheme: theme },
+      );
+
+      expect(focusableCount, `${route} in ${theme} theme should expose controls`).toBeGreaterThan(
+        0,
+      );
+
+      for (let expectedOrder = 0; expectedOrder < focusableCount; expectedOrder += 1) {
+        await page.keyboard.press("Tab");
+        const context = `${route} in ${theme} theme, focus position ${expectedOrder}`;
+
+        const readFocusState = () =>
+          page.evaluate(() => {
+            const element = document.activeElement;
+            if (!(element instanceof HTMLElement)) return null;
+
+            const rect = element.getBoundingClientRect();
+            const style = getComputedStyle(element);
+            return {
+              order: element.dataset.testFocusOrder ?? null,
+              outlineColor: style.outlineColor,
+              outlineStyle: style.outlineStyle,
+              outlineWidth: Number.parseFloat(style.outlineWidth),
+              visibleInViewport:
+                rect.width > 0 &&
+                rect.height > 0 &&
+                rect.bottom > 0 &&
+                rect.right > 0 &&
+                rect.top < window.innerHeight &&
+                rect.left < window.innerWidth,
+            };
+          });
+
+        const focusState = await readFocusState();
+        expect(focusState, context).not.toBeNull();
+        expect(focusState?.order, context).toBe(String(expectedOrder));
+        expect(focusState?.outlineStyle, context).not.toBe("none");
+        expect(focusState?.outlineWidth ?? 0, context).toBeGreaterThanOrEqual(2);
+        expect(focusState?.outlineColor, context).not.toBe("rgba(0, 0, 0, 0)");
+        await expect
+          .poll(async () => (await readFocusState())?.visibleInViewport, {
+            message: `${context} should be visible in the viewport`,
+            timeout: 1_000,
+          })
+          .toBe(true);
+      }
+
+      await page.evaluate(() => {
+        document.querySelectorAll<HTMLElement>("[data-test-focus-order]").forEach((element) => {
+          delete element.dataset.testFocusOrder;
+        });
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        window.scrollTo(0, 0);
+      });
+    }
+  }
+});
+
 test("reduced motion shortens transitions", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();

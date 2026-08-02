@@ -88,8 +88,11 @@ const isActive = (href: string) =>
     themeButton.dataset.ready = "true";
     syncThemeButton(themeButton);
     themeButton.addEventListener("click", () => {
-      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = nextTheme;
+      const root = document.documentElement;
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      root.classList.add("theme-switching");
+      root.dataset.theme = nextTheme;
+      requestAnimationFrame(() => root.classList.remove("theme-switching"));
       try {
         localStorage.setItem("portfolio-theme", nextTheme);
       } catch {
