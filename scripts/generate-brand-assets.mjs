@@ -232,6 +232,227 @@ const socialStyles = `
   .node-three { bottom: 22px; left: 70px; }
 `;
 
+const projectSocialCards = [
+  {
+    filename: "myverse-social-card.png",
+    index: "01",
+    title: "MYVERSE",
+    stack: "NEXT.JS · TYPESCRIPT · POSTGRESQL",
+    visual: "myverse",
+  },
+  {
+    filename: "filtre-appels-social-card.png",
+    index: "02",
+    title: "FILTREAPPELS",
+    stack: "KOTLIN · JETPACK COMPOSE · LOCAL RULES",
+    visual: "calls",
+  },
+];
+
+function projectSocialMarkup({ index, title, stack, visual }) {
+  const visualMarkup =
+    visual === "myverse"
+      ? `<div class="orbit orbit-outer"></div>
+         <div class="orbit orbit-inner"></div>
+         <div class="project-core">MV</div>
+         <span class="media-node node-one">FILM</span>
+         <span class="media-node node-two">GAME</span>
+         <span class="media-node node-three">BOOK</span>
+         <span class="media-node node-four">ANIME</span>
+         <span class="media-node node-five">MANGA</span>
+         <span class="media-node node-six">SERIES</span>`
+      : `<div class="call-number">+33 •• •• •• 42</div>
+         <div class="call-path path-one"><span>ALLOW</span></div>
+         <div class="call-path path-two"><span>SILENCE</span></div>
+         <div class="call-path path-three"><span>BLOCK</span></div>
+         <div class="call-result">RULE / 04</div>`;
+
+  return `<div class="grid"></div>
+    <div class="glow"></div>
+    <main>
+      <div class="project-copy">
+        <p class="kicker">PROJECT / ${index}</p>
+        <h1>${title}</h1>
+        <p class="stack">${stack}</p>
+        <p class="signature">ETHAN BROSSELARD / PORTFOLIO</p>
+      </div>
+      <div class="project-field project-field--${visual}" aria-hidden="true">${visualMarkup}</div>
+    </main>`;
+}
+
+const projectSocialStyles = `
+  ${brandVariables}
+  position: relative;
+  color: var(--brand-text);
+  background: var(--brand-bg);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  .grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.52;
+    background-image:
+      linear-gradient(var(--brand-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brand-grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glow {
+    position: absolute;
+    top: -300px;
+    right: -170px;
+    width: 820px;
+    height: 820px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--brand-accent-strong) 42%, transparent),
+      transparent 69%
+    );
+  }
+  main {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 68px 78px;
+  }
+  .project-copy { align-self: stretch; display: flex; flex-direction: column; }
+  .kicker, .stack, .signature, .media-node, .call-number, .call-path span, .call-result {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    letter-spacing: 0.12em;
+  }
+  .kicker {
+    margin: 4px 0 42px;
+    color: var(--brand-accent);
+    font-size: 18px;
+    font-weight: 750;
+  }
+  h1 {
+    max-width: 620px;
+    margin: 0;
+    font-size: 68px;
+    font-weight: 760;
+    letter-spacing: -0.065em;
+    line-height: 0.94;
+  }
+  .stack {
+    max-width: 560px;
+    margin: 35px 0 0;
+    color: var(--brand-muted);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.7;
+  }
+  .signature {
+    margin: auto 0 2px;
+    color: var(--brand-muted);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .project-field {
+    position: relative;
+    display: grid;
+    place-items: center;
+    justify-self: end;
+    width: 460px;
+    aspect-ratio: 1;
+    border: 1px solid var(--brand-border);
+    border-radius: 28px;
+    background:
+      radial-gradient(
+        circle,
+        color-mix(in srgb, var(--brand-accent) 20%, transparent),
+        transparent 55%
+      ),
+      linear-gradient(145deg, var(--brand-surface), var(--brand-bg));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+  }
+  .orbit {
+    position: absolute;
+    border: 2px solid color-mix(in srgb, var(--brand-accent) 38%, transparent);
+    border-radius: 50%;
+  }
+  .orbit-outer { width: 74%; aspect-ratio: 1; }
+  .orbit-inner { width: 44%; aspect-ratio: 1; }
+  .project-core {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 112px;
+    aspect-ratio: 1;
+    border: 2px solid color-mix(in srgb, var(--brand-accent) 68%, var(--brand-border));
+    border-radius: 50%;
+    color: var(--brand-accent);
+    background: var(--brand-surface);
+    font-size: 38px;
+    font-weight: 760;
+  }
+  .media-node {
+    position: absolute;
+    padding: 8px 11px;
+    border: 1px solid var(--brand-border);
+    border-radius: 7px;
+    color: var(--brand-muted);
+    background: var(--brand-surface);
+    font-size: 9px;
+    font-weight: 700;
+  }
+  .node-one { top: 13%; left: 43%; }
+  .node-two { top: 28%; right: 7%; }
+  .node-three { right: 12%; bottom: 17%; }
+  .node-four { bottom: 10%; left: 39%; }
+  .node-five { bottom: 23%; left: 7%; }
+  .node-six { top: 23%; left: 9%; }
+  .project-field--calls { align-content: center; gap: 24px; padding: 58px 70px; }
+  .call-number {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 20px 16px;
+    border: 1px solid var(--brand-border);
+    border-radius: 12px;
+    color: var(--brand-text);
+    background: var(--brand-surface);
+    font-size: 13px;
+    text-align: center;
+  }
+  .call-path {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--brand-border);
+  }
+  .call-path::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--path-width);
+    border-radius: inherit;
+    background: var(--brand-accent);
+    content: "";
+  }
+  .path-one { --path-width: 88%; }
+  .path-two { --path-width: 61%; }
+  .path-three { --path-width: 37%; }
+  .call-path span {
+    position: absolute;
+    top: -6px;
+    right: calc(100% + 16px);
+    color: var(--brand-muted);
+    font-size: 9px;
+    font-weight: 700;
+  }
+  .call-result {
+    margin-top: 17px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: var(--brand-accent);
+    background: var(--brand-soft);
+    font-size: 10px;
+    font-weight: 750;
+  }
+`;
+
 async function capture(page, { width, height, content, styles, filename }) {
   await page.setViewportSize({ width, height });
   await page.setContent(document(content, styles), { waitUntil: "load" });
@@ -264,8 +485,19 @@ try {
     styles: socialStyles,
     filename: "social-card.png",
   });
+  for (const card of projectSocialCards) {
+    await capture(page, {
+      width: 1200,
+      height: 630,
+      content: projectSocialMarkup(card),
+      styles: projectSocialStyles,
+      filename: card.filename,
+    });
+  }
 } finally {
   await browser.close();
 }
 
-console.log("Generated favicon.png, apple-touch-icon.png, and social-card.png.");
+console.log(
+  "Generated favicon.png, apple-touch-icon.png, social-card.png, and two project social cards.",
+);

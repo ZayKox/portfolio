@@ -358,7 +358,7 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [ ] `[Dev]` Finaliser le monogramme/signature si aucun logo n’est fourni.
 - [x] `[Dev]` Créer favicon PNG et icône Apple touch depuis une source déterministe.
 - [x] `[Dev]` Créer une image Open Graph globale de 1200 × 630 px.
-- [ ] `[Dev]` Créer une image Open Graph par projet si les visuels sont assez solides.
+- [x] `[Dev]` Créer une image Open Graph déterministe par projet à partir des compositions Violet Field existantes, avec alternative localisée dans chaque MDX.
 - [ ] `[Dev]` Intégrer les captures sans surcharger l’interface.
 - [ ] `[Dev]` Présenter les compétences par domaines et preuves, jamais en pourcentages.
 - [ ] `[Dev]` Rendre les captures agrandissables au clavier et au tactile si une lightbox est ajoutée.

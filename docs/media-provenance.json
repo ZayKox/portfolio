@@ -26,6 +26,20 @@
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
       "sha256": "3be7d81e63e212655d6054aa7c30a358c5111e0ef292754d0454c48e2b3571c4"
+    },
+    {
+      "path": "public/myverse-social-card.png",
+      "kind": "generated-project-brand",
+      "generator": "scripts/generate-brand-assets.mjs",
+      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native MyVerse project composition, without third-party media input.",
+      "sha256": "45651e7ed2d5175d6c1905f012f492009ba0ce12670fd58a720fb65274fffeb5"
+    },
+    {
+      "path": "public/filtre-appels-social-card.png",
+      "kind": "generated-project-brand",
+      "generator": "scripts/generate-brand-assets.mjs",
+      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native FiltreAppels project composition, without third-party media input.",
+      "sha256": "0949309d76ca58de84d6472c55ae5e3424cb30d6acc99af0625c82304f9cfa61"
     }
   ]
 }

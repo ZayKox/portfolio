@@ -27,6 +27,12 @@ const expectedRoutes = [
   "/404.html",
 ];
 const expectedRouteSet = new Set(expectedRoutes);
+const routeSocialImages = new Map([
+  ["/projets/filtre-appels/", "/filtre-appels-social-card.png"],
+  ["/en/projects/filtre-appels/", "/filtre-appels-social-card.png"],
+  ["/projets/myverse/", "/myverse-social-card.png"],
+  ["/en/projects/myverse/", "/myverse-social-card.png"],
+]);
 const languagePairs = [
   { fr: "/", en: "/en/" },
   { fr: "/a-propos/", en: "/en/about/" },
@@ -501,7 +507,10 @@ function validateDocument(html, relativePath, route) {
     if (attribute(sitemapTag ?? "", "href") !== expectedSitemapUrl) {
       errors.push(`${relativePath}: sitemap link does not match ${expectedSitemapUrl}`);
     }
-    const expectedSocialImageUrl = new URL("social-card.png", process.env.SITE_URL).href;
+    const expectedSocialImageUrl = new URL(
+      (routeSocialImages.get(route) ?? "/social-card.png").slice(1),
+      process.env.SITE_URL,
+    ).href;
     for (const [attributeName, name, expectedContent] of [
       ["property", "og:image", expectedSocialImageUrl],
       ["property", "og:image:width", "1200"],
@@ -742,6 +751,8 @@ for (const [filename, expectedWidth, expectedHeight, maximumBytes] of [
   ["favicon.png", 64, 64, 32 * 1024],
   ["apple-touch-icon.png", 180, 180, 64 * 1024],
   ["social-card.png", 1200, 630, 300 * 1024],
+  ["myverse-social-card.png", 1200, 630, 300 * 1024],
+  ["filtre-appels-social-card.png", 1200, 630, 300 * 1024],
 ]) {
   const assetPath = path.join(outputDirectory, filename);
   const contents = await readFile(assetPath).catch(() => undefined);

@@ -3,14 +3,22 @@ const publicRoutes = [
   { path: "/a-propos/", locale: "fr" },
   { path: "/contact/", locale: "fr" },
   { path: "/projets/", locale: "fr" },
-  { path: "/projets/filtre-appels/", locale: "fr" },
-  { path: "/projets/myverse/", locale: "fr" },
+  {
+    path: "/projets/filtre-appels/",
+    locale: "fr",
+    socialImage: "/filtre-appels-social-card.png",
+  },
+  { path: "/projets/myverse/", locale: "fr", socialImage: "/myverse-social-card.png" },
   { path: "/en/", locale: "en" },
   { path: "/en/about/", locale: "en" },
   { path: "/en/contact/", locale: "en" },
   { path: "/en/projects/", locale: "en" },
-  { path: "/en/projects/filtre-appels/", locale: "en" },
-  { path: "/en/projects/myverse/", locale: "en" },
+  {
+    path: "/en/projects/filtre-appels/",
+    locale: "en",
+    socialImage: "/filtre-appels-social-card.png",
+  },
+  { path: "/en/projects/myverse/", locale: "en", socialImage: "/myverse-social-card.png" },
 ];
 
 const languagePairs = [
@@ -43,6 +51,10 @@ const expectedPerson = {
 };
 
 const forbiddenPlaceholders = ["TODO", "TBD", "À REMPLIR", "coming soon"];
+
+function socialImageForRoute(pathname) {
+  return publicRoutes.find(({ path }) => path === pathname)?.socialImage ?? "/social-card.png";
+}
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -250,7 +262,8 @@ function validateProductionMetadata(html, pathname, locale, expectedSiteOrigin) 
     attribute(meta(html, "property", "og:url") ?? "", "content") === expectedUrl,
     `${pathname}: og:url does not match ${expectedUrl}`,
   );
-  const expectedSocialImage = new URL("social-card.png", expectedSiteOrigin).href;
+  const expectedSocialImage = new URL(socialImageForRoute(pathname).slice(1), expectedSiteOrigin)
+    .href;
   for (const [attributeName, name, expected] of [
     ["property", "og:image", expectedSocialImage],
     ["property", "og:image:width", "1200"],
@@ -471,13 +484,16 @@ export async function validateDeployment({
       "sitemap routes do not exactly match the public route set",
     );
 
-    const socialCard = await request("/social-card.png");
-    assert(
-      socialCard.headers.get("content-type")?.startsWith("image/png"),
-      "/social-card.png: content type is not image/png",
-    );
-    validatePng(await socialCard.arrayBuffer(), "/social-card.png", 1200, 630);
-    checks.push("canonical, JSON-LD, sitemap, and sharing image");
+    const socialImages = new Set(publicRoutes.map(({ path }) => socialImageForRoute(path)));
+    for (const socialImagePath of socialImages) {
+      const socialCard = await request(socialImagePath);
+      assert(
+        socialCard.headers.get("content-type")?.startsWith("image/png"),
+        `${socialImagePath}: content type is not image/png`,
+      );
+      validatePng(await socialCard.arrayBuffer(), socialImagePath, 1200, 630);
+    }
+    checks.push("canonical, JSON-LD, sitemap, and sharing images");
   }
   checks.push("no response cookies");
 

@@ -5,7 +5,7 @@ import process from "node:process";
 const root = process.cwd();
 const projectsRoot = path.join(root, "src", "content", "projects");
 const locales = ["fr", "en"];
-const sharedFields = ["slug", "order", "featured", "publication", "stack", "visual"];
+const sharedFields = ["slug", "order", "featured", "publication", "stack", "visual", "socialImage"];
 const requiredFields = [
   "title",
   "slug",
@@ -18,6 +18,8 @@ const requiredFields = [
   "summary",
   "stack",
   "visual",
+  "socialImage",
+  "socialImageAlt",
 ];
 const errors = [];
 
