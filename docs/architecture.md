@@ -59,7 +59,7 @@ Le site ne charge aucune ressource tierce, n’expose aucun secret et ne contien
 ## Hébergement
 
 Le déploiement VPS est un build multi-étapes : Node.js 22 génère `dist/`, puis
-Nginx sert uniquement les fichiers statiques. `SITE_URL` est une donnée de
+Nginx sert uniquement les fichiers statiques. Les deux images de base conservent un tag lisible mais sont figées par digest multi-architecture ; Dependabot propose leurs mises à jour mensuelles pour éviter tout changement silencieux lors d'un rebuild. `SITE_URL` est une donnée de
 build et tout changement de domaine impose donc une reconstruction. Cloudflare
 Pages reste une solution de repli adaptée au même artefact statique.
 
