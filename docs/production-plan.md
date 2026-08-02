@@ -461,6 +461,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
 - [x] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
 - [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
+- [x] `[Dev]` Ajouter HSTS pour un an sur Nginx et Cloudflare, sans `includeSubDomains` ni préchargement avant la décision finale de domaine.
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
 - [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.

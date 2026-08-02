@@ -116,6 +116,7 @@ function validateSecurityHeaders(response, pathname) {
     "content-security-policy": ["base-uri 'self'", "frame-ancestors 'none'", "object-src 'none'"],
     "permissions-policy": ["camera=()", "microphone=()", "geolocation=()"],
     "referrer-policy": ["strict-origin-when-cross-origin"],
+    "strict-transport-security": ["max-age=31536000"],
     "x-content-type-options": ["nosniff"],
     "x-frame-options": ["DENY"],
   };
