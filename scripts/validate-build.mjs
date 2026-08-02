@@ -495,6 +495,23 @@ function validateDocument(html, relativePath, route) {
   const openGraphImageTag = socialMeta("property", "og:image");
   const twitterImageTag = socialMeta("name", "twitter:image");
   const twitterCardTag = socialMeta("name", "twitter:card");
+  if (!noindex) {
+    for (const [attributeName, name, expectedContent] of [
+      ["property", "og:type", "website"],
+      ["property", "og:title", title],
+      ["property", "og:description", description],
+      ["property", "og:site_name", "Ethan Brosselard"],
+      ["property", "og:locale", locale === "fr" ? "fr_FR" : "en_US"],
+      ["property", "og:locale:alternate", locale === "fr" ? "en_US" : "fr_FR"],
+      ["name", "twitter:title", title],
+      ["name", "twitter:description", description],
+    ]) {
+      const tag = socialMeta(attributeName, name);
+      if (attribute(tag ?? "", "content") !== expectedContent) {
+        errors.push(`${relativePath}: ${name} does not match ${expectedContent}`);
+      }
+    }
+  }
   if (!noindex && process.env.SITE_URL) {
     const expectedUrl = new URL(route, process.env.SITE_URL).href;
     if (attribute(canonicalTag ?? "", "href") !== expectedUrl) {

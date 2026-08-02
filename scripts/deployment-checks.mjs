@@ -254,6 +254,23 @@ function validateJsonLd(html, pathname, locale, expectedSiteOrigin) {
 
 function validateProductionMetadata(html, pathname, locale, expectedSiteOrigin) {
   const expectedUrl = new URL(pathname, expectedSiteOrigin).href;
+  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
+  const description = attribute(meta(html, "name", "description") ?? "", "content")?.trim();
+  for (const [attributeName, name, expected] of [
+    ["property", "og:type", "website"],
+    ["property", "og:title", title],
+    ["property", "og:description", description],
+    ["property", "og:site_name", "Ethan Brosselard"],
+    ["property", "og:locale", locale === "fr" ? "fr_FR" : "en_US"],
+    ["property", "og:locale:alternate", locale === "fr" ? "en_US" : "fr_FR"],
+    ["name", "twitter:title", title],
+    ["name", "twitter:description", description],
+  ]) {
+    assert(
+      attribute(meta(html, attributeName, name) ?? "", "content") === expected,
+      `${pathname}: ${name} does not match ${expected}`,
+    );
+  }
   assert(
     attribute(link(html, "canonical") ?? "", "href") === expectedUrl,
     `${pathname}: canonical does not match ${expectedUrl}`,
@@ -301,15 +318,14 @@ function validatePreviewMetadata(html, pathname) {
     attribute(robots ?? "", "content") === "noindex, nofollow",
     `${pathname}: preview is missing noindex, nofollow`,
   );
-  const forbidden = [
-    link(html, "canonical"),
-    link(html, "alternate"),
-    link(html, "sitemap"),
-    meta(html, "property", "og:title"),
-    meta(html, "name", "twitter:card"),
-  ];
+  const socialMetadata = tags(html, "meta").some(
+    (tag) =>
+      attribute(tag, "property")?.toLowerCase().startsWith("og:") ||
+      attribute(tag, "name")?.toLowerCase().startsWith("twitter:"),
+  );
+  const forbidden = [link(html, "canonical"), link(html, "alternate"), link(html, "sitemap")];
   assert(
-    forbidden.every((tag) => !tag),
+    forbidden.every((tag) => !tag) && !socialMetadata,
     `${pathname}: preview exposes indexable metadata`,
   );
   assert(!html.includes('type="application/ld+json"'), `${pathname}: preview exposes JSON-LD`);
