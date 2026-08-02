@@ -475,7 +475,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
-- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité au 2 août 2026.
+- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité connue au 2 août 2026, preuve et limites consignées dans `docs/qa/dependency-audit-2026-08-02.md`.
 - [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
       utiliser des jetons à privilèges minimaux.
 - [x] `[Dev]` Ajouter et valider dans le build statique et le conteneur un mode `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le crawl des previews.
