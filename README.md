@@ -17,6 +17,7 @@ npm run verify
 npm run generate:brand-assets
 npm run test:container
 npm run test:container:preview
+npm run test:deployment -- --url https://preview.example --mode preview
 npx playwright install --with-deps chromium firefox webkit
 npm run test:lighthouse
 npm run test:e2e
@@ -32,6 +33,23 @@ Les tests Playwright parcourent toutes les routes publiques en clair et sombre s
 L'audit Lighthouse mobile couvre l'accueil, la liste des projets et les deux aperçus avec le ralentissement synthétique standard et une origine HTTPS réservée pour reproduire les métadonnées de production. Il exige au moins 95 pour la performance, l'accessibilité, les bonnes pratiques et le SEO, ainsi qu'un LCP maximal de 2,5 s, un CLS maximal de 0,1 et un TBT maximal de 200 ms. Les rapports locaux sont écrits dans `lighthouse-reports/` sans être versionnés.
 
 Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Coolify, attendent leur healthcheck, puis vérifient les en-têtes Nginx, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
+
+Le même moteur contrôle une URL Coolify sans modifier le déploiement. Il parcourt les douze routes FR/EN, la vraie 404, les en-têtes, les icônes et les signaux SEO propres au mode choisi :
+
+```sh
+npm run test:deployment -- \
+  --url https://preview.example \
+  --mode preview \
+  --report deployment-reports/preview.json
+
+npm run test:deployment -- \
+  --url https://votre-domaine.example \
+  --mode production \
+  --check-http-redirect \
+  --report deployment-reports/production.json
+```
+
+Une preview protégée peut recevoir une valeur complète d’en-tête `Authorization` via la variable d’environnement `DEPLOYMENT_AUTHORIZATION`. Cette valeur n’est ni affichée ni écrite dans le rapport et ne doit jamais être enregistrée dans le dépôt.
 
 ```sh
 SITE_URL=https://votre-domaine.example npm run build

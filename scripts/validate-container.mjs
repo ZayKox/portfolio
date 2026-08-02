@@ -1,6 +1,8 @@
 import { spawnSync } from "node:child_process";
 import process from "node:process";
 
+import { validateDeployment } from "./deployment-checks.mjs";
+
 const previewMode = process.argv.includes("--preview");
 const mode = previewMode ? "preview" : "public";
 const suffix = `${process.pid}-${Date.now()}`;
@@ -41,19 +43,6 @@ async function waitForHealthy() {
   throw new Error("container did not become healthy within 45 seconds");
 }
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-async function validateResponse(origin, pathname, expectedStatus) {
-  const response = await fetch(new URL(pathname, origin), { redirect: "manual" });
-  assert(
-    response.status === expectedStatus,
-    `${pathname} returned ${response.status}, expected ${expectedStatus}`,
-  );
-  return { response, body: await response.text() };
-}
-
 try {
   console.log(`Building the ${mode} production container...`);
   docker([
@@ -74,77 +63,16 @@ try {
 
   const portOutput = docker(["port", container, "8080/tcp"], { quiet: true });
   const port = portOutput.match(/:(\d+)$/)?.[1];
-  assert(port, `could not resolve the published port from: ${portOutput}`);
+  if (!port) throw new Error(`could not resolve the published port from: ${portOutput}`);
   const origin = `http://127.0.0.1:${port}`;
 
-  const home = await validateResponse(origin, "/", 200);
-  assert(home.body.includes("Ethan Brosselard"), "home page does not contain the public name");
-  const favicon = await validateResponse(origin, "/favicon.png", 200);
-  assert(
-    favicon.response.headers.get("content-type")?.startsWith("image/png"),
-    "favicon does not use the image/png content type",
-  );
+  const report = await validateDeployment({
+    requestOrigin: origin,
+    expectedSiteOrigin: siteUrl,
+    mode: previewMode ? "preview" : "production",
+  });
 
-  const expectedHeaders = {
-    "content-security-policy": ["frame-ancestors 'none'", "upgrade-insecure-requests"],
-    "permissions-policy": ["camera=()", "microphone=()", "geolocation=()"],
-    "referrer-policy": ["strict-origin-when-cross-origin"],
-    "x-content-type-options": ["nosniff"],
-    "x-frame-options": ["DENY"],
-  };
-  for (const [name, fragments] of Object.entries(expectedHeaders)) {
-    const value = home.response.headers.get(name) ?? "";
-    for (const fragment of fragments) {
-      assert(value.includes(fragment), `${name} is missing ${fragment}`);
-    }
-  }
-
-  const notFound = await validateResponse(origin, "/route-absente-pour-test/", 404);
-  assert(notFound.body.includes("Cette page n’existe pas."), "404 page is missing French copy");
-  assert(notFound.body.includes("This page does not exist."), "404 page is missing English copy");
-
-  const robots = await validateResponse(origin, "/robots.txt", 200);
-  if (previewMode) {
-    assert(
-      home.body.includes('<meta name="robots" content="noindex, nofollow">'),
-      "preview home page is missing noindex, nofollow",
-    );
-    for (const forbiddenSignal of [
-      'rel="canonical"',
-      'rel="alternate"',
-      'rel="sitemap"',
-      'type="application/ld+json"',
-      'property="og:',
-    ]) {
-      assert(!home.body.includes(forbiddenSignal), `preview exposes ${forbiddenSignal}`);
-    }
-    assert(robots.body.includes("Disallow: /"), "preview robots.txt does not block crawling");
-    assert(!robots.body.includes("Sitemap:"), "preview robots.txt exposes a sitemap");
-    assert(!home.body.includes("social-card.png"), "preview exposes the social sharing image");
-    await validateResponse(origin, "/sitemap-index.xml", 404);
-  } else {
-    assert(
-      robots.body.includes(`${siteUrl}/sitemap-index.xml`),
-      "robots.txt does not reference the expected sitemap",
-    );
-    assert(
-      home.body.includes(`<meta property="og:image" content="${siteUrl}/social-card.png">`),
-      "home page does not expose the expected Open Graph image",
-    );
-    assert(
-      home.body.includes('<meta name="twitter:card" content="summary_large_image">'),
-      "home page does not use a large Twitter card",
-    );
-    const socialCard = await validateResponse(origin, "/social-card.png", 200);
-    assert(
-      socialCard.response.headers.get("content-type")?.startsWith("image/png"),
-      "social card does not use the image/png content type",
-    );
-  }
-
-  console.log(
-    `Validated ${mode} container health, headers, 404 handling, and SEO endpoints at ${origin}.`,
-  );
+  console.log(`Validated ${mode} container at ${origin}: ${report.checks.join(", ")}.`);
 } finally {
   const removeContainer = spawnSync("docker", ["rm", "--force", container], {
     encoding: "utf8",

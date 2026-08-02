@@ -46,7 +46,7 @@ Une répétition technique utilise `SITE_NOINDEX=true`. Toutes les pages devienn
 
 ## Sécurité
 
-Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP compatibles Cloudflare Pages. Pour le chemin VPS, `nginx.conf` sert les mêmes en-têtes depuis un conteneur non privilégié ; Coolify termine TLS et ne publie que le port HTTP interne `8080`.
+Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP compatibles Cloudflare Pages. Pour le chemin VPS, `nginx.conf` sert les mêmes en-têtes depuis un conteneur non privilégié et masque la version de Nginx ; Coolify termine TLS et ne publie que le port HTTP interne `8080`.
 
 Le site ne charge aucun script tiers, n’expose aucun secret et ne contient ni formulaire ni service dynamique. Toute évolution de ce périmètre doit mettre à jour la CSP et les contrôles du build.
 
@@ -69,7 +69,9 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation du conteneur
 
-`npm run test:container` construit l'image publique de production tandis que `npm run test:container:preview` construit sa variante `noindex`. Chaque contrôle démarre Nginx sur un port local aléatoire, attend le healthcheck et vérifie l'accueil, les en-têtes de sécurité, la vraie réponse 404 et les endpoints SEO attendus pour son mode. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
+`npm run test:container` construit l'image publique de production tandis que `npm run test:container:preview` construit sa variante `noindex`. Chaque contrôle démarre Nginx sur un port local aléatoire, attend le healthcheck et appelle le même moteur que la recette distante. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
+
+`npm run test:deployment -- --url <origine-https> --mode <production|preview>` exécute les assertions en lecture seule contre une URL Coolify : douze routes bilingues, vraie 404, CSP et en-têtes, absence de version serveur, favicon, canonical, alternates, JSON-LD, robots, sitemap exact et carte sociale en production, ou suppression de tous les signaux d’indexation en preview. Une preview protégée peut recevoir un en-tête `Authorization` par variable d’environnement ; sa valeur n’est jamais incluse dans le rapport JSON optionnel.
 
 ## Contenu futur
 

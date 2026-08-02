@@ -461,6 +461,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
+- [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.
 - [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
 - [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
@@ -556,6 +557,7 @@ npm run test:e2e
 npm run test:container
 npm run test:lighthouse
 npm run check:links
+npm run test:deployment -- --url https://preview.example --mode preview
 ```
 
 **Gate 11 :** installation depuis un checkout propre, CI verte, tests multi-navigateurs verts et aucun lien bloquant cassé.
@@ -621,6 +623,7 @@ Configuration attendue :
 
 ### Première répétition privée
 
+- [x] `[Dev]` Ajouter un smoke test distant en lecture seule pour les modes production et preview, avec rapport JSON optionnel.
 - [ ] `[QA]` Vérifier que `npm ci` et le build réussissent dans les logs Coolify.
 - [ ] `[QA]` Noter l’URL, l’identifiant du déploiement et le SHA Git.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
@@ -832,7 +835,11 @@ npm run test:e2e
 npm run check:links
 
 # Vérification réseau sur la production
-curl -I https://ethanbrosselard.dev/
+npm run test:deployment -- \
+  --url https://domaine-final.example \
+  --mode production \
+  --check-http-redirect \
+  --report deployment-reports/production.json
 ```
 
 Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le

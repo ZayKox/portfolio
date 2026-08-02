@@ -20,6 +20,7 @@
     "test:lighthouse": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && node scripts/run-lighthouse.mjs",
     "test:container": "node scripts/validate-container.mjs",
     "test:container:preview": "node scripts/validate-container.mjs --preview",
+    "test:deployment": "node scripts/validate-deployment.mjs",
     "check:links": "npm run build && node scripts/check-external-links.mjs",
     "validate:build": "node scripts/validate-build.mjs",
     "verify:site": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run validate:build",

@@ -17,4 +17,5 @@ coverage/
 playwright-report/
 test-results/
 lighthouse-reports/
+deployment-reports/
 *.log
