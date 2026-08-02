@@ -439,11 +439,12 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 - [ ] `[Dev]` Expliquer les traitements existants : email public, journaux techniques de l’hébergeur et éventuelle mesure d’audience.
 - [ ] `[Dev]` Indiquer finalités, bases, destinataires, durées, droits et moyen d’exercice lorsqu’ils s’appliquent.
 - [x] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté ; le build bloque les ressources externes, embeds, stockages et API de suivi non autorisés, et les smoke tests refusent tout `Set-Cookie`.
+- [x] `[Dev/QA]` Minimiser le journal d'accès du conteneur Nginx et vérifier par sentinelles qu'il exclut IP transmise, paramètres d'URL, référent et user-agent ; les journaux du proxy Coolify et de l'hébergeur restent à documenter.
 - [ ] `[Ethan]` Accepter explicitement le risque de spam lié à l’email public, ou choisir une adresse dédiée.
 - [ ] `[Ethan]` Décider de lancer sans analytics. C’est l’option P0 recommandée.
 - [ ] `[Dev]` Si des analytics sont ajoutés plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
 - [ ] `[Dev]` Si un traceur requiert le consentement, ne le charger qu’après choix positif et offrir un refus aussi simple.
-- [x] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers ; le site actuel ne distribue que trois PNG générés dans ce dépôt, consignés avec leur source et leur empreinte dans `docs/media-provenance.json`. Le contrôle bloque tout média publiable non inventorié et toute police embarquée.
+- [x] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers ; le site actuel ne distribue que cinq PNG générés dans ce dépôt, consignés avec leur source et leur empreinte dans `docs/media-provenance.json`. Le contrôle bloque tout média publiable non inventorié et toute police embarquée.
 
 **Gate 8 :** statut de l’éditeur clarifié, pages légales publiées dans les deux langues, traitements réels documentés et aucun traceur non maîtrisé.
 

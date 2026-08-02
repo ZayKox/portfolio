@@ -10,7 +10,7 @@ const image = `portfolio-smoke-${mode}:${suffix}`;
 const container = `portfolio-smoke-${mode}-${suffix}`;
 const siteUrl = previewMode ? "https://preview.portfolio.example" : "https://portfolio.example";
 
-function docker(args, { quiet = false } = {}) {
+function docker(args, { quiet = false, includeStderr = false } = {}) {
   const result = spawnSync("docker", args, {
     encoding: "utf8",
     env: {
@@ -29,7 +29,7 @@ function docker(args, { quiet = false } = {}) {
     if (result.stdout) process.stdout.write(result.stdout);
     if (result.stderr) process.stderr.write(result.stderr);
   }
-  return result.stdout.trim();
+  return `${result.stdout}${includeStderr ? result.stderr : ""}`.trim();
 }
 
 const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -134,6 +134,27 @@ try {
     expectedSiteOrigin: siteUrl,
     mode: previewMode ? "preview" : "production",
   });
+
+  const logProbe = `privacy-probe-${suffix}`;
+  const probeResponse = await fetch(`${origin}/?${logProbe}=query-value`, {
+    headers: {
+      referer: `https://${logProbe}.example/private-referrer`,
+      "user-agent": `${logProbe}-user-agent`,
+      "x-forwarded-for": "203.0.113.77",
+    },
+  });
+  await probeResponse.arrayBuffer();
+  await wait(100);
+  const accessLogs = docker(["logs", container], { quiet: true, includeStderr: true });
+  for (const privateValue of [logProbe, "query-value", "private-referrer", "203.0.113.77"]) {
+    if (accessLogs.includes(privateValue)) {
+      throw new Error(`portfolio access logs expose the privacy probe: ${privateValue}`);
+    }
+  }
+  if (!accessLogs.includes(" GET /index.html 200 ")) {
+    throw new Error("portfolio minimal access log does not retain the expected operational event");
+  }
+  report.checks.push("privacy-minimized container access logs");
 
   console.log(`Validated ${mode} container at ${origin}: ${report.checks.join(", ")}.`);
 } finally {
