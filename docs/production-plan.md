@@ -632,7 +632,7 @@ Configuration attendue :
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
 - [ ] `[QA]` Garder la ressource non publique ou utiliser un domaine de test
       protégé et définir `SITE_NOINDEX=true` pendant la recette ; `noindex` seul ne remplace pas la protection d'accès.
-- [ ] `[QA]` Vérifier que le build ne dépend d’aucun fichier non suivi.
+- [x] `[QA]` Vérifier que le build ne dépend d’aucun fichier non suivi ; `docs/qa/clean-source-review-2026-08-02.md` consigne un `npm ci`, les trois variantes de `npm run verify` et les deux conteneurs exécutés depuis une archive `git archive` du commit, distincte du workspace.
 
 ### Domaine et DNS
 
