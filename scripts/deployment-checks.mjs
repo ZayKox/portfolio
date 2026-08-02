@@ -383,17 +383,73 @@ function xmlLocations(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 }
 
+const canonicalRedirectProbePaths = ["/", "/en/projects/myverse/?redirect_probe=1"];
+
+export async function validateCanonicalRedirects({
+  redirectOrigins,
+  expectedSiteOrigin,
+  fetchImplementation = fetch,
+}) {
+  const expectedBase = origin(expectedSiteOrigin, "expectedSiteOrigin", { requireHttps: true });
+  const redirectBases = redirectOrigins.map((value, index) =>
+    origin(value, `redirectOrigins[${index}]`, { requireHttps: true }),
+  );
+  const normalizedOrigins = redirectBases.map(({ origin: value }) => value);
+  assert(
+    new Set(normalizedOrigins).size === normalizedOrigins.length,
+    "redirectOrigins must not contain duplicates",
+  );
+
+  for (const redirectBase of redirectBases) {
+    assert(
+      redirectBase.origin !== expectedBase.origin,
+      `redirect origin ${redirectBase.origin} is already the canonical origin`,
+    );
+    for (const probePath of canonicalRedirectProbePaths) {
+      const sourceUrl = new URL(probePath, redirectBase);
+      const response = await fetchImplementation(sourceUrl, {
+        redirect: "manual",
+        signal: AbortSignal.timeout(15_000),
+      });
+      assert(
+        [301, 308].includes(response.status),
+        `${sourceUrl.href}: returned ${response.status}, expected a permanent redirect`,
+      );
+      assert(
+        !response.headers.has("set-cookie"),
+        `${sourceUrl.href}: redirect unexpectedly sets a cookie`,
+      );
+      const location = response.headers.get("location");
+      const redirectUrl = location ? new URL(location, sourceUrl) : undefined;
+      assert(
+        redirectUrl?.origin === expectedBase.origin &&
+          redirectUrl.pathname === sourceUrl.pathname &&
+          redirectUrl.search === sourceUrl.search &&
+          !redirectUrl.hash,
+        `${sourceUrl.href}: does not redirect to the equivalent canonical URL`,
+      );
+    }
+  }
+
+  return normalizedOrigins;
+}
+
 export async function validateDeployment({
   requestOrigin,
   expectedSiteOrigin = requestOrigin,
   mode,
   authorization,
   checkHttpRedirect = false,
+  redirectOrigins = [],
 }) {
   assert(["production", "preview"].includes(mode), "mode must be production or preview");
   assert(
     !checkHttpRedirect || mode === "production",
     "HTTP redirect check is only valid in production mode",
+  );
+  assert(
+    redirectOrigins.length === 0 || mode === "production",
+    "canonical redirect checks are only valid in production mode",
   );
   const requestBase = origin(requestOrigin, "requestOrigin");
   const expectedBase = origin(expectedSiteOrigin, "expectedSiteOrigin", { requireHttps: true });
@@ -522,8 +578,8 @@ export async function validateDeployment({
       signal: AbortSignal.timeout(15_000),
     });
     assert(
-      [301, 302, 307, 308].includes(response.status),
-      `HTTP origin returned ${response.status}`,
+      [301, 308].includes(response.status),
+      `HTTP origin returned ${response.status}, expected a permanent redirect`,
     );
     const location = response.headers.get("location");
     const redirectUrl = location ? new URL(location, httpUrl) : undefined;
@@ -532,6 +588,14 @@ export async function validateDeployment({
       "HTTP origin does not redirect to the HTTPS origin",
     );
     checks.push("HTTP to HTTPS redirect");
+  }
+
+  const canonicalRedirectOrigins = await validateCanonicalRedirects({
+    redirectOrigins,
+    expectedSiteOrigin: expectedBase,
+  });
+  if (canonicalRedirectOrigins.length > 0) {
+    checks.push(`${canonicalRedirectOrigins.length} canonical origin redirect(s)`);
   }
 
   return {
@@ -543,6 +607,7 @@ export async function validateDeployment({
     routes: publicRoutes.map(({ path }) => path),
     authorizationUsed: Boolean(authorization),
     httpRedirectChecked: checkHttpRedirect,
+    canonicalRedirectOrigins,
     checks,
   };
 }

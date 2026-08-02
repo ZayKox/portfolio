@@ -653,6 +653,7 @@ Configuration attendue :
 - [ ] `[Ethan]` Ajouter `www` comme domaine secondaire si souhaité.
 - [ ] `[Ethan]` Choisir un canonical unique : apex recommandé.
 - [ ] `[Dev]` Rediriger `www` et toute URL technique publique vers l'apex.
+- [x] `[Dev/QA]` Ajouter au smoke test une option répétable qui refuse les redirections HTTPS temporaires, les destinations non canoniques, les chemins ou paramètres perdus et les cookies sur les variantes déclarées.
 - [ ] `[QA]` Vérifier DNS, certificat TLS, HTTP → HTTPS et absence de boucle de redirection.
 - [ ] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
 
@@ -855,6 +856,7 @@ npm run test:deployment -- \
   --url https://domaine-final.example \
   --mode production \
   --check-http-redirect \
+  --redirect-from https://www.domaine-final.example \
   --report deployment-reports/production.json
 ```
 

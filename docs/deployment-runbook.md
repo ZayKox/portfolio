@@ -74,8 +74,11 @@ npm run test:deployment -- \
   --url https://domaine-final.example \
   --mode production \
   --check-http-redirect \
+  --redirect-from https://www.domaine-final.example \
   --report deployment-reports/rollback-production.json
 ```
+
+Omettre `--redirect-from` si cette origine secondaire n’est pas configurée ; répéter l’option pour chaque variante publique réellement déclarée dans Coolify.
 
 Puis contrôler manuellement :
 
@@ -87,7 +90,7 @@ Puis contrôler manuellement :
 - statut et logs Coolify ;
 - correspondance entre le SHA restauré, la fiche de release et le déploiement affiché.
 
-Le smoke test vérifie également HTTPS via l’origine attendue, la redirection HTTP, les canonical, alternates, JSON-LD, sitemap, `robots.txt`, carte sociale, en-têtes de sécurité et absence de cookie.
+Le smoke test vérifie également HTTPS via l’origine attendue, la redirection HTTP, les redirections permanentes des variantes HTTPS déclarées, les canonical, alternates, JSON-LD, sitemap, `robots.txt`, carte sociale, en-têtes de sécurité et absence de cookie.
 
 ## Repli lorsque l’image n’est plus disponible
 

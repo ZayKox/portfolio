@@ -63,6 +63,15 @@ requireCondition(
   JSON.stringify(packageLock.packages?.[""]?.engines) === JSON.stringify(packageJson.engines),
   "package-lock.json root engines differ from package.json",
 );
+requireCondition(
+  packageJson.scripts?.["test:deployment-redirects"] ===
+    "node scripts/test-deployment-redirects.mjs",
+  "package.json must expose the canonical redirect test",
+);
+requireCondition(
+  packageJson.scripts?.verify?.includes("npm run test:deployment-redirects"),
+  "npm run verify must include the canonical redirect test",
+);
 
 const nodeBase = dockerfile.match(/^FROM node:(\d+)-alpine@sha256:([a-f0-9]{64}) AS builder$/m);
 requireCondition(nodeBase, "Dockerfile builder must pin node:<major>-alpine by SHA-256 digest");

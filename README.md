@@ -54,8 +54,11 @@ npm run test:deployment -- \
   --url https://votre-domaine.example \
   --mode production \
   --check-http-redirect \
+  --redirect-from https://www.votre-domaine.example \
   --report deployment-reports/production.json
 ```
+
+Répéter `--redirect-from` pour chaque origine HTTPS secondaire publique. Le contrôle exige des redirections permanentes pour HTTP → HTTPS et pour chaque variante vers `--url`, conserve les chemins profonds et paramètres, et refuse qu’une variante définisse un cookie. Omettre l’option tant que `www` ou une URL technique publique n’est pas configurée.
 
 Une preview protégée peut recevoir une valeur complète d’en-tête `Authorization` via la variable d’environnement `DEPLOYMENT_AUTHORIZATION`. Cette valeur n’est ni affichée ni écrite dans le rapport et ne doit jamais être enregistrée dans le dépôt.
 
