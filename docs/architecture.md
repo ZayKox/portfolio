@@ -63,6 +63,8 @@ Nginx sert uniquement les fichiers statiques. Les deux images de base conservent
 build et tout changement de domaine impose donc une reconstruction. Cloudflare
 Pages reste une solution de repli adaptée au même artefact statique.
 
+Sur le chemin VPS, Nginx force la revalidation des documents HTML afin qu'un déploiement soit visible immédiatement, tandis que les ressources `/_astro/` dont le nom contient une empreinte reçoivent un cache navigateur d'un an. Le smoke test local et la recette distante contrôlent ces deux politiques.
+
 ## Validation statique
 
 `npm run verify` contrôle le format, la parité factuelle des sources de projets, la provenance des médias, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, langue du document, hiérarchie des titres, régions principales, page courante, noms des contrôles, absence de ressource tierce ou mécanisme de suivi non autorisé, présence des tokens Violet Field requis, parité du thème sombre explicite/système, contrastes principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
@@ -77,7 +79,7 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 `npm run test:container` construit l'image publique de production tandis que `npm run test:container:preview` construit sa variante `noindex`. Chaque contrôle valide d'abord la configuration Compose et son confinement, démarre Nginx avec les mêmes restrictions sur un port local aléatoire, attend le healthcheck et appelle le même moteur que la recette distante. Ce moteur refuse aussi toute réponse qui crée un cookie. Le script utilise des noms temporaires uniques et supprime uniquement son conteneur et son image à la fin du contrôle.
 
-`npm run test:deployment -- --url <origine-https> --mode <production|preview>` exécute les assertions en lecture seule contre une URL Coolify : douze routes bilingues, vraie 404, CSP et en-têtes, absence de version serveur, favicon, canonical, alternates, JSON-LD, robots, sitemap exact et carte sociale en production, ou suppression de tous les signaux d’indexation en preview. Une preview protégée peut recevoir un en-tête `Authorization` par variable d’environnement ; sa valeur n’est jamais incluse dans le rapport JSON optionnel.
+`npm run test:deployment -- --url <origine-https> --mode <production|preview>` exécute les assertions en lecture seule contre une URL Coolify : douze routes bilingues, vraie 404, CSP et en-têtes, politique de cache HTML/ressources hashées, absence de version serveur, favicon, canonical, alternates, JSON-LD, robots, sitemap exact et carte sociale en production, ou suppression de tous les signaux d’indexation en preview. Une preview protégée peut recevoir un en-tête `Authorization` par variable d’environnement ; sa valeur n’est jamais incluse dans le rapport JSON optionnel.
 
 ## Contenu futur
 

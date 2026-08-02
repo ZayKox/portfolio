@@ -466,6 +466,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.
 - [x] `[Dev]` Confiner le service Compose avec une racine en lecture seule, aucune capability Linux, `no-new-privileges` et un `/tmp` borné ; les smoke tests appliquent les mêmes restrictions.
 - [x] `[Dev]` Figer les images de base Node et Nginx par digest multi-architecture et confier leurs mises à jour mensuelles à Dependabot.
+- [x] `[Dev]` Forcer la revalidation des pages HTML et mettre en cache un an uniquement les ressources Astro hashées ; contrôler cette politique localement et à distance.
 - [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
 - [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.

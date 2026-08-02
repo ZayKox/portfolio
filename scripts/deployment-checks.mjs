@@ -139,6 +139,14 @@ function validateSecurityHeaders(response, pathname) {
   );
 }
 
+function validateHtmlCache(response, pathname) {
+  const cacheControl = response.headers.get("cache-control") ?? "";
+  assert(
+    /(?:^|,)\s*no-cache(?:\s*(?:,|$))/i.test(cacheControl),
+    `${pathname}: HTML must be revalidated after a deployment`,
+  );
+}
+
 function validateIcons(html, pathname) {
   const favicon = link(html, "icon");
   assert(attribute(favicon ?? "", "href") === "/favicon.png", `${pathname}: favicon is missing`);
@@ -361,6 +369,7 @@ export async function validateDeployment({
   const expectedBase = origin(expectedSiteOrigin, "expectedSiteOrigin", { requireHttps: true });
   const headers = authorization ? { authorization } : undefined;
   const checks = [];
+  let hashedAssetPath;
 
   async function request(pathname, expectedStatus = 200) {
     const response = await fetch(new URL(pathname, requestBase), {
@@ -379,16 +388,30 @@ export async function validateDeployment({
   for (const route of publicRoutes) {
     const response = await request(route.path);
     validateSecurityHeaders(response, route.path);
+    validateHtmlCache(response, route.path);
     assert(
       response.headers.get("content-type")?.startsWith("text/html"),
       `${route.path}: content type is not HTML`,
     );
-    validateDocument(await response.text(), route.path, route.locale, mode, expectedBase);
+    const html = await response.text();
+    validateDocument(html, route.path, route.locale, mode, expectedBase);
+    hashedAssetPath ??= html.match(/(?:href|src)=["'](\/_astro\/[^"']+)["']/)?.[1];
   }
   checks.push(`${publicRoutes.length} bilingual routes`);
 
+  assert(hashedAssetPath, "no hashed Astro asset was referenced by the public pages");
+  const hashedAsset = await request(hashedAssetPath);
+  validateSecurityHeaders(hashedAsset, hashedAssetPath);
+  const assetCacheControl = hashedAsset.headers.get("cache-control") ?? "";
+  assert(
+    /(?:^|,)\s*max-age=31536000(?:\s*(?:,|$))/i.test(assetCacheControl),
+    `${hashedAssetPath}: hashed asset is missing its one-year cache policy`,
+  );
+  checks.push("HTML revalidation and long-lived hashed assets");
+
   const notFound = await request("/remote-smoke-missing-route/", 404);
   validateSecurityHeaders(notFound, "/remote-smoke-missing-route/");
+  validateHtmlCache(notFound, "/remote-smoke-missing-route/");
   const notFoundHtml = await notFound.text();
   assert(notFoundHtml.includes("Cette page n’existe pas."), "404 page is missing French copy");
   assert(notFoundHtml.includes("This page does not exist."), "404 page is missing English copy");
