@@ -96,6 +96,18 @@ function pathname(reference) {
   }
 }
 
+function resourceReferences(value) {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((candidate) => candidate.trim().split(/\s+/)[0])
+    .filter(Boolean);
+}
+
+function isExternalResource(reference) {
+  return /^(?:https?:)?\/\//i.test(reference);
+}
+
 function routeFromFile(file) {
   const relativePath = path.relative(outputDirectory, file).split(path.sep).join("/");
   if (relativePath === "index.html") return "/";
@@ -363,6 +375,9 @@ function validateDocument(html, relativePath, route) {
   }
   if (!csp?.includes("sha256-")) errors.push(`${relativePath}: CSP has no generated hashes`);
   if (csp?.includes("'unsafe-inline'")) errors.push(`${relativePath}: CSP allows unsafe-inline`);
+  if (/(?:^|[;\s])(?:https?:|\/\/|\*)/i.test(csp ?? "")) {
+    errors.push(`${relativePath}: CSP allows an external source`);
+  }
 
   const cspPosition = cspMeta ? html.indexOf(cspMeta) : -1;
   for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
@@ -543,8 +558,52 @@ function validateDocument(html, relativePath, route) {
 
   for (const script of tags(html, "script")) {
     const source = attribute(script, "src");
-    if (source?.startsWith("http://") || source?.startsWith("https://")) {
+    if (isExternalResource(source)) {
       errors.push(`${relativePath}: unexpected external script: ${source}`);
+    }
+  }
+
+  for (const [tagName, attributeNames] of [
+    ["img", ["src", "srcset"]],
+    ["source", ["src", "srcset"]],
+    ["video", ["src", "poster"]],
+    ["audio", ["src"]],
+    ["track", ["src"]],
+  ]) {
+    for (const tag of tags(html, tagName)) {
+      for (const attributeName of attributeNames) {
+        for (const reference of resourceReferences(attribute(tag, attributeName))) {
+          if (isExternalResource(reference)) {
+            errors.push(
+              `${relativePath}: unexpected external ${tagName} ${attributeName}: ${reference}`,
+            );
+          }
+        }
+      }
+    }
+  }
+
+  const resourceLinkRelations = new Set([
+    "stylesheet",
+    "preload",
+    "modulepreload",
+    "manifest",
+    "icon",
+    "apple-touch-icon",
+    "preconnect",
+    "dns-prefetch",
+  ]);
+  for (const link of tags(html, "link")) {
+    const relation = attribute(link, "rel")?.toLowerCase();
+    const reference = attribute(link, "href");
+    if (relation && resourceLinkRelations.has(relation) && isExternalResource(reference)) {
+      errors.push(`${relativePath}: unexpected external ${relation} resource: ${reference}`);
+    }
+  }
+
+  for (const embeddedTag of ["iframe", "embed", "object"]) {
+    if (tags(html, embeddedTag).length > 0) {
+      errors.push(`${relativePath}: unexpected ${embeddedTag} embed`);
     }
   }
 
@@ -675,13 +734,34 @@ const scannableFiles = allFiles.filter((file) => /\.(?:css|html|js|json|map|txt|
 for (const file of scannableFiles) {
   const contents = await readFile(file, "utf8");
   const extension = path.extname(file);
+  const relativePath = path.relative(outputDirectory, file);
   if ([".css", ".js"].includes(extension) && Buffer.byteLength(contents) > 100 * 1024) {
-    errors.push(`${path.relative(outputDirectory, file)}: asset exceeds the 100 KiB budget`);
+    errors.push(`${relativePath}: asset exceeds the 100 KiB budget`);
   }
   for (const pattern of secretPatterns) {
     if (pattern.test(contents)) {
-      errors.push(`${path.relative(outputDirectory, file)}: output matches a secret pattern`);
+      errors.push(`${relativePath}: output matches a secret pattern`);
     }
+  }
+
+  const contentsWithoutThemeStorage = contents.replace(
+    /\blocalStorage\.(?:getItem|setItem|removeItem)\(\s*(["'`])portfolio-theme\1/g,
+    "",
+  );
+  if (/\b(?:localStorage|sessionStorage)\b/.test(contentsWithoutThemeStorage)) {
+    errors.push(`${relativePath}: uses browser storage outside the approved theme preference`);
+  }
+  for (const [pattern, mechanism] of [
+    [/\bdocument\.cookie\b/, "document.cookie"],
+    [/\bindexedDB\b/, "IndexedDB"],
+    [/\bnavigator\.sendBeacon\b/, "sendBeacon"],
+  ]) {
+    if (pattern.test(contents)) {
+      errors.push(`${relativePath}: unexpected client data mechanism ${mechanism}`);
+    }
+  }
+  if (extension === ".css" && /(?:url\(\s*["']?|@import\s+["'])(?:https?:)?\/\//i.test(contents)) {
+    errors.push(`${relativePath}: stylesheet loads an external resource`);
   }
 }
 

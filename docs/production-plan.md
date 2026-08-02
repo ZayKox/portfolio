@@ -436,7 +436,7 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 - [ ] `[Dev]` Identifier l’éditeur, le moyen de contact et l’hébergeur avec les informations réellement exigées.
 - [ ] `[Dev]` Expliquer les traitements existants : email public, journaux techniques de l’hébergeur et éventuelle mesure d’audience.
 - [ ] `[Dev]` Indiquer finalités, bases, destinataires, durées, droits et moyen d’exercice lorsqu’ils s’appliquent.
-- [ ] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté.
+- [x] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté ; le build bloque les ressources externes, embeds, stockages et API de suivi non autorisés, et les smoke tests refusent tout `Set-Cookie`.
 - [ ] `[Ethan]` Accepter explicitement le risque de spam lié à l’email public, ou choisir une adresse dédiée.
 - [ ] `[Ethan]` Décider de lancer sans analytics. C’est l’option P0 recommandée.
 - [ ] `[Dev]` Si des analytics sont ajoutés plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.

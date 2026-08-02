@@ -86,6 +86,12 @@ function validateSecurityHeaders(response, pathname) {
     for (const fragment of fragments) {
       assert(value.includes(fragment), `${pathname}: ${name} is missing ${fragment}`);
     }
+    if (name === "content-security-policy") {
+      assert(
+        !/(?:^|[;\s])(?:https?:|\/\/|\*)/i.test(value),
+        `${pathname}: content-security-policy allows an external source`,
+      );
+    }
   }
 
   const server = response.headers.get("server") ?? "";
@@ -230,6 +236,10 @@ function validateDocument(html, pathname, locale, mode, expectedSiteOrigin) {
   const csp = attribute(meta(html, "http-equiv", "content-security-policy") ?? "", "content");
   assert(csp?.includes("default-src 'self'"), `${pathname}: document CSP is missing default-src`);
   assert(!csp?.includes("'unsafe-inline'"), `${pathname}: document CSP allows unsafe-inline`);
+  assert(
+    !/(?:^|[;\s])(?:https?:|\/\/|\*)/i.test(csp ?? ""),
+    `${pathname}: document CSP allows an external source`,
+  );
   for (const script of tags(html, "script")) {
     const source = attribute(script, "src");
     assert(
@@ -291,6 +301,7 @@ export async function validateDeployment({
       response.status === expectedStatus,
       `${pathname}: returned ${response.status}, expected ${expectedStatus}`,
     );
+    assert(!response.headers.has("set-cookie"), `${pathname}: response unexpectedly sets a cookie`);
     return response;
   }
 
@@ -373,6 +384,7 @@ export async function validateDeployment({
     validatePng(await socialCard.arrayBuffer(), "/social-card.png", 1200, 630);
     checks.push("canonical, JSON-LD, sitemap, and sharing image");
   }
+  checks.push("no response cookies");
 
   if (checkHttpRedirect) {
     assert(requestBase.protocol === "https:", "HTTP redirect check requires an HTTPS request URL");
