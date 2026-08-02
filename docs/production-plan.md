@@ -241,10 +241,10 @@ Publication autorisée : oui/non
 - [ ] Chaque chiffre indique sa date, son environnement et sa source.
 - [ ] Les preuves locales sont nommées « validation locale », jamais « résultat de production ».
 - [ ] Une section vide est masquée.
-- [ ] Les libellés provisoires visibles, dont « Cette page évoluera » / « This page will evolve », sont remplacés par une information utile ou supprimés.
+- [x] Les libellés provisoires visibles, dont « Cette page évoluera » / « This page will evolve », sont remplacés par une information utile ou supprimés ; le build interdit aussi leurs variantes historiques FR/EN.
 - [ ] Une technologie n’est mise en avant que si un projet ou une expérience la prouve.
 - [ ] Les textes anglais sont localisés, pas traduits mot à mot.
-- [ ] Chaque page possède un titre et une description uniques.
+- [x] Chaque page possède un titre et une description uniques ; `scripts/validate-build.mjs` contrôle leur présence et refuse les doublons dans chaque langue.
 
 **Gate 2 :** les faits publiés sont validés par Ethan et identiques dans les deux langues.
 

@@ -64,6 +64,8 @@ const forbiddenPlaceholders = [
   "coming soon",
   "Cette page évoluera",
   "This page will evolve",
+  "Conçu comme un espace en évolution",
+  "Designed as an evolving space",
   "Étude en construction",
   "Case study in progress",
   "L’étude de cas finale ajoutera",

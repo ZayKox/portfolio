@@ -112,7 +112,7 @@ export const copy = {
       evidenceNote: "Mesures locales, distinctes de résultats utilisateurs ou de production.",
     },
     footer: {
-      note: "Conçu comme un espace en évolution.",
+      note: "Projets, choix d’architecture et validations techniques.",
       noTracking: "Sans analytics ni cookies de suivi.",
     },
     notFound: {
@@ -217,7 +217,7 @@ export const copy = {
       evidenceNote: "Local measurements, separate from user or production outcomes.",
     },
     footer: {
-      note: "Designed as an evolving space.",
+      note: "Projects, architecture decisions, and technical validation.",
       noTracking: "No analytics or tracking cookies.",
     },
     notFound: {
