@@ -281,7 +281,15 @@ function validateDocument(html, relativePath, route) {
   if (h1Count !== 1) errors.push(`${relativePath}: expected one h1, found ${h1Count}`);
   const mainCount = (html.match(/<main\b/gi) ?? []).length;
   if (mainCount !== 1) errors.push(`${relativePath}: expected one main, found ${mainCount}`);
-  if (!html.includes('name="viewport"')) errors.push(`${relativePath}: viewport meta is missing`);
+  const viewportTag = tags(html, "meta").find(
+    (tag) => attribute(tag, "name")?.toLowerCase() === "viewport",
+  );
+  const viewport = attribute(viewportTag ?? "", "content");
+  if (!viewport) {
+    errors.push(`${relativePath}: viewport meta is missing`);
+  } else if (/user-scalable\s*=\s*no|maximum-scale\s*=/i.test(viewport)) {
+    errors.push(`${relativePath}: viewport meta restricts browser zoom`);
+  }
   if (!html.includes('name="color-scheme"')) {
     errors.push(`${relativePath}: color-scheme meta is missing`);
   }

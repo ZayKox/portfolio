@@ -304,6 +304,34 @@ test("mobile pages do not overflow horizontally", async ({ page }, testInfo) => 
   }
 });
 
+test("desktop pages reflow at 200 and 400 percent viewport equivalents", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "One desktop reflow proof is enough");
+
+  for (const { label, width } of [
+    { label: "200%", width: 640 },
+    { label: "400%", width: 320 },
+  ] as const) {
+    await page.setViewportSize({ width, height: 720 });
+
+    for (const route of publicRoutes) {
+      await page.goto(route);
+      await expect(page.locator("h1"), `${route} at ${label}`).toBeVisible();
+
+      const dimensions = await page.evaluate(() => ({
+        bodyWidth: document.body.scrollWidth,
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth: document.documentElement.clientWidth,
+      }));
+      expect(
+        Math.max(dimensions.bodyWidth, dimensions.documentWidth),
+        `${route} at ${label} should reflow without page-level horizontal scrolling`,
+      ).toBeLessThanOrEqual(dimensions.viewportWidth);
+    }
+  }
+});
+
 test("primary mobile controls keep 44px touch targets", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile"), "Mobile project only");
 

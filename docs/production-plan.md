@@ -492,6 +492,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[QA]` Conserver le rapport comme preuve de release en cas d'échec CI.
 - [x] `[QA]` Contrôler automatiquement le lien d'évitement, le mouvement réduit, les cibles tactiles et le reflow à 320 px.
 - [x] `[QA]` Contrôler automatiquement l'ordre DOM de tabulation et la visibilité du focus sur chaque route en clair et sombre.
+- [x] `[QA]` Contrôler sur chaque route le reflow desktop aux largeurs CSS équivalentes à un zoom de 200 % et 400 %, sans confondre cette preuve avec la recette manuelle du zoom navigateur.
 
 ### Recette humaine
 
