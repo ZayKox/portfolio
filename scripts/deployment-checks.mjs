@@ -21,6 +21,26 @@ const languagePairs = [
   { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
   { fr: "/projets/myverse/", en: "/en/projects/myverse/" },
 ];
+const expectedSchemaTypes = new Map([
+  ["/", "ProfilePage"],
+  ["/a-propos/", "ProfilePage"],
+  ["/contact/", "ContactPage"],
+  ["/projets/", "CollectionPage"],
+  ["/projets/filtre-appels/", "WebPage"],
+  ["/projets/myverse/", "WebPage"],
+  ["/en/", "ProfilePage"],
+  ["/en/about/", "ProfilePage"],
+  ["/en/contact/", "ContactPage"],
+  ["/en/projects/", "CollectionPage"],
+  ["/en/projects/filtre-appels/", "WebPage"],
+  ["/en/projects/myverse/", "WebPage"],
+]);
+const expectedPerson = {
+  "@type": "Person",
+  name: "Ethan Brosselard",
+  homeLocation: { "@type": "Place", name: "Paris, France" },
+  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard-507334237/"],
+};
 
 const forbiddenPlaceholders = ["TODO", "TBD", "À REMPLIR", "coming soon"];
 
@@ -57,6 +77,24 @@ function attribute(tag, name) {
 
 function tags(html, name) {
   return [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, "gi"))].map(([tag]) => tag);
+}
+
+function decodeHtml(value) {
+  return value
+    ?.replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#(?:39|x27);/gi, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function assertExactKeys(value, expectedKeys, label) {
+  assert(value && typeof value === "object" && !Array.isArray(value), `${label} is not an object`);
+  const actualKeys = Object.keys(value).sort();
+  assert(
+    JSON.stringify(actualKeys) === JSON.stringify([...expectedKeys].sort()),
+    `${label} properties are invalid: ${actualKeys.join(", ")}`,
+  );
 }
 
 function meta(html, attributeName, value) {
@@ -149,15 +187,48 @@ function validateJsonLd(html, pathname, locale, expectedSiteOrigin) {
   }
   const expectedPageUrl = new URL(pathname, expectedSiteOrigin).href;
   const expectedPersonUrl = new URL(locale === "fr" ? "/" : "/en/", expectedSiteOrigin).href;
-  const person = data.mainEntity ?? data.author;
+  const expectedType = expectedSchemaTypes.get(pathname);
+  const personProperty = expectedType === "ProfilePage" ? "mainEntity" : "author";
+  const person = data[personProperty];
+  const title = decodeHtml(html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim());
+  const description = decodeHtml(attribute(meta(html, "name", "description") ?? "", "content"));
+  assertExactKeys(
+    data,
+    ["@context", "@type", "name", "description", "inLanguage", personProperty, "url"],
+    `${pathname}: JSON-LD page`,
+  );
+  assertExactKeys(
+    person,
+    ["@type", "name", "homeLocation", "sameAs", "url"],
+    `${pathname}: JSON-LD Person`,
+  );
   assert(data["@context"] === "https://schema.org", `${pathname}: JSON-LD context is invalid`);
+  assert(data["@type"] === expectedType, `${pathname}: JSON-LD type is invalid`);
+  assert(data.name === title, `${pathname}: JSON-LD name does not match the page title`);
+  assert(
+    data.description === description,
+    `${pathname}: JSON-LD description does not match the page description`,
+  );
+  assert(data.inLanguage === locale, `${pathname}: JSON-LD language is invalid`);
   assert(
     data.url === expectedPageUrl,
     `${pathname}: JSON-LD URL does not match ${expectedPageUrl}`,
   );
   assert(person?.name === "Ethan Brosselard", `${pathname}: JSON-LD person name is invalid`);
+  assert(
+    JSON.stringify({
+      "@type": person?.["@type"],
+      name: person?.name,
+      homeLocation: person?.homeLocation,
+      sameAs: person?.sameAs,
+    }) === JSON.stringify(expectedPerson),
+    `${pathname}: JSON-LD Person facts are invalid`,
+  );
   assert(person?.url === expectedPersonUrl, `${pathname}: JSON-LD person URL is invalid`);
-  assert(!blocks[0].includes("mailto:"), `${pathname}: JSON-LD exposes the public email`);
+  assert(
+    !/mailto:|[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(blocks[0]),
+    `${pathname}: JSON-LD exposes the public email`,
+  );
 }
 
 function validateProductionMetadata(html, pathname, locale, expectedSiteOrigin) {

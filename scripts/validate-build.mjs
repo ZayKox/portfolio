@@ -35,6 +35,26 @@ const languagePairs = [
   { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
   { fr: "/projets/myverse/", en: "/en/projects/myverse/" },
 ];
+const expectedSchemaTypes = new Map([
+  ["/", "ProfilePage"],
+  ["/a-propos/", "ProfilePage"],
+  ["/contact/", "ContactPage"],
+  ["/projets/", "CollectionPage"],
+  ["/projets/filtre-appels/", "WebPage"],
+  ["/projets/myverse/", "WebPage"],
+  ["/en/", "ProfilePage"],
+  ["/en/about/", "ProfilePage"],
+  ["/en/contact/", "ContactPage"],
+  ["/en/projects/", "CollectionPage"],
+  ["/en/projects/filtre-appels/", "WebPage"],
+  ["/en/projects/myverse/", "WebPage"],
+]);
+const expectedPerson = {
+  "@type": "Person",
+  name: "Ethan Brosselard",
+  homeLocation: { "@type": "Place", name: "Paris, France" },
+  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard-507334237/"],
+};
 
 const forbiddenPlaceholders = [
   "À REMPLIR",
@@ -106,6 +126,24 @@ function resourceReferences(value) {
 
 function isExternalResource(reference) {
   return /^(?:https?:)?\/\//i.test(reference);
+}
+
+function decodeHtml(value) {
+  return value
+    ?.replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#(?:39|x27);/gi, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function sameJsonValue(actual, expected) {
+  return JSON.stringify(actual) === JSON.stringify(expected);
+}
+
+function unexpectedKeys(value, allowedKeys) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return [];
+  return Object.keys(value).filter((key) => !allowedKeys.includes(key));
 }
 
 function routeFromFile(file) {
@@ -503,26 +541,82 @@ function validateDocument(html, relativePath, route) {
   if (noindex && jsonLdBlocks.length > 0) {
     errors.push(`${relativePath}: noindex page exposes JSON-LD`);
   }
-  if (!noindex && jsonLdBlocks.length === 0) errors.push(`${relativePath}: missing JSON-LD`);
+  if (!noindex && jsonLdBlocks.length !== 1) {
+    errors.push(`${relativePath}: expected one JSON-LD block, found ${jsonLdBlocks.length}`);
+  }
   for (const jsonLd of jsonLdBlocks) {
     try {
       const data = JSON.parse(jsonLd);
-      if (process.env.SITE_URL && !noindex) {
+      const expectedType = expectedSchemaTypes.get(route);
+      const personProperty = expectedType === "ProfilePage" ? "mainEntity" : "author";
+      const otherPersonProperty = personProperty === "mainEntity" ? "author" : "mainEntity";
+      const person = data[personProperty];
+      const expectedPageKeys = [
+        "@context",
+        "@type",
+        "name",
+        "description",
+        "inLanguage",
+        personProperty,
+        ...(process.env.SITE_URL ? ["url"] : []),
+      ];
+      const unexpectedPageKeys = unexpectedKeys(data, expectedPageKeys);
+      if (unexpectedPageKeys.length > 0) {
+        errors.push(
+          `${relativePath}: JSON-LD has unapproved page properties: ${unexpectedPageKeys.join(", ")}`,
+        );
+      }
+      for (const [actual, expected, label] of [
+        [data["@context"], "https://schema.org", "context"],
+        [data["@type"], expectedType, "type"],
+        [data.name, decodeHtml(title), "name"],
+        [data.description, decodeHtml(description), "description"],
+        [data.inLanguage, locale, "language"],
+      ]) {
+        if (actual !== expected) {
+          errors.push(`${relativePath}: JSON-LD ${label} does not match the rendered page`);
+        }
+      }
+      if (data[otherPersonProperty] !== undefined) {
+        errors.push(
+          `${relativePath}: JSON-LD uses ${otherPersonProperty} instead of ${personProperty}`,
+        );
+      }
+      const expectedPersonKeys = [
+        "@type",
+        "name",
+        "homeLocation",
+        "sameAs",
+        ...(process.env.SITE_URL ? ["url"] : []),
+      ];
+      const unexpectedPersonKeys = unexpectedKeys(person, expectedPersonKeys);
+      if (unexpectedPersonKeys.length > 0) {
+        errors.push(
+          `${relativePath}: JSON-LD has unapproved Person properties: ${unexpectedPersonKeys.join(", ")}`,
+        );
+      }
+      for (const key of Object.keys(expectedPerson)) {
+        if (!sameJsonValue(person?.[key], expectedPerson[key])) {
+          errors.push(`${relativePath}: JSON-LD Person ${key} is invalid`);
+        }
+      }
+      if (process.env.SITE_URL) {
         const expectedPageUrl = new URL(route, process.env.SITE_URL).href;
         const expectedPersonUrl = new URL(locale === "fr" ? "/" : "/en/", process.env.SITE_URL)
           .href;
-        const person = data.mainEntity ?? data.author;
         if (data.url !== expectedPageUrl) {
           errors.push(`${relativePath}: JSON-LD page URL does not match ${expectedPageUrl}`);
         }
         if (person?.url !== expectedPersonUrl) {
           errors.push(`${relativePath}: JSON-LD person URL does not match ${expectedPersonUrl}`);
         }
+      } else if (data.url !== undefined || person?.url !== undefined) {
+        errors.push(`${relativePath}: JSON-LD exposes an absolute URL without SITE_URL`);
       }
     } catch {
       errors.push(`${relativePath}: invalid JSON-LD`);
     }
-    if (jsonLd.includes("mailto:")) {
+    if (/mailto:|[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(jsonLd)) {
       errors.push(`${relativePath}: public email leaked in JSON-LD`);
     }
   }

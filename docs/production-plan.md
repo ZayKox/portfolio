@@ -414,7 +414,7 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [x] `[QA]` Exclure du sitemap les pages réellement `noindex` et le contrôler dans le build avec domaine de test.
 - [x] `[Dev]` Ajouter `og:image`, dimensions, type MIME et texte alternatif social lorsque pertinent.
 - [x] `[Dev]` Choisir `summary_large_image` quand l’image 1200 × 630 est prête.
-- [ ] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies.
+- [x] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies ; le build et les smoke tests imposent le type attendu par route, la parité avec le titre, la description et la langue visibles, la liste exacte des faits `Person` validés et l'absence d'email ou de propriété supplémentaire.
 - [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
 - [x] `[QA]` Tester les liens internes et externes, redirections comprises.
