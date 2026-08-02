@@ -593,7 +593,7 @@ Pour la recette synthétique avant lancement : viser un score Lighthouse d’au 
 - [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
 - [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
 - [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.
-- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
+- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; les quatre audits à 100 et leurs LCP de 902–903 ms sont consignés dans `docs/qa/lighthouse-review-2026-08-02.md`. Mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
 - [x] `[QA]` Tester Lighthouse sous réseau et CPU ralentis.
 - [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
 - [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
