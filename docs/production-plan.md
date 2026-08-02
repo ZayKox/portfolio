@@ -291,6 +291,8 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 
 ### Structure de chaque étude
 
+- [x] `[QA]` Contrôler automatiquement les paires MDX FR/EN, leurs champs factuels partagés, leurs métriques et leur structure narrative.
+
 1. Résumé : rôle, dates, statut et technologies essentielles.
 2. Problème réel et contexte.
 3. Contraintes et objectifs.

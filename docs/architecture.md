@@ -38,6 +38,8 @@ Chaque projet possède une entrée MDX par langue. Le frontmatter contient les d
 
 Le statut réel, les dates et les métriques produit restent absents tant qu’Ethan ne les a pas explicitement validés dans le questionnaire. Le format `teaser` est présenté comme un aperçu technique et ne vaut pas affirmation sur le niveau de maturité du produit.
 
+`scripts/validate-content-parity.mjs` contrôle directement les sources MDX. Il impose une paire FR/EN par slug, l'identité du statut de publication, de l'ordre, de la mise en avant, de la stack, du visuel et des valeurs métriques, ainsi qu'une structure narrative de même profondeur. Les libellés et récits restent volontairement localisables.
+
 ## Domaine et SEO
 
 Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes restent relatifs et aucun canonical, sitemap ou URL d’image sociale n’est émis. Avec une origine HTTPS finale dans `SITE_URL`, Astro produit les canonical, `og:url`, URL JSON-LD, `robots.txt`, le sitemap officiel et l’URL absolue de la carte sociale. La 404 est exclue du sitemap.
@@ -63,7 +65,7 @@ Pages reste une solution de repli adaptée au même artefact statique.
 
 ## Validation statique
 
-`npm run verify` contrôle le format, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, langue du document, hiérarchie des titres, régions principales, page courante, noms des contrôles, absence de ressource tierce ou mécanisme de suivi non autorisé, présence des tokens Violet Field requis, parité du thème sombre explicite/système, contrastes principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
+`npm run verify` contrôle le format, la parité factuelle des sources de projets, la provenance des médias, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, métadonnées, sitemap, robots, CSP, JSON-LD, langue du document, hiérarchie des titres, régions principales, page courante, noms des contrôles, absence de ressource tierce ou mécanisme de suivi non autorisé, présence des tokens Violet Field requis, parité du thème sombre explicite/système, contrastes principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
 
 ## Validation navigateur
 

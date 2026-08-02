@@ -83,6 +83,7 @@ le serveur déjà acheté sans modifier l'architecture Astro.
 - `src/pages/` contient les routes françaises et anglaises.
 - `src/components/pages/` contient les pages partagées entre les langues.
 - `src/content/projects/` contient une entrée MDX par projet et par langue.
+- `npm run check:content` vérifie la parité factuelle et structurelle des paires de projets FR/EN.
 - `src/data/profile.ts` contient les faits publics et les liens d’Ethan.
 - `src/i18n/copy.ts` centralise les textes d’interface.
 - `src/styles/global.css` contient les tokens et le système visuel.
