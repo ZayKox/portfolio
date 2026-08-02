@@ -441,7 +441,7 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 - [ ] `[Ethan]` Décider de lancer sans analytics. C’est l’option P0 recommandée.
 - [ ] `[Dev]` Si des analytics sont ajoutés plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
 - [ ] `[Dev]` Si un traceur requiert le consentement, ne le charger qu’après choix positif et offrir un refus aussi simple.
-- [ ] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers.
+- [x] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers ; le site actuel ne distribue que trois PNG générés dans ce dépôt, consignés avec leur source et leur empreinte dans `docs/media-provenance.json`. Le contrôle bloque tout média publiable non inventorié et toute police embarquée.
 
 **Gate 8 :** statut de l’éditeur clarifié, pages légales publiées dans les deux langues, traitements réels documentés et aucun traceur non maîtrisé.
 

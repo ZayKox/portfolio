@@ -28,6 +28,8 @@ La vérification teste le site avec une origine HTTPS réservée, puis recrée `
 
 Les favicon, icône Apple touch et carte sociale sont des PNG déterministes générés depuis le langage visuel Violet Field avec `npm run generate:brand-assets`. Les fichiers finaux restent versionnés dans `public/` pour que le build de production ne dépende pas d’un navigateur.
 
+Le manifeste [`docs/media-provenance.json`](docs/media-provenance.json) consigne leur origine et leur empreinte SHA-256. `npm run check:media`, inclus dans `npm run verify`, refuse tout média publiable non inventorié, toute modification non revue de ces fichiers et toute police embarquée tant que la politique reste fondée sur la pile système.
+
 Les rôles, valeurs et règles d'évolution des tokens Violet Field sont consignés dans [`docs/design-system.md`](docs/design-system.md). Le build vérifie la présence des tokens requis et l'identité des variantes sombres explicite et système.
 
 La promesse d'absence de suivi est contrôlée : seules les URLs de navigation externes sont autorisées, aucune ressource tierce ou API de suivi ne peut entrer dans le build, et les smoke tests locaux/distants refusent les réponses `Set-Cookie`. La préférence de thème reste l'unique valeur stockée dans le navigateur.

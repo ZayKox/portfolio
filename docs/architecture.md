@@ -44,6 +44,8 @@ Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes rest
 
 `scripts/generate-brand-assets.mjs` rend le favicon 64 × 64, l’icône Apple touch 180 × 180 et la carte sociale 1200 × 630 depuis du HTML/CSS déterministe fondé sur les tokens Violet Field et le monogramme public. Les PNG générés sont versionnés dans `public/` ; le build n’exécute pas Chromium. La validation contrôle leur présence, leur format, leurs dimensions, leur poids et leurs métadonnées FR/EN.
 
+`docs/media-provenance.json` inventorie chaque média publiable avec sa source et son empreinte SHA-256. Le contrôle associé refuse un fichier média absent du manifeste, une empreinte modifiée ou une police embarquée. L’interface actuelle utilise uniquement du texte, du CSS, le caractère Unicode du sélecteur de thème et les polices disponibles sur le système ; elle ne distribue ni icône, police, capture, vidéo ou contenu visuel tiers.
+
 Une répétition technique utilise `SITE_NOINDEX=true`. Toutes les pages deviennent alors `noindex, nofollow`, `robots.txt` interdit le crawl et aucun sitemap, canonical, alternate, JSON-LD ou aperçu social n'est généré. `npm run verify` contrôle séparément ce mode, la production indexable et le build sans origine. Cette défense contre l'indexation accidentelle ne remplace pas une authentification ou une restriction réseau de la preview.
 
 ## Sécurité

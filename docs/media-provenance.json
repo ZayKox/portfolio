@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "policy": {
+    "fonts": "system-only",
+    "icons": "text-and-css-only",
+    "thirdPartyMedia": false
+  },
+  "assets": [
+    {
+      "path": "public/favicon.png",
+      "kind": "generated-brand",
+      "generator": "scripts/generate-brand-assets.mjs",
+      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "sha256": "d242b32e7b08895c161fd09682b4ff3541e291016e72545a76300a33e04d7576"
+    },
+    {
+      "path": "public/apple-touch-icon.png",
+      "kind": "generated-brand",
+      "generator": "scripts/generate-brand-assets.mjs",
+      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "sha256": "825d04ace707868b0d9f7a17af45842f68f1ac96ec568726f95cab9289c39f43"
+    },
+    {
+      "path": "public/social-card.png",
+      "kind": "generated-brand",
+      "generator": "scripts/generate-brand-assets.mjs",
+      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "sha256": "3be7d81e63e212655d6054aa7c30a358c5111e0ef292754d0454c48e2b3571c4"
+    }
+  ]
+}
