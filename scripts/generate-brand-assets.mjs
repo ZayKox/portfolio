@@ -98,7 +98,7 @@ const socialMarkup = `
   <div class="glow glow-two"></div>
   <main>
     <div class="identity">
-      <p class="kicker">PORTFOLIO / 2026</p>
+      <p class="kicker">PORTFOLIO / VIOLET FIELD</p>
       <h1>ETHAN<br>BROSSELARD</h1>
       <p class="fields">WEB <span>·</span> MOBILE <span>·</span> SYSTEMS <span>·</span> AI / NEXT</p>
     </div>

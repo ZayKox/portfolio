@@ -25,7 +25,7 @@
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
-      "sha256": "3be7d81e63e212655d6054aa7c30a358c5111e0ef292754d0454c48e2b3571c4"
+      "sha256": "019b88e90915fc8c007fb802d14f9ee6421a4cb9905abb8b9769f7414476577a"
     },
     {
       "path": "public/myverse-social-card.png",
