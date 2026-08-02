@@ -360,9 +360,9 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [ ] `[Dev]` Intégrer les captures sans surcharger l’interface.
 - [ ] `[Dev]` Présenter les compétences par domaines et preuves, jamais en pourcentages.
 - [ ] `[Dev]` Rendre les captures agrandissables au clavier et au tactile si une lightbox est ajoutée.
-- [ ] `[QA]` Vérifier toutes les routes en clair, sombre et préférence système.
-- [ ] `[QA]` Vérifier mobile, tablette, desktop et écrans larges.
-- [ ] `[QA]` Vérifier `prefers-reduced-motion`.
+- [x] `[QA]` Vérifier toutes les routes en clair, sombre et préférence système ; les 36 captures locales et leur relecture sont consignées dans `docs/qa/visual-review-2026-08-02.md`.
+- [x] `[QA]` Vérifier mobile, tablette, desktop et écrans larges ; l'ensemble de la recette couvre 320, 768, 1440 et 1920 px, dont 30 captures représentatives sur les profils mobile, tablette et écran large dans les deux thèmes.
+- [x] `[QA]` Vérifier `prefers-reduced-motion` ; les dix contrôles représentatifs limitent animations et transitions à `0,00001 s`.
 
 **Gate 5 :** aucun écran factice, aucune dépendance au survol, thèmes cohérents et direction « Violet Field » reconnaissable sans décor gratuit.
 
