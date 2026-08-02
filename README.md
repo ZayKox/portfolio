@@ -57,6 +57,8 @@ npm run test:deployment -- \
 
 Une preview protégée peut recevoir une valeur complète d’en-tête `Authorization` via la variable d’environnement `DEPLOYMENT_AUTHORIZATION`. Cette valeur n’est ni affichée ni écrite dans le rapport et ne doit jamais être enregistrée dans le dépôt.
 
+La préparation d’une publication et le retour arrière Coolify sont détaillés dans [`docs/deployment-runbook.md`](docs/deployment-runbook.md). Le rollback rapide dépend de la présence locale de l’ancienne image dans Coolify ; le runbook prévoit donc aussi un repli par commit `git revert`, sans réécriture de l’historique.
+
 ```sh
 SITE_URL=https://votre-domaine.example npm run build
 ```

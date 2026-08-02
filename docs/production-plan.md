@@ -663,8 +663,8 @@ unique et configuration Coolify documentée sans secret.
 - [ ] `[QA]` Vérifier les deux thèmes et la matrice d’écrans.
 - [ ] `[QA]` Vérifier la console et les en-têtes réseau.
 - [ ] `[QA]` Vérifier le contenu de `dist/` pour les secrets et placeholders.
-- [ ] `[QA]` Tester le redéploiement d'une image issue du dernier SHA valide ou
-      documenter précisément cette procédure avant la première production.
+- [x] `[QA]` Tester le redéploiement d'une image issue du dernier SHA valide ou
+      documenter précisément cette procédure avant la première production ; `docs/deployment-runbook.md` décrit le rollback par image locale Coolify, le repli par commit `git revert`, les contrôles, les preuves et l'exercice privé restant à exécuter.
 - [ ] `[Ethan]` Donner un GO explicite sur la répétition privée.
 
 **Gate 14 :** toutes les preuves P0 sont réunies et le GO d’Ethan est enregistré.
@@ -715,6 +715,8 @@ Observations :
 **Gate 15 :** production accessible et vérifiée, tag créé, preuves conservées et rollback identifié.
 
 ## Procédure de retour arrière
+
+Le runbook opératoire complet, les critères de choix, les commandes de contrôle et la fiche d’incident vivent dans `docs/deployment-runbook.md`. Le résumé suivant reste la règle de décision :
 
 Déclencher un rollback en cas de page blanche, navigation principale cassée, fuite de donnée, violation CSP bloquante, erreur de domaine/canonical, régression d’accessibilité majeure ou taux élevé d’erreurs constaté.
 
