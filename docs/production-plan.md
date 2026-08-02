@@ -550,7 +550,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 
 - [x] Chromium desktop et mobile.
 - [x] Firefox desktop.
-- [ ] WebKit desktop et émulation mobile.
+- [x] WebKit desktop et émulation mobile ; 36 tests réussis et 12 scénarios non applicables ignorés dans l’image officielle Playwright 1.62.1, preuve consignée dans `docs/qa/webkit-review-2026-08-02.md`.
 - [ ] Au moins un téléphone réel Android.
 - [ ] Safari/iPhone réel si disponible ; sinon noter explicitement l’absence de preuve réelle.
 
