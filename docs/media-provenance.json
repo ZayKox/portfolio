@@ -11,6 +11,9 @@
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "width": 64,
+      "height": 64,
+      "maxBytes": 8192,
       "sha256": "d242b32e7b08895c161fd09682b4ff3541e291016e72545a76300a33e04d7576"
     },
     {
@@ -18,6 +21,9 @@
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "width": 180,
+      "height": 180,
+      "maxBytes": 32768,
       "sha256": "825d04ace707868b0d9f7a17af45842f68f1ac96ec568726f95cab9289c39f43"
     },
     {
@@ -25,6 +31,9 @@
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "width": 1200,
+      "height": 630,
+      "maxBytes": 204800,
       "sha256": "019b88e90915fc8c007fb802d14f9ee6421a4cb9905abb8b9769f7414476577a"
     },
     {
@@ -32,6 +41,9 @@
       "kind": "generated-project-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the existing code-native MyVerse project composition, without third-party media input.",
+      "width": 1200,
+      "height": 630,
+      "maxBytes": 307200,
       "sha256": "45651e7ed2d5175d6c1905f012f492009ba0ce12670fd58a720fb65274fffeb5"
     },
     {
@@ -39,6 +51,9 @@
       "kind": "generated-project-brand",
       "generator": "scripts/generate-brand-assets.mjs",
       "provenance": "Generated in this repository from Violet Field tokens and the existing code-native FiltreAppels project composition, without third-party media input.",
+      "width": 1200,
+      "height": 630,
+      "maxBytes": 307200,
       "sha256": "0949309d76ca58de84d6472c55ae5e3424cb30d6acc99af0625c82304f9cfa61"
     }
   ]

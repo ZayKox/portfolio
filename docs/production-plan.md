@@ -112,7 +112,7 @@ Choix structurants :
 - [ ] Configurer et vérifier le workflow GitHub distant.
 - [ ] Acheter et connecter le domaine.
 - [ ] Ajouter l’URL de production à Astro.
-- [ ] Ajouter sitemap, `robots.txt` final et images sociales.
+- [x] Ajouter sitemap, `robots.txt` conditionnel, une image sociale générale et une par projet ; les trois variantes de build et le manifeste média les contrôlent.
 - [ ] Ajouter pages légales et confidentialité adaptées.
 - [x] Durcir les en-têtes et activer/tester la CSP localement.
 - [x] Ajouter les tests navigateur, accessibilité et liens.
@@ -587,8 +587,8 @@ Budgets de référence au 75e percentile réel après collecte suffisante :
 Pour la recette synthétique avant lancement : viser un score Lighthouse d’au moins 95 sur performance, accessibilité, bonnes pratiques et SEO pour les pages représentatives, sans considérer le score comme une preuve suffisante à lui seul.
 
 - [x] `[Dev]` Garder le JavaScript client au strict nécessaire pour le thème progressif.
-- [ ] `[Dev]` Dimensionner chaque image et utiliser les formats modernes.
-- [ ] `[Dev]` Charger les médias sous la ligne de flottaison paresseusement.
+- [x] `[Dev/QA]` Dimensionner et borner chaque image actuellement publiée ; les cinq PNG d’icône ou de partage utilisent le format compatible avec leur destination, et le manifeste bloque dimensions ou budgets inattendus.
+- [x] `[Dev/QA]` Ne charger aucun média de contenu sous la ligne de flottaison dans le jalon A actuel ; appliquer le chargement paresseux et les formats modernes avant de publier de futures captures ou vidéos.
 - [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
 - [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
 - [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.

@@ -72,6 +72,9 @@ for (const asset of assets) {
   if (!/^[a-f0-9]{64}$/.test(asset.sha256 ?? "")) {
     errors.push(`${normalizedPath}: SHA-256 is invalid`);
   }
+  if (!Number.isSafeInteger(asset.maxBytes) || asset.maxBytes <= 0) {
+    errors.push(`${normalizedPath}: maxBytes must be a positive integer`);
+  }
 
   const absolutePath = path.join(root, normalizedPath);
   const contents = await readFile(absolutePath).catch(() => undefined);
@@ -81,6 +84,34 @@ for (const asset of assets) {
     const actualHash = createHash("sha256").update(contents).digest("hex");
     if (actualHash !== asset.sha256) {
       errors.push(`${normalizedPath}: SHA-256 differs from the reviewed media manifest`);
+    }
+    if (Number.isSafeInteger(asset.maxBytes) && contents.length > asset.maxBytes) {
+      errors.push(
+        `${normalizedPath}: ${contents.length} bytes exceeds the ${asset.maxBytes}-byte budget`,
+      );
+    }
+    if (normalizedPath.toLowerCase().endsWith(".png")) {
+      const pngSignature = "89504e470d0a1a0a";
+      if (
+        contents.length < 24 ||
+        contents.subarray(0, 8).toString("hex") !== pngSignature ||
+        contents.subarray(12, 16).toString("ascii") !== "IHDR"
+      ) {
+        errors.push(`${normalizedPath}: file is not a valid PNG with an IHDR header`);
+      } else {
+        const actualWidth = contents.readUInt32BE(16);
+        const actualHeight = contents.readUInt32BE(20);
+        if (!Number.isSafeInteger(asset.width) || asset.width <= 0) {
+          errors.push(`${normalizedPath}: width must be a positive integer`);
+        } else if (actualWidth !== asset.width) {
+          errors.push(`${normalizedPath}: width ${actualWidth} differs from ${asset.width}`);
+        }
+        if (!Number.isSafeInteger(asset.height) || asset.height <= 0) {
+          errors.push(`${normalizedPath}: height must be a positive integer`);
+        } else if (actualHeight !== asset.height) {
+          errors.push(`${normalizedPath}: height ${actualHeight} differs from ${asset.height}`);
+        }
+      }
     }
   }
 
@@ -115,6 +146,6 @@ if (errors.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Validated provenance for ${publishedMedia.length} published media assets; no fonts are bundled.`,
+    `Validated provenance, dimensions, and byte budgets for ${publishedMedia.length} published media assets; no fonts are bundled.`,
   );
 }

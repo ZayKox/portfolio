@@ -28,9 +28,9 @@ La vérification teste le site avec une origine HTTPS réservée, puis recrée `
 
 `npm run check:toolchain`, inclus dans cette vérification, maintient l'alignement de Node et npm entre le poste local, GitHub Actions et Docker. Il exige aussi les digests des images, les actions GitHub épinglées, la CI complète, la couverture Dependabot et les exclusions sensibles du contexte Docker.
 
-Les favicon, icône Apple touch et carte sociale sont des PNG déterministes générés depuis le langage visuel Violet Field avec `npm run generate:brand-assets`. Les fichiers finaux restent versionnés dans `public/` pour que le build de production ne dépende pas d’un navigateur.
+Le favicon, l’icône Apple touch et les cartes sociales sont des PNG déterministes générés depuis le langage visuel Violet Field avec `npm run generate:brand-assets`. Les fichiers finaux restent versionnés dans `public/` pour que le build de production ne dépende pas d’un navigateur.
 
-Le manifeste [`docs/media-provenance.json`](docs/media-provenance.json) consigne leur origine et leur empreinte SHA-256. `npm run check:media`, inclus dans `npm run verify`, refuse tout média publiable non inventorié, toute modification non revue de ces fichiers et toute police embarquée tant que la politique reste fondée sur la pile système.
+Le manifeste [`docs/media-provenance.json`](docs/media-provenance.json) consigne leur origine, leurs dimensions, leur budget maximal et leur empreinte SHA-256. `npm run check:media`, inclus dans `npm run verify`, refuse tout média publiable non inventorié, toute modification non revue, tout PNG aux dimensions inattendues, tout dépassement de budget et toute police embarquée tant que la politique reste fondée sur la pile système.
 
 Les rôles, valeurs et règles d'évolution des tokens Violet Field sont consignés dans [`docs/design-system.md`](docs/design-system.md). Le build vérifie la présence des tokens requis et l'identité des variantes sombres explicite et système.
 
