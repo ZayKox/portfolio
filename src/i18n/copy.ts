@@ -5,12 +5,14 @@ export const routes = {
     home: "/",
     projects: "/projets/",
     about: "/a-propos/",
+    resume: "/cv/",
     contact: "/contact/",
   },
   en: {
     home: "/en/",
     projects: "/en/projects/",
     about: "/en/about/",
+    resume: "/en/resume/",
     contact: "/en/contact/",
   },
 } as const;
@@ -27,6 +29,7 @@ export const copy = {
       home: "Accueil",
       projects: "Projets",
       about: "À propos",
+      resume: "CV",
       contact: "Contact",
     },
     meta: {
@@ -34,13 +37,13 @@ export const copy = {
       description:
         "Portfolio d’Ethan Brosselard. Projets logiciels, expériences web et Android, architecture et explorations autour de l’IA.",
       socialImageAlt:
-        "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec son monogramme EB.",
+        "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZK.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
-      title: "Je transforme des idées en produits numériques.",
+      title: "Je transforme des idées en produits numériques fiables.",
       intro:
-        "Mon terrain de jeu ne tient pas dans une seule stack. Je conçois, construis et fais évoluer des expériences numériques, du web au mobile, avec une curiosité grandissante pour l’IA.",
+        "Développeur web chez Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
       projectsCta: "Explorer mes projets",
       githubCta: "Voir mon GitHub",
       signalLabel: "Terrain d’exploration",
@@ -63,7 +66,7 @@ export const copy = {
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
-        "Je m’appelle Ethan Brosselard. Ce site documente ce que je construis, pourquoi je le construis et les compromis techniques que je prends.",
+        "Je m’appelle Ethan Brosselard, aussi connu sous le nom de ZayKo. Ce site présente les projets que je construis, les problèmes qu’ils cherchent à résoudre et les choix qui les façonnent.",
       interestsLabel: "Hors du code",
       interests: "Jeux vidéo · Films & séries · Manga · Lecture",
       aboutCta: "En savoir plus",
@@ -82,18 +85,31 @@ export const copy = {
     about: {
       eyebrow: "À propos",
       title: "Je préfère garder le champ des possibles ouvert.",
-      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
+      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Beyowi.",
       paragraphs: [
-        "Je développe aujourd’hui des produits web et Android, sans vouloir limiter la suite à ces deux domaines. Je choisis les outils en fonction du problème et j’élargis progressivement mon terrain de jeu vers l’intelligence artificielle.",
-        "Ce portfolio est un journal de construction : il montre les produits, mais aussi les décisions, contraintes, tests et apprentissages qui se trouvent derrière.",
-        "En dehors de l’informatique, je m’intéresse aux jeux vidéo, au cinéma, aux séries, aux mangas et à la lecture — des univers qui nourrissent naturellement certains de mes projets.",
+        "J’ai commencé par vouloir comprendre comment fonctionnent les jeux vidéo : ce qui se passe derrière l’écran, comment les systèmes s’assemblent et comment une idée devient un produit concret. Cette curiosité m’a naturellement conduit vers le développement.",
+        "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
+        "En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance. Mon master en ingénierie de l’intelligence artificielle nourrit aussi une pratique réfléchie de l’IA : un outil qui aide à transformer de bonnes idées en réalisations, lorsqu’il est utilisé avec compréhension.",
+        "En dehors de l’informatique, je m’intéresse aux jeux vidéo, au cinéma, aux séries, aux mangas et à la lecture. Ces univers nourrissent mes projets : MyVerse est né de l’envie de réunir au même endroit le suivi de plusieurs cultures, dans l’esprit de ce que Letterboxd propose au cinéma.",
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Faire évoluer MyVerse, préparer FiltreAppels à une publication plus large et explorer de nouveaux usages autour de l’IA.",
+        "Faire évoluer MyVerse, poursuivre mon alternance chez Beyowi et approfondir la sécurité appliquée au développement logiciel.",
       proofLabel: "Ce que montre ce portfolio",
       proofText:
-        "Des produits documentés par leurs choix d’architecture, leurs validations techniques et leurs limites actuelles.",
+        "Des projets, un parcours et des choix techniques expliqués avec leurs validations et leurs limites connues.",
+    },
+    resume: {
+      eyebrow: "Parcours",
+      title: "CV et expériences",
+      intro:
+        "Un aperçu structuré de mon parcours, de mes compétences et des projets qui l’accompagnent.",
+      download: "Télécharger le PDF",
+      contact: "Contact et liens",
+      experience: "Expériences",
+      education: "Formation",
+      skills: "Compétences",
+      projects: "Projets et hackathons",
     },
     contact: {
       eyebrow: "Contact",
@@ -132,6 +148,7 @@ export const copy = {
       home: "Home",
       projects: "Projects",
       about: "About",
+      resume: "Resume",
       contact: "Contact",
     },
     meta: {
@@ -139,13 +156,13 @@ export const copy = {
       description:
         "Portfolio of Ethan Brosselard. Software projects, web and Android experiences, architecture, and AI explorations.",
       socialImageAlt:
-        "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his EB monogram.",
+        "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZK signature.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
-      title: "I turn ideas into digital products.",
+      title: "I turn ideas into reliable digital products.",
       intro:
-        "My playground does not fit into a single stack. I design, build, and evolve digital experiences across web and mobile, with a growing curiosity for AI.",
+        "As a web developer at Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
       projectsCta: "Explore my projects",
       githubCta: "View my GitHub",
       signalLabel: "Exploration field",
@@ -168,7 +185,7 @@ export const copy = {
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
-        "I’m Ethan Brosselard. This site documents what I build, why I build it, and the technical trade-offs behind it.",
+        "I’m Ethan Brosselard, also known as ZayKo. This site presents the projects I build, the problems they address, and the choices that shape them.",
       interestsLabel: "Beyond code",
       interests: "Video games · Movies & TV · Manga · Books",
       aboutCta: "Learn more",
@@ -187,18 +204,30 @@ export const copy = {
     about: {
       eyebrow: "About",
       title: "I prefer to keep the field wide open.",
-      lead: "I’m Ethan Brosselard, a software developer based in Paris.",
+      lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Beyowi.",
       paragraphs: [
-        "I currently build web and Android products without limiting what comes next to those two fields. I choose tools around the problem and am gradually expanding my playground toward artificial intelligence.",
-        "This portfolio is a building journal: it shows the products, but also the decisions, constraints, tests, and lessons behind them.",
-        "Outside software, I’m interested in video games, movies, TV series, manga, and books — worlds that naturally feed into some of my projects.",
+        "I first got into software by wanting to understand how video games work: what happens behind the screen, how systems fit together, and how an idea becomes a working product. That curiosity naturally led me to development.",
+        "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
+        "Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance. My master’s degree in AI engineering also supports a thoughtful approach to AI: a tool that can help turn good ideas into real work when used with understanding.",
+        "Outside software, I’m interested in video games, movies, TV series, manga, and books. These worlds feed into my projects: MyVerse started from the wish to track several cultural domains in one place, in the spirit of what Letterboxd offers for film.",
       ],
       nowLabel: "Now",
       nowText:
-        "Evolving MyVerse, preparing FiltreAppels for a wider release, and exploring new uses for AI.",
+        "Evolving MyVerse, continuing my apprenticeship at Beyowi, and deepening my knowledge of software security.",
       proofLabel: "What this portfolio shows",
       proofText:
-        "Products documented through their architecture decisions, technical validation, and current limitations.",
+        "Projects, a professional path, and technical choices explained with their validation and known limitations.",
+    },
+    resume: {
+      eyebrow: "Background",
+      title: "Resume and experience",
+      intro: "A structured overview of my background, skills, and the projects that support them.",
+      download: "Download PDF",
+      contact: "Contact and links",
+      experience: "Experience",
+      education: "Education",
+      skills: "Skills",
+      projects: "Projects and hackathons",
     },
     contact: {
       eyebrow: "Contact",

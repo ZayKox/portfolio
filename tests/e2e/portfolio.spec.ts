@@ -4,12 +4,14 @@ import { expect, test } from "@playwright/test";
 const publicRoutes = [
   "/",
   "/a-propos/",
+  "/cv/",
   "/contact/",
   "/projets/",
   "/projets/filtre-appels/",
   "/projets/myverse/",
   "/en/",
   "/en/about/",
+  "/en/resume/",
   "/en/contact/",
   "/en/projects/",
   "/en/projects/filtre-appels/",
@@ -115,6 +117,18 @@ test("primary links expose the expected destinations", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Voir mon GitHub/ })).toHaveAttribute(
     "href",
     "https://github.com/ZayKox",
+  );
+
+  await page.goto("/cv/");
+  await expect(page.getByRole("link", { name: "Télécharger le PDF" })).toHaveAttribute(
+    "href",
+    "/cv/ethan-brosselard-cv-fr.pdf",
+  );
+
+  await page.goto("/en/resume/");
+  await expect(page.getByRole("link", { name: "Download PDF" })).toHaveAttribute(
+    "href",
+    "/cv/ethan-brosselard-resume-en.pdf",
   );
 
   await page.goto("/contact/");

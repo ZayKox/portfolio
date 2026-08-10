@@ -15,6 +15,7 @@ const items = [
   { label: t.nav.home, href: localizedRoutes.home },
   { label: t.nav.projects, href: localizedRoutes.projects },
   { label: t.nav.about, href: localizedRoutes.about },
+  { label: t.nav.resume, href: localizedRoutes.resume },
   { label: t.nav.contact, href: localizedRoutes.contact },
 ];
 
@@ -27,7 +28,7 @@ const isActive = (href: string) =>
     <a
       class="brand"
       href={localizedRoutes.home}
-      aria-label={`${profile.monogram} — ${profile.name} — ${t.nav.home}`}
+      aria-label={`${profile.brand} — ${profile.name} — ${t.nav.home}`}
     >
       <span class="brand-mark" aria-hidden="true"></span>
       <span>{profile.monogram}</span>

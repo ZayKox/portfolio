@@ -14,12 +14,13 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="footer-name" href={routes[locale].home}>{profile.name}</a>
+      <a class="footer-name" href={routes[locale].home}>{profile.brand}</a>
       <p>{t.footer.note}</p>
     </div>
     <div class="footer-links" aria-label={locale === "fr" ? "Liens externes" : "External links"}>
       <a href={profile.socials.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
       <a href={profile.socials.linkedin} rel="me">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href={routes[locale].resume}>{t.nav.resume}</a>
       <a href={`mailto:${profile.email}`}>Email</a>
     </div>
     <div class="footer-meta">

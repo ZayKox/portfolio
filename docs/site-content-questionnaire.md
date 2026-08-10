@@ -917,6 +917,48 @@ Inclus mes modifications du questionnaire dans le même commit local ciblé.
 
 Sans cette dernière phrase explicite, les réponses ajoutées avant la tâche ne seront pas incluses automatiquement dans le commit de l’agent.
 
+## 21. Informations validées dans la tâche du 10 août 2026
+
+Les réponses de cette section ont été explicitement fournies par Ethan dans la tâche du 10 août 2026. Elles sont `PUBLIC — VALIDÉ` et priment sur les anciens champs encore marqués `À REMPLIR`, `À CONFIRMER` ou `À DÉCIDER` lorsqu’elles couvrent le même sujet.
+
+```text
+Positionnement : Développeur logiciel et créateur numérique ; développeur web principalement, sans limiter le parcours au web, à Android ou à l’IA.
+Statut : PUBLIC — VALIDÉ
+
+Pseudo de signature autorisé : ZayKo, lorsqu’il est utile à l’identité visuelle ; le nom affiché reste Ethan Brosselard.
+Statut : PUBLIC — VALIDÉ
+
+Poste et employeur actuels : Développeur Web (alternant) chez Studio Beyowi, d’octobre 2023 à septembre 2026, Paris 13e.
+Statut : PUBLIC — VALIDÉ
+
+Expérience précédente : Développeur Backend (alternant) chez Intento Design, de septembre 2022 à août 2023, Paris.
+Statut : PUBLIC — VALIDÉ
+
+Expérience complémentaire : Agent de maintenance bâtiment chez Sealed Air Corporation, mission d’intérim de juillet à août 2022, Épernon.
+Statut : PUBLIC — VALIDÉ
+
+Formations : Baccalauréat général, mention Bien, Lycée Jean de Beauce (2018–2021) ; BUT Informatique, IUT Paris Rives de Seine — Université Paris Cité (2021–2024) ; Master Informatique — Ingénierie en Intelligence Artificielle, Université Paris 8 Vincennes — Saint-Denis (2024–2026).
+Statut : PUBLIC — VALIDÉ
+
+Compétences à montrer : frontend web, backend/API, bases de données, architecture logicielle, UX/UI, accessibilité, tests, IA et sécurité en apprentissage. Analyse et compréhension de systèmes complexes à valoriser.
+Statut : PUBLIC — VALIDÉ
+
+Approche de l’IA : l’IA est un domaine à ne pas rejeter ; une bonne compréhension de l’outil permet de transformer de bonnes idées en réalisations, dans un cadre professionnel comme personnel. Le master en IA est publiable.
+Statut : PUBLIC — VALIDÉ
+
+Page CV et téléchargement : un CV HTML et PDF, en français et en anglais, doit être public depuis une source structurée unique. Ne pas afficher de niveau de langue non confirmé.
+Statut : PUBLIC — VALIDÉ
+
+Projets complémentaires sur le CV : hackathon de terminale (application de révision histoire-géographie en 3 jours), Nuit de l’Info 2021 (base de données de sauvetages en mer), Nuit de l’Info 2022 (application de sensibilisation au VIH), hackathon IA de 10 jours en équipe de trois pour des entreprises partenaires du master.
+Statut : PUBLIC — VALIDÉ
+
+Domaine final : zaykohub.com, version canonique sans www.
+Statut : PUBLIC — VALIDÉ
+
+Publication : site personnel, sans analytics, cookies de suivi, contenu embarqué ni formulaire au lancement. L’email public reste absent des données structurées afin de limiter le scraping.
+Statut : PUBLIC — VALIDÉ
+```
+
 Pour tes propres modifications manuelles :
 
 ```text

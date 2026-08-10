@@ -10,31 +10,31 @@
       "path": "public/favicon.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
       "width": 64,
       "height": 64,
       "maxBytes": 8192,
-      "sha256": "d242b32e7b08895c161fd09682b4ff3541e291016e72545a76300a33e04d7576"
+      "sha256": "c3833c41554d0c7448bde274be266ccda83d73da35712d426278568d6ae10280"
     },
     {
       "path": "public/apple-touch-icon.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
       "width": 180,
       "height": 180,
       "maxBytes": 32768,
-      "sha256": "825d04ace707868b0d9f7a17af45842f68f1ac96ec568726f95cab9289c39f43"
+      "sha256": "64233603640b8b7cf89f755fe9fa8d44c63b1f44174028075458efcca0689311"
     },
     {
       "path": "public/social-card.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public EB monogram, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
       "width": 1200,
       "height": 630,
       "maxBytes": 204800,
-      "sha256": "019b88e90915fc8c007fb802d14f9ee6421a4cb9905abb8b9769f7414476577a"
+      "sha256": "bb68e47a5ee81bddd3442106e6989e51a09ca48dce16161fc0d541d746c4af2f"
     },
     {
       "path": "public/myverse-social-card.png",

@@ -16,6 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "generate:brand-assets": "node scripts/generate-brand-assets.mjs",
+    "generate:resume-pdfs": "npm run build && node scripts/generate-resume-pdfs.mjs",
     "test:e2e": "playwright test",
     "test:lighthouse": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && node scripts/run-lighthouse.mjs",
     "test:container": "node scripts/validate-container.mjs",

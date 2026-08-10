@@ -1,6 +1,7 @@
 const publicRoutes = [
   { path: "/", locale: "fr" },
   { path: "/a-propos/", locale: "fr" },
+  { path: "/cv/", locale: "fr" },
   { path: "/contact/", locale: "fr" },
   { path: "/projets/", locale: "fr" },
   {
@@ -11,6 +12,7 @@ const publicRoutes = [
   { path: "/projets/myverse/", locale: "fr", socialImage: "/myverse-social-card.png" },
   { path: "/en/", locale: "en" },
   { path: "/en/about/", locale: "en" },
+  { path: "/en/resume/", locale: "en" },
   { path: "/en/contact/", locale: "en" },
   { path: "/en/projects/", locale: "en" },
   {
@@ -24,6 +26,7 @@ const publicRoutes = [
 const languagePairs = [
   { fr: "/", en: "/en/" },
   { fr: "/a-propos/", en: "/en/about/" },
+  { fr: "/cv/", en: "/en/resume/" },
   { fr: "/contact/", en: "/en/contact/" },
   { fr: "/projets/", en: "/en/projects/" },
   { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
@@ -32,12 +35,14 @@ const languagePairs = [
 const expectedSchemaTypes = new Map([
   ["/", "ProfilePage"],
   ["/a-propos/", "ProfilePage"],
+  ["/cv/", "WebPage"],
   ["/contact/", "ContactPage"],
   ["/projets/", "CollectionPage"],
   ["/projets/filtre-appels/", "WebPage"],
   ["/projets/myverse/", "WebPage"],
   ["/en/", "ProfilePage"],
   ["/en/about/", "ProfilePage"],
+  ["/en/resume/", "WebPage"],
   ["/en/contact/", "ContactPage"],
   ["/en/projects/", "CollectionPage"],
   ["/en/projects/filtre-appels/", "WebPage"],

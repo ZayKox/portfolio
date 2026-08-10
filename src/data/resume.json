@@ -1,0 +1,210 @@
+{
+  "fr": {
+    "documentTitle": "CV — Ethan Brosselard",
+    "role": "Développeur logiciel",
+    "summary": "Développeur logiciel travaillant principalement sur des applications web. J’aime partir d’un besoin concret, comprendre le système concerné et construire une solution claire, maintenable et agréable à utiliser.",
+    "contact": [
+      { "label": "Localisation", "value": "Paris, France" },
+      {
+        "label": "Email",
+        "value": "ethan.brosselard@gmail.com",
+        "href": "mailto:ethan.brosselard@gmail.com"
+      },
+      { "label": "GitHub", "value": "github.com/ZayKox", "href": "https://github.com/ZayKox" },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/ethan-brosselard-507334237",
+        "href": "https://www.linkedin.com/in/ethan-brosselard-507334237/"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Développeur Web (alternant)",
+        "organization": "Studio Beyowi",
+        "period": "Octobre 2023 — Septembre 2026",
+        "location": "Paris 13e, France",
+        "summary": "Développement et évolution d’applications web, de la conception à la mise en production.",
+        "highlights": [
+          "Conception, développement et maintenance de fonctionnalités répondant aux besoins utilisateurs et métier.",
+          "Création d’interfaces, évolution d’API et automatisation de processus.",
+          "Participation aux choix techniques, correction de bugs et vérifications avant mise en production.",
+          "Interventions sur des migrations de bases de données, notamment d’Oracle 11g vers PostgreSQL récent."
+        ],
+        "technologies": "Python, Svelte, Docker, Git, PL/SQL, Oracle"
+      },
+      {
+        "title": "Développeur Backend (alternant)",
+        "organization": "Intento Design",
+        "period": "Septembre 2022 — Août 2023",
+        "location": "Paris, France",
+        "summary": "Participation au développement backend de l’application principale de l’entreprise.",
+        "highlights": [
+          "Développement de fonctionnalités à partir des besoins définis avec le maître d’apprentissage.",
+          "Maintenance du code existant, résolution de bugs et participation aux évolutions techniques.",
+          "Première expérience d’un projet en équipe et de ses exigences professionnelles."
+        ],
+        "technologies": "C++"
+      },
+      {
+        "title": "Agent de maintenance bâtiment",
+        "organization": "Sealed Air Corporation",
+        "period": "Juillet 2022 — Août 2022",
+        "location": "Épernon, France",
+        "summary": "Mission estivale au sein du service bâtiment.",
+        "highlights": [
+          "Participation aux travaux de maintenance et d’entretien des infrastructures.",
+          "Développement de la rigueur, du travail en équipe et de l’organisation en environnement industriel."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "title": "Master Informatique — Ingénierie en Intelligence Artificielle",
+        "organization": "Université Paris 8 Vincennes — Saint-Denis",
+        "period": "2024 — 2026",
+        "location": "Saint-Denis et Aubervilliers, France",
+        "summary": "Approfondissement de l’IA, du machine learning, du deep learning, du traitement des données et de l’ingénierie logicielle."
+      },
+      {
+        "title": "Bachelor Universitaire de Technologie (BUT) Informatique",
+        "organization": "IUT Paris Rives de Seine — Université Paris Cité",
+        "period": "2021 — 2024",
+        "location": "Paris 16e, France",
+        "summary": "Parcours Réalisation d’applications : conception, développement, validation. Bases en algorithmique, logiciel, bases de données, architecture et gestion de projet."
+      },
+      {
+        "title": "Baccalauréat général, mention Bien",
+        "organization": "Lycée Jean de Beauce",
+        "period": "2018 — 2021",
+        "location": "Chartres, France",
+        "summary": "Spécialités Numérique et Sciences Informatiques et Mathématiques ; options EPS et mathématiques expertes."
+      }
+    ],
+    "skills": [
+      "Frontend web et interfaces",
+      "Backend, API et bases de données",
+      "Architecture logicielle et analyse de systèmes",
+      "Tests, accessibilité et performance",
+      "UX / UI",
+      "Intelligence artificielle et cybersécurité appliquée en apprentissage"
+    ],
+    "projects": [
+      {
+        "title": "MyVerse",
+        "description": "Projet personnel solo pour réunir le suivi de films, séries, jeux, anime, manga et livres au même endroit."
+      },
+      {
+        "title": "FiltreAppels",
+        "description": "Projet personnel solo d’application Android imaginée pour limiter les appels indésirables."
+      },
+      {
+        "title": "Hackathons et projets collectifs",
+        "description": "Application de révision histoire-géographie en 3 jours ; base de données de sauvetages en mer lors de la Nuit de l’Info 2021 ; application de sensibilisation au VIH lors de l’édition 2022 ; hackathon IA de 10 jours en équipe de trois pour des entreprises partenaires du master."
+      }
+    ]
+  },
+  "en": {
+    "documentTitle": "Resume — Ethan Brosselard",
+    "role": "Software developer",
+    "summary": "Software developer working primarily on web applications. I enjoy starting from a concrete need, understanding the relevant system, and building a clear, maintainable, and pleasant-to-use solution.",
+    "contact": [
+      { "label": "Location", "value": "Paris, France" },
+      {
+        "label": "Email",
+        "value": "ethan.brosselard@gmail.com",
+        "href": "mailto:ethan.brosselard@gmail.com"
+      },
+      { "label": "GitHub", "value": "github.com/ZayKox", "href": "https://github.com/ZayKox" },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/ethan-brosselard-507334237",
+        "href": "https://www.linkedin.com/in/ethan-brosselard-507334237/"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Web Developer (apprentice)",
+        "organization": "Studio Beyowi",
+        "period": "October 2023 — September 2026",
+        "location": "Paris 13th arrondissement, France",
+        "summary": "Development and evolution of web applications, from design through production delivery.",
+        "highlights": [
+          "Designed, developed, and maintained features addressing user and business needs.",
+          "Built interfaces, evolved APIs, and automated processes.",
+          "Contributed to technical choices, bug fixes, and checks before production delivery.",
+          "Worked on database migrations, including Oracle 11g to recent PostgreSQL versions."
+        ],
+        "technologies": "Python, Svelte, Docker, Git, PL/SQL, Oracle"
+      },
+      {
+        "title": "Backend Developer (apprentice)",
+        "organization": "Intento Design",
+        "period": "September 2022 — August 2023",
+        "location": "Paris, France",
+        "summary": "Contributed to the backend development of the company’s main application.",
+        "highlights": [
+          "Developed features from needs defined with the apprenticeship supervisor.",
+          "Maintained existing code, resolved bugs, and contributed to technical evolution.",
+          "First experience with a team project and its professional expectations."
+        ],
+        "technologies": "C++"
+      },
+      {
+        "title": "Building Maintenance Agent",
+        "organization": "Sealed Air Corporation",
+        "period": "July 2022 — August 2022",
+        "location": "Épernon, France",
+        "summary": "Summer assignment in the building services department.",
+        "highlights": [
+          "Contributed to infrastructure maintenance and upkeep work.",
+          "Built rigor, teamwork, and organizational skills in an industrial environment."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "title": "Master’s Degree in Computer Science — Artificial Intelligence Engineering",
+        "organization": "University Paris 8 Vincennes — Saint-Denis",
+        "period": "2024 — 2026",
+        "location": "Saint-Denis and Aubervilliers, France",
+        "summary": "Advanced study of AI, machine learning, deep learning, data processing, and software engineering."
+      },
+      {
+        "title": "Bachelor of Technology (BUT) in Computer Science",
+        "organization": "Paris Rives de Seine IUT — Université Paris Cité",
+        "period": "2021 — 2024",
+        "location": "Paris 16th arrondissement, France",
+        "summary": "Application Development pathway: design, development, and validation. Foundations in algorithms, software, databases, architecture, and project management."
+      },
+      {
+        "title": "French General Baccalaureate, honors",
+        "organization": "Lycée Jean de Beauce",
+        "period": "2018 — 2021",
+        "location": "Chartres, France",
+        "summary": "Specializations in Computer Science and Mathematics; physical education and advanced mathematics options."
+      }
+    ],
+    "skills": [
+      "Web frontend and interfaces",
+      "Backend, APIs, and databases",
+      "Software architecture and systems analysis",
+      "Testing, accessibility, and performance",
+      "UX / UI",
+      "Artificial intelligence and applied cybersecurity, currently learning"
+    ],
+    "projects": [
+      {
+        "title": "MyVerse",
+        "description": "Solo personal project bringing film, TV, game, anime, manga, and book tracking into one place."
+      },
+      {
+        "title": "FiltreAppels",
+        "description": "Solo personal Android application project designed to limit unwanted calls."
+      },
+      {
+        "title": "Hackathons and group projects",
+        "description": "A 3-day history and geography revision app; a sea-rescue database for Nuit de l’Info 2021; an HIV-awareness app for the 2022 edition; and a 10-day AI hackathon in a team of three for companies partnered with the master’s program."
+      }
+    ]
+  }
+}

@@ -8,18 +8,18 @@ const outputDirectory = path.join(root, "dist");
 const errors = [];
 const previewMode = process.env.SITE_NOINDEX === "true";
 const internalReferences = new Set();
-const allowedGitHubProfileUrl = "https://github.com/ZayKox";
-const privateUsername = new URL(allowedGitHubProfileUrl).pathname.slice(1).replace(/x$/i, "");
 
 const expectedRoutes = [
   "/",
   "/a-propos/",
+  "/cv/",
   "/contact/",
   "/projets/",
   "/projets/filtre-appels/",
   "/projets/myverse/",
   "/en/",
   "/en/about/",
+  "/en/resume/",
   "/en/contact/",
   "/en/projects/",
   "/en/projects/filtre-appels/",
@@ -36,6 +36,7 @@ const routeSocialImages = new Map([
 const languagePairs = [
   { fr: "/", en: "/en/" },
   { fr: "/a-propos/", en: "/en/about/" },
+  { fr: "/cv/", en: "/en/resume/" },
   { fr: "/contact/", en: "/en/contact/" },
   { fr: "/projets/", en: "/en/projects/" },
   { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
@@ -44,12 +45,14 @@ const languagePairs = [
 const expectedSchemaTypes = new Map([
   ["/", "ProfilePage"],
   ["/a-propos/", "ProfilePage"],
+  ["/cv/", "WebPage"],
   ["/contact/", "ContactPage"],
   ["/projets/", "CollectionPage"],
   ["/projets/filtre-appels/", "WebPage"],
   ["/projets/myverse/", "WebPage"],
   ["/en/", "ProfilePage"],
   ["/en/about/", "ProfilePage"],
+  ["/en/resume/", "WebPage"],
   ["/en/contact/", "ContactPage"],
   ["/en/projects/", "CollectionPage"],
   ["/en/projects/filtre-appels/", "WebPage"],
@@ -736,20 +739,6 @@ function validateDocument(html, relativePath, route) {
   for (const placeholder of forbiddenPlaceholders) {
     if (html.includes(placeholder)) {
       errors.push(`${relativePath}: visible placeholder: ${placeholder}`);
-    }
-  }
-
-  for (const match of html.matchAll(new RegExp(privateUsername, "gi"))) {
-    const urlStart = match.index - "https://github.com/".length;
-    const urlEnd = urlStart + allowedGitHubProfileUrl.length;
-    const nextCharacter = html[urlEnd];
-    const isExactApprovedLink =
-      html.slice(urlStart, urlEnd) === allowedGitHubProfileUrl &&
-      (nextCharacter === undefined || /["'<\s]/.test(nextCharacter));
-
-    if (!isExactApprovedLink) {
-      errors.push(`${relativePath}: private username is exposed outside the approved GitHub link`);
-      break;
     }
   }
 

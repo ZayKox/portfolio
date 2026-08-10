@@ -1,0 +1,132 @@
+---
+import { profile } from "@/data/profile";
+import resume from "@/data/resume.json";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  locale: Locale;
+  alternatePath: string;
+}
+
+const { locale, alternatePath } = Astro.props;
+const t = getCopy(locale);
+const document = resume[locale];
+const resumeUrl = profile.resume[locale];
+---
+
+<BaseLayout
+  {locale}
+  currentPath={routes[locale].resume}
+  {alternatePath}
+  title={t.nav.resume}
+  description={t.resume.intro}
+>
+  <section class="page-hero section-grid resume-hero">
+    <div class="container page-hero-inner reveal">
+      <p class="eyebrow">{t.resume.eyebrow}</p>
+      <h1>{t.resume.title}</h1>
+      <p class="page-lead">{t.resume.intro}</p>
+      <div class="button-row resume-actions">
+        <a class="button button--primary" href={resumeUrl} download>{t.resume.download}</a>
+      </div>
+    </div>
+  </section>
+
+  <article class="container resume-document" aria-label={document.documentTitle}>
+    <header class="resume-document-header">
+      <div>
+        <p class="eyebrow">{profile.brand}</p>
+        <h2>{profile.name}</h2>
+        <p class="resume-role">{document.role}</p>
+      </div>
+      <dl class="resume-contact-list">
+        {
+          document.contact.map((item) => (
+            <div>
+              <dt>{item.label}</dt>
+              <dd>{item.href ? <a href={item.href}>{item.value}</a> : item.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </header>
+
+    <p class="resume-summary">{document.summary}</p>
+
+    <section class="resume-section">
+      <h2>{t.resume.experience}</h2>
+      <div class="resume-entry-list">
+        {
+          document.experience.map((entry) => (
+            <article class="resume-entry">
+              <div class="resume-entry-heading">
+                <div>
+                  <h3>{entry.title}</h3>
+                  <p>{entry.organization}</p>
+                </div>
+                <p class="resume-entry-meta">
+                  {entry.period}
+                  <br />
+                  {entry.location}
+                </p>
+              </div>
+              <p>{entry.summary}</p>
+              <ul>
+                {entry.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))}
+              </ul>
+              {entry.technologies && <p class="resume-technologies">{entry.technologies}</p>}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.education}</h2>
+      <div class="resume-entry-list">
+        {
+          document.education.map((entry) => (
+            <article class="resume-entry resume-entry--compact">
+              <div class="resume-entry-heading">
+                <div>
+                  <h3>{entry.title}</h3>
+                  <p>{entry.organization}</p>
+                </div>
+                <p class="resume-entry-meta">
+                  {entry.period}
+                  <br />
+                  {entry.location}
+                </p>
+              </div>
+              <p>{entry.summary}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.skills}</h2>
+      <ul class="resume-skill-list">
+        {document.skills.map((skill) => <li>{skill}</li>)}
+      </ul>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.projects}</h2>
+      <div class="resume-project-list">
+        {
+          document.projects.map((project) => (
+            <article>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>

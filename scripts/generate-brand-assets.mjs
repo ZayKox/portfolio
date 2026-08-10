@@ -46,7 +46,7 @@ function document(content, styles) {
 }
 
 function iconMarkup() {
-  return `<div class="mark"><span class="dot"></span><strong>EB</strong></div>`;
+  return `<div class="mark"><span class="dot"></span><strong>ZK</strong></div>`;
 }
 
 const iconStyles = `
@@ -105,7 +105,7 @@ const socialMarkup = `
     <div class="field" aria-hidden="true">
       <div class="orbit orbit-outer"></div>
       <div class="orbit orbit-inner"></div>
-      <div class="core">EB</div>
+      <div class="core">ZK</div>
       <span class="node node-one">BUILD</span>
       <span class="node node-two">LEARN</span>
       <span class="node node-three">EVOLVE</span>

@@ -4,32 +4,27 @@ Cette liste n’est pas affichée sur le site.
 
 ## Minimum à valider pour publier la version actuelle
 
-- Choisir le titre professionnel public final, ou accepter explicitement de conserver le positionnement généraliste actuel.
-- Relire et valider les textes visibles en français, puis confirmer que la version anglaise conserve le même sens.
+- Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Confirmer que MyVerse et FiltreAppels peuvent rester publiés comme aperçus factuels (`teaser`) sans dépôt, démonstration, métrique ni téléchargement public.
 - Valider l’identité visuelle actuelle, dont le monogramme et les trois cartes de partage Violet Field.
-- Choisir le domaine final et l’origine canonique HTTPS à fournir dans `SITE_URL`.
+- Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de build Coolify.
 - Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
 - Décider si l’adresse email doit rester absente du JSON-LD, comme recommandé pour limiter le scraping.
 - Confirmer un lancement sans analytics, cookie, formulaire ni contenu tiers embarqué.
 - Indiquer si le site est édité à titre personnel ou professionnel. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
 - Fournir les informations publiques exactes de l’hébergeur et les règles de conservation des journaux du proxy Coolify/VPS nécessaires aux pages légales.
 
-Le CV, le portrait, les études de cas complètes, les captures et les expériences détaillées peuvent rester masqués : leur absence ne bloque pas cette version minimale si Ethan la valide explicitement.
+Le portrait, les études de cas complètes et les captures peuvent rester masqués. Le CV, les expériences et les formations sont maintenant publiés dans les deux langues.
 
 ## Identité
 
-- Confirmer le titre professionnel final.
-- Écrire la biographie longue et l’histoire du parcours.
-- Ajouter expériences, études et certifications si elles doivent être publiques.
-- Choisir ou créer une signature visuelle.
+- Affiner le titre professionnel final si nécessaire.
+- Ajouter des certifications lorsqu’elles seront disponibles et publiables.
 - Ajouter un portrait uniquement si Ethan décide d’en publier un.
 
 ## CV
 
-- Refaire le contenu depuis une source structurée unique.
-- Produire une page HTML accessible en français et en anglais.
-- Générer un PDF téléchargeable depuis le même contenu.
+- Mettre à jour le CV à partir de sa source structurée unique lorsqu’une expérience, une formation ou un projet évolue.
 
 ## MyVerse
 
@@ -55,8 +50,8 @@ Le CV, le portrait, les études de cas complètes, les captures et les expérien
 
 ## Publication
 
-- Domaine recommandé : `ethanbrosselard.dev`. Le registre `.dev` ne retournait aucune inscription le 22 juillet 2026 ; revérifier au moment de l’achat.
-- Définir `SITE_URL` avec le domaine final dans l’environnement de build Coolify ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
+- Domaine retenu : `zaykohub.com` ; la version canonique choisie est sans `www`.
+- Définir `SITE_URL=https://zaykohub.com` dans l’environnement de build Coolify ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
 - Rédiger les mentions légales adaptées au statut de l’éditeur.
 - Décider si une mesure d’audience est réellement utile.
 - Valider visuellement la carte Open Graph Violet Field déjà intégrée.

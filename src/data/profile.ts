@@ -1,6 +1,7 @@
 export const profile = {
   name: "Ethan Brosselard",
-  monogram: "EB",
+  brand: "ZayKo",
+  monogram: "ZK",
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
   languages: ["fr", "en"],
@@ -8,7 +9,10 @@ export const profile = {
     github: "https://github.com/ZayKox",
     linkedin: "https://www.linkedin.com/in/ethan-brosselard-507334237/",
   },
-  resume: null,
+  resume: {
+    fr: "/cv/ethan-brosselard-cv-fr.pdf",
+    en: "/cv/ethan-brosselard-resume-en.pdf",
+  },
   portrait: null,
 } as const;
 
