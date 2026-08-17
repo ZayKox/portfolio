@@ -58,7 +58,17 @@ npm run test:deployment -- \
   --report deployment-reports/production.json
 ```
 
-Répéter `--redirect-from` pour chaque origine HTTPS secondaire publique. Le contrôle exige des redirections permanentes pour HTTP → HTTPS et pour chaque variante vers `--url`, conserve les chemins profonds et paramètres, et refuse qu’une variante définisse un cookie. Omettre l’option tant que `www` ou une URL technique publique n’est pas configurée.
+Avant l’ouverture du DNS final, une origine Coolify protégée peut servir temporairement un build produit avec le futur `SITE_URL`. Ajouter alors `--canonical-url https://votre-domaine.example` pour appeler l’origine technique tout en exigeant que toutes les métadonnées utilisent le domaine final. Cette option ne redirige rien et ne rend pas l’origine technique publiable : elle doit rester protégée et disparaître ou rediriger après l’ouverture du domaine.
+
+```sh
+npm run test:deployment -- \
+  --url https://origine-technique.example \
+  --canonical-url https://votre-domaine.example \
+  --mode production \
+  --report deployment-reports/pre-dns-production.json
+```
+
+Répéter `--redirect-from` pour chaque origine HTTPS secondaire publique. Le contrôle exige des redirections permanentes pour HTTP → HTTPS et pour chaque variante vers l’origine canonique, conserve les chemins profonds et paramètres, et refuse qu’une variante définisse un cookie. Omettre l’option tant que `www` ou une URL technique publique n’est pas configurée.
 
 Une preview protégée peut recevoir une valeur complète d’en-tête `Authorization` via la variable d’environnement `DEPLOYMENT_AUTHORIZATION`. Cette valeur n’est ni affichée ni écrite dans le rapport et ne doit jamais être enregistrée dans le dépôt.
 

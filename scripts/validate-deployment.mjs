@@ -8,8 +8,10 @@ function usage() {
   return `Usage:
   npm run test:deployment -- --url https://preview.example --mode preview [--report deployment-reports/preview.json]
   npm run test:deployment -- --url https://example.com --mode production [--check-http-redirect] [--redirect-from https://www.example.com] [--report deployment-reports/production.json]
+  npm run test:deployment -- --url https://technical.example --canonical-url https://example.com --mode production [--report deployment-reports/pre-dns.json]
 
---redirect-from may be repeated for every HTTPS origin that must permanently redirect to --url.
+--canonical-url validates metadata built for a different final origin while requesting --url.
+--redirect-from may be repeated for every HTTPS origin that must permanently redirect to the canonical origin.
 
 Optional environment variable:
   DEPLOYMENT_AUTHORIZATION  Complete Authorization header value for a protected preview.`;
@@ -34,10 +36,10 @@ function parseArguments(argumentsList) {
       index += 1;
       continue;
     }
-    if (["--url", "--mode", "--report"].includes(argument)) {
+    if (["--url", "--canonical-url", "--mode", "--report"].includes(argument)) {
       const value = argumentsList[index + 1];
       if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value.`);
-      options[argument.slice(2)] = value;
+      options[argument === "--canonical-url" ? "canonicalUrl" : argument.slice(2)] = value;
       index += 1;
       continue;
     }
@@ -62,44 +64,55 @@ async function main() {
   if (options.redirectFrom.length > 0 && options.mode !== "production") {
     throw new Error("--redirect-from is only valid with --mode production.");
   }
-  const deploymentUrl = new URL(options.url);
-  if (
-    deploymentUrl.protocol !== "https:" ||
-    deploymentUrl.pathname !== "/" ||
-    deploymentUrl.search ||
-    deploymentUrl.hash ||
-    deploymentUrl.username ||
-    deploymentUrl.password
-  ) {
-    throw new Error(
-      "--url must be an HTTPS origin without a path, query, fragment, or credentials.",
-    );
+  if (options.canonicalUrl && options.mode !== "production") {
+    throw new Error("--canonical-url is only valid with --mode production.");
   }
-  const redirectOrigins = options.redirectFrom.map((value) => {
-    const redirectUrl = new URL(value);
+
+  const parseHttpsOrigin = (value, option) => {
+    let parsed;
+    try {
+      parsed = new URL(value);
+    } catch {
+      throw new Error(`${option} must be a valid HTTPS origin.`);
+    }
     if (
-      redirectUrl.protocol !== "https:" ||
-      redirectUrl.pathname !== "/" ||
-      redirectUrl.search ||
-      redirectUrl.hash ||
-      redirectUrl.username ||
-      redirectUrl.password
+      parsed.protocol !== "https:" ||
+      parsed.pathname !== "/" ||
+      parsed.search ||
+      parsed.hash ||
+      parsed.username ||
+      parsed.password
     ) {
       throw new Error(
-        "--redirect-from must be an HTTPS origin without a path, query, fragment, or credentials.",
+        `${option} must be an HTTPS origin without a path, query, fragment, or credentials.`,
       );
     }
-    return redirectUrl.origin;
+    return parsed;
+  };
+
+  const deploymentUrl = parseHttpsOrigin(options.url, "--url");
+  const canonicalUrl = options.canonicalUrl
+    ? parseHttpsOrigin(options.canonicalUrl, "--canonical-url")
+    : deploymentUrl;
+  if (options.canonicalUrl && canonicalUrl.origin === deploymentUrl.origin) {
+    throw new Error("--canonical-url must be omitted when it matches --url.");
+  }
+  const redirectOrigins = options.redirectFrom.map((value) => {
+    return parseHttpsOrigin(value, "--redirect-from").origin;
   });
   if (new Set(redirectOrigins).size !== redirectOrigins.length) {
     throw new Error("--redirect-from must not contain duplicate origins.");
   }
   if (redirectOrigins.includes(deploymentUrl.origin)) {
-    throw new Error("--redirect-from must differ from the canonical --url origin.");
+    throw new Error("--redirect-from must differ from the requested --url origin.");
+  }
+  if (redirectOrigins.includes(canonicalUrl.origin)) {
+    throw new Error("--redirect-from must differ from the canonical origin.");
   }
 
   const report = await validateDeployment({
     requestOrigin: options.url,
+    expectedSiteOrigin: canonicalUrl.origin,
     mode: options.mode,
     authorization: process.env.DEPLOYMENT_AUTHORIZATION,
     checkHttpRedirect: options.checkHttpRedirect,
@@ -114,7 +127,11 @@ async function main() {
   }
 
   console.log(
-    `Validated ${report.mode} deployment at ${report.requestOrigin}: ${report.checks.join(", ")}.`,
+    `Validated ${report.mode} deployment at ${report.requestOrigin}` +
+      (report.expectedSiteOrigin === report.requestOrigin
+        ? ""
+        : ` for canonical ${report.expectedSiteOrigin}`) +
+      `: ${report.checks.join(", ")}.`,
   );
 }
 

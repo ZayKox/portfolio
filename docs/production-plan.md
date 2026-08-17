@@ -638,6 +638,7 @@ Configuration attendue :
 ### Première répétition privée
 
 - [x] `[Dev]` Ajouter un smoke test distant en lecture seule pour les modes production et preview, avec rapport JSON optionnel.
+- [x] `[Dev/QA]` Permettre au smoke test de contacter une origine Coolify protégée distincte tout en validant les canonical, sitemap, JSON-LD et images sociales du futur domaine final.
 - [ ] `[QA]` Vérifier que `npm ci` et le build réussissent dans les logs Coolify.
 - [ ] `[QA]` Noter l’URL, l’identifiant du déploiement et le SHA Git.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
