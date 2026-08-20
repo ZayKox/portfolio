@@ -10,7 +10,7 @@
 | Dépôt                       | <https://github.com/ZayKox/portfolio>                        |
 | Branche de travail actuelle | `develop`                                                    |
 | Branche de production       | `main`                                                       |
-| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Coolify et conteneur Nginx        |
+| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Docker Compose, Caddy et Nginx    |
 | Domaine recommandé          | `ethanbrosselard.dev`, à acheter et à revérifier avant achat |
 | Langues                     | Français à la racine, anglais sous `/en/`                    |
 | Dernière mise à jour        | 2 août 2026                                                  |
@@ -65,10 +65,10 @@ GitHub : feature/* ou codex/* → develop → PR vers main
                                        │
                                        ├── GitHub Actions : format + types + build + tests
                                        ▼
-                             Coolify sur le VPS OVHcloud
+                       Docker Compose sur le VPS OVHcloud
                                        │
                                        ▼
-                         Nginx non privilégié, port interne 8080
+                          Caddy HTTPS → Nginx interne 8080
                                        │
                                        ▼
                               ethanbrosselard.dev
@@ -79,11 +79,12 @@ Choix structurants :
 - Astro en génération statique, sans serveur, base de données, authentification ni CMS pour la V1.
 - Tailwind CSS et TypeScript strict conservés.
 - Contenus versionnés dans Git : faits partagés dans `src/data/`, interface dans `src/i18n/`, projets dans les fichiers MDX FR/EN.
-- GitHub Actions valide le code ; Coolify construit l'image et Nginx sert
-  `dist/` derrière le proxy TLS.
+- GitHub Actions valide le code ; Docker Compose construit l'image et Nginx
+  sert `dist/` derrière le proxy TLS Caddy déjà administré par
+  `personal-infrastructure`.
 - `main` représente exactement la production. `develop` sert à intégrer les changements avant une pull request de release.
 - Faute de serveur de staging séparé, la recette se fait localement puis sur
-  une ressource Coolify temporairement non publique, avec un domaine de test
+  une route Caddy temporairement non publique, avec un domaine de test
   `noindex` si une vérification distante devient nécessaire.
 - Aucun chemin local vers MyVerse ou FiltreAppels ne doit être requis pendant le build.
 
@@ -116,7 +117,7 @@ Choix structurants :
 - [x] Ajouter les pages légales et confidentialité bilingues ; confirmer leurs informations d’hébergement lors du déploiement.
 - [x] Durcir les en-têtes et activer/tester la CSP localement.
 - [x] Ajouter les tests navigateur, accessibilité et liens.
-- [ ] Faire la recette complète localement puis sur la ressource Coolify non
+- [ ] Faire la recette complète localement puis sur la route Caddy non
       publique avant l'ouverture du domaine.
 - [ ] Tester le déploiement et le retour arrière.
 
@@ -129,7 +130,7 @@ Périmètre de lancement validé
   → URL finale injectée dans Astro
   → SEO + légal + sécurité terminés
   → tests automatisés et recette humaine
-  → répétition privée Coolify acceptée
+  → répétition privée Caddy acceptée
   → PR develop → main
   → déploiement production
   → smoke test
@@ -407,7 +408,7 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 
 - [ ] `[Ethan]` Acheter le domaine après une dernière vérification de disponibilité et de prix.
 - [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans Coolify avec l’origine HTTPS du domaine finalement choisi.
+- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans l’environnement Docker Compose avec l’origine HTTPS du domaine finalement choisi.
 - [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
 - [x] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
 - [x] `[Dev]` Ajouter `<link rel="sitemap">` lorsque `SITE_URL` est défini.
@@ -440,7 +441,7 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 - [ ] `[Dev]` Expliquer les traitements existants : email public, journaux techniques de l’hébergeur et éventuelle mesure d’audience.
 - [ ] `[Dev]` Indiquer finalités, bases, destinataires, durées, droits et moyen d’exercice lorsqu’ils s’appliquent.
 - [x] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté ; le build bloque les ressources externes, embeds, stockages et API de suivi non autorisés, et les smoke tests refusent tout `Set-Cookie`.
-- [x] `[Dev/QA]` Minimiser le journal d'accès du conteneur Nginx et vérifier par sentinelles qu'il exclut IP transmise, paramètres d'URL, référent et user-agent ; les journaux du proxy Coolify et de l'hébergeur restent à documenter.
+- [x] `[Dev/QA]` Minimiser le journal d'accès du conteneur Nginx et vérifier par sentinelles qu'il exclut IP transmise, paramètres d'URL, référent et user-agent ; les journaux du proxy Caddy et de l'hébergeur restent à documenter.
 - [ ] `[Ethan]` Accepter explicitement le risque de spam lié à l’email public, ou choisir une adresse dédiée.
 - [ ] `[Ethan]` Décider de lancer sans analytics. C’est l’option P0 recommandée.
 - [ ] `[Dev]` Si des analytics sont ajoutés plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
@@ -476,11 +477,11 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité connue au 2 août 2026, preuve et limites consignées dans `docs/qa/dependency-audit-2026-08-02.md`.
-- [ ] `[Ethan]` Protéger GitHub et Coolify avec 2FA lorsque disponible et
+- [ ] `[Ethan]` Protéger GitHub, OVHcloud et les accès au VPS avec 2FA lorsque disponible et
       utiliser des jetons à privilèges minimaux.
 - [x] `[Dev]` Ajouter et valider dans le build statique et le conteneur un mode `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le crawl des previews.
 - [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
-- [ ] `[Dev]` Refuser l'indexation de toute URL technique Coolify et rediriger
+- [ ] `[Dev]` Refuser l'indexation de toute URL technique Caddy et rediriger
       `www` vers le domaine canonique choisi.
 
 **Gate 9 :** aucune fuite de secret, aucune violation CSP fonctionnelle, en-têtes confirmés sur le réseau et previews non indexées.
@@ -538,7 +539,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
 - [x] `[Dev]` Tester la page 404 et son statut derrière Nginx local.
-- [ ] `[QA]` Répéter le contrôle de la 404 sur Coolify.
+- [ ] `[QA]` Répéter le contrôle de la 404 derrière Caddy.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
@@ -598,29 +599,31 @@ Pour la recette synthétique avant lancement : viser un score Lighthouse d’au 
 - [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
 - [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
 - [x] `[QA]` Refuser plus de 300 Kio encodés sur une page représentative actuelle ; documenter toute future exception média.
-- [ ] `[QA]` Tester la répétition privée Coolify, pas seulement `localhost`.
+- [ ] `[QA]` Tester la répétition privée derrière Caddy, pas seulement `localhost`.
 
 **Gate 12 :** budgets synthétiques atteints ou écarts expliqués et acceptés, aucune régression visible sur réseau lent.
 
-## Phase 13 — configurer Coolify sur le VPS
+## Phase 13 — configurer Docker Compose et Caddy sur le VPS
 
 **Priorité : P0**
 
 Astro reste entièrement statique. `Dockerfile` construit `dist/` puis le sert
 avec Nginx non privilégié ; `docker-compose.production.yml` est le point
-d'entrée de Coolify.
+d'entrée du service. Caddy, administré par `personal-infrastructure`, reste le
+seul point d’entrée HTTP/HTTPS du VPS.
 
-### Serveur et ressource
+### Serveur, réseau et service
 
 - [ ] `[Ethan]` Sécuriser l'accès SSH au VPS avec une clé et conserver un accès
       de secours testé.
-- [ ] `[Ethan]` Installer et sécuriser Coolify, puis connecter uniquement le
-      dépôt GitHub nécessaire.
-- [ ] `[Ethan]` Créer une ressource Docker Compose utilisant
-      `docker-compose.production.yml` sur `main`.
+- [ ] `[Ethan]` Vérifier le réseau Docker externe de Caddy déjà administré par
+      `personal-infrastructure` et transmettre son nom au déploiement.
+- [ ] `[Ethan]` Préparer un clone de service propre, épinglé au SHA de `main`,
+      et son fichier d’environnement hors Git.
 - [ ] `[Ethan]` Définir `SITE_URL` avec l'origine HTTPS finale, sans chemin.
+- [ ] `[Ethan]` Définir `PORTFOLIO_CADDY_NETWORK` avec le réseau Caddy existant.
 - [ ] `[QA]` Vérifier que seul le port interne `8080` du service `portfolio` est
-      routé par le proxy et qu'aucun port applicatif n'est publié sur l'hôte.
+      routé par Caddy et qu'aucun port applicatif n'est publié sur l'hôte.
 
 Configuration attendue :
 
@@ -632,15 +635,16 @@ Configuration attendue :
 | Port interne        | `8080`                                   |
 | Variable de build   | `SITE_URL=https://domaine-final.example` |
 | Indexation          | `SITE_NOINDEX=false`                     |
+| Réseau externe      | `PORTFOLIO_CADDY_NETWORK=<réseau Caddy>` |
 | Secrets applicatifs | aucun                                    |
 | Confinement         | racine read-only, capabilities retirées  |
 
 ### Première répétition privée
 
 - [x] `[Dev]` Ajouter un smoke test distant en lecture seule pour les modes production et preview, avec rapport JSON optionnel.
-- [x] `[Dev/QA]` Permettre au smoke test de contacter une origine Coolify protégée distincte tout en validant les canonical, sitemap, JSON-LD et images sociales du futur domaine final.
-- [ ] `[QA]` Vérifier que `npm ci` et le build réussissent dans les logs Coolify.
-- [ ] `[QA]` Noter l’URL, l’identifiant du déploiement et le SHA Git.
+- [x] `[Dev/QA]` Permettre au smoke test de contacter une origine Caddy protégée distincte tout en validant les canonical, sitemap, JSON-LD et images sociales du futur domaine final.
+- [ ] `[QA]` Vérifier que la construction Compose et le démarrage réussissent dans les journaux du service.
+- [ ] `[QA]` Noter l’URL, le SHA Git et l’horodatage du déploiement.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
 - [ ] `[QA]` Garder la ressource non publique ou utiliser un domaine de test
       protégé et définir `SITE_NOINDEX=true` pendant la recette ; `noindex` seul ne remplace pas la protection d'accès.
@@ -649,8 +653,8 @@ Configuration attendue :
 ### Domaine et DNS
 
 - [ ] `[Ethan]` Faire pointer le domaine apex vers l'IPv4 du VPS.
-- [ ] `[Ethan]` Associer le domaine final à la ressource Coolify et laisser le
-      proxy obtenir le certificat TLS.
+- [ ] `[Ethan]` Ajouter la route du domaine final à la configuration Caddy
+      gérée par `personal-infrastructure` et laisser Caddy obtenir le certificat TLS.
 - [ ] `[Ethan]` Ajouter `www` comme domaine secondaire si souhaité.
 - [ ] `[Ethan]` Choisir un canonical unique : apex recommandé.
 - [ ] `[Dev]` Rediriger `www` et toute URL technique publique vers l'apex.
@@ -659,7 +663,7 @@ Configuration attendue :
 - [ ] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
 
 **Gate 13 :** répétition privée validée, domaine actif en HTTPS, canonical
-unique et configuration Coolify documentée sans secret.
+unique et configuration Compose/Caddy documentée sans secret.
 
 ## Phase 14 — répétition de release
 
@@ -676,8 +680,8 @@ unique et configuration Coolify documentée sans secret.
 - [ ] `[QA]` Vérifier les deux thèmes et la matrice d’écrans.
 - [ ] `[QA]` Vérifier la console et les en-têtes réseau.
 - [ ] `[QA]` Vérifier le contenu de `dist/` pour les secrets et placeholders.
-- [x] `[QA]` Tester le redéploiement d'une image issue du dernier SHA valide ou
-      documenter précisément cette procédure avant la première production ; `docs/deployment-runbook.md` décrit le rollback par image locale Coolify, le repli par commit `git revert`, les contrôles, les preuves et l'exercice privé restant à exécuter.
+- [x] `[QA]` Documenter précisément le redéploiement du dernier SHA valide avant
+      la première production ; `docs/deployment-runbook.md` décrit le rollback Compose, le repli par commit `git revert`, les contrôles, les preuves et l'exercice privé restant à exécuter.
 - [ ] `[Ethan]` Donner un GO explicite sur la répétition privée.
 
 **Gate 14 :** toutes les preuves P0 sont réunies et le GO d’Ethan est enregistré.
@@ -697,7 +701,7 @@ unique et configuration Coolify documentée sans secret.
 ### Publication
 
 - [ ] `[Dev]` Fusionner la pull request vers `main`.
-- [ ] `[QA]` Suivre le déploiement Coolify jusqu’au succès.
+- [ ] `[QA]` Suivre le déploiement Docker Compose jusqu’au succès.
 - [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné.
 - [ ] `[QA]` Exécuter le smoke test production immédiatement.
 - [ ] `[QA]` Tester accueil FR/EN, projets, contact, légal, confidentialité, 404, thème et langue.
@@ -715,7 +719,7 @@ SHA Git :
 Pull request :
 URL de répétition validée :
 URL de production :
-Identifiant du déploiement Coolify :
+Horodatage du déploiement Compose :
 CI :
 E2E / axe / liens :
 Lighthouse :
@@ -734,9 +738,9 @@ Le runbook opératoire complet, les critères de choix, les commandes de contrô
 Déclencher un rollback en cas de page blanche, navigation principale cassée, fuite de donnée, violation CSP bloquante, erreur de domaine/canonical, régression d’accessibilité majeure ou taux élevé d’erreurs constaté.
 
 1. Suspendre toute nouvelle fusion vers `main`.
-2. Identifier le dernier SHA et l'image de production Coolify validés.
-3. Dans Coolify, redéployer cette révision ou cette image sans reconstruire le
-   commit défectueux.
+2. Identifier le dernier SHA de production validé.
+3. Depuis le clone de service, redéployer ce SHA avec Docker Compose sans
+   modifier la route Caddy ni le DNS.
 4. Vérifier immédiatement domaine, accueil FR/EN, navigation, contact et en-têtes.
 5. Revenir dans Git avec un commit de revert sur une branche dédiée, puis passer par une PR ; ne pas réécrire l’historique de `main`.
 6. Corriger, refaire les gates concernés et redéployer normalement.
@@ -744,7 +748,7 @@ Déclencher un rollback en cas de page blanche, navigation principale cassée, f
 
 Notes :
 
-- Ne pas supprimer la ressource Coolify, le dépôt, le volume Docker ou les
+- Ne pas supprimer le service Compose, le dépôt, le réseau Docker Caddy ou les
   enregistrements DNS pour corriger un incident applicatif.
 - Le redéploiement du dernier artefact valide remet le site en ligne ; le
   revert Git remet ensuite `main` en cohérence avec la production.
@@ -775,7 +779,7 @@ Notes :
 ### Chaque mois
 
 - [ ] Examiner et fusionner prudemment les PR Dependabot.
-- [ ] Vérifier les alertes de sécurité GitHub et l'état du serveur Coolify.
+- [ ] Vérifier les alertes de sécurité GitHub et l'état du VPS, de Caddy et de Docker.
 - [ ] Vérifier les formulaires de contact inexistants ou, s’ils sont ajoutés, leur bon fonctionnement.
 - [ ] Contrôler les principaux liens externes.
 
@@ -862,12 +866,12 @@ npm run test:deployment -- \
 ```
 
 Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le
-DNS ou publier sur Coolify sans l’action ou l’accord explicite d’Ethan.
+DNS ou déployer sur le VPS sans l’action ou l’accord explicite d’Ethan.
 
 ## Références officielles
 
-- [Installer Coolify](https://coolify.io/docs/get-started/installation)
-- [Déployer avec Docker Compose dans Coolify](https://coolify.io/docs/knowledge-base/docker/compose)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Caddy](https://caddyserver.com/docs/)
 
 - [Déployer Astro sur Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Déploiements de prévisualisation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/preview-deployments/)

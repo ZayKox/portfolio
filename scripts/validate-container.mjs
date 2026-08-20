@@ -17,6 +17,7 @@ function docker(args, { quiet = false, includeStderr = false } = {}) {
       ...process.env,
       SITE_URL: siteUrl,
       SITE_NOINDEX: String(previewMode),
+      PORTFOLIO_CADDY_NETWORK: "portfolio-smoke-edge",
     },
     maxBuffer: 50 * 1024 * 1024,
   });
@@ -68,6 +69,12 @@ try {
   if (JSON.stringify(service.expose) !== JSON.stringify(["8080"])) {
     throw new Error("portfolio must expose only the internal port 8080");
   }
+  if (!service.networks?.["caddy-edge"] || compose.networks?.["caddy-edge"]?.external !== true) {
+    throw new Error("portfolio must join only the external Caddy edge network");
+  }
+  if (compose.networks?.["caddy-edge"]?.name !== "portfolio-smoke-edge") {
+    throw new Error("portfolio Caddy edge network does not use the configured name");
+  }
   for (const field of ["ports", "volumes", "secrets", "configs", "environment", "devices"]) {
     if (service[field]?.length || Object.keys(service[field] ?? {}).length) {
       throw new Error(`portfolio must not define ${field}`);
@@ -85,7 +92,6 @@ try {
   if (service.restart !== "unless-stopped") {
     throw new Error("portfolio restart policy must remain unless-stopped");
   }
-
   console.log(`Building the ${mode} production container...`);
   docker([
     "build",

@@ -136,7 +136,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hébergement",
       hostingText:
-        "La publication de production est prévue sur une infrastructure VPS OVHcloud, avec un déploiement assuré par Coolify. Coolify est l’outil de déploiement ; l’hébergeur de l’infrastructure est OVH SAS.",
+        "La publication de production est prévue sur une infrastructure VPS OVHcloud. Le site est exécuté dans un conteneur Nginx et Caddy assure le proxy HTTPS ; l’hébergeur de l’infrastructure est OVH SAS.",
       intellectualPropertyTitle: "Propriété intellectuelle",
       intellectualPropertyText:
         "Sauf mention contraire, les textes, le code source et les éléments graphiques de ce site sont protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers ne sont utilisés que lorsqu’ils sont autorisés et restent soumis à leurs droits respectifs.",
@@ -310,7 +310,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hosting",
       hostingText:
-        "The production deployment is planned on OVHcloud VPS infrastructure, through Coolify. Coolify is the deployment tool; OVH SAS is the infrastructure hosting provider.",
+        "The production deployment is planned on OVHcloud VPS infrastructure. The site runs in an Nginx container, with Caddy handling the HTTPS proxy; OVH SAS is the infrastructure hosting provider.",
       intellectualPropertyTitle: "Intellectual property",
       intellectualPropertyText:
         "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorised and remains subject to its respective rights.",

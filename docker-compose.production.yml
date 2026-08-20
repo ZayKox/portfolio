@@ -18,3 +18,10 @@ services:
       - /tmp:rw,nosuid,noexec,size=16m,mode=1777
     expose:
       - "8080"
+    networks:
+      - caddy-edge
+
+networks:
+  caddy-edge:
+    external: true
+    name: ${PORTFOLIO_CADDY_NETWORK:?Set PORTFOLIO_CADDY_NETWORK to the existing Caddy edge network}

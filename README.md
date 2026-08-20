@@ -40,9 +40,9 @@ Les tests Playwright parcourent toutes les routes publiques en clair et sombre s
 
 L'audit Lighthouse mobile couvre l'accueil, la liste des projets et les deux aperçus avec le ralentissement synthétique standard et une origine HTTPS réservée pour reproduire les métadonnées de production. Il exige au moins 95 pour la performance, l'accessibilité, les bonnes pratiques et le SEO, ainsi qu'un LCP maximal de 2,5 s, un CLS maximal de 0,1 et un TBT maximal de 200 ms. Les rapports locaux sont écrits dans `lighthouse-reports/` sans être versionnés.
 
-Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Coolify, attendent leur healthcheck, puis vérifient les en-têtes Nginx, la politique de cache, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
+Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Docker Compose, attendent leur healthcheck, puis vérifient les en-têtes Nginx, la politique de cache, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
 
-Le même moteur contrôle une URL Coolify sans modifier le déploiement. Il parcourt les douze routes FR/EN, la vraie 404, les en-têtes, les icônes et les signaux SEO propres au mode choisi :
+Le même moteur contrôle une URL servie par Caddy sans modifier le déploiement. Il parcourt les douze routes FR/EN, la vraie 404, les en-têtes, les icônes et les signaux SEO propres au mode choisi :
 
 ```sh
 npm run test:deployment -- \
@@ -58,7 +58,7 @@ npm run test:deployment -- \
   --report deployment-reports/production.json
 ```
 
-Avant l’ouverture du DNS final, une origine Coolify protégée peut servir temporairement un build produit avec le futur `SITE_URL`. Ajouter alors `--canonical-url https://votre-domaine.example` pour appeler l’origine technique tout en exigeant que toutes les métadonnées utilisent le domaine final. Cette option ne redirige rien et ne rend pas l’origine technique publiable : elle doit rester protégée et disparaître ou rediriger après l’ouverture du domaine.
+Avant l’ouverture du DNS final, une route Caddy protégée peut servir temporairement un build produit avec le futur `SITE_URL`. Ajouter alors `--canonical-url https://votre-domaine.example` pour appeler l’origine technique tout en exigeant que toutes les métadonnées utilisent le domaine final. Cette option ne redirige rien et ne rend pas l’origine technique publiable : elle doit rester protégée et disparaître ou rediriger après l’ouverture du domaine.
 
 ```sh
 npm run test:deployment -- \
@@ -72,23 +72,25 @@ Répéter `--redirect-from` pour chaque origine HTTPS secondaire publique. Le co
 
 Une preview protégée peut recevoir une valeur complète d’en-tête `Authorization` via la variable d’environnement `DEPLOYMENT_AUTHORIZATION`. Cette valeur n’est ni affichée ni écrite dans le rapport et ne doit jamais être enregistrée dans le dépôt.
 
-La préparation d’une publication et le retour arrière Coolify sont détaillés dans [`docs/deployment-runbook.md`](docs/deployment-runbook.md). Le rollback rapide dépend de la présence locale de l’ancienne image dans Coolify ; le runbook prévoit donc aussi un repli par commit `git revert`, sans réécriture de l’historique.
+La préparation d’une publication et le retour arrière Docker Compose sont détaillés dans [`docs/deployment-runbook.md`](docs/deployment-runbook.md). Le runbook redéploie un SHA validé et prévoit un repli Git par commit `git revert`, sans réécriture de l’historique.
 
 ```sh
 SITE_URL=https://votre-domaine.example npm run build
 ```
 
-Pour une répétition sur une URL technique, définir également `SITE_NOINDEX=true`. Ce mode ajoute `noindex, nofollow` à toutes les pages, interdit le crawl dans `robots.txt` et supprime sitemap, canonical, alternates, JSON-LD et métadonnées sociales. Il ne remplace pas une protection d'accès Coolify. La production finale doit utiliser `SITE_NOINDEX=false`.
+Pour une répétition sur une URL technique, définir également `SITE_NOINDEX=true`. Ce mode ajoute `noindex, nofollow` à toutes les pages, interdit le crawl dans `robots.txt` et supprime sitemap, canonical, alternates, JSON-LD et métadonnées sociales. Il ne remplace pas une protection d'accès Caddy. La production finale doit utiliser `SITE_NOINDEX=false`.
 
 ## Déployer sur le VPS OVHcloud
 
 `docker-compose.production.yml` construit le site avec son domaine final, puis
 le sert depuis un conteneur Nginx non privilégié sur le port interne `8080`.
-Dans Coolify, créer une ressource Docker Compose depuis ce dépôt, définir
-`SITE_URL=https://votre-domaine.example` et `SITE_NOINDEX=false`, puis associer le domaine au service
-`portfolio` et au port `8080`. Le conteneur ne contient ni base de données ni
-secret applicatif. Son système de fichiers racine est en lecture seule, toutes
-les capabilities Linux sont retirées et seul un `/tmp` borné reste inscriptible.
+Le service rejoint un réseau Docker Caddy externe existant, fourni par
+`PORTFOLIO_CADDY_NETWORK`, sans publier aucun port sur l’hôte. Définir
+`SITE_URL=https://votre-domaine.example`, `SITE_NOINDEX=false` et le nom du
+réseau dans un fichier d’environnement hors Git ; ajouter ensuite la route
+Caddy correspondante via `personal-infrastructure`. Le conteneur ne contient ni
+base de données ni secret applicatif. Son système de fichiers racine est en
+lecture seule, toutes les capabilities Linux sont retirées et seul un `/tmp` borné reste inscriptible.
 
 Cloudflare Pages reste une alternative gratuite particulièrement adaptée à ce
 site statique. Le chemin VPS permet toutefois d'héberger les trois projets sur

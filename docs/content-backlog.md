@@ -7,12 +7,12 @@ Cette liste n’est pas affichée sur le site.
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Confirmer que MyVerse et FiltreAppels peuvent rester publiés comme aperçus factuels (`teaser`) sans dépôt, démonstration, métrique ni téléchargement public.
 - Valider l’identité visuelle actuelle, dont le monogramme et les trois cartes de partage Violet Field.
-- Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de build Coolify.
+- Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de déploiement Docker Compose.
 - Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
 - Décider si l’adresse email doit rester absente du JSON-LD, comme recommandé pour limiter le scraping.
 - Confirmer un lancement sans analytics, cookie, formulaire ni contenu tiers embarqué.
 - Indiquer si le site est édité à titre personnel ou professionnel. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
-- Confirmer les informations publiques exactes de l’hébergeur et les règles de conservation des journaux du proxy Coolify/VPS au déploiement, puis mettre à jour les pages légales si nécessaire.
+- Confirmer les informations publiques exactes de l’hébergeur et les règles de conservation des journaux du proxy Caddy/VPS au déploiement, puis mettre à jour les pages légales si nécessaire.
 
 Le portrait, les études de cas complètes et les captures peuvent rester masqués. Le CV, les expériences et les formations sont maintenant publiés dans les deux langues.
 
@@ -51,7 +51,7 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 ## Publication
 
 - Domaine retenu : `zaykohub.com` ; la version canonique choisie est sans `www`.
-- Définir `SITE_URL=https://zaykohub.com` dans l’environnement de build Coolify ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
+- Définir `SITE_URL=https://zaykohub.com` dans l’environnement de déploiement Docker Compose ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
 - Relire les mentions légales et la confidentialité après le déploiement, en particulier l’hébergeur réellement retenu et la conservation des journaux techniques.
 - Décider si une mesure d’audience est réellement utile.
 - Valider visuellement la carte Open Graph Violet Field déjà intégrée.
