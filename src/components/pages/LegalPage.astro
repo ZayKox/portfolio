@@ -1,0 +1,134 @@
+---
+import { profile } from "@/data/profile";
+import { getCopy, routes, type Locale } from "@/i18n/copy";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  locale: Locale;
+  alternatePath: string;
+  kind: "legal" | "privacy";
+}
+
+const { locale, alternatePath, kind } = Astro.props;
+const t = getCopy(locale);
+const page = t[kind];
+const currentPath = routes[locale][kind];
+---
+
+<BaseLayout {locale} {currentPath} {alternatePath} title={page.title} description={page.intro}>
+  <section class="page-hero section-grid legal-hero">
+    <div class="container page-hero-inner reveal">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <p class="page-lead">{page.intro}</p>
+    </div>
+  </section>
+
+  {
+    kind === "legal" ? (
+      <article class="container legal-document">
+        <section>
+          <h2>{t.legal.publisherTitle}</h2>
+          <p>{t.legal.publisherText}</p>
+          <dl>
+            <div>
+              <dt>{t.legal.publisherLabel}</dt>
+              <dd>{profile.name}</dd>
+            </div>
+            <div>
+              <dt>{t.legal.contactLabel}</dt>
+              <dd>
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <h2>{t.legal.hostingTitle}</h2>
+          <p>{t.legal.hostingText}</p>
+          <address>
+            <>
+              <strong>OVH SAS</strong>
+              <br />
+            </>
+            2 rue Kellermann
+            <br />
+            59100 Roubaix, France
+            <br />
+            <a href="tel:1007">1007</a> ·{" "}
+            <a href="https://www.ovhcloud.com/fr/terms-and-conditions/">OVHcloud</a>
+          </address>
+        </section>
+
+        <section>
+          <h2>{t.legal.intellectualPropertyTitle}</h2>
+          <p>{t.legal.intellectualPropertyText}</p>
+        </section>
+
+        <section>
+          <h2>{t.legal.externalLinksTitle}</h2>
+          <p>{t.legal.externalLinksText}</p>
+        </section>
+
+        <p class="legal-updated">
+          {t.legal.updatedLabel} : {t.legal.updatedValue}
+        </p>
+      </article>
+    ) : (
+      <article class="container legal-document">
+        <section>
+          <h2>{t.privacy.controllerTitle}</h2>
+          <p>{t.privacy.controllerText}</p>
+          <dl>
+            <div>
+              <dt>{t.privacy.contactLabel}</dt>
+              <dd>
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <h2>{t.privacy.collectionTitle}</h2>
+          <p>{t.privacy.collectionText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.emailTitle}</h2>
+          <p>{t.privacy.emailText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.technicalTitle}</h2>
+          <p>{t.privacy.technicalText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.purposeTitle}</h2>
+          <p>{t.privacy.purposeText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.recipientsTitle}</h2>
+          <p>{t.privacy.recipientsText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.rightsTitle}</h2>
+          <p>{t.privacy.rightsText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.changesTitle}</h2>
+          <p>{t.privacy.changesText}</p>
+        </section>
+
+        <p class="legal-updated">
+          {t.privacy.updatedLabel} : {t.privacy.updatedValue}
+        </p>
+      </article>
+    )
+  }
+</BaseLayout>

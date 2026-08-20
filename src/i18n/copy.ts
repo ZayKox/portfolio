@@ -7,6 +7,8 @@ export const routes = {
     about: "/a-propos/",
     resume: "/cv/",
     contact: "/contact/",
+    legal: "/mentions-legales/",
+    privacy: "/confidentialite/",
   },
   en: {
     home: "/en/",
@@ -14,6 +16,8 @@ export const routes = {
     about: "/en/about/",
     resume: "/en/resume/",
     contact: "/en/contact/",
+    legal: "/en/legal-notice/",
+    privacy: "/en/privacy/",
   },
 } as const;
 
@@ -121,6 +125,60 @@ export const copy = {
       locationLabel: "Localisation",
       note: "Aucun formulaire, aucun suivi et aucune donnée de contact stockée par ce site.",
     },
+    legal: {
+      eyebrow: "Informations légales",
+      title: "Mentions légales",
+      intro: "Informations relatives à l’édition, à l’hébergement et aux contenus de ce portfolio.",
+      publisherTitle: "Édition",
+      publisherText:
+        "Ce portfolio est un site personnel édité par Ethan Brosselard. Il présente un parcours, des projets et des réalisations ; il ne propose ni vente, ni service en ligne, ni espace utilisateur.",
+      publisherLabel: "Directeur de la publication",
+      contactLabel: "Contact",
+      hostingTitle: "Hébergement",
+      hostingText:
+        "La publication de production est prévue sur une infrastructure VPS OVHcloud, avec un déploiement assuré par Coolify. Coolify est l’outil de déploiement ; l’hébergeur de l’infrastructure est OVH SAS.",
+      intellectualPropertyTitle: "Propriété intellectuelle",
+      intellectualPropertyText:
+        "Sauf mention contraire, les textes, le code source et les éléments graphiques de ce site sont protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers ne sont utilisés que lorsqu’ils sont autorisés et restent soumis à leurs droits respectifs.",
+      externalLinksTitle: "Liens externes",
+      externalLinksText:
+        "Les liens vers des sites tiers sont fournis pour information. Leur contenu, leur disponibilité et leurs pratiques de confidentialité relèvent de la responsabilité de leurs éditeurs respectifs.",
+      updatedLabel: "Dernière mise à jour",
+      updatedValue: "20 août 2026",
+    },
+    privacy: {
+      eyebrow: "Données personnelles",
+      title: "Politique de confidentialité",
+      intro:
+        "Ce site est conçu pour limiter au maximum la collecte et l’utilisation de données personnelles.",
+      controllerTitle: "Responsable",
+      controllerText:
+        "Ethan Brosselard est responsable des traitements décrits sur cette page. Pour toute question ou demande concernant vos données, vous pouvez écrire à l’adresse ci-dessous.",
+      contactLabel: "Contact",
+      collectionTitle: "Données traitées",
+      collectionText:
+        "Le site ne comporte ni formulaire, ni compte, ni newsletter, ni mesure d’audience, ni contenu tiers embarqué. Il n’utilise pas de cookie de suivi. La préférence de thème, si vous la modifiez, est conservée uniquement dans le stockage local de votre navigateur sous la clé « portfolio-theme » ; elle ne quitte pas votre appareil.",
+      emailTitle: "Messages envoyés par email",
+      emailText:
+        "Si vous choisissez d’écrire à l’adresse affichée, votre adresse email et le contenu de votre message sont utilisés uniquement pour lire votre demande et vous répondre. Le message est transmis directement par votre service de messagerie et celui du destinataire ; il ne transite pas par le site.",
+      technicalTitle: "Journaux techniques",
+      technicalText:
+        "Pour la sécurité et le bon fonctionnement du service, le serveur web du site produit des journaux techniques minimisés : date et heure, méthode HTTP, chemin normalisé sans paramètres, statut de la réponse, volume transféré et durée de traitement. La configuration du site n’y enregistre ni adresse IP transmise, ni référent, ni agent utilisateur. L’infrastructure d’hébergement et son proxy peuvent toutefois appliquer leurs propres journaux techniques, selon leur configuration et leurs politiques.",
+      purposeTitle: "Finalités et base juridique",
+      purposeText:
+        "Les messages reçus sont traités pour répondre à leur expéditeur. Les journaux techniques servent à assurer la sécurité, diagnostiquer un incident et maintenir le service. Ces traitements reposent sur l’intérêt légitime de l’éditeur à répondre aux sollicitations reçues et à protéger le site.",
+      recipientsTitle: "Destinataires et conservation",
+      recipientsText:
+        "Seul Ethan Brosselard accède aux messages reçus. Les prestataires de messagerie et d’hébergement peuvent traiter les données strictement nécessaires à leurs services. Les messages sont conservés le temps nécessaire au suivi de l’échange ; les journaux techniques suivent la durée de conservation configurée par l’infrastructure d’hébergement.",
+      rightsTitle: "Vos droits",
+      rightsText:
+        "Selon la réglementation applicable, vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de vos données. Vous pouvez également introduire une réclamation auprès de la CNIL. Pour exercer vos droits concernant ce site, contactez Ethan Brosselard par email.",
+      changesTitle: "Évolution de cette politique",
+      changesText:
+        "Cette politique décrit la configuration actuelle du site. Elle sera mise à jour avant tout ajout de formulaire, d’outil de mesure d’audience, de cookie de suivi ou de contenu tiers embarqué.",
+      updatedLabel: "Dernière mise à jour",
+      updatedValue: "20 août 2026",
+    },
     project: {
       back: "Tous les projets",
       stack: "Socle technique",
@@ -130,6 +188,8 @@ export const copy = {
     footer: {
       note: "Projets, choix d’architecture et validations techniques.",
       noTracking: "Sans analytics ni cookies de suivi.",
+      legal: "Mentions légales",
+      privacy: "Confidentialité",
     },
     notFound: {
       title: "Cette page n’existe pas.",
@@ -239,6 +299,59 @@ export const copy = {
       locationLabel: "Location",
       note: "No form, tracking, or contact data is stored by this website.",
     },
+    legal: {
+      eyebrow: "Legal information",
+      title: "Legal notice",
+      intro: "Information about the publication, hosting, and content of this portfolio.",
+      publisherTitle: "Publisher",
+      publisherText:
+        "This portfolio is a personal website published by Ethan Brosselard. It presents a professional background, projects, and work; it does not offer sales, online services, or user accounts.",
+      publisherLabel: "Publication director",
+      contactLabel: "Contact",
+      hostingTitle: "Hosting",
+      hostingText:
+        "The production deployment is planned on OVHcloud VPS infrastructure, through Coolify. Coolify is the deployment tool; OVH SAS is the infrastructure hosting provider.",
+      intellectualPropertyTitle: "Intellectual property",
+      intellectualPropertyText:
+        "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorised and remains subject to its respective rights.",
+      externalLinksTitle: "External links",
+      externalLinksText:
+        "Links to third-party sites are provided for information only. Their content, availability, and privacy practices remain the responsibility of their respective publishers.",
+      updatedLabel: "Last updated",
+      updatedValue: "20 August 2026",
+    },
+    privacy: {
+      eyebrow: "Personal data",
+      title: "Privacy policy",
+      intro: "This website is designed to minimise the collection and use of personal data.",
+      controllerTitle: "Controller",
+      controllerText:
+        "Ethan Brosselard is responsible for the processing described on this page. For a question or request about your data, you can write to the address below.",
+      contactLabel: "Contact",
+      collectionTitle: "Data processed",
+      collectionText:
+        "The site has no form, account, newsletter, analytics, or embedded third-party content. It uses no tracking cookies. If you change it, your theme preference is kept solely in your browser’s local storage under the key “portfolio-theme”; it never leaves your device.",
+      emailTitle: "Messages sent by email",
+      emailText:
+        "If you choose to write to the displayed email address, your email address and the content of your message are used solely to read and reply to your request. The message is sent directly through your email provider and the recipient’s; it does not pass through the website.",
+      technicalTitle: "Technical logs",
+      technicalText:
+        "For security and service-operation purposes, the site’s web server produces minimised technical logs: date and time, HTTP method, normalised path without parameters, response status, transferred volume, and processing time. The site configuration does not record a forwarded IP address, referrer, or user agent in these logs. The hosting infrastructure and its proxy may nevertheless apply their own technical logging, according to their configuration and policies.",
+      purposeTitle: "Purposes and legal basis",
+      purposeText:
+        "Received messages are processed to reply to their sender. Technical logs support security, incident diagnosis, and service maintenance. This processing relies on the publisher’s legitimate interest in responding to messages received and protecting the website.",
+      recipientsTitle: "Recipients and retention",
+      recipientsText:
+        "Only Ethan Brosselard accesses received messages. Email and hosting providers may process the data strictly necessary to provide their services. Messages are kept for the time needed to follow up an exchange; technical logs follow the retention period configured by the hosting infrastructure.",
+      rightsTitle: "Your rights",
+      rightsText:
+        "Depending on applicable law, you may request access to, rectification or erasure of, restriction of, or objection to the processing of your data. You may also lodge a complaint with the CNIL. To exercise your rights in relation to this website, contact Ethan Brosselard by email.",
+      changesTitle: "Changes to this policy",
+      changesText:
+        "This policy describes the website’s current configuration. It will be updated before adding a form, analytics tool, tracking cookie, or embedded third-party content.",
+      updatedLabel: "Last updated",
+      updatedValue: "20 August 2026",
+    },
     project: {
       back: "All projects",
       stack: "Technical foundation",
@@ -248,6 +361,8 @@ export const copy = {
     footer: {
       note: "Projects, architecture decisions, and technical validation.",
       noTracking: "No analytics or tracking cookies.",
+      legal: "Legal notice",
+      privacy: "Privacy",
     },
     notFound: {
       title: "This page does not exist.",

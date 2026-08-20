@@ -113,7 +113,7 @@ Choix structurants :
 - [ ] Acheter et connecter le domaine.
 - [ ] Ajouter l’URL de production à Astro.
 - [x] Ajouter sitemap, `robots.txt` conditionnel, une image sociale générale et une par projet ; les trois variantes de build et le manifeste média les contrôlent.
-- [ ] Ajouter pages légales et confidentialité adaptées.
+- [x] Ajouter les pages légales et confidentialité bilingues ; confirmer leurs informations d’hébergement lors du déploiement.
 - [x] Durcir les en-têtes et activer/tester la CSP localement.
 - [x] Ajouter les tests navigateur, accessibilité et liens.
 - [ ] Faire la recette complète localement puis sur la ressource Coolify non
@@ -434,8 +434,8 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 
 - [ ] `[Ethan]` Déterminer si le site est édité à titre strictement personnel ou dans un cadre professionnel.
 - [ ] `[Ethan]` Vérifier les mentions obligatoires applicables à ce statut auprès d’une source officielle ou d’un professionnel.
-- [ ] `[Dev]` Créer `/mentions-legales/` et `/en/legal-notice/`.
-- [ ] `[Dev]` Créer `/confidentialite/` et `/en/privacy/`.
+- [x] `[Dev]` Créer `/mentions-legales/` et `/en/legal-notice/`.
+- [x] `[Dev]` Créer `/confidentialite/` et `/en/privacy/`.
 - [ ] `[Dev]` Identifier l’éditeur, le moyen de contact et l’hébergeur avec les informations réellement exigées.
 - [ ] `[Dev]` Expliquer les traitements existants : email public, journaux techniques de l’hébergeur et éventuelle mesure d’audience.
 - [ ] `[Dev]` Indiquer finalités, bases, destinataires, durées, droits et moyen d’exercice lorsqu’ils s’appliquent.

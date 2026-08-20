@@ -4,9 +4,10 @@ import { getCopy, routes, type Locale } from "@/i18n/copy";
 
 interface Props {
   locale: Locale;
+  currentPath: string;
 }
 
-const { locale } = Astro.props;
+const { locale, currentPath } = Astro.props;
 const t = getCopy(locale);
 const year = new Date().getFullYear();
 ---
@@ -17,11 +18,26 @@ const year = new Date().getFullYear();
       <a class="footer-name" href={routes[locale].home}>{profile.brand}</a>
       <p>{t.footer.note}</p>
     </div>
-    <div class="footer-links" aria-label={locale === "fr" ? "Liens externes" : "External links"}>
+    <div
+      class="footer-links"
+      aria-label={locale === "fr" ? "Liens de navigation" : "Navigation links"}
+    >
       <a href={profile.socials.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
       <a href={profile.socials.linkedin} rel="me">LinkedIn <span aria-hidden="true">↗</span></a>
       <a href={routes[locale].resume}>{t.nav.resume}</a>
       <a href={`mailto:${profile.email}`}>Email</a>
+      <a
+        href={routes[locale].legal}
+        aria-current={currentPath === routes[locale].legal ? "page" : undefined}
+      >
+        {t.footer.legal}
+      </a>
+      <a
+        href={routes[locale].privacy}
+        aria-current={currentPath === routes[locale].privacy ? "page" : undefined}
+      >
+        {t.footer.privacy}
+      </a>
     </div>
     <div class="footer-meta">
       <p>© {year} {profile.name}</p>

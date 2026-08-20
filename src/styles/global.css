@@ -1191,6 +1191,75 @@ h3 {
   box-shadow: 0 1.25rem 3rem var(--shadow);
 }
 
+.legal-document {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  max-width: 52rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.legal-document section {
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-document h2 {
+  margin-bottom: 1rem;
+  font-size: var(--h3);
+}
+
+.legal-document p {
+  max-width: 46rem;
+  margin-bottom: 0;
+  color: var(--text-muted);
+}
+
+.legal-document dl {
+  display: grid;
+  gap: 0.25rem;
+  margin: 1.35rem 0 0;
+}
+
+.legal-document dl div {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.35fr) 1fr;
+  gap: 1rem;
+  padding-block: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+.legal-document dt {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.legal-document dd {
+  margin: 0;
+  font-weight: 650;
+}
+
+.legal-document address {
+  margin-top: 1.35rem;
+  color: var(--text-muted);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.legal-document address strong {
+  color: var(--text);
+}
+
+.legal-updated {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .resume-document-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.65fr);
@@ -1784,6 +1853,11 @@ h3 {
 
   .resume-contact-list {
     grid-template-columns: 1fr;
+  }
+
+  .legal-document dl div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }
 
