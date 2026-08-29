@@ -28,7 +28,7 @@ Preserve a broad, evolving identity: Ethan is a software developer and digital m
 ## Maintain design
 
 - Use the Violet Field tokens in `src/styles/global.css`.
-- Keep violet as the main accent and avoid green or yellow semantic colors.
+- Use black, white, and neutral grays for primary hierarchy; keep violet as a secondary accent and avoid green or yellow semantic colors.
 - Prefer typography, whitespace, borders, gradients, and CSS composition over decorative images.
 - Use no model-authored SVG illustration, custom cursor, autoplay media, or essential hover-only interaction.
 - Preserve both light and dark themes, visible focus, 44px touch targets, and reduced-motion behavior.

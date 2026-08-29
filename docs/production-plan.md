@@ -97,7 +97,7 @@ Choix structurants :
 - [x] Routes françaises et anglaises.
 - [x] Navigation entre les langues.
 - [x] Thèmes clair et sombre avec préférence système.
-- [x] Direction artistique « Violet Field » sans vert ni jaune.
+- [x] Direction artistique « Violet Field — édition neutre » : noir, blanc et gris en structure, violet en accent secondaire, sans vert ni jaune.
 - [x] Données publiques centralisées dans `src/data/profile.ts`.
 - [x] Textes d’interface centralisés dans `src/i18n/copy.ts`.
 - [x] Palimia et Ludosaic disponibles en mode `teaser`.
@@ -367,7 +367,7 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [x] `[QA]` Vérifier mobile, tablette, desktop et écrans larges ; l'ensemble de la recette couvre 320, 768, 1440 et 1920 px, dont 30 captures représentatives sur les profils mobile, tablette et écran large dans les deux thèmes.
 - [x] `[QA]` Vérifier `prefers-reduced-motion` ; les dix contrôles représentatifs limitent animations et transitions à `0,00001 s`.
 
-**Gate 5 :** aucun écran factice, aucune dépendance au survol, thèmes cohérents et direction « Violet Field » reconnaissable sans décor gratuit.
+**Gate 5 :** aucun écran factice, aucune dépendance au survol, thèmes cohérents et direction « Violet Field — édition neutre » reconnaissable sans décor gratuit.
 
 ## Phase 6 — construire le CV depuis une source unique
 

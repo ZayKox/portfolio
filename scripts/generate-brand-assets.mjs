@@ -139,7 +139,7 @@ const socialStyles = `
     height: 720px;
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--brand-accent-strong) 42%, transparent),
+      color-mix(in srgb, var(--brand-accent-strong) 16%, transparent),
       transparent 68%
     );
   }
@@ -150,7 +150,7 @@ const socialStyles = `
     height: 760px;
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--brand-accent) 18%, transparent),
+      color-mix(in srgb, var(--brand-accent) 8%, transparent),
       transparent 70%
     );
   }
@@ -303,7 +303,7 @@ const projectSocialStyles = `
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--brand-accent-strong) 42%, transparent),
+      color-mix(in srgb, var(--brand-accent-strong) 14%, transparent),
       transparent 69%
     );
   }
@@ -361,7 +361,7 @@ const projectSocialStyles = `
     background:
       radial-gradient(
         circle,
-        color-mix(in srgb, var(--brand-accent) 20%, transparent),
+        color-mix(in srgb, var(--brand-accent) 8%, transparent),
         transparent 55%
       ),
       linear-gradient(145deg, var(--brand-surface), var(--brand-bg));

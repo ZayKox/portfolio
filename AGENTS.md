@@ -79,7 +79,7 @@ The questionnaire is an input document, not runtime content. Convert only approv
 ## Design and accessibility rules
 
 - Preserve the “Violet Field” visual language in `src/styles/global.css`.
-- Keep violet as the primary accent; avoid green and yellow accents.
+- Use black, white, and neutral grays for primary hierarchy; keep violet as a secondary accent and avoid green and yellow accents.
 - Support light, dark, and system themes.
 - Prefer typography, spacing, borders, restrained gradients, and CSS composition over decorative imagery.
 - Do not add model-authored SVG illustrations, custom cursors, autoplay media, or essential hover-only interactions.

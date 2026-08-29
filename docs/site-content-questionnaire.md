@@ -86,7 +86,8 @@ Toutes les réponses PUBLIC — VALIDÉ ont été relues : non
 | LinkedIn           | https://www.linkedin.com/in/ethan-brosselard-507334237/ | `PUBLIC — VALIDÉ`   | A        |
 | Langues parlées    | Français et anglais                                     | `PUBLIC — À RELIRE` | A        |
 | Photo publique     | Non pour le moment                                      | `PUBLIC — VALIDÉ`   | A        |
-| Couleur principale | Violet                                                  | `PUBLIC — VALIDÉ`   | A        |
+| Palette principale | Noir, blanc et gris neutres                             | `PUBLIC — VALIDÉ`   | A        |
+| Couleur secondaire | Violet                                                  | `PUBLIC — VALIDÉ`   | A        |
 | Couleurs à éviter  | Vert et jaune                                           | `PUBLIC — VALIDÉ`   | A        |
 | Thèmes             | Clair et sombre                                         | `PUBLIC — VALIDÉ`   | A        |
 
@@ -776,7 +777,8 @@ Statut global de la section légale et confidentialité : À CONFIRMER
 | Sujet              | Réponse                                         | Statut              |
 | ------------------ | ----------------------------------------------- | ------------------- |
 | Style              | Minimal mais poussé, démontrant les compétences | `PUBLIC — À RELIRE` |
-| Couleur principale | Violet                                          | `PUBLIC — VALIDÉ`   |
+| Palette principale | Noir, blanc et gris neutres                     | `PUBLIC — VALIDÉ`   |
+| Couleur secondaire | Violet                                          | `PUBLIC — VALIDÉ`   |
 | Couleurs exclues   | Vert et jaune                                   | `PUBLIC — VALIDÉ`   |
 | Thèmes             | Clair et sombre                                 | `PUBLIC — VALIDÉ`   |
 | Portrait           | Absent pour le moment                           | `PUBLIC — VALIDÉ`   |

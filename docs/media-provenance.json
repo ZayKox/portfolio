@@ -14,7 +14,7 @@
       "width": 64,
       "height": 64,
       "maxBytes": 8192,
-      "sha256": "c3833c41554d0c7448bde274be266ccda83d73da35712d426278568d6ae10280"
+      "sha256": "98aa04c58f7b3d45cb08420197fd170704171e910f1e365fc87686a1f0dac494"
     },
     {
       "path": "public/apple-touch-icon.png",
@@ -24,7 +24,7 @@
       "width": 180,
       "height": 180,
       "maxBytes": 32768,
-      "sha256": "64233603640b8b7cf89f755fe9fa8d44c63b1f44174028075458efcca0689311"
+      "sha256": "e5394b6ef8b12b717cb45537f0b969e80b3a0166f8cb7a9c0c4066514d39cf1c"
     },
     {
       "path": "public/social-card.png",
@@ -34,7 +34,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 204800,
-      "sha256": "bb68e47a5ee81bddd3442106e6989e51a09ca48dce16161fc0d541d746c4af2f"
+      "sha256": "efcea50f07e33bbc97d1c6fecdc46ba531c3360c55fb71ec6c4402ff551d57bb"
     },
     {
       "path": "public/palimia-social-card.png",
@@ -44,7 +44,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "d7c2f9dbc093966a319c7cc3410292b6e274efa8eab27ea9d6ec8364d2edf097"
+      "sha256": "42ed8d09c7cdf8f81e6c1210caa4396ce939f98f25d2a8573cd15a46b73215bd"
     },
     {
       "path": "public/ludosaic-social-card.png",
@@ -54,7 +54,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "8e5967421e9953ed0ae6b7bbf05e1b619dd1913d9111d7a379e687ce4e1f1132"
+      "sha256": "7d004ef640a9a02e7f870605b3669e58745c59818dff4fca390ff7bc110faa54"
     }
   ]
 }
