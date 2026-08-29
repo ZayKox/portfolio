@@ -14,29 +14,29 @@ Ce document décrit le système effectivement rendu par le portfolio. La source 
 
 ## Couleurs
 
-| Token                 | Clair                      | Sombre                       | Rôle                                      |
-| --------------------- | -------------------------- | ---------------------------- | ----------------------------------------- |
-| `--bg`                | `#f4f4f1`                  | `#0b0c0e`                    | Fond principal neutre                     |
-| `--surface`           | `#fbfbf8`                  | `#121316`                    | Cartes et contrôles                       |
-| `--surface-subtle`    | `#e9e9e5`                  | `#1b1d21`                    | Surface secondaire                        |
-| `--surface-strong`    | `#deded8`                  | `#24262b`                    | Reliefs et ombres graphiques              |
-| `--text`              | `#111214`                  | `#f3f3ef`                    | Texte principal                           |
-| `--text-muted`        | `#5f6268`                  | `#a8abb1`                    | Texte secondaire                          |
-| `--border`            | `#cccdc8`                  | `#303238`                    | Séparateurs et contours utiles            |
-| `--primary`           | `#17181b`                  | `#f1f1ed`                    | Actions et surfaces principales inversées |
-| `--primary-hover`     | `#303238`                  | `#d9d9d4`                    | Survol de l’action principale             |
-| `--primary-contrast`  | `#ffffff`                  | `#111214`                    | Contenu sur surface principale            |
-| `--accent`            | `#6746d6`                  | `#a890ff`                    | Signal violet secondaire et focus         |
-| `--accent-hover`      | `#5033b5`                  | `#b9a6ff`                    | Survol d’un élément secondaire            |
-| `--accent-soft`       | `#ebe7fb`                  | `#29223e`                    | Fond violet discret                       |
-| `--accent-contrast`   | `#ffffff`                  | `#15111f`                    | Texte sur fond violet                     |
-| `--accent-on-primary` | `#a890ff`                  | `#6746d6`                    | Accent violet sur surface principale      |
-| `--info`              | `#2563eb`                  | `#60a5fa`                    | Information                               |
-| `--danger`            | `#d43f5e`                  | `#ff7a8a`                    | Erreur ou danger                          |
-| `--selection`         | `#d9d0f8`                  | `#473a70`                    | Sélection de texte                        |
-| `--shadow`            | `rgba(17, 18, 20, 0.1)`    | `rgba(0, 0, 0, 0.38)`        | Ombres                                    |
-| `--grid-line`         | `rgba(17, 18, 20, 0.07)`   | `rgba(243, 243, 239, 0.055)` | Trame décorative                          |
-| `--header-bg`         | `rgba(244, 244, 241, 0.9)` | `rgba(11, 12, 14, 0.9)`      | Fond translucide de l’en-tête             |
+| Token                 | Clair                      | Sombre                      | Rôle                                      |
+| --------------------- | -------------------------- | --------------------------- | ----------------------------------------- |
+| `--bg`                | `#ecece8`                  | `#151619`                   | Fond principal neutre                     |
+| `--surface`           | `#f5f5f1`                  | `#1c1d21`                   | Cartes et contrôles                       |
+| `--surface-subtle`    | `#e2e2dd`                  | `#25272c`                   | Surface secondaire                        |
+| `--surface-strong`    | `#d3d3cc`                  | `#2f3137`                   | Reliefs et ombres graphiques              |
+| `--text`              | `#1b1c1f`                  | `#ecece8`                   | Texte principal                           |
+| `--text-muted`        | `#606369`                  | `#afb1b7`                   | Texte secondaire                          |
+| `--border`            | `#c4c5bf`                  | `#3a3c42`                   | Séparateurs et contours utiles            |
+| `--primary`           | `#242529`                  | `#e8e8e3`                   | Actions et surfaces principales inversées |
+| `--primary-hover`     | `#393b40`                  | `#d0d0cb`                   | Survol de l’action principale             |
+| `--primary-contrast`  | `#f7f7f4`                  | `#1a1b1f`                   | Contenu sur surface principale            |
+| `--accent`            | `#6746d6`                  | `#a890ff`                   | Signal violet secondaire et focus         |
+| `--accent-hover`      | `#5033b5`                  | `#b9a6ff`                   | Survol d’un élément secondaire            |
+| `--accent-soft`       | `#ebe7fb`                  | `#29223e`                   | Fond violet discret                       |
+| `--accent-contrast`   | `#f7f7f4`                  | `#15111f`                   | Texte sur fond violet                     |
+| `--accent-on-primary` | `#b39eff`                  | `#6746d6`                   | Accent violet sur surface principale      |
+| `--info`              | `#2563eb`                  | `#60a5fa`                   | Information                               |
+| `--danger`            | `#d43f5e`                  | `#ff7a8a`                   | Erreur ou danger                          |
+| `--selection`         | `#d9d0f8`                  | `#4d4173`                   | Sélection de texte                        |
+| `--shadow`            | `rgba(27, 28, 31, 0.1)`    | `rgba(0, 0, 0, 0.3)`        | Ombres                                    |
+| `--grid-line`         | `rgba(27, 28, 31, 0.07)`   | `rgba(236, 236, 232, 0.06)` | Trame décorative                          |
+| `--header-bg`         | `rgba(236, 236, 232, 0.9)` | `rgba(21, 22, 25, 0.9)`     | Fond translucide de l’en-tête             |
 
 Le thème système réutilise exactement les valeurs sombres quand `prefers-color-scheme: dark` est actif et qu’aucun choix n’a été enregistré. Les paires texte/fond principales et violet/texte contrasté sont contrôlées au build avec un seuil de `4.5:1`. Axe et les tests navigateur complètent ce contrôle sur les composants rendus.
 
