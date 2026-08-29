@@ -39,7 +39,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
       description:
-        "Portfolio d’Ethan Brosselard. Projets logiciels, expériences web et Android, architecture et explorations autour de l’IA.",
+        "Portfolio d’Ethan Brosselard. Projets logiciels, plateformes web, architecture et explorations autour de l’IA.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZK.",
     },
@@ -66,7 +66,7 @@ export const copy = {
       ],
       selectedProjects: "Projets sélectionnés",
       selectedProjectsIntro:
-        "Deux premiers produits, deux contextes très différents, une même attention portée aux décisions derrière le code.",
+        "Deux plateformes aux usages différents, une même attention portée aux décisions derrière le code.",
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
@@ -94,11 +94,11 @@ export const copy = {
         "J’ai commencé par vouloir comprendre comment fonctionnent les jeux vidéo : ce qui se passe derrière l’écran, comment les systèmes s’assemblent et comment une idée devient un produit concret. Cette curiosité m’a naturellement conduit vers le développement.",
         "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
         "En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance. Mon master en ingénierie de l’intelligence artificielle nourrit aussi une pratique réfléchie de l’IA : un outil qui aide à transformer de bonnes idées en réalisations, lorsqu’il est utilisé avec compréhension.",
-        "En dehors de l’informatique, je m’intéresse aux jeux vidéo, au cinéma, aux séries, aux mangas et à la lecture. Ces univers nourrissent mes projets : MyVerse est né de l’envie de réunir au même endroit le suivi de plusieurs cultures, dans l’esprit de ce que Letterboxd propose au cinéma.",
+        "En dehors de l’informatique, je m’intéresse aux jeux vidéo, au cinéma, aux séries, aux mangas et à la lecture. Ces univers nourrissent mes projets : Palimia est né de l’envie de réunir au même endroit le suivi de plusieurs cultures, dans l’esprit de ce que Letterboxd propose au cinéma.",
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Faire évoluer MyVerse, poursuivre mon alternance chez Beyowi et approfondir la sécurité appliquée au développement logiciel.",
+        "Faire évoluer Palimia, poursuivre mon alternance chez Beyowi et approfondir la sécurité appliquée au développement logiciel.",
       proofLabel: "Ce que montre ce portfolio",
       proofText:
         "Des projets, un parcours et des choix techniques expliqués avec leurs validations et leurs limites connues.",
@@ -214,7 +214,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Software developer & digital maker",
       description:
-        "Portfolio of Ethan Brosselard. Software projects, web and Android experiences, architecture, and AI explorations.",
+        "Portfolio of Ethan Brosselard. Software projects, web platforms, architecture, and AI explorations.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZK signature.",
     },
@@ -241,7 +241,7 @@ export const copy = {
       ],
       selectedProjects: "Selected projects",
       selectedProjectsIntro:
-        "Two initial products, two very different contexts, and the same attention to the decisions behind the code.",
+        "Two platforms with different uses and the same attention to the decisions behind the code.",
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
@@ -269,11 +269,11 @@ export const copy = {
         "I first got into software by wanting to understand how video games work: what happens behind the screen, how systems fit together, and how an idea becomes a working product. That curiosity naturally led me to development.",
         "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
         "Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance. My master’s degree in AI engineering also supports a thoughtful approach to AI: a tool that can help turn good ideas into real work when used with understanding.",
-        "Outside software, I’m interested in video games, movies, TV series, manga, and books. These worlds feed into my projects: MyVerse started from the wish to track several cultural domains in one place, in the spirit of what Letterboxd offers for film.",
+        "Outside software, I’m interested in video games, movies, TV series, manga, and books. These worlds feed into my projects: Palimia started from the wish to track several cultural domains in one place, in the spirit of what Letterboxd offers for film.",
       ],
       nowLabel: "Now",
       nowText:
-        "Evolving MyVerse, continuing my apprenticeship at Beyowi, and deepening my knowledge of software security.",
+        "Evolving Palimia, continuing my apprenticeship at Beyowi, and deepening my knowledge of software security.",
       proofLabel: "What this portfolio shows",
       proofText:
         "Projects, a professional path, and technical choices explained with their validation and known limitations.",

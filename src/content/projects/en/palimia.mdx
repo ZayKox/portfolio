@@ -1,0 +1,36 @@
+---
+title: Palimia
+slug: palimia
+locale: en
+order: 1
+featured: true
+publication: teaser
+eyebrow: Cultural profile
+kind: Full-stack web application
+summary: A platform for tracking, rating, and organizing movies, TV series, video games, anime, and manga through one cultural profile.
+stack:
+  - Next.js
+  - TypeScript
+  - PostgreSQL
+  - Prisma
+  - Better Auth
+visual: palimia
+socialImage: /palimia-social-card.png
+socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
+---
+
+## One cross-media cultural profile
+
+Palimia, previously named MyVerse, brings movie, TV series, video game, anime, and manga tracking together. Its public MVP focuses on a private personal tracker: searching for a work, adding it to a library, tracking progress, rating it, marking it as a favorite, and viewing personal statistics.
+
+Existing social features remain disabled for the first beta. Public profiles, reviews, lists, and relationships are kept separate from private tracking and await an explicit product and legal review.
+
+## A full-stack foundation
+
+The project is a modular monolith built with Next.js and strict TypeScript. PostgreSQL and Prisma support the catalog and personal states. Data from authorized providers is validated and normalized before import without flattening the characteristics of each media type into a generic model.
+
+Imports are designed to be idempotent and safe under concurrency. Planned recommendations begin with a private, explainable approach based on understandable signals rather than an opaque score.
+
+## Current validation
+
+The repository includes unit, component, PostgreSQL, and Playwright tests, alongside security, privacy, and release checks. Its deployment architecture is prepared, but the repository does not yet prove a deployed production environment. These are local engineering and validation signals, not metrics from a public service.

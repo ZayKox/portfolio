@@ -90,12 +90,12 @@
     ],
     "projects": [
       {
-        "title": "MyVerse",
-        "description": "Projet personnel solo pour réunir le suivi de films, séries, jeux, anime, manga et livres au même endroit."
+        "title": "Palimia",
+        "description": "Projet personnel solo pour réunir le suivi de films, séries, jeux vidéo, anime et manga dans un même profil culturel."
       },
       {
-        "title": "FiltreAppels",
-        "description": "Projet personnel solo d’application Android imaginée pour limiter les appels indésirables."
+        "title": "Ludosaic",
+        "description": "Projet personnel solo de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu."
       },
       {
         "title": "Hackathons et projets collectifs",
@@ -194,12 +194,12 @@
     ],
     "projects": [
       {
-        "title": "MyVerse",
-        "description": "Solo personal project bringing film, TV, game, anime, manga, and book tracking into one place."
+        "title": "Palimia",
+        "description": "Solo personal project bringing movie, TV series, video game, anime, and manga tracking into one cultural profile."
       },
       {
-        "title": "FiltreAppels",
-        "description": "Solo personal Android application project designed to limit unwanted calls."
+        "title": "Ludosaic",
+        "description": "Solo personal project for a modular web platform bringing together several mini-games and play modes."
       },
       {
         "title": "Hackathons and group projects",

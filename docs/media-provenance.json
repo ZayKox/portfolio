@@ -37,24 +37,24 @@
       "sha256": "bb68e47a5ee81bddd3442106e6989e51a09ca48dce16161fc0d541d746c4af2f"
     },
     {
-      "path": "public/myverse-social-card.png",
+      "path": "public/palimia-social-card.png",
       "kind": "generated-project-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native MyVerse project composition, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native Palimia project composition, without third-party media input.",
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "45651e7ed2d5175d6c1905f012f492009ba0ce12670fd58a720fb65274fffeb5"
+      "sha256": "d7c2f9dbc093966a319c7cc3410292b6e274efa8eab27ea9d6ec8364d2edf097"
     },
     {
-      "path": "public/filtre-appels-social-card.png",
+      "path": "public/ludosaic-social-card.png",
       "kind": "generated-project-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native FiltreAppels project composition, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the existing code-native Ludosaic project composition, without third-party media input.",
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "0949309d76ca58de84d6472c55ae5e3424cb30d6acc99af0625c82304f9cfa61"
+      "sha256": "8e5967421e9953ed0ae6b7bbf05e1b619dd1913d9111d7a379e687ce4e1f1132"
     }
   ]
 }

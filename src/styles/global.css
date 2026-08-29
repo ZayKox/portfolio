@@ -837,64 +837,41 @@ h3 {
   left: 14%;
 }
 
-.project-visual--calls {
-  align-content: center;
-  gap: 0.65rem;
+.project-visual--ludosaic {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.45rem, 2vw, 1rem);
   padding: clamp(2rem, 6vw, 5rem);
 }
 
-.call-number {
-  width: min(100%, 24rem);
-  margin-bottom: 1rem;
-  padding: 1rem;
+.game-tile {
+  display: grid;
+  align-content: space-between;
+  width: 100%;
+  min-height: clamp(5.5rem, 15vw, 8rem);
+  padding: clamp(0.65rem, 2vw, 1rem);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   background: var(--surface);
   font-family: var(--font-mono);
-  font-size: clamp(0.8rem, 2vw, 1rem);
-  text-align: center;
+  font-size: clamp(0.55rem, 1.5vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
   box-shadow: 0 1rem 2rem var(--shadow);
 }
 
-.call-path {
-  position: relative;
-  width: min(100%, 21rem);
-  height: 0.48rem;
-  overflow: visible;
-  border-radius: 999px;
-  background: var(--border);
-}
-
-.call-path::before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--path-width, 70%);
-  border-radius: inherit;
-  background: var(--accent);
-  content: "";
-}
-
-.call-path--1 {
-  --path-width: 88%;
-}
-.call-path--2 {
-  --path-width: 61%;
-}
-.call-path--3 {
-  --path-width: 37%;
-}
-
-.call-path span {
-  position: absolute;
-  top: -0.45rem;
-  right: calc(100% + 0.7rem);
+.game-tile span {
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
 }
 
-.call-result {
-  margin-top: 1.2rem;
+.game-tile--merge {
+  transform: translateY(0.8rem);
+}
+
+.game-status {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-top: 0.8rem;
   padding: 0.4rem 0.6rem;
   border-radius: 0.35rem;
   color: var(--accent);

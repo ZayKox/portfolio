@@ -16,9 +16,9 @@ const t = getCopy(locale);
 const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const visualLabel =
-  entry.data.visual === "myverse"
-    ? `MV, Film, Game, Book, Anime, Manga, Series — ${t.projects.viewProject} — ${entry.data.title}`
-    : `+33, Allow, Silence, Block, Rule 04 — ${t.projects.viewProject} — ${entry.data.title}`;
+  entry.data.visual === "palimia"
+    ? `PA, Film, Game, Manga, Anime, Stats, Series — ${t.projects.viewProject} — ${entry.data.title}`
+    : `Reflex Rush, Merge Forge, Grid Duel — ${t.projects.viewProject} — ${entry.data.title}`;
 ---
 
 <article class="project-card reveal">

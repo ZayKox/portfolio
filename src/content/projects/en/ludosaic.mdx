@@ -1,0 +1,36 @@
+---
+title: Ludosaic
+slug: ludosaic
+locale: en
+order: 2
+featured: true
+publication: teaser
+eyebrow: Mini-game platform
+kind: Modular web application
+summary: A mobile-first mosaic of accessible mini-games, playable without an account in solo, against bots, through local multiplayer, or in private rooms depending on the game.
+stack:
+  - Next.js
+  - TypeScript
+  - React
+  - PostgreSQL
+  - Colyseus
+visual: ludosaic
+socialImage: /ludosaic-social-card.png
+socialImageAlt: Violet Field sharing card for Ludosaic, with three tiles representing Reflex Rush, Merge Forge, and Grid Duel.
+---
+
+## One platform, several ways to play
+
+Ludosaic is a mobile-first, accessible, installable web mini-game platform. People can start playing without creating an account. Depending on the game, it targets solo play, daily challenges, bots, multiplayer on the same device, and private online rooms.
+
+Three games shape its first scope: Reflex Rush, a reaction game; Merge Forge, a deterministic resumable puzzle; and Grid Duel, an alignment game with local play, bots, and a connected private-room foundation.
+
+## Deterministic, shareable rules
+
+The monorepo separates the Next.js application, game server, games, and their shared contracts. React and Phaser power game interfaces, PostgreSQL and Drizzle store durable data, Redis handles ephemeral state, and Colyseus provides real-time authority.
+
+Business rules remain independent from rendering and can be replayed from a seed and action sequence. For connected scores, the server recalculates results instead of trusting a score declared by the browser. Games load on demand, and some solo modes remain available offline after an initial load.
+
+## Current validation
+
+The repository documents a locally validated foundation and several playable local or connected beta slices. Tests cover rules, PostgreSQL integration, browser journeys, and two clients for the multiplayer foundation. The complete MVP and production validation have not been reached; this local evidence is neither a user metric nor proof of a deployed public service.

@@ -69,7 +69,7 @@ The questionnaire is an input document, not runtime content. Convert only approv
 ## Architecture rules
 
 - Preserve Astro static output. Do not add SSR, an API, database, authentication, CMS, form backend, or runtime service without an explicit requirement.
-- Keep the build independent from `/home/ethan/Development/MyVerse`, `/home/ethan/Development/filtre-appels-android`, or any other sibling repository.
+- Keep the build independent from `/home/ethan/Development/palimia`, `/home/ethan/Development/ludosaic`, or any other sibling repository.
 - Curate approved text and media into this repository.
 - Use TypeScript strictness and typed content collections.
 - Add client JavaScript only for useful progressive enhancement.
@@ -162,7 +162,7 @@ Commit rules:
 Examples:
 
 ```text
-feat(projects): publish MyVerse case study
+feat(projects): publish Palimia case study
 content(about): add validated career history
 fix(i18n): align English project metadata
 docs: add portfolio content questionnaire

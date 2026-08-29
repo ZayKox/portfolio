@@ -109,7 +109,7 @@ le serveur déjà acheté sans modifier l'architecture Astro.
 - [`docs/production-plan.md`](docs/production-plan.md) pilote toutes les étapes jusqu’à la mise en production et sa maintenance.
 - `skills/maintain-portfolio/` guide les futures modifications assistées.
 
-Le contenu des dépôts MyVerse et FiltreAppels est curaté dans ce dépôt. Le build ne dépend jamais de chemins locaux vers les projets sources.
+Le contenu des dépôts Palimia et Ludosaic est curaté dans ce dépôt. Le build ne dépend jamais de chemins locaux vers les projets sources.
 
 ## CV
 

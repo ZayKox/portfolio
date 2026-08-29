@@ -39,7 +39,7 @@ Deux jalons évitent de bloquer la publication sur les contenus qui seront fourn
 Le site peut être publié lorsque :
 
 - les pages principales FR/EN sont cohérentes et factuelles ;
-- MyVerse et FiltreAppels sont clairement présentés comme des aperçus ;
+- Palimia et Ludosaic sont clairement présentés comme des aperçus ;
 - le CV, les expériences et tout contenu incomplet sont masqués ;
 - le domaine, le SEO technique, les pages légales, la sécurité, l’accessibilité et les tests P0 sont terminés ;
 - le déploiement et le retour arrière ont été testés.
@@ -86,7 +86,7 @@ Choix structurants :
 - Faute de serveur de staging séparé, la recette se fait localement puis sur
   une route Caddy temporairement non publique, avec un domaine de test
   `noindex` si une vérification distante devient nécessaire.
-- Aucun chemin local vers MyVerse ou FiltreAppels ne doit être requis pendant le build.
+- Aucun chemin local vers Palimia ou Ludosaic ne doit être requis pendant le build.
 
 ## État initial constaté
 
@@ -100,7 +100,7 @@ Choix structurants :
 - [x] Direction artistique « Violet Field » sans vert ni jaune.
 - [x] Données publiques centralisées dans `src/data/profile.ts`.
 - [x] Textes d’interface centralisés dans `src/i18n/copy.ts`.
-- [x] MyVerse et FiltreAppels disponibles en mode `teaser`.
+- [x] Palimia et Ludosaic disponibles en mode `teaser`.
 - [x] Canonical, `hreflang`, métadonnées sociales de base et JSON-LD préparés dans le layout.
 - [x] CI GitHub de base : installation propre, format, contrôle Astro/TypeScript et build.
 - [x] Dependabot configuré.
@@ -255,7 +255,7 @@ Publication autorisée : oui/non
 
 Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut d’un projet ne passe de `teaser` à `published` qu’après le gate de cette phase.
 
-### MyVerse
+### Palimia
 
 - [ ] `[Ethan]` Motivation et problème personnel initial.
 - [ ] `[Ethan]` Public cible.
@@ -274,21 +274,19 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [ ] `[Dev]` Montrer la normalisation multi-source, la frontière privé/public et les recommandations explicables si leur publication est autorisée.
 - [ ] `[QA]` Étiqueter les tests et chiffres existants comme preuves locales datées.
 
-### FiltreAppels
+### Ludosaic
 
 - [ ] `[Ethan]` Motivation et problème initial.
+- [ ] `[Ethan]` Public cible.
 - [ ] `[Ethan]` Rôle exact et projet solo/équipe.
 - [ ] `[Ethan]` Dates.
-- [ ] `[Ethan]` État réel dans la Play Console.
-- [ ] `[Ethan]` Date de publication visée.
-- [ ] `[Ethan]` Visibilité du dépôt et décision sur un APK public.
-- [ ] `[Ethan]` Appareils, constructeurs et versions Android testés.
-- [ ] `[Ethan]` Scénarios d’appels réels validés.
+- [ ] `[Ethan]` Visibilité du dépôt et lien éventuel.
+- [ ] `[Ethan]` Démo accessible ou raison de son absence.
 - [ ] `[Ethan]` Bêta-testeurs et retours publiables.
 - [ ] `[Ethan]` Décision technique difficile, compromis et limites.
 - [ ] `[Ethan]` Résultat le plus important et prochaines étapes.
-- [ ] `[Dev]` Raconter le modèle local-first, la priorité des règles, la normalisation des numéros, le chemin Telecom et la stratégie de repli.
-- [ ] `[QA]` Séparer les tests automatisés des validations sur appareils et appels réels.
+- [ ] `[Dev]` Raconter la plateforme modulaire, les règles déterministes, le chargement à la demande, le hors-ligne et l’autorité multijoueur.
+- [ ] `[QA]` Séparer les validations locales et connectées des résultats utilisateurs et de la preuve de production.
 
 ### Structure de chaque étude
 
@@ -310,7 +308,7 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 
 **Priorité : P1 pour le jalon A, P0 pour le jalon B**
 
-### Inventaire MyVerse
+### Inventaire Palimia
 
 - [ ] Couverture 16:9.
 - [ ] Recherche multi-source.
@@ -324,17 +322,19 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 - [ ] Démonstration vidéo courte.
 - [ ] Diagramme d’architecture et de données.
 
-### Inventaire FiltreAppels
+### Inventaire Ludosaic
 
 - [ ] Couverture 16:9.
-- [ ] Accueil et état de protection.
-- [ ] Liste de règles.
-- [ ] Création ou modification d’une règle.
-- [ ] Testeur et règle gagnante.
-- [ ] Plages ARCEP.
-- [ ] Statistiques ou paramètres.
+- [ ] Catalogue et filtres de jeux.
+- [ ] Reflex Rush en solo ou défi quotidien.
+- [ ] Merge Forge et reprise de partie.
+- [ ] Grid Duel contre un bot ou en local.
+- [ ] Salon privé Grid Duel avec données de démonstration.
+- [ ] Profil invité, progression et succès.
+- [ ] Classement de scores vérifiés.
+- [ ] État hors-ligne et paramètres.
 - [ ] Démonstration vidéo courte.
-- [ ] Diagramme du chemin d’un appel.
+- [ ] Diagramme application, jeux, API, serveur temps réel et données.
 
 ### Traitement commun
 

@@ -9,8 +9,8 @@ const publicRoutes = [
   "/mentions-legales/",
   "/confidentialite/",
   "/projets/",
-  "/projets/filtre-appels/",
-  "/projets/myverse/",
+  "/projets/ludosaic/",
+  "/projets/palimia/",
   "/en/",
   "/en/about/",
   "/en/resume/",
@@ -18,8 +18,8 @@ const publicRoutes = [
   "/en/legal-notice/",
   "/en/privacy/",
   "/en/projects/",
-  "/en/projects/filtre-appels/",
-  "/en/projects/myverse/",
+  "/en/projects/ludosaic/",
+  "/en/projects/palimia/",
 ] as const;
 
 for (const route of publicRoutes) {
@@ -323,7 +323,7 @@ test("representative pages stay within CLS and transfer budgets", async ({ page 
     }).observe({ type: "layout-shift", buffered: true });
   });
 
-  for (const route of ["/", "/projets/", "/projets/myverse/", "/projets/filtre-appels/"] as const) {
+  for (const route of ["/", "/projets/", "/projets/palimia/", "/projets/ludosaic/"] as const) {
     await page.goto(route);
     await page.waitForTimeout(250);
     const metrics = await page.evaluate(() => {

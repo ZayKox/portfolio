@@ -17,8 +17,8 @@ const expectedRoutes = [
   "/mentions-legales/",
   "/confidentialite/",
   "/projets/",
-  "/projets/filtre-appels/",
-  "/projets/myverse/",
+  "/projets/ludosaic/",
+  "/projets/palimia/",
   "/en/",
   "/en/about/",
   "/en/resume/",
@@ -26,16 +26,16 @@ const expectedRoutes = [
   "/en/legal-notice/",
   "/en/privacy/",
   "/en/projects/",
-  "/en/projects/filtre-appels/",
-  "/en/projects/myverse/",
+  "/en/projects/ludosaic/",
+  "/en/projects/palimia/",
   "/404.html",
 ];
 const expectedRouteSet = new Set(expectedRoutes);
 const routeSocialImages = new Map([
-  ["/projets/filtre-appels/", "/filtre-appels-social-card.png"],
-  ["/en/projects/filtre-appels/", "/filtre-appels-social-card.png"],
-  ["/projets/myverse/", "/myverse-social-card.png"],
-  ["/en/projects/myverse/", "/myverse-social-card.png"],
+  ["/projets/ludosaic/", "/ludosaic-social-card.png"],
+  ["/en/projects/ludosaic/", "/ludosaic-social-card.png"],
+  ["/projets/palimia/", "/palimia-social-card.png"],
+  ["/en/projects/palimia/", "/palimia-social-card.png"],
 ]);
 const languagePairs = [
   { fr: "/", en: "/en/" },
@@ -45,8 +45,8 @@ const languagePairs = [
   { fr: "/mentions-legales/", en: "/en/legal-notice/" },
   { fr: "/confidentialite/", en: "/en/privacy/" },
   { fr: "/projets/", en: "/en/projects/" },
-  { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
-  { fr: "/projets/myverse/", en: "/en/projects/myverse/" },
+  { fr: "/projets/ludosaic/", en: "/en/projects/ludosaic/" },
+  { fr: "/projets/palimia/", en: "/en/projects/palimia/" },
 ];
 const expectedSchemaTypes = new Map([
   ["/", "ProfilePage"],
@@ -56,8 +56,8 @@ const expectedSchemaTypes = new Map([
   ["/mentions-legales/", "WebPage"],
   ["/confidentialite/", "WebPage"],
   ["/projets/", "CollectionPage"],
-  ["/projets/filtre-appels/", "WebPage"],
-  ["/projets/myverse/", "WebPage"],
+  ["/projets/ludosaic/", "WebPage"],
+  ["/projets/palimia/", "WebPage"],
   ["/en/", "ProfilePage"],
   ["/en/about/", "ProfilePage"],
   ["/en/resume/", "WebPage"],
@@ -65,8 +65,8 @@ const expectedSchemaTypes = new Map([
   ["/en/legal-notice/", "WebPage"],
   ["/en/privacy/", "WebPage"],
   ["/en/projects/", "CollectionPage"],
-  ["/en/projects/filtre-appels/", "WebPage"],
-  ["/en/projects/myverse/", "WebPage"],
+  ["/en/projects/ludosaic/", "WebPage"],
+  ["/en/projects/palimia/", "WebPage"],
 ]);
 const expectedPerson = {
   "@type": "Person",
@@ -767,8 +767,8 @@ for (const [filename, expectedWidth, expectedHeight, maximumBytes] of [
   ["favicon.png", 64, 64, 32 * 1024],
   ["apple-touch-icon.png", 180, 180, 64 * 1024],
   ["social-card.png", 1200, 630, 300 * 1024],
-  ["myverse-social-card.png", 1200, 630, 300 * 1024],
-  ["filtre-appels-social-card.png", 1200, 630, 300 * 1024],
+  ["palimia-social-card.png", 1200, 630, 300 * 1024],
+  ["ludosaic-social-card.png", 1200, 630, 300 * 1024],
 ]) {
   const assetPath = path.join(outputDirectory, filename);
   const contents = await readFile(assetPath).catch(() => undefined);

@@ -5,7 +5,7 @@ Cette liste n’est pas affichée sur le site.
 ## Minimum à valider pour publier la version actuelle
 
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
-- Confirmer que MyVerse et FiltreAppels peuvent rester publiés comme aperçus factuels (`teaser`) sans dépôt, démonstration, métrique ni téléchargement public.
+- Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
 - Valider l’identité visuelle actuelle, dont le monogramme et les trois cartes de partage Violet Field.
 - Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de déploiement Docker Compose.
 - Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
@@ -26,7 +26,7 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 
 - Mettre à jour le CV à partir de sa source structurée unique lorsqu’une expérience, une formation ou un projet évolue.
 
-## MyVerse
+## Palimia
 
 - Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
 - Motivation et problème personnel initial.
@@ -37,16 +37,15 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 - Captures récentes et vidéo de démonstration.
 - Autorisation de publier les détails de sécurité et d’exploitation.
 
-## FiltreAppels
+## Ludosaic
 
 - Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
-- Motivation, rôle exact et dates.
-- État Play Console et date de publication visée.
-- Appareils, constructeurs et appels réels testés.
-- Retours de bêta-testeurs et résultats réels.
-- Décisions, compromis et enseignements.
-- Captures avec règles réalistes et vidéo de démonstration.
-- Décision concernant la publication du dépôt ou d’un APK.
+- Motivation, public cible, rôle exact et dates.
+- Visibilité du dépôt, URL de démonstration éventuelle et état de déploiement.
+- Retours de testeurs et résultats réels, séparés des validations locales.
+- Décisions, compromis et enseignements sur les règles déterministes, le hors-ligne et le multijoueur.
+- Captures de Reflex Rush, Merge Forge et Grid Duel avec des profils et scores de démonstration.
+- Décision concernant la publication du dépôt et les détails d’exploitation.
 
 ## Publication
 

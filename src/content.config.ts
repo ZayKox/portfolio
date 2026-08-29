@@ -19,7 +19,7 @@ const projects = defineCollection({
     kind: z.string(),
     summary: z.string(),
     stack: z.array(z.string()).min(1),
-    visual: z.enum(["myverse", "calls"]),
+    visual: z.enum(["palimia", "ludosaic"]),
     socialImage: z.string().regex(/^\/[a-z0-9-]+\.png$/),
     socialImageAlt: z.string().min(1),
     metrics: z

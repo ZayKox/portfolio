@@ -1,6 +1,6 @@
 ---
 interface Props {
-  visual: "myverse" | "calls";
+  visual: "palimia" | "ludosaic";
 }
 
 const { visual } = Astro.props;
@@ -8,31 +8,30 @@ const { visual } = Astro.props;
 
 <div class:list={["project-visual", `project-visual--${visual}`]} aria-hidden="true">
   {
-    visual === "myverse" ? (
+    visual === "palimia" ? (
       <>
         <div class="visual-orbit visual-orbit--outer" />
         <div class="visual-orbit visual-orbit--inner" />
-        <div class="visual-core">MV</div>
+        <div class="visual-core">PA</div>
         <span class="media-node media-node--1">FILM</span>
         <span class="media-node media-node--2">GAME</span>
-        <span class="media-node media-node--3">BOOK</span>
+        <span class="media-node media-node--3">MANGA</span>
         <span class="media-node media-node--4">ANIME</span>
-        <span class="media-node media-node--5">MANGA</span>
+        <span class="media-node media-node--5">STATS</span>
         <span class="media-node media-node--6">SERIES</span>
       </>
     ) : (
       <>
-        <div class="call-number">+33 •• •• •• 42</div>
-        <div class="call-path call-path--1">
-          <span>ALLOW</span>
+        <div class="game-tile game-tile--reflex">
+          <span>01</span>REFLEX RUSH
         </div>
-        <div class="call-path call-path--2">
-          <span>SILENCE</span>
+        <div class="game-tile game-tile--merge">
+          <span>02</span>MERGE FORGE
         </div>
-        <div class="call-path call-path--3">
-          <span>BLOCK</span>
+        <div class="game-tile game-tile--grid">
+          <span>03</span>GRID DUEL
         </div>
-        <div class="call-result">RULE / 04</div>
+        <div class="game-status">SOLO · DAILY · LOCAL · ONLINE</div>
       </>
     )
   }

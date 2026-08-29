@@ -62,8 +62,8 @@ Toutes les réponses PUBLIC — VALIDÉ ont été relues : non
 - [ ] À propos validé.
 - [ ] Expériences et formations validées.
 - [ ] Compétences validées avec preuves.
-- [ ] MyVerse validé.
-- [ ] FiltreAppels validé.
+- [ ] Palimia validé.
+- [ ] Ludosaic validé.
 - [ ] Autres projets renseignés.
 - [ ] Médias autorisés et fournis.
 - [ ] CV complet.
@@ -196,11 +196,11 @@ Statut : À REMPLIR
 Domaines à montrer dès l’accueil : À REMPLIR
 Statut : À REMPLIR
 
-Projet à mettre en premier : MyVerse / FiltreAppels / autre
-Statut : À CONFIRMER
+Projet à mettre en premier : Palimia
+Statut : PUBLIC — VALIDÉ le 29 août 2026
 
-Ordre des autres projets : À REMPLIR
-Statut : À CONFIRMER
+Ordre des autres projets : Ludosaic en deuxième position ; FiltreAppels ne doit plus apparaître dans la sélection
+Statut : PUBLIC — VALIDÉ le 29 août 2026
 
 CTA principal : À REMPLIR
 Statut : À CONFIRMER
@@ -388,11 +388,14 @@ Statut global de cette section : À CONFIRMER
 
 Ajoute uniquement les projets dont l’existence peut être rendue publique. N’inscris pas ici le nom ou l’existence d’un projet confidentiel. Utilise `draft`, `teaser` ou `published` comme cible.
 
-| Projet       | Priorité  | Statut actuel | Publication cible     | Dépôt public ? | Démo ?      | Étude de cas ? |
-| ------------ | --------- | ------------- | --------------------- | -------------- | ----------- | -------------- |
-| MyVerse      | 1         | À CONFIRMER   | `teaser` actuellement | À CONFIRMER    | À CONFIRMER | Oui            |
-| FiltreAppels | 2         | À CONFIRMER   | `teaser` actuellement | À CONFIRMER    | À CONFIRMER | Oui            |
-| Autre        | À REMPLIR | À REMPLIR     | À REMPLIR             | À REMPLIR      | À REMPLIR   | À REMPLIR      |
+| Projet   | Priorité  | Statut actuel  | Publication cible | Dépôt public ? | Démo ?      | Étude de cas ? |
+| -------- | --------- | -------------- | ----------------- | -------------- | ----------- | -------------- |
+| Palimia  | 1         | Aperçu factuel | `teaser` validé   | À CONFIRMER    | À CONFIRMER | Oui            |
+| Ludosaic | 2         | Aperçu factuel | `teaser` validé   | À CONFIRMER    | À CONFIRMER | Oui            |
+| Autre    | À REMPLIR | À REMPLIR      | À REMPLIR         | À REMPLIR      | À REMPLIR   | À REMPLIR      |
+
+Sélection Palimia + Ludosaic, ordre et publication en aperçus factuels : PUBLIC — VALIDÉ par Ethan le 29 août 2026.
+FiltreAppels est retiré de la sélection publique : PUBLIC — VALIDÉ par Ethan le 29 août 2026.
 
 ### Gabarit pour tout nouveau projet
 
@@ -450,10 +453,13 @@ Détails à ne pas publier : PRIVÉ — transmis séparément
 Statut de validation global : À CONFIRMER
 ```
 
-## 9. MyVerse
+## 9. Palimia
 
 ```text
-Pourquoi as-tu lancé MyVerse ? : À REMPLIR
+Nom public : Palimia ; le projet portait auparavant le nom MyVerse
+Statut : PUBLIC — VALIDÉ le 29 août 2026
+
+Pourquoi as-tu lancé Palimia ? : À REMPLIR
 Quel problème personnel voulais-tu résoudre ? : À REMPLIR
 Quel est le public cible ? : À REMPLIR
 Quelle alternative utilisais-tu avant ? : À REMPLIR
@@ -509,70 +515,39 @@ Angle narratif souhaité : À REMPLIR
 Statut global de validation : À CONFIRMER
 ```
 
-## 10. FiltreAppels
+## 10. Ludosaic
 
 ```text
-Pourquoi as-tu lancé FiltreAppels ? : À REMPLIR
-Quel problème voulais-tu résoudre ? : À REMPLIR
-Quel est le public cible ? : À REMPLIR
+Nom public : Ludosaic
+Publication dans la sélection du portfolio : oui, en deuxième position et en mode teaser
+Statut : PUBLIC — VALIDÉ le 29 août 2026
 
+Nature du produit : plateforme web modulaire de mini-jeux, pensée pour le mobile, accessible et installable
+Accès : jouable sans création de compte
+Modes selon les jeux : solo, défi quotidien, bot, multijoueur local et salon privé en ligne
+Premier périmètre : Reflex Rush, Merge Forge et Grid Duel
+État publiable : fondation validée localement avec plusieurs tranches jouables en bêta locale ou connectée ; MVP complet et production non validés
+Architecture publiable : monorepo séparant application Next.js, serveur de jeu, jeux et contrats communs
+Stack publiable : Next.js, TypeScript, React, Phaser, PostgreSQL, Drizzle, Redis et Colyseus
+Principe technique publiable : règles déterministes séparées du rendu et scores connectés recalculés côté serveur
+Validation publiable : tests de règles, intégration PostgreSQL, parcours navigateur et fondation multijoueur à deux clients
+Source factuelle : documentation et code du dépôt source Ludosaic consultés le 29 août 2026
+Statut des faits techniques ci-dessus : PUBLIC — VALIDÉ pour l’aperçu demandé le 29 août 2026
+
+Pourquoi as-tu lancé Ludosaic ? : À REMPLIR
+Public cible détaillé : À REMPLIR
 Ton rôle exact : À REMPLIR
 Projet solo ou équipe ? : À REMPLIR
 Contributions externes ou outils à créditer : À REMPLIR
-Date de début : À REMPLIR
-Temps approximatif consacré : À REMPLIR
-
-État actuel exact : À REMPLIR
-État Play Console : À REMPLIR
-Date de publication visée : À REMPLIR
-Dépôt public ou privé ? : À REMPLIR
-URL du dépôt si publique : À REMPLIR
-APK ou démo disponible ? : À REMPLIR
-URL de téléchargement si publique : À REMPLIR
-
-Versions Android testées : À REMPLIR
-Appareils et constructeurs réellement testés : À REMPLIR
-Nombre de scénarios d’appels réels : À REMPLIR
-Types de numéros et situations testés : À REMPLIR
-Limites connues selon les appareils : À REMPLIR
-
-Bêta-testeurs réels : À REMPLIR
-Nombre et période : À REMPLIR
-Retours reçus : À REMPLIR
-Changements faits grâce aux retours : À REMPLIR
-
-Parcours utilisateur principal : À REMPLIR
-Fonctionnalités à montrer : À REMPLIR
-Fonctionnalités volontairement exclues : À REMPLIR
-
-Décision produit la plus difficile : À REMPLIR
-Décision technique la plus difficile : À REMPLIR
-Plus grosse erreur ou fausse piste : À REMPLIR
-Compromis principal : À REMPLIR
-Résultat dont tu es le plus fier : À REMPLIR
-Ce que tu referais différemment : À REMPLIR
-Prochaine étape : À REMPLIR
-
-Architecture à rendre publique : À REMPLIR
-Vie privée et fonctionnement local à expliquer : À REMPLIR
-Normalisation des numéros à expliquer : À REMPLIR
-Priorité des règles à expliquer : À REMPLIR
-Plages ARCEP à expliquer : À REMPLIR
-Chemin Telecom et stratégie fail-open à expliquer : À REMPLIR
-Détails de sécurité ou de publication à ne pas montrer : PRIVÉ — transmis séparément
-
-Métriques locales publiables : À REMPLIR
-Pour chaque métrique — valeur, date, environnement et source : À REMPLIR
-Résultats réels sur appareils/appels : À REMPLIR
-Statut de publication des métriques : À CONFIRMER
-
-Visuels disponibles : À REMPLIR
-Captures à refaire avec fausses données : À REMPLIR
-Vidéo de démonstration souhaitée : oui/non
-
-Phrase qui résume le projet : À REMPLIR
-Angle narratif souhaité : À REMPLIR
-Statut global de validation : À CONFIRMER
+Date de début et temps consacré : À REMPLIR
+Dépôt public ou privé et URL éventuelle : À REMPLIR
+Démo publique et URL éventuelle : À REMPLIR
+Utilisateurs, testeurs et retours : À REMPLIR
+Décisions, compromis, erreurs et enseignements : À REMPLIR
+Résultats mesurables : À REMPLIR
+Visuels et vidéo de démonstration : À REMPLIR
+Détails à ne pas publier : PRIVÉ — transmis séparément
+Statut global pour une étude de cas complète : À CONFIRMER
 ```
 
 ## 11. Médias et droits
@@ -619,15 +594,15 @@ Statut : À CONFIRMER
 - [ ] Favicon.
 - [ ] Icône Apple touch.
 - [ ] Image Open Graph globale 1200 × 630.
-- [ ] Image Open Graph MyVerse.
-- [ ] Image Open Graph FiltreAppels.
-- [ ] Captures desktop MyVerse.
-- [ ] Captures mobile MyVerse.
-- [ ] Vidéo courte MyVerse.
-- [ ] Diagramme MyVerse.
-- [ ] Captures FiltreAppels avec faux numéros.
-- [ ] Vidéo courte FiltreAppels.
-- [ ] Diagramme FiltreAppels.
+- [x] Image Open Graph Palimia.
+- [x] Image Open Graph Ludosaic.
+- [ ] Captures desktop Palimia.
+- [ ] Captures mobile Palimia.
+- [ ] Vidéo courte Palimia.
+- [ ] Diagramme Palimia.
+- [ ] Captures des trois premiers jeux Ludosaic avec des profils et scores de démonstration.
+- [ ] Vidéo courte Ludosaic.
+- [ ] Diagramme Ludosaic.
 
 ## 12. Témoignages, presse et contributions
 

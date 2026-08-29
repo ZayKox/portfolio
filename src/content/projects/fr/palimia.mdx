@@ -1,0 +1,36 @@
+---
+title: Palimia
+slug: palimia
+locale: fr
+order: 1
+featured: true
+publication: teaser
+eyebrow: Profil culturel
+kind: Application web full-stack
+summary: Une plateforme pour suivre, noter et organiser films, séries, jeux vidéo, anime et manga dans un même profil culturel.
+stack:
+  - Next.js
+  - TypeScript
+  - PostgreSQL
+  - Prisma
+  - Better Auth
+visual: palimia
+socialImage: /palimia-social-card.png
+socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
+---
+
+## Un profil culturel transversal
+
+Palimia, auparavant nommé MyVerse, réunit le suivi de films, séries, jeux vidéo, anime et manga. Son MVP public se concentre sur un outil personnel privé : rechercher une œuvre, l’ajouter à sa bibliothèque, suivre sa progression, la noter, la marquer comme favorite et consulter ses statistiques.
+
+Les fonctions sociales existantes restent désactivées pour la première bêta. Les profils publics, avis, listes et relations sont séparés du suivi privé et attendent une validation produit et juridique explicite.
+
+## Une fondation full-stack
+
+Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue et les états personnels. Les données issues de fournisseurs autorisés sont validées et normalisées avant import, sans réduire les particularités de chaque média à un modèle générique.
+
+Les imports sont conçus pour être idempotents et résistants à la concurrence. Les recommandations prévues commencent par une approche privée et explicable, fondée sur des signaux compréhensibles plutôt que sur un score opaque.
+
+## Validation actuelle
+
+Le dépôt comprend des tests unitaires, composants, PostgreSQL et Playwright, ainsi que des contrôles de sécurité, de confidentialité et de release. L’architecture de déploiement est préparée, mais le dépôt ne prouve pas encore un environnement de production déployé. Ces éléments sont des preuves locales de conception et de validation, pas des métriques d’un service public.

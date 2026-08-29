@@ -22,9 +22,9 @@ const validatedOrigins = await validateCanonicalRedirects({
 assert.deepEqual(validatedOrigins, redirectOrigins);
 assert.deepEqual(requests, [
   "https://www.example.com/",
-  "https://www.example.com/en/projects/myverse/?redirect_probe=1",
+  "https://www.example.com/en/projects/palimia/?redirect_probe=1",
   "https://technical.example.com/",
-  "https://technical.example.com/en/projects/myverse/?redirect_probe=1",
+  "https://technical.example.com/en/projects/palimia/?redirect_probe=1",
 ]);
 
 await assert.rejects(

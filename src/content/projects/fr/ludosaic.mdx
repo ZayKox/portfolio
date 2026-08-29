@@ -1,0 +1,36 @@
+---
+title: Ludosaic
+slug: ludosaic
+locale: fr
+order: 2
+featured: true
+publication: teaser
+eyebrow: Plateforme de mini-jeux
+kind: Application web modulaire
+summary: Une mosaïque de mini-jeux accessibles sur mobile, jouables sans compte en solo, contre un bot, à plusieurs en local ou dans des salons privés selon le jeu.
+stack:
+  - Next.js
+  - TypeScript
+  - React
+  - PostgreSQL
+  - Colyseus
+visual: ludosaic
+socialImage: /ludosaic-social-card.png
+socialImageAlt: Carte de partage Violet Field de Ludosaic, avec trois tuiles représentant Reflex Rush, Merge Forge et Grid Duel.
+---
+
+## Une plateforme, plusieurs façons de jouer
+
+Ludosaic est une plateforme web de mini-jeux pensée pour le mobile, accessible et installable. Elle permet de commencer sans créer de compte. Selon le jeu, elle vise le solo, les défis quotidiens, les bots, le multijoueur sur le même appareil et les salons privés en ligne.
+
+Trois jeux structurent le premier périmètre : Reflex Rush, un jeu de réflexes ; Merge Forge, un puzzle déterministe et reprenable ; et Grid Duel, un jeu d’alignement jouable localement, contre des bots et sur une fondation de salon privé connecté.
+
+## Des règles déterministes et partageables
+
+Le monorepo sépare l’application Next.js, le serveur de jeu, les jeux et leurs contrats communs. React et Phaser portent les interfaces de jeu, PostgreSQL et Drizzle les données durables, Redis l’état éphémère, et Colyseus l’autorité temps réel.
+
+La logique métier reste indépendante du rendu et rejouable à partir d’une graine et d’une suite d’actions. Pour les scores connectés, le serveur recalcule le résultat au lieu d’accepter le score déclaré par le navigateur. Les jeux sont chargés à la demande et une partie des modes solo reste utilisable hors ligne après un premier chargement.
+
+## Validation actuelle
+
+Le dépôt documente une fondation validée localement et plusieurs tranches jouables en bêta locale ou connectée. Les tests couvrent notamment les règles, l’intégration PostgreSQL, les parcours navigateur et deux clients pour la fondation multijoueur. Le MVP complet et la validation de production ne sont pas encore acquis ; ces preuves locales ne constituent ni des métriques utilisateurs ni la preuve d’un service public déployé.

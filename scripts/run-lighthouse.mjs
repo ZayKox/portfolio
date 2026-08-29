@@ -12,8 +12,8 @@ const reportDirectory = path.join(root, "lighthouse-reports");
 const routes = [
   { path: "/", name: "home" },
   { path: "/projets/", name: "projects" },
-  { path: "/projets/myverse/", name: "myverse" },
-  { path: "/projets/filtre-appels/", name: "filtre-appels" },
+  { path: "/projets/palimia/", name: "palimia" },
+  { path: "/projets/ludosaic/", name: "ludosaic" },
 ];
 const minimumScores = {
   performance: 0.95,

@@ -234,38 +234,37 @@ const socialStyles = `
 
 const projectSocialCards = [
   {
-    filename: "myverse-social-card.png",
+    filename: "palimia-social-card.png",
     index: "01",
-    title: "MYVERSE",
+    title: "PALIMIA",
     stack: "NEXT.JS · TYPESCRIPT · POSTGRESQL",
-    visual: "myverse",
+    visual: "palimia",
   },
   {
-    filename: "filtre-appels-social-card.png",
+    filename: "ludosaic-social-card.png",
     index: "02",
-    title: "FILTREAPPELS",
-    stack: "KOTLIN · JETPACK COMPOSE · LOCAL RULES",
-    visual: "calls",
+    title: "LUDOSAIC",
+    stack: "NEXT.JS · REACT · COLYSEUS",
+    visual: "ludosaic",
   },
 ];
 
 function projectSocialMarkup({ index, title, stack, visual }) {
   const visualMarkup =
-    visual === "myverse"
+    visual === "palimia"
       ? `<div class="orbit orbit-outer"></div>
          <div class="orbit orbit-inner"></div>
-         <div class="project-core">MV</div>
+         <div class="project-core">PA</div>
          <span class="media-node node-one">FILM</span>
          <span class="media-node node-two">GAME</span>
-         <span class="media-node node-three">BOOK</span>
+         <span class="media-node node-three">MANGA</span>
          <span class="media-node node-four">ANIME</span>
-         <span class="media-node node-five">MANGA</span>
+         <span class="media-node node-five">STATS</span>
          <span class="media-node node-six">SERIES</span>`
-      : `<div class="call-number">+33 •• •• •• 42</div>
-         <div class="call-path path-one"><span>ALLOW</span></div>
-         <div class="call-path path-two"><span>SILENCE</span></div>
-         <div class="call-path path-three"><span>BLOCK</span></div>
-         <div class="call-result">RULE / 04</div>`;
+      : `<div class="game-tile"><span>01</span><strong>REFLEX RUSH</strong></div>
+         <div class="game-tile game-tile--middle"><span>02</span><strong>MERGE FORGE</strong></div>
+         <div class="game-tile"><span>03</span><strong>GRID DUEL</strong></div>
+         <div class="game-status">SOLO · DAILY · LOCAL · ONLINE</div>`;
 
   return `<div class="grid"></div>
     <div class="glow"></div>
@@ -318,7 +317,7 @@ const projectSocialStyles = `
     padding: 68px 78px;
   }
   .project-copy { align-self: stretch; display: flex; flex-direction: column; }
-  .kicker, .stack, .signature, .media-node, .call-number, .call-path span, .call-result {
+  .kicker, .stack, .signature, .media-node, .game-tile, .game-status {
     font-family: "SFMono-Regular", Consolas, monospace;
     letter-spacing: 0.12em;
   }
@@ -404,46 +403,38 @@ const projectSocialStyles = `
   .node-four { bottom: 10%; left: 39%; }
   .node-five { bottom: 23%; left: 7%; }
   .node-six { top: 23%; left: 9%; }
-  .project-field--calls { align-content: center; gap: 24px; padding: 58px 70px; }
-  .call-number {
-    width: 100%;
-    margin-bottom: 18px;
-    padding: 20px 16px;
+  .project-field--ludosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: center;
+    gap: 14px;
+    padding: 58px 42px;
+  }
+  .game-tile {
+    display: grid;
+    align-content: space-between;
+    height: 150px;
+    padding: 18px 14px;
     border: 1px solid var(--brand-border);
     border-radius: 12px;
     color: var(--brand-text);
     background: var(--brand-surface);
-    font-size: 13px;
-    text-align: center;
+    font-size: 10px;
   }
-  .call-path {
-    position: relative;
-    width: 100%;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--brand-border);
+  .game-tile--middle {
+    transform: translateY(16px);
   }
-  .call-path::before {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: var(--path-width);
-    border-radius: inherit;
-    background: var(--brand-accent);
-    content: "";
-  }
-  .path-one { --path-width: 88%; }
-  .path-two { --path-width: 61%; }
-  .path-three { --path-width: 37%; }
-  .call-path span {
-    position: absolute;
-    top: -6px;
-    right: calc(100% + 16px);
+  .game-tile span {
     color: var(--brand-muted);
     font-size: 9px;
-    font-weight: 700;
   }
-  .call-result {
-    margin-top: 17px;
+  .game-tile strong {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+  .game-status {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 20px;
     padding: 10px 14px;
     border-radius: 8px;
     color: var(--brand-accent);

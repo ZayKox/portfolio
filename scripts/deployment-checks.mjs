@@ -7,11 +7,11 @@ const publicRoutes = [
   { path: "/confidentialite/", locale: "fr" },
   { path: "/projets/", locale: "fr" },
   {
-    path: "/projets/filtre-appels/",
+    path: "/projets/ludosaic/",
     locale: "fr",
-    socialImage: "/filtre-appels-social-card.png",
+    socialImage: "/ludosaic-social-card.png",
   },
-  { path: "/projets/myverse/", locale: "fr", socialImage: "/myverse-social-card.png" },
+  { path: "/projets/palimia/", locale: "fr", socialImage: "/palimia-social-card.png" },
   { path: "/en/", locale: "en" },
   { path: "/en/about/", locale: "en" },
   { path: "/en/resume/", locale: "en" },
@@ -20,11 +20,11 @@ const publicRoutes = [
   { path: "/en/privacy/", locale: "en" },
   { path: "/en/projects/", locale: "en" },
   {
-    path: "/en/projects/filtre-appels/",
+    path: "/en/projects/ludosaic/",
     locale: "en",
-    socialImage: "/filtre-appels-social-card.png",
+    socialImage: "/ludosaic-social-card.png",
   },
-  { path: "/en/projects/myverse/", locale: "en", socialImage: "/myverse-social-card.png" },
+  { path: "/en/projects/palimia/", locale: "en", socialImage: "/palimia-social-card.png" },
 ];
 
 const languagePairs = [
@@ -35,8 +35,8 @@ const languagePairs = [
   { fr: "/mentions-legales/", en: "/en/legal-notice/" },
   { fr: "/confidentialite/", en: "/en/privacy/" },
   { fr: "/projets/", en: "/en/projects/" },
-  { fr: "/projets/filtre-appels/", en: "/en/projects/filtre-appels/" },
-  { fr: "/projets/myverse/", en: "/en/projects/myverse/" },
+  { fr: "/projets/ludosaic/", en: "/en/projects/ludosaic/" },
+  { fr: "/projets/palimia/", en: "/en/projects/palimia/" },
 ];
 const expectedSchemaTypes = new Map([
   ["/", "ProfilePage"],
@@ -46,8 +46,8 @@ const expectedSchemaTypes = new Map([
   ["/mentions-legales/", "WebPage"],
   ["/confidentialite/", "WebPage"],
   ["/projets/", "CollectionPage"],
-  ["/projets/filtre-appels/", "WebPage"],
-  ["/projets/myverse/", "WebPage"],
+  ["/projets/ludosaic/", "WebPage"],
+  ["/projets/palimia/", "WebPage"],
   ["/en/", "ProfilePage"],
   ["/en/about/", "ProfilePage"],
   ["/en/resume/", "WebPage"],
@@ -55,8 +55,8 @@ const expectedSchemaTypes = new Map([
   ["/en/legal-notice/", "WebPage"],
   ["/en/privacy/", "WebPage"],
   ["/en/projects/", "CollectionPage"],
-  ["/en/projects/filtre-appels/", "WebPage"],
-  ["/en/projects/myverse/", "WebPage"],
+  ["/en/projects/ludosaic/", "WebPage"],
+  ["/en/projects/palimia/", "WebPage"],
 ]);
 const expectedPerson = {
   "@type": "Person",
@@ -398,7 +398,7 @@ function xmlLocations(xml) {
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 }
 
-const canonicalRedirectProbePaths = ["/", "/en/projects/myverse/?redirect_probe=1"];
+const canonicalRedirectProbePaths = ["/", "/en/projects/palimia/?redirect_probe=1"];
 
 export async function validateCanonicalRedirects({
   redirectOrigins,
