@@ -147,8 +147,8 @@ Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jal
 - [ ] `[Ethan]` Valider le titre temporaire « Développeur logiciel & créateur numérique », ou fournir le titre final.
 - [ ] `[Ethan]` Valider qu’aucune recherche d’emploi n’est affichée.
 - [ ] `[Ethan]` Valider que l’intérêt pour l’IA reste secondaire tant qu’aucun projet public ne le démontre.
-- [ ] `[Ethan]` Confirmer les faits déjà publics : nom, Paris/France, français/anglais, email, GitHub et LinkedIn ; conserver le pseudo absent du site.
-- [ ] `[Ethan]` Choisir si le portrait reste absent au lancement ; conserver le monogramme s’il n’y en a pas.
+- [ ] `[Ethan]` Confirmer les faits déjà publics : nom, Paris/France, français/anglais, email, GitHub et LinkedIn ; la signature ZayKo est validée séparément.
+- [ ] `[Ethan]` Choisir si le portrait reste absent au lancement ; conserver la signature typographique ZayKo s’il n’y en a pas.
 - [ ] `[Ethan]` Décider si le CV et les études de cas complètes sont requis pour le premier lancement.
 - [ ] `[Dev]` Inscrire la décision de périmètre en haut de ce document.
 
@@ -356,7 +356,7 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 
 - [x] `[Dev]` Formaliser palette, typographies, espacements, rayons, bordures, ombres et mouvement dans les tokens existants.
 - [ ] `[Ethan]` Choisir entre la pile système et des polices auto-hébergées avec licences vérifiées.
-- [ ] `[Dev]` Finaliser le monogramme/signature si aucun logo n’est fourni.
+- [x] `[Dev]` Utiliser la signature typographique ZayKo sans monogramme abrégé si aucun logo n’est fourni.
 - [x] `[Dev]` Créer favicon PNG et icône Apple touch depuis une source déterministe.
 - [x] `[Dev]` Créer une image Open Graph globale de 1200 × 630 px.
 - [x] `[Dev]` Créer une image Open Graph déterministe par projet à partir des compositions Violet Field existantes, avec alternative localisée dans chaque MDX.
@@ -806,8 +806,8 @@ Notes :
 | Jalon A ou B pour le premier lancement | Ethan          | Phase 0             | Jalon A                                       |
 | Titre professionnel final              | Ethan          | Avant gel éditorial | « Développeur logiciel & créateur numérique » |
 | Domaine effectivement utilisé          | Ethan          | Avant phase 7       | `zaykohub.com`, sans `www`                    |
-| Portrait public                        | Ethan          | Avant design final  | Aucun portrait, monogramme                    |
-| Logo ou signature                      | Ethan + design | Avant design final  | Monogramme existant                           |
+| Portrait public                        | Ethan          | Avant design final  | Aucun portrait, signature ZayKo               |
+| Logo ou signature                      | Ethan + design | Avant design final  | Signature typographique ZayKo                 |
 | CV requis au lancement                 | Ethan          | Phase 0             | Non, liens masqués                            |
 | Dépôts projets publics                 | Ethan          | Avant études de cas | Aucun lien si privé                           |
 | Démo/APK publics                       | Ethan          | Avant études de cas | Aucun lien si non validé                      |

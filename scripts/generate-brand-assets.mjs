@@ -46,7 +46,7 @@ function document(content, styles) {
 }
 
 function iconMarkup() {
-  return `<div class="mark"><span class="dot"></span><strong>ZK</strong></div>`;
+  return `<div class="mark"><span class="dot"></span><span class="signal"></span></div>`;
 }
 
 const iconStyles = `
@@ -82,13 +82,12 @@ const iconStyles = `
     border-radius: 50%;
     background: var(--brand-accent);
   }
-  strong {
+  .signal {
     position: relative;
-    font-size: 27vw;
-    font-weight: 750;
-    letter-spacing: -0.09em;
-    line-height: 1;
-    transform: translateX(-0.04em);
+    width: 18%;
+    height: 52%;
+    border-radius: 999px;
+    background: var(--brand-text);
   }
 `;
 
@@ -100,12 +99,12 @@ const socialMarkup = `
     <div class="identity">
       <p class="kicker">PORTFOLIO / VIOLET FIELD</p>
       <h1>ETHAN<br>BROSSELARD</h1>
-      <p class="fields">WEB <span>·</span> MOBILE <span>·</span> SYSTEMS <span>·</span> AI / NEXT</p>
+      <p class="fields">WEB <span>·</span> DATA <span>·</span> SYSTEMS <span>·</span> AI / NEXT</p>
     </div>
     <div class="field" aria-hidden="true">
       <div class="orbit orbit-outer"></div>
       <div class="orbit orbit-inner"></div>
-      <div class="core">ZK</div>
+      <div class="core">ZayKo</div>
       <span class="node node-one">BUILD</span>
       <span class="node node-two">LEARN</span>
       <span class="node node-three">EVOLVE</span>
@@ -206,15 +205,15 @@ const socialStyles = `
     position: relative;
     display: grid;
     place-items: center;
-    width: 142px;
+    width: 174px;
     aspect-ratio: 1;
     border: 2px solid color-mix(in srgb, var(--brand-accent) 72%, transparent);
     border-radius: 50%;
     color: var(--brand-accent);
     background: var(--brand-surface);
-    font-size: 48px;
+    font-size: 30px;
     font-weight: 760;
-    letter-spacing: -0.07em;
+    letter-spacing: -0.04em;
     box-shadow: 0 28px 72px rgba(0, 0, 0, 0.35);
   }
   .node {

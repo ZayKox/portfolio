@@ -535,11 +535,11 @@ h3 {
   justify-items: start;
 }
 
-.hero-signature-monogram {
+.hero-signature-wordmark {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 7vw, 5.8rem);
   font-weight: 700;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.07em;
   line-height: 0.86;
 }
 
@@ -1064,27 +1064,13 @@ h3 {
   position: sticky;
   top: 7rem;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 1.5rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: 0.75rem 0.75rem 0 var(--surface-strong);
-}
-
-.identity-monogram {
-  display: grid;
-  grid-row: span 2;
-  place-items: center;
-  width: 4.5rem;
-  aspect-ratio: 1;
-  border-radius: var(--radius-control);
-  color: var(--primary-contrast);
-  background: var(--primary);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
 }
 
 .identity-card strong,
@@ -1859,8 +1845,8 @@ h3 {
     display: none;
   }
 
-  .hero-signature-monogram {
-    font-size: 3.6rem;
+  .hero-signature-wordmark {
+    font-size: 3.15rem;
   }
 
   .interest-line,

@@ -936,6 +936,15 @@ Publication : site personnel, sans analytics, cookies de suivi, contenu embarqu�
 Statut : PUBLIC — VALIDÉ
 ```
 
+## 22. Information validée dans la tâche du 30 août 2026
+
+Cette décision a été explicitement fournie par Ethan dans la tâche du 30 août 2026. Elle est `PUBLIC — VALIDÉ` et remplace tout ancien choix de monogramme.
+
+```text
+Identité visuelle : ne pas utiliser le monogramme « ZK ». Employer la signature « ZayKo » lorsqu’un repère de marque textuel est utile ; préférer un signe géométrique sans lettres dans les formats trop compacts.
+Statut : PUBLIC — VALIDÉ
+```
+
 Pour tes propres modifications manuelles :
 
 ```text

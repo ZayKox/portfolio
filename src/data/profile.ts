@@ -1,7 +1,6 @@
 export const profile = {
   name: "Ethan Brosselard",
   brand: "ZayKo",
-  monogram: "ZK",
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
   languages: ["fr", "en"],

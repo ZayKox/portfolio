@@ -41,7 +41,7 @@ export const copy = {
       description:
         "Portfolio d’Ethan Brosselard. Projets logiciels, plateformes web, architecture et explorations autour de l’IA.",
       socialImageAlt:
-        "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZK.",
+        "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",
@@ -216,7 +216,7 @@ export const copy = {
       description:
         "Portfolio of Ethan Brosselard. Software projects, web platforms, architecture, and AI explorations.",
       socialImageAlt:
-        "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZK signature.",
+        "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
     home: {
       eyebrow: "Paris, France · FR / EN",

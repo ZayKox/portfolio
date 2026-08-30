@@ -6,7 +6,7 @@ Cette liste n’est pas affichée sur le site.
 
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
-- Valider l’identité visuelle actuelle, dont le monogramme et les trois cartes de partage Violet Field.
+- Valider l’identité visuelle actuelle, dont la signature ZayKo et les trois cartes de partage Violet Field.
 - Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de déploiement Docker Compose.
 - Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
 - Décider si l’adresse email doit rester absente du JSON-LD, comme recommandé pour limiter le scraping.

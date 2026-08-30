@@ -10,31 +10,31 @@
       "path": "public/favicon.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and a letter-free geometric mark, without third-party media input.",
       "width": 64,
       "height": 64,
       "maxBytes": 8192,
-      "sha256": "56260a7358a7154c4969f7c829feabb4c3bfd65c33dbfecaab0d3d8538724491"
+      "sha256": "523028f12b331b50914c8a2f40f6f5a0e98bac1651e48afab6669807df720d02"
     },
     {
       "path": "public/apple-touch-icon.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and a letter-free geometric mark, without third-party media input.",
       "width": 180,
       "height": 180,
       "maxBytes": 32768,
-      "sha256": "8566195c59bf7b6b2f96d1fd4e9d60bf75042cf00f1a72ca88e94fd9b0353773"
+      "sha256": "2e0b8437cb708da7f78ef4b0e690947f0b13279b156e2a98ddb599e72d7ac383"
     },
     {
       "path": "public/social-card.png",
       "kind": "generated-brand",
       "generator": "scripts/generate-brand-assets.mjs",
-      "provenance": "Generated in this repository from Violet Field tokens and the public ZK signature, without third-party media input.",
+      "provenance": "Generated in this repository from Violet Field tokens and the public ZayKo signature, without third-party media input.",
       "width": 1200,
       "height": 630,
       "maxBytes": 204800,
-      "sha256": "1fa84c8890a980ca9eb55c478ca1a05ee2850cf8dd607af5fb5838d374f98fa6"
+      "sha256": "fcd7878fb344645d05d1408dfbc01823744f3de74b6a99dd03eee7427bb7ab26"
     },
     {
       "path": "public/palimia-social-card.png",
