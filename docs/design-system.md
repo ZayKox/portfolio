@@ -54,14 +54,14 @@ L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--b
 
 ## Géométrie et mise en page
 
-| Token                     | Valeur                      | Usage                                             |
-| ------------------------- | --------------------------- | ------------------------------------------------- |
-| `--radius-control`        | `0.5rem`                    | Boutons et petits contrôles                       |
-| `--radius-card`           | `0.8rem`                    | Cartes et grands panneaux                         |
-| `--container`             | `82rem`                     | Largeur maximale du contenu                       |
-| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)` | Marge latérale responsive                         |
-| `--section-space`         | `clamp(4rem, 7vw, 6.5rem)`  | Rythme vertical des sections                      |
-| `--section-heading-space` | `clamp(2rem, 4vw, 3.25rem)` | Écart entre introduction et contenu d’une section |
+| Token                     | Valeur                       | Usage                                             |
+| ------------------------- | ---------------------------- | ------------------------------------------------- |
+| `--radius-control`        | `0.5rem`                     | Boutons et petits contrôles                       |
+| `--radius-card`           | `0.8rem`                     | Cartes et grands panneaux                         |
+| `--container`             | `82rem`                      | Largeur maximale du contenu                       |
+| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`  | Marge latérale responsive                         |
+| `--section-space`         | `clamp(3rem, 5vw, 4.75rem)`  | Rythme vertical des sections                      |
+| `--section-heading-space` | `clamp(1.5rem, 3vw, 2.5rem)` | Écart entre introduction et contenu d’une section |
 
 La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Le rythme vertical reste ample mais contenu : les sections utilisent un espacement fluide commun, tandis que leurs introductions, grilles et cartes emploient des écarts plus courts pour maintenir la continuité de lecture. Sur l’accueil, le héros est plafonné à `42rem` et le bandeau de contact utilise un espacement plus court afin de ne pas créer de plages vides aux extrémités de la page. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
 

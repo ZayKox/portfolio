@@ -37,8 +37,8 @@
   --radius-card: 0.8rem;
   --container: 82rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
-  --section-space: clamp(4rem, 7vw, 6.5rem);
-  --section-heading-space: clamp(2rem, 4vw, 3.25rem);
+  --section-space: clamp(3rem, 5vw, 4.75rem);
+  --section-heading-space: clamp(1.5rem, 3vw, 2.5rem);
   --duration-fast: 140ms;
   --duration-base: 220ms;
   --duration-reveal: 450ms;
@@ -618,7 +618,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: end;
-  gap: clamp(1.5rem, 4vw, 4.5rem);
+  gap: clamp(1.25rem, 3vw, 3.5rem);
 }
 
 .section-heading--split > p {
