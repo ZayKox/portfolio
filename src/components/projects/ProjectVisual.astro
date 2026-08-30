@@ -1,25 +1,58 @@
 ---
+import type { Locale } from "@/i18n/copy";
+
 interface Props {
   visual: "palimia" | "ludosaic";
+  locale: Locale;
 }
 
-const { visual } = Astro.props;
+const { visual, locale } = Astro.props;
+const palimiaLabels =
+  locale === "fr"
+    ? {
+        profile: "UN SEUL PROFIL",
+        library: "BIBLIOTHÈQUE CULTURELLE",
+        worlds: "TOUS VOS UNIVERS",
+        media: ["FILM", "SÉRIES", "JEU", "ANIME", "MANGA"],
+        actions: ["SUIVRE", "NOTER", "ORGANISER"],
+      }
+    : {
+        profile: "ONE PROFILE",
+        library: "CULTURAL LIBRARY",
+        worlds: "ALL YOUR WORLDS",
+        media: ["FILM", "SERIES", "GAME", "ANIME", "MANGA"],
+        actions: ["TRACK", "RATE", "ORGANIZE"],
+      };
 ---
 
 <div class:list={["project-visual", `project-visual--${visual}`]} aria-hidden="true">
   {
     visual === "palimia" ? (
-      <>
-        <div class="visual-orbit visual-orbit--outer" />
-        <div class="visual-orbit visual-orbit--inner" />
-        <div class="visual-core">PA</div>
-        <span class="media-node media-node--1">FILM</span>
-        <span class="media-node media-node--2">GAME</span>
-        <span class="media-node media-node--3">MANGA</span>
-        <span class="media-node media-node--4">ANIME</span>
-        <span class="media-node media-node--5">STATS</span>
-        <span class="media-node media-node--6">SERIES</span>
-      </>
+      <div class="palimia-library">
+        <header class="palimia-library-bar">
+          <strong>PALIMIA</strong>
+          <span>{palimiaLabels.profile}</span>
+        </header>
+        <div class="palimia-library-heading">
+          <div>
+            <span>{palimiaLabels.library}</span>
+            <strong>{palimiaLabels.worlds}</strong>
+          </div>
+          <span class="palimia-library-count">05</span>
+        </div>
+        <div class="palimia-library-shelf">
+          {palimiaLabels.media.map((label) => (
+            <div class="palimia-media-card">
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="palimia-library-footer">
+          {palimiaLabels.actions.map((label) => (
+            <span>{label}</span>
+          ))}
+        </div>
+      </div>
     ) : (
       <>
         <div class="game-tile game-tile--reflex">

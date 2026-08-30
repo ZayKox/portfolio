@@ -36,7 +36,7 @@ const { Content } = await render(entry);
             <h1>{entry.data.title}</h1>
             <p class="page-lead">{entry.data.summary}</p>
           </div>
-          <ProjectVisual visual={entry.data.visual} />
+          <ProjectVisual visual={entry.data.visual} {locale} />
         </div>
       </div>
     </header>

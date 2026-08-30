@@ -40,7 +40,7 @@ Ce document décrit le système effectivement rendu par le portfolio. La source 
 
 Le thème système réutilise exactement les valeurs sombres quand `prefers-color-scheme: dark` est actif et qu’aucun choix n’a été enregistré. Les paires texte/fond principales et violet/texte contrasté sont contrôlées au build avec un seuil de `4.5:1`. Axe et les tests navigateur complètent ce contrôle sur les composants rendus.
 
-Les grandes compositions décoratives ne sont plus inversées en clair dans le thème sombre : le panneau de signature et le bandeau de contact restent sur des surfaces anthracite. Les contrastes fortement inversés sont réservés aux contrôles et aux accents de petite taille afin de limiter les pics de luminance.
+Les grandes compositions ne sont plus inversées en clair dans le thème sombre : le panneau d’identité et de navigation du héros ainsi que le bandeau de contact restent sur des surfaces anthracite. Le panneau du héros combine la signature publique avec des liens vers les projets sélectionnés afin que cette surface soit informative et interactive, plutôt que seulement décorative. Les contrastes fortement inversés sont réservés aux contrôles et aux accents de petite taille afin de limiter les pics de luminance.
 
 ## Typographie
 
@@ -50,20 +50,27 @@ Les polices restent locales au système, sans requête tierce :
 - `--font-body` : Inter si elle est présente, puis une pile d’interfaces système ;
 - `--font-mono` : JetBrains Mono si elle est présente, puis une pile monospace système.
 
-L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--body-large`. Les titres sont plus amples, fortement resserrés et équilibrés. Le corps reste à `1rem` avec une hauteur de ligne de `1.65`.
+L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--body-large`. Les titres sont amples, fortement resserrés et équilibrés, avec un niveau distinct pour le héros, les titres de page, les titres de section et les titres de carte. Le corps reste à `1rem` avec une hauteur de ligne de `1.65` ; `--text-small` et `--text-meta` normalisent les textes secondaires et les repères éditoriaux.
 
 ## Géométrie et mise en page
 
-| Token                     | Valeur                         | Usage                                             |
-| ------------------------- | ------------------------------ | ------------------------------------------------- |
-| `--radius-control`        | `0.5rem`                       | Boutons et petits contrôles                       |
-| `--radius-card`           | `0.8rem`                       | Cartes et grands panneaux                         |
-| `--container`             | `82rem`                        | Largeur maximale du contenu                       |
-| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`    | Marge latérale responsive                         |
-| `--section-space`         | `clamp(2.25rem, 4vw, 3.75rem)` | Rythme vertical des sections                      |
-| `--section-heading-space` | `clamp(1.25rem, 2.5vw, 2rem)`  | Écart entre introduction et contenu d’une section |
+| Token                     | Valeur                        | Usage                                             |
+| ------------------------- | ----------------------------- | ------------------------------------------------- |
+| `--radius-control`        | `0.5rem`                      | Boutons et petits contrôles                       |
+| `--radius-card`           | `0.8rem`                      | Cartes et grands panneaux                         |
+| `--container`             | `82rem`                       | Largeur maximale du contenu                       |
+| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`   | Marge latérale responsive                         |
+| `--space-1`               | `0.5rem`                      | Micro-écart                                       |
+| `--space-2`               | `0.75rem`                     | Écart compact                                     |
+| `--space-3`               | `1rem`                        | Écart courant                                     |
+| `--space-4`               | `clamp(1.25rem, 2vw, 1.5rem)` | Espacement interne des cartes                     |
+| `--space-5`               | `clamp(1.75rem, 3vw, 2.5rem)` | Écart entre groupes de contenu                    |
+| `--space-6`               | `clamp(1.75rem, 3.5vw, 3rem)` | Rythme vertical majeur                            |
+| `--section-space`         | `var(--space-6)`              | Rythme vertical partagé des sections              |
+| `--section-heading-space` | `var(--space-5)`              | Écart entre introduction et contenu d’une section |
+| `--page-hero-top-space`   | `clamp(1.5rem, 3vw, 2.5rem)`  | Écart entre le header et le début d’une page      |
 
-La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Le rythme vertical est volontairement compact : les marges des sections, de leurs introductions et de leurs cartes sont réduites d’environ 60 % par rapport à la première composition, tout en conservant des séparateurs visuels nets. Ce rythme s’applique aussi aux bandeaux d’introduction, au CV, aux documents légaux et aux études de cas. Le header desktop est ramené à `3.6rem` sans réduire les cibles interactives de `2.75rem`. Sur l’accueil, le héros est plafonné à `38rem` et le bandeau de contact utilise le même rythme resserré afin de ne pas créer de plages vides aux extrémités de la page. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
+La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Toutes les sections principales partagent `--section-space`, y compris le bandeau de contact, le CV, les documents légaux et les études de cas. Les héros utilisent ce rythme en bas, mais un espace supérieur plus court avec `--page-hero-top-space` rapproche leur premier repère éditorial du header. Les espacements internes utilisent la même échelle de `--space-1` à `--space-5` afin d’éviter les ruptures de rythme entre pages et composants. Sur l’accueil, les quatre domaines de travail forment une matrice continue, compacte et non interactive : les séparateurs matérialisent un même parcours plutôt qu’une collection de boutons. La sélection de projets suit une lecture éditoriale continue, sans numérotation artificielle sur l’accueil ; chaque composition visuelle doit expliquer l’usage du projet, comme la bibliothèque culturelle unifiée de Palimia, plutôt que servir de simple décoration. Le header desktop reste à `3.6rem` sans réduire les cibles interactives de `2.75rem`. Le héros est plafonné à `32rem` afin de ne pas recréer artificiellement une grande zone vide. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
 
 ## Mouvement et interaction
 

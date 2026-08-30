@@ -9,33 +9,35 @@ interface Props {
   locale: Locale;
   index: number;
   headingLevel?: 2 | 3;
+  showMeta?: boolean;
 }
 
-const { entry, locale, index, headingLevel = 3 } = Astro.props;
+const { entry, locale, index, headingLevel = 3, showMeta = true } = Astro.props;
 const t = getCopy(locale);
 const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
 const Heading = headingLevel === 2 ? "h2" : "h3";
-const visualLabel =
-  entry.data.visual === "palimia"
-    ? `PA, Film, Game, Manga, Anime, Stats, Series — ${t.projects.viewProject} — ${entry.data.title}`
-    : `Reflex Rush, Merge Forge, Grid Duel — ${t.projects.viewProject} — ${entry.data.title}`;
+const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
 ---
 
 <article class="project-card reveal">
   <a class="project-card-visual" href={href} aria-label={visualLabel}>
-    <ProjectVisual visual={entry.data.visual} />
+    <ProjectVisual visual={entry.data.visual} {locale} />
   </a>
   <div class="project-card-content">
-    <div class="project-card-meta">
-      <span>{String(index + 1).padStart(2, "0")}</span>
-      <span>{entry.data.kind}</span>
-    </div>
+    {
+      showMeta && (
+        <div class="project-card-meta">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span>{entry.data.kind}</span>
+        </div>
+      )
+    }
     <div class="project-card-heading">
       <div>
         <p class="eyebrow">{entry.data.eyebrow}</p>
         <Heading><a href={href}>{entry.data.title}</a></Heading>
       </div>
-      <span class="status-pill">{t.projects.teaser}</span>
+      <span class="project-card-status">{t.projects.teaser}</span>
     </div>
     <p class="project-summary">{entry.data.summary}</p>
     <ul class="tag-list" aria-label={t.project.stack}>

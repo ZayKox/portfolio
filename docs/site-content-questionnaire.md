@@ -511,7 +511,10 @@ Captures à refaire : À REMPLIR
 Données de démonstration disponibles : À REMPLIR
 Vidéo de démonstration souhaitée : oui/non
 
-Phrase qui résume le projet : À REMPLIR
+Phrase courte validée pour le panneau d’accueil : Films, séries, jeux, anime et manga réunis dans un seul profil.
+Statut : PUBLIC — VALIDÉ par Ethan le 30 août 2026
+
+Phrase qui résume le projet pour l’étude de cas : À REMPLIR
 Angle narratif souhaité : À REMPLIR
 Statut global de validation : À CONFIRMER
 ```
@@ -523,7 +526,7 @@ Nom public : Ludosaic
 Publication dans la sélection du portfolio : oui, en deuxième position et en mode teaser
 Statut : PUBLIC — VALIDÉ le 29 août 2026
 
-Nature du produit : plateforme web modulaire de mini-jeux, pensée pour le mobile, accessible et installable
+Nature du produit : plateforme web modulaire de mini-jeux, accessible et installable
 Accès : jouable sans création de compte
 Modes selon les jeux : solo, défi quotidien, bot, multijoueur local et salon privé en ligne
 Premier périmètre : Reflex Rush, Merge Forge et Grid Duel
@@ -548,6 +551,9 @@ Décisions, compromis, erreurs et enseignements : À REMPLIR
 Résultats mesurables : À REMPLIR
 Visuels et vidéo de démonstration : À REMPLIR
 Détails à ne pas publier : PRIVÉ — transmis séparément
+
+Phrase courte validée pour le panneau d’accueil : Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.
+Statut : PUBLIC — VALIDÉ et corrigé par Ethan le 30 août 2026 ; Ludosaic est présenté comme un projet web, pas comme une application mobile.
 Statut global pour une étude de cas complète : À CONFIRMER
 ```
 

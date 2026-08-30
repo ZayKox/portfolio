@@ -42,23 +42,40 @@ const projects = (
         </div>
       </div>
 
-      <div class="hero-field" aria-hidden="true">
-        <div class="hero-field-grid"></div>
-        <div class="hero-halo"></div>
-        <div class="hero-signature">
-          <span class="hero-signature-wordmark">{profile.brand}</span>
-          <span class="hero-signature-name">{profile.name}</span>
+      <aside class="hero-field reveal" aria-label={t.home.selectedProjects}>
+        <div class="hero-field-grid" aria-hidden="true"></div>
+        <div class="hero-panel-identity">
+          <strong>{profile.brand}</strong>
+          <span>{profile.name}</span>
         </div>
-        <span class="hero-node hero-node--web">WEB</span>
-        <span class="hero-node hero-node--mobile">DATA</span>
-        <span class="hero-node hero-node--systems">SYSTEMS</span>
-        <span class="hero-node hero-node--ai">AI / NEXT</span>
-        <div class="hero-field-caption">{t.home.signalLabel}</div>
-      </div>
+
+        <div class="hero-panel-projects">
+          {
+            projects.map((entry) => {
+              const href =
+                locale === "fr"
+                  ? `/projets/${entry.data.slug}/`
+                  : `/en/projects/${entry.data.slug}/`;
+
+              return (
+                <a href={href} aria-label={`${entry.data.title} — ${t.projects.viewProject}`}>
+                  <span class="hero-panel-project-copy">
+                    <strong>{entry.data.title}</strong>
+                    <small>{t.home.heroProjectDescriptions[entry.data.visual]}</small>
+                  </span>
+                  <span class="hero-panel-project-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              );
+            })
+          }
+        </div>
+      </aside>
     </div>
   </section>
 
-  <section class="section section--bordered">
+  <section class="section section--bordered fields-section">
     <div class="container section-heading section-heading--split reveal">
       <div>
         <p class="eyebrow">{t.home.signalLabel}</p>
@@ -88,7 +105,7 @@ const projects = (
       <p>{t.home.selectedProjectsIntro}</p>
     </div>
     <div class="container project-list">
-      {projects.map((entry, index) => <ProjectCard {entry} {locale} {index} />)}
+      {projects.map((entry, index) => <ProjectCard {entry} {locale} {index} showMeta={false} />)}
     </div>
   </section>
 

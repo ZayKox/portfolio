@@ -44,29 +44,45 @@ export const copy = {
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
     home: {
-      eyebrow: "Paris, France · FR / EN",
+      eyebrow: "Développement logiciel · Produits numériques",
       title: "Je transforme des idées en produits numériques fiables.",
       intro:
         "Développeur web chez Studio Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
       projectsCta: "Explorer mes projets",
       githubCta: "Voir mon GitHub",
-      signalLabel: "Terrain d’exploration",
-      fieldsTitle: "Un terrain de jeu volontairement large.",
+      signalLabel: "Méthode",
+      fieldsTitle: "Un produit forme un tout.",
       fieldsIntro:
-        "Je pars du problème, puis je travaille sur ce qu’il demande : interface, backend, données, architecture, qualité ou automatisation.",
+        "Je ne sépare pas le produit de sa technique : chaque couche répond au même besoin, de l’interface jusqu’à la fiabilité du système.",
       fields: [
-        { index: "01", title: "Web", text: "Interfaces, APIs et systèmes de données." },
+        {
+          index: "01",
+          title: "Interface",
+          text: "Des parcours clairs, accessibles et adaptés à l’usage.",
+        },
         {
           index: "02",
-          title: "Backend",
-          text: "APIs, services et bases de données.",
+          title: "Services",
+          text: "APIs, logique applicative et données structurées.",
         },
-        { index: "03", title: "Ingénierie", text: "Architecture, tests, sécurité et performance." },
-        { index: "04", title: "IA", text: "Exploration et apprentissage continu." },
+        {
+          index: "03",
+          title: "Fiabilité",
+          text: "Architecture, tests, sécurité et performance.",
+        },
+        {
+          index: "04",
+          title: "Exploration",
+          text: "IA et automatisation étudiées lorsqu’elles servent réellement le projet.",
+        },
       ],
-      selectedProjects: "Projets sélectionnés",
+      selectedProjects: "Ce que je construis.",
       selectedProjectsIntro:
-        "Deux plateformes aux usages différents, une même attention portée aux décisions derrière le code.",
+        "Une sélection de projets personnels présentés à travers leur usage, leur conception et les choix techniques qui les font évoluer.",
+      heroProjectDescriptions: {
+        palimia: "Films, séries, jeux, anime et manga réunis dans un seul profil.",
+        ludosaic: "Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.",
+      },
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
@@ -219,29 +235,45 @@ export const copy = {
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
     home: {
-      eyebrow: "Paris, France · FR / EN",
+      eyebrow: "Software development · Digital products",
       title: "I turn ideas into reliable digital products.",
       intro:
         "As a web developer at Studio Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
       projectsCta: "Explore my projects",
       githubCta: "View my GitHub",
-      signalLabel: "Exploration field",
-      fieldsTitle: "A deliberately broad playground.",
+      signalLabel: "Method",
+      fieldsTitle: "A product works as a whole.",
       fieldsIntro:
-        "I start with the problem, then work across whatever it requires: interface, backend, data, architecture, quality, or automation.",
+        "I don’t separate the product from its technology: every layer serves the same need, from the interface to the reliability of the system.",
       fields: [
-        { index: "01", title: "Web", text: "Interfaces, APIs, and data systems." },
-        { index: "02", title: "Backend", text: "APIs, services, and databases." },
+        {
+          index: "01",
+          title: "Interface",
+          text: "Clear, accessible flows shaped around actual use.",
+        },
+        {
+          index: "02",
+          title: "Services",
+          text: "APIs, application logic, and structured data.",
+        },
         {
           index: "03",
-          title: "Engineering",
+          title: "Reliability",
           text: "Architecture, testing, security, and performance.",
         },
-        { index: "04", title: "AI", text: "Ongoing exploration and learning." },
+        {
+          index: "04",
+          title: "Exploration",
+          text: "AI and automation considered when they genuinely serve the project.",
+        },
       ],
-      selectedProjects: "Selected projects",
+      selectedProjects: "What I build.",
       selectedProjectsIntro:
-        "Two platforms with different uses and the same attention to the decisions behind the code.",
+        "A selection of personal projects presented through their use, their design, and the technical choices shaping them.",
+      heroProjectDescriptions: {
+        palimia: "Films, series, games, anime, and manga brought together in one profile.",
+        ludosaic: "Web mini-games for solo play, against a bot, or with other players.",
+      },
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
