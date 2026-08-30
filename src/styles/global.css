@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ecece8;
-  --surface: #f5f5f1;
-  --surface-subtle: #e2e2dd;
-  --surface-strong: #d3d3cc;
-  --text: #1b1c1f;
-  --text-muted: #606369;
-  --border: #c4c5bf;
-  --primary: #242529;
-  --primary-hover: #393b40;
-  --primary-contrast: #f7f7f4;
+  --bg: #deddd7;
+  --surface: #e8e7e1;
+  --surface-subtle: #d2d1cb;
+  --surface-strong: #c2c0b9;
+  --text: #292a2e;
+  --text-muted: #56595e;
+  --border: #b2b3ad;
+  --primary: #2b2c30;
+  --primary-hover: #3f4146;
+  --primary-contrast: #e9e8e2;
   --accent: #6746d6;
   --accent-hover: #5033b5;
   --accent-soft: #ebe7fb;
-  --accent-contrast: #f7f7f4;
+  --accent-contrast: #f1f0eb;
   --accent-on-primary: #b39eff;
   --info: #2563eb;
   --danger: #d43f5e;
-  --selection: #d9d0f8;
-  --shadow: rgba(27, 28, 31, 0.1);
-  --grid-line: rgba(27, 28, 31, 0.07);
-  --header-bg: rgba(236, 236, 232, 0.9);
+  --selection: #cfc6f0;
+  --shadow: rgba(41, 42, 46, 0.13);
+  --grid-line: rgba(41, 42, 46, 0.07);
+  --header-bg: rgba(222, 221, 215, 0.92);
 
   --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --font-body: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -44,52 +44,52 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #151619;
-  --surface: #1c1d21;
-  --surface-subtle: #25272c;
-  --surface-strong: #2f3137;
-  --text: #ecece8;
-  --text-muted: #afb1b7;
-  --border: #3a3c42;
-  --primary: #e8e8e3;
-  --primary-hover: #d0d0cb;
-  --primary-contrast: #1a1b1f;
-  --accent: #a890ff;
-  --accent-hover: #b9a6ff;
-  --accent-soft: #29223e;
-  --accent-contrast: #15111f;
-  --accent-on-primary: #6746d6;
+  --bg: #1b1c20;
+  --surface: #222328;
+  --surface-subtle: #2a2c32;
+  --surface-strong: #34363d;
+  --text: #d0cfc9;
+  --text-muted: #989aa0;
+  --border: #42444b;
+  --primary: #cecdc7;
+  --primary-hover: #b8b7b1;
+  --primary-contrast: #202126;
+  --accent: #9e88ed;
+  --accent-hover: #ae9af5;
+  --accent-soft: #302944;
+  --accent-contrast: #18151f;
+  --accent-on-primary: #593abd;
   --info: #60a5fa;
   --danger: #ff7a8a;
   --selection: #4d4173;
   --shadow: rgba(0, 0, 0, 0.3);
-  --grid-line: rgba(236, 236, 232, 0.06);
-  --header-bg: rgba(21, 22, 25, 0.9);
+  --grid-line: rgba(216, 215, 209, 0.055);
+  --header-bg: rgba(27, 28, 32, 0.92);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --bg: #151619;
-    --surface: #1c1d21;
-    --surface-subtle: #25272c;
-    --surface-strong: #2f3137;
-    --text: #ecece8;
-    --text-muted: #afb1b7;
-    --border: #3a3c42;
-    --primary: #e8e8e3;
-    --primary-hover: #d0d0cb;
-    --primary-contrast: #1a1b1f;
-    --accent: #a890ff;
-    --accent-hover: #b9a6ff;
-    --accent-soft: #29223e;
-    --accent-contrast: #15111f;
-    --accent-on-primary: #6746d6;
+    --bg: #1b1c20;
+    --surface: #222328;
+    --surface-subtle: #2a2c32;
+    --surface-strong: #34363d;
+    --text: #d0cfc9;
+    --text-muted: #989aa0;
+    --border: #42444b;
+    --primary: #cecdc7;
+    --primary-hover: #b8b7b1;
+    --primary-contrast: #202126;
+    --accent: #9e88ed;
+    --accent-hover: #ae9af5;
+    --accent-soft: #302944;
+    --accent-contrast: #18151f;
+    --accent-on-primary: #593abd;
     --info: #60a5fa;
     --danger: #ff7a8a;
     --selection: #4d4173;
     --shadow: rgba(0, 0, 0, 0.3);
-    --grid-line: rgba(236, 236, 232, 0.06);
-    --header-bg: rgba(21, 22, 25, 0.9);
+    --grid-line: rgba(216, 215, 209, 0.055);
+    --header-bg: rgba(27, 28, 32, 0.92);
   }
 }
 
@@ -955,7 +955,7 @@ h3 {
 
 .contact-band p:not(.eyebrow) {
   margin-bottom: 0;
-  color: color-mix(in srgb, var(--primary-contrast) 68%, transparent);
+  color: color-mix(in srgb, var(--primary-contrast) 72%, transparent);
 }
 
 .contact-band .eyebrow {
