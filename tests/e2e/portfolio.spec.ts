@@ -150,6 +150,25 @@ test("primary links expose the expected destinations", async ({ page }) => {
   );
 });
 
+test("interactive links meet the minimum touch target size", async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.includes("mobile"), "Mobile viewport proof only");
+
+  for (const route of ["/", "/contact/"] as const) {
+    await page.goto(route);
+
+    const targets = page.locator(
+      ".language-switch, [data-theme-toggle], .button, .main-nav a, .text-link, .footer-links a, .contact-socials a",
+    );
+
+    for (let index = 0; index < (await targets.count()); index += 1) {
+      const box = await targets.nth(index).boundingBox();
+      expect(box, `${route} target ${index} should be visible`).not.toBeNull();
+      expect(box?.width ?? 0, `${route} target ${index} width`).toBeGreaterThanOrEqual(44);
+      expect(box?.height ?? 0, `${route} target ${index} height`).toBeGreaterThanOrEqual(44);
+    }
+  }
+});
+
 test("unknown paths return the bilingual 404 page", async ({ page }) => {
   const response = await page.goto("/route-absente-pour-test/");
 

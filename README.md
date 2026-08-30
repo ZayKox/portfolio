@@ -42,7 +42,7 @@ L'audit Lighthouse mobile couvre l'accueil, la liste des projets et les deux ape
 
 Les deux smoke tests Docker construisent les images publique et preview réellement utilisées par Docker Compose, attendent leur healthcheck, puis vérifient les en-têtes Nginx, la politique de cache, le statut de la 404 et les endpoints SEO propres à chaque mode avant de supprimer leurs conteneurs et images temporaires.
 
-Le même moteur contrôle une URL servie par Caddy sans modifier le déploiement. Il parcourt les douze routes FR/EN, la vraie 404, les en-têtes, les icônes et les signaux SEO propres au mode choisi :
+Le même moteur contrôle une URL servie par Caddy sans modifier le déploiement. Il parcourt les dix-huit routes FR/EN, la vraie 404, les en-têtes, les icônes et les signaux SEO propres au mode choisi :
 
 ```sh
 npm run test:deployment -- \

@@ -50,6 +50,8 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 ## Publication
 
 - Domaine retenu : `zaykohub.com` ; la version canonique choisie est sans `www`.
+- Réaffecter la route HTTPS de l’apex au portfolio avant la publication ; elle sert actuellement un autre service.
+- Décider si `www.zaykohub.com` doit être créé uniquement pour rediriger vers l’apex, puis vérifier cette redirection.
 - Définir `SITE_URL=https://zaykohub.com` dans l’environnement de déploiement Docker Compose ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
 - Relire les mentions légales et la confidentialité après le déploiement, en particulier l’hébergeur réellement retenu et la conservation des journaux techniques.
 - Décider si une mesure d’audience est réellement utile.

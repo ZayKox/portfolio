@@ -47,19 +47,19 @@ export const copy = {
       eyebrow: "Paris, France · FR / EN",
       title: "Je transforme des idées en produits numériques fiables.",
       intro:
-        "Développeur web chez Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
+        "Développeur web chez Studio Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
       projectsCta: "Explorer mes projets",
       githubCta: "Voir mon GitHub",
       signalLabel: "Terrain d’exploration",
       fieldsTitle: "Un terrain de jeu volontairement large.",
       fieldsIntro:
-        "Je pars du problème, puis je travaille sur ce qu’il demande : interface, backend, mobile, données, architecture, qualité ou automatisation.",
+        "Je pars du problème, puis je travaille sur ce qu’il demande : interface, backend, données, architecture, qualité ou automatisation.",
       fields: [
         { index: "01", title: "Web", text: "Interfaces, APIs et systèmes de données." },
         {
           index: "02",
-          title: "Mobile",
-          text: "Applications natives pensées pour leur plateforme.",
+          title: "Backend",
+          text: "APIs, services et bases de données.",
         },
         { index: "03", title: "Ingénierie", text: "Architecture, tests, sécurité et performance." },
         { index: "04", title: "IA", text: "Exploration et apprentissage continu." },
@@ -89,7 +89,7 @@ export const copy = {
     about: {
       eyebrow: "À propos",
       title: "Je préfère garder le champ des possibles ouvert.",
-      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Beyowi.",
+      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Studio Beyowi.",
       paragraphs: [
         "J’ai commencé par vouloir comprendre comment fonctionnent les jeux vidéo : ce qui se passe derrière l’écran, comment les systèmes s’assemblent et comment une idée devient un produit concret. Cette curiosité m’a naturellement conduit vers le développement.",
         "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
@@ -98,7 +98,7 @@ export const copy = {
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Faire évoluer Palimia, poursuivre mon alternance chez Beyowi et approfondir la sécurité appliquée au développement logiciel.",
+        "Faire évoluer mes projets personnels et approfondir la sécurité appliquée au développement logiciel.",
       proofLabel: "Ce que montre ce portfolio",
       proofText:
         "Des projets, un parcours et des choix techniques expliqués avec leurs validations et leurs limites connues.",
@@ -222,16 +222,16 @@ export const copy = {
       eyebrow: "Paris, France · FR / EN",
       title: "I turn ideas into reliable digital products.",
       intro:
-        "As a web developer at Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
+        "As a web developer at Studio Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
       projectsCta: "Explore my projects",
       githubCta: "View my GitHub",
       signalLabel: "Exploration field",
       fieldsTitle: "A deliberately broad playground.",
       fieldsIntro:
-        "I start with the problem, then work across whatever it requires: interface, backend, mobile, data, architecture, quality, or automation.",
+        "I start with the problem, then work across whatever it requires: interface, backend, data, architecture, quality, or automation.",
       fields: [
         { index: "01", title: "Web", text: "Interfaces, APIs, and data systems." },
-        { index: "02", title: "Mobile", text: "Native apps designed for their platform." },
+        { index: "02", title: "Backend", text: "APIs, services, and databases." },
         {
           index: "03",
           title: "Engineering",
@@ -264,7 +264,7 @@ export const copy = {
     about: {
       eyebrow: "About",
       title: "I prefer to keep the field wide open.",
-      lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Beyowi.",
+      lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Studio Beyowi.",
       paragraphs: [
         "I first got into software by wanting to understand how video games work: what happens behind the screen, how systems fit together, and how an idea becomes a working product. That curiosity naturally led me to development.",
         "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
@@ -273,7 +273,7 @@ export const copy = {
       ],
       nowLabel: "Now",
       nowText:
-        "Evolving Palimia, continuing my apprenticeship at Beyowi, and deepening my knowledge of software security.",
+        "Evolving my personal projects and deepening my knowledge of applied software security.",
       proofLabel: "What this portfolio shows",
       proofText:
         "Projects, a professional path, and technical choices explained with their validation and known limitations.",
@@ -313,7 +313,7 @@ export const copy = {
         "The production deployment is planned on OVHcloud VPS infrastructure. The site runs in an Nginx container, with Caddy handling the HTTPS proxy; OVH SAS is the infrastructure hosting provider.",
       intellectualPropertyTitle: "Intellectual property",
       intellectualPropertyText:
-        "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorised and remains subject to its respective rights.",
+        "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorized and remains subject to its respective rights.",
       externalLinksTitle: "External links",
       externalLinksText:
         "Links to third-party sites are provided for information only. Their content, availability, and privacy practices remain the responsibility of their respective publishers.",

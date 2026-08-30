@@ -4,16 +4,16 @@
 
 ## Pilotage
 
-| Élément                     | Valeur                                                       |
-| --------------------------- | ------------------------------------------------------------ |
-| Propriétaire                | Ethan Brosselard                                             |
-| Dépôt                       | <https://github.com/ZayKox/portfolio>                        |
-| Branche de travail actuelle | `develop`                                                    |
-| Branche de production       | `main`                                                       |
-| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Docker Compose, Caddy et Nginx    |
-| Domaine recommandé          | `ethanbrosselard.dev`, à acheter et à revérifier avant achat |
-| Langues                     | Français à la racine, anglais sous `/en/`                    |
-| Dernière mise à jour        | 2 août 2026                                                  |
+| Élément                     | Valeur                                                    |
+| --------------------------- | --------------------------------------------------------- |
+| Propriétaire                | Ethan Brosselard                                          |
+| Dépôt                       | <https://github.com/ZayKox/portfolio>                     |
+| Branche de travail actuelle | `develop`                                                 |
+| Branche de production       | `main`                                                    |
+| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Docker Compose, Caddy et Nginx |
+| Domaine canonique retenu    | `zaykohub.com`, sans `www`                                |
+| Langues                     | Français à la racine, anglais sous `/en/`                 |
+| Dernière mise à jour        | 30 août 2026                                              |
 
 ### Légende
 
@@ -71,7 +71,7 @@ GitHub : feature/* ou codex/* → develop → PR vers main
                           Caddy HTTPS → Nginx interne 8080
                                        │
                                        ▼
-                              ethanbrosselard.dev
+                                zaykohub.com
 ```
 
 Choix structurants :
@@ -805,7 +805,7 @@ Notes :
 | -------------------------------------- | -------------- | ------------------- | --------------------------------------------- |
 | Jalon A ou B pour le premier lancement | Ethan          | Phase 0             | Jalon A                                       |
 | Titre professionnel final              | Ethan          | Avant gel éditorial | « Développeur logiciel & créateur numérique » |
-| Domaine effectivement acheté           | Ethan          | Avant phase 7       | `ethanbrosselard.dev` si disponible           |
+| Domaine effectivement utilisé          | Ethan          | Avant phase 7       | `zaykohub.com`, sans `www`                    |
 | Portrait public                        | Ethan          | Avant design final  | Aucun portrait, monogramme                    |
 | Logo ou signature                      | Ethan + design | Avant design final  | Monogramme existant                           |
 | CV requis au lancement                 | Ethan          | Phase 0             | Non, liens masqués                            |
