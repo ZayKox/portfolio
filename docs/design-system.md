@@ -54,14 +54,16 @@ L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--b
 
 ## Géométrie et mise en page
 
-| Token              | Valeur                      | Usage                       |
-| ------------------ | --------------------------- | --------------------------- |
-| `--radius-control` | `0.5rem`                    | Boutons et petits contrôles |
-| `--radius-card`    | `0.8rem`                    | Cartes et grands panneaux   |
-| `--container`      | `82rem`                     | Largeur maximale du contenu |
-| `--gutter`         | `clamp(1.25rem, 4vw, 3rem)` | Marge latérale responsive   |
+| Token                     | Valeur                      | Usage                                             |
+| ------------------------- | --------------------------- | ------------------------------------------------- |
+| `--radius-control`        | `0.5rem`                    | Boutons et petits contrôles                       |
+| `--radius-card`           | `0.8rem`                    | Cartes et grands panneaux                         |
+| `--container`             | `82rem`                     | Largeur maximale du contenu                       |
+| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)` | Marge latérale responsive                         |
+| `--section-space`         | `clamp(4rem, 7vw, 6.5rem)`  | Rythme vertical des sections                      |
+| `--section-heading-space` | `clamp(2rem, 4vw, 3.25rem)` | Écart entre introduction et contenu d’une section |
 
-La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
+La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Le rythme vertical reste ample mais contenu : les sections utilisent un espacement fluide commun, tandis que leurs introductions, grilles et cartes emploient des écarts plus courts pour maintenir la continuité de lecture. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
 
 ## Mouvement et interaction
 

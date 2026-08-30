@@ -37,6 +37,8 @@
   --radius-card: 0.8rem;
   --container: 82rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-space: clamp(4rem, 7vw, 6.5rem);
+  --section-heading-space: clamp(2rem, 4vw, 3.25rem);
   --duration-fast: 140ms;
   --duration-base: 220ms;
   --duration-reveal: 450ms;
@@ -200,7 +202,7 @@ h3 {
 }
 
 .section {
-  padding-block: clamp(5.5rem, 10vw, 9.5rem);
+  padding-block: var(--section-space);
 }
 
 .section--bordered {
@@ -461,15 +463,15 @@ h3 {
 .hero {
   display: grid;
   align-items: center;
-  min-height: calc(100svh - 4.4rem);
-  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  min-height: min(48rem, calc(100svh - 4.4rem));
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.22fr) minmax(21rem, 0.78fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 8rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .hero-grid > * {
@@ -478,17 +480,17 @@ h3 {
 
 .hero-copy h1 {
   max-width: 14ch;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.35rem;
   font-size: var(--display);
 }
 
 .hero-eyebrow {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .hero-intro {
   max-width: 43rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--text-muted);
   font-size: var(--body-large);
 }
@@ -604,7 +606,7 @@ h3 {
 }
 
 .section-heading {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  margin-bottom: var(--section-heading-space);
 }
 
 .section-heading h2 {
@@ -616,7 +618,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: end;
-  gap: clamp(2rem, 6vw, 8rem);
+  gap: clamp(1.5rem, 4vw, 4.5rem);
 }
 
 .section-heading--split > p {
@@ -633,8 +635,8 @@ h3 {
 }
 
 .field-card {
-  min-height: 17rem;
-  padding: 1.6rem;
+  min-height: 14rem;
+  padding: 1.4rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -649,7 +651,7 @@ h3 {
 }
 
 .field-card h3 {
-  margin-top: 4.5rem;
+  margin-top: 3rem;
   margin-bottom: 0.8rem;
 }
 
@@ -666,15 +668,15 @@ h3 {
 
 .project-list {
   display: grid;
-  gap: clamp(5rem, 9vw, 8rem);
+  gap: clamp(3.5rem, 6vw, 5rem);
 }
 
 .project-card {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
-  gap: clamp(2.5rem, 6vw, 6rem);
-  padding-top: clamp(2rem, 4vw, 3rem);
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
   border-top: 1px solid var(--border);
 }
 
@@ -700,7 +702,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.3rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -717,7 +719,7 @@ h3 {
   align-items: start;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .project-card-heading :is(h2, h3) {
@@ -754,7 +756,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0 0 1.8rem;
+  margin: 0 0 1.3rem;
   padding: 0;
   list-style: none;
 }
@@ -909,7 +911,7 @@ h3 {
 .about-preview {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
-  gap: clamp(3rem, 8vw, 9rem);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
 }
 
 .about-preview h2 {
@@ -924,8 +926,8 @@ h3 {
   display: grid;
   grid-template-columns: 8rem 1fr;
   gap: 1rem;
-  margin-block: 2.3rem;
-  padding-block: 1.2rem;
+  margin-block: 1.6rem;
+  padding-block: 1rem;
   border-block: 1px solid var(--border);
 }
 
@@ -954,7 +956,7 @@ h3 {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .contact-band h2 {
@@ -1006,7 +1008,7 @@ h3 {
 }
 
 .site-footer {
-  padding-block: 3.5rem;
+  padding-block: 2.75rem;
   border-top: 1px solid var(--border);
   background: var(--bg);
 }
@@ -1055,14 +1057,14 @@ h3 {
 }
 
 .page-hero {
-  padding-block: clamp(6.5rem, 12vw, 11.5rem);
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
   border-bottom: 1px solid var(--border);
 }
 
 .page-hero-inner {
   display: grid;
   grid-template-columns: 1fr minmax(18rem, 0.75fr);
-  gap: 2rem 5rem;
+  gap: 1.5rem 3.5rem;
 }
 
 .page-hero-inner .eyebrow {
@@ -1089,7 +1091,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(16rem, 0.65fr) minmax(0, 1.35fr);
   align-items: start;
-  gap: clamp(3rem, 8vw, 9rem);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
 }
 
 .identity-card {
@@ -1130,7 +1132,7 @@ h3 {
 }
 
 .prose-large p {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 
 .two-note-grid {
@@ -1140,8 +1142,8 @@ h3 {
 }
 
 .note-card {
-  min-height: 15rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  min-height: 12rem;
+  padding: clamp(1.4rem, 3vw, 2.25rem);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -1150,7 +1152,7 @@ h3 {
 
 .note-card > p:last-child {
   max-width: 35rem;
-  margin: 3rem 0 0;
+  margin: 2rem 0 0;
   color: var(--text-muted);
   font-size: var(--body-large);
 }
@@ -1163,7 +1165,7 @@ h3 {
 
 .contact-card {
   display: flex;
-  min-height: 14rem;
+  min-height: 11rem;
   padding: 1.5rem;
   flex-direction: column;
   justify-content: space-between;
@@ -1226,8 +1228,8 @@ h3 {
 }
 
 .resume-document {
-  margin-block: clamp(2.5rem, 7vw, 6rem);
-  padding: clamp(1.5rem, 4vw, 3.5rem);
+  margin-block: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -1236,13 +1238,13 @@ h3 {
 
 .legal-document {
   display: grid;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  gap: clamp(2rem, 4vw, 3rem);
   max-width: 52rem;
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block: var(--section-space);
 }
 
 .legal-document section {
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1481,11 +1483,11 @@ h3 {
 }
 
 .case-hero {
-  padding-block: clamp(3rem, 8vw, 7rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
 }
 
 .back-link {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
   color: var(--text-muted);
   font-size: 0.85rem;
 }
@@ -1494,7 +1496,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(25rem, 1.15fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 8rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .case-title h1 {
@@ -1583,7 +1585,7 @@ h3 {
   display: grid;
   grid-template-columns: 0.45fr 1.55fr;
   align-items: start;
-  gap: clamp(3rem, 8vw, 10rem);
+  gap: clamp(2.5rem, 5vw, 6rem);
 }
 
 .case-body-index {
@@ -1606,7 +1608,7 @@ h3 {
 }
 
 .prose h2 {
-  margin: 5rem 0 1.5rem;
+  margin: 3.5rem 0 1.25rem;
   font-size: clamp(2rem, 4vw, 3.25rem);
 }
 
@@ -1621,7 +1623,7 @@ h3 {
 }
 
 .prose p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .prose strong {
