@@ -276,8 +276,8 @@ h3 {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  min-height: 4.4rem;
-  gap: 2rem;
+  min-height: 3.6rem;
+  gap: 1.5rem;
 }
 
 .brand {
@@ -1010,7 +1010,7 @@ h3 {
 }
 
 .site-footer {
-  padding-block: 2.75rem;
+  padding-block: 2rem;
   border-top: 1px solid var(--border);
   background: var(--bg);
 }
@@ -1059,14 +1059,14 @@ h3 {
 }
 
 .page-hero {
-  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  padding-block: var(--section-space);
   border-bottom: 1px solid var(--border);
 }
 
 .page-hero-inner {
   display: grid;
   grid-template-columns: 1fr minmax(18rem, 0.75fr);
-  gap: 1.5rem 3.5rem;
+  gap: 1rem 3rem;
 }
 
 .page-hero-inner .eyebrow {
@@ -1086,7 +1086,7 @@ h3 {
 }
 
 .page-projects {
-  padding-top: 2rem;
+  padding-top: 1.25rem;
 }
 
 .about-page-grid {
@@ -1098,11 +1098,11 @@ h3 {
 
 .identity-card {
   position: sticky;
-  top: 7rem;
+  top: 5rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -1144,8 +1144,8 @@ h3 {
 }
 
 .note-card {
-  min-height: 12rem;
-  padding: clamp(1.4rem, 3vw, 2.25rem);
+  min-height: 10rem;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -1154,7 +1154,7 @@ h3 {
 
 .note-card > p:last-child {
   max-width: 35rem;
-  margin: 2rem 0 0;
+  margin: 1.25rem 0 0;
   color: var(--text-muted);
   font-size: var(--body-large);
 }
@@ -1167,8 +1167,8 @@ h3 {
 
 .contact-card {
   display: flex;
-  min-height: 11rem;
-  padding: 1.5rem;
+  min-height: 9.5rem;
+  padding: 1.25rem;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid var(--border);
@@ -1226,12 +1226,12 @@ h3 {
 }
 
 .resume-actions {
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .resume-document {
-  margin-block: clamp(2rem, 5vw, 4rem);
-  padding: clamp(1.5rem, 3vw, 2.75rem);
+  margin-block: var(--section-space);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -1240,13 +1240,13 @@ h3 {
 
 .legal-document {
   display: grid;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
   max-width: 52rem;
   padding-block: var(--section-space);
 }
 
 .legal-document section {
-  padding-bottom: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1310,8 +1310,8 @@ h3 {
 .resume-document-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.65fr);
-  gap: 2rem;
-  padding-bottom: 1.75rem;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1365,16 +1365,16 @@ h3 {
 
 .resume-summary {
   max-width: 70ch;
-  margin-block: 1.75rem 0;
+  margin-block: 1.25rem 0;
   font-size: 1.06rem;
 }
 
 .resume-section {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .resume-section > h2 {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -1385,11 +1385,11 @@ h3 {
 .resume-entry-list,
 .resume-project-list {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .resume-entry {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
 
@@ -1485,11 +1485,11 @@ h3 {
 }
 
 .case-hero {
-  padding-block: clamp(2.5rem, 6vw, 5rem);
+  padding-block: var(--section-space);
 }
 
 .back-link {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
   color: var(--text-muted);
   font-size: 0.85rem;
 }
@@ -1502,13 +1502,13 @@ h3 {
 }
 
 .case-title h1 {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
   font-size: var(--display);
   view-transition-name: case-title;
 }
 
 .case-facts {
-  padding-block: 2rem;
+  padding-block: 1.25rem;
 }
 
 .case-facts-grid {
@@ -1541,7 +1541,7 @@ h3 {
   align-items: end;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .case-section-heading p {
@@ -1562,8 +1562,8 @@ h3 {
 
 .metric-card {
   display: grid;
-  min-height: 13rem;
-  padding: 1.5rem;
+  min-height: 10rem;
+  padding: 1.25rem;
   align-content: space-between;
   border-right: 1px solid var(--border);
 }
@@ -1592,7 +1592,7 @@ h3 {
 
 .case-body-index {
   position: sticky;
-  top: 7rem;
+  top: 5rem;
 }
 
 .case-body-index > span {
@@ -1610,7 +1610,7 @@ h3 {
 }
 
 .prose h2 {
-  margin: 3.5rem 0 1.25rem;
+  margin: 2.25rem 0 1rem;
   font-size: clamp(2rem, 4vw, 3.25rem);
 }
 
@@ -1634,9 +1634,9 @@ h3 {
 
 .not-found {
   display: grid;
-  min-height: calc(100svh - 4.75rem);
+  min-height: calc(100svh - 3.6rem);
   place-items: center;
-  padding-block: 5rem;
+  padding-block: var(--section-space);
 }
 
 .not-found-inner {
@@ -1752,7 +1752,7 @@ h3 {
   .header-inner {
     grid-template-columns: 1fr auto;
     gap: 0.5rem 1rem;
-    padding-block: 0.65rem;
+    padding-block: 0.25rem;
   }
 
   .main-nav {
@@ -1775,7 +1775,7 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-block: 3.25rem;
+    padding-block: 2.25rem;
   }
 
   .hero-copy h1 {
