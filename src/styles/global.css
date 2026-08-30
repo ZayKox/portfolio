@@ -463,8 +463,8 @@ h3 {
 .hero {
   display: grid;
   align-items: center;
-  min-height: min(48rem, calc(100svh - 4.4rem));
-  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  min-height: min(42rem, calc(100svh - 4.4rem));
+  padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
 .hero-grid {
@@ -950,6 +950,7 @@ h3 {
 
   color: var(--contact-band-text);
   background: var(--contact-band-bg);
+  padding-block: clamp(2.75rem, 5vw, 4rem);
 }
 
 .contact-band-inner {
@@ -961,6 +962,7 @@ h3 {
 
 .contact-band h2 {
   max-width: 18ch;
+  margin-bottom: 0.65rem;
 }
 
 .contact-band p:not(.eyebrow) {
