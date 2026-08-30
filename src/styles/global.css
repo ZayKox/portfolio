@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #deddd7;
-  --surface: #e8e7e1;
-  --surface-subtle: #d2d1cb;
-  --surface-strong: #c2c0b9;
+  --bg: #d8d6cf;
+  --surface: #e0ded7;
+  --surface-subtle: #d2d0c9;
+  --surface-strong: #bebbb4;
   --text: #292a2e;
   --text-muted: #56595e;
-  --border: #b2b3ad;
+  --border: #adaea8;
   --primary: #2b2c30;
   --primary-hover: #3f4146;
   --primary-contrast: #e9e8e2;
-  --accent: #6746d6;
-  --accent-hover: #5033b5;
-  --accent-soft: #ebe7fb;
+  --accent: #6241cc;
+  --accent-hover: #4d31aa;
+  --accent-soft: #ddd7f0;
   --accent-contrast: #f1f0eb;
   --accent-on-primary: #b39eff;
   --info: #2563eb;
   --danger: #d43f5e;
-  --selection: #cfc6f0;
+  --selection: #c9bfee;
   --shadow: rgba(41, 42, 46, 0.13);
   --grid-line: rgba(41, 42, 46, 0.07);
-  --header-bg: rgba(222, 221, 215, 0.92);
+  --header-bg: rgba(216, 214, 207, 0.92);
 
   --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
   --font-body: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -205,6 +205,7 @@ h3 {
 
 .section--bordered {
   border-block: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 35%, var(--bg));
 }
 
 .section-grid {
@@ -493,13 +494,16 @@ h3 {
 }
 
 .hero-field {
+  --hero-field-bg: var(--primary);
+  --hero-field-text: var(--primary-contrast);
+
   position: relative;
   aspect-ratio: 0.9 / 1;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  color: var(--primary-contrast);
-  background: var(--primary);
+  color: var(--hero-field-text);
+  background: var(--hero-field-bg);
   box-shadow: 1rem 1rem 0 var(--surface-strong);
   isolation: isolate;
 }
@@ -510,7 +514,7 @@ h3 {
   opacity: 0.18;
   background-image: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--primary-contrast) 25%, transparent) 1px,
+    color-mix(in srgb, var(--hero-field-text) 25%, transparent) 1px,
     transparent 1px
   );
   background-size: 25% 100%;
@@ -545,7 +549,7 @@ h3 {
 
 .hero-signature-name {
   margin-top: 1rem;
-  color: color-mix(in srgb, var(--primary-contrast) 64%, transparent);
+  color: color-mix(in srgb, var(--hero-field-text) 64%, transparent);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.18em;
@@ -555,9 +559,9 @@ h3 {
 .hero-node {
   position: absolute;
   padding: 0.4rem 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--primary-contrast) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--hero-field-text) 25%, transparent);
   border-radius: 0.25rem;
-  color: color-mix(in srgb, var(--primary-contrast) 72%, transparent);
+  color: color-mix(in srgb, var(--hero-field-text) 72%, transparent);
   background: transparent;
   font-family: var(--font-mono);
   font-size: 0.62rem;
@@ -593,7 +597,7 @@ h3 {
   top: 1rem;
   right: 1rem;
   bottom: auto;
-  color: color-mix(in srgb, var(--primary-contrast) 45%, transparent);
+  color: color-mix(in srgb, var(--hero-field-text) 45%, transparent);
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
@@ -938,8 +942,12 @@ h3 {
 }
 
 .contact-band {
-  color: var(--primary-contrast);
-  background: var(--primary);
+  --contact-band-accent: var(--accent-on-primary);
+  --contact-band-bg: var(--primary);
+  --contact-band-text: var(--primary-contrast);
+
+  color: var(--contact-band-text);
+  background: var(--contact-band-bg);
 }
 
 .contact-band-inner {
@@ -955,22 +963,46 @@ h3 {
 
 .contact-band p:not(.eyebrow) {
   margin-bottom: 0;
-  color: color-mix(in srgb, var(--primary-contrast) 72%, transparent);
+  color: color-mix(in srgb, var(--contact-band-text) 72%, transparent);
 }
 
 .contact-band .eyebrow {
-  color: var(--accent-on-primary);
+  color: var(--contact-band-accent);
 }
 
 .contact-band .button--primary {
-  border-color: color-mix(in srgb, var(--primary-contrast) 24%, transparent);
-  color: var(--primary);
-  background: var(--primary-contrast);
+  border-color: color-mix(in srgb, var(--contact-band-text) 24%, transparent);
+  color: var(--contact-band-bg);
+  background: var(--contact-band-text);
 }
 
 .contact-band .button--primary:hover {
-  color: var(--primary-contrast);
+  color: var(--contact-band-text);
   background: var(--accent);
+}
+
+:root[data-theme="dark"] .hero-field {
+  --hero-field-bg: var(--surface);
+  --hero-field-text: var(--text);
+}
+
+:root[data-theme="dark"] .contact-band {
+  --contact-band-accent: var(--accent);
+  --contact-band-bg: var(--surface-subtle);
+  --contact-band-text: var(--text);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .hero-field {
+    --hero-field-bg: var(--surface);
+    --hero-field-text: var(--text);
+  }
+
+  :root:not([data-theme]) .contact-band {
+    --contact-band-accent: var(--accent);
+    --contact-band-bg: var(--surface-subtle);
+    --contact-band-text: var(--text);
+  }
 }
 
 .site-footer {

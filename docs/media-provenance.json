@@ -34,7 +34,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 204800,
-      "sha256": "6e305e951f412845e09a8bb4210a773543445998a9d5f3debef052a474fcff0d"
+      "sha256": "4e19f5a0a5d7b9d84a53d17afebd9dd11f220d19000d2ebe978f1646832583f2"
     },
     {
       "path": "public/palimia-social-card.png",
@@ -44,7 +44,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "22132091d3a51316b32cb836d59b8ee6faec6fd24910488dfabcc6139e6a3624"
+      "sha256": "4472eac6ab18fcad4c923e939328e7ca34ebfad1859fd4c129f4cbf0db2967ce"
     },
     {
       "path": "public/ludosaic-social-card.png",
@@ -54,7 +54,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 307200,
-      "sha256": "8cc389e8f326f8dd555e7d77a5c37ad2a8d25835dd082972e5e055c381818815"
+      "sha256": "ca5bcdc2a1e4431aa1446c224c47b4bcd924277708cc772cd1e3b678e80dbd4e"
     }
   ]
 }
