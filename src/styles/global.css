@@ -37,8 +37,8 @@
   --radius-card: 0.8rem;
   --container: 82rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
-  --section-space: clamp(3rem, 5vw, 4.75rem);
-  --section-heading-space: clamp(1.5rem, 3vw, 2.5rem);
+  --section-space: clamp(2.25rem, 4vw, 3.75rem);
+  --section-heading-space: clamp(1.25rem, 2.5vw, 2rem);
   --duration-fast: 140ms;
   --duration-base: 220ms;
   --duration-reveal: 450ms;
@@ -463,8 +463,8 @@ h3 {
 .hero {
   display: grid;
   align-items: center;
-  min-height: min(42rem, calc(100svh - 4.4rem));
-  padding-block: clamp(3rem, 5vw, 4.5rem);
+  min-height: min(38rem, calc(100svh - 4.4rem));
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 .hero-grid {
@@ -635,8 +635,8 @@ h3 {
 }
 
 .field-card {
-  min-height: 14rem;
-  padding: 1.4rem;
+  min-height: 12rem;
+  padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: var(--surface);
@@ -651,7 +651,7 @@ h3 {
 }
 
 .field-card h3 {
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 0.8rem;
 }
 
@@ -668,7 +668,7 @@ h3 {
 
 .project-list {
   display: grid;
-  gap: clamp(3.5rem, 6vw, 5rem);
+  gap: clamp(2rem, 3.5vw, 3.25rem);
 }
 
 .project-card {
@@ -676,7 +676,7 @@ h3 {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
   gap: clamp(2rem, 4vw, 4rem);
-  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
   border-top: 1px solid var(--border);
 }
 
@@ -926,8 +926,8 @@ h3 {
   display: grid;
   grid-template-columns: 8rem 1fr;
   gap: 1rem;
-  margin-block: 1.6rem;
-  padding-block: 1rem;
+  margin-block: 1rem;
+  padding-block: 0.75rem;
   border-block: 1px solid var(--border);
 }
 
@@ -950,7 +950,7 @@ h3 {
 
   color: var(--contact-band-text);
   background: var(--contact-band-bg);
-  padding-block: clamp(2.75rem, 5vw, 4rem);
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 .contact-band-inner {
