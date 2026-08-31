@@ -1207,6 +1207,22 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+.projects-hero {
+  padding-block: var(--space-4) var(--space-5);
+}
+
+.projects-hero .page-hero-inner h1 {
+  max-width: 18ch;
+}
+
+.page-projects {
+  padding-top: 0;
+}
+
+.page-projects .project-card:first-child {
+  border-top: 0;
+}
+
 .about-page-grid {
   display: grid;
   grid-template-columns: minmax(16rem, 0.65fr) minmax(0, 1.35fr);
