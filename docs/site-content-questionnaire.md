@@ -924,7 +924,7 @@ Statut : PUBLIC — VALIDÉ
 Expérience complémentaire : Agent de maintenance bâtiment chez Sealed Air Corporation, mission d’intérim de juillet à août 2022, Épernon.
 Statut : PUBLIC — VALIDÉ
 
-Formations : Baccalauréat général, mention Bien, Lycée Jean de Beauce (2018–2021) ; BUT Informatique, IUT Paris Rives de Seine — Université Paris Cité (2021–2024) ; Master Informatique — Ingénierie en Intelligence Artificielle, Université Paris 8 Vincennes — Saint-Denis (2024–2026).
+Formations : Baccalauréat général, mention Bien, Lycée Jehan de Beauce (2018–2021) ; BUT Informatique, IUT Paris Rives de Seine — Université Paris Cité (2021–2024) ; Master Informatique — Ingénierie en Intelligence Artificielle, Université Paris 8 Vincennes — Saint-Denis (2024–2026).
 Statut : PUBLIC — VALIDÉ
 
 Compétences à montrer : frontend web, backend/API, bases de données, architecture logicielle, UX/UI, accessibilité, tests, IA et sécurité en apprentissage. Analyse et compréhension de systèmes complexes à valoriser.
@@ -952,6 +952,21 @@ Cette décision a été explicitement fournie par Ethan dans la tâche du 30 ao�
 
 ```text
 Identité visuelle : ne pas utiliser le monogramme « ZK ». Employer la signature « ZayKo » lorsqu’un repère de marque textuel est utile ; préférer un signe géométrique sans lettres dans les formats trop compacts.
+Statut : PUBLIC — VALIDÉ
+```
+
+## 23. Informations validées dans la tâche du 31 août 2026
+
+Ces informations ont été explicitement validées par Ethan dans la tâche du 31 août 2026. Elles sont `PUBLIC — VALIDÉ` et peuvent être publiées dans le CV français et anglais.
+
+```text
+Nom exact du lycée : Lycée Jehan de Beauce.
+Statut : PUBLIC — VALIDÉ
+
+Niveau d’anglais : anglais professionnel.
+Statut : PUBLIC — VALIDÉ
+
+Expérience chez Studio Beyowi : utilisation d’AWS, Flask et AWS Lambda ; conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; migrations et synchronisations multi-SGBD impliquant Oracle, MySQL, PostgreSQL, MSSQL et SQLite ; gestion autonome de projets complexes.
 Statut : PUBLIC — VALIDÉ
 ```
 

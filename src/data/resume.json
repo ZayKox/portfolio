@@ -23,14 +23,15 @@
         "organization": "Studio Beyowi",
         "period": "Octobre 2023 — Septembre 2026",
         "location": "Paris 13e, France",
-        "summary": "Développement et évolution d’applications web, de la conception à la mise en production.",
+        "summary": "Développement et évolution d’applications web, avec gestion autonome de projets complexes de migration de données et d’intégration d’IA, de la conception à la mise en production.",
         "highlights": [
           "Conception, développement et maintenance de fonctionnalités répondant aux besoins utilisateurs et métier.",
-          "Création d’interfaces, évolution d’API et automatisation de processus.",
-          "Participation aux choix techniques, correction de bugs et vérifications avant mise en production.",
-          "Interventions sur des migrations de bases de données, notamment d’Oracle 11g vers PostgreSQL récent."
+          "Conception d’API Python avec Flask et AWS Lambda, création d’interfaces et automatisation de processus.",
+          "Migration et synchronisation de données multi-SGBD entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite.",
+          "Conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant.",
+          "Participation aux choix techniques, correction de bugs et vérifications avant mise en production."
         ],
-        "technologies": "Python, Svelte, Docker, Git, PL/SQL, Oracle"
+        "technologies": "Python, Flask, Svelte, AWS Lambda, Docker, Git, PL/SQL, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
       },
       {
         "title": "Développeur Backend (alternant)",
@@ -74,7 +75,7 @@
       },
       {
         "title": "Baccalauréat général, mention Bien",
-        "organization": "Lycée Jean de Beauce",
+        "organization": "Lycée Jehan de Beauce",
         "period": "2018 — 2021",
         "location": "Chartres, France",
         "summary": "Spécialités Numérique et Sciences Informatiques et Mathématiques ; options EPS et mathématiques expertes."
@@ -86,7 +87,10 @@
       "Architecture logicielle et analyse de systèmes",
       "Tests, accessibilité et performance",
       "UX / UI",
-      "Intelligence artificielle et cybersécurité appliquée en apprentissage"
+      "Cloud AWS, Docker et automatisation",
+      "Intelligence artificielle appliquée, RAG et recherche vectorielle",
+      "Cybersécurité appliquée en apprentissage",
+      "Anglais professionnel"
     ],
     "projects": [
       {
@@ -127,14 +131,15 @@
         "organization": "Studio Beyowi",
         "period": "October 2023 — September 2026",
         "location": "Paris 13th arrondissement, France",
-        "summary": "Development and evolution of web applications, from design through production delivery.",
+        "summary": "Development and evolution of web applications, with independent ownership of complex data migration and AI integration projects, from design through production delivery.",
         "highlights": [
           "Designed, developed, and maintained features addressing user and business needs.",
-          "Built interfaces, evolved APIs, and automated processes.",
-          "Contributed to technical choices, bug fixes, and checks before production delivery.",
-          "Worked on database migrations, including Oracle 11g to recent PostgreSQL versions."
+          "Designed Python APIs with Flask and AWS Lambda, built interfaces, and automated processes.",
+          "Migrated and synchronized data across Oracle, MySQL, PostgreSQL, MSSQL, and SQLite databases.",
+          "Designed RAG approaches and vector search with PGVector and Qdrant.",
+          "Contributed to technical choices, bug fixes, and checks before production delivery."
         ],
-        "technologies": "Python, Svelte, Docker, Git, PL/SQL, Oracle"
+        "technologies": "Python, Flask, Svelte, AWS Lambda, Docker, Git, PL/SQL, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
       },
       {
         "title": "Backend Developer (apprentice)",
@@ -178,7 +183,7 @@
       },
       {
         "title": "French General Baccalaureate, honors",
-        "organization": "Lycée Jean de Beauce",
+        "organization": "Lycée Jehan de Beauce",
         "period": "2018 — 2021",
         "location": "Chartres, France",
         "summary": "Specializations in Computer Science and Mathematics; physical education and advanced mathematics options."
@@ -190,7 +195,10 @@
       "Software architecture and systems analysis",
       "Testing, accessibility, and performance",
       "UX / UI",
-      "Artificial intelligence and applied cybersecurity, currently learning"
+      "AWS cloud, Docker, and automation",
+      "Applied artificial intelligence, RAG, and vector search",
+      "Applied cybersecurity, currently learning",
+      "Professional English"
     ],
     "projects": [
       {
