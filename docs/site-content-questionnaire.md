@@ -457,8 +457,9 @@ Statut de validation global : À CONFIRMER
 ## 9. Palimia
 
 ```text
-Nom public : Palimia ; le projet portait auparavant le nom MyVerse
-Statut : PUBLIC — VALIDÉ le 29 août 2026
+Nom public : Palimia
+Consigne de publication : ne pas mentionner d'ancien nom
+Statut : PUBLIC — VALIDÉ par Ethan le 31 août 2026
 
 Pourquoi as-tu lancé Palimia ? : À REMPLIR
 Quel problème personnel voulais-tu résoudre ? : À REMPLIR
@@ -472,8 +473,10 @@ Date de début : À REMPLIR
 Période de travail : À REMPLIR
 Temps approximatif consacré : À REMPLIR
 
-État actuel exact : À REMPLIR
-« MVP avancé / bêta privée » est-il exact ? : À CONFIRMER
+État actuel exact : le projet n'est pas en production et son lancement reste bloqué, notamment parce que les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées
+Périmètre de la première bêta prévue : films, séries et jeux vidéo ; anime, manga et livres différés jusqu'à validation de leurs sources et droits d'utilisation
+Autres preuves encore requises avant la production : environnement cible, migrations, sauvegarde et restauration, supervision, tests de staging et revue juridique finale
+Statut : PUBLIC — VALIDÉ par Ethan le 31 août 2026 ; détails techniques vérifiés dans la documentation du dépôt Palimia le même jour
 Dépôt public ou privé ? : À REMPLIR
 URL du dépôt si publique : À REMPLIR
 Démo accessible ? : À REMPLIR
@@ -511,8 +514,8 @@ Captures à refaire : À REMPLIR
 Données de démonstration disponibles : À REMPLIR
 Vidéo de démonstration souhaitée : oui/non
 
-Phrase courte validée pour le panneau d’accueil : Films, séries, jeux, anime et manga réunis dans un seul profil.
-Statut : PUBLIC — VALIDÉ par Ethan le 30 août 2026
+Phrase courte utilisée dans la sélection : Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
+Statut : PUBLIC — VALIDÉ pour la mise à jour demandée par Ethan le 31 août 2026
 
 Phrase qui résume le projet pour l’étude de cas : À REMPLIR
 Angle narratif souhaité : À REMPLIR

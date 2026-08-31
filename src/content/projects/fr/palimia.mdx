@@ -7,7 +7,7 @@ featured: true
 publication: teaser
 eyebrow: Profil culturel
 kind: Application web full-stack
-summary: Une plateforme pour suivre, noter et organiser films, séries, jeux vidéo, anime et manga dans un même profil culturel.
+summary: Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
 stack:
   - Next.js
   - TypeScript
@@ -19,18 +19,26 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
 ---
 
-## Un profil culturel transversal
+## Une bibliothèque culturelle personnelle
 
-Palimia, auparavant nommé MyVerse, réunit le suivi de films, séries, jeux vidéo, anime et manga. Son MVP public se concentre sur un outil personnel privé : rechercher une œuvre, l’ajouter à sa bibliothèque, suivre sa progression, la noter, la marquer comme favorite et consulter ses statistiques.
+Palimia rassemble films, séries et jeux vidéo dans un même espace personnel. L’objectif est de remplacer les listes dispersées par une bibliothèque privée où chaque œuvre conserve son état, sa progression, sa note sur dix, son statut de favori et ses notes personnelles.
 
-Les fonctions sociales existantes restent désactivées pour la première bêta. Les profils publics, avis, listes et relations sont séparés du suivi privé et attendent une validation produit et juridique explicite.
+Le parcours principal va de la recherche dans un catalogue alimenté par des fournisseurs externes à l’ajout dans la bibliothèque, puis au suivi et aux statistiques personnelles. L’application est pensée comme un profil culturel qui pourra s’enrichir progressivement sans mélanger les données du catalogue avec les choix privés de l’utilisateur.
+
+## Un périmètre volontairement progressif
+
+La première bêta prévue se concentre sur les films, les séries et les jeux vidéo. Les modèles de données et certaines intégrations anticipent aussi les anime, les manga et les livres, mais ces médias restent hors du périmètre public tant que leurs sources et leurs droits d’utilisation ne sont pas validés.
+
+Les fonctions sociales développées — profils publics, avis, listes et relations — restent elles aussi désactivées. Le cœur du produit demeure donc un outil privé. Les recommandations envisagées suivent la même logique : elles doivent être personnelles et explicables, à partir de signaux compréhensibles plutôt que d’un score opaque.
 
 ## Une fondation full-stack
 
-Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue et les états personnels. Les données issues de fournisseurs autorisés sont validées et normalisées avant import, sans réduire les particularités de chaque média à un modèle générique.
+Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue, les références vers les fournisseurs et les états personnels, tandis que Better Auth gère l’authentification. Les appels aux fournisseurs restent côté serveur et leurs données sont validées puis normalisées avant import.
 
-Les imports sont conçus pour être idempotents et résistants à la concurrence. Les recommandations prévues commencent par une approche privée et explicable, fondée sur des signaux compréhensibles plutôt que sur un score opaque.
+Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 
-## Validation actuelle
+## Pourquoi Palimia n’est pas en production
 
-Le dépôt comprend des tests unitaires, composants, PostgreSQL et Playwright, ainsi que des contrôles de sécurité, de confidentialité et de release. L’architecture de déploiement est préparée, mais le dépôt ne prouve pas encore un environnement de production déployé. Ces éléments sont des preuves locales de conception et de validation, pas des métriques d’un service public.
+Palimia n’est pas en production et son statut de lancement reste bloqué. Les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées. Le périmètre public doit notamment exclure les sources qui n’autorisent pas encore le suivi, le stockage ou l’affichage envisagés.
+
+Le dépôt comprend des tests unitaires, composants, PostgreSQL et Playwright, ainsi que des contrôles de sécurité, de confidentialité et de release. L’architecture de déploiement est préparée, mais les preuves sur un environnement cible — configuration, migrations, sauvegarde et restauration, supervision, tests de staging et revue juridique finale — restent à compléter. Ces validations locales décrivent l’état technique du projet ; elles ne constituent ni une mise en production ni des métriques d’utilisateurs.

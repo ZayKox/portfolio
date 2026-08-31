@@ -7,7 +7,7 @@ featured: true
 publication: teaser
 eyebrow: Cultural profile
 kind: Full-stack web application
-summary: A platform for tracking, rating, and organizing movies, TV series, video games, anime, and manga through one cultural profile.
+summary: A platform for tracking, rating, and organizing movies, TV series, and video games in a personal cultural library.
 stack:
   - Next.js
   - TypeScript
@@ -19,18 +19,26 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
 ---
 
-## One cross-media cultural profile
+## A personal cultural library
 
-Palimia, previously named MyVerse, brings movie, TV series, video game, anime, and manga tracking together. Its public MVP focuses on a private personal tracker: searching for a work, adding it to a library, tracking progress, rating it, marking it as a favorite, and viewing personal statistics.
+Palimia brings movies, TV series, and video games together in one personal space. Its goal is to replace scattered lists with a private library where every work keeps its status, progress, rating out of ten, favorite state, and personal notes.
 
-Existing social features remain disabled for the first beta. Public profiles, reviews, lists, and relationships are kept separate from private tracking and await an explicit product and legal review.
+The main journey starts with searching a catalog supplied by external providers, continues with adding a work to the library, and leads to personal tracking and statistics. The application is designed as a cultural profile that can expand over time without mixing catalog data with each user's private choices.
+
+## A deliberately gradual scope
+
+The planned first beta focuses on movies, TV series, and video games. The data model and some integrations also anticipate anime, manga, and books, but these media remain outside the public scope until their sources and usage rights have been reviewed.
+
+Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Planned recommendations follow the same principle: they should be personal and explainable, using understandable signals rather than an opaque score.
 
 ## A full-stack foundation
 
-The project is a modular monolith built with Next.js and strict TypeScript. PostgreSQL and Prisma support the catalog and personal states. Data from authorized providers is validated and normalized before import without flattening the characteristics of each media type into a generic model.
+The project is a modular monolith built with Next.js and strict TypeScript. PostgreSQL and Prisma support the catalog, provider references, and personal states, while Better Auth handles authentication. Provider calls remain server-side, and their data is validated and normalized before import.
 
-Imports are designed to be idempotent and safe under concurrency. Planned recommendations begin with a private, explainable approach based on understandable signals rather than an opaque score.
+This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
 
-## Current validation
+## Why Palimia is not in production
 
-The repository includes unit, component, PostgreSQL, and Playwright tests, alongside security, privacy, and release checks. Its deployment architecture is prepared, but the repository does not yet prove a deployed production environment. These are local engineering and validation signals, not metrics from a public service.
+Palimia is not in production, and its launch status remains blocked. The written permissions required for some uses of provider data have not all been obtained and reviewed. In particular, the public scope must exclude sources that do not yet allow the intended tracking, storage, or display.
+
+The repository includes unit, component, PostgreSQL, and Playwright tests, alongside security, privacy, and release checks. Its deployment architecture is prepared, but evidence from a target environment — configuration, migrations, backup and restore, monitoring, staging tests, and final legal review — is still incomplete. These local checks describe the project's engineering state; they are neither a production release nor user metrics.

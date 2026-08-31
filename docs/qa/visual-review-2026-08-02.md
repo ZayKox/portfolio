@@ -21,7 +21,7 @@ Chaque rendu possédait un titre principal et une région principale visibles. A
 
 ### Formats d’écran
 
-Trente captures supplémentaires ont couvert l’accueil FR/EN, la liste des projets, MyVerse et le contact dans les deux thèmes :
+Trente captures supplémentaires ont couvert l’accueil FR/EN, la page projet devenue Palimia et le contact dans les deux thèmes :
 
 | Profil        | Zone d’affichage |
 | ------------- | ---------------- |

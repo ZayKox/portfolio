@@ -28,7 +28,9 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 
 ## Palimia
 
-- Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
+- Obtenir et examiner les autorisations écrites requises pour le périmètre de données retenu avant toute mise en production.
+- Compléter et valider les preuves de déploiement, d'exploitation et de revue juridique sur l'environnement cible.
+- Valider explicitement les dates et chaque métrique avant de les afficher.
 - Motivation et problème personnel initial.
 - Rôle exact, dates et temps consacré.
 - État public, lien de démonstration et visibilité du dépôt.
