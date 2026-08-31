@@ -29,28 +29,28 @@ const { Content } = await render(entry);
   <article class="case-study">
     <header class="case-hero section-grid">
       <div class="container">
-        <a class="back-link" href={routes[locale].projects}>← {t.project.back}</a>
+        <div class="case-hero-nav">
+          <a class="back-link" href={routes[locale].projects}>← {t.project.back}</a>
+          <span class="case-hero-status">{t.projects.teaser}</span>
+        </div>
         <div class="case-hero-grid">
           <div class="case-title reveal">
             <p class="eyebrow">{entry.data.eyebrow}</p>
             <h1>{entry.data.title}</h1>
             <p class="page-lead">{entry.data.summary}</p>
+            <div class="case-stack">
+              <span>{t.project.stack}</span>
+              <ul class="tag-list">
+                {entry.data.stack.map((technology) => <li>{technology}</li>)}
+              </ul>
+            </div>
           </div>
-          <ProjectVisual visual={entry.data.visual} {locale} />
+          <div class="case-hero-visual reveal">
+            <ProjectVisual visual={entry.data.visual} {locale} />
+          </div>
         </div>
       </div>
     </header>
-
-    <section class="case-facts section--bordered">
-      <div class="container case-facts-grid">
-        <div class="case-stack">
-          <span>{t.project.stack}</span>
-          <ul class="tag-list">
-            {entry.data.stack.map((technology) => <li>{technology}</li>)}
-          </ul>
-        </div>
-      </div>
-    </section>
 
     {
       entry.data.metrics && (
