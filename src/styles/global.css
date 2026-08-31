@@ -1199,6 +1199,22 @@ h3 {
   max-width: 18ch;
 }
 
+.about-hero {
+  padding-block: var(--space-4) var(--space-5);
+}
+
+.about-hero .page-hero-inner {
+  row-gap: var(--space-2);
+}
+
+.about-hero .page-hero-inner h1 {
+  max-width: 16ch;
+}
+
+.about-hero .page-hero-inner .page-lead {
+  margin-bottom: 0;
+}
+
 .page-projects {
   padding-top: 0;
 }
