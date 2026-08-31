@@ -7,12 +7,10 @@ import ProjectVisual from "./ProjectVisual.astro";
 interface Props {
   entry: CollectionEntry<"projects">;
   locale: Locale;
-  index: number;
   headingLevel?: 2 | 3;
-  showMeta?: boolean;
 }
 
-const { entry, locale, index, headingLevel = 3, showMeta = true } = Astro.props;
+const { entry, locale, headingLevel = 3 } = Astro.props;
 const t = getCopy(locale);
 const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
 const Heading = headingLevel === 2 ? "h2" : "h3";
@@ -24,14 +22,6 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
     <ProjectVisual visual={entry.data.visual} {locale} />
   </a>
   <div class="project-card-content">
-    {
-      showMeta && (
-        <div class="project-card-meta">
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <span>{entry.data.kind}</span>
-        </div>
-      )
-    }
     <div class="project-card-heading">
       <div>
         <p class="eyebrow">{entry.data.eyebrow}</p>

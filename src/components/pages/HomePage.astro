@@ -105,7 +105,7 @@ const projects = (
       <p>{t.home.selectedProjectsIntro}</p>
     </div>
     <div class="container project-list">
-      {projects.map((entry, index) => <ProjectCard {entry} {locale} {index} showMeta={false} />)}
+      {projects.map((entry) => <ProjectCard {entry} {locale} />)}
     </div>
   </section>
 

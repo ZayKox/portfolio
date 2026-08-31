@@ -732,22 +732,6 @@ h3 {
   box-shadow: 0.6rem 0.6rem 0 var(--surface-strong);
 }
 
-.project-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.3rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-meta);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.project-card-meta span:first-child {
-  color: var(--accent);
-}
-
 .project-card-heading {
   display: flex;
   align-items: start;
