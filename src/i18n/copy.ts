@@ -104,7 +104,7 @@ export const copy = {
     },
     about: {
       eyebrow: "À propos",
-      title: "Je préfère garder le champ des possibles ouvert.",
+      title: "Construire, comprendre, recommencer.",
       lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Studio Beyowi.",
       paragraphs: [
         "J’ai commencé par vouloir comprendre comment fonctionnent les jeux vidéo : ce qui se passe derrière l’écran, comment les systèmes s’assemblent et comment une idée devient un produit concret. Cette curiosité m’a naturellement conduit vers le développement.",
@@ -295,7 +295,7 @@ export const copy = {
     },
     about: {
       eyebrow: "About",
-      title: "I prefer to keep the field wide open.",
+      title: "Build, understand, start again.",
       lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Studio Beyowi.",
       paragraphs: [
         "I first got into software by wanting to understand how video games work: what happens behind the screen, how systems fit together, and how an idea becomes a working product. That curiosity naturally led me to development.",
