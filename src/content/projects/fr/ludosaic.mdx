@@ -7,7 +7,7 @@ featured: true
 publication: teaser
 eyebrow: Plateforme de mini-jeux
 kind: Application web modulaire
-summary: Une plateforme web de mini-jeux jouables sans compte, en solo, contre un bot, à plusieurs en local ou dans des salons privés selon le jeu.
+summary: Une plateforme web de mini-jeux en cours de développement, jouable sans compte en solo, contre un bot ou à plusieurs selon le jeu.
 stack:
   - Next.js
   - TypeScript
@@ -19,18 +19,26 @@ socialImage: /ludosaic-social-card.png
 socialImageAlt: Carte de partage Violet Field de Ludosaic, avec trois tuiles représentant Reflex Rush, Merge Forge et Grid Duel.
 ---
 
-## Une plateforme, plusieurs façons de jouer
+## Jouer rapidement, sans créer de compte
 
-Ludosaic est une plateforme web de mini-jeux accessible et installable. Elle permet de commencer sans créer de compte. Selon le jeu, elle vise le solo, les défis quotidiens, les bots, le multijoueur sur le même appareil et les salons privés en ligne.
+Ludosaic rassemble plusieurs mini-jeux dans une même expérience web, pensée pour être accessible, installable et utilisable d’abord sur mobile. Le parcours recherché reste direct : choisir un jeu, sélectionner un mode et commencer une partie, sans imposer la création d’un compte.
 
-Trois jeux structurent le premier périmètre : Reflex Rush, un jeu de réflexes ; Merge Forge, un puzzle déterministe et reprenable ; et Grid Duel, un jeu d’alignement jouable localement, contre des bots et sur une fondation de salon privé connecté.
+Un profil invité est généré localement pour conserver le nom d’affichage, les préférences, la progression et les succès. Lorsque les services connectés sont disponibles, une session anonyme permet aussi de synchroniser certains réglages et résultats vérifiés, tout en gardant les modes compatibles utilisables hors ligne.
+
+## Trois jeux pour construire la plateforme
+
+**Reflex Rush** propose des parties de réflexes en solo et des défis quotidiens déterministes. **Merge Forge** est un puzzle de fusion dont la partie peut être sauvegardée et reprise, avec un défi commun fondé sur la date. **Grid Duel** explore le jeu de stratégie à deux sur le même appareil, les bots et les salons privés en ligne.
+
+Ces trois jeux ne servent pas seulement à remplir un catalogue. Chacun éprouve une contrainte différente : le cycle de vie d’un moteur Phaser, une logique de puzzle rejouable, puis une autorité multijoueur capable de contrôler les tours et de conserver les résultats.
 
 ## Des règles déterministes et partageables
 
-Le monorepo sépare l’application Next.js, le serveur de jeu, les jeux et leurs contrats communs. React et Phaser portent les interfaces de jeu, PostgreSQL et Drizzle les données durables, Redis l’état éphémère, et Colyseus l’autorité temps réel.
+Le monorepo sépare l’application Next.js, le serveur de jeu, chaque jeu et leurs contrats communs. React et Phaser portent les interfaces, PostgreSQL et Drizzle les données durables, Redis la coordination temporaire, et Colyseus l’autorité des salons privés.
 
-La logique métier reste indépendante du rendu et rejouable à partir d’une graine et d’une suite d’actions. Pour les scores connectés, le serveur recalcule le résultat au lieu d’accepter le score déclaré par le navigateur. Les jeux sont chargés à la demande et une partie des modes solo reste utilisable hors ligne après un premier chargement.
+Les règles restent indépendantes du rendu et peuvent être rejouées à partir d’une graine et d’une suite d’actions. Pour un résultat connecté, le serveur reconstitue la partie au lieu d’accepter directement le score annoncé par le navigateur. Les jeux sont chargés uniquement lorsqu’ils sont ouverts, et le service worker permet de relancer certains modes déjà chargés sans connexion.
 
-## Validation actuelle
+## Un projet encore en développement
 
-Le dépôt documente une fondation validée localement et plusieurs tranches jouables en bêta locale ou connectée. Les tests couvrent notamment les règles, l’intégration PostgreSQL, les parcours navigateur et deux clients pour la fondation multijoueur. Le MVP complet et la validation de production ne sont pas encore acquis ; ces preuves locales ne constituent ni des métriques utilisateurs ni la preuve d’un service public déployé.
+Ludosaic est toujours en cours de développement. Le dépôt contient une fondation validée localement et des parcours jouables en bêta locale ou connectée, mais le MVP complet n’est pas encore livré. Les salons privés de Grid Duel disposent par exemple d’une fondation testée avec deux navigateurs, sans constituer encore une expérience multijoueur finalisée pour la production.
+
+Aucun déploiement externe n’a été réalisé. Avant une ouverture publique, il reste notamment à terminer les critères du MVP, durcir l’exploitation du multijoueur, faire relire les textes juridiques et valider sur l’environnement cible les sauvegardes, la restauration, TLS/WSS, la supervision et les parcours essentiels. Les tests de règles, PostgreSQL et navigateur décrivent donc l’avancement technique du projet, pas les résultats d’un service en production.

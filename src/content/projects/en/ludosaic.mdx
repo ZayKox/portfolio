@@ -7,7 +7,7 @@ featured: true
 publication: teaser
 eyebrow: Mini-game platform
 kind: Modular web application
-summary: A web platform of mini-games playable without an account, in solo, against bots, through local multiplayer, or in private rooms depending on the game.
+summary: A web mini-game platform under active development, playable without an account in solo, against bots, or with others depending on the game.
 stack:
   - Next.js
   - TypeScript
@@ -19,18 +19,26 @@ socialImage: /ludosaic-social-card.png
 socialImageAlt: Violet Field sharing card for Ludosaic, with three tiles representing Reflex Rush, Merge Forge, and Grid Duel.
 ---
 
-## One platform, several ways to play
+## Start playing without creating an account
 
-Ludosaic is an accessible, installable web mini-game platform. People can start playing without creating an account. Depending on the game, it targets solo play, daily challenges, bots, multiplayer on the same device, and private online rooms.
+Ludosaic brings several mini-games into one web experience designed to be accessible, installable, and mobile-first. Its intended journey stays direct: choose a game, select a mode, and start playing without requiring account creation.
 
-Three games shape its first scope: Reflex Rush, a reaction game; Merge Forge, a deterministic resumable puzzle; and Grid Duel, an alignment game with local play, bots, and a connected private-room foundation.
+A guest profile is generated locally to preserve the display name, preferences, progression, and achievements. When connected services are available, an anonymous session can also synchronize selected settings and verified results while compatible modes remain usable offline.
+
+## Three games for building the platform
+
+**Reflex Rush** offers solo reaction runs and deterministic daily challenges. **Merge Forge** is a merging puzzle that can be saved and resumed, with a shared date-based challenge. **Grid Duel** explores strategy play for two people on one device, bots, and private online rooms.
+
+These three games do more than fill a catalog. Each tests a different constraint: the lifecycle of a Phaser engine, replayable puzzle logic, and then a multiplayer authority able to control turns and persist results.
 
 ## Deterministic, shareable rules
 
-The monorepo separates the Next.js application, game server, games, and their shared contracts. React and Phaser power game interfaces, PostgreSQL and Drizzle store durable data, Redis handles ephemeral state, and Colyseus provides real-time authority.
+The monorepo separates the Next.js application, game server, each game, and their shared contracts. React and Phaser power the interfaces, PostgreSQL and Drizzle store durable data, Redis handles temporary coordination, and Colyseus provides authority for private rooms.
 
-Business rules remain independent from rendering and can be replayed from a seed and action sequence. For connected scores, the server recalculates results instead of trusting a score declared by the browser. Games load on demand, and some solo modes remain available offline after an initial load.
+Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 
-## Current validation
+## A project still under development
 
-The repository documents a locally validated foundation and several playable local or connected beta slices. Tests cover rules, PostgreSQL integration, browser journeys, and two clients for the multiplayer foundation. The complete MVP and production validation have not been reached; this local evidence is neither a user metric nor proof of a deployed public service.
+Ludosaic is still under active development. The repository contains a locally validated foundation and playable local or connected beta journeys, but the complete MVP has not been delivered. Grid Duel private rooms, for example, have a foundation tested with two browsers without yet representing a production-ready multiplayer experience.
+
+No external deployment has been performed. Before a public release, the project still needs to complete its MVP criteria, harden multiplayer operations, obtain a legal review of its notices, and validate backups, restoration, TLS/WSS, monitoring, and critical journeys in the target environment. Its rule, PostgreSQL, and browser tests therefore describe engineering progress, not results from a production service.

@@ -41,7 +41,9 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 
 ## Ludosaic
 
-- Valider explicitement le statut produit, les dates et chaque métrique avant de les afficher.
+- Terminer et valider les critères du MVP pour les trois jeux et les services connectés.
+- Réaliser un premier déploiement externe puis valider sauvegarde, restauration, TLS/WSS, supervision et parcours critiques avant toute production.
+- Valider explicitement les dates et chaque métrique avant de les afficher.
 - Motivation, public cible, rôle exact et dates.
 - Visibilité du dépôt, URL de démonstration éventuelle et état de déploiement.
 - Retours de testeurs et résultats réels, séparés des validations locales.

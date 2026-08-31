@@ -533,13 +533,14 @@ Nature du produit : plateforme web modulaire de mini-jeux, accessible et install
 Accès : jouable sans création de compte
 Modes selon les jeux : solo, défi quotidien, bot, multijoueur local et salon privé en ligne
 Premier périmètre : Reflex Rush, Merge Forge et Grid Duel
-État publiable : fondation validée localement avec plusieurs tranches jouables en bêta locale ou connectée ; MVP complet et production non validés
+État publiable : projet en cours de développement, avec une fondation validée localement et plusieurs parcours jouables en bêta locale ou connectée ; MVP complet non livré
+Mise en production : aucun déploiement externe réalisé ; validation de l'environnement cible et critères de lancement encore à compléter
 Architecture publiable : monorepo séparant application Next.js, serveur de jeu, jeux et contrats communs
 Stack publiable : Next.js, TypeScript, React, Phaser, PostgreSQL, Drizzle, Redis et Colyseus
 Principe technique publiable : règles déterministes séparées du rendu et scores connectés recalculés côté serveur
 Validation publiable : tests de règles, intégration PostgreSQL, parcours navigateur et fondation multijoueur à deux clients
 Source factuelle : documentation et code du dépôt source Ludosaic consultés le 29 août 2026
-Statut des faits techniques ci-dessus : PUBLIC — VALIDÉ pour l’aperçu demandé le 29 août 2026
+Statut des faits techniques ci-dessus : PUBLIC — état de développement explicitement validé par Ethan le 31 août 2026 ; détails techniques vérifiés dans la documentation du dépôt Ludosaic le même jour
 
 Pourquoi as-tu lancé Ludosaic ? : À REMPLIR
 Public cible détaillé : À REMPLIR
