@@ -1203,15 +1203,31 @@ h3 {
   padding-block: var(--space-4) var(--space-5);
 }
 
-.about-hero .page-hero-inner {
-  row-gap: var(--space-2);
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.65fr) minmax(0, 1.35fr);
+  align-items: start;
+  gap: var(--space-5);
 }
 
-.about-hero .page-hero-inner h1 {
-  max-width: 16ch;
+.about-hero-inner .eyebrow {
+  margin-top: 0.65rem;
 }
 
-.about-hero .page-hero-inner .page-lead {
+.about-hero-copy {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 54rem;
+}
+
+.about-hero-copy h1 {
+  max-width: 17ch;
+  margin: 0;
+  font-size: clamp(2.75rem, 4.6vw, 4.75rem);
+}
+
+.about-hero-copy .page-lead {
+  max-width: 44rem;
   margin-bottom: 0;
 }
 
@@ -1966,9 +1982,18 @@ h3 {
 
   .section-heading--split,
   .page-hero-inner,
+  .about-hero-inner,
   .about-preview,
   .about-page-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-hero-inner {
+    gap: var(--space-2);
+  }
+
+  .about-hero-inner .eyebrow {
+    margin-top: 0;
   }
 
   .fields-section .section-heading--split {
