@@ -1213,6 +1213,14 @@ h3 {
   max-width: 18ch;
 }
 
+.about-hero .page-hero-inner {
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.55fr);
+}
+
+.about-hero .page-hero-inner h1 {
+  max-width: none;
+}
+
 .page-projects {
   padding-top: 0;
 }
@@ -2016,6 +2024,10 @@ h3 {
   .page-hero-inner,
   .about-preview,
   .about-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero .page-hero-inner {
     grid-template-columns: 1fr;
   }
 
