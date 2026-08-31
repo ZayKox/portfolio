@@ -75,10 +75,6 @@ const { Content } = await render(entry);
 
     <section class="section case-body-section section--bordered">
       <div class="container case-body-grid">
-        <aside class="case-body-index">
-          <span>{String(entry.data.order).padStart(2, "0")}</span>
-          <p>{entry.data.kind}</p>
-        </aside>
         <div class="case-prose prose reveal">
           <Content />
         </div>

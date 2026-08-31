@@ -1676,8 +1676,7 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
-.case-stack > span,
-.case-body-index p {
+.case-stack > span {
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--text-meta);
@@ -1744,28 +1743,26 @@ h3 {
 
 .case-body-grid {
   display: grid;
-  grid-template-columns: 0.45fr 1.55fr;
-  align-items: start;
-  gap: var(--space-5);
-}
-
-.case-body-index {
-  position: sticky;
-  top: 5rem;
-}
-
-.case-body-index > span {
-  display: block;
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 5rem;
-  font-weight: 700;
-  letter-spacing: -0.08em;
-  line-height: 1;
+  grid-template-columns: minmax(0, 49rem);
+  justify-content: center;
 }
 
 .prose {
   max-width: 49rem;
+}
+
+.case-prose h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.case-prose h2::after {
+  width: clamp(2rem, 8vw, 5rem);
+  height: 1px;
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--accent) 45%, var(--border));
+  content: "";
 }
 
 .prose h2 {
@@ -1954,8 +1951,7 @@ h3 {
   .section-heading--split,
   .page-hero-inner,
   .about-preview,
-  .about-page-grid,
-  .case-body-grid {
+  .about-page-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2046,8 +2042,7 @@ h3 {
     text-align: left;
   }
 
-  .identity-card,
-  .case-body-index {
+  .identity-card {
     position: static;
   }
 
