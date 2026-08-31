@@ -35,6 +35,29 @@ const t = getCopy(locale);
           <strong>{profile.brand}</strong>
           <span>{profile.name}</span>
         </div>
+        <div class="about-profile-details">
+          <p>{t.home.eyebrow}</p>
+          <ul class="about-profile-links">
+            <li>
+              <a href={profile.socials.github} rel="me">
+                GitHub
+                <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={profile.socials.linkedin} rel="me">
+                LinkedIn
+                <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${profile.email}`}>
+                {t.contact.emailLabel}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
         <ul class="about-profile-meta">
           <li>{profile.location}</li>
           <li>FR · EN</li>

@@ -1276,6 +1276,43 @@ h3 {
   text-transform: uppercase;
 }
 
+.about-profile-details {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+}
+
+.about-profile-details > p {
+  max-width: 18rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--about-profile-text) 76%, transparent);
+  font-size: var(--body-large);
+  line-height: 1.45;
+}
+
+.about-profile-links {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--about-profile-text) 24%, transparent);
+  list-style: none;
+}
+
+.about-profile-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--about-profile-text) 24%, transparent);
+  color: var(--about-profile-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.about-profile-links a:hover {
+  color: var(--about-profile-accent);
+}
+
 .about-profile-meta {
   display: grid;
   gap: var(--space-2);
