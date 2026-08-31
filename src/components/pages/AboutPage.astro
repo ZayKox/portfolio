@@ -22,10 +22,20 @@ const t = getCopy(locale);
 >
   <section class="page-hero section-grid about-hero">
     <div class="container about-hero-inner reveal">
-      <p class="eyebrow">{t.about.eyebrow}</p>
+      <div class="about-hero-heading">
+        <p class="eyebrow">{t.about.eyebrow}</p>
+        <span class="about-hero-signature" aria-hidden="true">{profile.brand}</span>
+      </div>
       <div class="about-hero-copy">
         <h1>{t.about.title}</h1>
-        <p class="page-lead">{t.about.lead}</p>
+        <div class="about-hero-intro">
+          <p class="page-lead">{t.about.lead}</p>
+          <ul class="about-hero-meta" aria-label={t.about.eyebrow}>
+            <li>{profile.name}</li>
+            <li>{profile.location}</li>
+            <li>FR · EN</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
