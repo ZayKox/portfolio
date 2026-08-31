@@ -1202,12 +1202,12 @@ h3 {
 .about-hero {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-4) var(--space-5);
+  padding-block: var(--space-2) var(--space-5);
 }
 
 .about-hero-inner {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .about-hero-heading {
@@ -1215,8 +1215,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  min-height: 2.75rem;
-  padding-bottom: var(--space-2);
+  padding-bottom: var(--space-1);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1237,7 +1236,6 @@ h3 {
   grid-template-columns: minmax(0, 1.5fr) minmax(19rem, 0.5fr);
   gap: var(--space-5);
   align-items: end;
-  padding-top: var(--space-3);
 }
 
 .about-hero-copy h1 {
@@ -2041,7 +2039,7 @@ h3 {
   }
 
   .about-hero-inner {
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   .about-hero-copy {
