@@ -1208,7 +1208,8 @@ h3 {
   padding-block: var(--page-hero-top-space) var(--space-5);
 }
 
-.projects-hero .page-hero-inner h1 {
+.projects-hero .page-hero-inner h1,
+.about-hero .page-hero-inner h1 {
   max-width: 18ch;
 }
 
