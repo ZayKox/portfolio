@@ -21,38 +21,35 @@ const t = getCopy(locale);
   schemaType="ProfilePage"
 >
   <section class="page-hero section-grid about-hero">
-    <div class="container about-hero-inner reveal">
-      <div class="about-hero-heading">
-        <p class="eyebrow">{t.about.eyebrow}</p>
-        <span class="about-hero-signature" aria-hidden="true">{profile.brand}</span>
-      </div>
-      <div class="about-hero-copy">
-        <h1>{t.about.title}</h1>
-        <div class="about-hero-intro">
-          <p class="page-lead">{t.about.lead}</p>
-          <ul class="about-hero-meta" aria-label={t.about.eyebrow}>
-            <li>{profile.name}</li>
-            <li>{profile.location}</li>
-            <li>FR · EN</li>
-          </ul>
-        </div>
-      </div>
+    <div class="container page-hero-inner reveal">
+      <p class="eyebrow">{t.about.eyebrow}</p>
+      <h1>{t.about.title}</h1>
+      <p class="page-lead">{t.about.lead}</p>
     </div>
   </section>
 
   <section class="section section--bordered">
     <div class="container about-page-grid">
-      <aside class="identity-card reveal">
-        <div>
-          <strong>{profile.name}</strong>
-          <span>{profile.brand}</span>
+      <aside class="about-profile reveal" aria-label={profile.name}>
+        <div class="about-profile-identity">
+          <strong>{profile.brand}</strong>
+          <span>{profile.name}</span>
         </div>
-        <p>{profile.location}</p>
-        <p>FR · EN</p>
+        <ul class="about-profile-meta">
+          <li>{profile.location}</li>
+          <li>FR · EN</li>
+        </ul>
       </aside>
-      <div class="prose-large reveal">
-        {t.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
+      <ol class="about-story-list reveal">
+        {
+          t.about.paragraphs.map((paragraph, index) => (
+            <li>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <p>{paragraph}</p>
+            </li>
+          ))
+        }
+      </ol>
     </div>
   </section>
 
