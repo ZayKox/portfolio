@@ -1192,7 +1192,7 @@ h3 {
 }
 
 .projects-hero {
-  padding-block: var(--space-4) var(--space-5);
+  padding-block: var(--page-hero-top-space) var(--space-5);
 }
 
 .projects-hero .page-hero-inner h1 {
@@ -1202,7 +1202,7 @@ h3 {
 .about-hero {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-2) var(--space-5);
+  padding-block: var(--page-hero-top-space) var(--space-5);
 }
 
 .about-hero-inner {
