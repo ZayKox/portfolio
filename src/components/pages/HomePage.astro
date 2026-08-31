@@ -131,12 +131,15 @@ const projects = (
 
   <section class="section contact-band">
     <div class="container contact-band-inner reveal">
-      <div>
+      <div class="contact-band-copy">
         <p class="eyebrow">{t.nav.contact}</p>
         <h2>{t.home.contactTitle}</h2>
         <p>{t.home.contactText}</p>
       </div>
-      <a class="button button--primary" href={`mailto:${profile.email}`}>{t.home.contactCta}</a>
+      <a class="button button--primary" href={`mailto:${profile.email}`}>
+        {t.home.contactCta}
+        <span aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
 </BaseLayout>

@@ -1040,22 +1040,51 @@ h3 {
 
   color: var(--contact-band-text);
   background: var(--contact-band-bg);
-  padding-block: var(--section-space);
+  padding-block: 0;
 }
 
 .contact-band-inner {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: var(--space-5);
+  padding-block: var(--space-5);
+  border-block: 1px solid color-mix(in srgb, var(--contact-band-text) 16%, transparent);
+}
+
+.contact-band-inner::before {
+  position: absolute;
+  top: var(--space-5);
+  bottom: var(--space-5);
+  left: 0;
+  width: 0.22rem;
+  background: var(--contact-band-accent);
+  content: "";
+}
+
+.contact-band-copy {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.28fr) minmax(0, 1fr);
+  align-items: end;
+  column-gap: var(--space-4);
+  padding-left: var(--space-4);
+}
+
+.contact-band-copy .eyebrow {
+  grid-row: 1 / span 2;
+  align-self: start;
+  margin-bottom: 0;
 }
 
 .contact-band h2 {
-  max-width: 18ch;
-  margin-bottom: 0.65rem;
+  max-width: 21ch;
+  margin-bottom: var(--space-1);
+  font-size: clamp(1.9rem, 3vw, 3.25rem);
 }
 
 .contact-band p:not(.eyebrow) {
+  max-width: 42rem;
   margin-bottom: 0;
   color: color-mix(in srgb, var(--contact-band-text) 72%, transparent);
 }
@@ -1065,6 +1094,7 @@ h3 {
 }
 
 .contact-band .button--primary {
+  min-width: 9rem;
   border-color: color-mix(in srgb, var(--contact-band-text) 24%, transparent);
   color: var(--contact-band-bg);
   background: var(--contact-band-text);
@@ -1945,7 +1975,25 @@ h3 {
   .contact-band-inner,
   .case-section-heading {
     align-items: flex-start;
+  }
+
+  .case-section-heading {
     flex-direction: column;
+  }
+
+  .contact-band-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .contact-band-copy {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .contact-band-copy .eyebrow {
+    grid-row: auto;
+    margin-bottom: var(--space-1);
   }
 
   .footer-grid {
