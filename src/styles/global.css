@@ -1454,7 +1454,7 @@ h3 {
 
 .resume-hero .page-hero-inner {
   grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.7fr);
-  align-items: end;
+  align-items: start;
 }
 
 .resume-hero .page-hero-inner h1 {
@@ -1463,7 +1463,7 @@ h3 {
 
 .resume-hero-details {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   padding-left: var(--space-4);
   border-left: 0.22rem solid var(--accent);
 }
