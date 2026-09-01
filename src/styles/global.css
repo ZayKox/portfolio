@@ -1454,9 +1454,16 @@ h3 {
 
 .resume-hero .page-hero-inner,
 .contact-hero .page-hero-inner {
-  grid-template-columns: minmax(0, 0.85fr) minmax(27rem, 1.15fr);
   align-items: start;
   row-gap: var(--space-2);
+}
+
+.resume-hero .page-hero-inner {
+  grid-template-columns: minmax(0, 0.85fr) minmax(27rem, 1.15fr);
+}
+
+.contact-hero .page-hero-inner {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .resume-hero,
@@ -1464,12 +1471,16 @@ h3 {
   padding-block: var(--space-4);
 }
 
+.contact-hero {
+  padding-top: var(--space-3);
+}
+
 .resume-hero .page-hero-inner h1 {
   max-width: 10ch;
 }
 
 .contact-hero .page-hero-inner h1 {
-  max-width: 12ch;
+  max-width: none;
 }
 
 .resume-hero-details,
@@ -2142,6 +2153,10 @@ h3 {
   .resume-hero .page-hero-inner,
   .contact-hero .page-hero-inner {
     grid-template-columns: 1fr;
+  }
+
+  .contact-hero {
+    padding-top: var(--space-4);
   }
 
   .resume-hero-details,
