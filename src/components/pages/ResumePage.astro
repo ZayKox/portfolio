@@ -26,9 +26,15 @@ const resumeUrl = profile.resume[locale];
     <div class="container page-hero-inner reveal">
       <p class="eyebrow">{t.resume.eyebrow}</p>
       <h1>{t.resume.title}</h1>
-      <p class="page-lead">{t.resume.intro}</p>
-      <div class="button-row resume-actions">
-        <a class="button button--primary" href={resumeUrl} download>{t.resume.download}</a>
+      <div class="resume-hero-details">
+        <p class="page-lead">{t.resume.intro}</p>
+        <ul class="resume-hero-meta" aria-label={t.resume.contact}>
+          <li>{document.role}</li>
+          <li>{profile.location}</li>
+        </ul>
+        <div class="button-row resume-actions">
+          <a class="button button--primary" href={resumeUrl} download>{t.resume.download}</a>
+        </div>
       </div>
     </div>
   </section>
