@@ -121,6 +121,9 @@ html {
 }
 
 body {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 100svh;
   min-width: 20rem;
   margin: 0;
   overflow-x: hidden;
@@ -1128,7 +1131,7 @@ h3 {
 }
 
 .site-footer {
-  padding-block: var(--space-5);
+  padding-block: var(--space-4);
   border-top: 1px solid var(--border);
   background: var(--bg);
 }
@@ -2301,7 +2304,7 @@ h3 {
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-4);
   }
 
   .footer-links {
@@ -2380,6 +2383,8 @@ h3 {
   }
 
   body {
+    display: block;
+    min-height: 0;
     min-width: 0;
     background: #ffffff;
     font-size: 9pt;
