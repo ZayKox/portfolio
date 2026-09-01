@@ -41,11 +41,25 @@ const t = getCopy(locale);
 
   <section class="section section--bordered">
     <div class="container contact-grid">
-      <a class="contact-card contact-card--email reveal" href={`mailto:${profile.email}`}>
+      <div class="contact-card contact-card--email reveal">
         <span>{t.contact.emailLabel}</span>
         <strong>{profile.email}</strong>
-        <span aria-hidden="true">↗</span>
-      </a>
+        <div class="contact-email-actions">
+          <button
+            type="button"
+            hidden
+            data-copy-email
+            data-email={profile.email}
+            data-copied-label={t.contact.copiedEmail}
+          >
+            {t.contact.copyEmail}
+          </button>
+          <a href={`mailto:${profile.email}`}>
+            {t.contact.openEmail}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
       <div class="contact-card reveal">
         <span>{t.contact.socialLabel}</span>
         <div class="contact-socials">
@@ -62,3 +76,30 @@ const t = getCopy(locale);
     <p class="container privacy-note">{t.contact.note}</p>
   </section>
 </BaseLayout>
+
+<script>
+  const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
+
+  for (const button of copyEmailButtons) {
+    if (!navigator.clipboard || button.dataset.ready === "true") continue;
+
+    button.dataset.ready = "true";
+    button.hidden = false;
+    const initialLabel = button.textContent;
+
+    button.addEventListener("click", async () => {
+      const email = button.dataset.email;
+      if (!email) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+        button.textContent = button.dataset.copiedLabel ?? initialLabel;
+        window.setTimeout(() => {
+          button.textContent = initialLabel;
+        }, 1800);
+      } catch {
+        // The mail link remains available when clipboard access is denied.
+      }
+    });
+  }
+</script>

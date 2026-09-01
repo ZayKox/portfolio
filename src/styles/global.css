@@ -1439,6 +1439,44 @@ h3 {
   color: var(--primary-contrast);
 }
 
+.contact-email-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.contact-email-actions :is(button, a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  gap: var(--space-1);
+  color: inherit;
+  font-weight: 700;
+}
+
+.contact-email-actions button {
+  padding-inline: var(--space-2);
+  border: 1px solid color-mix(in srgb, currentcolor 32%, transparent);
+  border-radius: var(--radius-control);
+  background: transparent;
+  cursor: pointer;
+}
+
+.contact-email-actions button:hover {
+  border-color: var(--accent-on-primary);
+  color: var(--accent-on-primary);
+}
+
+.contact-email-actions a {
+  text-decoration-color: color-mix(in srgb, currentcolor 45%, transparent);
+}
+
+.contact-email-actions a:hover {
+  color: var(--accent-on-primary);
+}
+
 .contact-socials {
   display: grid;
   gap: 0.7rem;

@@ -137,6 +137,9 @@ export const copy = {
       intro:
         "Ce portfolio vise d’abord à partager ce que je construis. Pour une question, un retour ou une discussion technique, le plus simple reste l’email.",
       emailLabel: "Email",
+      copyEmail: "Copier l’adresse",
+      copiedEmail: "Adresse copiée",
+      openEmail: "Ouvrir la messagerie",
       socialLabel: "Ailleurs",
       locationLabel: "Localisation",
       note: "Aucun formulaire, aucun suivi et aucune donnée de contact stockée par ce site.",
@@ -327,6 +330,9 @@ export const copy = {
       intro:
         "This portfolio primarily exists to share what I build. For a question, feedback, or a technical discussion, email is the simplest option.",
       emailLabel: "Email",
+      copyEmail: "Copy address",
+      copiedEmail: "Address copied",
+      openEmail: "Open email app",
       socialLabel: "Elsewhere",
       locationLabel: "Location",
       note: "No form, tracking, or contact data is stored by this website.",
