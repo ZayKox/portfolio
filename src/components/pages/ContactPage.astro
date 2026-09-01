@@ -19,6 +19,7 @@ const t = getCopy(locale);
   title={t.nav.contact}
   description={t.contact.intro}
   schemaType="ContactPage"
+  mainClass="contact-page"
 >
   <section class="page-hero section-grid contact-hero">
     <div class="container page-hero-inner reveal">
@@ -39,7 +40,7 @@ const t = getCopy(locale);
     </div>
   </section>
 
-  <section class="section section--bordered">
+  <section class="section section--bordered contact-panel">
     <div class="container contact-grid">
       <div class="contact-card contact-card--email reveal">
         <span>{t.contact.emailLabel}</span>

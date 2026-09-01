@@ -15,6 +15,7 @@ interface Props {
   noindex?: boolean;
   socialImage?: string;
   socialImageAlt?: string;
+  mainClass?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   noindex = false,
   socialImage = "/social-card.png",
   socialImageAlt,
+  mainClass,
 } = Astro.props;
 const isNoindex = noindex || __SITE_NOINDEX__;
 const robotsContent = __SITE_NOINDEX__
@@ -150,7 +152,7 @@ for (const source of [themeBootstrap, jsonLdSource]) {
     {jsonLdSource && <script is:inline type="application/ld+json" set:html={jsonLdSource} />}
     <a class="skip-link" href="#main-content">{t.skipLink}</a>
     <Header {locale} {currentPath} {alternatePath} />
-    <main id="main-content">
+    <main id="main-content" class={mainClass}>
       <slot />
     </main>
     <Footer {locale} {currentPath} />

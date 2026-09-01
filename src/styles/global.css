@@ -1399,6 +1399,25 @@ h3 {
   gap: var(--space-3);
 }
 
+.contact-page {
+  display: grid;
+  grid-template-rows: auto minmax(min-content, 1fr);
+}
+
+.contact-panel {
+  display: grid;
+  align-content: center;
+  gap: var(--space-4);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+.contact-panel .privacy-note {
+  margin-top: 0;
+}
+
 .contact-card {
   display: flex;
   min-height: 9.5rem;
