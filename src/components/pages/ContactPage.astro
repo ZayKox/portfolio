@@ -24,7 +24,18 @@ const t = getCopy(locale);
     <div class="container page-hero-inner reveal">
       <p class="eyebrow">{t.contact.eyebrow}</p>
       <h1>{t.contact.title}</h1>
-      <p class="page-lead">{t.contact.intro}</p>
+      <div class="contact-hero-details">
+        <p class="page-lead">{t.contact.intro}</p>
+        <ul class="contact-hero-meta">
+          <li>{profile.location}</li>
+          <li>FR · EN</li>
+        </ul>
+        <div class="button-row contact-hero-actions">
+          <a class="button button--primary" href={`mailto:${profile.email}`}>
+            {t.home.contactCta}
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
