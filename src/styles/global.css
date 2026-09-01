@@ -1654,7 +1654,7 @@ h3 {
 }
 
 .resume-summary {
-  max-width: 70ch;
+  max-width: none;
   margin-block: var(--space-4) 0;
   font-size: 1.06rem;
 }
