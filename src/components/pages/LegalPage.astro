@@ -16,7 +16,7 @@ const currentPath = routes[locale][kind];
 ---
 
 <BaseLayout {locale} {currentPath} {alternatePath} title={page.title} description={page.intro}>
-  <section class="page-hero section-grid legal-hero">
+  <section class:list={["page-hero section-grid legal-hero", `legal-hero--${kind}`]}>
     <div class="container page-hero-inner reveal">
       <p class="eyebrow">{page.eyebrow}</p>
       <h1>{page.title}</h1>
