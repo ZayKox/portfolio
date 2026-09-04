@@ -4,16 +4,16 @@
 
 ## Pilotage
 
-| Élément                     | Valeur                                                    |
-| --------------------------- | --------------------------------------------------------- |
-| Propriétaire                | Ethan Brosselard                                          |
-| Dépôt                       | <https://github.com/ZayKox/portfolio>                     |
-| Branche de travail actuelle | `develop`                                                 |
-| Branche de production       | `main`                                                    |
-| Hébergement cible           | VPS OVHcloud Ubuntu 24.04, Docker Compose, Caddy et Nginx |
-| Domaine canonique retenu    | `zaykohub.com`, sans `www`                                |
-| Langues                     | Français à la racine, anglais sous `/en/`                 |
-| Dernière mise à jour        | 30 août 2026                                              |
+| Élément                     | Valeur                                     |
+| --------------------------- | ------------------------------------------ |
+| Propriétaire                | Ethan Brosselard                           |
+| Dépôt                       | <https://github.com/ZayKox/portfolio>      |
+| Branche de travail actuelle | `develop`, temporaire pendant la migration |
+| Branche de production       | `main`                                     |
+| Hébergement cible           | Cloudflare Workers avec Static Assets      |
+| Domaine canonique retenu    | `zaykohub.com`, sans `www`                 |
+| Langues                     | Français à la racine, anglais sous `/en/`  |
+| Dernière mise à jour        | 4 septembre 2026                           |
 
 ### Légende
 
@@ -61,17 +61,14 @@ Le jalon B est indépendant de la première mise en ligne. Une rubrique incompl�
 Ethan / contributeurs
         │
         ▼
-GitHub : feature/* ou codex/* → develop → PR vers main
-                                       │
-                                       ├── GitHub Actions : format + types + build + tests
-                                       ▼
-                       Docker Compose sur le VPS OVHcloud
-                                       │
-                                       ▼
-                          Caddy HTTPS → Nginx interne 8080
-                                       │
-                                       ▼
-                                zaykohub.com
+GitHub : branche courte → pull request ───────────→ fusion vers main
+                              │                            │
+                              ▼                            ▼
+                    validation sans secret       déploiement Workers
+                              │                            │
+                              ▼                            ▼
+                 preview manuelle après relecture   zaykohub.com + TLS
+                       noindex + Access
 ```
 
 Choix structurants :
@@ -79,13 +76,20 @@ Choix structurants :
 - Astro en génération statique, sans serveur, base de données, authentification ni CMS pour la V1.
 - Tailwind CSS et TypeScript strict conservés.
 - Contenus versionnés dans Git : faits partagés dans `src/data/`, interface dans `src/i18n/`, projets dans les fichiers MDX FR/EN.
-- GitHub Actions valide le code ; Docker Compose construit l'image et Nginx
-  sert `dist/` derrière le proxy TLS Caddy déjà administré par
-  `personal-infrastructure`.
-- `main` représente exactement la production. `develop` sert à intégrer les changements avant une pull request de release.
-- Faute de serveur de staging séparé, la recette se fait localement puis sur
-  une route Caddy temporairement non publique, avec un domaine de test
-  `noindex` si une vérification distante devient nécessaire.
+- GitHub Actions valide le code puis publie `dist/` sur Workers Static Assets ;
+  aucun serveur d’origine ou runtime applicatif n’est déployé.
+- `main` représente exactement la production. Le flux durable recommandé est
+  une branche courte puis une pull request directe vers `main`. La branche
+  `develop` actuelle reste temporairement disponible pendant la migration, sans
+  imposer ensuite une double pull request.
+- Les pull requests exécutent la validation sans secret Cloudflare. Après
+  relecture, un mainteneur déclenche manuellement une version Workers non
+  promue pour une référence et un alias explicites, avec
+  `SITE_NOINDEX=true` et Cloudflare Access. La production utilise
+  `SITE_URL=https://zaykohub.com` et `SITE_NOINDEX=false`.
+- Le domaine personnalisé, le DNS associé et TLS sont gérés par Cloudflare. Les
+  secrets de déploiement et d’accès aux previews restent dans les environnements
+  GitHub, jamais dans le dépôt.
 - Aucun chemin local vers Palimia ou Ludosaic ne doit être requis pendant le build.
 
 ## État initial constaté
@@ -111,14 +115,16 @@ Choix structurants :
 ### Restant avant le jalon A
 
 - [ ] Configurer et vérifier le workflow GitHub distant.
-- [ ] Acheter et connecter le domaine.
-- [ ] Ajouter l’URL de production à Astro.
+- [ ] Migrer la zone existante vers Cloudflare puis connecter le Custom Domain
+      sans interrompre les autres services.
+- [x] Injecter l’URL de production dans le build Astro depuis le workflow
+      GitHub Actions de production.
 - [x] Ajouter sitemap, `robots.txt` conditionnel, une image sociale générale et une par projet ; les trois variantes de build et le manifeste média les contrôlent.
 - [x] Ajouter les pages légales et confidentialité bilingues ; confirmer leurs informations d’hébergement lors du déploiement.
 - [x] Durcir les en-têtes et activer/tester la CSP localement.
 - [x] Ajouter les tests navigateur, accessibilité et liens.
-- [ ] Faire la recette complète localement puis sur la route Caddy non
-      publique avant l'ouverture du domaine.
+- [ ] Faire la recette complète localement puis sur une preview Workers
+      protégée par Access avant l'ouverture du domaine.
 - [ ] Tester le déploiement et le retour arrière.
 
 ## Chemin critique
@@ -126,13 +132,13 @@ Choix structurants :
 ```text
 Périmètre de lancement validé
   → GitHub et branches sécurisés
-  → domaine acheté
+  → zone et DNS existants inventoriés
   → URL finale injectée dans Astro
   → SEO + légal + sécurité terminés
   → tests automatisés et recette humaine
-  → répétition privée Caddy acceptée
-  → PR develop → main
-  → déploiement production
+  → pull request vers main et validation sans secret
+  → preview Workers privée déclenchée manuellement et acceptée
+  → fusion puis déploiement production
   → smoke test
   → tag du jalon (`v0.1.0` minimal ou `v1.0.0` complet)
 ```
@@ -165,27 +171,32 @@ Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jal
 - [ ] `[Ethan]` Tester la clé SSH dédiée avec l’alias configuré localement.
 - [ ] `[Ethan]` Vérifier dans GitHub que le dépôt appartient bien au compte lié depuis le portfolio.
 - [ ] `[Ethan]` Activer l’authentification à deux facteurs du compte GitHub.
-- [ ] `[Dev]` Publier `develop` et lui ajouter son upstream : `git push -u origin develop`.
-- [ ] `[QA]` Vérifier sur GitHub que `main` et `develop` pointent vers les commits attendus.
+- [ ] `[Dev]` Résorber la branche `develop` actuelle pendant la migration, puis
+      utiliser des branches courtes ouvertes depuis `main`.
+- [ ] `[QA]` Vérifier sur GitHub que `main` pointe vers le commit de production
+      attendu.
 
 ### Branches et intégration
 
 - [ ] `[Ethan]` Garder `main` comme branche par défaut et branche de production.
 - [ ] `[Ethan]` Créer une règle de protection ou un ruleset pour `main`.
-- [ ] `[Ethan]` Protéger aussi `develop` contre les force-pushes et suppressions si elle reste la branche d’intégration durable.
 - [ ] `[Ethan]` Exiger une pull request avant fusion.
 - [ ] `[Ethan]` Exiger le check GitHub Actions `verify`.
+- [ ] `[Ethan]` Exiger un GO documenté sur la preview Workers déclenchée
+      manuellement avant fusion lorsqu’elle est applicable.
 - [ ] `[Ethan]` Bloquer les force-pushes et la suppression de `main`.
 - [ ] `[Ethan]` Appliquer les règles aux administrateurs si le plan GitHub le permet.
-- [x] `[Dev]` Ajouter l’événement `push` sur `develop` à la CI si l’on veut aussi valider chaque intégration distante.
+- [x] `[Dev]` Valider les pull requests et `main` dans GitHub Actions.
 - [x] `[Dev]` Épingler les actions GitHub sur des SHA complets et laisser Dependabot proposer leurs mises à jour.
 - [ ] `[QA]` Ouvrir une pull request de test vers `main` et confirmer que la fusion est bloquée tant que la CI n’est pas verte.
 
 Convention :
 
-- `feature/<sujet>` ou `codex/<sujet>` pour une évolution ;
+- `feature/<sujet>` ou `codex/<sujet>` pour une branche courte ;
 - `fix/<sujet>` pour un correctif ;
-- `develop` pour l’intégration ;
+- pull request directe vers `main`, preview manuelle après relecture, puis
+  fusion après validation ;
+- `develop` uniquement comme branche transitoire pendant la migration ;
 - `main` pour la production ;
 - commits Conventional Commits, par exemple `docs: add production roadmap`.
 
@@ -404,11 +415,17 @@ Ne pas publier adresse complète, date de naissance ou téléphone sans raison e
 
 **Priorité : P0**
 
-Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL finale pour les URL absolues et le sitemap.
+L’URL finale `https://zaykohub.com` est validée et le domaine existe déjà. Cette
+phase prépare son usage par Astro sans modifier le service qui occupe encore
+l’apex.
 
-- [ ] `[Ethan]` Acheter le domaine après une dernière vérification de disponibilité et de prix.
+- [x] `[Ethan]` Valider `zaykohub.com` comme domaine final canonique.
+- [ ] `[Ethan]` Inventorier le registrar, la zone, le renouvellement et tous les
+      usages DNS existants avant la migration.
 - [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [ ] `[Ethan/Dev]` Définir `SITE_URL` dans l’environnement Docker Compose avec l’origine HTTPS du domaine finalement choisi.
+- [x] `[Ethan/Dev]` Définir `SITE_URL=https://zaykohub.com` dans le job GitHub
+      Actions de production et une origine technique distincte dans les
+      previews `noindex`.
 - [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
 - [x] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
 - [x] `[Dev]` Ajouter `<link rel="sitemap">` lorsque `SITE_URL` est défini.
@@ -423,7 +440,8 @@ Cette phase dépend de l’achat du domaine, car Astro a besoin de l’URL final
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
 - [x] `[QA]` Tester les liens internes et externes, redirections comprises ; GitHub répond `200` et le refus LinkedIn `999` reste explicitement non concluant dans `docs/qa/external-links-review-2026-08-02.md`.
 - [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
-- [x] `[QA]` Vérifier que Nginx sert réellement cette page avec un statut 404.
+- [ ] `[QA]` Vérifier que Workers Static Assets sert réellement cette page avec
+      un statut 404 sur une preview et en production.
 
 **Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
 
@@ -438,13 +456,20 @@ Cette checklist organise le travail ; elle ne remplace pas un avis juridique ada
 - [x] `[Dev]` Créer `/mentions-legales/` et `/en/legal-notice/`.
 - [x] `[Dev]` Créer `/confidentialite/` et `/en/privacy/`.
 - [ ] `[Dev]` Identifier l’éditeur, le moyen de contact et l’hébergeur avec les informations réellement exigées.
-- [ ] `[Dev]` Expliquer les traitements existants : email public, journaux techniques de l’hébergeur et éventuelle mesure d’audience.
-- [ ] `[Dev]` Indiquer finalités, bases, destinataires, durées, droits et moyen d’exercice lorsqu’ils s’appliquent.
+- [x] `[Dev]` Expliquer les traitements existants : email public, données
+      techniques et métriques réseau Cloudflare, sans mesure d’audience côté
+      navigateur.
+- [x] `[Dev]` Indiquer finalités, base, destinataires, critères de conservation,
+      transferts, droits et moyen d’exercice applicables.
 - [x] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté ; le build bloque les ressources externes, embeds, stockages et API de suivi non autorisés, et les smoke tests refusent tout `Set-Cookie`.
-- [x] `[Dev/QA]` Minimiser le journal d'accès du conteneur Nginx et vérifier par sentinelles qu'il exclut IP transmise, paramètres d'URL, référent et user-agent ; les journaux du proxy Caddy et de l'hébergeur restent à documenter.
+- [ ] `[Dev/QA]` Relever les réglages et durées réels des journaux techniques
+      Cloudflare, les minimiser lorsque l’offre le permet et les décrire sans
+      prétendre qu’ils sont contrôlés par l’application.
 - [ ] `[Ethan]` Accepter explicitement le risque de spam lié à l’email public, ou choisir une adresse dédiée.
-- [ ] `[Ethan]` Décider de lancer sans analytics. C’est l’option P0 recommandée.
-- [ ] `[Dev]` Si des analytics sont ajoutés plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
+- [x] `[Ethan]` Lancer sans mesure d’audience côté navigateur, conformément à la
+      décision validée le 1er septembre 2026 ; les métriques techniques
+      agrégées inhérentes au réseau Cloudflare restent documentées séparément.
+- [ ] `[Dev]` Si une mesure d’audience est ajoutée plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
 - [ ] `[Dev]` Si un traceur requiert le consentement, ne le charger qu’après choix positif et offrir un refus aussi simple.
 - [x] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers ; le site actuel ne distribue que cinq PNG générés dans ce dépôt, consignés avec leur source et leur empreinte dans `docs/media-provenance.json`. Le contrôle bloque tout média publiable non inventorié et toute police embarquée.
 
@@ -459,30 +484,36 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
 - [x] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
 - [x] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
 - [x] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline sont placés après la CSP, couverts par leurs hashes exacts et sans `unsafe-inline`.
-- [x] `[Dev]` Ajouter `public/_headers` pour Cloudflare Pages et `nginx.conf`
-      pour servir les mêmes protections sur le VPS.
+- [x] `[Dev]` Ajouter `public/_headers` pour les protections servies par Workers
+      Static Assets.
 - [x] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
 - [x] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
 - [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
-- [x] `[Dev]` Ajouter HSTS pour un an sur Nginx et Cloudflare, sans `includeSubDomains` ni préchargement avant la décision finale de domaine.
+- [x] `[Dev]` Ajouter HSTS pour un an sur Workers, sans `includeSubDomains` ni
+      préchargement tant que tous les autres sous-domaines ne sont pas audités.
 - [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
 - [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
-- [x] `[Dev]` Masquer la version Nginx dans l’en-tête `Server`.
-- [x] `[Dev]` Confiner le service Compose avec une racine en lecture seule, aucune capability Linux, `no-new-privileges` et un `/tmp` borné ; les smoke tests appliquent les mêmes restrictions.
-- [x] `[QA]` Refuser localement tout port hôte, volume, secret, environnement d'exécution, device ou namespace privilégié dans Compose et confirmer l'utilisateur non-root de l'image.
-- [x] `[Dev]` Figer les images de base Node et Nginx par digest multi-architecture et confier leurs mises à jour mensuelles à Dependabot.
-- [x] `[Dev]` Forcer la revalidation des pages HTML et mettre en cache un an uniquement les ressources Astro hashées ; contrôler cette politique localement et à distance.
-- [x] `[QA]` Vérifier automatiquement les en-têtes sur le conteneur local de production.
+- [x] `[Dev/QA]` Vérifier que la configuration Workers ne contient aucun script
+      d’exécution, binding, secret applicatif ou service d’origine, seulement
+      `dist/` comme collection de Static Assets.
+- [x] `[Dev]` Conserver la revalidation des documents et mettre en cache un an,
+      avec `immutable`, uniquement les ressources Astro hashées.
+- [x] `[QA]` Vérifier statiquement les règles de `public/_headers` ; la preuve
+      réseau reste à répéter sur Workers.
 - [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité connue au 2 août 2026, preuve et limites consignées dans `docs/qa/dependency-audit-2026-08-02.md`.
-- [ ] `[Ethan]` Protéger GitHub, OVHcloud et les accès au VPS avec 2FA lorsque disponible et
-      utiliser des jetons à privilèges minimaux.
-- [x] `[Dev]` Ajouter et valider dans le build statique et le conteneur un mode `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le crawl des previews.
+- [ ] `[Ethan]` Protéger GitHub, Cloudflare et le registrar avec 2FA et utiliser
+      des jetons à privilèges minimaux.
+- [x] `[Dev]` Ajouter et valider dans le build statique un mode
+      `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le
+      crawl des previews.
 - [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
-- [ ] `[Dev]` Refuser l'indexation de toute URL technique Caddy et rediriger
-      `www` vers le domaine canonique choisi.
+- [ ] `[Ethan/Dev]` Confirmer sur Cloudflare la route de production
+      `workers.dev` désactivée, les URL de version activées et protégées par
+      Access, Workers Logs et Web Analytics désactivés, puis rediriger
+      systématiquement `www` vers l’apex.
 
 **Gate 9 :** aucune fuite de secret, aucune violation CSP fonctionnelle, en-têtes confirmés sur le réseau et previews non indexées.
 
@@ -538,12 +569,13 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
 - [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
-- [x] `[Dev]` Tester la page 404 et son statut derrière Nginx local.
-- [ ] `[QA]` Répéter le contrôle de la 404 derrière Caddy.
+- [x] `[Dev]` Tester le contenu de la page 404 dans le build local.
+- [ ] `[QA]` Contrôler son statut HTTP derrière Workers Static Assets.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
-- [x] `[QA]` Contrôler automatiquement l'alignement Node/npm entre `.nvmrc`, les moteurs, le lockfile, Docker et la CI, ainsi que l'épinglage des actions et images de build.
+- [x] `[QA]` Contrôler automatiquement l'alignement Node/npm entre `.nvmrc`,
+      les moteurs, le lockfile et la CI, ainsi que l'épinglage des actions.
 - [ ] `[Dev]` Ajouter ESLint seulement avec un jeu de règles utile et sans dupliquer les contrôles Astro/TypeScript.
 - [x] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.
 
@@ -568,10 +600,9 @@ Commandes à rendre disponibles avant la release :
 
 ```sh
 npm run test:e2e
-npm run test:container
 npm run test:lighthouse
 npm run check:links
-npm run test:deployment -- --url https://preview.example --mode preview
+npm run test:deployment -- --url https://staging-zaykohub.account-subdomain.workers.dev --mode preview
 ```
 
 **Gate 11 :** installation depuis un checkout propre, CI verte, tests multi-navigateurs verts et aucun lien bloquant cassé.
@@ -594,94 +625,141 @@ Pour la recette synthétique avant lancement : viser un score Lighthouse d’au 
 - [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
 - [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
 - [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.
-- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; les quatre audits à 100 et leurs LCP de 902–903 ms sont consignés dans `docs/qa/lighthouse-review-2026-08-02.md`. Mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
+- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; la preuve historique du 2 août consigne quatre audits à 100 et des LCP de 902–903 ms, tandis que la revue Workers du 4 septembre confirme quatre scores à 100 et 903–905 ms. Mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
 - [x] `[QA]` Tester Lighthouse sous réseau et CPU ralentis.
 - [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
 - [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
 - [x] `[QA]` Refuser plus de 300 Kio encodés sur une page représentative actuelle ; documenter toute future exception média.
-- [ ] `[QA]` Tester la répétition privée derrière Caddy, pas seulement `localhost`.
+- [ ] `[QA]` Tester la preview Workers protégée par Access, pas seulement
+      `localhost`.
 
 **Gate 12 :** budgets synthétiques atteints ou écarts expliqués et acceptés, aucune régression visible sur réseau lent.
 
-## Phase 13 — configurer Docker Compose et Caddy sur le VPS
+## Phase 13 — configurer Cloudflare Workers et le domaine
 
 **Priorité : P0**
 
-Astro reste entièrement statique. `Dockerfile` construit `dist/` puis le sert
-avec Nginx non privilégié ; `docker-compose.production.yml` est le point
-d'entrée du service. Caddy, administré par `personal-infrastructure`, reste le
-seul point d’entrée HTTP/HTTPS du VPS.
+Astro reste entièrement statique. Node.js génère `dist/`, puis Workers Static
+Assets publie ce répertoire sans script Worker, SSR, binding ou service
+d’origine. GitHub Actions est le seul chemin normal de publication.
 
-### Serveur, réseau et service
+### Compte, Worker et GitHub
 
-- [ ] `[Ethan]` Sécuriser l'accès SSH au VPS avec une clé et conserver un accès
-      de secours testé.
-- [ ] `[Ethan]` Vérifier le réseau Docker externe de Caddy déjà administré par
-      `personal-infrastructure` et transmettre son nom au déploiement.
-- [ ] `[Ethan]` Préparer un clone de service propre, épinglé au SHA de `main`,
-      et son fichier d’environnement hors Git.
-- [ ] `[Ethan]` Définir `SITE_URL` avec l'origine HTTPS finale, sans chemin.
-- [ ] `[Ethan]` Définir `PORTFOLIO_CADDY_NETWORK` avec le réseau Caddy existant.
-- [ ] `[QA]` Vérifier que seul le port interne `8080` du service `portfolio` est
-      routé par Caddy et qu'aucun port applicatif n'est publié sur l'hôte.
+- [ ] `[Ethan]` Protéger Cloudflare et le registrar avec 2FA.
+- [ ] `[Ethan]` Créer deux jetons API Cloudflare distincts pour `preview` et
+      `production`, limités au compte et aux permissions Workers strictement
+      nécessaires.
+- [ ] `[Ethan/Dev]` Créer le Worker avec le même nom que dans la configuration
+      Wrangler versionnée.
+- [x] `[Dev/QA]` Pointer Static Assets vers `dist/`, servir `404.html` avec un
+      statut 404, conserver les barres finales Astro, désactiver la route de
+      production `workers.dev`, activer explicitement les URL de preview et
+      désactiver observabilité et télémétrie dans la configuration versionnée.
+- [x] `[QA]` Consigner les builds, dry-runs Wrangler, contrôles de sécurité et
+      limites externes dans
+      `docs/qa/cloudflare-workers-readiness-2026-09-04.md`.
+- [ ] `[Ethan]` Créer les environnements GitHub `preview` et `production`, y
+      stocker les secrets prévus, définir le sous-domaine Workers comme
+      variable du dépôt, puis limiter l’environnement de production à `main`
+      avec approbation humaine obligatoire.
+- [ ] `[Ethan]` Protéger les previews du Worker avec la portée Cloudflare Access
+      **Previews only**, puis créer un service token distinct pour les smoke
+      tests automatisés.
+- [x] `[Dev/QA]` Construire la référence de preview sans aucun secret, puis
+      charger l’outillage de déploiement depuis `main` et revalider l’artefact
+      avant d’exposer le jeton Cloudflare.
+- [x] `[Dev/QA]` Vérifier que les secrets Cloudflare et Access ne sont jamais
+      injectés dans le build client, affichés ou conservés dans un rapport.
+- [ ] `[Ethan]` Définir `CLOUDFLARE_PREVIEWS_ENABLED=true` seulement après la
+      configuration des secrets et d’Access ; garder
+      `CLOUDFLARE_PRODUCTION_ENABLED` à `false` jusqu’au GO de bascule.
 
 Configuration attendue :
 
-| Paramètre           | Valeur                                   |
-| ------------------- | ---------------------------------------- |
-| Branche             | `main`                                   |
-| Fichier Compose     | `docker-compose.production.yml`          |
-| Service             | `portfolio`                              |
-| Port interne        | `8080`                                   |
-| Variable de build   | `SITE_URL=https://domaine-final.example` |
-| Indexation          | `SITE_NOINDEX=false`                     |
-| Réseau externe      | `PORTFOLIO_CADDY_NETWORK=<réseau Caddy>` |
-| Secrets applicatifs | aucun                                    |
-| Confinement         | racine read-only, capabilities retirées  |
+| Paramètre                    | Valeur                                                                |
+| ---------------------------- | --------------------------------------------------------------------- |
+| Branche de production        | `main`                                                                |
+| Artefact                     | `dist/`                                                               |
+| Publication de preview       | `workflow_dispatch` avec ref + alias, puis `wrangler versions upload` |
+| Publication de production    | `wrangler deploy` après validation                                    |
+| URL canonique de production  | `SITE_URL=https://zaykohub.com`                                       |
+| Indexation de production     | `SITE_NOINDEX=false`                                                  |
+| Indexation de preview        | `SITE_NOINDEX=true`                                                   |
+| Protection de preview        | Cloudflare Access                                                     |
+| Secrets applicatifs          | aucun                                                                 |
+| Mesure d’audience navigateur | aucune au lancement                                                   |
+| Métriques réseau Cloudflare  | agrégées, inhérentes à la plateforme et documentées                   |
+| Journalisation persistante   | Workers Logs et exports désactivés                                    |
 
-### Première répétition privée
+### Première preview privée
 
-- [x] `[Dev]` Ajouter un smoke test distant en lecture seule pour les modes production et preview, avec rapport JSON optionnel.
-- [x] `[Dev/QA]` Permettre au smoke test de contacter une origine Caddy protégée distincte tout en validant les canonical, sitemap, JSON-LD et images sociales du futur domaine final.
-- [ ] `[QA]` Vérifier que la construction Compose et le démarrage réussissent dans les journaux du service.
-- [ ] `[QA]` Noter l’URL, le SHA Git et l’horodatage du déploiement.
+- [x] `[Dev]` Disposer d’un smoke test distant en lecture seule pour les modes
+      production et preview, avec rapport JSON optionnel.
+- [x] `[Dev/QA]` Adapter le smoke test aux deux en-têtes d’un service token
+      Cloudflare Access sans jamais les écrire dans le rapport.
+- [x] `[QA]` Vérifier dans le workflow que la pull request et le job qui exécute
+      la référence demandée n’accèdent à aucun secret et ne publient rien ; seul
+      le second job manuel, fondé sur l’outillage de `main`, crée une version non
+      promue après revalidation de `dist/`.
+- [ ] `[QA]` Noter l’URL de version, le SHA Git, l’identifiant Workers et
+      l’horodatage.
 - [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
-- [ ] `[QA]` Garder la ressource non publique ou utiliser un domaine de test
-      protégé et définir `SITE_NOINDEX=true` pendant la recette ; `noindex` seul ne remplace pas la protection d'accès.
-- [x] `[QA]` Vérifier que le build ne dépend d’aucun fichier non suivi ; `docs/qa/clean-source-review-2026-08-02.md` consigne un `npm ci`, les trois variantes de `npm run verify` et les deux conteneurs exécutés depuis une archive `git archive` du commit, distincte du workspace.
+- [ ] `[QA]` Confirmer à la fois Cloudflare Access et `SITE_NOINDEX=true` ; la
+      CI doit prouver qu’une requête anonyme est refusée avant son smoke test
+      authentifié, et aucun des deux contrôles ne remplace l’autre.
+- [x] `[QA]` Conserver comme preuve historique le build depuis une archive Git
+      propre consigné dans `docs/qa/clean-source-review-2026-08-02.md`. Les
+      essais de conteneurs qu’il mentionne précèdent la migration et ne valent
+      pas validation de Workers.
 
-### Domaine et DNS
+### Domaine, DNS et TLS
 
-- [ ] `[Ethan]` Faire pointer le domaine apex vers l'IPv4 du VPS.
-- [ ] `[Ethan]` Ajouter la route du domaine final à la configuration Caddy
-      gérée par `personal-infrastructure` et laisser Caddy obtenir le certificat TLS.
-- [ ] `[Ethan]` Ajouter `www` comme domaine secondaire si souhaité.
-- [ ] `[Ethan]` Choisir un canonical unique : apex recommandé.
-- [ ] `[Dev]` Rediriger `www` et toute URL technique publique vers l'apex.
-- [x] `[Dev/QA]` Ajouter au smoke test une option répétable qui refuse les redirections HTTPS temporaires, les destinations non canoniques, les chemins ou paramètres perdus et les cookies sur les variantes déclarées.
-- [ ] `[QA]` Vérifier DNS, certificat TLS, HTTP → HTTPS et absence de boucle de redirection.
+- [ ] `[Ethan]` Ajouter `zaykohub.com` comme zone Cloudflare et inventorier tous
+      les enregistrements existants avant de changer les nameservers : web,
+      MX, SPF, DKIM, DMARC, autres TXT et validations de services.
+- [ ] `[Ethan/QA]` Recopier puis vérifier cet inventaire depuis une source
+      externe avant la délégation ; conserver le registrar indépendant.
+- [ ] `[Ethan/QA]` Documenter l’enregistrement web incompatible de l’apex et sa
+      valeur de restauration, sans le retirer avant la fenêtre de publication de
+      la phase 15. Le job approuvé laissera alors `wrangler deploy` rattacher le
+      Custom Domain et Cloudflare créer le DNS associé ainsi que le certificat
+      TLS.
+- [ ] `[Ethan]` Créer `www` comme enregistrement proxifié réservé à une Redirect
+      Rule permanente vers l’apex ; il ne sert jamais le contenu directement.
+- [ ] `[Ethan/QA]` Activer **Always Use HTTPS**, ou une Redirect Rule
+      équivalente, après avoir vérifié que le service existant accepte HTTPS et
+      avant d’ouvrir la gate de production.
+- [x] `[Dev/QA]` Disposer d’une option de smoke test qui refuse les redirections
+      temporaires, destinations non canoniques, chemins ou paramètres perdus et
+      cookies sur les variantes déclarées.
+- [ ] `[QA]` Vérifier DNS, certificat TLS, HTTP vers HTTPS, redirection `www` et
+      absence de boucle, avec conservation du chemin et des paramètres.
 - [ ] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
 
-**Gate 13 :** répétition privée validée, domaine actif en HTTPS, canonical
-unique et configuration Compose/Caddy documentée sans secret.
+**Gate 13 :** preview privée validée, secrets externes, zone et redirections
+préparées, valeur de restauration connue, messagerie préservée et configuration
+Workers vérifiée ; l’apex sert encore son service actuel jusqu’à la phase 15.
 
 ## Phase 14 — répétition de release
 
 **Priorité : P0**
 
-- [ ] `[Dev]` Créer une branche de release depuis `develop` si des corrections de recette sont nécessaires.
+- [ ] `[Dev]` Créer une branche courte depuis `main` si des corrections de
+      recette sont nécessaires.
 - [ ] `[Dev]` Geler le contenu pendant la répétition.
 - [ ] `[QA]` Partir d’un checkout propre et lancer `npm ci`.
 - [ ] `[QA]` Lancer `npm run verify`.
 - [ ] `[QA]` Lancer tests E2E, axe et liens.
-- [ ] `[QA]` Lancer l’audit de dépendances de production.
+- [ ] `[QA]` Lancer l’audit de l’arbre installé, y compris Wrangler.
 - [ ] `[QA]` Lancer Lighthouse sur les pages représentatives.
 - [ ] `[QA]` Relire les pages FR puis EN.
 - [ ] `[QA]` Vérifier les deux thèmes et la matrice d’écrans.
 - [ ] `[QA]` Vérifier la console et les en-têtes réseau.
 - [ ] `[QA]` Vérifier le contenu de `dist/` pour les secrets et placeholders.
-- [x] `[QA]` Documenter précisément le redéploiement du dernier SHA valide avant
-      la première production ; `docs/deployment-runbook.md` décrit le rollback Compose, le repli par commit `git revert`, les contrôles, les preuves et l'exercice privé restant à exécuter.
+- [x] `[QA]` Documenter précisément le retour à la dernière version Workers
+      valide avant la première production ; `docs/deployment-runbook.md` décrit
+      le rollback Cloudflare, le repli Git par commit `git revert`, les
+      contrôles, les preuves et l’exercice restant à exécuter.
 - [ ] `[Ethan]` Donner un GO explicite sur la répétition privée.
 
 **Gate 14 :** toutes les preuves P0 sont réunies et le GO d’Ethan est enregistré.
@@ -692,17 +770,28 @@ unique et configuration Compose/Caddy documentée sans secret.
 
 ### Avant fusion
 
-- [ ] `[Dev]` Ouvrir une pull request `develop` vers `main`.
+- [ ] `[Dev]` Ouvrir une pull request de la branche courte vers `main`.
 - [ ] `[QA]` Vérifier le diff complet, particulièrement contenu, scripts, dépendances, workflow et configuration.
 - [ ] `[QA]` Vérifier que la CI requise est verte sur le dernier SHA.
 - [ ] `[Ethan]` Relire le build de répétition attaché au dernier SHA.
 - [ ] `[Ethan]` Approuver la release.
+- [ ] `[Ethan/QA]` Préconfigurer et tester HTTP → HTTPS et `www` → apex sans
+      toucher aux enregistrements de messagerie.
+- [ ] `[Ethan]` Passer `CLOUDFLARE_PRODUCTION_ENABLED` à `true` avant le run CI
+      de release ; l’approbation obligatoire de l’environnement retient ensuite
+      le déploiement jusqu’à la bascule.
 
 ### Publication
 
 - [ ] `[Dev]` Fusionner la pull request vers `main`.
-- [ ] `[QA]` Suivre le déploiement Docker Compose jusqu’au succès.
-- [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné.
+- [ ] `[QA]` Confirmer que le job de production existe et attend l’approbation ;
+      s’il a été ignoré, ne pas modifier l’apex et relancer une CI de type
+      `push` sur le HEAD courant.
+- [ ] `[Ethan]` Retirer uniquement l’ancien enregistrement web incompatible de
+      l’apex, puis approuver l’environnement `production`.
+- [ ] `[QA]` Suivre le déploiement GitHub Actions et Workers jusqu’au succès.
+- [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné et que la
+      vérification anti-régression l’a comparé au HEAD courant de `main`.
 - [ ] `[QA]` Exécuter le smoke test production immédiatement.
 - [ ] `[QA]` Tester accueil FR/EN, projets, contact, légal, confidentialité, 404, thème et langue.
 - [ ] `[QA]` Vérifier HTTPS, redirections, canonical, sitemap, robots, CSP et autres en-têtes.
@@ -719,7 +808,7 @@ SHA Git :
 Pull request :
 URL de répétition validée :
 URL de production :
-Horodatage du déploiement Compose :
+Identifiant et horodatage de la version Workers :
 CI :
 E2E / axe / liens :
 Lighthouse :
@@ -739,19 +828,20 @@ Déclencher un rollback en cas de page blanche, navigation principale cassée, f
 
 1. Suspendre toute nouvelle fusion vers `main`.
 2. Identifier le dernier SHA de production validé.
-3. Depuis le clone de service, redéployer ce SHA avec Docker Compose sans
-   modifier la route Caddy ni le DNS.
-4. Vérifier immédiatement domaine, accueil FR/EN, navigation, contact et en-têtes.
-5. Revenir dans Git avec un commit de revert sur une branche dédiée, puis passer par une PR ; ne pas réécrire l’historique de `main`.
-6. Corriger, refaire les gates concernés et redéployer normalement.
-7. Documenter cause, impact, durée, SHA fautif, déploiement restauré et prévention.
+3. Restaurer cette version depuis Workers > Deployments > Rollback ; n’utiliser
+   `wrangler rollback <version-id>` qu’avec une autorisation explicite.
+4. Vérifier qu’elle reçoit 100 % du trafic sans modifier le domaine, le DNS ou TLS.
+5. Vérifier immédiatement domaine, accueil FR/EN, navigation, contact et en-têtes.
+6. Revenir dans Git avec un commit de revert sur une branche dédiée, puis passer par une PR ; ne pas réécrire l’historique de `main`.
+7. Corriger, refaire les gates concernés et redéployer normalement.
+8. Documenter cause, impact, durée, SHA fautif, version restaurée et prévention.
 
 Notes :
 
-- Ne pas supprimer le service Compose, le dépôt, le réseau Docker Caddy ou les
-  enregistrements DNS pour corriger un incident applicatif.
-- Le redéploiement du dernier artefact valide remet le site en ligne ; le
-  revert Git remet ensuite `main` en cohérence avec la production.
+- Ne pas supprimer le Worker, le Custom Domain ou les enregistrements DNS pour
+  corriger un incident applicatif.
+- Le rollback Workers remet le site en ligne ; le revert Git remet ensuite
+  `main` en cohérence avec la production.
 
 ## Phase 16 — indexation et suivi post-lancement
 
@@ -765,7 +855,8 @@ Notes :
 - [ ] `[QA]` Vérifier les liens sociaux et les aperçus de partage après cache des plateformes.
 - [ ] `[QA]` Surveiller les erreurs 404 sans ajouter de tracker non décidé.
 - [ ] `[Ethan]` Ajouter le domaine au profil GitHub et à LinkedIn.
-- [ ] `[Dev]` Publier les études de cas et le CV progressivement via le même flux PR → preview → `main`.
+- [ ] `[Dev]` Publier les études de cas et le CV progressivement via le même
+      flux branche courte → PR → preview manuelle → fusion vers `main`.
 
 ## Maintenance
 
@@ -779,7 +870,8 @@ Notes :
 ### Chaque mois
 
 - [ ] Examiner et fusionner prudemment les PR Dependabot.
-- [ ] Vérifier les alertes de sécurité GitHub et l'état du VPS, de Caddy et de Docker.
+- [ ] Vérifier les alertes de sécurité GitHub, les déploiements Workers, les
+      erreurs de certificat et l’expiration des jetons Cloudflare/Access.
 - [ ] Vérifier les formulaires de contact inexistants ou, s’ils sont ajoutés, leur bon fonctionnement.
 - [ ] Contrôler les principaux liens externes.
 
@@ -811,7 +903,7 @@ Notes :
 | CV requis au lancement                 | Ethan          | Phase 0             | Non, liens masqués                            |
 | Dépôts projets publics                 | Ethan          | Avant études de cas | Aucun lien si privé                           |
 | Démo/APK publics                       | Ethan          | Avant études de cas | Aucun lien si non validé                      |
-| Analytics                              | Ethan          | Avant pages légales | Aucun analytics                               |
+| Mesure d’audience navigateur           | Ethan          | Avant pages légales | Aucune                                        |
 | Formulaire de contact                  | Ethan          | Après lancement     | Email direct uniquement                       |
 | Polices                                | Ethan + design | Phase 5             | Pile système                                  |
 
@@ -849,8 +941,8 @@ npm ci
 npm run format
 npm run verify
 
-# Audit des dépendances livrées
-npm audit --omit=dev --audit-level=high
+# Audit de l’arbre installé, dont l’outillage de déploiement Wrangler
+npm audit --audit-level=high
 
 # Après ajout des scripts prévus
 npm run test:e2e
@@ -866,19 +958,24 @@ npm run test:deployment -- \
 ```
 
 Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le
-DNS ou déployer sur le VPS sans l’action ou l’accord explicite d’Ethan.
+DNS ou déployer sur Cloudflare sans l’action ou l’accord explicite d’Ethan.
 
 ## Références officielles
 
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Caddy](https://caddyserver.com/docs/)
-
-- [Déployer Astro sur Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
-- [Déploiements de prévisualisation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/preview-deployments/)
-- [Contrôle des branches Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/branch-build-controls/)
-- [Domaines personnalisés Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/custom-domains/)
-- [En-têtes Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/headers/)
-- [Rollbacks Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/rollbacks/)
+- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
+- [Sites statiques et page 404](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/)
+- [En-têtes Static Assets](https://developers.cloudflare.com/workers/static-assets/headers/)
+- [GitHub Actions pour Workers](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+- [URL de preview Workers](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/)
+- [Cloudflare Access pour Workers](https://developers.cloudflare.com/workers/configuration/cloudflare-access/)
+- [Service tokens Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
+- [Domaines personnalisés Workers](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
+- [Redirection de `www` vers l’apex](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#redirect-between-www-and-root-domain)
+- [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+- [Rollbacks Workers](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/)
+- [Désactiver Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/get-started/)
+- [Cloudflare Privacy Policy](https://www.cloudflare.com/policies/privacy/)
+- [Cloudflare Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/)
 - [Configuration CSP Astro](https://docs.astro.build/en/reference/configuration-reference/#securitycsp)
 - [Sitemap officiel Astro](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 - [Protection des branches GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)

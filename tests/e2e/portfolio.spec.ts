@@ -136,7 +136,7 @@ test("primary links expose the expected destinations", async ({ page }) => {
   );
 
   await page.goto("/contact/");
-  await expect(page.getByRole("link", { name: /ethan\.brosselard@gmail\.com/ })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Ouvrir la messagerie" })).toHaveAttribute(
     "href",
     "mailto:ethan.brosselard@gmail.com",
   );
@@ -318,7 +318,7 @@ test("navigation and contact remain useful without JavaScript", async ({ browser
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   await page.goto("/contact/");
-  await expect(page.getByRole("link", { name: /ethan\.brosselard@gmail\.com/ })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Ouvrir la messagerie" })).toHaveAttribute(
     "href",
     "mailto:ethan.brosselard@gmail.com",
   );

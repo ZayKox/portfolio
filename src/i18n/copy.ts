@@ -155,7 +155,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hébergement",
       hostingText:
-        "La publication de production est prévue sur une infrastructure VPS OVHcloud. Le site est exécuté dans un conteneur Nginx et Caddy assure le proxy HTTPS ; l’hébergeur de l’infrastructure est OVH SAS.",
+        "L’hébergement de production retenu est Cloudflare Workers Static Assets. Les fichiers du site sont générés statiquement puis distribués depuis le réseau mondial de Cloudflare ; aucune fonction applicative n’est exécutée pour les pages publiques.",
       intellectualPropertyTitle: "Propriété intellectuelle",
       intellectualPropertyText:
         "Sauf mention contraire, les textes, le code source et les éléments graphiques de ce site sont protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers ne sont utilisés que lorsqu’ils sont autorisés et restent soumis à leurs droits respectifs.",
@@ -163,7 +163,7 @@ export const copy = {
       externalLinksText:
         "Les liens vers des sites tiers sont fournis pour information. Leur contenu, leur disponibilité et leurs pratiques de confidentialité relèvent de la responsabilité de leurs éditeurs respectifs.",
       updatedLabel: "Dernière mise à jour",
-      updatedValue: "20 août 2026",
+      updatedValue: "4 septembre 2026",
     },
     privacy: {
       eyebrow: "Données personnelles",
@@ -172,23 +172,28 @@ export const copy = {
         "Ce site est conçu pour limiter au maximum la collecte et l’utilisation de données personnelles.",
       controllerTitle: "Responsable",
       controllerText:
-        "Ethan Brosselard est responsable des traitements décrits sur cette page. Pour toute question ou demande concernant vos données, vous pouvez écrire à l’adresse ci-dessous.",
+        "Ethan Brosselard est responsable des traitements qu’il détermine pour ce site. Cloudflare traite certaines données techniques pour fournir l’infrastructure, selon son accord de traitement des données et, lorsqu’elle en détermine elle-même les finalités, sa propre politique de confidentialité. Pour toute question ou demande concernant vos données, vous pouvez écrire à l’adresse ci-dessous.",
       contactLabel: "Contact",
       collectionTitle: "Données traitées",
       collectionText:
-        "Le site ne comporte ni formulaire, ni compte, ni newsletter, ni mesure d’audience, ni contenu tiers embarqué. Il n’utilise pas de cookie de suivi. La préférence de thème, si vous la modifiez, est conservée uniquement dans le stockage local de votre navigateur sous la clé « portfolio-theme » ; elle ne quitte pas votre appareil.",
+        "Le site ne comporte ni formulaire, ni compte, ni newsletter, ni contenu tiers embarqué. Il n’active aucun outil de mesure d’audience côté navigateur et ne dépose aucun cookie publicitaire ou de mesure d’audience. Cloudflare peut toutefois déposer un cookie strictement nécessaire lorsqu’un mécanisme de sécurité est déclenché. La préférence de thème, si vous la modifiez, est conservée uniquement dans le stockage local de votre navigateur sous la clé « portfolio-theme » ; elle ne quitte pas votre appareil.",
       emailTitle: "Messages envoyés par email",
       emailText:
         "Si vous choisissez d’écrire à l’adresse affichée, votre adresse email et le contenu de votre message sont utilisés uniquement pour lire votre demande et vous répondre. Le message est transmis directement par votre service de messagerie et celui du destinataire ; il ne transite pas par le site.",
       technicalTitle: "Journaux techniques",
       technicalText:
-        "Pour la sécurité et le bon fonctionnement du service, le serveur web du site produit des journaux techniques minimisés : date et heure, méthode HTTP, chemin normalisé sans paramètres, statut de la réponse, volume transféré et durée de traitement. La configuration du site n’y enregistre ni adresse IP transmise, ni référent, ni agent utilisateur. L’infrastructure d’hébergement et son proxy peuvent toutefois appliquer leurs propres journaux techniques, selon leur configuration et leurs politiques.",
+        "La configuration du portfolio n’active ni journalisation applicative persistante, ni export de journaux vers un tiers, ni outil de mesure d’audience côté navigateur. Pour fournir, mettre en cache et sécuriser le site, Cloudflare traite toutefois des données techniques de connexion susceptibles d’inclure l’adresse IP, des informations de routage, la configuration du système et des informations sur le trafic. Cloudflare produit également des métriques techniques agrégées.",
       purposeTitle: "Finalités et base juridique",
       purposeText:
-        "Les messages reçus sont traités pour répondre à leur expéditeur. Les journaux techniques servent à assurer la sécurité, diagnostiquer un incident et maintenir le service. Ces traitements reposent sur l’intérêt légitime de l’éditeur à répondre aux sollicitations reçues et à protéger le site.",
+        "Les messages reçus sont traités pour répondre à leur expéditeur. L’infrastructure est utilisée pour distribuer le contenu, mettre les ressources en cache, assurer la disponibilité du service et protéger le site. Les traitements déterminés par l’éditeur reposent sur son intérêt légitime à répondre aux sollicitations reçues et à fournir un site fiable et sécurisé. Cloudflare décrit dans sa propre politique les finalités et bases qu’elle applique aux traitements qu’elle détermine elle-même.",
       recipientsTitle: "Destinataires et conservation",
       recipientsText:
-        "Seul Ethan Brosselard accède aux messages reçus. Les prestataires de messagerie et d’hébergement peuvent traiter les données strictement nécessaires à leurs services. Les messages sont conservés le temps nécessaire au suivi de l’échange ; les journaux techniques suivent la durée de conservation configurée par l’infrastructure d’hébergement.",
+        "Seul Ethan Brosselard accède aux messages reçus. Les prestataires de messagerie et Cloudflare peuvent traiter les données strictement nécessaires à leurs services. Les messages sont conservés le temps nécessaire au suivi de l’échange ; la conservation des données techniques par Cloudflare dépend de leur nature, de la configuration du service et de ses obligations applicables.",
+      transfersTitle: "Transferts internationaux",
+      transfersText:
+        "Cloudflare est un fournisseur mondial. Des données techniques peuvent être traitées hors de l’Espace économique européen, notamment aux États-Unis. Cloudflare indique encadrer ces transferts au moyen du cadre de protection des données UE–États-Unis et, selon les cas, des clauses contractuelles types de la Commission européenne.",
+      cloudflarePrivacyLabel: "Politique de confidentialité de Cloudflare",
+      cloudflareDpaLabel: "Accord de traitement des données de Cloudflare",
       rightsTitle: "Vos droits",
       rightsText:
         "Selon la réglementation applicable, vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de vos données. Vous pouvez également introduire une réclamation auprès de la CNIL. Pour exercer vos droits concernant ce site, contactez Ethan Brosselard par email.",
@@ -196,7 +201,7 @@ export const copy = {
       changesText:
         "Cette politique décrit la configuration actuelle du site. Elle sera mise à jour avant tout ajout de formulaire, d’outil de mesure d’audience, de cookie de suivi ou de contenu tiers embarqué.",
       updatedLabel: "Dernière mise à jour",
-      updatedValue: "20 août 2026",
+      updatedValue: "4 septembre 2026",
     },
     project: {
       back: "Tous les projets",
@@ -206,7 +211,7 @@ export const copy = {
     },
     footer: {
       note: "Projets, choix d’architecture et validations techniques.",
-      noTracking: "Sans analytics ni cookies de suivi.",
+      noTracking: "Sans mesure d’audience côté navigateur ni cookies de suivi.",
       legal: "Mentions légales",
       privacy: "Confidentialité",
     },
@@ -348,7 +353,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hosting",
       hostingText:
-        "The production deployment is planned on OVHcloud VPS infrastructure. The site runs in an Nginx container, with Caddy handling the HTTPS proxy; OVH SAS is the infrastructure hosting provider.",
+        "Cloudflare Workers Static Assets is the selected production hosting service. The website’s files are generated statically and delivered through Cloudflare’s global network; no application functions run for public pages.",
       intellectualPropertyTitle: "Intellectual property",
       intellectualPropertyText:
         "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorized and remains subject to its respective rights.",
@@ -356,7 +361,7 @@ export const copy = {
       externalLinksText:
         "Links to third-party sites are provided for information only. Their content, availability, and privacy practices remain the responsibility of their respective publishers.",
       updatedLabel: "Last updated",
-      updatedValue: "20 August 2026",
+      updatedValue: "4 September 2026",
     },
     privacy: {
       eyebrow: "Personal data",
@@ -364,23 +369,28 @@ export const copy = {
       intro: "This website is designed to minimise the collection and use of personal data.",
       controllerTitle: "Controller",
       controllerText:
-        "Ethan Brosselard is responsible for the processing described on this page. For a question or request about your data, you can write to the address below.",
+        "Ethan Brosselard is responsible for the processing activities he determines for this website. Cloudflare processes certain technical data to provide the infrastructure under its Data Processing Addendum and, where it determines its own purposes, under its Privacy Policy. For a question or request about your data, you can write to the address below.",
       contactLabel: "Contact",
       collectionTitle: "Data processed",
       collectionText:
-        "The site has no form, account, newsletter, analytics, or embedded third-party content. It uses no tracking cookies. If you change it, your theme preference is kept solely in your browser’s local storage under the key “portfolio-theme”; it never leaves your device.",
+        "The site has no form, account, newsletter, or embedded third-party content. It enables no browser-side visitor analytics and sets no advertising or analytics cookies. Cloudflare may nevertheless set a strictly necessary cookie when a security mechanism is triggered. If you change it, your theme preference is kept solely in your browser’s local storage under the key “portfolio-theme”; it never leaves your device.",
       emailTitle: "Messages sent by email",
       emailText:
         "If you choose to write to the displayed email address, your email address and the content of your message are used solely to read and reply to your request. The message is sent directly through your email provider and the recipient’s; it does not pass through the website.",
       technicalTitle: "Technical logs",
       technicalText:
-        "For security and service-operation purposes, the site’s web server produces minimised technical logs: date and time, HTTP method, normalised path without parameters, response status, transferred volume, and processing time. The site configuration does not record a forwarded IP address, referrer, or user agent in these logs. The hosting infrastructure and its proxy may nevertheless apply their own technical logging, according to their configuration and policies.",
+        "The portfolio configuration enables neither persistent application logging, log exports to a third party, nor browser-side visitor analytics. To deliver, cache, and secure the site, Cloudflare nevertheless processes technical connection data that may include IP addresses, routing information, system configuration, and traffic information. Cloudflare also produces aggregate technical metrics.",
       purposeTitle: "Purposes and legal basis",
       purposeText:
-        "Received messages are processed to reply to their sender. Technical logs support security, incident diagnosis, and service maintenance. This processing relies on the publisher’s legitimate interest in responding to messages received and protecting the website.",
+        "Received messages are processed to reply to their sender. The infrastructure is used to deliver content, cache resources, keep the service available, and protect the website. Processing determined by the publisher relies on his legitimate interest in responding to messages and providing a reliable and secure website. Cloudflare’s Privacy Policy describes the purposes and legal bases it applies to processing it determines itself.",
       recipientsTitle: "Recipients and retention",
       recipientsText:
-        "Only Ethan Brosselard accesses received messages. Email and hosting providers may process the data strictly necessary to provide their services. Messages are kept for the time needed to follow up an exchange; technical logs follow the retention period configured by the hosting infrastructure.",
+        "Only Ethan Brosselard accesses received messages. Email providers and Cloudflare may process the data strictly necessary to provide their services. Messages are kept for the time needed to follow up an exchange; Cloudflare’s retention of technical data depends on its nature, the service configuration, and applicable obligations.",
+      transfersTitle: "International transfers",
+      transfersText:
+        "Cloudflare is a global provider. Technical data may be processed outside the European Economic Area, including in the United States. Cloudflare states that it safeguards these transfers through the EU–US Data Privacy Framework and, where applicable, the European Commission’s Standard Contractual Clauses.",
+      cloudflarePrivacyLabel: "Cloudflare Privacy Policy",
+      cloudflareDpaLabel: "Cloudflare Data Processing Addendum",
       rightsTitle: "Your rights",
       rightsText:
         "Depending on applicable law, you may request access to, rectification or erasure of, restriction of, or objection to the processing of your data. You may also lodge a complaint with the CNIL. To exercise your rights in relation to this website, contact Ethan Brosselard by email.",
@@ -388,7 +398,7 @@ export const copy = {
       changesText:
         "This policy describes the website’s current configuration. It will be updated before adding a form, analytics tool, tracking cookie, or embedded third-party content.",
       updatedLabel: "Last updated",
-      updatedValue: "20 August 2026",
+      updatedValue: "4 September 2026",
     },
     project: {
       back: "All projects",
@@ -398,7 +408,7 @@ export const copy = {
     },
     footer: {
       note: "Projects, architecture decisions, and technical validation.",
-      noTracking: "No analytics or tracking cookies.",
+      noTracking: "No browser-side visitor analytics or tracking cookies.",
       legal: "Legal notice",
       privacy: "Privacy",
     },

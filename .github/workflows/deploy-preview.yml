@@ -1,0 +1,195 @@
+name: Deploy preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git branch, tag, or commit to preview
+        required: true
+        default: main
+        type: string
+      alias:
+        description: Stable preview alias (lowercase letters, numbers, and dashes)
+        required: true
+        default: staging
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-preview-${{ inputs.alias }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: >-
+      ${{
+        github.ref == 'refs/heads/main' &&
+        vars.CLOUDFLARE_PREVIEWS_ENABLED == 'true'
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      deployment_sha: ${{ steps.context.outputs.deployment_sha }}
+      preview_alias: ${{ steps.context.outputs.preview_alias }}
+      preview_url: ${{ steps.context.outputs.preview_url }}
+    steps:
+      - name: Checkout requested revision
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ inputs.ref }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Resolve preview context
+        id: context
+        env:
+          PREVIEW_ALIAS: ${{ inputs.alias }}
+          WORKERS_SUBDOMAIN: ${{ vars.CLOUDFLARE_WORKERS_SUBDOMAIN }}
+        run: |
+          if [[ ! "$PREVIEW_ALIAS" =~ ^[a-z]([a-z0-9-]{0,38}[a-z0-9])?$ ]]; then
+            echo "::error::The preview alias must start with a letter and contain at most 40 lowercase letters, numbers, or dashes."
+            exit 1
+          fi
+          if [[ ! "$WORKERS_SUBDOMAIN" =~ ^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$ ]]; then
+            echo "::error::Configure CLOUDFLARE_WORKERS_SUBDOMAIN with the account workers.dev subdomain."
+            exit 1
+          fi
+          deployment_sha="$(git rev-parse HEAD)"
+          preview_url="https://${PREVIEW_ALIAS}-zaykohub.${WORKERS_SUBDOMAIN}.workers.dev"
+          echo "SITE_URL=$preview_url" >> "$GITHUB_ENV"
+          echo "SITE_NOINDEX=true" >> "$GITHUB_ENV"
+          echo "deployment_sha=$deployment_sha" >> "$GITHUB_OUTPUT"
+          echo "preview_alias=$PREVIEW_ALIAS" >> "$GITHUB_OUTPUT"
+          echo "preview_url=$preview_url" >> "$GITHUB_OUTPUT"
+          echo "Revision: \`$deployment_sha\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Preview URL: $preview_url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install dependencies without deployment credentials
+        run: npm ci
+
+      - name: Verify preview assets
+        run: |
+          npm run verify
+          npm run build
+          npm run validate:build
+
+      - name: Upload immutable preview assets
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: preview-assets
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: preview
+      url: ${{ needs.build.outputs.preview_url }}
+    steps:
+      - name: Checkout trusted deployment tooling
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install trusted deployment tooling
+        run: npm ci
+
+      - name: Download immutable preview assets
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: preview-assets
+          path: dist/
+
+      - name: Revalidate downloaded assets
+        env:
+          SITE_URL: ${{ needs.build.outputs.preview_url }}
+          SITE_NOINDEX: "true"
+        run: npm run validate:build
+
+      - name: Check deployment credentials
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+        run: |
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" || -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "::error::Configure the Cloudflare account ID and API token before enabling deployments."
+            exit 1
+          fi
+          if [[ -z "$CF_ACCESS_CLIENT_ID" || -z "$CF_ACCESS_CLIENT_SECRET" ]]; then
+            echo "::error::Configure the Cloudflare Access service token before enabling previews."
+            exit 1
+          fi
+
+      - name: Upload preview version
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          DEPLOYMENT_SHA: ${{ needs.build.outputs.deployment_sha }}
+          PREVIEW_ALIAS: ${{ needs.build.outputs.preview_alias }}
+        run: npm run deploy:preview -- --preview-alias "$PREVIEW_ALIAS" --message "GitHub ${DEPLOYMENT_SHA}"
+
+      - name: Prove preview rejects unauthenticated visitors
+        env:
+          PREVIEW_URL: ${{ needs.build.outputs.preview_url }}
+        run: |
+          probe="$(curl --silent --show-error --output /dev/null --max-redirs 0 --write-out '%{http_code} %{redirect_url}' "$PREVIEW_URL/")"
+          status="${probe%% *}"
+          location="${probe#* }"
+          if [[ "$status" == "401" || "$status" == "403" ]]; then
+            exit 0
+          fi
+          if [[ "$status" =~ ^30[12378]$ && "$location" == *"/cdn-cgi/access/login/"* ]]; then
+            exit 0
+          fi
+          echo "::error::Unauthenticated preview request returned '$probe' instead of an Access challenge."
+          exit 1
+
+      - name: Smoke test protected preview
+        env:
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          PREVIEW_ALIAS: ${{ needs.build.outputs.preview_alias }}
+          PREVIEW_URL: ${{ needs.build.outputs.preview_url }}
+        run: |
+          for attempt in {1..6}; do
+            if npm run test:deployment -- \
+              --url "$PREVIEW_URL" \
+              --mode preview \
+              --report "deployment-reports/preview-${PREVIEW_ALIAS}.json"; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 6 ]]; then
+              echo "::error::Preview did not become ready after six smoke-test attempts."
+              exit 1
+            fi
+            echo "Preview is not ready yet; retrying in 5 seconds (attempt $attempt of 6)."
+            sleep 5
+          done
+
+      - name: Upload deployment report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: preview-${{ needs.build.outputs.preview_alias }}-deployment-report
+          path: deployment-reports/
+          if-no-files-found: ignore
+          retention-days: 14

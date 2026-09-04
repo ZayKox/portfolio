@@ -6,7 +6,7 @@ import { validateDeployment } from "./deployment-checks.mjs";
 
 function usage() {
   return `Usage:
-  npm run test:deployment -- --url https://preview.example --mode preview [--report deployment-reports/preview.json]
+  npm run test:deployment -- --url https://staging-worker.account.workers.dev --mode preview [--report deployment-reports/preview.json]
   npm run test:deployment -- --url https://example.com --mode production [--check-http-redirect] [--redirect-from https://www.example.com] [--report deployment-reports/production.json]
   npm run test:deployment -- --url https://technical.example --canonical-url https://example.com --mode production [--report deployment-reports/pre-dns.json]
 
@@ -14,7 +14,8 @@ function usage() {
 --redirect-from may be repeated for every HTTPS origin that must permanently redirect to the canonical origin.
 
 Optional environment variable:
-  DEPLOYMENT_AUTHORIZATION  Complete Authorization header value for a protected preview.`;
+  CF_ACCESS_CLIENT_ID      Client ID of a Cloudflare Access service token.
+  CF_ACCESS_CLIENT_SECRET  Client secret paired with CF_ACCESS_CLIENT_ID.`;
 }
 
 function parseArguments(argumentsList) {
@@ -68,6 +69,14 @@ async function main() {
     throw new Error("--canonical-url is only valid with --mode production.");
   }
 
+  const accessClientId = process.env.CF_ACCESS_CLIENT_ID;
+  const accessClientSecret = process.env.CF_ACCESS_CLIENT_SECRET;
+  if (Boolean(accessClientId) !== Boolean(accessClientSecret)) {
+    throw new Error(
+      "CF_ACCESS_CLIENT_ID and CF_ACCESS_CLIENT_SECRET must either both be set or both be omitted.",
+    );
+  }
+
   const parseHttpsOrigin = (value, option) => {
     let parsed;
     try {
@@ -114,7 +123,8 @@ async function main() {
     requestOrigin: options.url,
     expectedSiteOrigin: canonicalUrl.origin,
     mode: options.mode,
-    authorization: process.env.DEPLOYMENT_AUTHORIZATION,
+    accessClientId,
+    accessClientSecret,
     checkHttpRedirect: options.checkHttpRedirect,
     redirectOrigins,
   });

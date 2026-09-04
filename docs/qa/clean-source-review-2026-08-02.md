@@ -37,6 +37,12 @@ Les conteneurs et images temporaires ont été supprimés automatiquement par le
 
 ## Conclusion et limites
 
-Le build et le conteneur du commit inspecté ne dépendent d’aucun fichier non suivi du workspace local. Cette preuve réduit le risque d’un écart lors du premier build Coolify.
+Le build et le conteneur du commit inspecté ne dépendent d’aucun fichier non
+suivi du workspace local. Cette preuve historique reste valable pour la
+reproductibilité du commit contrôlé, mais elle précède la migration et ne valide
+ni la configuration Wrangler ni le premier déploiement Workers.
 
-Elle ne remplace pas la répétition distante : `npm ci`, le build, les en-têtes, l’URL de preview, le SHA déployé et l’absence d’indexation devront encore être confirmés dans les logs et sur le réseau Coolify. La répétition de release complète sera également rejouée sur son SHA final.
+Elle ne remplace pas la répétition distante : `npm ci`, le build, les en-têtes,
+l’URL de preview, le SHA envoyé et l’absence d’indexation devront encore être
+confirmés par GitHub Actions et sur une version Workers protégée par Access. La
+répétition de release complète sera également rejouée sur son SHA final.

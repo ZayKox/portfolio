@@ -1,0 +1,111 @@
+name: Deploy production
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      ${{
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event == 'push' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        vars.CLOUDFLARE_PRODUCTION_ENABLED == 'true'
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: https://zaykohub.com
+    steps:
+      - name: Checkout verified revision
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Record checked out revision
+        run: |
+          deployment_sha="$(git rev-parse HEAD)"
+          echo "DEPLOYMENT_SHA=$deployment_sha" >> "$GITHUB_ENV"
+          echo "Revision: \`$deployment_sha\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check deployment credentials
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" || -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "::error::Configure CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN before enabling deployments."
+            exit 1
+          fi
+
+      - name: Build production assets
+        env:
+          SITE_URL: https://zaykohub.com
+          SITE_NOINDEX: "false"
+        run: |
+          npm run build
+          npm run validate:build
+
+      - name: Refuse a stale main revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          current_sha="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" --jq .object.sha)"
+          if [[ "$current_sha" != "$DEPLOYMENT_SHA" ]]; then
+            echo "::error::The verified revision is no longer the current main head; refusing a stale deployment."
+            exit 1
+          fi
+
+      - name: Deploy verified revision
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npm run deploy:production -- --message "GitHub ${DEPLOYMENT_SHA}"
+
+      - name: Smoke test production
+        run: |
+          for attempt in {1..6}; do
+            if npm run test:deployment -- \
+              --url https://zaykohub.com \
+              --mode production \
+              --check-http-redirect \
+              --redirect-from https://www.zaykohub.com \
+              --report deployment-reports/production.json; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 6 ]]; then
+              echo "::error::Production did not become ready after six smoke-test attempts."
+              exit 1
+            fi
+            echo "Production is not ready yet; retrying in 10 seconds (attempt $attempt of 6)."
+            sleep 10
+          done
+
+      - name: Upload deployment report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: production-deployment-report
+          path: deployment-reports/production.json
+          if-no-files-found: ignore
+          retention-days: 30

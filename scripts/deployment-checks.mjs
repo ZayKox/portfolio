@@ -169,9 +169,27 @@ function validateSecurityHeaders(response, pathname) {
 
 function validateHtmlCache(response, pathname) {
   const cacheControl = response.headers.get("cache-control") ?? "";
+  const directives = cacheControl
+    .split(",")
+    .map((directive) => directive.trim().toLowerCase())
+    .filter(Boolean);
+  const maxAge = directives
+    .map((directive) => directive.match(/^max-age\s*=\s*(\d+)$/)?.[1])
+    .find(Boolean);
+  const requiresImmediateRevalidation =
+    directives.includes("no-cache") ||
+    (Number(maxAge) === 0 && directives.includes("must-revalidate"));
+  assert(requiresImmediateRevalidation, `${pathname}: HTML must be revalidated after a deployment`);
+  assert(!directives.includes("immutable"), `${pathname}: HTML must not be immutable`);
+}
+
+function validatePreviewResponseHeaders(response, pathname) {
+  const robots = (response.headers.get("x-robots-tag") ?? "")
+    .split(",")
+    .map((directive) => directive.trim().toLowerCase());
   assert(
-    /(?:^|,)\s*no-cache(?:\s*(?:,|$))/i.test(cacheControl),
-    `${pathname}: HTML must be revalidated after a deployment`,
+    robots.includes("noindex") && robots.includes("nofollow"),
+    `${pathname}: protected preview is missing its X-Robots-Tag defense`,
   );
 }
 
@@ -453,7 +471,8 @@ export async function validateDeployment({
   requestOrigin,
   expectedSiteOrigin = requestOrigin,
   mode,
-  authorization,
+  accessClientId,
+  accessClientSecret,
   checkHttpRedirect = false,
   redirectOrigins = [],
 }) {
@@ -466,9 +485,18 @@ export async function validateDeployment({
     redirectOrigins.length === 0 || mode === "production",
     "canonical redirect checks are only valid in production mode",
   );
+  assert(
+    Boolean(accessClientId) === Boolean(accessClientSecret),
+    "Cloudflare Access client ID and secret must be provided together",
+  );
   const requestBase = origin(requestOrigin, "requestOrigin");
   const expectedBase = origin(expectedSiteOrigin, "expectedSiteOrigin", { requireHttps: true });
-  const headers = authorization ? { authorization } : undefined;
+  const headers = accessClientId
+    ? {
+        "CF-Access-Client-Id": accessClientId,
+        "CF-Access-Client-Secret": accessClientSecret,
+      }
+    : undefined;
   const checks = [];
   let hashedAssetPath;
 
@@ -490,6 +518,7 @@ export async function validateDeployment({
     const response = await request(route.path);
     validateSecurityHeaders(response, route.path);
     validateHtmlCache(response, route.path);
+    if (mode === "preview") validatePreviewResponseHeaders(response, route.path);
     assert(
       response.headers.get("content-type")?.startsWith("text/html"),
       `${route.path}: content type is not HTML`,
@@ -508,11 +537,18 @@ export async function validateDeployment({
     /(?:^|,)\s*max-age=31536000(?:\s*(?:,|$))/i.test(assetCacheControl),
     `${hashedAssetPath}: hashed asset is missing its one-year cache policy`,
   );
+  assert(
+    /(?:^|,)\s*immutable(?:\s*(?:,|$))/i.test(assetCacheControl),
+    `${hashedAssetPath}: hashed asset is not immutable`,
+  );
   checks.push("HTML revalidation and long-lived hashed assets");
 
   const notFound = await request("/remote-smoke-missing-route/", 404);
   validateSecurityHeaders(notFound, "/remote-smoke-missing-route/");
   validateHtmlCache(notFound, "/remote-smoke-missing-route/");
+  if (mode === "preview") {
+    validatePreviewResponseHeaders(notFound, "/remote-smoke-missing-route/");
+  }
   const notFoundHtml = await notFound.text();
   assert(notFoundHtml.includes("Cette page n’existe pas."), "404 page is missing French copy");
   assert(notFoundHtml.includes("This page does not exist."), "404 page is missing English copy");
@@ -620,7 +656,7 @@ export async function validateDeployment({
     expectedSiteOrigin: expectedBase.origin,
     routeCount: publicRoutes.length,
     routes: publicRoutes.map(({ path }) => path),
-    authorizationUsed: Boolean(authorization),
+    cloudflareAccessUsed: Boolean(accessClientId),
     httpRedirectChecked: checkHttpRedirect,
     canonicalRedirectOrigins,
     checks,

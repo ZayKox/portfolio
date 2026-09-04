@@ -41,6 +41,10 @@ Les quatre pages respectent tous les seuils bloquants configurés dans `scripts/
 
 ## Limites
 
-Cette preuve est une mesure de laboratoire locale et ponctuelle. Elle ne prouve ni les performances du proxy Coolify, du réseau public ou du VPS, ni l’INP et les Core Web Vitals de terrain. L’audit doit être répété sur la preview privée puis sur la production, et les données réelles ne pourront être interprétées qu’après un volume de visites suffisant.
+Cette preuve est une mesure de laboratoire locale et ponctuelle. Elle ne prouve
+ni les performances du réseau Cloudflare Workers, ni l’INP et les Core Web
+Vitals de terrain. L’audit doit être répété sur une preview Workers protégée par
+Access puis sur `https://zaykohub.com`, et les données réelles ne pourront être
+interprétées qu’après un volume de visites suffisant.
 
 Les rapports HTML et JSON détaillés restent dans `lighthouse-reports/`, ignoré par Git, afin de ne pas versionner des artefacts volumineux et dépendants de la machine.

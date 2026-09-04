@@ -47,6 +47,6 @@ Cette preuve ne remplace pas :
 - la matrice WebKit, indisponible localement faute de bibliothèques système ;
 - le zoom réel du navigateur à 200 % et 400 % ;
 - le parcours clavier humain complet et la passe lecteur d’écran ;
-- la recette distante sur la ressource Coolify.
+- la recette distante sur une preview Workers protégée par Access.
 
 Ces éléments restent ouverts dans `docs/production-plan.md`.

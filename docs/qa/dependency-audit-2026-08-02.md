@@ -23,6 +23,13 @@ La commande s’est terminée avec le code `0`. Les métadonnées npm comptent 3
 
 ## Limites
 
-Ce résultat décrit uniquement les avis connus de npm au moment du contrôle. Il ne couvre pas les dépendances de développement omises, les images de base Docker, le système hôte, une mauvaise configuration ou une vulnérabilité encore inconnue. La CI répète cet audit, tandis que Dependabot surveille séparément npm, les actions GitHub et les images Docker.
+Ce résultat décrit uniquement les avis connus de npm au moment du contrôle. Il
+ne couvre pas les dépendances de développement omises, les images Docker alors
+prévues, le système hôte, une mauvaise configuration ou une vulnérabilité encore
+inconnue. Depuis la migration de la cible, la CI audite l’arbre installé complet,
+Wrangler inclus, et Dependabot surveille npm et les actions GitHub. La
+configuration Wrangler, la plateforme Cloudflare gérée et les permissions du
+jeton de déploiement font l’objet de contrôles distincts ; ce rapport historique
+ne valide pas la future production Workers.
 
 Aucun correctif automatique ni mise à jour majeure n’a été appliqué pendant cet audit.

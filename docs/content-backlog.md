@@ -7,12 +7,16 @@ Cette liste n’est pas affichée sur le site.
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
 - Valider l’identité visuelle actuelle, dont la signature ZayKo et les trois cartes de partage Violet Field.
-- Configurer l’origine canonique HTTPS `https://zaykohub.com` dans l’environnement de déploiement Docker Compose.
+- Configurer les environnements et secrets GitHub, Cloudflare Access et les
+  variables de pilotage décrits dans le runbook.
 - Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
 - Décider si l’adresse email doit rester absente du JSON-LD, comme recommandé pour limiter le scraping.
-- Confirmer un lancement sans analytics, cookie, formulaire ni contenu tiers embarqué.
+- Conserver le lancement validé sans mesure d’audience côté navigateur, cookie
+  de suivi, formulaire ni contenu tiers embarqué.
 - Indiquer si le site est édité à titre personnel ou professionnel. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
-- Confirmer les informations publiques exactes de l’hébergeur et les règles de conservation des journaux du proxy Caddy/VPS au déploiement, puis mettre à jour les pages légales si nécessaire.
+- Vérifier que l’entité Cloudflare indiquée sur le compte ou la facture reste
+  Cloudflare, Inc., puis confirmer les réglages réels de journaux, métriques et
+  sécurité lors du premier déploiement.
 
 Le portrait, les études de cas complètes et les captures peuvent rester masqués. Le CV, les expériences et les formations sont maintenant publiés dans les deux langues.
 
@@ -54,9 +58,16 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 ## Publication
 
 - Domaine retenu : `zaykohub.com` ; la version canonique choisie est sans `www`.
-- Réaffecter la route HTTPS de l’apex au portfolio avant la publication ; elle sert actuellement un autre service.
-- Décider si `www.zaykohub.com` doit être créé uniquement pour rediriger vers l’apex, puis vérifier cette redirection.
-- Définir `SITE_URL=https://zaykohub.com` dans l’environnement de déploiement Docker Compose ; canonical, sitemap et `robots.txt` sont déjà conditionnés à cette valeur.
+- Migrer la zone vers les nameservers Cloudflare après avoir inventorié et
+  recopié tous les enregistrements existants, notamment ceux de messagerie ;
+  réaffecter ensuite l’apex au Custom Domain du Worker, car il sert actuellement
+  un autre service.
+- Créer `www.zaykohub.com` uniquement comme variante redirigée vers l’apex,
+  puis vérifier que chemin et paramètres sont conservés.
+- Activer le pipeline seulement après avoir configuré ses environnements,
+  secrets et protections ; les paramètres `SITE_URL`, `SITE_NOINDEX` et Access
+  sont déjà imposés par les workflows versionnés.
 - Relire les mentions légales et la confidentialité après le déploiement, en particulier l’hébergeur réellement retenu et la conservation des journaux techniques.
-- Décider si une mesure d’audience est réellement utile.
+- Ne pas activer de mesure d’audience côté navigateur au lancement ; distinguer
+  ce choix des métriques réseau agrégées produites par Cloudflare.
 - Valider visuellement la carte Open Graph Violet Field déjà intégrée.

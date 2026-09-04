@@ -49,15 +49,17 @@ const currentPath = routes[locale][kind];
           <p>{t.legal.hostingText}</p>
           <address>
             <>
-              <strong>OVH SAS</strong>
+              <strong>Cloudflare, Inc.</strong>
               <br />
             </>
-            2 rue Kellermann
+            101 Townsend Street
             <br />
-            59100 Roubaix, France
+            {locale === "fr"
+              ? "San Francisco, CA 94107, États-Unis"
+              : "San Francisco, CA 94107, United States"}
             <br />
-            <a href="tel:1007">1007</a> ·{" "}
-            <a href="https://www.ovhcloud.com/fr/terms-and-conditions/">OVHcloud</a>
+            <a href="tel:+16503198930">+1 (650) 319-8930</a> ·{" "}
+            <a href="https://www.cloudflare.com/terms/">Cloudflare</a>
           </address>
         </section>
 
@@ -113,6 +115,20 @@ const currentPath = routes[locale][kind];
         <section>
           <h2>{t.privacy.recipientsTitle}</h2>
           <p>{t.privacy.recipientsText}</p>
+        </section>
+
+        <section>
+          <h2>{t.privacy.transfersTitle}</h2>
+          <p>{t.privacy.transfersText}</p>
+          <p>
+            <a href="https://www.cloudflare.com/policies/privacy/">
+              {t.privacy.cloudflarePrivacyLabel}
+            </a>{" "}
+            ·{" "}
+            <a href="https://www.cloudflare.com/cloudflare-customer-dpa/">
+              {t.privacy.cloudflareDpaLabel}
+            </a>
+          </p>
         </section>
 
         <section>

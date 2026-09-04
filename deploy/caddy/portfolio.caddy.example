@@ -1,7 +1,0 @@
-# Copy this route into the Caddy configuration managed by personal-infrastructure.
-# Replace <portfolio-domain> only in the protected operator configuration, never in Git.
-# The portfolio container must be attached to the same external Caddy edge network.
-
-<portfolio-domain> {
-	reverse_proxy portfolio:8080
-}

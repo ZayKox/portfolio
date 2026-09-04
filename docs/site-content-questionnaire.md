@@ -753,29 +753,29 @@ Statut : À CONFIRMER
 Statut juridique éventuel à afficher : PRIVÉ — transmis séparément
 Informations d’éditeur requises : PRIVÉ — transmis séparément
 
-Hébergeur prévu : Cloudflare Pages
-Statut : À CONFIRMER au déploiement
+Hébergeur prévu : Cloudflare Workers avec Static Assets
+Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026 ; informations légales exactes à confirmer au déploiement
 
-Analytics souhaités au lancement : non
-Statut : À CONFIRMER
+Mesure d’audience côté navigateur souhaitée au lancement : non ; les métriques techniques agrégées inhérentes au réseau Cloudflare ne sont pas un outil de suivi ajouté au site
+Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
 
 Besoin réel auquel répondraient des analytics : À REMPLIR
 Statut : NON APPLICABLE
 
-Cookies ou services tiers prévus : aucun
-Statut : À CONFIRMER
+Cookies ou services tiers côté navigateur prévus : aucun cookie publicitaire ou de mesure d’audience ; Cloudflare peut déposer un cookie strictement nécessaire si un mécanisme de sécurité est déclenché
+Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
 
 Contenus tiers embarqués (YouTube, Figma, etc.) : aucun par défaut
 Statut : À CONFIRMER
 
 Formulaire ou collecte de données prévu : non
-Statut : À CONFIRMER
+Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
 
 Adresse de contact pour les droits liés aux données : À REMPLIR
 Statut : À CONFIRMER
 
-Durées de conservation applicables : À REMPLIR
-Statut : NON APPLICABLE sans collecte
+Durées de conservation applicables : la durée effective des métriques techniques et des données de sécurité Cloudflare reste à confirmer sur le compte lors du premier déploiement ; aucun journal applicatif persistant ni export n’est configuré dans le dépôt
+Statut : À CONFIRMER
 
 Statut global de la section légale et confidentialité : À CONFIRMER
 ```
@@ -942,7 +942,7 @@ Statut : PUBLIC — VALIDÉ
 Domaine final : zaykohub.com, version canonique sans www.
 Statut : PUBLIC — VALIDÉ
 
-Publication : site personnel, sans analytics, cookies de suivi, contenu embarqué ni formulaire au lancement. L’email public reste absent des données structurées afin de limiter le scraping.
+Publication : site personnel, sans mesure d’audience côté navigateur, cookies de suivi, contenu embarqué ni formulaire au lancement. Les seules mesures conservées sont les métriques techniques agrégées fournies par l’infrastructure Cloudflare. L’email public reste absent des données structurées afin de limiter le scraping.
 Statut : PUBLIC — VALIDÉ
 ```
 
@@ -967,6 +967,29 @@ Niveau d’anglais : anglais professionnel.
 Statut : PUBLIC — VALIDÉ
 
 Expérience chez Studio Beyowi : utilisation d’AWS, Flask et AWS Lambda ; conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; migrations et synchronisations multi-SGBD impliquant Oracle, MySQL, PostgreSQL, MSSQL et SQLite ; gestion autonome de projets complexes.
+Statut : PUBLIC — VALIDÉ
+```
+
+## 24. Décisions validées dans la tâche du 1er septembre 2026
+
+Ces décisions de publication ont été explicitement validées par Ethan dans la
+tâche du 1er septembre 2026. Elles remplacent les anciens projets de déploiement
+sur VPS, Cloudflare Pages ou une autre plateforme.
+
+```text
+Hébergement du portfolio : Cloudflare Workers avec Static Assets, sans SSR, Function, base de données ni runtime applicatif.
+Statut : PUBLIC — VALIDÉ
+
+Flux de publication : branches courtes, pull request, validation GitHub Actions, puis production depuis main. La branche develop actuelle reste temporaire pendant la migration et n’est pas le flux durable retenu.
+Statut : PUBLIC — VALIDÉ
+
+Previews : workflow GitHub Actions déclenché manuellement pour une référence et un alias relus, versions Workers non promues, SITE_NOINDEX=true et Cloudflare Access. La référence demandée construit l’artefact sans secret ; seul un job distinct fondé sur l’outillage de main reçoit le jeton après revalidation. Les pull requests n’accèdent pas aux secrets Cloudflare. La production utilise SITE_URL=https://zaykohub.com et SITE_NOINDEX=false.
+Statut : PUBLIC — VALIDÉ
+
+Domaine : zaykohub.com reste canonique sans www ; DNS et TLS seront gérés dans la zone Cloudflare, après préservation des enregistrements existants. www.zaykohub.com sera uniquement une variante redirigée définitivement vers l’apex, avec conservation du chemin et des paramètres.
+Statut : PUBLIC — VALIDÉ
+
+Confidentialité de l’hébergement : Workers Logs, l’export de journaux et la mesure d’audience côté navigateur restent désactivés. Cloudflare traite néanmoins les données réseau nécessaires à la diffusion et à la sécurité, produit des métriques techniques agrégées et peut déposer un cookie strictement nécessaire si une protection est déclenchée.
 Statut : PUBLIC — VALIDÉ
 ```
 
