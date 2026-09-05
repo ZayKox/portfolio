@@ -62,7 +62,7 @@ jobs:
             exit 1
           fi
           deployment_sha="$(git rev-parse HEAD)"
-          preview_url="https://${PREVIEW_ALIAS}-zaykohub.${WORKERS_SUBDOMAIN}.workers.dev"
+          preview_url="https://${PREVIEW_ALIAS}-portfolio.${WORKERS_SUBDOMAIN}.workers.dev"
           echo "SITE_URL=$preview_url" >> "$GITHUB_ENV"
           echo "SITE_NOINDEX=true" >> "$GITHUB_ENV"
           echo "deployment_sha=$deployment_sha" >> "$GITHUB_OUTPUT"

@@ -606,7 +606,7 @@ Commandes à rendre disponibles avant la release :
 npm run test:e2e
 npm run test:lighthouse
 npm run check:links
-npm run test:deployment -- --url https://staging-zaykohub.account-subdomain.workers.dev --mode preview
+npm run test:deployment -- --url https://staging-portfolio.account-subdomain.workers.dev --mode preview
 ```
 
 **Gate 11 :** installation depuis un checkout propre, CI verte, tests multi-navigateurs verts et aucun lien bloquant cassé.

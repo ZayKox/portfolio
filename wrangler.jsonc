@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "zaykohub",
+  "name": "portfolio",
   "compatibility_date": "2026-09-04",
   "send_metrics": false,
   "dependencies_instrumentation": {

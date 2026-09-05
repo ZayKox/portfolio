@@ -15,7 +15,7 @@ npm run dev
 ```sh
 npm run verify
 npm run generate:brand-assets
-npm run test:deployment -- --url https://staging-zaykohub.account-subdomain.workers.dev --mode preview
+npm run test:deployment -- --url https://staging-portfolio.account-subdomain.workers.dev --mode preview
 npx playwright install --with-deps chromium firefox webkit
 npm run test:lighthouse
 npm run test:e2e
@@ -46,7 +46,7 @@ Le même moteur de smoke test contrôle les déploiements Cloudflare Workers san
 
 ```sh
 npm run test:deployment -- \
-  --url https://staging-zaykohub.account-subdomain.workers.dev \
+  --url https://staging-portfolio.account-subdomain.workers.dev \
   --mode preview \
   --report deployment-reports/preview.json
 

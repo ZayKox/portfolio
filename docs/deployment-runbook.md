@@ -75,10 +75,10 @@ de pull request, `.env` ou `.dev.vars` du dépôt.
 3. Vérifier l’inventaire depuis une source externe, puis seulement remplacer
    les nameservers chez le registrar. La messagerie et les autres services du
    domaine ne doivent pas être affectés par la migration du portfolio.
-4. Créer une ressource Worker nommée exactement `zaykohub`, sans domaine
+4. Créer une ressource Worker nommée exactement `portfolio`, sans domaine
    personnalisé ni contenu du portfolio. Désactiver sa route de production
    `workers.dev` et ses URL de preview pendant le bootstrap.
-5. Dans Workers & Pages > `zaykohub` > Access, protéger ce Worker en choisissant
+5. Dans Workers & Pages > `portfolio` > Access, protéger ce Worker en choisissant
    **Previews only** ; cette protection Worker (`preview_worker`) couvre les URL
    versionnées et les alias sans rendre le Custom Domain de production privé.
    L’activer avant d’envoyer la première version, autoriser Ethan pour la recette

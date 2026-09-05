@@ -133,7 +133,7 @@ requireCondition(
   "package.json must not retain obsolete container validation commands",
 );
 
-requireCondition(wrangler.name === "zaykohub", "Wrangler Worker name must be zaykohub");
+requireCondition(wrangler.name === "portfolio", "Wrangler Worker name must be portfolio");
 requireCondition(
   exactKeys(wrangler, [
     "$schema",
