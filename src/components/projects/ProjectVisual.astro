@@ -13,14 +13,14 @@ const palimiaLabels =
         profile: "UN SEUL PROFIL",
         library: "BIBLIOTHÈQUE CULTURELLE",
         worlds: "TOUS VOS UNIVERS",
-        media: ["FILM", "SÉRIES", "JEU", "ANIME", "MANGA"],
+        media: ["FILM", "SÉRIES", "JEU"],
         actions: ["SUIVRE", "NOTER", "ORGANISER"],
       }
     : {
         profile: "ONE PROFILE",
         library: "CULTURAL LIBRARY",
         worlds: "ALL YOUR WORLDS",
-        media: ["FILM", "SERIES", "GAME", "ANIME", "MANGA"],
+        media: ["FILM", "SERIES", "GAME"],
         actions: ["TRACK", "RATE", "ORGANIZE"],
       };
 ---
@@ -38,7 +38,9 @@ const palimiaLabels =
             <span>{palimiaLabels.library}</span>
             <strong>{palimiaLabels.worlds}</strong>
           </div>
-          <span class="palimia-library-count">05</span>
+          <span class="palimia-library-count">
+            {String(palimiaLabels.media.length).padStart(2, "0")}
+          </span>
         </div>
         <div class="palimia-library-shelf">
           {palimiaLabels.media.map((label) => (

@@ -29,15 +29,19 @@ const { Content } = await render(entry);
   <article class="case-study">
     <header class="case-hero section-grid">
       <div class="container">
-        <div class="case-hero-nav">
-          <a class="back-link" href={routes[locale].projects}>← {t.project.back}</a>
-          <span class="case-hero-status">{t.projects.teaser}</span>
-        </div>
         <div class="case-hero-grid">
           <div class="case-title reveal">
             <p class="eyebrow">{entry.data.eyebrow}</p>
             <h1>{entry.data.title}</h1>
             <p class="page-lead">{entry.data.summary}</p>
+            <div class="case-hero-nav">
+              <a class="back-link" href={routes[locale].projects}>← {t.project.back}</a>
+              {
+                entry.data.publication === "teaser" && (
+                  <span class="case-hero-status">{t.projects.teaser}</span>
+                )
+              }
+            </div>
             <div class="case-stack">
               <span>{t.project.stack}</span>
               <ul class="tag-list">

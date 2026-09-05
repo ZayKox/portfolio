@@ -66,6 +66,8 @@ try {
       format: "A4",
       printBackground: true,
       preferCSSPageSize: true,
+      tagged: true,
+      outline: true,
     });
     await page.close();
   }

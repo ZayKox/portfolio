@@ -1,5 +1,6 @@
 ---
 import { profile } from "@/data/profile";
+import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -21,24 +22,20 @@ const t = getCopy(locale);
   schemaType="ContactPage"
   mainClass="contact-page"
 >
-  <section class="page-hero section-grid contact-hero">
-    <div class="container page-hero-inner reveal">
-      <p class="eyebrow">{t.contact.eyebrow}</p>
-      <h1>{t.contact.title}</h1>
-      <div class="contact-hero-details">
-        <p class="page-lead">{t.contact.intro}</p>
-        <ul class="contact-hero-meta">
-          <li>{profile.location}</li>
-          <li>FR · EN</li>
-        </ul>
-        <div class="button-row contact-hero-actions">
-          <a class="button button--primary" href={`mailto:${profile.email}`}>
-            {t.home.contactCta}
-          </a>
-        </div>
+  <PageHero class="contact-hero" eyebrow={t.contact.eyebrow} title={t.contact.title}>
+    <div class="contact-hero-details">
+      <p class="page-lead">{t.contact.intro}</p>
+      <ul class="contact-hero-meta">
+        <li>{profile.location}</li>
+        <li>FR · EN</li>
+      </ul>
+      <div class="button-row contact-hero-actions">
+        <a class="button button--primary" href={`mailto:${profile.email}`}>
+          {t.home.contactCta}
+        </a>
       </div>
     </div>
-  </section>
+  </PageHero>
 
   <section class="section section--bordered contact-panel">
     <div class="container contact-grid">
@@ -52,6 +49,8 @@ const t = getCopy(locale);
             data-copy-email
             data-email={profile.email}
             data-copied-label={t.contact.copiedEmail}
+            data-copy-error-label={t.contact.copyEmailError}
+            aria-controls="email-copy-status"
           >
             {t.contact.copyEmail}
           </button>
@@ -60,6 +59,7 @@ const t = getCopy(locale);
             <span aria-hidden="true">↗</span>
           </a>
         </div>
+        <p id="email-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
       </div>
       <div class="contact-card reveal">
         <span>{t.contact.socialLabel}</span>
@@ -82,24 +82,30 @@ const t = getCopy(locale);
   const copyEmailButtons = document.querySelectorAll<HTMLButtonElement>("[data-copy-email]");
 
   for (const button of copyEmailButtons) {
-    if (!navigator.clipboard || button.dataset.ready === "true") continue;
+    if (typeof navigator.clipboard?.writeText !== "function" || button.dataset.ready === "true") {
+      continue;
+    }
+
+    const status = document.getElementById(button.getAttribute("aria-controls") ?? "");
+    if (!status) continue;
 
     button.dataset.ready = "true";
     button.hidden = false;
-    const initialLabel = button.textContent;
 
     button.addEventListener("click", async () => {
       const email = button.dataset.email;
-      if (!email) return;
+      if (!email || button.disabled) return;
+
+      button.disabled = true;
+      status.textContent = "";
 
       try {
         await navigator.clipboard.writeText(email);
-        button.textContent = button.dataset.copiedLabel ?? initialLabel;
-        window.setTimeout(() => {
-          button.textContent = initialLabel;
-        }, 1800);
+        status.textContent = button.dataset.copiedLabel ?? "";
       } catch {
-        // The mail link remains available when clipboard access is denied.
+        status.textContent = button.dataset.copyErrorLabel ?? "";
+      } finally {
+        button.disabled = false;
       }
     });
   }

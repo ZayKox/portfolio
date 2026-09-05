@@ -88,7 +88,7 @@ const jsonLdSource = jsonLd
       .replace(/\u2029/g, "\\u2029")
   : undefined;
 const themeBootstrap =
-  'try{const savedTheme=localStorage.getItem("portfolio-theme");const systemTheme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=savedTheme||systemTheme}catch{}';
+  '(()=>{let savedTheme;try{savedTheme=localStorage.getItem("portfolio-theme")}catch{}const systemTheme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=savedTheme==="light"||savedTheme==="dark"?savedTheme:systemTheme})()';
 const scriptHash = async (source: string) => {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(source));
   const base64 = btoa(String.fromCharCode(...new Uint8Array(digest)));

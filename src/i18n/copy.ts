@@ -80,7 +80,7 @@ export const copy = {
       selectedProjectsIntro:
         "Une sélection de projets personnels présentés à travers leur usage, leur conception et les choix techniques qui les font évoluer.",
       heroProjectDescriptions: {
-        palimia: "Films, séries, jeux, anime et manga réunis dans un seul profil.",
+        palimia: "Films, séries et jeux vidéo réunis dans une bibliothèque personnelle.",
         ludosaic: "Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.",
       },
       aboutEyebrow: "À propos",
@@ -139,6 +139,8 @@ export const copy = {
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
       copiedEmail: "Adresse copiée",
+      copyEmailError:
+        "La copie a échoué. Vous pouvez sélectionner l’adresse ou ouvrir votre messagerie.",
       openEmail: "Ouvrir la messagerie",
       socialLabel: "Ailleurs",
       locationLabel: "Localisation",
@@ -279,7 +281,7 @@ export const copy = {
       selectedProjectsIntro:
         "A selection of personal projects presented through their use, their design, and the technical choices shaping them.",
       heroProjectDescriptions: {
-        palimia: "Films, series, games, anime, and manga brought together in one profile.",
+        palimia: "Movies, TV series, and video games brought together in a personal library.",
         ludosaic: "Web mini-games for solo play, against a bot, or with other players.",
       },
       aboutEyebrow: "About",
@@ -337,6 +339,7 @@ export const copy = {
       emailLabel: "Email",
       copyEmail: "Copy address",
       copiedEmail: "Address copied",
+      copyEmailError: "The address could not be copied. You can select it or open your email app.",
       openEmail: "Open email app",
       socialLabel: "Elsewhere",
       locationLabel: "Location",

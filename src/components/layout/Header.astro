@@ -64,6 +64,7 @@ const isActive = (href: string) =>
         data-theme-toggle
         data-light-label={t.themeLight}
         data-dark-label={t.themeDark}
+        hidden
       >
         <span class="theme-toggle-symbol" aria-hidden="true">◐</span>
       </button>
@@ -86,20 +87,42 @@ const isActive = (href: string) =>
   }
 
   if (themeButton && themeButton.dataset.ready !== "true") {
+    const root = document.documentElement;
+    const systemPreference = matchMedia("(prefers-color-scheme: dark)");
+    let visitorTheme: "light" | "dark" | null = null;
+
+    try {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      if (savedTheme === "light" || savedTheme === "dark") visitorTheme = savedTheme;
+    } catch {
+      // A blocked storage API must not prevent the system theme or the control working.
+    }
+
+    function applyTheme(theme: "light" | "dark") {
+      root.classList.add("theme-switching");
+      root.dataset.theme = theme;
+      requestAnimationFrame(() => root.classList.remove("theme-switching"));
+      if (themeButton) syncThemeButton(themeButton);
+    }
+
+    root.dataset.theme = visitorTheme ?? (systemPreference.matches ? "dark" : "light");
     themeButton.dataset.ready = "true";
     syncThemeButton(themeButton);
+    themeButton.hidden = false;
+
+    systemPreference.addEventListener("change", (event) => {
+      if (visitorTheme === null) applyTheme(event.matches ? "dark" : "light");
+    });
+
     themeButton.addEventListener("click", () => {
-      const root = document.documentElement;
       const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
-      root.classList.add("theme-switching");
-      root.dataset.theme = nextTheme;
-      requestAnimationFrame(() => root.classList.remove("theme-switching"));
+      visitorTheme = nextTheme;
+      applyTheme(nextTheme);
       try {
         localStorage.setItem("portfolio-theme", nextTheme);
       } catch {
         // The selected theme still applies for the current page.
       }
-      syncThemeButton(themeButton);
     });
   }
 </script>

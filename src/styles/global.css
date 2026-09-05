@@ -116,6 +116,7 @@
 }
 
 html {
+  border: 0;
   scroll-behavior: smooth;
   background: var(--bg);
 }
@@ -408,6 +409,11 @@ h3 {
 .theme-toggle-symbol {
   font-size: 1.2rem;
   line-height: 1;
+}
+
+.theme-toggle[hidden],
+.contact-email-actions button[hidden] {
+  display: none;
 }
 
 .button-row {
@@ -824,6 +830,7 @@ h3 {
 }
 
 .project-visual--palimia {
+  aspect-ratio: auto;
   padding: clamp(1.25rem, 4vw, 3rem);
 }
 
@@ -888,7 +895,7 @@ h3 {
 
 .palimia-library-shelf {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.35rem, 1vw, 0.65rem);
   padding: 0 1rem 1rem;
 }
@@ -1186,12 +1193,14 @@ h3 {
 
 .page-hero-inner {
   display: grid;
-  grid-template-columns: 1fr minmax(18rem, 0.75fr);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
+  align-items: start;
   gap: var(--space-3) var(--space-5);
 }
 
 .page-hero-inner .eyebrow {
   grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
 .page-hero-inner h1 {
@@ -1201,14 +1210,9 @@ h3 {
 }
 
 .page-hero-inner .page-lead {
-  align-self: end;
+  align-self: start;
   max-width: 40rem;
   margin-bottom: 0.5rem;
-}
-
-.projects-hero,
-.about-hero {
-  padding-block: var(--page-hero-top-space) var(--space-5);
 }
 
 .projects-hero .page-hero-inner h1,
@@ -1512,27 +1516,12 @@ h3 {
   font-weight: 700;
 }
 
-.resume-hero .page-hero-inner,
-.contact-hero .page-hero-inner {
-  align-items: start;
-  row-gap: var(--space-2);
-}
-
 .resume-hero .page-hero-inner {
   grid-template-columns: minmax(0, 0.85fr) minmax(27rem, 1.15fr);
 }
 
 .contact-hero .page-hero-inner {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.resume-hero,
-.contact-hero {
-  padding-block: var(--space-4);
-}
-
-.contact-hero {
-  padding-top: var(--space-3);
 }
 
 .resume-hero .page-hero-inner h1 {
@@ -1616,15 +1605,6 @@ h3 {
   gap: var(--space-5);
   max-width: 52rem;
   padding-block: var(--section-space);
-}
-
-.legal-hero {
-  padding-block: var(--space-3) var(--space-4);
-}
-
-.legal-hero .page-hero-inner {
-  align-items: start;
-  row-gap: var(--space-2);
 }
 
 .legal-hero .page-hero-inner h1 {
@@ -1887,7 +1867,8 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border);
 }
@@ -1926,12 +1907,11 @@ h3 {
 
 .case-title {
   min-width: 0;
-  padding-top: var(--space-3);
 }
 
 .case-title h1 {
   margin-bottom: var(--space-3);
-  font-size: var(--display);
+  font-size: var(--h1);
   view-transition-name: case-title;
 }
 
@@ -2233,10 +2213,6 @@ h3 {
   .resume-hero .page-hero-inner,
   .contact-hero .page-hero-inner {
     grid-template-columns: 1fr;
-  }
-
-  .contact-hero {
-    padding-top: var(--space-4);
   }
 
   .resume-hero-details,

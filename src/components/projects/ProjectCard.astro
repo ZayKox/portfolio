@@ -27,7 +27,11 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
         <p class="eyebrow">{entry.data.eyebrow}</p>
         <Heading><a href={href}>{entry.data.title}</a></Heading>
       </div>
-      <span class="project-card-status">{t.projects.teaser}</span>
+      {
+        entry.data.publication === "teaser" && (
+          <span class="project-card-status">{t.projects.teaser}</span>
+        )
+      }
     </div>
     <p class="project-summary">{entry.data.summary}</p>
     <ul class="tag-list" aria-label={t.project.stack}>

@@ -28,6 +28,10 @@
 
 Ne cocher une tâche qu’avec une preuve : commit, capture, URL, rapport de test ou validation écrite.
 
+## Audit du 5 septembre 2026
+
+La revue complète et ses corrections sont consignées dans [le rapport de préparation](qa/production-audit-2026-09-05.md). Les validations locales ne constituent pas un GO de production : la traçabilité de certains détails biographiques/CV, la recette humaine et les preuves de déploiement Cloudflare restent à compléter. Les décisions déjà validées dans les sections 21 à 24 du questionnaire restent acquises.
+
 ## Résultat visé
 
 Le portfolio doit présenter Ethan comme un développeur polyvalent qui peut intervenir sur plusieurs types de produits. L’IA est un domaine d’intérêt, pas une spécialisation exclusive revendiquée. Le site vise d’abord la visibilité personnelle en France, reste intégralement bilingue et ne donne pas l’impression d’une recherche d’emploi active.
@@ -396,16 +400,16 @@ Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut
 
 ### Implémentation
 
-- [ ] `[Dev]` Créer une source structurée unique, par exemple `src/data/resume.ts`.
-- [ ] `[Dev]` Créer `/cv/` et `/en/resume/`.
+- [x] `[Dev]` Créer une source structurée unique : `src/data/resume.json`.
+- [x] `[Dev]` Créer `/cv/` et `/en/resume/`.
 - [ ] `[Dev]` Concevoir une version une colonne, lisible par les ATS et sans dépendance au graphisme.
-- [ ] `[Dev]` Ajouter une feuille d’impression A4.
-- [ ] `[Dev]` Générer un PDF FR et un PDF EN depuis la même source.
-- [ ] `[Dev]` Conserver du texte sélectionnable et des liens cliquables.
-- [ ] `[Dev]` Définir la langue, le titre et les métadonnées de chaque PDF.
+- [x] `[Dev]` Ajouter une feuille d’impression A4.
+- [x] `[Dev]` Générer un PDF FR et un PDF EN depuis la même source ; régénération vérifiée dans l’audit du 5 septembre.
+- [x] `[Dev]` Conserver du texte sélectionnable et des liens cliquables ; extraction et annotations contrôlées dans les deux PDF.
+- [x] `[Dev]` Définir la langue, le titre et les métadonnées de chaque PDF ; documents balisés FR/EN avec plan de navigation.
 - [ ] `[QA]` Vérifier ordre de lecture, coupures, marges et rendu en niveaux de gris.
 - [ ] `[QA]` Comparer automatiquement ou manuellement HTML et PDF.
-- [ ] `[Dev]` Activer les liens CV uniquement lorsque pages et PDF existent ensemble.
+- [x] `[Dev]` Activer les liens CV uniquement lorsque pages et PDF existent ensemble.
 
 Ne pas publier adresse complète, date de naissance ou téléphone sans raison explicite.
 

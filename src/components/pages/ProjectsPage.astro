@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/projects/ProjectCard.astro";
+import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -27,13 +28,9 @@ const projects = (
   description={t.projects.intro}
   schemaType="CollectionPage"
 >
-  <section class="page-hero section-grid projects-hero">
-    <div class="container page-hero-inner reveal">
-      <p class="eyebrow">{t.projects.eyebrow}</p>
-      <h1>{t.projects.title}</h1>
-      <p class="page-lead">{t.projects.intro}</p>
-    </div>
-  </section>
+  <PageHero class="projects-hero" eyebrow={t.projects.eyebrow} title={t.projects.title}>
+    <p class="page-lead">{t.projects.intro}</p>
+  </PageHero>
   <section class="section page-projects">
     <div class="container project-list">
       {projects.map((entry) => <ProjectCard {entry} {locale} headingLevel={2} />)}

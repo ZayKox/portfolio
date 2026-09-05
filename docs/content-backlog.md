@@ -6,14 +6,14 @@ Cette liste n’est pas affichée sur le site.
 
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
-- Valider l’identité visuelle actuelle, dont la signature ZayKo et les trois cartes de partage Violet Field.
+- Relire le rendu de l’identité visuelle actuelle et des trois cartes de partage Violet Field ; la signature ZayKo est déjà validée.
 - Configurer les environnements et secrets GitHub, Cloudflare Access et les
   variables de pilotage décrits dans le runbook.
-- Confirmer l’adresse de contact publique et accepter le risque de spam, ou fournir une adresse dédiée.
-- Décider si l’adresse email doit rester absente du JSON-LD, comme recommandé pour limiter le scraping.
+- Conserver l’adresse de contact publique validée ; une adresse dédiée reste un choix éventuel.
+- Garder l’adresse email absente du JSON-LD, conformément à la décision validée pour limiter le scraping.
 - Conserver le lancement validé sans mesure d’audience côté navigateur, cookie
   de suivi, formulaire ni contenu tiers embarqué.
-- Indiquer si le site est édité à titre personnel ou professionnel. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
+- Conserver l’édition à titre personnel validée. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
 - Vérifier que l’entité Cloudflare indiquée sur le compte ou la facture reste
   Cloudflare, Inc., puis confirmer les réglages réels de journaux, métriques et
   sécurité lors du premier déploiement.

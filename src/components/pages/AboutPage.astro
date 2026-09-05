@@ -1,5 +1,6 @@
 ---
 import { profile } from "@/data/profile";
+import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -20,13 +21,9 @@ const t = getCopy(locale);
   description={t.about.lead}
   schemaType="ProfilePage"
 >
-  <section class="page-hero section-grid about-hero">
-    <div class="container page-hero-inner reveal">
-      <p class="eyebrow">{t.about.eyebrow}</p>
-      <h1>{t.about.title}</h1>
-      <p class="page-lead">{t.about.lead}</p>
-    </div>
-  </section>
+  <PageHero class="about-hero" eyebrow={t.about.eyebrow} title={t.about.title}>
+    <p class="page-lead">{t.about.lead}</p>
+  </PageHero>
 
   <section class="section section--bordered">
     <div class="container about-page-grid">

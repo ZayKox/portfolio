@@ -256,10 +256,7 @@ function projectSocialMarkup({ index, title, stack, visual }) {
          <div class="project-core">PA</div>
          <span class="media-node node-one">FILM</span>
          <span class="media-node node-two">GAME</span>
-         <span class="media-node node-three">MANGA</span>
-         <span class="media-node node-four">ANIME</span>
-         <span class="media-node node-five">STATS</span>
-         <span class="media-node node-six">SERIES</span>`
+         <span class="media-node node-three">SERIES</span>`
       : `<div class="game-tile"><span>01</span><strong>REFLEX RUSH</strong></div>
          <div class="game-tile game-tile--middle"><span>02</span><strong>MERGE FORGE</strong></div>
          <div class="game-tile"><span>03</span><strong>GRID DUEL</strong></div>

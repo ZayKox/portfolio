@@ -1,5 +1,6 @@
 ---
 import { profile } from "@/data/profile";
+import PageHero from "@/components/layout/PageHero.astro";
 import resume from "@/data/resume.json";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -22,22 +23,18 @@ const resumeUrl = profile.resume[locale];
   title={t.nav.resume}
   description={t.resume.intro}
 >
-  <section class="page-hero section-grid resume-hero">
-    <div class="container page-hero-inner reveal">
-      <p class="eyebrow">{t.resume.eyebrow}</p>
-      <h1>{t.resume.title}</h1>
-      <div class="resume-hero-details">
-        <p class="page-lead">{t.resume.intro}</p>
-        <ul class="resume-hero-meta" aria-label={t.resume.contact}>
-          <li>{document.role}</li>
-          <li>{profile.location}</li>
-        </ul>
-        <div class="button-row resume-actions">
-          <a class="button button--primary" href={resumeUrl} download>{t.resume.download}</a>
-        </div>
+  <PageHero class="resume-hero" eyebrow={t.resume.eyebrow} title={t.resume.title}>
+    <div class="resume-hero-details">
+      <p class="page-lead">{t.resume.intro}</p>
+      <ul class="resume-hero-meta" aria-label={t.resume.contact}>
+        <li>{document.role}</li>
+        <li>{profile.location}</li>
+      </ul>
+      <div class="button-row resume-actions">
+        <a class="button button--primary" href={resumeUrl} download>{t.resume.download}</a>
       </div>
     </div>
-  </section>
+  </PageHero>
 
   <article class="container resume-document" aria-label={document.documentTitle}>
     <header class="resume-document-header">

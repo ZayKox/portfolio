@@ -14,6 +14,8 @@ const routes = [
   { path: "/projets/", name: "projects" },
   { path: "/projets/palimia/", name: "palimia" },
   { path: "/projets/ludosaic/", name: "ludosaic" },
+  { path: "/cv/", name: "resume-fr" },
+  { path: "/en/resume/", name: "resume-en" },
 ];
 const minimumScores = {
   performance: 0.95,

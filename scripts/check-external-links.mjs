@@ -41,17 +41,17 @@ async function check(url) {
     if ([404, 410].includes(response.status)) {
       return { level: "error", message: `${url} returned ${response.status}` };
     }
-    if (response.status >= 500 || response.status === 429) {
+    if (!response.ok) {
       return {
         level: "warning",
-        message: `${url} returned ${response.status}; kept as a non-blocking network result`,
+        message: `${url} returned ${response.status}; verification is inconclusive and needs manual review`,
       };
     }
     return { level: "ok", message: `${url} returned ${response.status}` };
   } catch (error) {
     return {
       level: "warning",
-      message: `${url} could not be checked (${error instanceof Error ? error.message : "network error"})`,
+      message: `${url} could not be checked (${error instanceof Error ? error.message : "network error"}); needs manual review`,
     };
   }
 }
@@ -69,5 +69,9 @@ for (const result of results) {
 }
 
 const failures = results.filter(({ level }) => level === "error");
+const verified = results.filter(({ level }) => level === "ok");
+const inconclusive = results.filter(({ level }) => level === "warning");
+console.log(
+  `Checked ${results.length} external links: ${verified.length} verified, ${inconclusive.length} inconclusive, ${failures.length} broken.`,
+);
 if (failures.length > 0) process.exitCode = 1;
-else console.log(`Checked ${results.length} external links without a confirmed broken target.`);
