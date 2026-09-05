@@ -188,9 +188,9 @@ requireCondition(
 requireCondition(
   wrangler.routes?.length === 1 &&
     exactKeys(wrangler.routes[0], ["pattern", "custom_domain"]) &&
-    wrangler.routes[0]?.pattern === "zaykohub.com" &&
+    wrangler.routes[0]?.pattern === "ethanbrosselard.com" &&
     wrangler.routes[0]?.custom_domain === true,
-  "Wrangler must expose exactly the zaykohub.com custom domain",
+  "Wrangler must expose exactly the ethanbrosselard.com custom domain",
 );
 
 const npmOptions = new Set(
@@ -259,13 +259,13 @@ for (const fragment of [
   "vars.CLOUDFLARE_PRODUCTION_ENABLED == 'true'",
   "ref: ${{ github.event.workflow_run.head_sha }}",
   'deployment_sha="$(git rev-parse HEAD)"',
-  "SITE_URL: https://zaykohub.com",
+  "SITE_URL: https://ethanbrosselard.com",
   'SITE_NOINDEX: "false"',
   'gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main"',
   'current_sha" != "$DEPLOYMENT_SHA',
   "npm run deploy:production",
   "npm run test:deployment",
-  "--redirect-from https://www.zaykohub.com",
+  "--redirect-from https://www.ethanbrosselard.com",
   "for attempt in {1..6}",
 ]) {
   requireCondition(

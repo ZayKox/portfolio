@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 10
     environment:
       name: production
-      url: https://zaykohub.com
+      url: https://ethanbrosselard.com
     steps:
       - name: Checkout verified revision
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -60,7 +60,7 @@ jobs:
 
       - name: Build production assets
         env:
-          SITE_URL: https://zaykohub.com
+          SITE_URL: https://ethanbrosselard.com
           SITE_NOINDEX: "false"
         run: |
           npm run build
@@ -86,10 +86,10 @@ jobs:
         run: |
           for attempt in {1..6}; do
             if npm run test:deployment -- \
-              --url https://zaykohub.com \
+              --url https://ethanbrosselard.com \
               --mode production \
               --check-http-redirect \
-              --redirect-from https://www.zaykohub.com \
+              --redirect-from https://www.ethanbrosselard.com \
               --report deployment-reports/production.json; then
               exit 0
             fi

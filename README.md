@@ -76,7 +76,7 @@ construit l’artefact dans un job sans secret ; un second job recharge
 l’outillage depuis `main`, revalide `dist/`, puis reçoit le jeton Cloudflare et
 prouve que l’accès anonyme est bloqué. Une fusion vers `main` ne publie la
 production qu’après les checks GitHub Actions requis, avec
-`SITE_URL=https://zaykohub.com` et `SITE_NOINDEX=false`, et si ce SHA est encore
+`SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false`, et si ce SHA est encore
 le HEAD de `main`. Le domaine personnalisé, le DNS et TLS sont gérés dans la
 zone Cloudflare ; aucune publication ou modification DNS ne doit être faite
 depuis un poste local. Les secrets de déploiement restent dans les

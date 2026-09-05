@@ -939,7 +939,7 @@ Statut : PUBLIC — VALIDÉ
 Projets complémentaires sur le CV : hackathon de terminale (application de révision histoire-géographie en 3 jours), Nuit de l’Info 2021 (base de données de sauvetages en mer), Nuit de l’Info 2022 (application de sensibilisation au VIH), hackathon IA de 10 jours en équipe de trois pour des entreprises partenaires du master.
 Statut : PUBLIC — VALIDÉ
 
-Domaine final : zaykohub.com, version canonique sans www.
+Domaine final : ethanbrosselard.com, version canonique sans www.
 Statut : PUBLIC — VALIDÉ
 
 Publication : site personnel, sans mesure d’audience côté navigateur, cookies de suivi, contenu embarqué ni formulaire au lancement. Les seules mesures conservées sont les métriques techniques agrégées fournies par l’infrastructure Cloudflare. L’email public reste absent des données structurées afin de limiter le scraping.
@@ -983,15 +983,24 @@ Statut : PUBLIC — VALIDÉ
 Flux de publication : branches courtes, pull request, validation GitHub Actions, puis production depuis main. La branche develop actuelle reste temporaire pendant la migration et n’est pas le flux durable retenu.
 Statut : PUBLIC — VALIDÉ
 
-Previews : workflow GitHub Actions déclenché manuellement pour une référence et un alias relus, versions Workers non promues, SITE_NOINDEX=true et Cloudflare Access. La référence demandée construit l’artefact sans secret ; seul un job distinct fondé sur l’outillage de main reçoit le jeton après revalidation. Les pull requests n’accèdent pas aux secrets Cloudflare. La production utilise SITE_URL=https://zaykohub.com et SITE_NOINDEX=false.
+Previews : workflow GitHub Actions déclenché manuellement pour une référence et un alias relus, versions Workers non promues, SITE_NOINDEX=true et Cloudflare Access. La référence demandée construit l’artefact sans secret ; seul un job distinct fondé sur l’outillage de main reçoit le jeton après revalidation. Les pull requests n’accèdent pas aux secrets Cloudflare. La production utilise SITE_URL=https://ethanbrosselard.com et SITE_NOINDEX=false.
 Statut : PUBLIC — VALIDÉ
 
-Domaine : zaykohub.com reste canonique sans www ; DNS et TLS seront gérés dans la zone Cloudflare, après préservation des enregistrements existants. www.zaykohub.com sera uniquement une variante redirigée définitivement vers l’apex, avec conservation du chemin et des paramètres.
+Domaine : ethanbrosselard.com reste canonique sans www ; DNS et TLS seront gérés dans la zone Cloudflare, après préservation des enregistrements existants. www.ethanbrosselard.com sera uniquement une variante redirigée définitivement vers l’apex, avec conservation du chemin et des paramètres.
 Statut : PUBLIC — VALIDÉ
 
 Confidentialité de l’hébergement : Workers Logs, l’export de journaux et la mesure d’audience côté navigateur restent désactivés. Cloudflare traite néanmoins les données réseau nécessaires à la diffusion et à la sécurité, produit des métriques techniques agrégées et peut déposer un cookie strictement nécessaire si une protection est déclenchée.
 Statut : PUBLIC — VALIDÉ
 ```
+
+## 25. Décision validée dans la tâche du 5 septembre 2026
+
+Ethan a choisi `ethanbrosselard.com` comme domaine canonique public du portfolio.
+Cette décision remplace le choix précédent de `zaykohub.com`. La version sans
+`www` est canonique ; `www.ethanbrosselard.com` doit rediriger définitivement
+vers l’apex en conservant le chemin et les paramètres.
+
+Statut : PUBLIC — VALIDÉ
 
 Pour tes propres modifications manuelles :
 

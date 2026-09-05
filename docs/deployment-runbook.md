@@ -18,7 +18,7 @@ restent à exécuter par Ethan ou avec son accord explicite.
 - La configuration Wrangler pointe vers `dist/`, sert `404.html` avec un statut
   404, conserve les URL Astro avec barre finale, désactive la route de
   production `workers.dev` et active explicitement les URL de preview.
-- `SITE_URL=https://zaykohub.com` et `SITE_NOINDEX=false` sont des paramètres du
+- `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false` sont des paramètres du
   build de production.
 - Toute preview est créée par `workflow_dispatch` avec une référence et un
   alias explicites, utilise `SITE_NOINDEX=true` et reste protégée par
@@ -28,7 +28,7 @@ restent à exécuter par Ethan ou avec son accord explicite.
   confiance de `main`, reçoit le jeton Cloudflare.
 - `main` représente la production. Un déploiement ne démarre qu’après le succès
   du job de validation GitHub Actions sur le même SHA.
-- Le domaine canonique est `https://zaykohub.com`. `www` redirige
+- Le domaine canonique est `https://ethanbrosselard.com`. `www` redirige
   définitivement vers l’apex en conservant chemin et paramètres.
 - Aucun outil de mesure d’audience côté navigateur, cookie publicitaire ou de
   mesure d’audience, formulaire ou contenu tiers embarqué n’est activé au
@@ -57,7 +57,7 @@ Trois variables GitHub non secrètes pilotent le flux :
 
 Créer un jeton API depuis le modèle Cloudflare **Edit Cloudflare Workers** pour
 chaque environnement, puis le limiter au seul compte et à la zone
-`zaykohub.com`. Les valeurs `preview` et `production` doivent être distinctes et
+`ethanbrosselard.com`. Les valeurs `preview` et `production` doivent être distinctes et
 ne doivent pas permettre l’administration générale du compte. Le service token
 Access utilise une règle `Service Auth` limitée aux previews du Worker. Aucun
 secret ne doit apparaître dans les logs, les rapports de test, les commentaires
@@ -68,7 +68,7 @@ de pull request, `.env` ou `.dev.vars` du dépôt.
 1. Protéger les comptes GitHub, Cloudflare et le registrar avec 2FA. Créer les
    deux jetons API dédiés à GitHub Actions, limités au compte et aux opérations
    Workers nécessaires, sans réutiliser la valeur de preview en production.
-2. Ajouter `zaykohub.com` comme zone Cloudflare. Avant toute délégation des
+2. Ajouter `ethanbrosselard.com` comme zone Cloudflare. Avant toute délégation des
    nameservers, inventorier et recopier les enregistrements existants,
    notamment A/AAAA/CNAME, MX, SPF, DKIM, DMARC, autres TXT et éventuels
    enregistrements de validation. Ne pas déplacer le registrar par défaut.
@@ -108,8 +108,8 @@ refusée et que le smoke test authentifié réussit.
 
 ## Préparer la bascule du domaine
 
-L’apex sert actuellement un autre service. La variable de production est
-évaluée dès la fin de la CI : elle doit donc être activée **avant** le run CI
+Avant toute bascule, vérifier si l’apex sert déjà un autre service. La variable
+de production est évaluée dès la fin de la CI : elle doit donc être activée **avant** le run CI
 destiné à la release, tandis que l’approbation obligatoire de l’environnement
 retient le déploiement jusqu’au cutover. Suivre cet ordre :
 
@@ -121,7 +121,7 @@ retient le déploiement jusqu’au cutover. Suivre cet ordre :
    et vérifier une redirection permanente sans boucle ;
 3. créer ou remplacer, uniquement si l’inventaire l’autorise, l’enregistrement A
    **proxifié** de `www` vers l’adresse réservée `192.0.2.0`, puis une Redirect
-   Rule permanente vers `https://zaykohub.com` qui conserve le chemin et la
+   Rule permanente vers `https://ethanbrosselard.com` qui conserve le chemin et la
    chaîne de requête. Vérifier cette redirection avant d’ouvrir la gate ;
 4. passer `CLOUDFLARE_PRODUCTION_ENABLED` à `true`, puis fusionner la release
    relue vers `main` ou relancer la CI issue d’un `push` sur son SHA courant. Le
@@ -132,7 +132,7 @@ retient le déploiement jusqu’au cutover. Suivre cet ordre :
    uniquement l’enregistrement web de l’apex incompatible ;
 6. approuver l’environnement `production`. Le workflow refuse lui-même un SHA
    devenu obsolète, puis `wrangler deploy` attache le Custom Domain
-   `zaykohub.com`, crée le DNS associé et demande le certificat géré ;
+   `ethanbrosselard.com`, crée le DNS associé et demande le certificat géré ;
 7. attendre que HTTPS réponde, puis laisser le smoke test confirmer HTTP →
    HTTPS, `www` → apex, les chemins, les paramètres et les pages ;
 8. ne jamais conserver deux origines publiques qui servent le même HTML.
@@ -183,7 +183,7 @@ contrôle `noindex` bloque la fusion.
 Une fusion vers `main` déclenche le job de production après le job de
 validation, jamais en parallèle. Le job :
 
-1. construit avec `SITE_URL=https://zaykohub.com` et `SITE_NOINDEX=false` ;
+1. construit avec `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false` ;
 2. vérifie juste avant la publication que le SHA validé est toujours le HEAD de
    `main` et refuse toute version obsolète ;
 3. publie avec `wrangler deploy` ;
@@ -229,10 +229,10 @@ Après le déploiement, exécuter :
 
 ```sh
 npm run test:deployment -- \
-  --url https://zaykohub.com \
+  --url https://ethanbrosselard.com \
   --mode production \
   --check-http-redirect \
-  --redirect-from https://www.zaykohub.com \
+  --redirect-from https://www.ethanbrosselard.com \
   --report deployment-reports/production.json
 ```
 

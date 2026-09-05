@@ -57,12 +57,12 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 
 ## Publication
 
-- Domaine retenu : `zaykohub.com` ; la version canonique choisie est sans `www`.
+- Domaine retenu : `ethanbrosselard.com` ; la version canonique choisie est sans `www`.
 - Migrer la zone vers les nameservers Cloudflare après avoir inventorié et
   recopié tous les enregistrements existants, notamment ceux de messagerie ;
-  réaffecter ensuite l’apex au Custom Domain du Worker, car il sert actuellement
-  un autre service.
-- Créer `www.zaykohub.com` uniquement comme variante redirigée vers l’apex,
+  réaffecter ensuite l’apex au Custom Domain du Worker si un service web y est
+  actuellement configuré.
+- Créer `www.ethanbrosselard.com` uniquement comme variante redirigée vers l’apex,
   puis vérifier que chemin et paramètres sont conservés.
 - Activer le pipeline seulement après avoir configuré ses environnements,
   secrets et protections ; les paramètres `SITE_URL`, `SITE_NOINDEX` et Access

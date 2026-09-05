@@ -11,9 +11,9 @@
 | Branche de travail actuelle | `develop`, temporaire pendant la migration |
 | Branche de production       | `main`                                     |
 | Hébergement cible           | Cloudflare Workers avec Static Assets      |
-| Domaine canonique retenu    | `zaykohub.com`, sans `www`                 |
+| Domaine canonique retenu    | `ethanbrosselard.com`, sans `www`          |
 | Langues                     | Français à la racine, anglais sous `/en/`  |
-| Dernière mise à jour        | 4 septembre 2026                           |
+| Dernière mise à jour        | 5 septembre 2026                           |
 
 ### Légende
 
@@ -67,7 +67,7 @@ GitHub : branche courte → pull request ───────────→ fu
                     validation sans secret       déploiement Workers
                               │                            │
                               ▼                            ▼
-                 preview manuelle après relecture   zaykohub.com + TLS
+                 preview manuelle après relecture   ethanbrosselard.com + TLS
                        noindex + Access
 ```
 
@@ -86,7 +86,7 @@ Choix structurants :
   relecture, un mainteneur déclenche manuellement une version Workers non
   promue pour une référence et un alias explicites, avec
   `SITE_NOINDEX=true` et Cloudflare Access. La production utilise
-  `SITE_URL=https://zaykohub.com` et `SITE_NOINDEX=false`.
+  `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false`.
 - Le domaine personnalisé, le DNS associé et TLS sont gérés par Cloudflare. Les
   secrets de déploiement et d’accès aux previews restent dans les environnements
   GitHub, jamais dans le dépôt.
@@ -415,15 +415,15 @@ Ne pas publier adresse complète, date de naissance ou téléphone sans raison e
 
 **Priorité : P0**
 
-L’URL finale `https://zaykohub.com` est validée et le domaine existe déjà. Cette
-phase prépare son usage par Astro sans modifier le service qui occupe encore
-l’apex.
+L’URL finale souhaitée `https://ethanbrosselard.com` est validée comme cible
+canonique. Cette phase prépare son usage par Astro ; la disponibilité du domaine,
+son registrar et ses enregistrements DNS restent à vérifier avant la bascule.
 
-- [x] `[Ethan]` Valider `zaykohub.com` comme domaine final canonique.
+- [x] `[Ethan]` Valider `ethanbrosselard.com` comme domaine final canonique.
 - [ ] `[Ethan]` Inventorier le registrar, la zone, le renouvellement et tous les
       usages DNS existants avant la migration.
 - [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [x] `[Ethan/Dev]` Définir `SITE_URL=https://zaykohub.com` dans le job GitHub
+- [x] `[Ethan/Dev]` Définir `SITE_URL=https://ethanbrosselard.com` dans le job GitHub
       Actions de production et une origine technique distincte dans les
       previews `noindex`.
 - [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
@@ -682,7 +682,7 @@ Configuration attendue :
 | Artefact                     | `dist/`                                                               |
 | Publication de preview       | `workflow_dispatch` avec ref + alias, puis `wrangler versions upload` |
 | Publication de production    | `wrangler deploy` après validation                                    |
-| URL canonique de production  | `SITE_URL=https://zaykohub.com`                                       |
+| URL canonique de production  | `SITE_URL=https://ethanbrosselard.com`                                |
 | Indexation de production     | `SITE_NOINDEX=false`                                                  |
 | Indexation de preview        | `SITE_NOINDEX=true`                                                   |
 | Protection de preview        | Cloudflare Access                                                     |
@@ -714,7 +714,7 @@ Configuration attendue :
 
 ### Domaine, DNS et TLS
 
-- [ ] `[Ethan]` Ajouter `zaykohub.com` comme zone Cloudflare et inventorier tous
+- [ ] `[Ethan]` Ajouter `ethanbrosselard.com` comme zone Cloudflare et inventorier tous
       les enregistrements existants avant de changer les nameservers : web,
       MX, SPF, DKIM, DMARC, autres TXT et validations de services.
 - [ ] `[Ethan/QA]` Recopier puis vérifier cet inventaire depuis une source
@@ -738,7 +738,8 @@ Configuration attendue :
 
 **Gate 13 :** preview privée validée, secrets externes, zone et redirections
 préparées, valeur de restauration connue, messagerie préservée et configuration
-Workers vérifiée ; l’apex sert encore son service actuel jusqu’à la phase 15.
+Workers vérifiée ; les éventuels services existants du domaine restent inchangés
+jusqu’à la phase 15.
 
 ## Phase 14 — répétition de release
 
@@ -897,7 +898,7 @@ Notes :
 | -------------------------------------- | -------------- | ------------------- | --------------------------------------------- |
 | Jalon A ou B pour le premier lancement | Ethan          | Phase 0             | Jalon A                                       |
 | Titre professionnel final              | Ethan          | Avant gel éditorial | « Développeur logiciel & créateur numérique » |
-| Domaine effectivement utilisé          | Ethan          | Avant phase 7       | `zaykohub.com`, sans `www`                    |
+| Domaine effectivement utilisé          | Ethan          | Avant phase 7       | `ethanbrosselard.com`, sans `www`             |
 | Portrait public                        | Ethan          | Avant design final  | Aucun portrait, signature ZayKo               |
 | Logo ou signature                      | Ethan + design | Avant design final  | Signature typographique ZayKo                 |
 | CV requis au lancement                 | Ethan          | Phase 0             | Non, liens masqués                            |
