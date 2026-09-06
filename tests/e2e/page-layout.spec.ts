@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-const interiorRoutes = [
+const pageRoutes = [
+  "/",
+  "/en/",
   "/projets/",
   "/a-propos/",
   "/cv/",
@@ -19,14 +21,14 @@ const interiorRoutes = [
   "/en/projects/ludosaic/",
 ];
 
-test("interior page headings share alignment and typography across routes", async ({
+test("page headings including both homepages share alignment and typography across routes", async ({
   page,
 }, testInfo) => {
   // Chromium also checks both sides of the tablet breakpoint. Other projects
   // cover their native desktop/mobile viewport and font rendering.
   const widths =
     testInfo.project.name === "chromium"
-      ? [1440, 1024, 769, 768, 320]
+      ? [1440, 1024, 769, 768, 480, 375, 320]
       : [page.viewportSize()!.width];
   await page.emulateMedia({ reducedMotion: "reduce" });
 
@@ -34,7 +36,7 @@ test("interior page headings share alignment and typography across routes", asyn
     await page.setViewportSize({ width, height: 900 });
     let reference: { x: number; offset: number; font: string; lineHeight: string } | undefined;
 
-    for (const route of interiorRoutes) {
+    for (const route of pageRoutes) {
       await page.goto(route);
       const heading = await page.locator("h1").evaluate((element) => {
         const box = element.getBoundingClientRect();

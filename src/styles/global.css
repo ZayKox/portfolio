@@ -481,7 +481,7 @@ h3 {
 
 .hero {
   display: grid;
-  align-items: center;
+  align-items: start;
   min-height: min(32rem, calc(100svh - 4.4rem));
   padding-block: var(--page-hero-top-space) var(--section-space);
 }
@@ -489,7 +489,7 @@ h3 {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.22fr) minmax(21rem, 0.78fr);
-  align-items: center;
+  align-items: start;
   gap: var(--space-5);
 }
 
@@ -500,7 +500,7 @@ h3 {
 .hero-copy h1 {
   max-width: 14ch;
   margin-bottom: var(--space-4);
-  font-size: var(--display);
+  font-size: var(--h1);
 }
 
 .hero-eyebrow {
@@ -2352,8 +2352,10 @@ h3 {
     font-size: 0.8rem;
   }
 
-  .hero-copy h1 {
-    font-size: clamp(2.9rem, 15vw, 3.35rem);
+  .hero-eyebrow,
+  .case-title > .eyebrow,
+  .page-hero-inner .eyebrow {
+    min-height: 2lh;
   }
 
   .interest-line {
