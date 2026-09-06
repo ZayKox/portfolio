@@ -71,3 +71,7 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
 - Ne pas activer de mesure d’audience côté navigateur au lancement ; distinguer
   ce choix des métriques réseau agrégées produites par Cloudflare.
 - Valider visuellement la carte Open Graph Violet Field déjà intégrée.
+
+## Détails retirés après l’audit du 5 septembre
+
+Les centres d’intérêt, le récit du déclic informatique et l’inspiration Letterboxd restent masqués jusqu’à validation explicite. Les CV conservent les postes, dates, établissements et compétences validés ; les précisions non validées sur Intento, les cursus et certaines technologies Beyowi ont été retirées dans les deux langues. Une future réintroduction exige la mise à jour du questionnaire, des sources FR/EN et des PDF.

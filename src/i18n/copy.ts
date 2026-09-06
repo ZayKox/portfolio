@@ -87,8 +87,6 @@ export const copy = {
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
         "Je m’appelle Ethan Brosselard, aussi connu sous le nom de ZayKo. Ce site présente les projets que je construis, les problèmes qu’ils cherchent à résoudre et les choix qui les façonnent.",
-      interestsLabel: "Hors du code",
-      interests: "Jeux vidéo · Films & séries · Manga · Lecture",
       aboutCta: "En savoir plus",
       contactTitle: "Une idée, une question, ou simplement envie de parler tech ?",
       contactText: "Écrivez-moi directement. Je réponds dès que possible.",
@@ -107,10 +105,8 @@ export const copy = {
       title: "Construire, comprendre, recommencer.",
       lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Studio Beyowi.",
       paragraphs: [
-        "J’ai commencé par vouloir comprendre comment fonctionnent les jeux vidéo : ce qui se passe derrière l’écran, comment les systèmes s’assemblent et comment une idée devient un produit concret. Cette curiosité m’a naturellement conduit vers le développement.",
         "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
         "En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance. Mon master en ingénierie de l’intelligence artificielle nourrit aussi une pratique réfléchie de l’IA : un outil qui aide à transformer de bonnes idées en réalisations, lorsqu’il est utilisé avec compréhension.",
-        "En dehors de l’informatique, je m’intéresse aux jeux vidéo, au cinéma, aux séries, aux mangas et à la lecture. Ces univers nourrissent mes projets : Palimia est né de l’envie de réunir au même endroit le suivi de plusieurs cultures, dans l’esprit de ce que Letterboxd propose au cinéma.",
       ],
       nowLabel: "Maintenant",
       nowText:
@@ -288,8 +284,6 @@ export const copy = {
       aboutTitle: "Build, understand, start again.",
       aboutText:
         "I’m Ethan Brosselard, also known as ZayKo. This site presents the projects I build, the problems they address, and the choices that shape them.",
-      interestsLabel: "Beyond code",
-      interests: "Video games · Movies & TV · Manga · Books",
       aboutCta: "Learn more",
       contactTitle: "Have an idea, a question, or just want to talk tech?",
       contactText: "Email me directly. I’ll get back to you as soon as I can.",
@@ -308,10 +302,8 @@ export const copy = {
       title: "Build, understand, start again.",
       lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Studio Beyowi.",
       paragraphs: [
-        "I first got into software by wanting to understand how video games work: what happens behind the screen, how systems fit together, and how an idea becomes a working product. That curiosity naturally led me to development.",
         "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
         "Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance. My master’s degree in AI engineering also supports a thoughtful approach to AI: a tool that can help turn good ideas into real work when used with understanding.",
-        "Outside software, I’m interested in video games, movies, TV series, manga, and books. These worlds feed into my projects: Palimia started from the wish to track several cultural domains in one place, in the spirit of what Letterboxd offers for film.",
       ],
       nowLabel: "Now",
       nowText:

@@ -1,5 +1,7 @@
 # Audit de préparation à la production — 5 septembre 2026
 
+> Suivi : `audit-remediation-2026-09-06.md` consigne les corrections supplémentaires et les nouvelles sondes du domaine. Les points ouverts ci-dessous décrivent la situation de cette première passe.
+
 ## Verdict
 
 Les défauts techniques confirmés par cette revue ont été corrigés localement. Le site conserve son architecture Astro statique et sa parité FR/EN. **Le GO de production reste ouvert** : certaines validations factuelles, la recette humaine et les preuves sur l’infrastructure réelle manquent encore.

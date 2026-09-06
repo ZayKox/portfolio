@@ -990,3 +990,7 @@ DNS ou déployer sur Cloudflare sans l’action ou l’accord explicite d’Etha
 - [Premières étapes RGPD — CNIL](https://www.cnil.fr/fr/passer-laction/rgpd-les-premieres-etapes)
 - [Mesure d’audience et consentement — CNIL](https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies-solutions-pour-les-outils-de-mesure-daudience)
 - [Rapport Sitemaps de Google Search Console](https://support.google.com/webmasters/answer/7451001)
+
+## Suivi de l’audit du 6 septembre 2026
+
+Voir `docs/qa/audit-remediation-2026-09-06.md`. Les détails non validés ont été retirés des pages et CV FR/EN. La fraîcheur des PDF et toutes les violations axe bloquent maintenant les contrôles automatiques. Une installation isolée avec `npm ci` puis `npm run verify` a réussi. Les preuves de preview privée, domaine réel, recette humaine et rollback restent ouvertes ; aucune case relative à ces contrôles ne peut être cochée à partir de la seule validation locale.

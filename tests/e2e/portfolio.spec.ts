@@ -23,7 +23,7 @@ const publicRoutes = [
 ] as const;
 
 for (const route of publicRoutes) {
-  test(`${route} renders without runtime or serious accessibility errors`, async ({ page }) => {
+  test(`${route} renders without runtime or accessibility errors`, async ({ page }) => {
     const runtimeErrors: string[] = [];
     page.on("pageerror", (error) => runtimeErrors.push(error.message));
     page.on("console", (message) => {
@@ -43,10 +43,7 @@ for (const route of publicRoutes) {
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
 
       const results = await new AxeBuilder({ page }).analyze();
-      const blockingViolations = results.violations.filter(({ impact }) =>
-        ["serious", "critical"].includes(impact ?? ""),
-      );
-      expect(blockingViolations, `${route} in ${theme} theme`).toEqual([]);
+      expect(results.violations, `${route} in ${theme} theme`).toEqual([]);
     }
 
     expect(runtimeErrors).toEqual([]);
@@ -175,6 +172,14 @@ test("unknown paths return the bilingual 404 page", async ({ page }) => {
   expect(response?.status()).toBe(404);
   await expect(page.getByRole("heading", { name: "Cette page n’existe pas." })).toBeVisible();
   await expect(page.getByText("This page does not exist.", { exact: false })).toBeVisible();
+  for (const theme of ["light", "dark"] as const) {
+    if ((await page.locator("html").getAttribute("data-theme")) !== theme) {
+      await page.locator("[data-theme-toggle]").click();
+    }
+    await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
+    const results = await new AxeBuilder({ page }).analyze();
+    expect(results.violations, `404 in ${theme} theme`).toEqual([]);
+  }
 });
 
 test("keyboard navigation exposes the skip link", async ({ page }) => {

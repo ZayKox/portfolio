@@ -1,5 +1,7 @@
+import { execFileSync } from "node:child_process";
+import { jobs, manifestPath, sourceFingerprint, artifactManifest } from "./resume-artifacts.mjs";
 import { createServer } from "node:http";
-import { mkdir, readFile, stat } from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { chromium } from "playwright";
@@ -7,10 +9,12 @@ import { chromium } from "playwright";
 const root = process.cwd();
 const distDirectory = path.join(root, "dist");
 const outputDirectory = path.join(root, "public", "cv");
-const jobs = [
-  { route: "/cv/", filename: "ethan-brosselard-cv-fr.pdf" },
-  { route: "/en/resume/", filename: "ethan-brosselard-resume-en.pdf" },
-];
+const sourceBefore = await sourceFingerprint(root);
+execFileSync(process.execPath, ["node_modules/astro/bin/astro.mjs", "build"], {
+  cwd: root,
+  stdio: "inherit",
+  env: { ...process.env, ASTRO_TELEMETRY_DISABLED: "1", SITE_URL: "", SITE_NOINDEX: "false" },
+});
 
 const contentTypes = new Map([
   [".css", "text/css; charset=utf-8"],
@@ -60,6 +64,7 @@ try {
   for (const job of jobs) {
     const page = await browser.newPage();
     await page.goto(`http://127.0.0.1:${address.port}${job.route}`, { waitUntil: "networkidle" });
+    await page.evaluate(() => document.fonts.ready);
     await page.emulateMedia({ media: "print" });
     await page.pdf({
       path: path.join(outputDirectory, job.filename),
@@ -79,3 +84,11 @@ try {
 }
 
 console.log(`Generated ${jobs.length} resume PDFs in ${path.relative(root, outputDirectory)}.`);
+
+if ((await sourceFingerprint(root)) !== sourceBefore) {
+  throw new Error("Sources changed during PDF generation. Regenerate the PDFs.");
+}
+await writeFile(
+  path.join(root, manifestPath),
+  JSON.stringify(await artifactManifest(root), null, 2) + "\n",
+);

@@ -70,17 +70,25 @@ const resumeUrl = profile.resume[locale];
                 </div>
                 <p class="resume-entry-meta">
                   {entry.period}
-                  <br />
-                  {entry.location}
+                  {"location" in entry && entry.location && (
+                    <>
+                      <br />
+                      {entry.location}
+                    </>
+                  )}
                 </p>
               </div>
-              <p>{entry.summary}</p>
-              <ul>
-                {entry.highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
-              </ul>
-              {entry.technologies && <p class="resume-technologies">{entry.technologies}</p>}
+              {"summary" in entry && entry.summary && <p>{entry.summary}</p>}
+              {"highlights" in entry && entry.highlights && (
+                <ul>
+                  {entry.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              )}
+              {"technologies" in entry && entry.technologies && (
+                <p class="resume-technologies">{entry.technologies}</p>
+              )}
             </article>
           ))
         }
@@ -100,11 +108,15 @@ const resumeUrl = profile.resume[locale];
                 </div>
                 <p class="resume-entry-meta">
                   {entry.period}
-                  <br />
-                  {entry.location}
+                  {"location" in entry && entry.location && (
+                    <>
+                      <br />
+                      {entry.location}
+                    </>
+                  )}
                 </p>
               </div>
-              <p>{entry.summary}</p>
+              {"summary" in entry && entry.summary && <p>{entry.summary}</p>}
             </article>
           ))
         }

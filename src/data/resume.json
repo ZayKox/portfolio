@@ -4,13 +4,20 @@
     "role": "Développeur logiciel",
     "summary": "Développeur logiciel travaillant principalement sur des applications web. J’aime partir d’un besoin concret, comprendre le système concerné et construire une solution claire, maintenable et agréable à utiliser.",
     "contact": [
-      { "label": "Localisation", "value": "Paris, France" },
+      {
+        "label": "Localisation",
+        "value": "Paris, France"
+      },
       {
         "label": "Email",
         "value": "ethan.brosselard@gmail.com",
         "href": "mailto:ethan.brosselard@gmail.com"
       },
-      { "label": "GitHub", "value": "github.com/ZayKox", "href": "https://github.com/ZayKox" },
+      {
+        "label": "GitHub",
+        "value": "github.com/ZayKox",
+        "href": "https://github.com/ZayKox"
+      },
       {
         "label": "LinkedIn",
         "value": "linkedin.com/in/ethan-brosselard-507334237",
@@ -23,62 +30,42 @@
         "organization": "Studio Beyowi",
         "period": "Octobre 2023 — Septembre 2026",
         "location": "Paris 13e, France",
-        "summary": "Développement et évolution d’applications web, avec gestion autonome de projets complexes de migration de données et d’intégration d’IA, de la conception à la mise en production.",
+        "summary": "Gestion autonome de projets complexes de migration de données et d’intégration d’IA.",
         "highlights": [
-          "Conception, développement et maintenance de fonctionnalités répondant aux besoins utilisateurs et métier.",
-          "Conception d’API Python avec Flask et AWS Lambda, création d’interfaces et automatisation de processus.",
+          "Utilisation d’AWS, de Flask et d’AWS Lambda.",
           "Migration et synchronisation de données multi-SGBD entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite.",
-          "Conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant.",
-          "Participation aux choix techniques, correction de bugs et vérifications avant mise en production."
+          "Conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant."
         ],
-        "technologies": "Python, Flask, Svelte, AWS Lambda, Docker, Git, PL/SQL, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
+        "technologies": "Python, Flask, AWS Lambda, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
       },
       {
         "title": "Développeur Backend (alternant)",
         "organization": "Intento Design",
         "period": "Septembre 2022 — Août 2023",
-        "location": "Paris, France",
-        "summary": "Participation au développement backend de l’application principale de l’entreprise.",
-        "highlights": [
-          "Développement de fonctionnalités à partir des besoins définis avec le maître d’apprentissage.",
-          "Maintenance du code existant, résolution de bugs et participation aux évolutions techniques.",
-          "Première expérience d’un projet en équipe et de ses exigences professionnelles."
-        ],
-        "technologies": "C++"
+        "location": "Paris, France"
       },
       {
         "title": "Agent de maintenance bâtiment",
         "organization": "Sealed Air Corporation",
         "period": "Juillet 2022 — Août 2022",
-        "location": "Épernon, France",
-        "summary": "Mission estivale au sein du service bâtiment.",
-        "highlights": [
-          "Participation aux travaux de maintenance et d’entretien des infrastructures.",
-          "Développement de la rigueur, du travail en équipe et de l’organisation en environnement industriel."
-        ]
+        "location": "Épernon, France"
       }
     ],
     "education": [
       {
         "title": "Master Informatique — Ingénierie en Intelligence Artificielle",
         "organization": "Université Paris 8 Vincennes — Saint-Denis",
-        "period": "2024 — 2026",
-        "location": "Saint-Denis et Aubervilliers, France",
-        "summary": "Approfondissement de l’IA, du machine learning, du deep learning, du traitement des données et de l’ingénierie logicielle."
+        "period": "2024 — 2026"
       },
       {
         "title": "Bachelor Universitaire de Technologie (BUT) Informatique",
         "organization": "IUT Paris Rives de Seine — Université Paris Cité",
-        "period": "2021 — 2024",
-        "location": "Paris 16e, France",
-        "summary": "Parcours Réalisation d’applications : conception, développement, validation. Bases en algorithmique, logiciel, bases de données, architecture et gestion de projet."
+        "period": "2021 — 2024"
       },
       {
         "title": "Baccalauréat général, mention Bien",
         "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021",
-        "location": "Chartres, France",
-        "summary": "Spécialités Numérique et Sciences Informatiques et Mathématiques ; options EPS et mathématiques expertes."
+        "period": "2018 — 2021"
       }
     ],
     "skills": [
@@ -87,7 +74,7 @@
       "Architecture logicielle et analyse de systèmes",
       "Tests, accessibilité et performance",
       "UX / UI",
-      "Cloud AWS, Docker et automatisation",
+      "Cloud AWS et automatisation",
       "Intelligence artificielle appliquée, RAG et recherche vectorielle",
       "Cybersécurité appliquée en apprentissage",
       "Anglais professionnel"
@@ -112,13 +99,20 @@
     "role": "Software developer",
     "summary": "Software developer working primarily on web applications. I enjoy starting from a concrete need, understanding the relevant system, and building a clear, maintainable, and pleasant-to-use solution.",
     "contact": [
-      { "label": "Location", "value": "Paris, France" },
+      {
+        "label": "Location",
+        "value": "Paris, France"
+      },
       {
         "label": "Email",
         "value": "ethan.brosselard@gmail.com",
         "href": "mailto:ethan.brosselard@gmail.com"
       },
-      { "label": "GitHub", "value": "github.com/ZayKox", "href": "https://github.com/ZayKox" },
+      {
+        "label": "GitHub",
+        "value": "github.com/ZayKox",
+        "href": "https://github.com/ZayKox"
+      },
       {
         "label": "LinkedIn",
         "value": "linkedin.com/in/ethan-brosselard-507334237",
@@ -131,62 +125,42 @@
         "organization": "Studio Beyowi",
         "period": "October 2023 — September 2026",
         "location": "Paris 13th arrondissement, France",
-        "summary": "Development and evolution of web applications, with independent ownership of complex data migration and AI integration projects, from design through production delivery.",
+        "summary": "Independent ownership of complex data migration and AI integration projects.",
         "highlights": [
-          "Designed, developed, and maintained features addressing user and business needs.",
-          "Designed Python APIs with Flask and AWS Lambda, built interfaces, and automated processes.",
+          "Used AWS, Flask, and AWS Lambda.",
           "Migrated and synchronized data across Oracle, MySQL, PostgreSQL, MSSQL, and SQLite databases.",
-          "Designed RAG approaches and vector search with PGVector and Qdrant.",
-          "Contributed to technical choices, bug fixes, and checks before production delivery."
+          "Designed RAG approaches and vector search with PGVector and Qdrant."
         ],
-        "technologies": "Python, Flask, Svelte, AWS Lambda, Docker, Git, PL/SQL, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
+        "technologies": "Python, Flask, AWS Lambda, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
       },
       {
         "title": "Backend Developer (apprentice)",
         "organization": "Intento Design",
         "period": "September 2022 — August 2023",
-        "location": "Paris, France",
-        "summary": "Contributed to the backend development of the company’s main application.",
-        "highlights": [
-          "Developed features from needs defined with the apprenticeship supervisor.",
-          "Maintained existing code, resolved bugs, and contributed to technical evolution.",
-          "First experience with a team project and its professional expectations."
-        ],
-        "technologies": "C++"
+        "location": "Paris, France"
       },
       {
         "title": "Building Maintenance Agent",
         "organization": "Sealed Air Corporation",
         "period": "July 2022 — August 2022",
-        "location": "Épernon, France",
-        "summary": "Summer assignment in the building services department.",
-        "highlights": [
-          "Contributed to infrastructure maintenance and upkeep work.",
-          "Built rigor, teamwork, and organizational skills in an industrial environment."
-        ]
+        "location": "Épernon, France"
       }
     ],
     "education": [
       {
         "title": "Master’s Degree in Computer Science — Artificial Intelligence Engineering",
         "organization": "University Paris 8 Vincennes — Saint-Denis",
-        "period": "2024 — 2026",
-        "location": "Saint-Denis and Aubervilliers, France",
-        "summary": "Advanced study of AI, machine learning, deep learning, data processing, and software engineering."
+        "period": "2024 — 2026"
       },
       {
         "title": "Bachelor of Technology (BUT) in Computer Science",
         "organization": "Paris Rives de Seine IUT — Université Paris Cité",
-        "period": "2021 — 2024",
-        "location": "Paris 16th arrondissement, France",
-        "summary": "Application Development pathway: design, development, and validation. Foundations in algorithms, software, databases, architecture, and project management."
+        "period": "2021 — 2024"
       },
       {
         "title": "French General Baccalaureate, honors",
         "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021",
-        "location": "Chartres, France",
-        "summary": "Specializations in Computer Science and Mathematics; physical education and advanced mathematics options."
+        "period": "2018 — 2021"
       }
     ],
     "skills": [
@@ -195,7 +169,7 @@
       "Software architecture and systems analysis",
       "Testing, accessibility, and performance",
       "UX / UI",
-      "AWS cloud, Docker, and automation",
+      "AWS cloud and automation",
       "Applied artificial intelligence, RAG, and vector search",
       "Applied cybersecurity, currently learning",
       "Professional English"
