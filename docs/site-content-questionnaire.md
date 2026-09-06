@@ -1008,3 +1008,9 @@ Pour tes propres modifications manuelles :
 Inspecte mes changements actuels, vérifie qu’ils respectent AGENTS.md,
 corrige seulement ce qui est nécessaire, lance les validations et crée un commit local ciblé.
 ```
+
+## 26. Direction frontend autorisée le 6 septembre 2026
+
+Ethan demande une amélioration importante du frontend pour présenter le portfolio à des entreprises et autorise une évolution de la direction artistique. L’objectif validé est une présentation soignée, professionnelle et visuellement convaincante. Le contenu doit être conservé, sauf nécessité. Cette autorisation porte sur la refonte ; elle ne constitue pas une validation finale du rendu ni une autorisation de déploiement.
+
+Statut de la demande : PUBLIC — VALIDÉ dans la tâche du 6 septembre 2026.

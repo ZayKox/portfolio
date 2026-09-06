@@ -75,6 +75,19 @@ const projects = (
     </div>
   </section>
 
+  <section class="section projects-section">
+    <div class="container section-heading section-heading--split reveal">
+      <div>
+        <p class="eyebrow">{t.projects.eyebrow}</p>
+        <h2>{t.home.selectedProjects}</h2>
+      </div>
+      <p>{t.home.selectedProjectsIntro}</p>
+    </div>
+    <div class="container project-list">
+      {projects.map((entry) => <ProjectCard {entry} {locale} />)}
+    </div>
+  </section>
+
   <section class="section section--bordered fields-section">
     <div class="container section-heading section-heading--split reveal">
       <div>
@@ -93,19 +106,6 @@ const projects = (
           </article>
         ))
       }
-    </div>
-  </section>
-
-  <section class="section projects-section">
-    <div class="container section-heading section-heading--split reveal">
-      <div>
-        <p class="eyebrow">{t.projects.eyebrow}</p>
-        <h2>{t.home.selectedProjects}</h2>
-      </div>
-      <p>{t.home.selectedProjectsIntro}</p>
-    </div>
-    <div class="container project-list">
-      {projects.map((entry) => <ProjectCard {entry} {locale} />)}
     </div>
   </section>
 

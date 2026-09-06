@@ -85,3 +85,58 @@ test("page headings including both homepages share alignment and typography acro
     }
   }
 });
+
+test("project cards align their visuals and actions while preserving mobile reading order", async ({
+  page,
+}, testInfo) => {
+  const widths =
+    testInfo.project.name === "chromium"
+      ? [1440, 1024, 769, 768, 320]
+      : [page.viewportSize()!.width];
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const width of widths) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const route of ["/", "/en/", "/projets/", "/en/projects/"]) {
+      await page.goto(route);
+      const cards = await page.locator(".project-card").evaluateAll((elements) =>
+        elements.map((element) => {
+          const card = element.getBoundingClientRect();
+          const visual = element.querySelector(".project-card-visual")!.getBoundingClientRect();
+          const content = element.querySelector(".project-card-content")!.getBoundingClientRect();
+          const action = element
+            .querySelector(".project-card-content > .text-link")!
+            .getBoundingClientRect();
+          return {
+            x: card.x,
+            top: card.top,
+            bottom: card.bottom,
+            visualBottom: visual.bottom,
+            contentTop: content.top,
+            actionBottom: action.bottom,
+          };
+        }),
+      );
+      expect(cards).toHaveLength(2);
+      const [first, second] = cards;
+      if (!first || !second) throw new Error("Expected two project cards");
+      for (const card of cards) {
+        expect(
+          card.contentTop,
+          `${route} at ${width}px: visual precedes content`,
+        ).toBeGreaterThanOrEqual(card.visualBottom - 1);
+        expect(card.actionBottom).toBeLessThanOrEqual(card.bottom);
+      }
+      if (width > 768) {
+        expect(second.x).toBeGreaterThan(first.x);
+        for (const key of ["top", "bottom", "visualBottom", "actionBottom"] as const) {
+          expect(
+            Math.abs(first[key] - second[key]),
+            `${route} at ${width}px: ${key}`,
+          ).toBeLessThanOrEqual(1);
+        }
+      } else {
+        expect(second.top).toBeGreaterThan(first.bottom);
+      }
+    }
+  }
+});

@@ -6,7 +6,7 @@ Cette liste n’est pas affichée sur le site.
 
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
-- Relire le rendu de l’identité visuelle actuelle et des trois cartes de partage Violet Field ; la signature ZayKo est déjà validée.
+- Relire le rendu de la refonte éditoriale autorisée le 6 septembre 2026 et des trois cartes de partage Violet Field ; la signature ZayKo est déjà validée.
 - Configurer les environnements et secrets GitHub, Cloudflare Access et les
   variables de pilotage décrits dans le runbook.
 - Conserver l’adresse de contact publique validée ; une adresse dédiée reste un choix éventuel.

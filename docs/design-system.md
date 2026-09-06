@@ -1,4 +1,4 @@
-# Système visuel Violet Field — édition neutre
+# Système visuel Violet Field — édition éditoriale
 
 Ce document décrit le système effectivement rendu par le portfolio. La source exécutable reste `src/styles/global.css` : toute évolution d’une valeur doit modifier le CSS et cette référence dans le même changement.
 
@@ -16,27 +16,27 @@ Ce document décrit le système effectivement rendu par le portfolio. La source 
 
 | Token                 | Clair                       | Sombre                       | Rôle                                      |
 | --------------------- | --------------------------- | ---------------------------- | ----------------------------------------- |
-| `--bg`                | `#d8d6cf`                   | `#1b1c20`                    | Fond principal neutre                     |
-| `--surface`           | `#e0ded7`                   | `#222328`                    | Cartes et contrôles                       |
-| `--surface-subtle`    | `#d2d0c9`                   | `#2a2c32`                    | Surface secondaire                        |
-| `--surface-strong`    | `#bebbb4`                   | `#34363d`                    | Reliefs et ombres graphiques              |
-| `--text`              | `#292a2e`                   | `#d0cfc9`                    | Texte principal                           |
-| `--text-muted`        | `#56595e`                   | `#989aa0`                    | Texte secondaire                          |
-| `--border`            | `#adaea8`                   | `#42444b`                    | Séparateurs et contours utiles            |
-| `--primary`           | `#2b2c30`                   | `#cecdc7`                    | Actions et surfaces principales inversées |
+| `--bg`                | `#faf9f7`                   | `#141418`                    | Fond principal neutre                     |
+| `--surface`           | `#ffffff`                   | `#1d1d23`                    | Cartes et contrôles                       |
+| `--surface-subtle`    | `#f0efed`                   | `#25252d`                    | Surface secondaire                        |
+| `--surface-strong`    | `#e4e2e8`                   | `#32323c`                    | Reliefs et ombres graphiques              |
+| `--text`              | `#202024`                   | `#f0eff4`                    | Texte principal                           |
+| `--text-muted`        | `#606069`                   | `#aaa9b5`                    | Texte secondaire                          |
+| `--border`            | `#d9d8de`                   | `#3e3d48`                    | Séparateurs et contours utiles            |
+| `--primary`           | `#242329`                   | `#f0eff4`                    | Actions et surfaces principales inversées |
 | `--primary-hover`     | `#3f4146`                   | `#b8b7b1`                    | Survol de l’action principale             |
-| `--primary-contrast`  | `#e9e8e2`                   | `#202126`                    | Contenu sur surface principale            |
+| `--primary-contrast`  | `#ffffff`                   | `#1d1d23`                    | Contenu sur surface principale            |
 | `--accent`            | `#6241cc`                   | `#9e88ed`                    | Signal violet secondaire et focus         |
 | `--accent-hover`      | `#4d31aa`                   | `#ae9af5`                    | Survol d’un élément secondaire            |
-| `--accent-soft`       | `#ddd7f0`                   | `#302944`                    | Fond violet discret                       |
-| `--accent-contrast`   | `#f1f0eb`                   | `#18151f`                    | Texte sur fond violet                     |
+| `--accent-soft`       | `#eee9fb`                   | `#302944`                    | Fond violet discret                       |
+| `--accent-contrast`   | `#ffffff`                   | `#18151f`                    | Texte sur fond violet                     |
 | `--accent-on-primary` | `#b39eff`                   | `#593abd`                    | Accent violet sur surface principale      |
 | `--info`              | `#2563eb`                   | `#60a5fa`                    | Information                               |
 | `--danger`            | `#d43f5e`                   | `#ff7a8a`                    | Erreur ou danger                          |
 | `--selection`         | `#c9bfee`                   | `#4d4173`                    | Sélection de texte                        |
 | `--shadow`            | `rgba(41, 42, 46, 0.13)`    | `rgba(0, 0, 0, 0.3)`         | Ombres                                    |
 | `--grid-line`         | `rgba(41, 42, 46, 0.07)`    | `rgba(216, 215, 209, 0.055)` | Trame décorative                          |
-| `--header-bg`         | `rgba(216, 214, 207, 0.92)` | `rgba(27, 28, 32, 0.92)`     | Fond translucide de l’en-tête             |
+| `--header-bg`         | `rgba(250, 249, 247, 0.94)` | `rgba(20, 20, 24, 0.94)`     | Fond translucide de l’en-tête             |
 
 Le thème système réutilise exactement les valeurs sombres quand `prefers-color-scheme: dark` est actif et qu’aucun choix n’a été enregistré. Les paires texte/fond principales et violet/texte contrasté sont contrôlées au build avec un seuil de `4.5:1`. Axe et les tests navigateur complètent ce contrôle sur les composants rendus.
 
@@ -46,7 +46,7 @@ Les grandes compositions ne sont plus inversées en clair dans le thème sombre 
 
 Les polices restent locales au système, sans requête tierce :
 
-- `--font-display` : Space Grotesk si elle est présente, puis Avenir Next ou Segoe UI ;
+- `--font-display` : Avenir Next ou Segoe UI si présentes, puis Helvetica ou Arial ;
 - `--font-body` : Inter si elle est présente, puis une pile d’interfaces système ;
 - `--font-mono` : JetBrains Mono si elle est présente, puis une pile monospace système.
 
@@ -56,21 +56,29 @@ L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--b
 
 | Token                     | Valeur                        | Usage                                             |
 | ------------------------- | ----------------------------- | ------------------------------------------------- |
-| `--radius-control`        | `0.5rem`                      | Boutons et petits contrôles                       |
-| `--radius-card`           | `0.8rem`                      | Cartes et grands panneaux                         |
-| `--container`             | `82rem`                       | Largeur maximale du contenu                       |
+| `--radius-control`        | `0.6rem`                      | Boutons et petits contrôles                       |
+| `--radius-card`           | `1.25rem`                     | Cartes et grands panneaux                         |
+| `--container`             | `76rem`                       | Largeur maximale du contenu                       |
 | `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`   | Marge latérale responsive                         |
-| `--space-1`               | `0.5rem`                      | Micro-écart                                       |
+| `--space-1`               | `0.6rem`                      | Micro-écart                                       |
 | `--space-2`               | `0.75rem`                     | Écart compact                                     |
 | `--space-3`               | `1rem`                        | Écart courant                                     |
 | `--space-4`               | `clamp(1.25rem, 2vw, 1.5rem)` | Espacement interne des cartes                     |
 | `--space-5`               | `clamp(1.75rem, 3vw, 2.5rem)` | Écart entre groupes de contenu                    |
 | `--space-6`               | `clamp(1.75rem, 3.5vw, 3rem)` | Rythme vertical majeur                            |
-| `--section-space`         | `var(--space-6)`              | Rythme vertical partagé des sections              |
+| `--section-space`         | `clamp(3.5rem, 7vw, 6.5rem)`  | Rythme vertical partagé des sections              |
 | `--section-heading-space` | `var(--space-5)`              | Écart entre introduction et contenu d’une section |
-| `--page-hero-top-space`   | `clamp(1.5rem, 3vw, 2.5rem)`  | Écart entre le header et le début d’une page      |
+| `--page-hero-top-space`   | `clamp(2.5rem, 5vw, 4.5rem)`  | Écart entre le header et le début d’une page      |
 
-La composition est éditoriale et asymétrique : grands titres, filets nets, surfaces monochromes inversées et ombres graphiques sans flou excessif. Les sections principales partagent `--section-space`, tandis que le bandeau de contact de l’accueil adopte un rythme plus compact avec `--space-5` autour de son contenu court. Les héros utilisent le rythme de section en bas, mais un espace supérieur plus court avec `--page-hero-top-space` rapproche leur premier repère éditorial du header. Toutes les pages intérieures partagent le même espace supérieur, un écart de `--space-3` entre repère éditorial et titre, et la taille `--h1`. Le composant `PageHero.astro` fixe cette structure pour Projets, À propos, CV, Contact et les pages légales. Le repère ne cumule plus une marge basse avec l’écart de grille. Les introductions s’alignent en haut de la colonne voisine ; les colonnes restent adaptées à leur contenu. La liste des projets laisse la première carte porter l’espace de transition après le héros, sans cumuler deux marges de section. Les héros des études de cas alignent leur titre sur celui des autres pages intérieures ; le lien de retour et le statut suivent le résumé, avant le socle technique. Les visuels reprennent le relief décalé du panneau d’accueil. Le récit des études de cas forme une colonne centrée structurée par ses titres et des filets violets discrets, sans répéter le numéro ou le type du projet. Les espacements internes utilisent la même échelle de `--space-1` à `--space-5` afin d’éviter les ruptures de rythme entre pages et composants. Sur l’accueil, les quatre domaines de travail forment une matrice continue, compacte et non interactive : les séparateurs matérialisent un même parcours plutôt qu’une collection de boutons. Les cartes de projet suivent une lecture éditoriale continue, sans numérotation ni répétition du type de produit ; chaque composition visuelle doit expliquer l’usage du projet, comme la bibliothèque culturelle de Palimia limitée aux trois médias validés (films, séries et jeux vidéo), dont le cadre adapte sa hauteur au contenu pour ne rogner aucun libellé sur mobile, plutôt que servir de simple décoration. Le header desktop reste à `3.6rem` sans réduire les cibles interactives de `2.75rem`. Le héros est plafonné à `32rem` afin de ne pas recréer artificiellement une grande zone vide. Les pages doivent rester sans débordement à partir de `320px`, supporter le zoom et conserver un ordre DOM cohérent avec l’ordre visuel.
+La composition utilise un fond blanc cassé, des surfaces blanches et des séparateurs discrets en clair ; le sombre transpose cette hiérarchie sur trois niveaux anthracite. Les ombres sont diffuses, les angles adoucis et les accents violets limités aux repères, aux contrôles et à la profondeur des visuels.
+
+Le conteneur est limité à 76rem. Le header desktop mesure au moins 4.75rem ; les contrôles gardent leurs cibles de 2.75rem et le sélecteur de thème est circulaire. Sur mobile, la navigation reste visible sur une seconde ligne, sans menu à ouvrir. Le pied de page sépare les liens de navigation des informations secondaires avec un filet et une seconde rangée.
+
+L’accueil présente l’introduction et le panneau de signature, puis les projets, la méthode, le parcours et le contact. Le panneau conserve sa fonction de navigation, avec deux liens séparés par des filets. Sur tablette, il devient horizontal ; sur téléphone, il retrouve une seule colonne. Le titre reste à la même échelle que les autres pages : `--h1` vaut `clamp(2.75rem, 5.4vw, 5.25rem)`, avec une hauteur de ligne de 1.04. Les titres de section utilisent `clamp(2.1rem, 3.6vw, 3.5rem)`.
+
+Les cartes de projets forment deux colonnes au-dessus de 48rem et une colonne en dessous. Une sous-grille aligne leurs visuels et le début des textes malgré des compositions de hauteurs différentes. Chaque carte conserve son ordre DOM : visuel, titre, statut, résumé, technologies, lien. Les actions s’alignent au bas des cartes. Les compositions CSS existantes de Palimia et Ludosaic restent des évocations, masquées aux technologies d’assistance ; aucune capture réelle ni nouvelle fonctionnalité n’est revendiquée. Les visuels adaptent leur hauteur au contenu pour ne rogner aucun libellé.
+
+Les sections utilisent un rythme de 3.5rem à 6.5rem. L’enchaînement entre le héros d’accueil et les projets réduit l’espace supérieur de la seconde section pour éviter le cumul de deux grandes marges. Les pages intérieures partagent le composant `PageHero.astro`, le même écart supérieur et les mêmes alignements de titres ; les aperçus projet suivent également cette grille. Le récit conserve une colonne de lecture centrée. Les styles d’impression du CV restent dédiés au papier et les PDF sont régénérés après tout changement de source.
 
 Les accueils FR/EN utilisent aussi `--h1` et un alignement supérieur fixe. À 480 px et moins, les repères des héros réservent deux lignes, y compris quand leur texte est court, pour garder les titres à la même hauteur lorsque le libellé d’accueil se replie. Le test d’alignement couvre les dix-huit routes, accueils inclus.
 
