@@ -485,7 +485,7 @@ h3 {
   display: grid;
   align-items: start;
   min-height: auto;
-  padding-block: var(--page-hero-top-space) var(--section-space);
+  padding-block: var(--page-hero-top-space) 0;
 }
 
 .hero + .projects-section {
