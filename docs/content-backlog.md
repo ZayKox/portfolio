@@ -6,7 +6,7 @@ This working list is not rendered on the public site. The canonical source for E
 
 - The production site, domain, canonical redirects, metadata, legal pages, resume pages, and French/English PDF files are live.
 - GitHub Actions production, protected environment secrets, and deployment switches were configured and validated on September 8, 2026.
-- Ethan confirmed completion of the human verification checklist on September 8, 2026. See [`docs/qa/human-verification-2026-09-08.md`](qa/human-verification-2026-09-08.md).
+- Ethan confirmed completion of the human verification checklist on September 8, 2026. Detailed QA working records remain local and are intentionally excluded from the remote repository.
 - Palimia and Ludosaic remain factual `teaser` entries. Their selection, order, and the removal of FiltreAppels were validated on August 29, 2026.
 - The September 6 editorial redesign, Violet Field social cards, and ZayKo signature have been reviewed for the current release.
 - The validated public contact email remains in use. A dedicated address is still optional.

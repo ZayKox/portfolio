@@ -62,7 +62,7 @@ The portrait, complete project case studies, screenshots, videos, and unvalidate
 
 ### Human verification
 
-Ethan confirmed on September 8, 2026 that the human verification work was completed. The confirmation is recorded in [`docs/qa/human-verification-2026-09-08.md`](qa/human-verification-2026-09-08.md).
+Ethan confirmed on September 8, 2026 that the human verification work was completed. Detailed QA working records remain local and are intentionally excluded from the remote repository.
 
 - [x] Review every public page in French and English.
 - [x] Navigate the complete site with a keyboard.
@@ -223,5 +223,3 @@ A future release is complete only when:
 - [`docs/seo-indexing-runbook.md`](seo-indexing-runbook.md)
 - [`docs/architecture.md`](architecture.md)
 - [`docs/design-system.md`](design-system.md)
-- [`docs/qa/production-audit-2026-09-05.md`](qa/production-audit-2026-09-05.md)
-- [`docs/qa/audit-remediation-2026-09-06.md`](qa/audit-remediation-2026-09-06.md)
