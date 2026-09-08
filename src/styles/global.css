@@ -1400,7 +1400,7 @@ h3 {
 .about-profile-details {
   display: grid;
   gap: var(--space-3);
-  padding-block: var(--space-4);
+  padding: var(--space-4) 0 0;
 }
 
 .about-profile-details > p {
