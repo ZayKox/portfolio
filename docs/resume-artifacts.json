@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sourceSha256": "68f199f4585266d1105290652a63666fe2182821c01e0d4493b0281cb7bc6a1d",
+  "sourceSha256": "6fbcd6532e9e4fe773423b6cb9d252eac2d9dc8e2997fec4ed8a76d3c5db5a0a",
   "outputs": {
-    "ethan-brosselard-cv-fr.pdf": "ab07cd82f15eecb692cc3428435cb2b1b1e7b1f8bab8fa4bcb253620f1e8448e",
-    "ethan-brosselard-resume-en.pdf": "0c639f9c278eba5fb60c6dc091caf87882f19b9bb7afe42eade6d9eaf3257b04"
+    "ethan-brosselard-cv-fr.pdf": "a74112861d404ddb537c1030d4fb5d66275e998076c802bf0bebc84a15089596",
+    "ethan-brosselard-resume-en.pdf": "9f2e3434445b3970d695e1c69b8f9d6b79ddc2b85d8662c35beddd11f0135b94"
   }
 }

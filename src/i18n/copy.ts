@@ -46,6 +46,7 @@ export const copy = {
     home: {
       eyebrow: "Développement logiciel · Produits numériques",
       title: "Je transforme des idées en produits numériques fiables.",
+      titleEmphasis: "fiables",
       intro:
         "Développeur web chez Studio Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
       projectsCta: "Explorer mes projets",
@@ -244,6 +245,7 @@ export const copy = {
     home: {
       eyebrow: "Software development · Digital products",
       title: "I turn ideas into reliable digital products.",
+      titleEmphasis: "reliable",
       intro:
         "As a web developer at Studio Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
       projectsCta: "Explore my projects",

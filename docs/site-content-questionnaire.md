@@ -1073,3 +1073,9 @@ Status: PUBLIC — VALIDATED
 
 Full address and telephone: PRIVATE — provided separately; do not post in the portfolio CV without a separate explicit decision.
 ```
+
+## Visual refinement request — September 8, 2026
+
+Ethan requests a more polished, inviting portfolio as his personal showcase and authorizes a limited evolution of the artistic direction. This validates the design work, not the final rendering or external publication. Existing factual content and French/English parity remain required.
+
+Request status: PUBLIC — VALIDATED in the September 8, 2026 task.
