@@ -154,7 +154,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hébergement",
       hostingText:
-        "L’hébergement de production retenu est Cloudflare Workers Static Assets. Les fichiers du site sont générés statiquement puis distribués depuis le réseau mondial de Cloudflare ; aucune fonction applicative n’est exécutée pour les pages publiques.",
+        "L’hébergement de production est assuré par Cloudflare Workers Static Assets. Les fichiers du site sont générés statiquement puis distribués depuis le réseau mondial de Cloudflare. Cloudflare assure également le certificat TLS, la redirection de HTTP vers HTTPS et celle de www vers le domaine canonique ; aucune fonction applicative, base de données ou autre runtime n’est exécuté pour les pages publiques.",
       intellectualPropertyTitle: "Propriété intellectuelle",
       intellectualPropertyText:
         "Sauf mention contraire, les textes, le code source et les éléments graphiques de ce site sont protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers ne sont utilisés que lorsqu’ils sont autorisés et restent soumis à leurs droits respectifs.",
@@ -162,7 +162,7 @@ export const copy = {
       externalLinksText:
         "Les liens vers des sites tiers sont fournis pour information. Leur contenu, leur disponibilité et leurs pratiques de confidentialité relèvent de la responsabilité de leurs éditeurs respectifs.",
       updatedLabel: "Dernière mise à jour",
-      updatedValue: "4 septembre 2026",
+      updatedValue: "8 septembre 2026",
     },
     privacy: {
       eyebrow: "Données personnelles",
@@ -175,13 +175,13 @@ export const copy = {
       contactLabel: "Contact",
       collectionTitle: "Données traitées",
       collectionText:
-        "Le site ne comporte ni formulaire, ni compte, ni newsletter, ni contenu tiers embarqué. Il n’active aucun outil de mesure d’audience côté navigateur et ne dépose aucun cookie publicitaire ou de mesure d’audience. Cloudflare peut toutefois déposer un cookie strictement nécessaire lorsqu’un mécanisme de sécurité est déclenché. La préférence de thème, si vous la modifiez, est conservée uniquement dans le stockage local de votre navigateur sous la clé « portfolio-theme » ; elle ne quitte pas votre appareil.",
+        "Le site ne comporte ni formulaire, ni compte, ni newsletter, ni contenu tiers embarqué. Il n’active aucun outil de mesure d’audience côté navigateur et ne dépose aucun cookie publicitaire ou de mesure d’audience ; une navigation ordinaire ne reçoit pas de cookie de réponse du site. Cloudflare peut toutefois déposer un cookie strictement nécessaire lorsqu’un mécanisme de sécurité est déclenché. La préférence de thème, si vous la modifiez, est conservée uniquement dans le stockage local de votre navigateur sous la clé « portfolio-theme » ; elle ne quitte pas votre appareil.",
       emailTitle: "Messages envoyés par email",
       emailText:
         "Si vous choisissez d’écrire à l’adresse affichée, votre adresse email et le contenu de votre message sont utilisés uniquement pour lire votre demande et vous répondre. Le message est transmis directement par votre service de messagerie et celui du destinataire ; il ne transite pas par le site.",
       technicalTitle: "Journaux techniques",
       technicalText:
-        "La configuration du portfolio n’active ni journalisation applicative persistante, ni export de journaux vers un tiers, ni outil de mesure d’audience côté navigateur. Pour fournir, mettre en cache et sécuriser le site, Cloudflare traite toutefois des données techniques de connexion susceptibles d’inclure l’adresse IP, des informations de routage, la configuration du système et des informations sur le trafic. Cloudflare produit également des métriques techniques agrégées.",
+        "La configuration versionnée du portfolio désactive Workers Logs, les exports de journaux, l’instrumentation des dépendances, la télémétrie Wrangler et tout outil de mesure d’audience côté navigateur. Pour distribuer les fichiers statiques, terminer TLS, mettre les ressources en cache, appliquer les redirections et sécuriser le site, Cloudflare traite toutefois des données techniques de connexion susceptibles d’inclure l’adresse IP, des informations de routage, la configuration du système et des informations sur le trafic. Cloudflare produit également des métriques techniques agrégées.",
       purposeTitle: "Finalités et base juridique",
       purposeText:
         "Les messages reçus sont traités pour répondre à leur expéditeur. L’infrastructure est utilisée pour distribuer le contenu, mettre les ressources en cache, assurer la disponibilité du service et protéger le site. Les traitements déterminés par l’éditeur reposent sur son intérêt légitime à répondre aux sollicitations reçues et à fournir un site fiable et sécurisé. Cloudflare décrit dans sa propre politique les finalités et bases qu’elle applique aux traitements qu’elle détermine elle-même.",
@@ -198,9 +198,9 @@ export const copy = {
         "Selon la réglementation applicable, vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de vos données. Vous pouvez également introduire une réclamation auprès de la CNIL. Pour exercer vos droits concernant ce site, contactez Ethan Brosselard par email.",
       changesTitle: "Évolution de cette politique",
       changesText:
-        "Cette politique décrit la configuration actuelle du site. Elle sera mise à jour avant tout ajout de formulaire, d’outil de mesure d’audience, de cookie de suivi ou de contenu tiers embarqué.",
+        "Cette politique a été revue après le premier déploiement de production du 8 septembre 2026. Elle sera mise à jour avant tout ajout de formulaire, d’outil de mesure d’audience, de cookie de suivi, de contenu tiers embarqué ou de mécanisme Cloudflare modifiant les traitements décrits.",
       updatedLabel: "Dernière mise à jour",
-      updatedValue: "4 septembre 2026",
+      updatedValue: "8 septembre 2026",
     },
     project: {
       back: "Tous les projets",
@@ -350,7 +350,7 @@ export const copy = {
       contactLabel: "Contact",
       hostingTitle: "Hosting",
       hostingText:
-        "Cloudflare Workers Static Assets is the selected production hosting service. The website’s files are generated statically and delivered through Cloudflare’s global network; no application functions run for public pages.",
+        "Cloudflare Workers Static Assets provides production hosting. The website’s files are generated statically and delivered through Cloudflare’s global network. Cloudflare also provides the TLS certificate, redirects HTTP to HTTPS, and redirects www to the canonical domain; no application function, database, or other runtime runs for public pages.",
       intellectualPropertyTitle: "Intellectual property",
       intellectualPropertyText:
         "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorized and remains subject to its respective rights.",
@@ -358,7 +358,7 @@ export const copy = {
       externalLinksText:
         "Links to third-party sites are provided for information only. Their content, availability, and privacy practices remain the responsibility of their respective publishers.",
       updatedLabel: "Last updated",
-      updatedValue: "4 September 2026",
+      updatedValue: "8 September 2026",
     },
     privacy: {
       eyebrow: "Personal data",
@@ -370,13 +370,13 @@ export const copy = {
       contactLabel: "Contact",
       collectionTitle: "Data processed",
       collectionText:
-        "The site has no form, account, newsletter, or embedded third-party content. It enables no browser-side visitor analytics and sets no advertising or analytics cookies. Cloudflare may nevertheless set a strictly necessary cookie when a security mechanism is triggered. If you change it, your theme preference is kept solely in your browser’s local storage under the key “portfolio-theme”; it never leaves your device.",
+        "The site has no form, account, newsletter, or embedded third-party content. It enables no browser-side visitor analytics and sets no advertising or analytics cookies; an ordinary visit receives no response cookie from the site. Cloudflare may nevertheless set a strictly necessary cookie when a security mechanism is triggered. If you change it, your theme preference is kept solely in your browser’s local storage under the key “portfolio-theme”; it never leaves your device.",
       emailTitle: "Messages sent by email",
       emailText:
         "If you choose to write to the displayed email address, your email address and the content of your message are used solely to read and reply to your request. The message is sent directly through your email provider and the recipient’s; it does not pass through the website.",
       technicalTitle: "Technical logs",
       technicalText:
-        "The portfolio configuration enables neither persistent application logging, log exports to a third party, nor browser-side visitor analytics. To deliver, cache, and secure the site, Cloudflare nevertheless processes technical connection data that may include IP addresses, routing information, system configuration, and traffic information. Cloudflare also produces aggregate technical metrics.",
+        "The portfolio’s versioned configuration disables Workers Logs, log exports, dependency instrumentation, Wrangler telemetry, and browser-side visitor analytics. To deliver static files, terminate TLS, cache resources, apply redirects, and secure the site, Cloudflare nevertheless processes technical connection data that may include IP addresses, routing information, system configuration, and traffic information. Cloudflare also produces aggregate technical metrics.",
       purposeTitle: "Purposes and legal basis",
       purposeText:
         "Received messages are processed to reply to their sender. The infrastructure is used to deliver content, cache resources, keep the service available, and protect the website. Processing determined by the publisher relies on his legitimate interest in responding to messages and providing a reliable and secure website. Cloudflare’s Privacy Policy describes the purposes and legal bases it applies to processing it determines itself.",
@@ -393,9 +393,9 @@ export const copy = {
         "Depending on applicable law, you may request access to, rectification or erasure of, restriction of, or objection to the processing of your data. You may also lodge a complaint with the CNIL. To exercise your rights in relation to this website, contact Ethan Brosselard by email.",
       changesTitle: "Changes to this policy",
       changesText:
-        "This policy describes the website’s current configuration. It will be updated before adding a form, analytics tool, tracking cookie, or embedded third-party content.",
+        "This policy was reviewed after the first production deployment on 8 September 2026. It will be updated before adding a form, analytics tool, tracking cookie, embedded third-party content, or Cloudflare mechanism that changes the processing described here.",
       updatedLabel: "Last updated",
-      updatedValue: "4 September 2026",
+      updatedValue: "8 September 2026",
     },
     project: {
       back: "All projects",

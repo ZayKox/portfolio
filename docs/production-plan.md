@@ -444,7 +444,7 @@ son registrar et ses enregistrements DNS restent à vérifier avant la bascule.
 - [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
 - [x] `[QA]` Tester les liens internes et externes, redirections comprises ; GitHub répond `200` et le refus LinkedIn `999` reste explicitement non concluant dans `docs/qa/external-links-review-2026-08-02.md`.
 - [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
-- [ ] `[QA]` Vérifier que Workers Static Assets sert réellement cette page avec
+- [x] `[QA]` Vérifier que Workers Static Assets sert réellement cette page avec
       un statut 404 sur une preview et en production.
 
 **Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
@@ -504,7 +504,7 @@ Le site est statique et n’a besoin d’aucun secret en production. Toute futur
       avec `immutable`, uniquement les ressources Astro hashées.
 - [x] `[QA]` Vérifier statiquement les règles de `public/_headers` ; la preuve
       réseau reste à répéter sur Workers.
-- [ ] `[QA]` Répéter le contrôle des en-têtes sur la production.
+- [x] `[QA]` Répéter le contrôle des en-têtes sur la production.
 - [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
 - [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
 - [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité connue au 2 août 2026, preuve et limites consignées dans `docs/qa/dependency-audit-2026-08-02.md`.
@@ -574,7 +574,7 @@ L’automatisation détecte seulement une partie des problèmes ; la recette hum
 - [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
 - [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
 - [x] `[Dev]` Tester le contenu de la page 404 dans le build local.
-- [ ] `[QA]` Contrôler son statut HTTP derrière Workers Static Assets.
+- [x] `[QA]` Contrôler son statut HTTP derrière Workers Static Assets.
 - [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
 - [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
 - [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
@@ -728,17 +728,17 @@ Configuration attendue :
       la phase 15. Le job approuvé laissera alors `wrangler deploy` rattacher le
       Custom Domain et Cloudflare créer le DNS associé ainsi que le certificat
       TLS.
-- [ ] `[Ethan]` Créer `www` comme enregistrement proxifié réservé à une Redirect
+- [x] `[Ethan]` Créer `www` comme enregistrement proxifié réservé à une Redirect
       Rule permanente vers l’apex ; il ne sert jamais le contenu directement.
-- [ ] `[Ethan/QA]` Activer **Always Use HTTPS**, ou une Redirect Rule
+- [x] `[Ethan/QA]` Activer **Always Use HTTPS**, ou une Redirect Rule
       équivalente, après avoir vérifié que le service existant accepte HTTPS et
       avant d’ouvrir la gate de production.
 - [x] `[Dev/QA]` Disposer d’une option de smoke test qui refuse les redirections
       temporaires, destinations non canoniques, chemins ou paramètres perdus et
       cookies sur les variantes déclarées.
-- [ ] `[QA]` Vérifier DNS, certificat TLS, HTTP vers HTTPS, redirection `www` et
+- [x] `[QA]` Vérifier DNS, certificat TLS, HTTP vers HTTPS, redirection `www` et
       absence de boucle, avec conservation du chemin et des paramètres.
-- [ ] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
+- [x] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
 
 **Gate 13 :** preview privée validée, secrets externes, zone et redirections
 préparées, valeur de restauration connue, messagerie préservée et configuration
@@ -797,9 +797,9 @@ jusqu’à la phase 15.
 - [ ] `[QA]` Suivre le déploiement GitHub Actions et Workers jusqu’au succès.
 - [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné et que la
       vérification anti-régression l’a comparé au HEAD courant de `main`.
-- [ ] `[QA]` Exécuter le smoke test production immédiatement.
+- [x] `[QA]` Exécuter le smoke test production immédiatement.
 - [ ] `[QA]` Tester accueil FR/EN, projets, contact, légal, confidentialité, 404, thème et langue.
-- [ ] `[QA]` Vérifier HTTPS, redirections, canonical, sitemap, robots, CSP et autres en-têtes.
+- [x] `[QA]` Vérifier HTTPS, redirections, canonical, sitemap, robots, CSP et autres en-têtes.
 - [ ] `[QA]` Vérifier les logs de build et la console navigateur.
 - [ ] `[Dev]` Créer le tag `v0.1.0` pour le jalon A ou `v1.0.0` pour le jalon B, uniquement après le smoke test réussi.
 - [ ] `[Dev]` Renseigner la fiche de preuve de release ci-dessous.

@@ -7,8 +7,9 @@ Cette liste n’est pas affichée sur le site.
 - Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
 - Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
 - Relire le rendu de la refonte éditoriale autorisée le 6 septembre 2026 et des trois cartes de partage Violet Field ; la signature ZayKo est déjà validée.
-- Configurer les environnements et secrets GitHub, Cloudflare Access et les
-  variables de pilotage décrits dans le runbook.
+- La production GitHub Actions, ses secrets d’environnement et sa variable de
+  pilotage ont été configurés et validés le 8 septembre 2026. La recette d’une
+  preview protégée par Cloudflare Access reste à exécuter et à consigner.
 - Conserver l’adresse de contact publique validée ; une adresse dédiée reste un choix éventuel.
 - Garder l’adresse email absente du JSON-LD, conformément à la décision validée pour limiter le scraping.
 - Conserver le lancement validé sans mesure d’audience côté navigateur, cookie
@@ -62,12 +63,15 @@ Le portrait, les études de cas complètes et les captures peuvent rester masqu�
   recopié tous les enregistrements existants, notamment ceux de messagerie ;
   réaffecter ensuite l’apex au Custom Domain du Worker si un service web y est
   actuellement configuré.
-- Créer `www.ethanbrosselard.com` uniquement comme variante redirigée vers l’apex,
-  puis vérifier que chemin et paramètres sont conservés.
-- Activer le pipeline seulement après avoir configuré ses environnements,
-  secrets et protections ; les paramètres `SITE_URL`, `SITE_NOINDEX` et Access
-  sont déjà imposés par les workflows versionnés.
-- Relire les mentions légales et la confidentialité après le déploiement, en particulier l’hébergeur réellement retenu et la conservation des journaux techniques.
+- `www.ethanbrosselard.com` redirige vers l’apex canonique en conservant chemin
+  et paramètres ; HTTP redirige aussi vers HTTPS.
+- Les paramètres de production `SITE_URL=https://ethanbrosselard.com` et
+  `SITE_NOINDEX=false` ont été validés sur le déploiement. Les previews doivent
+  conserver `SITE_NOINDEX=true` et Cloudflare Access.
+- Les mentions légales et la confidentialité ont été relues le 8 septembre
+  2026 pour refléter Workers Static Assets, TLS, les redirections et la
+  désactivation de l’observabilité configurée. Les durées réelles de
+  conservation côté Cloudflare restent à confirmer auprès du fournisseur.
 - Ne pas activer de mesure d’audience côté navigateur au lancement ; distinguer
   ce choix des métriques réseau agrégées produites par Cloudflare.
 - Valider visuellement la carte Open Graph Violet Field déjà intégrée.
