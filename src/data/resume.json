@@ -106,30 +106,40 @@
       { "name": "Français", "level": "Langue maternelle" },
       { "name": "Anglais", "level": "Professionnel" }
     ],
-    "projects": [
+    "projectGroups": [
       {
-        "title": "Palimia",
-        "description": "Projet personnel pour réunir le suivi de films, séries et jeux vidéo dans une bibliothèque culturelle personnelle."
+        "title": "Projets personnels",
+        "items": [
+          {
+            "title": "Palimia",
+            "description": "Projet personnel pour réunir le suivi de films, séries et jeux vidéo dans une bibliothèque culturelle personnelle."
+          },
+          {
+            "title": "Ludosaic",
+            "description": "Projet personnel de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu."
+          }
+        ]
       },
       {
-        "title": "Ludosaic",
-        "description": "Projet personnel de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu."
-      },
-      {
-        "title": "Hackathon de terminale",
-        "description": "Création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie."
-      },
-      {
-        "title": "Nuit de l’Info 2021",
-        "description": "Création en une nuit d’un système de recherche répertoriant les sauvetages en mer."
-      },
-      {
-        "title": "Nuit de l’Info 2022",
-        "description": "Création en une nuit d’une application de sensibilisation au VIH."
-      },
-      {
-        "title": "Hackathon IA",
-        "description": "Projet de dix jours en équipe de trois pour des entreprises partenaires du master."
+        "title": "Hackathons — du plus récent au plus ancien",
+        "items": [
+          {
+            "title": "Hackathon IA",
+            "description": "Projet de dix jours en équipe de trois pour des entreprises partenaires du master."
+          },
+          {
+            "title": "Nuit de l’Info 2022",
+            "description": "Création en une nuit d’une application de sensibilisation au VIH."
+          },
+          {
+            "title": "Nuit de l’Info 2021",
+            "description": "Création en une nuit d’un système de recherche répertoriant les sauvetages en mer."
+          },
+          {
+            "title": "Hackathon de terminale",
+            "description": "Création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie."
+          }
+        ]
       }
     ]
   },
@@ -237,30 +247,40 @@
       { "name": "French", "level": "Native" },
       { "name": "English", "level": "Professional working proficiency" }
     ],
-    "projects": [
+    "projectGroups": [
       {
-        "title": "Palimia",
-        "description": "Personal project bringing movie, TV series, and video game tracking into a personal cultural library."
+        "title": "Personal projects",
+        "items": [
+          {
+            "title": "Palimia",
+            "description": "Personal project bringing movie, TV series, and video game tracking into a personal cultural library."
+          },
+          {
+            "title": "Ludosaic",
+            "description": "Personal project for a modular web platform bringing together several mini-games and play modes."
+          }
+        ]
       },
       {
-        "title": "Ludosaic",
-        "description": "Personal project for a modular web platform bringing together several mini-games and play modes."
-      },
-      {
-        "title": "High-school hackathon",
-        "description": "Built a quiz application in three days to help students revise history and geography."
-      },
-      {
-        "title": "Nuit de l’Info 2021",
-        "description": "Built a search system cataloguing sea rescues during an overnight challenge."
-      },
-      {
-        "title": "Nuit de l’Info 2022",
-        "description": "Built an HIV-awareness application during an overnight challenge."
-      },
-      {
-        "title": "AI hackathon",
-        "description": "Ten-day project in a team of three for companies partnered with the master’s programme."
+        "title": "Hackathons — most recent first",
+        "items": [
+          {
+            "title": "AI hackathon",
+            "description": "Ten-day project in a team of three for companies partnered with the master’s programme."
+          },
+          {
+            "title": "Nuit de l’Info 2022",
+            "description": "Built an HIV-awareness application during an overnight challenge."
+          },
+          {
+            "title": "Nuit de l’Info 2021",
+            "description": "Built a search system cataloguing sea rescues during an overnight challenge."
+          },
+          {
+            "title": "High-school hackathon",
+            "description": "Built a quiz application in three days to help students revise history and geography."
+          }
+        ]
       }
     ]
   }

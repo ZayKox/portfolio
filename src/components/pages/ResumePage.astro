@@ -153,13 +153,20 @@ const resumeUrl = profile.resume[locale];
 
     <section class="resume-section">
       <h2>{t.resume.projects}</h2>
-      <div class="resume-project-list">
+      <div class="resume-project-groups">
         {
-          document.projects.map((project) => (
-            <article>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-            </article>
+          document.projectGroups.map((group) => (
+            <div class="resume-project-group">
+              <h3>{group.title}</h3>
+              <div class="resume-project-list">
+                {group.items.map((project) => (
+                  <article>
+                    <h4>{project.title}</h4>
+                    <p>{project.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           ))
         }
       </div>
