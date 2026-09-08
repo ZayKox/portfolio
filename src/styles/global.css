@@ -570,10 +570,12 @@ h3 {
 }
 
 .hero-panel-identity strong {
+  max-width: 10ch;
   font-family: var(--font-display);
-  font-size: clamp(4rem, 6vw, 6rem);
+  font-size: clamp(2.5rem, 4vw, 4rem);
   letter-spacing: -0.07em;
-  line-height: 0.9;
+  line-height: 0.92;
+  text-wrap: balance;
 }
 
 .hero-panel-identity span {
