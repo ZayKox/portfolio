@@ -82,9 +82,10 @@ Ethan confirmed on September 8, 2026 that the human verification work was comple
 
 ### P0 — close the current release state
 
-- [ ] Merge or otherwise integrate the two validated commits currently present on `develop` but not on `main`:
+- [ ] Integrate the validated work currently present on `develop` but not on `main`, including:
   - `62be2a0 docs(seo): document indexing runbook`;
-  - `a6dd427 content(legal): align notices with production`.
+  - `a6dd427 content(legal): align notices with production`;
+  - the English documentation and roadmap update recorded after those commits.
 - [ ] Confirm the production deployment created from the resulting `main` SHA.
 - [ ] Archive a concise release record containing the version, timestamp, Git SHA, CI run, production deployment identifier, smoke-test result, and rollback target.
 - [ ] Create the `v0.1.0` tag after the final production SHA and release record are confirmed.
