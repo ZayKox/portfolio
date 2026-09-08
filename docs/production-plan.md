@@ -852,8 +852,8 @@ Notes :
 
 **Priorité : P1 juste après la production**
 
-- [ ] `[Ethan]` Ajouter et vérifier la propriété de domaine dans Google Search Console.
-- [ ] `[Ethan]` Soumettre `sitemap-index.xml` dans le rapport Sitemaps.
+- [x] `[Ethan]` Ajouter et vérifier la propriété de domaine dans Google Search Console.
+- [x] `[Ethan]` Soumettre `sitemap-index.xml` dans le rapport Sitemaps.
 - [ ] `[QA]` Inspecter l’accueil FR, l’accueil EN et les deux projets.
 - [ ] `[QA]` Vérifier dans les jours suivants l’indexation, les canonical choisies et les erreurs structurées.
 - [ ] `[QA]` Vérifier les Core Web Vitals lorsqu’il existe assez de données terrain.
@@ -862,6 +862,10 @@ Notes :
 - [ ] `[Ethan]` Ajouter le domaine au profil GitHub et à LinkedIn.
 - [ ] `[Dev]` Publier les études de cas et le CV progressivement via le même
       flux branche courte → PR → preview manuelle → fusion vers `main`.
+
+La procédure reproductible de déploiement indexable, de validation distante et
+de déclaration dans Search Console est documentée dans
+[`docs/seo-indexing-runbook.md`](seo-indexing-runbook.md).
 
 ## Maintenance
 
