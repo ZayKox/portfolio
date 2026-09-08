@@ -648,6 +648,9 @@ h3 {
 
 .section-heading {
   margin-bottom: var(--section-heading-space);
+}
+
+.projects-section .section-heading {
   padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
