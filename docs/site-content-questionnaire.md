@@ -1,1075 +1,1075 @@
-# Questionnaire de contenu du portfolio
+# Portfolio Content Questionnaire
 
-Ce document rassemble toutes les informations nécessaires pour finaliser le site, les études de cas et le CV. Tu peux le remplir progressivement, avec des réponses brutes en français : l’agent pourra ensuite les rédiger proprement, les traduire et les intégrer.
+This document brings together all the information necessary to finalize the site, the case studies and the CV. You can fill it in gradually, with raw answers in English: the agent will then be able to write them up properly, translate them and integrate them.
 
-## Règles avant de remplir
+## Rules before filling
 
-Ce fichier est versionné dans Git et peut devenir public avec le dépôt. Considère toute valeur écrite ici comme destinée à être publique et committable.
+This file is versioned in Git and can become public with the repository. Consider any value written here intended to be public and committable.
 
-- Ne colle jamais de mot de passe, clé API, token, adresse privée, numéro de téléphone privé, document d’identité ou information confidentielle.
-- Pour une donnée nécessaire mais sensible, écris seulement `PRIVÉ — transmis séparément`.
-- Pour ne pas publier une réponse, utilise `PRIVÉ — ne pas publier`.
-- Si tu ne sais pas encore, garde `À REMPLIR` ou utilise `À DÉCIDER`.
-- Une réponse brute peut être imparfaite ; ne cherche pas à rédiger comme un texte marketing.
-- Chaque chiffre doit avoir une date, un contexte et une source vérifiable.
-- Ne valide jamais une information concernant un tiers sans son accord.
+- Never paste a password, API key, token, private address, private telephone number, identity document or confidential information.
+- For necessary but sensitive data, write only `PRIVATE — provided separately`.
+- To not post a reply, use `PRIVATE — do not publish`.
+- If you don't know yet, keep `TO COMPLETE` or use `TO DECIDE`.
+- A raw answer may be imperfect; do not try to write like a marketing text.
+- Each figure must have a date, context and verifiable source.
+- Never validate information concerning a third party without their consent.
 
-### Statuts autorisés
+### Authorized statuses
 
-| Statut                   | Signification                                                 |
-| ------------------------ | ------------------------------------------------------------- |
-| `PUBLIC — VALIDÉ`        | L’information peut être publiée et traduite.                  |
-| `PUBLIC — À RELIRE`      | Le fond est publiable, mais la formulation doit être validée. |
-| `À CONFIRMER`            | L’information existe mais n’est pas assez sûre pour le site.  |
-| `À DÉCIDER`              | Un choix doit être fait avant intégration.                    |
-| `À REMPLIR`              | Aucune réponse fournie.                                       |
-| `BROUILLON`              | La section est en cours et ne peut pas être intégrée.         |
-| `PRIVÉ — ne pas publier` | Ne jamais intégrer au site ou au CV public.                   |
-| `NON APPLICABLE`         | La question ne concerne pas Ethan ou le projet.               |
+| Status                     | Meaning                                                          |
+| -------------------------- | ---------------------------------------------------------------- |
+| `PUBLIC — VALIDATED`       | The information can be published and translated.                 |
+| `PUBLIC — REVIEW REQUIRED` | The substance is publishable, but the wording must be validated. |
+| `TO CONFIRM`               | The information exists but is not secure enough for the site.    |
+| `TO DECIDE`                | A choice must be made before integration.                        |
+| `TO COMPLETE`              | No response provided.                                            |
+| `DRAFT`                    | The section is in progress and cannot be integrated.             |
+| `PRIVATE — do not publish` | Never embed on public site or CV.                                |
+| `NOT APPLICABLE`           | The question is not about Ethan or the project.                  |
 
-L’agent ne doit intégrer automatiquement que les éléments `PUBLIC — VALIDÉ`.
+The agent should only automatically integrate `PUBLIC — VALIDATED` elements.
 
-### Portée et priorité des statuts
+### Status scope and priority
 
-1. Le statut d’un champ est prioritaire sur tous les autres.
-2. Un `Statut global` placé à la fin d’un bloc s’applique uniquement aux réponses de ce bloc qui n’ont pas leur propre statut.
-3. Un bloc `PUBLIC — VALIDÉ` valide ses réponses substantielles sans statut propre ; les marqueurs `À REMPLIR`, `À CONFIRMER`, `À DÉCIDER`, `NON APPLICABLE` et `PRIVÉ` ne deviennent jamais publiables par héritage.
-4. Le statut global du questionnaire décrit seulement son avancement. Il ne rend jamais tous les champs publiables.
-5. Une checklist cochée indique qu’une revue a eu lieu, mais ne remplace pas un statut de publication.
+1. The status of a field takes priority over all others.
+2. A `Overall status` placed at the end of a block only applies to responses in that block that do not have their own status.
+3. A `PUBLIC — VALIDATED` block validates its substantial responses without its own status; the tags `TO COMPLETE`, `TO CONFIRM`, `TO DECIDE`, `NOT APPLICABLE` and `PRIVATE` never become publishable through inheritance.
+4. The overall status of the questionnaire only describes its progress. It never makes all fields publishable.
+5. A checked checklist indicates that a review has taken place, but does not replace a publication status.
 
-### Niveaux de priorité
+### Priority levels
 
-- **A** : nécessaire pour le premier lancement public minimal.
-- **B** : nécessaire pour la V1 éditoriale complète.
-- **Optionnel** : peut être ajouté plus tard sans bloquer la production.
+- **A**: Required for minimal first public launch.
+- **B**: necessary for the complete editorial V1.
+- **Optional**: can be added later without blocking production.
 
-## 0. Suivi du questionnaire
+## 0. Follow-up questionnaire
 
 ```text
-Statut global : BROUILLON
-Jalon de lancement choisi (A minimal / B complet) : À DÉCIDER
-Date cible de mise en ligne : À DÉCIDER
-Dernière mise à jour par Ethan : À REMPLIR
-Dernière relecture factuelle : À REMPLIR
-Toutes les réponses PUBLIC — VALIDÉ ont été relues : non
+Overall status: DRAFT
+Chosen launch milestone (A minimum / B full): TO DECIDE
+Target upload date: TO DECIDE
+Last updated by Ethan: TO COMPLETE
+Last factual proofreading: TO COMPLETE
+All PUBLIC — VALIDATED responses have been review: no
 ```
 
-### Avancement
+### Progress
 
-- [ ] Identité publique relue.
-- [ ] Positionnement relu.
-- [ ] Accueil validé.
-- [ ] À propos validé.
-- [ ] Expériences et formations validées.
-- [ ] Compétences validées avec preuves.
-- [ ] Palimia validé.
-- [ ] Ludosaic validé.
-- [ ] Autres projets renseignés.
-- [ ] Médias autorisés et fournis.
-- [ ] CV complet.
-- [ ] Contact, SEO et domaine décidés.
-- [ ] Légal et confidentialité décidés.
-- [ ] Design final validé.
-- [ ] Version anglaise relue.
+- [ ] Public identity review.
+- [ ] Positioning review.
+- [ ] Home validated.
+- [ ] About validated.
+- [ ] Validated experiences and training.
+- [ ] Skills validated with proof.
+- [ ] Palimia validated.
+- [ ] Ludosaic validated.
+- [ ] Other projects indicated.
+- [ ] Authorized and provided media.
+- [ ] Complete CV.
+- [ ] Contact, SEO and domain decided.
+- [ ] Legal and confidentiality decided.
+- [ ] Final design validated.
+- [ ] Proofread English version.
 
-## 1. Identité publique
+## 1. Public identity
 
-### Informations déjà fournies
+### Information already provided
 
-| Champ              | Réponse actuelle                                        | Statut              | Priorité |
-| ------------------ | ------------------------------------------------------- | ------------------- | -------- |
-| Nom affiché        | Ethan Brosselard                                        | `PUBLIC — VALIDÉ`   | A        |
-| Pseudo             | Ne pas afficher sur le site ni dans les métadonnées     | `PUBLIC — VALIDÉ`   | A        |
-| Localisation       | Paris, France                                           | `PUBLIC — VALIDÉ`   | A        |
-| Email              | ethan.brosselard@gmail.com                              | `PUBLIC — VALIDÉ`   | A        |
-| GitHub             | https://github.com/ZayKox                               | `PUBLIC — VALIDÉ`   | A        |
-| LinkedIn           | https://www.linkedin.com/in/ethan-brosselard-507334237/ | `PUBLIC — VALIDÉ`   | A        |
-| Langues parlées    | Français et anglais                                     | `PUBLIC — À RELIRE` | A        |
-| Photo publique     | Non pour le moment                                      | `PUBLIC — VALIDÉ`   | A        |
-| Palette principale | Noir, blanc et gris neutres                             | `PUBLIC — VALIDÉ`   | A        |
-| Couleur secondaire | Violet                                                  | `PUBLIC — VALIDÉ`   | A        |
-| Couleurs à éviter  | Vert et jaune                                           | `PUBLIC — VALIDÉ`   | A        |
-| Thèmes             | Clair et sombre                                         | `PUBLIC — VALIDÉ`   | A        |
+| Field            | Current answer                                          | Status                     | Priority |
+| ---------------- | ------------------------------------------------------- | -------------------------- | -------- |
+| Displayed name   | Ethan Brosselard                                        | `PUBLIC — VALIDATED`       | A        |
+| Nickname         | Do not display on site or in metadata                   | `PUBLIC — VALIDATED`       | A        |
+| Location         | Paris, France                                           | `PUBLIC — VALIDATED`       | A        |
+| Email            | ethan.brosselard@gmail.com                              | `PUBLIC — VALIDATED`       | A        |
+| GitHub           | https://github.com/ZayKox                               | `PUBLIC — VALIDATED`       | A        |
+| LinkedIn         | https://www.linkedin.com/in/ethan-brosselard-507334237/ | `PUBLIC — VALIDATED`       | A        |
+| Spoken languages | French and English                                      | `PUBLIC — REVIEW REQUIRED` | A        |
+| Public photo     | No at the moment                                        | `PUBLIC — VALIDATED`       | A        |
+| Primary palette  | Neutral black, white and gray                           | `PUBLIC — VALIDATED`       | A        |
+| Secondary color  | Purple                                                  | `PUBLIC — VALIDATED`       | A        |
+| Colors to avoid  | Green and yellow                                        | `PUBLIC — VALIDATED`       | A        |
+| Themes           | Light and Dark                                          | `PUBLIC — VALIDATED`       | A        |
 
-### À compléter
+### To be completed
 
 ```text
-Titre professionnel final : À REMPLIR
-Statut : À CONFIRMER
+Final professional title: TO COMPLETE
+Status: TO CONFIRM
 
-Prononciation du nom si utile : À REMPLIR
-Statut : NON APPLICABLE
+Pronunciation of the name if useful: TO COMPLETE
+Status: NOT APPLICABLE
 
-Pronoms à afficher : À REMPLIR
-Statut : NON APPLICABLE
+Pronouns to display: TO COMPLETE
+Status: NOT APPLICABLE
 
-Forme courte préférée du nom : À REMPLIR
-Statut : À CONFIRMER
+Preferred short form of name: TO COMPLETE
+Status: TO CONFIRM
 
-Faut-il afficher le pseudo partout, seulement à certains endroits ou jamais ? : jamais ; seule l’URL GitHub peut contenir le nom du compte
-Statut : PUBLIC — VALIDÉ
+Should the nickname be displayed everywhere, only in certain places or never? : Never ; only the GitHub URL can contain the account name
+Status: PUBLIC — VALIDATED
 
-Localisation exacte à afficher (Paris / Île-de-France / France) : Paris, France
-Statut : PUBLIC — VALIDÉ
+Exact location to display (Paris / Île-de-France / France): Paris, France
+Status: PUBLIC — VALIDATED
 
-Niveau de français à afficher dans le CV : À REMPLIR
-Statut : À CONFIRMER
+Level of French to display in the CV: TO COMPLETE
+Status: TO CONFIRM
 
-Niveau d’anglais à afficher dans le CV : À REMPLIR
-Statut : À CONFIRMER
+Level of English to display in the CV: TO COMPLETE
+Status: TO CONFIRM
 
-Poste actuel publiable : À REMPLIR
-Statut : À CONFIRMER
+Current publishable position: TO COMPLETE
+Status: TO CONFIRM
 
-Employeur actuel publiable : À REMPLIR
-Statut : À CONFIRMER
+Current publishable employer: TO COMPLETE
+Status: TO CONFIRM
 
-Disponibilité ou recherche d’emploi à afficher : aucune recherche affichée
-Statut : PUBLIC — VALIDÉ
+Availability or job search to display: no search displayed
+Status: PUBLIC — VALIDATED
 
-Autres liens publics (Malt, Bluesky, X, blog, etc.) : À REMPLIR
-Statut : NON APPLICABLE
+Other public links (Malt, Bluesky, X, blog, etc.): TO COMPLETE
+Status: NOT APPLICABLE
 
-Adresse email dédiée au portfolio souhaitée : À DÉCIDER
-Statut : À CONFIRMER
+Email address dedicated to the desired portfolio: TO DECIDE
+Status: TO CONFIRM
 ```
 
-## 2. Objectif et positionnement
+## 2. Objective and positioning
 
 ```text
-Objectif principal du portfolio : visibilité personnelle
-Statut : PUBLIC — VALIDÉ
+Main objective of the portfolio: personal visibility
+Status: PUBLIC — VALIDATED
 
-Public principal : France
-Statut : PUBLIC — VALIDÉ
+Primary audience: France
+Status: PUBLIC — VALIDATED
 
-Public secondaire éventuel : À REMPLIR
-Statut : À CONFIRMER
+Possible secondary audience: TO COMPLETE
+Status: TO CONFIRM
 
-Que doit comprendre une personne après 10 secondes sur l’accueil ? : À REMPLIR
-Statut : À REMPLIR
+What should a person understand after 10 seconds on the home page? : TO COMPLETE
+Status: TO COMPLETE
 
-Que doit-elle retenir après avoir parcouru tout le site ? : À REMPLIR
-Statut : À REMPLIR
+What should she remember after browsing the entire site? : TO COMPLETE
+Status: TO COMPLETE
 
-Action principale attendue (explorer les projets / GitHub / contact / autre) : À REMPLIR
-Statut : À CONFIRMER
+Expected main action (explore projects / GitHub / contact / other): TO COMPLETE
+Status: TO CONFIRM
 
-Secteurs ou sujets à mettre en avant : informatique, intérêt pour l’IA
-Statut : PUBLIC — À RELIRE
+Sectors or subjects to highlight: IT, interest in AI
+Status: PUBLIC — REVIEW REQUIRED
 
-Secteurs ou sujets à ne pas mettre en avant : À REMPLIR
-Statut : À CONFIRMER
+Sectors or subjects not to be highlighted: TO COMPLETE
+Status: TO CONFIRM
 
-Types de projets que tu aimerais construire ensuite : À REMPLIR
-Statut : À REMPLIR
+Types of projects you would like to build next: TO COMPLETE
+Status: TO COMPLETE
 
-Trois mots qui doivent décrire ton profil : À REMPLIR
-Statut : À REMPLIR
+Three words that should describe your profile: TO COMPLETE
+Status: TO COMPLETE
 
-Trois formulations que tu ne veux jamais lire à ton sujet : À REMPLIR
-Statut : À REMPLIR
+Three wordings you never want to read about yourself: TO COMPLETE
+Status: TO COMPLETE
 
-Positionnement actuel proposé — « développeur polyvalent et créateur numérique » : À VALIDER / À MODIFIER
-Statut : À CONFIRMER
+Current proposed positioning — “versatile developer and digital creator”: TO VALIDATE / TO MODIFY
+Status: TO CONFIRM
 
-Place réelle de l’IA aujourd’hui (apprentissage / projets / usage professionnel) : À REMPLIR
-Statut : À CONFIRMER
+Real place of AI today (learning / projects / professional use): TO COMPLETE
+Status: TO CONFIRM
 ```
 
-## 3. Accueil
+## 3. Home
 
-Réponds avec tes mots, même sous forme de notes.
+Reply in your own words, even as notes.
 
 ```text
-Phrase d’accroche idéale : À REMPLIR
-Statut : À REMPLIR
+Ideal catchphrase: TO COMPLETE
+Status: TO COMPLETE
 
-Présentation courte en deux ou trois phrases : À REMPLIR
-Statut : À REMPLIR
+Short presentation in two or three sentences: TO COMPLETE
+Status: TO COMPLETE
 
-Le problème ou besoin que tu aimes résoudre : À REMPLIR
-Statut : À REMPLIR
+The problem or need you like to solve: TO COMPLETE
+Status: TO COMPLETE
 
-Ce que tu construis actuellement : À REMPLIR
-Statut : À REMPLIR
+What you are currently building: TO COMPLETE
+Status: TO COMPLETE
 
-Domaines à montrer dès l’accueil : À REMPLIR
-Statut : À REMPLIR
+Areas to be shown on the home page: TO COMPLETE
+Status: TO COMPLETE
 
-Projet à mettre en premier : Palimia
-Statut : PUBLIC — VALIDÉ le 29 août 2026
+Project to put first: Palimia
+Status: PUBLIC — VALIDATED on August 29, 2026
 
-Ordre des autres projets : Ludosaic en deuxième position ; FiltreAppels ne doit plus apparaître dans la sélection
-Statut : PUBLIC — VALIDÉ le 29 août 2026
+Order of other projects: Ludosaic in second position; FiltreAppels should no longer appear in the selection
+Status: PUBLIC — VALIDATED on August 29, 2026
 
-CTA principal : À REMPLIR
-Statut : À CONFIRMER
+Main CTA: TO COMPLETE
+Status: TO CONFIRM
 
-CTA secondaire : À REMPLIR
-Statut : À CONFIRMER
+Secondary CTA: TO COMPLETE
+Status: TO CONFIRM
 
-Centres d’intérêt à conserver sur l’accueil : informatique, jeux vidéo, films/séries, manga, lecture
-Statut : PUBLIC — À RELIRE
+Interests to show on the home page: IT, video games, films/series, manga, reading
+Status: PUBLIC — REVIEW REQUIRED
 
-Autres éléments importants pour l’accueil : À REMPLIR
-Statut : NON APPLICABLE
+Other important elements for reception: TO COMPLETE
+Status: NOT APPLICABLE
 ```
 
-## 4. À propos et histoire personnelle
+## 4. About and personal history
 
 ```text
-Présentation en 3 à 5 phrases : À REMPLIR
-Statut : À REMPLIR
+Presentation in 3 to 5 sentences: TO COMPLETE
+Status: TO COMPLETE
 
-Comment et quand as-tu commencé l’informatique ? : À REMPLIR
-Statut : À REMPLIR
+How and when did you start computing? : TO COMPLETE
+Status: TO COMPLETE
 
-Quel a été ton premier projet ou déclic important ? : À REMPLIR
-Statut : À REMPLIR
+What was your first project or important turning point? : TO COMPLETE
+Status: TO COMPLETE
 
-Quel chemin t’a amené à ton niveau actuel ? : À REMPLIR
-Statut : À REMPLIR
+What path brought you to your current level? : TO COMPLETE
+Status: TO COMPLETE
 
-Qu’est-ce que tu préfères construire ? : À REMPLIR
-Statut : À REMPLIR
+What is your favorite thing to build? : TO COMPLETE
+Status: TO COMPLETE
 
-Quelles parties d’un projet apprécies-tu le plus ? : À REMPLIR
-Statut : À REMPLIR
+What parts of a project do you enjoy the most? : TO COMPLETE
+Status: TO COMPLETE
 
-Comment choisis-tu une technologie ? : À REMPLIR
-Statut : À REMPLIR
+How do you choose a technology? : TO COMPLETE
+Status: TO COMPLETE
 
-Comment travailles-tu seul ? : À REMPLIR
-Statut : À REMPLIR
+How do you work alone? : TO COMPLETE
+Status: TO COMPLETE
 
-Comment travailles-tu en équipe ? : À REMPLIR
-Statut : À REMPLIR
+How do you work in a team? : TO COMPLETE
+Status: TO COMPLETE
 
-Comment gères-tu un sujet que tu ne connais pas encore ? : À REMPLIR
-Statut : À REMPLIR
+How do you handle a subject you don't know yet? : TO COMPLETE
+Status: TO COMPLETE
 
-Quelle place donnent tes projets aux tests, à l’accessibilité, à la sécurité et à la performance ? : À REMPLIR
-Statut : À REMPLIR
+What place do your projects give to testing, accessibility, security and performance? : TO COMPLETE
+Status: TO COMPLETE
 
-Qu’est-ce qui te différencie concrètement ? : À REMPLIR
-Statut : À REMPLIR
+What makes you different in concrete terms? : TO COMPLETE
+Status: TO COMPLETE
 
-Quelles valeurs veux-tu rendre visibles ? : À REMPLIR
-Statut : À REMPLIR
+What values do you want to make visible? : TO COMPLETE
+Status: TO COMPLETE
 
-Quel échec ou apprentissage important peux-tu raconter ? : À REMPLIR
-Statut : À REMPLIR
+What important failure or learning can you share? : TO COMPLETE
+Status: TO COMPLETE
 
-Que veux-tu apprendre ou explorer prochainement ? : À REMPLIR
-Statut : À REMPLIR
+What do you want to learn or explore next? : TO COMPLETE
+Status: TO COMPLETE
 
-Centres d’intérêt publics et ce qu’ils t’apportent : À REMPLIR
-Statut : À REMPLIR
+Centers of public interest and what they bring you: TO COMPLETE
+Status: TO COMPLETE
 
-Exclusions personnelles éventuelles : PRIVÉ — transmis séparément, sans détail dans ce fichier
-Statut : PRIVÉ — ne pas publier
+Possible personal exclusions: PRIVATE — provided separately, without details in this file
+Status: PRIVATE — do not publish
 ```
 
-## 5. Expériences professionnelles
+## 5. Professional experiences
 
-Duplique ce bloc pour chaque expérience. Ne renseigne que des résultats que tu peux justifier et publier.
+Duplicate this block for each experiment. Only provide results that you can justify and publish.
 
 ```text
-EXPÉRIENCE N° :
+EXPERIENCE #:
 
-Entreprise / organisation : À REMPLIR
-Statut de publication : À CONFIRMER
+Company / organization: TO COMPLETE
+Publication status: TO CONFIRM
 
-Intitulé exact : À REMPLIR
-Type de contrat : À REMPLIR
-Lieu / télétravail : À REMPLIR
-Date de début : À REMPLIR
-Date de fin ou « en cours » : À REMPLIR
+Exact title: TO COMPLETE
+Type of contract: TO COMPLETE
+Location / teleworking: TO COMPLETE
+Start date: TO COMPLETE
+End date or “in progress”: TO COMPLETE
 
-Contexte de l’entreprise ou de l’équipe : À REMPLIR
-Mission en une phrase : À REMPLIR
-Responsabilités principales : À REMPLIR
-Produits ou fonctionnalités réalisés : À REMPLIR
-Décisions ou problèmes complexes : À REMPLIR
-Collaboration avec quels métiers : À REMPLIR
-Technologies réellement utilisées : À REMPLIR
+Company or team context: TO COMPLETE
+Mission in one sentence: TO COMPLETE
+Main responsibilities: TO COMPLETE
+Products or functionalities produced: TO COMPLETE
+Complex decisions or issues: TO COMPLETE
+Collaboration with which professions: TO COMPLETE
+Technologies actually used: TO COMPLETE
 
-Résultat mesurable n°1 : À REMPLIR
-Contexte / période / source du chiffre : À REMPLIR
-Autorisation de publier ce chiffre : À CONFIRMER
+Measurable outcome #1: TO COMPLETE
+Context / period / source of the figure: TO COMPLETE
+Authorization to publish this figure: TO CONFIRM
 
-Résultat mesurable n°2 : À REMPLIR
-Contexte / période / source du chiffre : À REMPLIR
-Autorisation de publier ce chiffre : À CONFIRMER
+Measurable outcome #2: TO COMPLETE
+Context / period / source of the figure: TO COMPLETE
+Authorization to publish this figure: TO CONFIRM
 
-Ce que tu as appris : À REMPLIR
-Lien public éventuel : À REMPLIR
-Personne ou organisation à créditer : À REMPLIR
-Informations confidentielles à exclure : PRIVÉ — transmis séparément
+What you learned: TO COMPLETE
+Possible public link: TO COMPLETE
+Person or organization to be credited: TO COMPLETE
+Confidential information to exclude: PRIVATE — provided separately
 
-Accord explicite pour nommer l’employeur ou le client : À CONFIRMER
-Accord explicite pour décrire les produits et missions : À CONFIRMER
-Accord explicite pour publier les résultats : À CONFIRMER
-Contraintes NDA ou confidentialité : PRIVÉ — transmis séparément
+Explicit agreement to name the employer or client: TO CONFIRM
+Explicit agreement to describe the products and missions: TO CONFIRM
+Explicit agreement to publish the results: TO CONFIRM
+NDA or confidentiality constraints: PRIVATE — provided separately
 
-Statut global de cette expérience : À CONFIRMER
+Overall status of this experiment: TO CONFIRM
 ```
 
-### Expériences à inclure
+### Experiences to include
 
-- [ ] Expérience actuelle.
-- [ ] Expériences précédentes.
-- [ ] Alternance ou stage.
-- [ ] Freelance ou bénévolat pertinent.
-- [ ] Contribution open source significative.
+- [ ] Current experience.
+- [ ] Previous experiences.
+- [ ] Work-study or internship.
+- [ ] Freelance or relevant volunteering.
+- [ ] Significant open source contribution.
 
-## 6. Études, formations et certifications
+## 6. Studies, training and certifications
 
-Duplique les blocs nécessaires.
+Duplicates the necessary blocks.
 
 ```text
-FORMATION N° :
+TRAINING N°:
 
-Établissement / organisme : À REMPLIR
-Intitulé exact : À REMPLIR
-Diplôme ou niveau obtenu : À REMPLIR
-Spécialité : À REMPLIR
-Date de début : À REMPLIR
-Date de fin : À REMPLIR
-Lieu : À REMPLIR
-Mention publiable : À REMPLIR
-Projet ou apprentissage marquant : À REMPLIR
-Lien officiel : À REMPLIR
-Statut de publication : À CONFIRMER
+Establishment / organization: TO COMPLETE
+Exact title: TO COMPLETE
+Diploma or level obtained: TO COMPLETE
+Specialty: TO COMPLETE
+Start date: TO COMPLETE
+End date: TO COMPLETE
+Location: TO COMPLETE
+Publishable notice: TO COMPLETE
+Project or significant learning: TO COMPLETE
+Official link: TO COMPLETE
+Publication status: TO CONFIRM
 ```
 
 ```text
-CERTIFICATION N° :
+CERTIFICATION NO.:
 
-Nom exact : À REMPLIR
-Organisme : À REMPLIR
-Date d’obtention : À REMPLIR
-Date d’expiration : À CONFIRMER
-Identifiant ou URL vérifiable : À REMPLIR
-Compétence réellement validée : À REMPLIR
-Statut de publication : À CONFIRMER
+Exact name: TO COMPLETE
+Organization: TO COMPLETE
+Date obtained: TO COMPLETE
+Expiry date: TO CONFIRM
+Verifiable identifier or URL: TO COMPLETE
+Competency actually validated: TO COMPLETE
+Publication status: TO CONFIRM
 ```
 
-## 7. Compétences et preuves
+## 7. Skills and evidence
 
-Ne donne pas de pourcentages. Pour chaque compétence, indique un niveau descriptif et une preuve réelle.
+Does not give percentages. For each skill, indicate a descriptive level and actual evidence.
 
-Niveaux conseillés : `utilisé en production`, `utilisé sur projet personnel avancé`, `pratiqué`, `en apprentissage`.
+Recommended levels: `used in production`, `used in an advanced personal project`, `practiced`, `currently learning`.
 
-| Domaine ou technologie  | Niveau descriptif | Depuis quand | Preuve/projet | À mettre en avant ? | Statut        |
-| ----------------------- | ----------------- | ------------ | ------------- | ------------------- | ------------- |
-| Architecture logicielle | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Frontend web            | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Backend / API           | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Bases de données        | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Android natif           | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Tests / qualité         | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Accessibilité           | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Sécurité                | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| CI/CD / exploitation    | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| IA / machine learning   | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| UX / UI                 | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
-| Autre                   | À REMPLIR         | À REMPLIR    | À REMPLIR     | À REMPLIR           | `À CONFIRMER` |
+| Domain or technology  | Descriptive level | Since when  | Proof/project | To highlight? | Status       |
+| --------------------- | ----------------- | ----------- | ------------- | ------------- | ------------ |
+| Software architecture | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Web frontend          | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Backend / API         | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Databases             | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Native Android        | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Testing / quality     | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Accessibility         | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Security              | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| CI/CD / operations    | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| AI / machine learning | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| UX/UI                 | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
+| Other                 | TO COMPLETE       | TO COMPLETE | TO COMPLETE   | TO COMPLETE   | `TO CONFIRM` |
 
 ```text
-Technologies à absolument montrer : À REMPLIR
-Technologies à ne pas mettre en avant : À REMPLIR
-Compétence sous-estimée que tu veux montrer : À REMPLIR
-Compétence actuellement en apprentissage : À REMPLIR
-Statut global de cette section : À CONFIRMER
+Technologies to absolutely show: TO COMPLETE
+Technologies not to be highlighted: TO COMPLETE
+Underrated skill you want to show: TO COMPLETE
+Skill currently being learned: TO COMPLETE
+Overall status of this section: TO CONFIRM
 ```
 
-## 8. Inventaire général des projets
+## 8. General inventory of projects
 
-Ajoute uniquement les projets dont l’existence peut être rendue publique. N’inscris pas ici le nom ou l’existence d’un projet confidentiel. Utilise `draft`, `teaser` ou `published` comme cible.
+Adds only projects whose existence can be made public. Do not enter the name or existence of a confidential project here. Uses `draft`, `teaser` or `published` as target.
 
-| Projet   | Priorité  | Statut actuel  | Publication cible | Dépôt public ? | Démo ?      | Étude de cas ? |
-| -------- | --------- | -------------- | ----------------- | -------------- | ----------- | -------------- |
-| Palimia  | 1         | Aperçu factuel | `teaser` validé   | À CONFIRMER    | À CONFIRMER | Oui            |
-| Ludosaic | 2         | Aperçu factuel | `teaser` validé   | À CONFIRMER    | À CONFIRMER | Oui            |
-| Autre    | À REMPLIR | À REMPLIR      | À REMPLIR         | À REMPLIR      | À REMPLIR   | À REMPLIR      |
+| Project  | Priority    | Current status   | Target publication | Public repository? | Demo?       | Case study? |
+| -------- | ----------- | ---------------- | ------------------ | ------------------ | ----------- | ----------- |
+| Palimia  | 1           | Factual overview | `teaser` validated | TO CONFIRM         | TO CONFIRM  | Yes         |
+| Ludosaic | 2           | Factual overview | `teaser` validated | TO CONFIRM         | TO CONFIRM  | Yes         |
+| Other    | TO COMPLETE | TO COMPLETE      | TO COMPLETE        | TO COMPLETE        | TO COMPLETE | TO COMPLETE |
 
-Sélection Palimia + Ludosaic, ordre et publication en aperçus factuels : PUBLIC — VALIDÉ par Ethan le 29 août 2026.
-FiltreAppels est retiré de la sélection publique : PUBLIC — VALIDÉ par Ethan le 29 août 2026.
+Palimia + Ludosaic selection, order and publication in factual overviews: PUBLIC — VALIDATED by Ethan on August 29, 2026.
+FiltreAppels is removed from the public selection: PUBLIC — VALIDATED by Ethan on August 29, 2026.
 
-### Gabarit pour tout nouveau projet
+### Template for any new project
 
 ```text
-Nom public :
-Slug souhaité :
-Sous-titre :
-Type de produit :
-Année ou période :
-Statut réel :
-Publication portfolio (draft / teaser / published) :
-Projet mis en avant sur l’accueil : oui/non
+Public name:
+Desired slug:
+Subtitle:
+Product type:
+Year or period:
+Actual status:
+Portfolio publication (draft / teaser / published):
+Project highlighted on the home page: yes/no
 
-Résumé en une phrase :
-Résumé en un paragraphe :
-Pourquoi ce projet existe :
-Problème utilisateur ou personnel :
-Public cible :
-Rôle exact :
-Solo ou équipe :
-Contributions des autres personnes :
-Dates :
-Temps approximatif consacré :
+Summary in one sentence:
+Summary in one paragraph:
+Why this project exists:
+User or personal problem:
+Target audience:
+Exact role:
+Solo or team:
+Contributions from others:
+Dates:
+Approximate time spent:
 
-Fonctionnalités essentielles :
-Architecture :
-Stack réellement utilisée :
-Contraintes :
-Décisions importantes :
-Alternatives rejetées :
-Fausse piste ou erreur :
-Compromis :
-Qualité et tests :
-Accessibilité :
-Sécurité et vie privée :
-Performance :
+Essential features:
+Architecture:
+Stack actually used:
+Constraints:
+Important decisions:
+Rejected alternatives:
+False lead or error:
+Compromise:
+Quality and testing:
+Accessibility:
+Security and privacy:
+Performance:
 
-Utilisateurs ou testeurs réels :
-Retours reçus :
-Changements issus de ces retours :
-Résultats mesurables :
-Contexte, date et source de chaque mesure :
-Résultat dont tu es le plus fier :
-Limites actuelles :
-Prochaine étape :
-Ce que tu referais différemment :
+Real users or testers:
+Feedback received:
+Changes resulting from this feedback:
+Measurable results:
+Context, date and source of each measurement:
+Result you are most proud of:
+Current limits:
+Next step:
+What you would do differently:
 
-Dépôt public :
-Démo publique :
-Documentation publique :
-Téléchargement public :
-Licence :
-Crédits nécessaires :
-Détails à ne pas publier : PRIVÉ — transmis séparément
-Statut de validation global : À CONFIRMER
+Public repository:
+Public demo:
+Public documentation:
+Public download:
+License:
+Credits required:
+Details not to be published: PRIVATE — provided separately
+Overall validation status: TO CONFIRM
 ```
 
 ## 9. Palimia
 
 ```text
-Nom public : Palimia
-Consigne de publication : ne pas mentionner d'ancien nom
-Statut : PUBLIC — VALIDÉ par Ethan le 31 août 2026
+Public name: Palimia
+Publication instructions: do not mention old names
+Status: PUBLIC — VALIDATED by Ethan on August 31, 2026
 
-Pourquoi as-tu lancé Palimia ? : À REMPLIR
-Quel problème personnel voulais-tu résoudre ? : À REMPLIR
-Quel est le public cible ? : À REMPLIR
-Quelle alternative utilisais-tu avant ? : À REMPLIR
+Why did you launch Palimia? : TO COMPLETE
+What personal problem did you want to solve? : TO COMPLETE
+Who is the target audience? : TO COMPLETE
+What alternative did you use before? : TO COMPLETE
 
-Ton rôle exact : À REMPLIR
-Projet solo ou équipe ? : À REMPLIR
-Contributions externes ou outils à créditer : À REMPLIR
-Date de début : À REMPLIR
-Période de travail : À REMPLIR
-Temps approximatif consacré : À REMPLIR
+Your exact role: TO COMPLETE
+Solo project or team? : TO COMPLETE
+External contributions or tools to be credited: TO COMPLETE
+Start date: TO COMPLETE
+Work period: TO COMPLETE
+Approximate time spent: TO COMPLETE
 
-État actuel exact : le projet n'est pas en production et son lancement reste bloqué, notamment parce que les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées
-Périmètre de la première bêta prévue : films, séries et jeux vidéo ; anime, manga et livres différés jusqu'à validation de leurs sources et droits d'utilisation
-Autres preuves encore requises avant la production : environnement cible, migrations, sauvegarde et restauration, supervision, tests de staging et revue juridique finale
-Statut : PUBLIC — VALIDÉ par Ethan le 31 août 2026 ; détails techniques vérifiés dans la documentation du dépôt Palimia le même jour
-Dépôt public ou privé ? : À REMPLIR
-URL du dépôt si publique : À REMPLIR
-Démo accessible ? : À REMPLIR
-URL de démo si publique : À REMPLIR
+Exact current status: the project is not in production and its launch remains blocked, in particular because the written authorizations necessary for certain uses of supplier data have not yet all been obtained and examined
+Scope of the first planned beta: films, series and video games; anime, manga and books deferred until validation of their sources and rights of use
+Other evidence still required before production: target environment, migrations, backup and recovery, monitoring, staging tests and final legal review
+Status: PUBLIC — VALIDATED by Ethan on August 31, 2026; technical details verified in Palimia repository documentation on the same day
+Public or private repository? : TO COMPLETE
+Repository URL if public: TO COMPLETE
+Demo accessible? : TO COMPLETE
+Demo URL if public: TO COMPLETE
 
-Utilisateurs ou testeurs réels : À REMPLIR
-Nombre et période : À REMPLIR
-Retours reçus : À REMPLIR
-Changements faits grâce aux retours : À REMPLIR
+Real users or testers: TO COMPLETE
+Number and period: TO COMPLETE
+Feedback received: TO COMPLETE
+Changes made thanks to feedback: TO COMPLETE
 
-Parcours utilisateur principal : À REMPLIR
-Fonctionnalités les plus importantes à montrer : À REMPLIR
-Fonctionnalités volontairement exclues : À REMPLIR
+Main user journey: TO COMPLETE
+Most important features to show: TO COMPLETE
+Voluntarily excluded functionalities: TO COMPLETE
 
-Décision produit la plus difficile : À REMPLIR
-Décision technique la plus difficile : À REMPLIR
-Plus grosse erreur ou fausse piste : À REMPLIR
-Compromis principal : À REMPLIR
-Résultat dont tu es le plus fier : À REMPLIR
-Ce que tu referais différemment : À REMPLIR
-Prochaine étape : À REMPLIR
+Hardest product decision: TO COMPLETE
+Hardest technical decision: TO COMPLETE
+Biggest error or false lead: TO COMPLETE
+Main compromise: TO COMPLETE
+Result you are most proud of: TO COMPLETE
+What you would do differently: TO COMPLETE
+Next step: TO COMPLETE
 
-Architecture à rendre publique : À REMPLIR
-Parties techniques à approfondir : À REMPLIR
-Usage d’outils IA pendant le projet à mentionner ? : À REMPLIR
-Détails de sécurité ou d’exploitation à ne pas publier : PRIVÉ — transmis séparément
+Architecture to be made public: TO COMPLETE
+Technical parts to be studied in more detail: TO COMPLETE
+Use of AI tools during the project to mention? : TO COMPLETE
+Security or operational details not to be published: PRIVATE — provided separately
 
-Métriques locales publiables : À REMPLIR
-Pour chaque métrique — valeur, date, environnement et source : À REMPLIR
-Métriques de production réelles : À REMPLIR
-Statut de publication des métriques : À CONFIRMER
+Publishable local metrics: TO COMPLETE
+For each metric — value, date, environment and source: TO COMPLETE
+Actual production metrics: TO COMPLETE
+Metrics release status: TO CONFIRM
 
-Visuels disponibles : À REMPLIR
-Captures à refaire : À REMPLIR
-Données de démonstration disponibles : À REMPLIR
-Vidéo de démonstration souhaitée : oui/non
+Visuals available: TO COMPLETE
+Captures to be redone: TO COMPLETE
+Demo data available: TO COMPLETE
+Demo video desired: yes/no
 
-Phrase courte utilisée dans la sélection : Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
-Statut : PUBLIC — VALIDÉ pour la mise à jour demandée par Ethan le 31 août 2026
+Short phrase used in the selection: A platform for following, rating and organizing films, series and video games in a personal cultural library.
+Status: PUBLIC — VALIDATED for the update requested by Ethan on August 31, 2026
 
-Phrase qui résume le projet pour l’étude de cas : À REMPLIR
-Angle narratif souhaité : À REMPLIR
-Statut global de validation : À CONFIRMER
+Sentence that summarizes the project for the case study: TO COMPLETE
+Desired narrative angle: TO COMPLETE
+Overall validation status: TO CONFIRM
 ```
 
 ## 10. Ludosaic
 
 ```text
-Nom public : Ludosaic
-Publication dans la sélection du portfolio : oui, en deuxième position et en mode teaser
-Statut : PUBLIC — VALIDÉ le 29 août 2026
+Public name: Ludosaic
+Publication in the portfolio selection: yes, in second position and in teaser mode
+Status: PUBLIC — VALIDATED on August 29, 2026
 
-Nature du produit : plateforme web modulaire de mini-jeux, accessible et installable
-Accès : jouable sans création de compte
-Modes selon les jeux : solo, défi quotidien, bot, multijoueur local et salon privé en ligne
-Premier périmètre : Reflex Rush, Merge Forge et Grid Duel
-État publiable : projet en cours de développement, avec une fondation validée localement et plusieurs parcours jouables en bêta locale ou connectée ; MVP complet non livré
-Mise en production : aucun déploiement externe réalisé ; validation de l'environnement cible et critères de lancement encore à compléter
-Architecture publiable : monorepo séparant application Next.js, serveur de jeu, jeux et contrats communs
-Stack publiable : Next.js, TypeScript, React, Phaser, PostgreSQL, Drizzle, Redis et Colyseus
-Principe technique publiable : règles déterministes séparées du rendu et scores connectés recalculés côté serveur
-Validation publiable : tests de règles, intégration PostgreSQL, parcours navigateur et fondation multijoueur à deux clients
-Source factuelle : documentation et code du dépôt source Ludosaic consultés le 29 août 2026
-Statut des faits techniques ci-dessus : PUBLIC — état de développement explicitement validé par Ethan le 31 août 2026 ; détails techniques vérifiés dans la documentation du dépôt Ludosaic le même jour
+Nature of the product: modular web platform for mini-games, accessible and installable
+Access: playable without creating an account
+Modes depending on the game: single player, daily challenge, bot, local multiplayer and online private room
+First perimeter: Reflex Rush, Merge Forge and Grid Duel
+Publishable status: project under development, with a locally validated foundation and several playable courses in local or connected beta; Full MVP not delivered
+Production release: no external deployment carried out; validation of the target environment and launch criteria still to be completed
+Publishable architecture: monorepo separating Next.js application, game server, games and common contracts
+Publishable stack: Next.js, TypeScript, React, Phaser, PostgreSQL, Drizzle, Redis and Colyseus
+Publishable technical principle: deterministic rules separated from rendering and connected scores recalculated on the server side
+Publishable validation: rules testing, PostgreSQL integration, browser journey, and two-client multiplayer foundation
+Factual source: Ludosaic source repository documentation and code accessed August 29, 2026
+Status of the technical facts above: PUBLIC — VALIDATED; development state explicitly confirmed by Ethan on August 31, 2026; technical details verified in Ludosaic repository documentation on the same day
 
-Pourquoi as-tu lancé Ludosaic ? : À REMPLIR
-Public cible détaillé : À REMPLIR
-Ton rôle exact : À REMPLIR
-Projet solo ou équipe ? : À REMPLIR
-Contributions externes ou outils à créditer : À REMPLIR
-Date de début et temps consacré : À REMPLIR
-Dépôt public ou privé et URL éventuelle : À REMPLIR
-Démo publique et URL éventuelle : À REMPLIR
-Utilisateurs, testeurs et retours : À REMPLIR
-Décisions, compromis, erreurs et enseignements : À REMPLIR
-Résultats mesurables : À REMPLIR
-Visuels et vidéo de démonstration : À REMPLIR
-Détails à ne pas publier : PRIVÉ — transmis séparément
+Why did you launch Ludosaic? : TO COMPLETE
+Detailed target audience: TO COMPLETE
+Your exact role: TO COMPLETE
+Solo project or team? : TO COMPLETE
+External contributions or tools to be credited: TO COMPLETE
+Start date and time spent: TO COMPLETE
+Public or private repository and possible URL: TO COMPLETE
+Public demo and possible URL: TO COMPLETE
+Users, testers and feedback: TO COMPLETE
+Decisions, compromises, mistakes and lessons learned: TO COMPLETE
+Measurable results: TO COMPLETE
+Visuals and demonstration video: TO COMPLETE
+Details not to be published: PRIVATE — provided separately
 
-Phrase courte validée pour le panneau d’accueil : Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.
-Statut : PUBLIC — VALIDÉ et corrigé par Ethan le 30 août 2026 ; Ludosaic est présenté comme un projet web, pas comme une application mobile.
-Statut global pour une étude de cas complète : À CONFIRMER
+Short sentence validated for the welcome panel: Mini-games on the web, solo, against a bot or with others.
+Status: PUBLIC — VALIDATED and corrected by Ethan on August 30, 2026; Ludosaic is presented as a web project, not as a mobile application.
+Overall status for full case study: TO CONFIRM
 ```
 
-## 11. Médias et droits
+## 11. Media and rights
 
-### Identité
+### Identity
 
 ```text
-Portrait finalement souhaité : non pour le moment
-Statut : PUBLIC — VALIDÉ
+Portrait finally desired: no for the moment
+Status: PUBLIC — VALIDATED
 
-Logo disponible : non pour le moment
-Statut : PUBLIC — À RELIRE
+Logo available: no at the moment
+Status: PUBLIC — REVIEW REQUIRED
 
-Signature disponible : non pour le moment
-Statut : PUBLIC — À RELIRE
+Signature available: no at the moment
+Status: PUBLIC — REVIEW REQUIRED
 
-Initiales ou monogramme souhaité : À DÉCIDER
-Statut : À CONFIRMER
+Initials or desired monogram: TO DECIDE
+Status: TO CONFIRM
 ```
 
-### Pour chaque image ou vidéo
+### For each image or video
 
 ```text
-Nom du fichier :
-Projet / page :
-Ce que le média montre :
-Source originale :
-Propriétaire des droits :
-Autorisation de publication : oui/non/à confirmer
-Crédit obligatoire :
-Données personnelles visibles :
-Données de démonstration utilisées :
-Métadonnées supprimées : oui/non
-Alternative textuelle FR :
-Alternative textuelle EN :
-Transcription nécessaire : oui/non
-Date de la capture :
-Version du produit montrée :
-Statut : À CONFIRMER
+File name:
+Project / page:
+What the media shows:
+Original source:
+Rights owner:
+Publication authorization: yes/no/to be confirmed
+Mandatory credit:
+Visible personal data:
+Demo data used:
+Metadata deleted: yes/no
+Text alternative FR:
+Text alternative EN:
+Transcription required: yes/no
+Date of capture:
+Product version shown:
+Status: TO CONFIRM
 ```
 
-### Livrables souhaités
+### Desired deliverables
 
 - [ ] Favicon.
-- [ ] Icône Apple touch.
-- [ ] Image Open Graph globale 1200 × 630.
+- [ ] Apple touch icon.
+- [ ] General Open Graph image 1200 × 630.
 - [x] Image Open Graph Palimia.
 - [x] Image Open Graph Ludosaic.
-- [ ] Captures desktop Palimia.
-- [ ] Captures mobile Palimia.
-- [ ] Vidéo courte Palimia.
-- [ ] Diagramme Palimia.
-- [ ] Captures des trois premiers jeux Ludosaic avec des profils et scores de démonstration.
-- [ ] Vidéo courte Ludosaic.
-- [ ] Diagramme Ludosaic.
+- [ ] Palimia desktop captures.
+- [ ] Palimia mobile captures.
+- [ ] Palimia short video.
+- [ ] Palimia diagram.
+- [ ] Captures of the first three Ludosaic games with demo profiles and scores.
+- [ ] Ludosaic short video.
+- [ ] Ludosaic diagram.
 
-## 12. Témoignages, presse et contributions
+## 12. Testimonials, press and contributions
 
-Laisse toute cette section `NON APPLICABLE` si rien n’est disponible.
+Leave this entire section `NOT APPLICABLE` if nothing is available.
 
 ```text
-TÉMOIGNAGE N° :
+TESTIMONY NO.:
 
-Citation exacte : À REMPLIR
-Auteur : À REMPLIR
-Fonction / relation : À REMPLIR
-Contexte : À REMPLIR
-Date : À REMPLIR
-Autorisation écrite de publication : À CONFIRMER
-Lien public éventuel : À REMPLIR
-Traduction autorisée : À CONFIRMER
-Statut : NON APPLICABLE
+Exact quote: TO COMPLETE
+Author: TO COMPLETE
+Function / relationship: TO COMPLETE
+Context: TO COMPLETE
+Date: TO COMPLETE
+Written authorization for publication: TO CONFIRM
+Possible public link: TO COMPLETE
+Authorized translation: TO CONFIRM
+Status: NOT APPLICABLE
 ```
 
 ```text
-Article, conférence, podcast ou mention publique : À REMPLIR
-URL : À REMPLIR
-Date : À REMPLIR
-Rôle d’Ethan : À REMPLIR
-Crédit requis : À REMPLIR
-Statut : NON APPLICABLE
+Article, conference, podcast or public mention: TO COMPLETE
+URL: TO COMPLETE
+Date: TO COMPLETE
+Ethan’s role: TO COMPLETE
+Credit required: TO COMPLETE
+Status: NOT APPLICABLE
 ```
 
-## 13. CV
+## 13. Summary
 
-Le CV sera construit depuis une source unique pour les pages HTML et les PDF FR/EN.
+The CV will be built from a single source for HTML pages and FR/EN PDFs.
 
 ```text
-CV requis pour le premier lancement : oui/non
-Statut : À CONFIRMER
+CV required for first launch: yes/no
+Status: TO CONFIRM
 
-Titre du CV : À REMPLIR
-Résumé professionnel : À REMPLIR
-Expériences à inclure : À REMPLIR
-Formations à inclure : À REMPLIR
-Certifications à inclure : À REMPLIR
-Projets à inclure : À REMPLIR
-Compétences à inclure : À REMPLIR
-Langues et niveaux : À REMPLIR
+CV title: TO COMPLETE
+Professional summary: TO COMPLETE
+Experiences to include: TO COMPLETE
+Training to include: TO COMPLETE
+Certifications to include: TO COMPLETE
+Projects to include: TO COMPLETE
+Skills to include: TO COMPLETE
+Languages and levels: TO COMPLETE
 
-Informations à exclure : PRIVÉ — transmis séparément
-Adresse complète : PRIVÉ — ne pas publier
-Téléphone : PRIVÉ — ne pas publier sauf décision explicite
-Date de naissance : PRIVÉ — ne pas publier
+Information to exclude: PRIVATE — sent separately
+Full address: PRIVATE — do not publish
+Telephone: PRIVATE — do not publish unless explicitly decided
+Date of birth: PRIVATE — do not publish
 
-Une page maximum ou plusieurs pages : À DÉCIDER
-Style très sobre ou aligné au portfolio : À DÉCIDER
-Version française nécessaire : oui
-Version anglaise nécessaire : oui
-PDF français nécessaire : oui
-PDF anglais nécessaire : oui
+One page maximum or several pages: TO DECIDE
+Very sober style or aligned with the portfolio: TO DECIDE
+French version required: yes
+English version required: yes
+French PDF required: yes
+English PDF required: yes
 
-Nom du fichier PDF FR souhaité : ethan-brosselard-cv-fr.pdf
-Nom du fichier PDF EN souhaité : ethan-brosselard-resume-en.pdf
-Statut global du CV : À REMPLIR
+Name of the desired FR PDF file: ethan-brosselard-cv-fr.pdf
+Name of the desired PDF EN file: ethan-brosselard-resume-en.pdf
+Overall CV status: TO COMPLETE
 ```
 
-## 14. Contact et réseaux
+## 14. Contact and networks
 
 ```text
-But de la page Contact : discussion technique / retours / autre
-Statut : PUBLIC — À RELIRE
+Purpose of the Contact page: technical discussion / feedback / other
+Status: PUBLIC — REVIEW REQUIRED
 
-Email public confirmé : ethan.brosselard@gmail.com
-Statut : PUBLIC — VALIDÉ
+Confirmed public email: ethan.brosselard@gmail.com
+Status: PUBLIC — VALIDATED
 
-Afficher un lien mailto : oui
-Statut : PUBLIC — VALIDÉ
+Display a mailto link: yes
+Status: PUBLIC — VALIDATED
 
-Formulaire de contact souhaité : non pour le premier lancement
-Statut : À CONFIRMER
+Desired contact form: no for the first launch
+Status: TO CONFIRM
 
-Délai de réponse à promettre : ne pas promettre de délai précis
-Statut : À CONFIRMER
+Response time to promise: do not promise a specific time
+Status: TO CONFIRM
 
-GitHub confirmé : https://github.com/ZayKox
-Statut : PUBLIC — VALIDÉ
+GitHub confirmed: https://github.com/ZayKox
+Status: PUBLIC — VALIDATED
 
-LinkedIn confirmé : https://www.linkedin.com/in/ethan-brosselard-507334237/
-Statut : PUBLIC — VALIDÉ
+LinkedIn confirmed: https://www.linkedin.com/in/ethan-brosselard-507334237/
+Status: PUBLIC — VALIDATED
 
-Autres réseaux : À REMPLIR
-Statut : NON APPLICABLE
+Other networks: TO COMPLETE
+Status: NOT APPLICABLE
 
-Canaux à ne pas afficher : PRIVÉ — transmis séparément, sans détail dans ce fichier
-Statut : PRIVÉ — ne pas publier
+Channels not to be displayed: PRIVATE — provided separately, without details in this file
+Status: PRIVATE — do not publish
 ```
 
-## 15. Domaine, SEO et partage
+## 15. Domain, SEO and sharing
 
 ```text
-Domaine préféré : ethanbrosselard.dev
-Statut : À CONFIRMER après achat
+Preferred domain: ethanbrosselard.dev
+Status: TO CONFIRM after purchase
 
-Autres domaines acceptables : À REMPLIR
-Statut : À DÉCIDER
+Other acceptable fields: TO COMPLETE
+Status: TBD
 
-Nom de site à afficher dans les résultats : Ethan Brosselard
-Statut : À CONFIRMER
+Site name to display in the results: Ethan Brosselard
+Status: TO CONFIRM
 
-Titre SEO de l’accueil FR : À REMPLIR
-Description SEO FR : À REMPLIR
-Titre SEO de l’accueil EN : À REMPLIR
-Description SEO EN : À REMPLIR
+SEO title of the FR reception: TO COMPLETE
+SEO FR description: TO COMPLETE
+SEO title of the welcome EN: TO COMPLETE
+SEO description EN: TO COMPLETE
 
-Mots ou requêtes associés au profil : À REMPLIR
-Zones géographiques pertinentes : France / Paris / autre
-Pages à ne pas indexer : À REMPLIR
+Words or queries associated with the profile: TO COMPLETE
+Relevant geographic areas: France / Paris / other
+Pages not to be indexed: TO COMPLETE
 
-Texte de partage social global : À REMPLIR
-Image de partage disponible : non
-Statut : À REMPLIR
+Global social sharing text: TO COMPLETE
+Sharing image available: no
+Status: TO COMPLETE
 
-Nom à utiliser dans le JSON-LD : Ethan Brosselard
-Pseudo à utiliser dans le JSON-LD : aucun — ne pas publier de `alternateName`
-Statut de l’identité JSON-LD : PUBLIC — VALIDÉ
+Name to use in JSON-LD: Ethan Brosselard
+Nickname to use in JSON-LD: none — do not publish `alternateName`
+JSON-LD Identity Status: PUBLIC — VALIDATED
 
-Conserver l’email dans le JSON-LD malgré le risque de scraping : oui/non
-Statut de l’email JSON-LD : À DÉCIDER
+Keep the email in JSON-LD despite the risk of scraping: yes/no
+JSON-LD Email Status: TBD
 
-Statut global de la section SEO et partage : À CONFIRMER
+Overall status of the SEO and sharing section: TO CONFIRM
 ```
 
-## 16. Légal, confidentialité et analytics
+## 16. Legal, confidentiality and analytics
 
-Ne mets aucune adresse personnelle dans ce fichier. Si une information exacte est légalement requise, elle sera gérée séparément après validation du statut applicable.
+Do not put any personal addresses in this file. If exact information is legally required, it will be managed separately after validation of the applicable status.
 
 ```text
-Site édité à titre personnel ou professionnel : À REMPLIR
-Statut : À CONFIRMER
+Site published for personal or professional purposes: TO COMPLETE
+Status: TO CONFIRM
 
-Statut juridique éventuel à afficher : PRIVÉ — transmis séparément
-Informations d’éditeur requises : PRIVÉ — transmis séparément
+Possible legal status to display: PRIVATE — provided separately
+Required publisher information: PRIVATE — submitted separately
 
-Hébergeur prévu : Cloudflare Workers avec Static Assets
-Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026 ; informations légales exactes à confirmer au déploiement
+Planned Host: Cloudflare Workers with Static Assets
+Status: PUBLIC — VALIDATED by Ethan on September 1, 2026; exact legal information to be confirmed upon deployment
 
-Mesure d’audience côté navigateur souhaitée au lancement : non ; les métriques techniques agrégées inhérentes au réseau Cloudflare ne sont pas un outil de suivi ajouté au site
-Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
+Browser-side analytics desired at launch: no; Aggregated technical metrics inherent to the Cloudflare network are not a tracking tool added to the site
+Status: PUBLIC — VALIDATED by Ethan on September 1, 2026
 
-Besoin réel auquel répondraient des analytics : À REMPLIR
-Statut : NON APPLICABLE
+Real need to be met by analytics: TO COMPLETE
+Status: NOT APPLICABLE
 
-Cookies ou services tiers côté navigateur prévus : aucun cookie publicitaire ou de mesure d’audience ; Cloudflare peut déposer un cookie strictement nécessaire si un mécanisme de sécurité est déclenché
-Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
+Cookies or third-party services browser-side planned: no advertising or analytics cookies; Cloudflare may set a strictly necessary cookie if a security mechanism is triggered
+Status: PUBLIC — VALIDATED by Ethan on September 1, 2026
 
-Contenus tiers embarqués (YouTube, Figma, etc.) : aucun par défaut
-Statut : À CONFIRMER
+Embedded third-party content (YouTube, Figma, etc.): none by default
+Status: TO CONFIRM
 
-Formulaire ou collecte de données prévu : non
-Statut : PUBLIC — VALIDÉ par Ethan le 1er septembre 2026
+Intended form or data collection: no
+Status: PUBLIC — VALIDATED by Ethan on September 1, 2026
 
-Adresse de contact pour les droits liés aux données : À REMPLIR
-Statut : À CONFIRMER
+Contact address for data rights: TO COMPLETE
+Status: TO CONFIRM
 
-Durées de conservation applicables : la durée effective des métriques techniques et des données de sécurité Cloudflare reste à confirmer sur le compte lors du premier déploiement ; aucun journal applicatif persistant ni export n’est configuré dans le dépôt
-Statut : À CONFIRMER
+Applicable retention periods: The effective duration of Cloudflare technical metrics and security data remains to be confirmed on the account upon first deployment; no persistent application log or export is configured in the repository
+Status: TO CONFIRM
 
-Statut global de la section légale et confidentialité : À CONFIRMER
+Overall status of the legal and confidentiality section: TO CONFIRM
 ```
 
-## 17. Direction artistique et expérience
+## 17. Art direction and experience
 
-### Choix déjà fournis
+### Choices already provided
 
-| Sujet              | Réponse                                         | Statut              |
-| ------------------ | ----------------------------------------------- | ------------------- |
-| Style              | Minimal mais poussé, démontrant les compétences | `PUBLIC — À RELIRE` |
-| Palette principale | Noir, blanc et gris neutres                     | `PUBLIC — VALIDÉ`   |
-| Couleur secondaire | Violet                                          | `PUBLIC — VALIDÉ`   |
-| Couleurs exclues   | Vert et jaune                                   | `PUBLIC — VALIDÉ`   |
-| Thèmes             | Clair et sombre                                 | `PUBLIC — VALIDÉ`   |
-| Portrait           | Absent pour le moment                           | `PUBLIC — VALIDÉ`   |
-| Logo / signature   | À créer ou fournir plus tard                    | `À CONFIRMER`       |
+| Subject          | Answer                                     | Status                     |
+| ---------------- | ------------------------------------------ | -------------------------- |
+| Style            | Minimal but advanced, demonstrating skills | `PUBLIC — REVIEW REQUIRED` |
+| Primary palette  | Neutral black, white and gray              | `PUBLIC — VALIDATED`       |
+| Secondary color  | Purple                                     | `PUBLIC — VALIDATED`       |
+| Colors excluded  | Green and yellow                           | `PUBLIC — VALIDATED`       |
+| Themes           | Light and Dark                             | `PUBLIC — VALIDATED`       |
+| Portrait         | Away at the moment                         | `PUBLIC — VALIDATED`       |
+| Logo / signature | To be created or provided later            | `TO CONFIRM`               |
 
-### À décider
+### To be decided
 
 ```text
-Trois adjectifs visuels recherchés : À REMPLIR
-Trois adjectifs visuels à éviter : À REMPLIR
-Sites de référence et éléments appréciés : À REMPLIR
-Sites ou styles détestés et pourquoi : À REMPLIR
+Three visual adjectives sought: TO COMPLETE
+Three visual adjectives to avoid: TO COMPLETE
+Reference sites and appreciated elements: TO COMPLETE
+Disliked sites or styles and why: TO COMPLETE
 
-Préférence typographique (sobre / éditoriale / technique / autre) : À REMPLIR
-Polices système ou polices auto-hébergées : À DÉCIDER
-Monogramme à conserver : À DÉCIDER
+Typographic preference (sober / editorial / technical / other): TO COMPLETE
+System fonts or self-hosted fonts: TBD
+Monogram to keep: TO DECIDE
 
-Quantité d’animation souhaitée : faible / moyenne / aucune
-Statut : À CONFIRMER
+Desired amount of animation: low / medium / none
+Status: TO CONFIRM
 
-Type de navigation préféré : À REMPLIR
-Densité de contenu souhaitée : À REMPLIR
-Place souhaitée pour les visuels de projets : À REMPLIR
+Preferred navigation type: TO COMPLETE
+Desired content density: TO COMPLETE
+Desired place for project visuals: TO COMPLETE
 
-Éléments interactifs souhaités : À REMPLIR
-Éléments interactifs à éviter : À REMPLIR
+Desired interactive elements: TO COMPLETE
+Interactive elements to avoid: TO COMPLETE
 
-Exigences d’accessibilité personnelles supplémentaires : À REMPLIR
-Appareils principaux sur lesquels tu consulteras le site : À REMPLIR
-Statut global de la direction artistique : À CONFIRMER
+Additional Personal Accessibility Requirements: TO COMPLETE
+Main devices on which you will consult the site: TO COMPLETE
+Overall status of artistic direction: TO CONFIRM
 ```
 
-## 18. Anglais et ton éditorial
+## 18. English and your editorial
 
 ```text
-Anglais britannique ou américain : À DÉCIDER
-Tutoiement/vouvoiement français : ton actuel à valider
-Première personne (« je ») ou formulation plus neutre : À DÉCIDER
+British or American English: TBD
+French familiarity/voice: current tone to be validated
+First person (“I”) or more neutral wording: TO DECIDE
 
-Ton recherché : À REMPLIR
-Niveau de technicité pour le grand public : À REMPLIR
-Niveau de technicité pour les études de cas : À REMPLIR
+Tone sought: TO COMPLETE
+Technical level for the general public: TO COMPLETE
+Technical level for case studies: TO COMPLETE
 
-Mots ou expressions appréciés : À REMPLIR
-Mots ou expressions à éviter : À REMPLIR
-Humour accepté : oui/non et dans quelle mesure
+Words or expressions appreciated: TO COMPLETE
+Words or expressions to avoid: COMPLETE
+Humor accepted: yes/no and to what extent
 
-Qui relira l’anglais : À REMPLIR
-Statut : À CONFIRMER
+Who will proofread the English: TO COMPLETE
+Status: TO CONFIRM
 
-Faut-il traduire les noms de fonctionnalités ou conserver les noms produit ? : À REMPLIR
-Statut : À CONFIRMER
+Should we translate the feature names or keep the product names? : TO COMPLETE
+Status: TO CONFIRM
 
-Statut global du ton et de la version anglaise : À CONFIRMER
+Overall status of tone and English version: TO CONFIRM
 ```
 
-## 19. Validation finale de publication
+## 19. Final validation of publication
 
-À remplir uniquement quand les sections concernées sont terminées.
+To be completed only when the relevant sections are completed.
 
 ```text
-Je confirme que mon nom, ma localisation et mes liens sont corrects, et que mon pseudo reste absent : oui/non
-Je confirme que les expériences et formations sont exactes : oui/non
-Je confirme que les rôles et dates de projets sont exacts : oui/non
-Je confirme que les métriques ont un contexte et une source : oui/non
-Je confirme avoir le droit de publier tous les médias : oui/non
-Je confirme l’accord des tiers cités : oui/non/non applicable
-Je confirme que les informations marquées privées ne sont pas publiées : oui/non
-Je confirme la version française : oui/non
-Je confirme la version anglaise : oui/non
-Je confirme le CV HTML/PDF : oui/non/non publié
-Je confirme les pages légales selon mon statut : oui/non
-Je donne mon accord pour la mise en production : oui/non
+I confirm that my name, my location and my links are correct, and that my nickname remains missing: yes/no
+I confirm that the experiences and training are accurate: yes/no
+I confirm that the roles and project dates are correct: yes/no
+I confirm that the metrics have a context and a source: yes/no
+I confirm that I have the right to publish all media: yes/no
+I confirm the agreement of the third parties mentioned: yes/no/not applicable
+I confirm that information marked private is not published: yes/no
+I confirm the French version: yes/no
+I confirm the English version: yes/no
+I confirm the HTML/PDF CV: yes/no/not published
+I confirm the legal pages according to my status: yes/no
+I agree to go into production: yes/no
 
-Nom du validateur : Ethan Brosselard
-Date : À REMPLIR
-Version ou commit relu : À REMPLIR
+Name of validator: Ethan Brosselard
+Date: TO COMPLETE
+Version or commit review: TO COMPLETE
 ```
 
-## 20. Après le lancement
+## 20. After launch
 
 ```text
-Fréquence souhaitée de mise à jour du portfolio : À REMPLIR
-Événements qui doivent déclencher une mise à jour : À REMPLIR
-Prochains projets à ajouter : À REMPLIR
-Sections futures (articles, veille, laboratoire IA, autre) : À REMPLIR
-Éléments à retirer automatiquement lorsqu’ils deviennent anciens : À REMPLIR
-Statut global de cette section : À CONFIRMER
+Desired frequency of updating the portfolio: TO COMPLETE
+Events that should trigger an update: TO COMPLETE
+Next projects to add: TO COMPLETE
+Future sections (articles, monitoring, AI laboratory, other): TO COMPLETE
+Elements to be automatically removed when they become old: TO COMPLETE
+Overall status of this section: TO CONFIRM
 ```
 
-### Checklist de mise à jour
+### Update checklist
 
-- [ ] Nouveau poste ou nouvelle mission.
-- [ ] Nouvelle formation ou certification.
-- [ ] Nouveau projet ou changement de statut.
-- [ ] Nouveau résultat mesurable vérifié.
-- [ ] Nouvelle capture ou démo.
-- [ ] Lien devenu inaccessible.
-- [ ] CV devenu obsolète.
-- [ ] Information légale ou traitement de données modifié.
-- [ ] Dépendance ou architecture majeure modifiée.
+- [ ] New position or new mission.
+- [ ] New training or certification.
+- [ ] New project or status change.
+- [ ] New measurable result verified.
+- [ ] New capture or demo.
+- [ ] Link has become inaccessible.
+- [ ] CV become obsolete.
+- [ ] Legal information or changed data processing.
+- [ ] Dependency or major architecture changed.
 
-## Comment demander l’intégration à l’agent
+## How to request agent integration
 
-Quand une ou plusieurs sections sont `PUBLIC — VALIDÉ`, utilise par exemple :
+When one or more sections are `PUBLIC — VALIDATED`, use for example:
 
 ```text
-Lis docs/site-content-questionnaire.md.
-Je confirme que mes nouvelles réponses PUBLIC — VALIDÉ sont publiques.
-Intègre-les dans les pages concernées, maintiens la parité FR/EN et vérifie le site.
-Inclus mes modifications du questionnaire dans le même commit local ciblé.
+Read docs/site-content-questionnaire.md.
+I confirm that my new answers PUBLIC — VALIDATED are public.
+Integrate them into the relevant pages, maintain FR/EN parity and verify the site.
+Included my quiz changes in the same targeted local commit.
 ```
 
-Sans cette dernière phrase explicite, les réponses ajoutées avant la tâche ne seront pas incluses automatiquement dans le commit de l’agent.
+Without this explicit last sentence, responses added before the task will not be automatically included in the agent commit.
 
-## 21. Informations validées dans la tâche du 10 août 2026
+## 21. Information validated in the task of August 10, 2026
 
-Les réponses de cette section ont été explicitement fournies par Ethan dans la tâche du 10 août 2026. Elles sont `PUBLIC — VALIDÉ` et priment sur les anciens champs encore marqués `À REMPLIR`, `À CONFIRMER` ou `À DÉCIDER` lorsqu’elles couvrent le même sujet.
+The answers in this section were explicitly provided by Ethan in the August 10, 2026 task. They are `PUBLIC — VALIDATED` and take precedence over older fields still marked `TO COMPLETE`, `TO CONFIRM` or `TO DECIDE` when covering the same topic.
 
 ```text
-Positionnement : Développeur logiciel et créateur numérique ; développeur web principalement, sans limiter le parcours au web, à Android ou à l’IA.
-Statut : PUBLIC — VALIDÉ
+Positioning: Software developer and digital creator; web developer mainly, without limiting the path to the web, Android or AI.
+Status: PUBLIC — VALIDATED
 
-Pseudo de signature autorisé : ZayKo, lorsqu’il est utile à l’identité visuelle ; le nom affiché reste Ethan Brosselard.
-Statut : PUBLIC — VALIDÉ
+Authorized signature nickname: ZayKo, when it is useful for visual identity; the name displayed remains Ethan Brosselard.
+Status: PUBLIC — VALIDATED
 
-Poste et employeur actuels : Développeur Web (alternant) chez Studio Beyowi, d’octobre 2023 à septembre 2026, Paris 13e.
-Statut : PUBLIC — VALIDÉ
+Current position and employer: Web Developer (alternating) at Studio Beyowi, from October 2023 to September 2026, Paris 13th.
+Status: PUBLIC — VALIDATED
 
-Expérience précédente : Développeur Backend (alternant) chez Intento Design, de septembre 2022 à août 2023, Paris.
-Statut : PUBLIC — VALIDÉ
+Previous experience: Backend Developer (alternating) at Intento Design, from September 2022 to August 2023, Paris.
+Status: PUBLIC — VALIDATED
 
-Expérience complémentaire : Agent de maintenance bâtiment chez Sealed Air Corporation, mission d’intérim de juillet à août 2022, Épernon.
-Statut : PUBLIC — VALIDÉ
+Additional experience: Building maintenance agent at Sealed Air Corporation, interim mission from July to August 2022, Épernon.
+Status: PUBLIC — VALIDATED
 
-Formations : Baccalauréat général, mention Bien, Lycée Jehan de Beauce (2018–2021) ; BUT Informatique, IUT Paris Rives de Seine — Université Paris Cité (2021–2024) ; Master Informatique — Ingénierie en Intelligence Artificielle, Université Paris 8 Vincennes — Saint-Denis (2024–2026).
-Statut : PUBLIC — VALIDÉ
+Education: General baccalaureate, honors, Lycée Jehan de Beauce (2018–2021); BUT Informatique, IUT Paris Rives de Seine — Paris Cité University (2021–2024); Master of Computer Science — Artificial Intelligence Engineering, University Paris 8 Vincennes — Saint-Denis (2024–2026).
+Status: PUBLIC — VALIDATED
 
-Compétences à montrer : frontend web, backend/API, bases de données, architecture logicielle, UX/UI, accessibilité, tests, IA et sécurité en apprentissage. Analyse et compréhension de systèmes complexes à valoriser.
-Statut : PUBLIC — VALIDÉ
+Skills to show: web frontend, backend/API, databases, software architecture, UX/UI, accessibility, testing, AI and learning security. Analysis and understanding of complex systems to be valued.
+Status: PUBLIC — VALIDATED
 
-Approche de l’IA : l’IA est un domaine à ne pas rejeter ; une bonne compréhension de l’outil permet de transformer de bonnes idées en réalisations, dans un cadre professionnel comme personnel. Le master en IA est publiable.
-Statut : PUBLIC — VALIDÉ
+Approach to AI: AI is a field not to be dismissed; a good understanding of the tool allows you to transform good ideas into achievements, both in a professional and personal context. The master's degree in AI is publishable.
+Status: PUBLIC — VALIDATED
 
-Page CV et téléchargement : un CV HTML et PDF, en français et en anglais, doit être public depuis une source structurée unique. Ne pas afficher de niveau de langue non confirmé.
-Statut : PUBLIC — VALIDÉ
+CV page and download: an HTML and PDF CV, in French and English, must be public from a single structured source. Do not display unconfirmed language level.
+Status: PUBLIC — VALIDATED
 
-Projets complémentaires sur le CV : hackathon de terminale (application de révision histoire-géographie en 3 jours), Nuit de l’Info 2021 (base de données de sauvetages en mer), Nuit de l’Info 2022 (application de sensibilisation au VIH), hackathon IA de 10 jours en équipe de trois pour des entreprises partenaires du master.
-Statut : PUBLIC — VALIDÉ
+Additional projects on the CV: final year hackathon (history-geography review application in 3 days), Nuit de l'Info 2021 (sea rescue database), Nuit de l'Info 2022 (HIV awareness application), 10-day AI hackathon in teams of three for partner companies of the master's degree.
+Status: PUBLIC — VALIDATED
 
-Domaine final : ethanbrosselard.com, version canonique sans www.
-Statut : PUBLIC — VALIDÉ
+Final domain: ethanbrosselard.com, canonical version without www.
+Status: PUBLIC — VALIDATED
 
-Publication : site personnel, sans mesure d’audience côté navigateur, cookies de suivi, contenu embarqué ni formulaire au lancement. Les seules mesures conservées sont les métriques techniques agrégées fournies par l’infrastructure Cloudflare. L’email public reste absent des données structurées afin de limiter le scraping.
-Statut : PUBLIC — VALIDÉ
+Publication: personal site, without browser-side analytics, tracking cookies, embedded content or form at launch. The only measurements retained are the aggregated technical metrics provided by the Cloudflare infrastructure. Public email remains absent from structured data in order to limit scraping.
+Status: PUBLIC — VALIDATED
 ```
 
-## 22. Information validée dans la tâche du 30 août 2026
+## 22. Information validated in the task of August 30, 2026
 
-Cette décision a été explicitement fournie par Ethan dans la tâche du 30 août 2026. Elle est `PUBLIC — VALIDÉ` et remplace tout ancien choix de monogramme.
+This decision was explicitly provided by Ethan in the August 30, 2026 task. It is `PUBLIC — VALIDATED` and replaces any previous monogram choices.
 
 ```text
-Identité visuelle : ne pas utiliser le monogramme « ZK ». Employer la signature « ZayKo » lorsqu’un repère de marque textuel est utile ; préférer un signe géométrique sans lettres dans les formats trop compacts.
-Statut : PUBLIC — VALIDÉ
+Visual identity: do not use the “ZK” monogram. Use the signature “ZayKo” when a textual brand reference is useful; prefer a geometric sign without letters in formats that are too compact.
+Status: PUBLIC — VALIDATED
 ```
 
-## 23. Informations validées dans la tâche du 31 août 2026
+## 23. Information validated in the task of August 31, 2026
 
-Ces informations ont été explicitement validées par Ethan dans la tâche du 31 août 2026. Elles sont `PUBLIC — VALIDÉ` et peuvent être publiées dans le CV français et anglais.
+This information was explicitly validated by Ethan in the task of August 31, 2026. It is `PUBLIC — VALIDATED` and can be published in the French and English CV.
 
 ```text
-Nom exact du lycée : Lycée Jehan de Beauce.
-Statut : PUBLIC — VALIDÉ
+Exact name of the high school: Lycée Jehan de Beauce.
+Status: PUBLIC — VALIDATED
 
-Niveau d’anglais : anglais professionnel.
-Statut : PUBLIC — VALIDÉ
+English level: professional English.
+Status: PUBLIC — VALIDATED
 
-Expérience chez Studio Beyowi : utilisation d’AWS, Flask et AWS Lambda ; conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; migrations et synchronisations multi-SGBD impliquant Oracle, MySQL, PostgreSQL, MSSQL et SQLite ; gestion autonome de projets complexes.
-Statut : PUBLIC — VALIDÉ
+Experience at Studio Beyowi: use of AWS, Flask and AWS Lambda; design of RAG and vector search approaches with PGVector and Qdrant; multi-DBMS migrations and synchronizations involving Oracle, MySQL, PostgreSQL, MSSQL and SQLite; autonomous management of complex projects.
+Status: PUBLIC — VALIDATED
 ```
 
-## 24. Décisions validées dans la tâche du 1er septembre 2026
+## 24. Decisions validated in the task of September 1, 2026
 
-Ces décisions de publication ont été explicitement validées par Ethan dans la
-tâche du 1er septembre 2026. Elles remplacent les anciens projets de déploiement
-sur VPS, Cloudflare Pages ou une autre plateforme.
+These publication decisions were explicitly validated by Ethan in the
+task from September 1, 2026. They replace the old deployment projects
+on VPS, Cloudflare Pages or another platform.
 
 ```text
-Hébergement du portfolio : Cloudflare Workers avec Static Assets, sans SSR, Function, base de données ni runtime applicatif.
-Statut : PUBLIC — VALIDÉ
+Portfolio hosting: Cloudflare Workers with Static Assets, without SSR, Function, database or application runtime.
+Status: PUBLIC — VALIDATED
 
-Flux de publication : branches courtes, pull request, validation GitHub Actions, puis production depuis main. La branche develop actuelle reste temporaire pendant la migration et n’est pas le flux durable retenu.
-Statut : PUBLIC — VALIDÉ
+Release flow: short branches, pull request, GitHub Actions commit, then production from main. The current develop branch remains temporary during the migration and is not the sustainable flow retained.
+Status: PUBLIC — VALIDATED
 
-Previews : workflow GitHub Actions déclenché manuellement pour une référence et un alias relus, versions Workers non promues, SITE_NOINDEX=true et Cloudflare Access. La référence demandée construit l’artefact sans secret ; seul un job distinct fondé sur l’outillage de main reçoit le jeton après revalidation. Les pull requests n’accèdent pas aux secrets Cloudflare. La production utilise SITE_URL=https://ethanbrosselard.com et SITE_NOINDEX=false.
-Statut : PUBLIC — VALIDÉ
+Previews: Manually triggered GitHub Actions workflow for a review reference and alias, unpromoted Workers versions, SITE_NOINDEX=true and Cloudflare Access. The requested reference constructs the artifact without secrets; only a distinct job using trusted tooling from `main` receives the token after revalidation. Pull requests do not access Cloudflare secrets. Production uses SITE_URL=https://ethanbrosselard.com and SITE_NOINDEX=false.
+Status: PUBLIC — VALIDATED
 
-Domaine : ethanbrosselard.com reste canonique sans www ; DNS et TLS seront gérés dans la zone Cloudflare, après préservation des enregistrements existants. www.ethanbrosselard.com sera uniquement une variante redirigée définitivement vers l’apex, avec conservation du chemin et des paramètres.
-Statut : PUBLIC — VALIDÉ
+Domain: ethanbrosselard.com remains canonical without www; DNS and TLS will be managed in the Cloudflare zone, after preserving existing records. www.ethanbrosselard.com will only be a variant permanently redirected to the apex, with preservation of the path and parameters.
+Status: PUBLIC — VALIDATED
 
-Confidentialité de l’hébergement : Workers Logs, l’export de journaux et la mesure d’audience côté navigateur restent désactivés. Cloudflare traite néanmoins les données réseau nécessaires à la diffusion et à la sécurité, produit des métriques techniques agrégées et peut déposer un cookie strictement nécessaire si une protection est déclenchée.
-Statut : PUBLIC — VALIDÉ
+Hosting Privacy: Workers Logs, log export and browser-side analytics remain disabled. Cloudflare nevertheless processes the network data necessary for distribution and security, produces aggregated technical metrics and can set a strictly necessary cookie if protection is triggered.
+Status: PUBLIC — VALIDATED
 ```
 
-## 25. Décision validée dans la tâche du 5 septembre 2026
+## 25. Decision validated in the task of September 5, 2026
 
-Ethan a choisi `ethanbrosselard.com` comme domaine canonique public du portfolio.
-Cette décision remplace le choix précédent de `zaykohub.com`. La version sans
-`www` est canonique ; `www.ethanbrosselard.com` doit rediriger définitivement
-vers l’apex en conservant le chemin et les paramètres.
+Ethan chose `ethanbrosselard.com` as the portfolio's public canonical domain.
+This decision replaces the previous choice of `zaykohub.com`. The version without
+`www` is canonical; `www.ethanbrosselard.com` should permanently redirect
+to the apex while preserving the path and parameters.
 
-Statut : PUBLIC — VALIDÉ
+Status: PUBLIC — VALIDATED
 
-Pour tes propres modifications manuelles :
+For your own manual changes:
 
 ```text
-Inspecte mes changements actuels, vérifie qu’ils respectent AGENTS.md,
-corrige seulement ce qui est nécessaire, lance les validations et crée un commit local ciblé.
+Inspect my current changes, verify that they respect AGENTS.md,
+fix only what is necessary, run the required checks, and create a targeted local commit.
 ```
 
-## 26. Direction frontend autorisée le 6 septembre 2026
+## 26. Frontend management authorized on September 6, 2026
 
-Ethan demande une amélioration importante du frontend pour présenter le portfolio à des entreprises et autorise une évolution de la direction artistique. L’objectif validé est une présentation soignée, professionnelle et visuellement convaincante. Le contenu doit être conservé, sauf nécessité. Cette autorisation porte sur la refonte ; elle ne constitue pas une validation finale du rendu ni une autorisation de déploiement.
+Ethan requests a significant improvement of the frontend to present the portfolio to companies and authorizes an evolution of the artistic direction. The validated objective is a neat, professional and visually convincing presentation. Content should be retained unless necessary. This authorization concerns the redesign; it does not constitute final validation of the rendering nor authorization of deployment.
 
-Statut de la demande : PUBLIC — VALIDÉ dans la tâche du 6 septembre 2026.
+Request Status: PUBLIC — VALIDATED in the September 6, 2026 task.
 
-## 27. Informations CV validées dans la tâche du 8 septembre 2026
+## 27. CV information validated in the task of September 8, 2026
 
-Ethan a fourni ces informations afin d’améliorer les versions HTML et PDF de son
-CV. Elles sont `PUBLIC — VALIDÉ` pour les deux langues. Les noms d’employeurs,
-dates et intitulés déjà validés dans les sections précédentes restent les formes
-canoniques en cas de différence avec le document transmis.
+Ethan provided this information to improve the HTML and PDF versions of his
+CV. They are `PUBLIC — VALIDATED` for both languages. Names of employers,
+dates and titles already validated in the previous sections remain the forms
+canonicals in case of difference with the transmitted document.
 
 ```text
-Positionnement du CV : Développeur Python, Data & IA avec plus de trois ans d’expérience en développement logiciel, migration, traitement et automatisation de données. Le positionnement général du portfolio reste volontairement plus large.
-Statut : PUBLIC — VALIDÉ
+Resume Positioning: Python, Data & AI Developer with over three years of experience in software development, migration, data processing and automation. The general positioning of the portfolio remains deliberately broader.
+Status: PUBLIC — VALIDATED
 
-Expérience Studio Beyowi : conception d’API et de flux de données avec Python, Flask et AWS Lambda ; migrations et synchronisations entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite avec AWS DMS ; déploiement et maintenance d’environnements AWS et on-premise ; intégration de services OpenAI ; conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; Docker, CI/CD, tests et supervision.
-Statut : PUBLIC — VALIDÉ
+Beyowi Studio Experience: API and data flow design with Python, Flask and AWS Lambda; migrations and synchronizations between Oracle, MySQL, PostgreSQL, MSSQL and SQLite with AWS DMS; deployment and maintenance of AWS and on-premise environments; integration of OpenAI services; design of RAG and vector search approaches with PGVector and Qdrant; Docker, CI/CD, testing and supervision.
+Status: PUBLIC — VALIDATED
 
-Missions Studio Beyowi publiables : trois chantiers majeurs de migration portant sur plusieurs gigaoctets et combinant des traitements temps réel, synchrones et asynchrones ; ANSM, migration Cloud vers on-premise de données de référence sur les médicaments ; Thesorimed, maintenance du référentiel et automatisation de traitements par un ETL AWS ; Primotheus, API pour une plateforme immobilière et workflows IA d’analyse d’images et de documents ; outils internes Beyowi, API et scripts de maintenance planifiés.
-Statut : PUBLIC — VALIDÉ
+Publishable Studio Beyowi missions: three major migration projects covering several gigabytes and combining real-time, synchronous and asynchronous processing; ANSM, Cloud to on-premise migration of reference data on medicines; Thesorimed, maintenance of the repository and automation of processing using an AWS ETL; Primotheus, API for a real estate platform and AI workflows for image and document analysis; Beyowi internal tools, APIs and scheduled maintenance scripts.
+Status: PUBLIC — VALIDATED
 
-Expérience Intento Design : développement C++ du logiciel de CAO ID-Xplore consacré à la conception de circuits intégrés analogiques ; amélioration de fonctionnalités, participation aux algorithmes de génération et de validation, compatibilité multi-technologies, tests unitaires et documentation technique.
-Statut : PUBLIC — VALIDÉ
+Intento Design experience: C++ development of the ID-Xplore CAD software dedicated to the design of analog integrated circuits; improvement of functionalities, participation in generation and validation algorithms, multi-technology compatibility, unit tests and technical documentation.
+Status: PUBLIC — VALIDATED
 
-Compétences complémentaires publiables : FastAPI, Pandas, NumPy, Docker et Docker Compose, EC2, S3, RDS, DMS, DataBrew, CloudWatch, IAM, Route 53, API Gateway, Step Functions, pytest, coverage, GitHub, Bitbucket, Jira, Scrum, Black et Ruff. Utiliser une sélection lisible et pertinente plutôt qu’un inventaire exhaustif.
-Statut : PUBLIC — VALIDÉ
+Additional publishable skills: FastAPI, Pandas, NumPy, Docker and Docker Compose, EC2, S3, RDS, DMS, DataBrew, CloudWatch, IAM, Route 53, API Gateway, Step Functions, pytest, coverage, GitHub, Bitbucket, Jira, Scrum, Black and Ruff. Use a readable and relevant selection rather than an exhaustive inventory.
+Status: PUBLIC — VALIDATED
 
-Langues : français langue maternelle ; anglais professionnel.
-Statut : PUBLIC — VALIDÉ
+Languages: Native French; professional English.
+Status: PUBLIC — VALIDATED
 ```
 
-## 28. Compléments CV validés dans la tâche du 8 septembre 2026
+## 28. CV supplements validated in the task of September 8, 2026
 
-Ces compléments ont été explicitement fournis par Ethan pour enrichir le CV. Ils
-sont `PUBLIC — VALIDÉ` lorsqu’ils sont destinés au CV public. Les formulations
-obsolètes sur la durée des alternances ne remplacent pas les périodes canoniques
-déjà validées.
+These additions were explicitly provided by Ethan to enrich the CV. They
+are `PUBLIC — VALIDATED` when intended for the public CV. The formulations
+obsolete on the duration of the alternations do not replace the canonical periods
+already validated.
 
 ```text
-Profil : forte motivation à développer continuellement ses compétences, curiosité informatique et capacité à travailler dans des domaines techniques variés. À exprimer de façon concise et factuelle.
-Statut : PUBLIC — VALIDÉ
+Profile: strong motivation to continually develop one's skills, computer curiosity and ability to work in various technical fields. To be expressed concisely and factually.
+Status: PUBLIC — VALIDATED
 
-Baccalauréat : spécialités Numérique et Sciences Informatiques et mathématiques ; options EPS et mathématiques expertes ; mention Bien.
-Statut : PUBLIC — VALIDÉ
+Baccalaureate: Digital and Computer Sciences and Mathematics specialties; EPS and expert mathematics options; honours (mention Bien).
+Status: PUBLIC — VALIDATED
 
-Technologies pratiquées en formation ou sur des projets : C, C++, Java, VB.NET, Kotlin, Python, HTML, CSS, JavaScript, PHP, Next.js et Flask ; création et exploitation de bases de données ; Windows, Linux, Android et AWS. Ne pas présenter cette liste comme un même niveau de maîtrise professionnelle.
-Statut : PUBLIC — VALIDÉ
+Technologies used in training or on projects: C, C++, Java, VB.NET, Kotlin, Python, HTML, CSS, JavaScript, PHP, Next.js and Flask; creation and operation of databases; Windows, Linux, Android and AWS. Do not present this list as the same level of professional mastery.
+Status: PUBLIC — VALIDATED
 
-Hackathon de terminale : création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie.
-Statut : PUBLIC — VALIDÉ
+Final year hackathon: creation in three days of a quiz application to help first year students revise history and geography.
+Status: PUBLIC — VALIDATED
 
-Nuit de l’Info 2021 : création en une nuit, en première année de BUT Informatique, d’un système de recherche répertoriant les sauvetages en mer.
-Statut : PUBLIC — VALIDÉ
+Nuit de l’Info 2021: creation in one night, in the first year of BUT Informatique, of a search system listing rescues at sea.
+Status: PUBLIC — VALIDATED
 
-Nuit de l’Info 2022 : création en une nuit, en deuxième année de BUT Informatique, d’une application de sensibilisation au VIH.
-Statut : PUBLIC — VALIDÉ
+Nuit de l’Info 2022: creation in one night, in the second year of BUT Informatique, of an HIV awareness application.
+Status: PUBLIC — VALIDATED
 
-Sealed Air Corporation : mission d’été de deux mois consacrée à la rénovation d’un bâtiment au sein d’une équipe.
-Statut : PUBLIC — VALIDÉ
+Sealed Air Corporation: two-month summer mission dedicated to the renovation of a building within a team.
+Status: PUBLIC — VALIDATED
 
-Adresse complète et téléphone : PRIVÉ — transmis séparément ; ne pas publier dans le CV du portfolio sans décision explicite distincte.
+Full address and telephone: PRIVATE — provided separately; do not post in the portfolio CV without a separate explicit decision.
 ```

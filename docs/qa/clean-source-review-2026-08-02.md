@@ -1,48 +1,48 @@
-# Reproductibilité depuis les sources suivies — 2 août 2026
+# Reproducibility from tracked sources — August 2, 2026
 
-## Périmètre
+## Scope
 
-- Révision inspectée : `87e1dab51cabc0f434df5a4b7bc5c2b5a6d616f0`.
-- Source : archive créée avec `git archive HEAD` dans un dossier temporaire distinct du workspace.
-- Environnement : Node.js 22.23.0, npm 10.9.8 et moteur Docker local.
+- Revision inspected: `87e1dab51cabc0f434df5a4b7bc5c2b5a6d616f0`.
+- Source: archive created with `git archive HEAD` in a temporary folder separate from the workspace.
+- Environment: Node.js 22.23.0, npm 10.9.8 and local Docker engine.
 
-L’archive initiale ne contenait ni `node_modules/`, ni `dist/`, ni `.astro/`, ni fichier non suivi. Elle représentait donc uniquement les fichiers enregistrés dans le commit inspecté.
+The initial archive did not contain `node_modules/`, `dist/`, `.astro/`, or untracked files. It therefore only represented the files saved in the inspected commit.
 
-## Installation propre
+## Clean install
 
-`npm ci` a installé 532 paquets depuis `package-lock.json`, sans réutiliser le dossier de dépendances du workspace. La commande a terminé avec zéro vulnérabilité signalée sur les 533 paquets audités pendant l’installation.
+`npm ci` installed 532 packages from `package-lock.json`, without reusing the workspace dependencies folder. The command ended with zero vulnerabilities reported out of the 533 packages audited during installation.
 
-## Validation du dépôt
+## Validation of the repository
 
-`npm run verify` a réussi intégralement dans l’archive :
+`npm run verify` was completely successful in the archive:
 
-- formatage Prettier conforme ;
-- provenance des trois médias conforme et aucune police embarquée ;
-- contrôle Astro et TypeScript : 39 fichiers, zéro erreur, avertissement ou indice ;
-- build indexable avec origine HTTPS de test ;
-- build de preview entièrement `noindex` ;
-- build sans `SITE_URL` et sans faux domaine ;
-- pour chaque variante : 13 documents HTML, 12 routes atteignables et 15 références internes validés.
+- Prettier compliant formatting;
+- origin of the three compliant media and no embedded font;
+- Astro and TypeScript control: 39 files, zero errors, warnings or hints;
+- indexable build with test HTTPS origin;
+- preview build entirely `noindex`;
+- build without `SITE_URL` and without fake domain;
+- for each variant: 13 HTML documents, 12 reachable routes and 15 validated internal references.
 
-## Validation des conteneurs
+## Container validation
 
-Les images publique et preview ont ensuite été construites depuis cette même archive, sans accès aux fichiers du workspace original.
+The public and preview images were then built from this same archive, without access to the original workspace files.
 
-| Mode    | Image construite                                                          | Résultat                                                                                                                          |
-| ------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Public  | `sha256:b92b131c771db0415a437124fefdf3112e0b7ce3d62d3916fcefb4bfb1c88c2c` | 12 routes bilingues, vraie 404, icônes, canonical, JSON-LD, sitemap, carte sociale et absence de cookie validés                   |
-| Preview | `sha256:add18e0cad6e7de9b738d363b1050927c215e968d049f4cb650adf8acae66337` | 12 routes bilingues, vraie 404, icônes, suppression des signaux d’indexation, interdiction du crawl et absence de cookie validées |
+| Fashion | Constructed image                                                         | Result                                                                                                              |
+| ------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Public  | `sha256:b92b131c771db0415a437124fefdf3112e0b7ce3d62d3916fcefb4bfb1c88c2c` | 12 bilingual routes, real 404, icons, canonical, JSON-LD, sitemap, social card and absence of cookies validated     |
+| Preview | `sha256:add18e0cad6e7de9b738d363b1050927c215e968d049f4cb650adf8acae66337` | 12 bilingual routes, real 404, icons, removal of indexing signals, ban on crawling and absence of cookies validated |
 
-Les conteneurs et images temporaires ont été supprimés automatiquement par le script de validation après les contrôles.
+Temporary containers and images were automatically deleted by the validation script after the checks.
 
-## Conclusion et limites
+## Conclusion and limits
 
-Le build et le conteneur du commit inspecté ne dépendent d’aucun fichier non
-suivi du workspace local. Cette preuve historique reste valable pour la
-reproductibilité du commit contrôlé, mais elle précède la migration et ne valide
-ni la configuration Wrangler ni le premier déploiement Workers.
+The build and container of the inspected commit do not depend on any file
+followed by the local workspace. This historical proof remains valid for the
+reproducibility of the commit checked, but it precedes the migration and does not validate
+neither the Wrangler configuration nor the first Workers deployment.
 
-Elle ne remplace pas la répétition distante : `npm ci`, le build, les en-têtes,
-l’URL de preview, le SHA envoyé et l’absence d’indexation devront encore être
-confirmés par GitHub Actions et sur une version Workers protégée par Access. La
-répétition de release complète sera également rejouée sur son SHA final.
+It does not replace remote rehearsal: `npm ci`, build, headers,
+the preview URL, the SHA sent and the absence of indexing must still be
+confirmed by GitHub Actions and on a Workers version protected by Access. The
+full release repeat will also be replayed on its final SHA.

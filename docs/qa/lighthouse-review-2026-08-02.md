@@ -1,50 +1,50 @@
-# Audit Lighthouse synthétique — 2 août 2026
+# Synthetic Lighthouse audit — August 2, 2026
 
-## Périmètre
+## Scope
 
-Audit mobile local des quatre pages représentatives du jalon A :
+Local mobile audit of the four representative pages of milestone A:
 
-- accueil `/` ;
-- liste `/projets/` ;
-- aperçu `/projets/myverse/` ;
-- aperçu `/projets/filtre-appels/`.
+- home `/`;
+- list `/projets/`;
+- preview `/projets/myverse/`;
+- preview `/projets/filtre-appels/`.
 
-Le build utilise `SITE_URL=https://portfolio.example` et `SITE_NOINDEX=false` afin de reproduire les métadonnées indexables. Les pages sont ensuite servies sur une origine locale temporaire pour la mesure.
+The build uses `SITE_URL=https://portfolio.example` and `SITE_NOINDEX=false` to reproduce indexable metadata. The pages are then served on a temporary local origin for measurement.
 
-## Environnement et seuils
+## Environment and thresholds
 
-- Lighthouse : `13.4.1` ;
-- navigateur : Headless Chrome `151.0.0.0` via Playwright ;
-- profil : mobile ;
-- ralentissement : simulation Lighthouse du réseau et du processeur ;
-- scores minimaux : 95 pour performance, accessibilité, bonnes pratiques et SEO ;
-- LCP maximal : 2 500 ms ;
-- CLS maximal : 0,1 ;
-- TBT maximal : 200 ms.
+- Lighthouse: `13.4.1`;
+- browser: Headless Chrome `151.0.0.0` via Playwright;
+- profile: mobile;
+- slowdown: Lighthouse simulation of network and processor;
+- minimum scores: 95 for performance, accessibility, best practices and SEO;
+- Maximum LCP: 2500 ms;
+- Maximum CLS: 0.1;
+- Maximum TBT: 200 ms.
 
-Commande exécutée :
+Command executed:
 
 ```sh
 npm run test:lighthouse
 ```
 
-## Résultats
+## Results
 
-| Route                     | Performance | Accessibilité | Bonnes pratiques | SEO | LCP    | CLS   | TBT  |
-| ------------------------- | ----------- | ------------- | ---------------- | --- | ------ | ----- | ---- |
-| `/`                       | 100         | 100           | 100              | 100 | 903 ms | 0,000 | 0 ms |
-| `/projets/`               | 100         | 100           | 100              | 100 | 903 ms | 0,000 | 0 ms |
-| `/projets/myverse/`       | 100         | 100           | 100              | 100 | 902 ms | 0,000 | 0 ms |
-| `/projets/filtre-appels/` | 100         | 100           | 100              | 100 | 903 ms | 0,000 | 0 ms |
+| route                     | Performance | Accessibility | Best practices | SEO | LCP   | CLS   | TBT |
+| ------------------------- | ----------- | ------------- | -------------- | --- | ----- | ----- | --- |
+| `/`                       | 100         | 100           | 100            | 100 | 903ms | 0.000 | 0ms |
+| `/projets/`               | 100         | 100           | 100            | 100 | 903ms | 0.000 | 0ms |
+| `/projets/myverse/`       | 100         | 100           | 100            | 100 | 902ms | 0.000 | 0ms |
+| `/projets/filtre-appels/` | 100         | 100           | 100            | 100 | 903ms | 0.000 | 0ms |
 
-Les quatre pages respectent tous les seuils bloquants configurés dans `scripts/run-lighthouse.mjs`.
+The four pages respect all the blocking thresholds configured in `scripts/run-lighthouse.mjs`.
 
-## Limites
+## Limits
 
-Cette preuve est une mesure de laboratoire locale et ponctuelle. Elle ne prouve
-ni les performances du réseau Cloudflare Workers, ni l’INP et les Core Web
-Vitals de terrain. L’audit doit être répété sur une preview Workers protégée par
-Access puis sur `https://zaykohub.com`, et les données réelles ne pourront être
-interprétées qu’après un volume de visites suffisant.
+This evidence is a local, one-off laboratory measurement. It does not prove
+neither Cloudflare Workers network performance nor INP and Core Web
+Field vitals. The audit must be repeated on a Preview Workers protected by
+Access then `https://zaykohub.com`, and the real data cannot be
+interpreted only after a sufficient volume of visits.
 
-Les rapports HTML et JSON détaillés restent dans `lighthouse-reports/`, ignoré par Git, afin de ne pas versionner des artefacts volumineux et dépendants de la machine.
+Detailed HTML and JSON reports remain in `lighthouse-reports/`, ignored by Git, so as not to version large, machine-dependent artifacts.

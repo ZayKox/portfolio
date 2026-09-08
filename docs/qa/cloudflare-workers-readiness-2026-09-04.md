@@ -1,78 +1,80 @@
-# Revue de préparation Cloudflare Workers — 4 septembre 2026
+# Cloudflare Workers Readiness Review — September 4, 2026
 
-## Périmètre
+> Historical status: this report predates the first production deployment of September 8, 2026. Use `../production-plan.md` and `../deployment-runbook.md` for the current operational state.
 
-Cette revue couvre la configuration versionnée du portfolio statique, les
-workflows GitHub Actions, les variantes de build, les textes légaux FR/EN et les
-smoke tests prévus pour Cloudflare Workers Static Assets. Elle ne constitue pas
-une preuve de déploiement : aucun compte Cloudflare, secret GitHub, DNS,
-certificat, règle Access ou domaine public n’a été modifié.
+## Scope
 
-Branche locale examinée : `develop`. L’arbre de travail était propre avant la
-tâche.
+This review covers versioned static portfolio configuration,
+GitHub Actions workflows, build variants, FR/EN legal texts and
+smoke tests planned for Cloudflare Workers Static Assets. It does not constitute
+proof of deployment: no Cloudflare account, GitHub secret, DNS,
+certificate, Access policy, or public domain has not been modified.
 
-## Résultat
+Local branch examined: `develop`. The working shaft was clean before
+task.
 
-La configuration locale est prête pour une première preview privée après les
-opérations externes du runbook. Le déploiement reste volontairement neutralisé
-par deux variables d’activation distinctes tant que Cloudflare Access, les
-environnements GitHub et la fenêtre de bascule ne sont pas prêts.
+## Result
 
-La revue de menace du pipeline a conduit aux garde-fous suivants :
+The local configuration is ready for a first private preview after the
+external runbook operations. The deployment remains deliberately neutralized
+by two separate activation variables as Cloudflare Access, the
+GitHub environments and toggle window are not ready.
 
-- le workflow de preview doit lui-même être lancé depuis `main` ;
-- la référence demandée est installée, validée et construite sans aucun secret ;
-- seul `dist/` passe dans un artefact GitHub immuable vers le job de
-  déploiement ;
-- le job cloisonné dans l’environnement `preview` recharge son outillage depuis
-  `main` et revalide `dist/` avant de recevoir le jeton Cloudflare ;
-- une sonde sans identifiant doit être refusée par Access avant le smoke test
-  authentifié ;
-- la production refuse un SHA validé qui n’est plus le HEAD de `main` ;
-- la gate de production et l’approbation humaine sont séparées, et le runbook
-  prépare HTTP → HTTPS et `www` → apex avant la bascule.
+The pipeline threat review led to the following safeguards:
 
-## Validations exécutées
+- the preview workflow must itself be launched from `main`;
+- the requested reference is installed, validated and built without any secrecy;
+- only `dist/` passes in an immutable GitHub artifact to the job
+  deployment;
+- the job partitioned in the environment `preview` reloads its tools from
+  `main` and revalidates `dist/` before receiving the Cloudflare token;
+- a probe without an identifier must be refused by Access before the smoke test
+  authenticated;
+- production refuses a validated SHA which is no longer the HEAD of `main`;
+- production gate and human approval are separate, and the runbook
+  prepares HTTP → HTTPS and `www` → apex before failover.
 
-| Contrôle                                                                             | Résultat                                                                                                          |
-| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| `npm ci --no-audit --no-fund`                                                        | 562 paquets installés depuis le lockfile                                                                          |
-| `npm run format` puis `npm run verify`                                               | réussi                                                                                                            |
-| `astro check`                                                                        | 50 fichiers, 0 erreur, 0 avertissement, 0 indication                                                              |
-| Variantes indexable, preview `noindex` et sans `SITE_URL`                            | 19 documents HTML, 18 routes et 23 références internes validés pour chaque contrat                                |
-| `npm audit --audit-level=high`                                                       | 0 vulnérabilité dans l’arbre installé, Wrangler inclus                                                            |
-| Playwright Chromium, Firefox et mobile Chromium                                      | 78 réussis, 15 ignorés selon les responsabilités de chaque projet                                                 |
-| Playwright WebKit et mobile WebKit dans `mcr.microsoft.com/playwright:v1.62.1-noble` | 49 réussis, 13 ignorés selon les responsabilités de chaque projet                                                 |
-| Lighthouse mobile                                                                    | 100 en performance, accessibilité, bonnes pratiques et SEO sur les 4 pages ; LCP de 903 à 905 ms, CLS 0, TBT 0 ms |
-| `npm run check:links`                                                                | 5 cibles contrôlées, aucune cible confirmée cassée ; LinkedIn a refusé la sonde avec le statut non bloquant 999   |
-| Parsing YAML des 3 workflows                                                         | réussi ; 1 job CI, 2 jobs preview et 1 job production                                                             |
-| Résolution des tags des actions GitHub                                               | les quatre SHA épinglés correspondent aux tags documentés                                                         |
-| Build production puis `wrangler deploy --dry-run`                                    | réussi avec Wrangler 4.129.0, 49 fichiers statiques lus, aucun binding                                            |
-| Build preview puis `wrangler versions upload --dry-run --preview-alias staging`      | réussi avec Wrangler 4.129.0                                                                                      |
-| `wrangler telemetry status`                                                          | désactivé par la configuration du projet                                                                          |
-| `git diff --check`                                                                   | réussi                                                                                                            |
+## Validations executed
 
-La première exécution Playwright locale a aussi révélé deux assertions qui
-cherchaient l’adresse email comme nom accessible alors que le lien porte désormais
-le libellé « Ouvrir la messagerie ». Elles ont été alignées sur l’interface
-existante. WebKit ne pouvait pas démarrer directement sur l’hôte faute de
-bibliothèques système ; l’image Playwright officielle de même version a permis
-de couvrir les 62 cas restants sans modifier le système.
+| Control                                                                             | Result                                                                                                       |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `npm ci --no-audit --no-fund`                                                       | 562 packages installed from lockfile                                                                         |
+| `npm run format` then `npm run verify`                                              | successful                                                                                                   |
+| `astro check`                                                                       | 50 files, 0 errors, 0 warnings, 0 indications                                                                |
+| Indexable variants, preview `noindex` and without `SITE_URL`                        | 19 HTML documents, 18 routes and 23 internal references validated for each contract                          |
+| `npm audit --audit-level=high`                                                      | 0 vulnerabilities in installed tree, Wrangler included                                                       |
+| Playwright Chromium, Firefox and mobile Chromium                                    | 78 passed, 15 ignored depending on the responsibilities of each project                                      |
+| Playwright WebKit and mobile WebKit in `mcr.microsoft.com/playwright:v1.62.1-noble` | 49 passed, 13 ignored depending on the responsibilities of each project                                      |
+| Mobile Lighthouse                                                                   | 100 in performance, accessibility, best practices and SEO on all 4 pages; LCP 903 to 905 ms, CLS 0, TBT 0 ms |
+| `npm run check:links`                                                               | 5 targets checked, no targets confirmed broken; LinkedIn refused probe with non-blocking status 999          |
+| YAML analysis of the 3 workflows                                                    | successful ; 1 CI job, 2 preview jobs and 1 production job                                                   |
+| Resolving GitHub Actions Tags                                                       | the four pinned SHAs correspond to the documented tags                                                       |
+| Build production then `wrangler deploy --dry-run`                                   | successful with Wrangler 4.129.0, 49 static files read, no binding                                           |
+| Build preview then `wrangler versions upload --dry-run --preview-alias staging`     | succeeded with Wrangler 4.129.0                                                                              |
+| `wrangler telemetry status`                                                         | disabled by project configuration                                                                            |
+| `git diff --check`                                                                  | successful                                                                                                   |
 
-## Preuves encore requises
+The first local Playwright run also revealed two assertions that
+were looking for the email address as an accessible name whereas the link now bears
+the label “Open mail”. They have been aligned with the interface
+existing. WebKit could not start directly on the host due to lack of
+system libraries; the official Playwright image of the same version allowed
+to cover the remaining 62 cases without modifying the system.
 
-Avant la production, il reste à exécuter et consigner :
+## Evidence still required
 
-- la création du Worker, des deux jetons Cloudflare distincts et des
-  environnements GitHub protégés ;
-- la preuve qu’Access bloque une requête anonyme et accepte le service token sur
-  l’URL réelle de preview ;
-- la recette visuelle, clavier, mobile et thèmes sur cette preview ;
-- l’inventaire puis la migration de la zone sans altérer MX, SPF, DKIM, DMARC ou
-  les autres services ;
-- les redirections permanentes HTTP → HTTPS et `www` → apex, le certificat, la
-  vraie 404, les en-têtes et le cache sur le réseau Cloudflare ;
-- un premier déploiement, son smoke test distant et un exercice de rollback.
+Before production, it remains to execute and record:
 
-Ces étapes sont ordonnées dans `docs/deployment-runbook.md`. Elles nécessitent
-des actions externes explicites et n’ont pas été simulées par les dry-runs.
+- the creation of the Worker, the two separate Cloudflare tokens and
+  protected GitHub environments;
+- proof that Access blocks an anonymous request and accepts the token service on
+  the actual preview URL;
+- the visual review, keyboard, mobile and themes on this preview;
+- the inventory then the migration of the zone without altering MX, SPF, DKIM, DMARC or
+  other services;
+- permanent redirects HTTP → HTTPS and `www` → apex, the certificate, the
+  true 404, headers and cache on Cloudflare network;
+- a first deployment, its remote smoke test and a rollback exercise.
+
+These steps are ordered in `docs/deployment-runbook.md`. They require
+explicit external actions and were not simulated by dry-runs.

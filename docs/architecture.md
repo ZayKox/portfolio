@@ -1,89 +1,128 @@
-# Architecture du portfolio
+# Portfolio architecture
 
-## Principes
+## Principles
 
-1. Générer un site statique rapide et simple à héberger.
-2. Maintenir la parité entre le français et l’anglais.
-3. Séparer les faits partagés, l’interface traduite et les récits de projets.
-4. N’afficher aucun champ incomplet et ne jamais inventer de contenu personnel.
-5. Ajouter du JavaScript uniquement pour une amélioration progressive utile.
+1. Generate a fast static site that is straightforward to host.
+2. Maintain factual and structural parity between French and English.
+3. Separate shared facts, localized interface copy, and project narratives.
+4. Hide incomplete fields and never invent personal information.
+5. Add client-side JavaScript only for useful progressive enhancement.
 
-Le système visuel effectivement implémenté est décrit dans `docs/design-system.md`. `src/styles/global.css` reste la source exécutable de ses tokens.
+The implemented visual system is documented in [`docs/design-system.md`](design-system.md). `src/styles/global.css` remains the executable source for its tokens.
 
-## Flux de contenu
+## Content flow
 
 ```text
 profile.ts + copy.ts + projects/*.mdx
                  ↓
-          composants Astro
+          Astro components
                  ↓
-          pages FR et EN
+          FR and EN pages
                  ↓
-           build statique
+           static build
 ```
 
-## Internationalisation
+## Internationalization
 
-Le français est la langue par défaut. Les routes anglaises vivent sous `/en/`. Chaque route transmet explicitement son équivalent au sélecteur de langue ; aucune redirection automatique n’est appliquée.
+French is the default language. English routes live under `/en/`. Every route explicitly provides its translated equivalent to the language selector; the site performs no automatic locale redirect.
 
-Le layout génère trois alternates sur les pages indexables : français, anglais et `x-default` vers le français. La validation du build contrôle leur réciprocité et leur résolution. La page 404 reste bilingue, mais ne publie ni canonical, ni alternate, ni données structurées.
+Indexable pages publish reciprocal French, English, and `x-default` alternates. `x-default` points to French. Build validation checks that every alternate resolves and points back correctly. The bilingual 404 page publishes no canonical URL, alternate, or structured data.
 
-## Projets
+## Projects
 
-Chaque projet possède une entrée MDX par langue. Le frontmatter contient les données destinées aux cartes, métadonnées et indicateurs ; le corps contient le récit long. Les états autorisés sont :
+Each project has one MDX entry per language. Frontmatter contains card, metadata, publication, visual, stack, and optional metric data. The body contains the longer narrative.
 
-- `draft` : non rendu ;
-- `teaser` : page courte basée uniquement sur des faits validés ;
-- `published` : étude de cas complète.
+Supported publication states:
 
-Le statut réel, les dates et les métriques produit restent absents tant qu’Ethan ne les a pas explicitement validés dans le questionnaire. Le format `teaser` est présenté comme un aperçu technique et ne vaut pas affirmation sur le niveau de maturité du produit.
+- `draft`: not rendered;
+- `teaser`: a short technical overview based only on validated facts;
+- `published`: a reviewed complete case study.
 
-`scripts/validate-content-parity.mjs` contrôle directement les sources MDX. Il impose une paire FR/EN par slug, l'identité du statut de publication, de l'ordre, de la mise en avant, de la stack, du visuel et des valeurs métriques, ainsi qu'une structure narrative de même profondeur. Les libellés et récits restent volontairement localisables.
+Actual maturity, dates, roles, and product metrics remain absent until Ethan explicitly validates them in the questionnaire. A `teaser` does not imply production readiness.
 
-## Domaine et SEO
+`scripts/validate-content-parity.mjs` requires one French and one English entry for every slug. It checks publication state, order, featured state, stack, visual, metric values, and equivalent narrative depth. Titles, labels, summaries, and narratives remain naturally localizable.
 
-Le build n’invente jamais de domaine. Sans `SITE_URL`, les liens internes restent relatifs et aucun canonical, sitemap ou URL d’image sociale n’est émis. Avec une origine HTTPS finale dans `SITE_URL`, Astro produit les canonical, `og:url`, URL JSON-LD, `robots.txt`, le sitemap officiel et l’URL absolue de la carte sociale. La 404 est exclue du sitemap.
+## Domain, indexing, and social metadata
 
-`scripts/generate-brand-assets.mjs` rend le favicon 64 × 64, l’icône Apple touch 180 × 180, la carte sociale générale et une carte 1200 × 630 dédiée à chaque projet depuis du HTML/CSS déterministe fondé sur les tokens Violet Field et les compositions déjà présentes dans l'interface. Les PNG générés sont versionnés dans `public/` ; le build n’exécute pas Chromium. Les chemins et alternatives localisées des projets vivent dans leurs frontmatters MDX. La validation contrôle la présence des images, leur format, leurs dimensions, leur poids, leur parité FR/EN et leurs métadonnées par route.
+The build never invents a domain.
 
-`docs/media-provenance.json` inventorie chaque média publiable avec sa source, son empreinte SHA-256, ses dimensions lorsqu’il s’agit d’un PNG et un budget maximal en octets. Le contrôle associé refuse un fichier absent du manifeste, une empreinte ou des dimensions modifiées, un dépassement de budget ou une police embarquée. En dehors des cinq éléments de marque générés et inventoriés, l’interface actuelle utilise uniquement du texte, du CSS, le caractère Unicode du sélecteur de thème et les polices disponibles sur le système ; elle ne distribue ni police, capture, vidéo ou contenu visuel tiers.
+- Without `SITE_URL`, internal links remain relative and the build emits no canonical URL, sitemap, or absolute social-image URL.
+- With a valid final HTTPS origin in `SITE_URL`, Astro emits canonical URLs, `og:url`, absolute JSON-LD URLs, `robots.txt`, the official sitemap, and absolute social-image URLs.
+- The 404 page is excluded from the sitemap.
+- With `SITE_NOINDEX=true`, every page becomes `noindex, nofollow`; `robots.txt` blocks crawling; sitemap, canonical, alternates, JSON-LD, and social metadata are removed.
 
-Une répétition technique utilise `SITE_NOINDEX=true`. Toutes les pages deviennent alors `noindex, nofollow`, `robots.txt` interdit le crawl et aucun sitemap, canonical, alternate, JSON-LD ou aperçu social n'est généré. `npm run verify` contrôle séparément ce mode, la production indexable et le build sans origine. Cette défense contre l'indexation accidentelle ne remplace pas une authentification ou une restriction réseau de la preview.
+The `noindex` mode reduces accidental indexing risk but does not replace Cloudflare Access or another network restriction for previews.
 
-## Sécurité
+`scripts/generate-brand-assets.mjs` generates the 64 × 64 favicon, 180 × 180 Apple touch icon, general 1200 × 630 social card, and one 1200 × 630 social card per project from deterministic HTML and CSS based on Violet Field tokens. Generated PNG files are versioned under `public/`; production builds do not run Chromium.
 
-Astro génère une CSP par page. Les scripts inline sont placés après la balise CSP et chaque contenu exact est enregistré avec son hash SHA-256 ; la validation recalcule tous les hashes. `public/_headers` ajoute les protections HTTP prises en charge par Workers Static Assets. Le domaine personnalisé Cloudflare termine TLS et annonce HSTS pendant un an, sans étendre encore la politique aux sous-domaines ni demander son préchargement avant la décision finale concernant `www`. La production ne contient aucun code Worker, Function ou service d’origine : seules les ressources statiques de `dist/` sont exposées.
+`docs/media-provenance.json` records every publishable media file, its source, SHA-256 hash, dimensions when applicable, and byte budget. Validation rejects missing or unlisted media, modified hashes or dimensions, budget overruns, and bundled fonts. Apart from the five generated brand assets, the current interface distributes no image, video, third-party visual, or font file.
 
-Le site ne charge aucune ressource tierce, n’expose aucun secret et ne contient ni formulaire, embed ou service dynamique. Le seul stockage navigateur autorisé est la préférence `portfolio-theme` ; aucun cookie n'est émis par l’artefact. La validation bloque les ressources externes, les API de stockage ou d'envoi non prévues et les réponses `Set-Cookie`. La configuration désactive explicitement Workers Logs, la télémétrie Wrangler et l’inventaire de dépendances envoyé par Wrangler ; aucun export de journaux ni outil de mesure d’audience côté navigateur n’est prévu. Cloudflare traite néanmoins les données réseau nécessaires au service et produit des métriques techniques agrégées, décrites avec les transferts et critères de conservation dans la politique de confidentialité. Toute évolution de ce périmètre doit mettre à jour la CSP, les pages légales applicables et les contrôles du build.
+## Security and privacy
 
-## Hébergement
+Astro generates a CSP for each page. Inline theme and JSON-LD scripts appear after the CSP meta element, and their exact contents are authorized through SHA-256 hashes that build validation recalculates.
 
-Node.js 22 génère `dist/`, puis Cloudflare Workers Static Assets publie uniquement cet artefact. La configuration Wrangler pointe vers `dist/`, conserve les URL Astro avec barre finale et sert la page `404.html` avec le statut HTTP 404. Aucun adaptateur Astro Cloudflare, SSR, binding, Function ou script Worker n’est requis tant que le site reste statique. `SITE_URL` est une donnée de build et tout changement de domaine impose donc une nouvelle version.
+`public/_headers` defines the security headers supported by Workers Static Assets. The Cloudflare custom domain terminates TLS and advertises one year of HSTS without `includeSubDomains` or preload while the broader subdomain policy remains deliberately limited.
 
-GitHub Actions est l’unique chemin normal de publication. Les pull requests exécutent la validation sans secret Cloudflare. Après relecture, un mainteneur déclenche manuellement la définition du workflow de preview présente sur `main`, avec une référence et un alias explicites ; le workflow refuse de s’exécuter lui-même depuis une autre branche. Un premier job exécute la référence demandée sans secret, la valide, construit `dist/` avec `SITE_NOINDEX=true` et transmet uniquement cet artefact. Un second job cloisonné dans l’environnement `preview` charge l’outillage de confiance depuis `main`, revalide l’artefact, puis reçoit le jeton nécessaire pour envoyer une version Workers non promue. Il exige qu’une requête anonyme soit bloquée par Cloudflare Access avant le smoke test authentifié. Cette frontière empêche la référence demandée de s’exécuter avec les secrets de déploiement. Une fusion vers `main` ne déploie qu’après la validation complète, avec `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false`, et uniquement si le SHA validé est encore le HEAD de `main`. Les secrets Cloudflare restent dans les environnements GitHub, jamais dans le dépôt ou l’artefact. Les workflows de preview et de production sont en plus neutralisés tant que leur variable de déploiement distincte n’est pas activée explicitement.
+The public artifact contains no Worker runtime code, Function, binding, origin service, database, application secret, form, account, or dynamic API. Only the static contents of `dist/` are deployed.
 
-Workers attache par défaut `Cache-Control: public, max-age=0, must-revalidate` et un ETag aux ressources statiques. `public/_headers` remplace cette valeur par un cache navigateur d’un an et `immutable` uniquement pour les fichiers `/_astro/` empreintés. La recette distante contrôle les deux politiques. Le domaine personnalisé est déclaré sur la zone Cloudflare, qui gère le DNS associé et le certificat TLS ; `www` redirige définitivement vers l’apex canonique en conservant chemin et paramètres.
+The only browser storage used by the application is the `portfolio-theme` preference. The artifact sets no response cookie. Validation blocks unauthorized external resources, embeds, storage or sending APIs, tracking mechanisms, and `Set-Cookie` responses.
 
-## Validation statique
+The versioned configuration disables Workers Logs, log exports, Wrangler telemetry, dependency instrumentation, and browser-side analytics. Cloudflare still processes network data needed to deliver and protect the site and can produce aggregate technical metrics. The privacy policy documents this distinction. Any change to this scope must update CSP, applicable legal text, and build validation in the same task.
 
-`npm run verify` contrôle le format, la cohérence de la chaîne Node/npm/CI, la configuration Workers, la parité factuelle des sources de projets, la provenance des médias, les types Astro, un build indexable avec une origine HTTPS de test, un build de preview entièrement `noindex`, puis recrée `dist/` sans faux domaine. `scripts/validate-toolchain.mjs` aligne les moteurs, les fichiers de verrouillage, les actions GitHub, les commandes CI et Dependabot. `scripts/validate-build.mjs` vérifie les routes, liens internes, paires FR/EN, titres, descriptions et locales de partage, sitemap, robots, CSP, JSON-LD, langue du document, hiérarchie des titres, régions principales, page courante, noms des contrôles, absence de ressource tierce ou mécanisme de suivi non autorisé, présence des tokens Violet Field requis, parité du thème sombre explicite/système, contrastes principaux, budgets CSS/JS/HTML, placeholders et motifs de secrets courants.
+## Hosting and deployment
 
-## Validation navigateur
+Node.js 22 generates `dist/`; Cloudflare Workers Static Assets publishes only that directory. `wrangler.jsonc` preserves Astro trailing-slash URLs and serves `404.html` with an HTTP 404 status. No Astro Cloudflare adapter is required while output remains static. Because `SITE_URL` is build-time data, a domain change requires a new build and deployment.
 
-`npm run test:e2e` démarre une prévisualisation du build puis teste les routes publiques dans Chromium, Firefox, WebKit et des émulations mobiles Chromium et WebKit. La suite contrôle le rendu, les erreurs JavaScript et CSP, les deux thèmes, la persistance du choix, les noms et états dynamiques des contrôles localisés, les principaux liens, le statut 404, le lien d'évitement au clavier, l'ordre DOM de tabulation et la visibilité du focus en clair/sombre, le mouvement réduit, les cibles tactiles, l'absence de débordement à 320 px et les violations axe de tous niveaux, y compris sur la page 404. Un contrôle Chromium desktop redimensionne aussi le viewport à 640 puis 320 pixels CSS, équivalents de reflow d'une fenêtre de 1280 pixels zoomée à 200 % et 400 % ; la validation statique interdit les métadonnées qui bloquent le zoom. Le site doit également rester lisible et navigable sans JavaScript. Ces preuves complètent sans remplacer le test manuel avec le zoom réel du navigateur. Des mesures Chromium bloquent un CLS supérieur à 0,1 ou plus de 300 Kio encodés sur les pages représentatives ; elles complètent sans remplacer Lighthouse, les mesures de production et la recette humaine au clavier ou avec un lecteur d'écran. `npm run check:links` contrôle séparément les liens HTTPS externes et distingue les cibles réellement absentes des refus ou incidents réseau non concluants.
+GitHub Actions is the normal publication path:
 
-`npm run test:lighthouse` audite en mobile ralenti six pages représentatives (accueil, liste des projets, deux aperçus et CV FR/EN) avec une origine HTTPS réservée afin de reproduire les métadonnées de production, puis conserve des rapports HTML/JSON non versionnés. La release exige des scores d'au moins 95 dans les quatre catégories, un LCP inférieur ou égal à 2,5 s, un CLS inférieur ou égal à 0,1 et un TBT inférieur ou égal à 200 ms. Cette preuve synthétique ne remplace pas les Core Web Vitals de terrain, notamment l'INP réel.
+1. Pull requests run the complete validation suite without Cloudflare secrets.
+2. An authorized maintainer can trigger a private preview from the workflow definition on `main`, with an exact Git reference and alias.
+3. A secret-free job validates the requested reference and builds `dist/` with `SITE_NOINDEX=true`.
+4. A separate protected job loads trusted tooling from `main`, revalidates the artifact, receives the Cloudflare token, and uploads an unpromoted Workers version.
+5. The preview workflow proves that anonymous access is blocked by Cloudflare Access before running an authenticated smoke test.
+6. A production deployment runs only after complete validation of the current `main` SHA, with `SITE_URL=https://ethanbrosselard.com` and `SITE_NOINDEX=false`.
 
-## Validation du déploiement
+Secrets remain in protected GitHub environments and never enter the repository, build artifact, or report. Preview and production workflows remain governed by separate explicit enablement variables.
 
-La validation de la configuration confirme que Workers ne reçoit que `dist/`, sert une vraie 404, conserve les URL avec barre finale et n’introduit ni script d’exécution, binding ou secret applicatif. Le build local reste servi par `astro preview` pour les contrôles navigateur ; il ne prétend pas reproduire le réseau Cloudflare.
+Workers uses revalidation for HTML and long-lived immutable browser caching only for fingerprinted `/_astro/` assets. Remote smoke tests verify both policies. Cloudflare manages the custom-domain DNS record and TLS certificate. `www` permanently redirects to the apex while preserving the path and query string.
 
-`npm run test:deployment -- --url <origine-https> --mode <production|preview>` exécute les assertions en lecture seule contre une URL Workers : dix-huit routes bilingues, vraie 404, CSP et en-têtes, politique de cache HTML/ressources hashées, favicon, canonical, alternates, JSON-LD, robots, sitemap exact et carte sociale en production, ou suppression de tous les signaux d’indexation en preview. En production, `--canonical-url` peut distinguer l’origine appelée du domaine final attendu dans les métadonnées. `--check-http-redirect` exige une redirection permanente HTTP → HTTPS et chaque option répétable `--redirect-from <origine-https>` exige qu’une variante `www` redirige définitivement vers l’URL canonique en conservant chemin et paramètres. Avant le smoke test authentifié, le workflow de preview effectue une sonde distincte sans identifiant et exige un refus ou une redirection vers la connexion Access. Le smoke test reçoit ensuite les deux en-têtes du service token depuis des secrets externes ; leur valeur n’est jamais incluse dans le rapport JSON optionnel.
+## Static validation
 
-## Contenu futur
+`npm run verify` checks:
 
-Le modèle pourra accueillir sans refonte des expériences IA, outils, articles ou projets dans d’autres domaines. Le positionnement ne dépend donc pas d’une stack particulière.
+- formatting;
+- Node, npm, CI, Wrangler, and Dependabot consistency;
+- Workers configuration;
+- bilingual project parity;
+- media provenance;
+- resume PDF freshness;
+- Astro and TypeScript diagnostics;
+- an indexable build with a reserved HTTPS origin;
+- a fully `noindex` preview build;
+- a build without a domain.
 
-## Audit de préparation du 5 septembre 2026
+`scripts/validate-build.mjs` checks routes, internal reachability, French/English pairs, titles, descriptions, Open Graph locales, sitemap, robots directives, CSP hashes, JSON-LD, document languages, heading hierarchy, main landmarks, current-page state, control names, external-resource restrictions, tracking restrictions, required Violet Field tokens, theme parity, primary contrast ratios, HTML/CSS/JavaScript budgets, placeholders, and common secret patterns.
 
-`PageHero.astro` centralise les introductions des pages intérieures. Les tests `page-layout.spec.ts` contrôlent leur alignement avec les aperçus de projet dans les deux langues, y compris autour du breakpoint tablette, et refusent le rognage du visuel Palimia. `theme.spec.ts` couvre le suivi système, les valeurs enregistrées invalides, le stockage bloqué et le mode sans JavaScript ; `contact.spec.ts` vérifie les annonces de copie réussie ou refusée et le repli vers la messagerie. Les PDF sont générés avec les options Playwright `tagged` et `outline`, qui conservent la langue FR/EN et une structure de navigation. Leur fraîcheur est contrôlée par `check:resume` dans `verify` : `docs/resume-artifacts.json` relie les empreintes des PDF à toutes les sources sous `src/`, aux configurations Astro/TypeScript, au manifeste npm, au lockfile et au générateur. Toute modification impose `npm run generate:resume-pdfs`, qui reconstruit le site sans domaine avant de générer les deux langues. Cette empreinte volontairement conservatrice peut imposer une régénération après une modification sans effet visible sur le CV. Elle détecte les artefacts périmés ; elle ne certifie pas leur rendu visuel. Le rapport et les limites de cette recette figurent dans `docs/qa/production-audit-2026-09-05.md`.
+## Browser validation
+
+`npm run test:e2e` tests all public routes in Chromium, Firefox, WebKit, and mobile Chromium and WebKit profiles. Coverage includes rendering, JavaScript and CSP errors, themes, saved and system preferences, localized control names and states, major links, real 404 behavior, skip-link behavior, DOM tab order, focus visibility, reduced motion, touch targets, 320 px overflow, and axe violations.
+
+Chromium also checks viewport widths corresponding to 200% and 400% reflow from a 1280 px desktop viewport. The site remains readable and navigable without JavaScript. Synthetic checks do not replace real browser zoom, a physical device, or screen-reader review.
+
+Representative pages must remain below a CLS of 0.1 and an encoded transfer budget of 300 KiB. `npm run test:lighthouse` requires scores of at least 95 for performance, accessibility, best practices, and SEO, with LCP at or below 2.5 seconds, CLS at or below 0.1, and TBT at or below 200 ms. These are synthetic technical measurements, not field Core Web Vitals or user-impact claims.
+
+## Deployment validation
+
+`npm run test:deployment -- --url <https-origin> --mode <production|preview>` performs read-only assertions against a Workers origin. It checks all 18 bilingual routes, the real 404 response, CSP and headers, HTML and fingerprinted-asset cache policies, icons, metadata, robots directives, and sitemap behavior.
+
+Production mode checks canonical URLs, alternates, JSON-LD, social cards, and the exact sitemap. Preview mode checks removal of all indexing signals. `--check-http-redirect` verifies a permanent HTTP-to-HTTPS redirect. Repeatable `--redirect-from` options verify permanent canonical redirects with preserved paths and query strings. Preview authentication headers are read only from external secrets and are never written to the optional JSON report.
+
+## Resume artifacts
+
+The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
+
+`check:resume`, included in `verify`, compares each PDF with a conservative manifest covering relevant sources, Astro and TypeScript configuration, npm manifests, the lockfile, and the generator. A source change may therefore require `npm run generate:resume-pdfs` even when the visible resume does not change. Freshness validation detects stale artifacts; it does not certify visual quality or PDF/UA compliance.
+
+## Future content
+
+The content model can add future AI work, tools, articles, and projects from other domains without changing the overall architecture. Ethan's positioning must not depend on one stack or the two initial projects.

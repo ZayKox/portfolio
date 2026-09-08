@@ -1,26 +1,26 @@
-# Contrôle des liens externes — 2 août 2026
+# Control of external links — August 2, 2026
 
-## Périmètre
+## Scope
 
-`npm run check:links` construit le site puis extrait les destinations HTTPS publiées dans les documents générés. Le contrôle échoue lorsqu’une cible est confirmée absente avec un statut `404` ou `410` ; les refus réseau, limitations de débit et protections anti-automatisation restent non concluants afin d’éviter les faux positifs.
+`npm run check:links` builds the site then extracts the HTTPS destinations published in the generated documents. The check fails when a target is confirmed absent with a status `404` or `410`; network denials, rate limitations and anti-automation protections remain inconclusive in order to avoid false positives.
 
-Commande exécutée :
+Command executed:
 
 ```sh
 npm run check:links
 ```
 
-## Résultats
+## Results
 
-| Destination                                               | Résultat | Conclusion                                    |
-| --------------------------------------------------------- | -------- | --------------------------------------------- |
-| `https://github.com/ZayKox`                               | `200`    | cible accessible                              |
-| `https://www.linkedin.com/in/ethan-brosselard-507334237/` | `999`    | refus anti-automatisation, résultat incertain |
+| Destination                                               | Result | Conclusion                                |
+| --------------------------------------------------------- | ------ | ----------------------------------------- |
+| `https://github.com/ZayKox`                               | `200`  | accessible target                         |
+| `https://www.linkedin.com/in/ethan-brosselard-507334237/` | `999`  | anti-automation refusal, uncertain result |
 
-Aucune cible définitivement cassée n’a été détectée parmi les deux liens HTTPS publiés.
+No permanently broken targets were detected among the two published HTTPS links.
 
-## Limites
+## Limits
 
-Le statut LinkedIn `999` ne prouve ni que le profil est absent ni qu’il est accessible à tous les visiteurs. Le lien doit être ouvert manuellement dans un navigateur lors de la répétition privée puis de la recette de production.
+The LinkedIn status `999` does not prove that the profile is missing or that it is accessible to all visitors. The link must be opened manually in a browser during the private rehearsal and then the production acceptance test.
 
-Les liens `mailto:` sont validés structurellement par le build et testés par Playwright, mais ne déclenchent volontairement aucun envoi d’email pendant cette recette.
+Links `mailto:` are structurally validated by the build and tested by Playwright, but do not intentionally trigger any email sending during this review.

@@ -1,52 +1,52 @@
-# Recette visuelle locale — 2 août 2026
+# Local visual review — August 2, 2026
 
-## Périmètre
+## Scope
 
-- Révision inspectée : `0f8c3f6`.
-- Navigateur : Chromium headless fourni avec Playwright 1.62.1.
-- Serveur : artefact Astro statique servi localement par `astro preview`.
-- Routes : les douze routes publiques françaises et anglaises.
+- Revision inspected: `0f8c3f6`.
+- Browser: Chromium headless supplied with Playwright 1.62.1.
+- Server: static Astro artifact served locally by `astro preview`.
+- routes: the twelve French and English public routes.
 
-## Matrice exécutée
+## Matrix executed
 
-### Thèmes
+### Themes
 
-Trente-six captures pleine page ont été générées à 1440 × 900 px :
+Thirty-six full-page captures were generated at 1440 × 900 px:
 
-- douze routes avec préférence explicite claire ;
-- douze routes avec préférence explicite sombre ;
-- douze routes sans préférence enregistrée et avec le système en mode sombre.
+- twelve routes with clear explicit preference;
+- twelve routes with explicit dark preference;
+- twelve routes without saved preferences and with the system in dark mode.
 
-Chaque rendu possédait un titre principal et une région principale visibles. Aucun débordement horizontal ni message d’erreur console n’a été détecté. Les planches de contact et plusieurs captures pleine résolution ont été relues : la hiérarchie, les contrastes visuels, les espacements, les compositions de projet et les états actifs restent cohérents en français et en anglais.
+Each rendering had a visible main title and main region. No horizontal overflow or console error messages were detected. The contact sheets and several full-resolution captures have been proofread: the hierarchy, visual contrasts, spacing, project compositions and active states remain consistent in French and English.
 
-### Formats d’écran
+### Screen formats
 
-Trente captures supplémentaires ont couvert l’accueil FR/EN, la page projet devenue Palimia et le contact dans les deux thèmes :
+Thirty additional captures covered the FR/EN welcome, the project page which became Palimia and the contact in the two themes:
 
-| Profil        | Zone d’affichage |
-| ------------- | ---------------- |
-| Mobile étroit | 320 × 800 px     |
-| Tablette      | 768 × 900 px     |
-| Écran large   | 1920 × 1080 px   |
+| Profile       | Display area   |
+| ------------- | -------------- |
+| Narrow mobile | 320 × 800 px   |
+| Tablet        | 768 × 900 px   |
+| Widescreen    | 1920 × 1080 px |
 
-Aucun débordement horizontal, contenu rogné, collision de navigation ou rupture de composition n’a été relevé. À 320 px, la navigation passe sur une deuxième ligne, les grilles deviennent monocolonnes et les boutons, cartes, libellés techniques et adresses restent lisibles.
+No horizontal overflow, cropped content, navigation collision, or composition break was observed. At 320 px, navigation moves to a second line, grids become single columns, and buttons, cards, technical labels, and addresses remain readable.
 
-### Mouvement réduit
+### Reduced movement
 
-Dix contrôles ont couvert les cinq pages représentatives dans les deux thèmes avec `prefers-reduced-motion: reduce`. Les durées maximales calculées étaient de `0,00001 s` pour les animations comme pour les transitions. Aucun contenu ou état utile ne dépend du mouvement.
+Ten controls covered the five representative pages in both themes with `prefers-reduced-motion: reduce`. The maximum durations calculated were `0,00001 s` for both animations and transitions. No useful content or state depends on movement.
 
-## Résultat
+## Result
 
-La recette locale ne révèle aucun défaut visuel bloquant pour le jalon A. Elle confirme la cohérence actuelle de Violet Field sur les routes, thèmes et largeurs inspectés.
+The local review does not reveal any blocking visual defect for milestone A. It confirms the current consistency of Violet Field on the routes, themes and widths inspected.
 
-## Limites conservées
+## Limits preserved
 
-Cette preuve ne remplace pas :
+This proof does not replace:
 
-- un test sur téléphone Android physique ou sur iPhone/Safari ;
-- la matrice WebKit, indisponible localement faute de bibliothèques système ;
-- le zoom réel du navigateur à 200 % et 400 % ;
-- le parcours clavier humain complet et la passe lecteur d’écran ;
-- la recette distante sur une preview Workers protégée par Access.
+- a test on a physical Android phone or on an iPhone/Safari;
+- the WebKit matrix, unavailable locally due to lack of system libraries;
+- the actual browser zoom at 200% and 400%;
+- the complete human keyboard path and screen reader pass;
+- the remote acceptance test on a Workers preview protected by Access.
 
-Ces éléments restent ouverts dans `docs/production-plan.md`.
+These elements remain open in `docs/production-plan.md`.

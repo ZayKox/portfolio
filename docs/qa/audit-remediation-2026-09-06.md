@@ -1,39 +1,41 @@
-# Application de l’audit — 6 septembre 2026
+# Audit remediation — September 6, 2026
 
-Suite du rapport `production-audit-2026-09-05.md`. État initial : branche `develop`, commit `2cec73cd671dd435d236145aeedc1882c128c3fc`, index et arbre propres. Le changement du nom du Worker déjà committé est conservé.
+> Historical status: the infrastructure and human-review conditions listed as open in this dated report were subsequently completed or explicitly confirmed on September 8, 2026. See `human-verification-2026-09-08.md` and the current `../production-plan.md` roadmap.
 
-## Corrections livrées
+Continued from report `production-audit-2026-09-05.md`. Initial state: branch `develop`, commit `2cec73cd671dd435d236145aeedc1882c128c3fc`, clean index and tree. The change to the name of the Worker already committed is retained.
 
-- Retrait FR/EN des centres d’intérêt, du récit d’origine informatique et de l’inspiration Letterboxd sans validation canonique. Routes : `/`, `/en/`, `/a-propos/`, `/en/about/`.
-- CV limités aux informations validées : retrait des détails Intento, des sites et descriptions de cursus, des attributions Svelte/Docker/Git/PL-SQL à Beyowi et des développements non validés de la mission Sealed Air. Les postes, entreprises, établissements et périodes restent présents. Les champs absents n’émettent pas de paragraphe ou liste vide. Routes : `/cv/`, `/en/resume/` et leurs deux PDF.
-- Génération PDF précédée d’un build indépendant du domaine. Manifeste versionné des empreintes des sources et des deux sorties ; `check:resume` bloque les artefacts périmés ou modifiés dans `verify`, donc aussi en CI. Les tests négatifs couvrent modification, ajout, suppression de source, PDF modifié et PDF manquant. La vérification ne nécessite pas de navigateur ; la régénération exige Chromium.
-- Axe bloque toutes les violations, y compris mineures/modérées, sur les dix-huit routes et la 404, en clair/sombre dans les cinq profils navigateur.
-- Conservation des rapports navigateur et Lighthouse en CI également lors d’un succès, pendant sept jours, pour pouvoir joindre les preuves à une release.
+## Corrections delivered
 
-Aucune nouvelle réponse personnelle n’est considérée validée. Le questionnaire reste inchangé ; les détails retirés peuvent être réintroduits après validation explicite.
+- FR/EN removal of interests, IT origin story and Letterboxd inspiration without canonical validation. Routes: `/`, `/en/`, `/a-propos/`, `/en/about/`.
+- CV limited to validated information: removal of Intento details, course sites and descriptions, Svelte/Docker/Git/PL-SQL attributions to Beyowi and unvalidated developments of the Sealed Air mission. The positions, companies, establishments and periods remain present. Absent fields do not emit an empty paragraph or list. Routes: `/cv/`, `/en/resume/` and their two PDFs.
+- PDF generation preceded by a domain-independent build. Versioned manifest of the fingerprints of the sources and the two outputs; `check:resume` blocks outdated or modified artifacts in `verify`, therefore also in CI. Negative tests cover edit, add, remove source, edited PDF, and missing PDF. Verification does not require a browser; regeneration requires Chromium.
+- Ax blocks all violations, including minor/moderate, on all eighteen routes and the 404, light/dark in all five browser profiles.
+- Conservation of browser and Lighthouse reports in CI also upon success, for seven days, to be able to attach the evidence to a release.
 
-## Vérifications locales
+No new personal response is considered validated. The questionnaire remains unchanged; Removed details can be reintroduced after explicit validation.
 
-- `npm run format` et `npm run verify` : réussis, incluant fraîcheur PDF et tests négatifs ; dix-neuf documents et dix-huit routes validés dans les trois modes de build.
-- Copie isolée des fichiers versionnés et des nouveaux fichiers de cette tâche, sans `node_modules`, `.astro`, `dist` ou dépendance à un dépôt voisin : `npm ci` puis `npm run verify` réussis. Installation : zéro vulnérabilité signalée.
-- Chromium, Firefox et mobile Chromium : 117 réussis, 15 non applicables ignorés.
-- WebKit desktop/mobile dans l’image officielle Playwright épinglée du rapport initial : 75 réussis, 13 non applicables ignorés. Total : **192 réussis, zéro échec**.
-- Lighthouse : 100/100 dans les quatre catégories sur les six routes ; LCP 902–903 ms, CLS maximal 0,001, TBT nul.
-- PDF : deux pages par langue, `/Lang` FR/EN, balisage présent, retrait des passages contrôlé par extraction textuelle ; les quatre pages ont été rendues et examinées, sans contenu coupé.
+## Local checks
 
-Ces résultats sont des preuves locales et synthétiques, pas une certification WCAG/PDF-UA ni des mesures de production.
+- `npm run format` and `npm run verify`: passed, including PDF freshness and negative tests; Nineteen documents and eighteen routes validated in the three build modes.
+- Isolated copy of versioned files and new files from this task, without `node_modules`, `.astro`, `dist` or dependency on a neighboring repository: `npm ci` then `npm run verify` succeeded. Installation: zero vulnerabilities reported.
+- Chromium, Firefox and mobile Chromium: 117 passed, 15 not applicable ignored.
+- WebKit desktop/mobile in official Playwright pinned image from initial report: 75 passed, 13 not applicable ignored. Total: **192 passes, zero failures**.
+- Lighthouse: 100/100 in all four categories on all six routes; LCP 902–903 ms, maximum CLS 0.001, TBT zero.
+- PDF: two pages per language, `/Lang` FR/EN, markup present, removal of passages controlled by textual extraction; all four pages have been returned and reviewed, with no content cut.
 
-## Infrastructure : constats actuels et travail restant
+These results are local, synthetic evidence, not WCAG/PDF-UA certification or production measurements.
 
-Le domaine faisant foi est `ethanbrosselard.com` (§25 du questionnaire). Les sondes de cette passe montrent un apex HTTPS répondant 200, sans canonical attendu, et `www.ethanbrosselard.com` ne résolvant pas. `test:deployment` échoue dès `/` avec `canonical does not match https://ethanbrosselard.com/` ; les assertions suivantes ne sont donc pas réputées vérifiées. Le constat du rapport initial selon lequel l’apex redirige vers un autre service ne doit pas être utilisé pour décider la bascule actuelle.
+## Infrastructure: current findings and remaining work
 
-La [CI du commit initial 2cec73c](https://github.com/ZayKox/portfolio/actions/runs/33977120451) est réussie. Le [dernier workflow de production consulté](https://github.com/ZayKox/portfolio/actions/runs/33977408310) est ignoré (`skipped`) et porte le SHA précédent ; ce n’est pas une preuve de déploiement des corrections de cette tâche. La CI distante du futur commit reste à exécuter après publication Git autorisée.
+The authentic domain is `ethanbrosselard.com` (§25 of the questionnaire). Probes from this pass show an HTTPS apex responding 200, with no expected canonical, and `www.ethanbrosselard.com` not resolving. `test:deployment` fails from `/` with `canonical does not match https://ethanbrosselard.com/`; the following assertions are therefore not deemed verified. The initial report's finding that Apex redirects to another service should not be used to decide the current failover.
 
-Wrangler indique que la session n’est pas authentifiée. Aucun secret, réglage de compte, DNS, déploiement, push ou PR n’a été modifié pendant cette passe. Restent nécessaires :
+The [CI of initial commit 2cec73c](https://github.com/ZayKox/portfolio/actions/runs/33977120451) is successful. The [last viewed production workflow](https://github.com/ZayKox/portfolio/actions/runs/33977408310) is ignored (`skipped`) and carries the previous SHA; This is not proof of deployment of fixes for this task. The remote CI of the future commit remains to be executed after authorized Git publication.
 
-1. Accès authentifié au compte Cloudflare et vérification des environnements/protections/secrets GitHub, puis preview privée Access avec refus anonyme et smoke test authentifié.
-2. Inventaire et préservation des DNS existants, association du bon Worker au domaine, redirections HTTP/HTTPS et `www` ; après le GO explicite, recette distante complète et exercice de rollback selon `docs/deployment-runbook.md`.
-3. Recette humaine avec lecteur d’écran, zoom réel, Safari macOS et téléphones physiques ; relecture des mentions d’hébergement avec les réglages réellement déployés.
-4. Vérification manuelle du lien LinkedIn : le refus automatisé ne prouve pas un lien cassé.
+Wrangler indicates that the session is not authenticated. No secrets, account settings, DNS, deployment, push, or PRs were changed during this pass. Remains necessary:
 
-Les corrections locales ne lèvent pas ces conditions de mise en production.
+1. Authenticated access to the Cloudflare account and verification of GitHub environments/protections/secrets, then private Access preview with anonymous refusal and authenticated smoke test.
+2. Inventory and preservation of existing DNS, association of the correct Worker to the domain, HTTP/HTTPS and `www` redirections; after the explicit GO, complete remote acceptance test and rollback exercise according to `docs/deployment-runbook.md`.
+3. Human review with screen reader, real zoom, macOS Safari and physical phones; reviewing of hosting mentions with the settings actually deployed.
+4. Manual LinkedIn link verification: Automated rejection does not prove a broken link.
+
+Local corrections do not remove these production conditions.

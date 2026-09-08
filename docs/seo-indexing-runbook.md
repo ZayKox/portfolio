@@ -1,112 +1,79 @@
-# Runbook SEO, indexation et visibilité du portfolio
+# SEO, indexing, and portfolio visibility runbook
 
-Ce document décrit la procédure complète pour publier le portfolio avec des
-signaux SEO corrects, le déclarer à Google, puis suivre son indexation. Il
-complète le [runbook de déploiement](deployment-runbook.md) : ce dernier reste
-la référence pour les previews, le DNS initial, les secrets et le retour
-arrière.
+This document describes how to publish the portfolio with correct technical SEO signals, register it with Google, and monitor indexing. The [`deployment runbook`](deployment-runbook.md) remains the source for previews, deployment credentials, production releases, and rollback.
 
-Il ne faut ni enregistrer de jeton, ni copier une valeur de validation DNS, ni
-placer d'identifiant Cloudflare dans ce document ou dans le dépôt.
+Never store a token, DNS validation value, Cloudflare identifier, or other private account value in this document or repository.
 
-## État obtenu le 8 septembre 2026
+## Status on September 8, 2026
 
-Les opérations suivantes ont été réalisées pour la première mise en ligne
-indexable :
+The first indexable production release completed the following work:
 
-- la production a été reconstruite par GitHub Actions avec
-  `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false` ;
-- le domaine canonique est `https://ethanbrosselard.com/` ;
-- HTTP redirige définitivement vers HTTPS ;
-- `https://www.ethanbrosselard.com/` redirige définitivement vers le domaine
-  canonique ;
-- `https://ethanbrosselard.com/sitemap-index.xml` est publié et
-  `robots.txt` le référence ;
-- l'accueil publie une canonical, des alternates de langue, une URL Open Graph
-  et les URL JSON-LD absolues ;
-- la propriété Domaine `ethanbrosselard.com` a été validée dans Google Search
-  Console, le sitemap a été envoyé et l'indexation de l'accueil a été demandée.
+- GitHub Actions built production with `SITE_URL=https://ethanbrosselard.com` and `SITE_NOINDEX=false`.
+- The canonical origin is `https://ethanbrosselard.com/`.
+- HTTP permanently redirects to HTTPS.
+- `https://www.ethanbrosselard.com/` permanently redirects to the canonical origin.
+- `https://ethanbrosselard.com/sitemap-index.xml` is published and referenced by `robots.txt`.
+- The home page publishes a canonical URL, language alternates, an Open Graph URL, and absolute JSON-LD URLs.
+- The Google Search Console Domain property for `ethanbrosselard.com` was verified.
+- The sitemap was submitted and indexing was requested for the home page.
 
-Ces signaux permettent à Google de découvrir et d'interpréter le site ; ils ne
-garantissent ni un délai précis d'indexation ni une position donnée dans les
-résultats.
+These signals help search engines discover and interpret the site. They do not guarantee a crawl date, indexing date, or ranking.
 
-## 1. Préparer une production indexable
+## 1. Build an indexable production release
 
-### Règle de déploiement
+Do not normally publish from a local workstation with `wrangler deploy`. A local build can omit `SITE_URL`, which intentionally removes canonical URLs, the sitemap, and other absolute metadata.
 
-Ne pas publier normalement depuis un poste local avec `wrangler deploy`.
-Une publication manuelle peut construire sans `SITE_URL`, ce qui retire les
-canonical, le sitemap et les URL absolues. Le chemin normal est : branche
-courte, pull request, CI, fusion vers `main`, puis workflow **Deploy
-production**.
+Use the normal flow:
 
-Le workflow de production construit déjà avec :
+```text
+short-lived branch → pull request → CI → merge to main → Deploy production
+```
+
+The production workflow must use:
 
 ```text
 SITE_URL=https://ethanbrosselard.com
 SITE_NOINDEX=false
 ```
 
-Avant de le déclencher, vérifier dans GitHub :
+Before a production release, verify in GitHub:
 
-1. **Settings > Secrets and variables > Actions > Variables** :
-   `CLOUDFLARE_PRODUCTION_ENABLED` vaut `true`.
-2. **Settings > Environments > production** :
-   `CLOUDFLARE_ACCOUNT_ID` et `CLOUDFLARE_API_TOKEN` sont présents comme
-   secrets d'environnement.
-3. L'environnement `production` reste limité à `main` et son approbation
-   humaine est conservée.
+1. `CLOUDFLARE_PRODUCTION_ENABLED` is intentionally set to `true`.
+2. The `production` environment contains `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`.
+3. The `production` environment remains restricted to `main` and retains required human approval.
+4. The CI run belongs to the exact SHA that will be deployed.
 
-Pour redéployer un SHA déjà présent sur `main`, relancer le dernier workflow
-**CI** déclenché par un `push` sur ce SHA. Une CI réussie déclenche ensuite
-**Deploy production**. Approuver l'environnement `production` si GitHub le
-demande.
+To redeploy a SHA already at the HEAD of `main`, rerun the successful CI workflow triggered by the corresponding `push`. The successful CI run then triggers **Deploy production**.
 
-### Jeton Cloudflare de production
+## 2. Protect the Cloudflare production token
 
-Créer un jeton Cloudflare dédié à la production depuis le modèle **Edit
-Cloudflare Workers**. Garder les permissions préremplies du modèle, sans
-choisir « Select all » ni ajouter de droits non nécessaires. Les permissions
-relatives aux routes doivent être limitées à la zone
-`ethanbrosselard.com`; les permissions Workers nécessaires au déploiement sont
-naturellement de portée compte.
+Use a dedicated least-privilege token based on Cloudflare's **Edit Cloudflare Workers** template. Limit zone-related permissions to `ethanbrosselard.com` and avoid unrelated account permissions.
 
-Ne pas filtrer ce jeton par adresse IP : les exécuteurs GitHub Actions n'ont
-pas une IP stable. Enregistrer sa valeur uniquement dans le secret GitHub
-`production` `CLOUDFLARE_API_TOKEN`, jamais dans un fichier local, un rapport,
-un journal ou un message. Après un remplacement validé, révoquer l'ancien
-jeton seulement s'il n'est utilisé par aucun autre environnement.
+Do not apply an IP restriction because GitHub-hosted runners do not have one stable outbound address. Store the token only as `CLOUDFLARE_API_TOKEN` in the protected GitHub `production` environment. Never place it in a local file, report, log, issue, pull request, or message.
 
-## 2. Préparer les redirections Cloudflare
+After a validated token rotation, revoke the previous token only after confirming that no environment still uses it.
 
-Le domaine sans `www` est le seul domaine canonique. La variante `www` ne doit
-jamais servir le même contenu.
+## 3. Preserve canonical redirects
 
-1. Conserver un enregistrement DNS `www` proxifié par Cloudflare, réservé à la
-   redirection, conformément au runbook de déploiement.
-2. Dans **Rules > Redirect Rules**, créer une règle permanente qui ne cible que
-   `www.ethanbrosselard.com` et redirige vers
-   `https://ethanbrosselard.com` en conservant le chemin et les paramètres.
-   Une cible dynamique possible est :
+The apex without `www` is the only canonical origin. `www` must never serve a duplicate copy.
 
-   ```text
-   concat("https://ethanbrosselard.com", http.request.uri.path)
-   ```
+1. Keep a proxied Cloudflare DNS record for `www`, reserved for redirection.
+2. Keep a permanent Redirect Rule targeting only `www.ethanbrosselard.com` and sending requests to `https://ethanbrosselard.com` while preserving the path and query string.
+3. Keep **Always Use HTTPS** enabled under **SSL/TLS > Edge Certificates**, or use one equivalent permanent Redirect Rule.
+4. Do not add overlapping redirect rules that can create loops.
+5. Do not modify MX, SPF, DKIM, DMARC, or other TXT records when maintaining web redirects.
 
-   Utiliser le statut `301` et activer **Preserve query string**.
+A Cloudflare dynamic redirect target can use:
 
-3. Dans **SSL/TLS > Edge Certificates**, activer **Always Use HTTPS**. Ne pas
-   ajouter une seconde règle générale HTTP vers HTTPS lorsque cette option est
-   active.
+```text
+concat("https://ethanbrosselard.com", http.request.uri.path)
+```
 
-Ne pas modifier les enregistrements MX, SPF, DKIM, DMARC ou les autres TXT en
-créant la redirection.
+Use status `301` and preserve the query string.
 
-## 3. Vérifier la publication avant de déclarer le site à Google
+## 4. Validate production before search submission
 
-Le workflow exécute ce smoke test ; il peut aussi être lancé en lecture seule
-après le déploiement :
+Run the read-only smoke test:
 
 ```sh
 npm run test:deployment -- \
@@ -116,96 +83,84 @@ npm run test:deployment -- \
   --redirect-from https://www.ethanbrosselard.com
 ```
 
-Les résultats attendus sont :
+Expected results:
 
-| Adresse ou signal                  | Résultat attendu                                               |
-| ---------------------------------- | -------------------------------------------------------------- |
-| `http://ethanbrosselard.com/`      | redirection permanente vers `https://ethanbrosselard.com/`     |
-| `https://www.ethanbrosselard.com/` | redirection permanente vers le domaine sans `www`              |
-| `/sitemap-index.xml`               | `200`, XML indexant les sitemaps du site                       |
-| `/robots.txt`                      | ligne `Sitemap: https://ethanbrosselard.com/sitemap-index.xml` |
-| accueil                            | `<link rel="canonical" href="https://ethanbrosselard.com/">`   |
+| Address or signal                  | Expected result                                             |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `http://ethanbrosselard.com/`      | Permanent redirect to `https://ethanbrosselard.com/`.       |
+| `https://www.ethanbrosselard.com/` | Permanent redirect to the apex.                             |
+| `/sitemap-index.xml`               | HTTP 200 with the generated sitemap index.                  |
+| `/robots.txt`                      | References `https://ethanbrosselard.com/sitemap-index.xml`. |
+| Home page                          | Canonical URL is `https://ethanbrosselard.com/`.            |
+| French and English pairs           | Reciprocal `hreflang` alternates resolve correctly.         |
+| 404                                | Returns the rendered bilingual page with HTTP 404.          |
 
-Vérifier aussi les routes FR et EN, les alternates, la 404, le thème, la
-navigation au clavier et la console navigateur selon le
-[runbook de déploiement](deployment-runbook.md#recette-de-production).
+Also review representative French and English routes, keyboard navigation, themes, and the browser console according to the [`deployment runbook`](deployment-runbook.md#production-deployment).
 
-## 4. Ajouter le domaine dans Google Search Console
+## 5. Configure Google Search Console
 
-1. Ouvrir [Google Search Console](https://search.google.com/search-console/about).
-2. Choisir **Ajouter une propriété**, puis le type **Domaine**.
-3. Saisir `ethanbrosselard.com`, sans protocole et sans `www`.
-4. Copier la valeur TXT donnée par Google.
-5. Dans Cloudflare **DNS > Records**, ajouter un TXT au nom `@` avec cette
-   valeur, sans supprimer les TXT existants.
-6. Revenir dans Search Console et cliquer sur **Vérifier**.
+Use a Domain property so that one property covers HTTP, HTTPS, apex, and `www` variants.
 
-Une propriété Domaine couvre les variantes HTTP, HTTPS, avec et sans `www`.
+1. Open [Google Search Console](https://search.google.com/search-console/about).
+2. Select **Add property**, then **Domain**.
+3. Enter `ethanbrosselard.com` without a protocol or `www`.
+4. Copy the TXT verification value supplied by Google.
+5. Add it in Cloudflare DNS at the apex without deleting any existing TXT record.
+6. Return to Search Console and select **Verify**.
 
-## 5. Envoyer le sitemap et demander l'indexation
+Do not record the TXT verification value in this repository.
 
-Dans la propriété Domaine validée :
+## 6. Submit the sitemap and request indexing
 
-1. Ouvrir **Sitemaps**.
-2. Saisir l'URL absolue suivante, puis envoyer :
+In the verified Domain property:
+
+1. Open **Sitemaps**.
+2. Submit the complete URL:
 
    ```text
    https://ethanbrosselard.com/sitemap-index.xml
    ```
 
-   Pour une propriété Domaine, un chemin seul tel que `sitemap-index.xml` peut
-   être refusé comme adresse de sitemap invalide.
+3. Wait for a successful fetch result. Successful retrieval does not mean that every page is immediately indexed.
+4. Open **URL inspection** for `https://ethanbrosselard.com/`.
+5. Run **Test live URL**, then select **Request indexing**.
 
-3. Attendre l'état **Success**. Une récupération réussie n'implique pas que
-   toutes les pages soient indexées immédiatement.
-4. Ouvrir **URL inspection**, saisir
-   `https://ethanbrosselard.com/`, lancer **Test live URL**, puis choisir
-   **Request indexing**.
+Do not repeatedly request indexing for the same unchanged URL. Use URL inspection selectively for high-priority pages; the sitemap provides discovery for the remaining routes.
 
-Ne pas répéter cette demande pour la même URL. Le sitemap sert à faire
-découvrir le reste des routes ; l'inspection est utile pour une poignée de
-pages prioritaires, par exemple l'accueil français et anglais.
+## 7. Monitor indexing
 
-## 6. Suivre l'indexation sans surinterpréter les premiers jours
+New Search Console properties can initially show **Processing data**. After Google has had time to crawl the site, review:
 
-Pendant les premiers jours, les cartes **Performance**, **Pages** et **Core
-Web Vitals** peuvent afficher « Processing data ». C'est normal pour une
-nouvelle propriété.
+- **Pages** for indexed pages and exclusion reasons;
+- **URL inspection** for the declared and Google-selected canonical URLs;
+- **Sitemaps** for retrieval or parsing failures;
+- **Performance** for early impressions, clicks, and queries;
+- **Core Web Vitals** only after enough field data exists.
 
-Après quelques jours, vérifier :
-
-- **Pages** : causes éventuelles d'exclusion et pages indexées ;
-- **URL inspection** : canonical déclarée et canonical choisie par Google ;
-- **Sitemaps** : absence d'erreur de traitement ;
-- **Performance** : premières impressions, clics et requêtes ;
-- **Core Web Vitals** : seulement lorsqu'il existe assez de données de terrain.
-
-Les recherches suivantes sont des contrôles indicatifs, pas une mesure de
-classement définitive :
+The following searches are indicative discovery checks, not ranking measurements:
 
 ```text
 site:ethanbrosselard.com
 "Ethan Brosselard"
 ```
 
-Ajouter aussi `https://ethanbrosselard.com/` aux profils GitHub et LinkedIn
-publics pertinents, avec le nom exact « Ethan Brosselard ». Ne pas acheter de
-liens ni créer de faux profils ou d'annuaires artificiels.
+Add `https://ethanbrosselard.com/` to relevant public GitHub and LinkedIn profiles if desired. Do not buy links, create fake profiles, or add the site to low-quality artificial directories.
 
-## Dépannage
+## Troubleshooting
 
-| Symptôme                                                       | Cause probable                               | Action sûre                                                                                                                                                      |
-| -------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| canonical, sitemap et URL sociales absents                     | build lancé sans `SITE_URL`                  | redéployer via GitHub Actions, jamais par une commande locale ordinaire                                                                                          |
-| `Authentication error [code: 10000]` pendant `wrangler deploy` | jeton de production insuffisant ou mal ciblé | créer un nouveau jeton dédié depuis **Edit Cloudflare Workers**, le remplacer dans le secret d'environnement `production`, puis relancer seulement le job échoué |
-| `HTTP origin returned 200, expected a permanent redirect`      | HTTP n'est pas forcé vers HTTPS              | activer **Always Use HTTPS**, attendre la propagation puis relancer le job échoué                                                                                |
-| `www` ne redirige pas ou perd le chemin                        | DNS proxifié ou Redirect Rule incomplets     | vérifier l'enregistrement `www`, la règle ciblée sur ce seul hôte et **Preserve query string**                                                                   |
-| `Invalid sitemap address` dans une propriété Domaine           | URL de sitemap incomplète                    | soumettre l'URL absolue HTTPS du sitemap                                                                                                                         |
+| Symptom                                                        | Likely cause                                                      | Safe action                                                                                                                 |
+| -------------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Canonical URLs, sitemap, or absolute social URLs are missing.  | Build ran without `SITE_URL`.                                     | Redeploy through GitHub Actions with the production variables.                                                              |
+| `Authentication error [code: 10000]` during `wrangler deploy`. | Production token is invalid, insufficient, or scoped incorrectly. | Create a new dedicated least-privilege token, replace the protected environment secret, and rerun only the failed workflow. |
+| HTTP returns 200 instead of redirecting to HTTPS.              | HTTPS enforcement is disabled or incomplete.                      | Enable **Always Use HTTPS**, wait for propagation, and rerun the smoke test.                                                |
+| `www` does not redirect or loses the path/query string.        | The DNS proxy or Redirect Rule is incomplete.                     | Check the proxied `www` record, hostname condition, target expression, and query-string preservation.                       |
+| Search Console rejects the sitemap address.                    | The submitted address is incomplete.                              | Submit the complete absolute HTTPS sitemap URL.                                                                             |
+| Google selects an unexpected canonical.                        | Duplicate access path, stale crawl, or inconsistent metadata.     | Verify redirects and alternates, inspect the live URL, and allow time for recrawling after correction.                      |
 
-## Références
+## References
 
-- [Google : rapport Sitemaps](https://support.google.com/webmasters/answer/7451001?hl=fr)
-- [Google : demander une nouvelle exploration](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=fr)
-- [Cloudflare : déployer des Workers avec GitHub Actions](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
-- [Cloudflare : redirection d'un hôte vers un autre](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/)
-- [Cloudflare : Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+- [Google Search Console: Sitemaps report](https://support.google.com/webmasters/answer/7451001)
+- [Google Search: Ask Google to recrawl a URL](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)
+- [Cloudflare: Deploy Workers with GitHub Actions](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+- [Cloudflare: Redirect one hostname to another](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/)
+- [Cloudflare: Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)

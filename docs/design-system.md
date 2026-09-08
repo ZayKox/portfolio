@@ -1,111 +1,111 @@
-# Système visuel Violet Field — édition éditoriale
+# Violet Field visual system — editorial edition
 
-Ce document décrit le système effectivement rendu par le portfolio. La source exécutable reste `src/styles/global.css` : toute évolution d’une valeur doit modifier le CSS et cette référence dans le même changement.
+This document describes the system actually rendered by the portfolio. The executable source remains `src/styles/global.css`: any evolution of a value must modify the CSS and this reference in the same change.
 
-## Principes
+## Principles
 
-- Le noir, le blanc et les gris structurent l’identité, les surfaces et les actions principales.
-- Le violet est une couleur secondaire : il signale le focus, les repères éditoriaux, les statuts et quelques détails de marque sans dominer les pages.
-- Le vert et le jaune ne sont pas utilisés comme accents.
-- La hiérarchie repose d’abord sur la typographie, l’espacement, les contrastes, les bordures et les surfaces.
-- Les thèmes clair, sombre et système conservent la même structure et les mêmes rôles sémantiques.
-- Les effets restent sobres, non essentiels et compatibles avec la réduction des animations.
-- Les contrôles conservent un focus visible et une cible tactile d’environ 44 px.
+- Black, white and grays structure the identity, surfaces and main actions.
+- Purple is a secondary color: it signals focus, editorial cues, statuses and some branding details without dominating the pages.
+- Green and yellow are not used as accents.
+- Hierarchy is based first on typography, spacing, contrasts, borders and surfaces.
+- Light, dark and system themes keep the same structure and semantic roles.
+- The effects remain simple, non-essential and compatible with the reduction of animations.
+- Controls maintain visible focus and a touch target of approximately 44 px.
 
-## Couleurs
+## Colors
 
-| Token                 | Clair                       | Sombre                       | Rôle                                      |
-| --------------------- | --------------------------- | ---------------------------- | ----------------------------------------- |
-| `--bg`                | `#faf9f7`                   | `#141418`                    | Fond principal neutre                     |
-| `--surface`           | `#ffffff`                   | `#1d1d23`                    | Cartes et contrôles                       |
-| `--surface-subtle`    | `#f0efed`                   | `#25252d`                    | Surface secondaire                        |
-| `--surface-strong`    | `#e4e2e8`                   | `#32323c`                    | Reliefs et ombres graphiques              |
-| `--text`              | `#202024`                   | `#f0eff4`                    | Texte principal                           |
-| `--text-muted`        | `#606069`                   | `#aaa9b5`                    | Texte secondaire                          |
-| `--border`            | `#d9d8de`                   | `#3e3d48`                    | Séparateurs et contours utiles            |
-| `--primary`           | `#242329`                   | `#f0eff4`                    | Actions et surfaces principales inversées |
-| `--primary-hover`     | `#3f4146`                   | `#b8b7b1`                    | Survol de l’action principale             |
-| `--primary-contrast`  | `#ffffff`                   | `#1d1d23`                    | Contenu sur surface principale            |
-| `--accent`            | `#6241cc`                   | `#9e88ed`                    | Signal violet secondaire et focus         |
-| `--accent-hover`      | `#4d31aa`                   | `#ae9af5`                    | Survol d’un élément secondaire            |
-| `--accent-soft`       | `#eee9fb`                   | `#302944`                    | Fond violet discret                       |
-| `--accent-contrast`   | `#ffffff`                   | `#18151f`                    | Texte sur fond violet                     |
-| `--accent-on-primary` | `#b39eff`                   | `#593abd`                    | Accent violet sur surface principale      |
-| `--info`              | `#2563eb`                   | `#60a5fa`                    | Information                               |
-| `--danger`            | `#d43f5e`                   | `#ff7a8a`                    | Erreur ou danger                          |
-| `--selection`         | `#c9bfee`                   | `#4d4173`                    | Sélection de texte                        |
-| `--shadow`            | `rgba(41, 42, 46, 0.13)`    | `rgba(0, 0, 0, 0.3)`         | Ombres                                    |
-| `--grid-line`         | `rgba(41, 42, 46, 0.07)`    | `rgba(216, 215, 209, 0.055)` | Trame décorative                          |
-| `--header-bg`         | `rgba(250, 249, 247, 0.94)` | `rgba(20, 20, 24, 0.94)`     | Fond translucide de l’en-tête             |
+| Token                 | Light                       | Dark                         | Role                                  |
+| --------------------- | --------------------------- | ---------------------------- | ------------------------------------- |
+| `--bg`                | `#faf9f7`                   | `#141418`                    | Neutral main background               |
+| `--surface`           | `#ffffff`                   | `#1d1d23`                    | Cards and controls                    |
+| `--surface-subtle`    | `#f0efed`                   | `#25252d`                    | Secondary surface                     |
+| `--surface-strong`    | `#e4e2e8`                   | `#32323c`                    | Elevated surfaces and graphic shadows |
+| `--text`              | `#202024`                   | `#f0eff4`                    | Main text                             |
+| `--text-muted`        | `#606069`                   | `#aaa9b5`                    | Secondary text                        |
+| `--border`            | `#d9d8de`                   | `#3e3d48`                    | Useful separators and outlines        |
+| `--primary`           | `#242329`                   | `#f0eff4`                    | Actions and main surfaces reversed    |
+| `--primary-hover`     | `#3f4146`                   | `#b8b7b1`                    | Primary-action hover                  |
+| `--primary-contrast`  | `#ffffff`                   | `#1d1d23`                    | Content on main surface               |
+| `--accent`            | `#6241cc`                   | `#9e88ed`                    | Secondary purple signal and focus     |
+| `--accent-hover`      | `#4d31aa`                   | `#ae9af5`                    | Secondary-element hover               |
+| `--accent-soft`       | `#eee9fb`                   | `#302944`                    | Discreet purple background            |
+| `--accent-contrast`   | `#ffffff`                   | `#18151f`                    | Text on purple background             |
+| `--accent-on-primary` | `#b39eff`                   | `#593abd`                    | Purple accent on main surface         |
+| `--info`              | `#2563eb`                   | `#60a5fa`                    | Information                           |
+| `--danger`            | `#d43f5e`                   | `#ff7a8a`                    | Error or danger                       |
+| `--selection`         | `#c9bfee`                   | `#4d4173`                    | Text selection                        |
+| `--shadow`            | `rgba(41, 42, 46, 0.13)`    | `rgba(0, 0, 0, 0.3)`         | Shadows                               |
+| `--grid-line`         | `rgba(41, 42, 46, 0.07)`    | `rgba(216, 215, 209, 0.055)` | Decorative grid                       |
+| `--header-bg`         | `rgba(250, 249, 247, 0.94)` | `rgba(20, 20, 24, 0.94)`     | Translucent header background         |
 
-Le thème système réutilise exactement les valeurs sombres quand `prefers-color-scheme: dark` est actif et qu’aucun choix n’a été enregistré. Les paires texte/fond principales et violet/texte contrasté sont contrôlées au build avec un seuil de `4.5:1`. Axe et les tests navigateur complètent ce contrôle sur les composants rendus.
+The system theme reuses dark values exactly when `prefers-color-scheme: dark` is active and no choices have been saved. The main text/background and purple/contrasting text pairs are checked at build with a threshold of `4.5:1`. Axe and browser tests complete this control over rendered components.
 
-Les grandes compositions ne sont plus inversées en clair dans le thème sombre : le panneau d’identité et de navigation du héros ainsi que le bandeau de contact restent sur des surfaces anthracite. Le panneau du héros combine la signature publique avec des liens vers les projets sélectionnés afin que cette surface soit informative et interactive, plutôt que seulement décorative. Les contrastes fortement inversés sont réservés aux contrôles et aux accents de petite taille afin de limiter les pics de luminance.
+Large compositions are no longer inverted to light in the dark theme: the hero's identity and navigation panel as well as the contact strip remain on anthracite surfaces. The hero board combines the public signature with links to the selected projects so that this surface is informative and interactive, rather than just decorative. Highly inverted contrasts are reserved for small controls and accents to limit luminance peaks.
 
-## Typographie
+## Typography
 
-Les polices restent locales au système, sans requête tierce :
+Fonts remain local to the system, without third-party requests:
 
-- `--font-display` : Avenir Next ou Segoe UI si présentes, puis Helvetica ou Arial ;
-- `--font-body` : Inter si elle est présente, puis une pile d’interfaces système ;
-- `--font-mono` : JetBrains Mono si elle est présente, puis une pile monospace système.
+- `--font-display`: Avenir Next or Segoe UI if present, then Helvetica or Arial;
+- `--font-body`: Inter if present, then a system interface stack;
+- `--font-mono`: JetBrains Mono if present, then a monospace system stack.
 
-L’échelle fluide est définie par `--display`, `--h1`, `--h2`, `--h3` et `--body-large`. Les titres sont amples, fortement resserrés et équilibrés, avec le même niveau `--h1` pour l’accueil et les titres de page, puis des niveaux distincts pour les sections et les cartes. Le corps reste à `1rem` avec une hauteur de ligne de `1.65` ; `--text-small` et `--text-meta` normalisent les textes secondaires et les repères éditoriaux.
+Smooth scaling is defined by `--display`, `--h1`, `--h2`, `--h3` and `--body-large`. Headings use restrained letter spacing, tight line height, and balanced wrapping, with the same level `--h1` for the welcome and page titles, then distinct levels for sections and cards. The body remains at `1rem` with a line height of `1.65`; `--text-small` and `--text-meta` standardize secondary texts and editorial marks.
 
-## Géométrie et mise en page
+## Geometry and layout
 
-| Token                     | Valeur                        | Usage                                             |
-| ------------------------- | ----------------------------- | ------------------------------------------------- |
-| `--radius-control`        | `0.6rem`                      | Boutons et petits contrôles                       |
-| `--radius-card`           | `1.25rem`                     | Cartes et grands panneaux                         |
-| `--container`             | `76rem`                       | Largeur maximale du contenu                       |
-| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`   | Marge latérale responsive                         |
-| `--space-1`               | `0.6rem`                      | Micro-écart                                       |
-| `--space-2`               | `0.75rem`                     | Écart compact                                     |
-| `--space-3`               | `1rem`                        | Écart courant                                     |
-| `--space-4`               | `clamp(1.25rem, 2vw, 1.5rem)` | Espacement interne des cartes                     |
-| `--space-5`               | `clamp(1.75rem, 3vw, 2.5rem)` | Écart entre groupes de contenu                    |
-| `--space-6`               | `clamp(1.75rem, 3.5vw, 3rem)` | Rythme vertical majeur                            |
-| `--section-space`         | `clamp(3.5rem, 7vw, 6.5rem)`  | Rythme vertical partagé des sections              |
-| `--section-heading-space` | `var(--space-5)`              | Écart entre introduction et contenu d’une section |
-| `--page-hero-top-space`   | `clamp(2.5rem, 5vw, 4.5rem)`  | Écart entre le header et le début d’une page      |
+| Token                     | Value                         | Usage                                               |
+| ------------------------- | ----------------------------- | --------------------------------------------------- |
+| `--radius-control`        | `0.6rem`                      | Buttons and small controls                          |
+| `--radius-card`           | `1.25rem`                     | Cards and large panels                              |
+| `--container`             | `76rem`                       | Maximum content width                               |
+| `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`   | Responsive page gutter                              |
+| `--space-1`               | `0.6rem`                      | Micro gap                                           |
+| `--space-2`               | `0.75rem`                     | Compact gap                                         |
+| `--space-3`               | `1rem`                        | Standard gap                                        |
+| `--space-4`               | `clamp(1.25rem, 2vw, 1.5rem)` | Internal card spacing                               |
+| `--space-5`               | `clamp(1.75rem, 3vw, 2.5rem)` | Gap between content groups                          |
+| `--space-6`               | `clamp(1.75rem, 3.5vw, 3rem)` | Major vertical rhythm                               |
+| `--section-space`         | `clamp(3.5rem, 7vw, 6.5rem)`  | Shared vertical rhythm of sections                  |
+| `--section-heading-space` | `var(--space-5)`              | Gap between introduction and content of a section   |
+| `--page-hero-top-space`   | `clamp(2.5rem, 5vw, 4.5rem)`  | Distance between the header and the start of a page |
 
-La composition utilise un fond blanc cassé, des surfaces blanches et des séparateurs discrets en clair ; le sombre transpose cette hiérarchie sur trois niveaux anthracite. Les ombres sont diffuses, les angles adoucis et les accents violets limités aux repères, aux contrôles et à la profondeur des visuels.
+The composition uses an off-white background, white surfaces and discreet light dividers; the dark transposes this hierarchy on three anthracite levels. Shadows are diffuse, corners softened, and purple accents limited to cues, controls, and depth of visuals.
 
-Le conteneur est limité à 76rem. Le header desktop mesure au moins 4.75rem ; les contrôles gardent leurs cibles de 2.75rem et le sélecteur de thème est circulaire. Sur mobile, la navigation reste visible sur une seconde ligne, sans menu à ouvrir. Le pied de page sépare les liens de navigation des informations secondaires avec un filet et une seconde rangée.
+Container is limited to 76rem. The desktop header measures at least 4.75rem; the controls keep their targets of 2.75rem and the theme selector is circular. On mobile, the navigation remains visible on a second line, with no menu to open. The footer separates navigation links from secondary information with a rule and a second row.
 
-L’accueil présente l’introduction et le panneau de signature, puis les projets, la méthode, le parcours et le contact. Le panneau conserve sa fonction de navigation, avec deux liens séparés par des filets. Sur tablette, il devient horizontal ; sur téléphone, il retrouve une seule colonne. Le titre reste à la même échelle que les autres pages : `--h1` vaut `clamp(2.75rem, 5.4vw, 5.25rem)`, avec une hauteur de ligne de 1.04. Les titres de section utilisent `clamp(2.1rem, 3.6vw, 3.5rem)`.
+The welcome presents the introduction and the signature panel, then the projects, the method, the background and contact. The panel retains its navigation function, with two links separated by rules. On tablet it becomes horizontal; on mobile it returns to one column. The title remains at the same scale as the other pages: `--h1` is `clamp(2.75rem, 5.4vw, 5.25rem)`, with a line height of 1.04. Section titles use `clamp(2.1rem, 3.6vw, 3.5rem)`.
 
-Les cartes de projets forment deux colonnes au-dessus de 48rem et une colonne en dessous. Une sous-grille aligne leurs visuels et le début des textes malgré des compositions de hauteurs différentes. Chaque carte conserve son ordre DOM : visuel, titre, statut, résumé, technologies, lien. Les actions s’alignent au bas des cartes. Les compositions CSS existantes de Palimia et Ludosaic restent des évocations, masquées aux technologies d’assistance ; aucune capture réelle ni nouvelle fonctionnalité n’est revendiquée. Les visuels adaptent leur hauteur au contenu pour ne rogner aucun libellé.
+Project cards form two columns above 48rem and one column below. A sub-grid aligns their visuals and the beginning of the texts despite compositions of different heights. Each card retains its DOM order: visual, title, status, summary, technologies, link. The actions line up at the bottom of the cards. The existing CSS compositions of Palimia and Ludosaic remain evocations, hidden from assistive technologies; no actual captures or new features are claimed. The visuals adapt their height to the content so as not to crop any wording.
 
-Les sections utilisent un rythme de 3.5rem à 6.5rem. L’enchaînement entre le héros d’accueil et les projets réduit l’espace supérieur de la seconde section pour éviter le cumul de deux grandes marges. Les pages intérieures partagent le composant `PageHero.astro`, le même écart supérieur et les mêmes alignements de titres ; les aperçus projet suivent également cette grille. Le récit conserve une colonne de lecture centrée. Les styles d’impression du CV restent dédiés au papier et les PDF sont régénérés après tout changement de source.
+The sections use a rhythm of 3.5rem to 6.5rem. The sequence between the home hero and the projects reduces the upper space of the second section to avoid the accumulation of two large margins. The interior pages share the `PageHero.astro` component, the same top gap, and the same heading alignments; project overviews also follow this grid. The story maintains a centered reading column. CV printing styles remain dedicated to paper and PDFs are regenerated after any source change.
 
-Les accueils FR/EN utilisent aussi `--h1` et un alignement supérieur fixe. À 480 px et moins, les repères des héros réservent deux lignes, y compris quand leur texte est court, pour garder les titres à la même hauteur lorsque le libellé d’accueil se replie. Le test d’alignement couvre les dix-huit routes, accueils inclus.
+French and English home heroes also use `--h1` and a fixed top alignment. At 480px and below, hero markers reserve two lines, including when their text is short, to keep titles at the same height when the home label collapses. The alignment test covers the eighteen routes, including both home pages.
 
-## Mouvement et interaction
+## Movement and interaction
 
-| Token               | Valeur                           | Usage                      |
-| ------------------- | -------------------------------- | -------------------------- |
-| `--duration-fast`   | `140ms`                          | Réponse d’un contrôle      |
-| `--duration-base`   | `220ms`                          | Transition de composant    |
-| `--duration-reveal` | `450ms`                          | Apparition non essentielle |
-| `--ease-out`        | `cubic-bezier(0.2, 0.8, 0.2, 1)` | Courbe commune             |
+| Token               | Value                            | Usage                |
+| ------------------- | -------------------------------- | -------------------- |
+| `--duration-fast`   | `140ms`                          | Control response     |
+| `--duration-base`   | `220ms`                          | Component transition |
+| `--duration-reveal` | `450ms`                          | Non-essential reveal |
+| `--ease-out`        | `cubic-bezier(0.2, 0.8, 0.2, 1)` | Common curve         |
 
-Le changement de thème neutralise les transitions pendant une image afin d’éviter un contraste intermédiaire insuffisant. Avec `prefers-reduced-motion: reduce`, animations et transitions deviennent quasi instantanées. Aucun contenu ni aucune action ne dépend d’un mouvement, d’un survol ou d’une couleur seule.
+Theme change neutralizes transitions during one frame to avoid insufficient intermediate contrast. With `prefers-reduced-motion: reduce`, animations and transitions become almost instantaneous. No content or action depends on movement, hover, or color alone.
 
-Le focus clavier utilise le violet secondaire avec un contour de `0.19rem` et un décalage de `0.22rem`. Les éléments interactifs principaux visent au moins `2.75rem` ou `3rem` de hauteur. Le thème suit les changements de préférence système tant qu’aucun choix valide n’a été enregistré ; un stockage indisponible ne bloque pas le contrôle. Les boutons de thème et de copie restent masqués sans JavaScript. La copie d’adresse annonce son succès ou son refus dans une région de statut accessible.
+Keyboard focus uses secondary purple with an outline of `0.19rem` and an offset of `0.22rem`. Primary interactive elements aim for at least `2.75rem` or `3rem` in height. The theme tracks system preference changes until a valid choice has been saved; unavailable storage does not block control. The theme and copy buttons remain hidden without JavaScript. The address copy announces its success or refusal in an accessible status region.
 
-## Marque et médias
+## Brand and media
 
-La signature publique est `ZayKo` lorsqu’elle apporte un repère utile. Aucun monogramme abrégé n’est utilisé. Le favicon repose sur un signe géométrique sans lettres ; l’icône Apple touch et les cartes sociales sont générées de manière déterministe depuis les mêmes tokens. Ils utilisent une base sombre neutre et réservent le violet aux détails de signal et de profondeur.
+The public signature is `ZayKo` when it provides a useful reference. No abbreviated monogram is used. The favicon is based on a geometric sign without letters; the Apple touch icon and social cards are generated deterministically from the same tokens. They use a neutral dark base and reserve purple for signal and depth details.
 
-Les futurs médias de projet doivent être approuvés, nettoyés de toute donnée privée, dimensionnés explicitement et optimisés avant intégration. Les images ne remplacent jamais une information textuelle essentielle.
+Future project media must be approved, cleaned of any private data, explicitly sized and optimized before integration. Images never replace essential textual information.
 
-## Règles d’évolution
+## Evolution rules
 
-1. Réutiliser un token existant avant d’ajouter une valeur locale.
-2. Donner à tout nouveau token un rôle, pas le nom d’une page ou d’un composant.
-3. Ajouter ensemble ses variantes clair, sombre et système lorsqu’il dépend du thème.
-4. Garder les actions principales monochromes et réserver le violet aux signaux secondaires.
-5. Vérifier contraste, focus, mouvement réduit, 320 px et les deux langues pour tout composant visible.
-6. Mettre à jour ce document et la validation du build lorsqu’un token requis change.
+1. Reuse an existing token before adding a local value.
+2. Give any new token a role, not the name of a page or component.
+3. Add together its light, dark and system variants when it depends on the theme.
+4. Keep the main actions monochrome and reserve purple for secondary signals.
+5. Check contrast, focus, reduced motion, 320 px and both languages for any visible components.
+6. Update this document and build validation when a required token changes.

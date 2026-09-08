@@ -1,81 +1,78 @@
-# Contenu restant à préparer
+# Remaining content backlog
 
-Cette liste n’est pas affichée sur le site.
+This working list is not rendered on the public site. The canonical source for Ethan's answers and publication decisions remains [`docs/site-content-questionnaire.md`](site-content-questionnaire.md).
 
-## Minimum à valider pour publier la version actuelle
+## Current public release
 
-- Relire les textes visibles en français et en anglais après la prochaine évolution éditoriale.
-- Relire les aperçus factuels (`teaser`) de Palimia et Ludosaic ; leur sélection, leur ordre et le retrait de FiltreAppels ont été validés le 29 août 2026.
-- Relire le rendu de la refonte éditoriale autorisée le 6 septembre 2026 et des trois cartes de partage Violet Field ; la signature ZayKo est déjà validée.
-- La production GitHub Actions, ses secrets d’environnement et sa variable de
-  pilotage ont été configurés et validés le 8 septembre 2026. La recette d’une
-  preview protégée par Cloudflare Access reste à exécuter et à consigner.
-- Conserver l’adresse de contact publique validée ; une adresse dédiée reste un choix éventuel.
-- Garder l’adresse email absente du JSON-LD, conformément à la décision validée pour limiter le scraping.
-- Conserver le lancement validé sans mesure d’audience côté navigateur, cookie
-  de suivi, formulaire ni contenu tiers embarqué.
-- Conserver l’édition à titre personnel validée. Transmettre séparément, sans les committer, les éventuelles informations légales privées requises.
-- Vérifier que l’entité Cloudflare indiquée sur le compte ou la facture reste
-  Cloudflare, Inc., puis confirmer les réglages réels de journaux, métriques et
-  sécurité lors du premier déploiement.
+- The production site, domain, canonical redirects, metadata, legal pages, resume pages, and French/English PDF files are live.
+- GitHub Actions production, protected environment secrets, and deployment switches were configured and validated on September 8, 2026.
+- Ethan confirmed completion of the human verification checklist on September 8, 2026. See [`docs/qa/human-verification-2026-09-08.md`](qa/human-verification-2026-09-08.md).
+- Palimia and Ludosaic remain factual `teaser` entries. Their selection, order, and the removal of FiltreAppels were validated on August 29, 2026.
+- The September 6 editorial redesign, Violet Field social cards, and ZayKo signature have been reviewed for the current release.
+- The validated public contact email remains in use. A dedicated address is still optional.
+- The email address remains absent from JSON-LD to limit scraping.
+- The site launches without browser-side analytics, tracking cookies, a form, or embedded third-party content.
+- The site remains a personal publication. Any private legal information that becomes necessary must be provided separately and never committed here.
 
-Le portrait, les études de cas complètes et les captures peuvent rester masqués. Le CV, les expériences et les formations sont maintenant publiés dans les deux langues.
+The portrait, complete case studies, screenshots, and videos may remain absent. Their absence does not block the current public release.
 
-## Identité
+## Identity
 
-- Affiner le titre professionnel final si nécessaire.
-- Ajouter des certifications lorsqu’elles seront disponibles et publiables.
-- Ajouter un portrait uniquement si Ethan décide d’en publier un.
+- Refine the final professional title if the current broad wording changes.
+- Add certifications when they exist and are approved for publication.
+- Add a portrait only if Ethan explicitly chooses to publish one.
 
-## CV
+## Resume
 
-- Mettre à jour le CV à partir de sa source structurée unique lorsqu’une expérience, une formation ou un projet évolue.
+- Update the structured resume source, HTML pages, and both generated PDFs together whenever an experience, education entry, skill selection, or project changes.
 
-## Palimia
+## Palimia case study
 
-- Obtenir et examiner les autorisations écrites requises pour le périmètre de données retenu avant toute mise en production.
-- Compléter et valider les preuves de déploiement, d'exploitation et de revue juridique sur l'environnement cible.
-- Valider explicitement les dates et chaque métrique avant de les afficher.
-- Motivation et problème personnel initial.
-- Rôle exact, dates et temps consacré.
-- État public, lien de démonstration et visibilité du dépôt.
-- Retours de testeurs et résultats réels.
-- Décisions, fausses pistes, compromis et enseignements.
-- Captures récentes et vidéo de démonstration.
-- Autorisation de publier les détails de sécurité et d’exploitation.
+- Obtain and review the written authorizations required for the intended supplier-data scope before Palimia itself enters production.
+- Complete deployment, operations, backup and recovery, monitoring, staging, and legal-review evidence for Palimia's target environment.
+- Explicitly validate every displayed date and metric.
+- Document the initial motivation and personal problem.
+- Confirm Ethan's exact role, project dates, and approximate time spent.
+- Decide repository visibility, public status, and whether a demonstration link can be shared.
+- Add real tester feedback and outcomes, clearly separated from local technical validation.
+- Explain major decisions, rejected approaches, trade-offs, and lessons learned.
+- Prepare recent screenshots and an optional demonstration video using privacy-safe demo data.
+- Decide which security and operational details may be published.
 
-## Ludosaic
+## Ludosaic case study
 
-- Terminer et valider les critères du MVP pour les trois jeux et les services connectés.
-- Réaliser un premier déploiement externe puis valider sauvegarde, restauration, TLS/WSS, supervision et parcours critiques avant toute production.
-- Valider explicitement les dates et chaque métrique avant de les afficher.
-- Motivation, public cible, rôle exact et dates.
-- Visibilité du dépôt, URL de démonstration éventuelle et état de déploiement.
-- Retours de testeurs et résultats réels, séparés des validations locales.
-- Décisions, compromis et enseignements sur les règles déterministes, le hors-ligne et le multijoueur.
-- Captures de Reflex Rush, Merge Forge et Grid Duel avec des profils et scores de démonstration.
-- Décision concernant la publication du dépôt et les détails d’exploitation.
+- Complete and validate MVP criteria for the three games and connected services.
+- Complete an external deployment and validate backup, recovery, TLS/WSS, monitoring, and critical journeys before presenting Ludosaic as production-ready.
+- Explicitly validate every displayed date and metric.
+- Document the motivation, target audience, exact role, and dates.
+- Decide repository visibility, public status, and whether a demonstration URL can be shared.
+- Add real tester feedback and outcomes, clearly separated from local and connected technical validation.
+- Explain decisions and trade-offs concerning deterministic rules, offline behavior, and multiplayer authority.
+- Prepare screenshots of Reflex Rush, Merge Forge, and Grid Duel using demonstration profiles and scores.
+- Decide which repository and operational details may be published.
 
-## Publication
+## Media requirements
 
-- Domaine retenu : `ethanbrosselard.com` ; la version canonique choisie est sans `www`.
-- Migrer la zone vers les nameservers Cloudflare après avoir inventorié et
-  recopié tous les enregistrements existants, notamment ceux de messagerie ;
-  réaffecter ensuite l’apex au Custom Domain du Worker si un service web y est
-  actuellement configuré.
-- `www.ethanbrosselard.com` redirige vers l’apex canonique en conservant chemin
-  et paramètres ; HTTP redirige aussi vers HTTPS.
-- Les paramètres de production `SITE_URL=https://ethanbrosselard.com` et
-  `SITE_NOINDEX=false` ont été validés sur le déploiement. Les previews doivent
-  conserver `SITE_NOINDEX=true` et Cloudflare Access.
-- Les mentions légales et la confidentialité ont été relues le 8 septembre
-  2026 pour refléter Workers Static Assets, TLS, les redirections et la
-  désactivation de l’observabilité configurée. Les durées réelles de
-  conservation côté Cloudflare restent à confirmer auprès du fournisseur.
-- Ne pas activer de mesure d’audience côté navigateur au lancement ; distinguer
-  ce choix des métriques réseau agrégées produites par Cloudflare.
-- Valider visuellement la carte Open Graph Violet Field déjà intégrée.
+For any future screenshot, diagram, or video:
 
-## Détails retirés après l’audit du 5 septembre
+- use demonstration data only;
+- remove real email addresses, phone numbers, keys, identifiers, and private notifications;
+- verify rights for visible logos, posters, covers, and third-party material;
+- remove unnecessary metadata;
+- provide optimized responsive formats with explicit dimensions;
+- add localized alternative text;
+- add a transcript when a video conveys information;
+- keep autoplay disabled;
+- verify clarity, file size, and layout stability.
 
-Les centres d’intérêt, le récit du déclic informatique et l’inspiration Letterboxd restent masqués jusqu’à validation explicite. Les CV conservent les postes, dates, établissements et compétences validés ; les précisions non validées sur Intento, les cursus et certaines technologies Beyowi ont été retirées dans les deux langues. Une future réintroduction exige la mise à jour du questionnaire, des sources FR/EN et des PDF.
+## Post-launch follow-up
+
+- Inspect the French home page, English home page, and both project teasers in Google Search Console.
+- Review indexing, selected canonical URLs, structured-data reports, and social previews after crawler and platform caches update.
+- Review field Core Web Vitals when enough data exists.
+- Confirm Cloudflare's actual account-level logging, aggregate metrics, security, and retention settings against the legal and privacy text.
+- Keep browser-side analytics disabled unless a separate approved change documents its technical and legal impact.
+
+## Material intentionally removed after the September 5 audit
+
+Interests, the personal origin story in computing, and the Letterboxd inspiration remain absent until explicitly validated. The resumes retain approved positions, dates, institutions, and skills. Unvalidated Intento details, course descriptions, and selected Beyowi technologies were removed from both languages. Reintroducing any of them requires updating the questionnaire, the French and English runtime sources, and the generated PDFs in the same change.

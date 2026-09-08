@@ -1,1000 +1,226 @@
-# Plan de production du portfolio
+# Portfolio roadmap
 
-> Feuille de route exécutable de l’état actuel jusqu’à la mise en production, puis à la maintenance.
+> Current post-launch roadmap for maintaining and extending the portfolio. Historical implementation details remain available in the dated QA reports and operational runbooks.
 
-## Pilotage
+## Project status
 
-| Élément                     | Valeur                                     |
-| --------------------------- | ------------------------------------------ |
-| Propriétaire                | Ethan Brosselard                           |
-| Dépôt                       | <https://github.com/ZayKox/portfolio>      |
-| Branche de travail actuelle | `develop`, temporaire pendant la migration |
-| Branche de production       | `main`                                     |
-| Hébergement cible           | Cloudflare Workers avec Static Assets      |
-| Domaine canonique retenu    | `ethanbrosselard.com`, sans `www`          |
-| Langues                     | Français à la racine, anglais sous `/en/`  |
-| Dernière mise à jour        | 5 septembre 2026                           |
+| Item                | Current value                            |
+| ------------------- | ---------------------------------------- |
+| Owner               | Ethan Brosselard                         |
+| Repository          | <https://github.com/ZayKox/portfolio>    |
+| Working branch      | `develop`, still transitional            |
+| Production branch   | `main`                                   |
+| Hosting             | Cloudflare Workers with Static Assets    |
+| Canonical domain    | `ethanbrosselard.com`, without `www`     |
+| Languages           | French at the root, English under `/en/` |
+| Public milestone    | Minimal public release completed         |
+| Last roadmap review | September 8, 2026                        |
 
-### Légende
+## Current outcome
 
-- `[x]` : terminé et vérifié localement.
-- `[ ]` : à faire.
-- **P0** : bloque la prochaine mise en production.
-- **P1** : nécessaire pour la V1 éditoriale complète, mais peut rester masqué lors du premier lancement.
-- **P2** : amélioration post-lancement.
-- `[Ethan]` : information, achat, accès externe ou validation humaine nécessaire.
-- `[Dev]` : changement dans le dépôt.
-- `[QA]` : contrôle automatisé ou manuel.
+The portfolio is publicly available at <https://ethanbrosselard.com>. It presents Ethan as a versatile software developer and digital maker. AI remains one area of interest rather than an exclusive specialization.
 
-Ne cocher une tâche qu’avec une preuve : commit, capture, URL, rapport de test ou validation écrite.
+The current public scope includes:
 
-## Audit du 5 septembre 2026
+- complete French and English navigation;
+- home, projects, about, resume, contact, legal, and privacy pages;
+- factual teaser pages for Palimia and Ludosaic;
+- HTML resumes and generated PDF files in both languages;
+- light, dark, and system themes;
+- canonical URLs, reciprocal language alternates, JSON-LD, sitemap, robots directives, and social sharing images;
+- a static deployment with no application server, database, form, browser analytics, tracking cookies, or embedded third-party content.
 
-La revue complète et ses corrections sont consignées dans [le rapport de préparation](qa/production-audit-2026-09-05.md). Les validations locales ne constituent pas un GO de production : la traçabilité de certains détails biographiques/CV, la recette humaine et les preuves de déploiement Cloudflare restent à compléter. Les décisions déjà validées dans les sections 21 à 24 du questionnaire restent acquises.
+The portrait, complete project case studies, screenshots, videos, and unvalidated personal details remain intentionally absent. Their absence does not make the current release incomplete.
 
-## Résultat visé
+## Verified baseline
 
-Le portfolio doit présenter Ethan comme un développeur polyvalent qui peut intervenir sur plusieurs types de produits. L’IA est un domaine d’intérêt, pas une spécialisation exclusive revendiquée. Le site vise d’abord la visibilité personnelle en France, reste intégralement bilingue et ne donne pas l’impression d’une recherche d’emploi active.
+### Repository and automated checks
 
-Deux jalons évitent de bloquer la publication sur les contenus qui seront fournis plus tard.
+- [x] Astro static output, strict TypeScript, Tailwind CSS, and typed MDX collections.
+- [x] French and English route parity.
+- [x] Project frontmatter and narrative parity checks.
+- [x] Media provenance, dimensions, hashes, and byte budgets.
+- [x] Resume source and PDF freshness checks.
+- [x] Static validation for metadata, CSP, links, accessibility landmarks, responsive behavior, and build budgets.
+- [x] Browser tests in Chromium, Firefox, WebKit, and mobile emulations.
+- [x] Lighthouse thresholds met on the representative release pages.
+- [x] Clean-source installation and build verified with `npm ci` and `npm run verify`.
+- [x] GitHub Actions validation configured for pushes and pull requests.
+- [x] Preview and production workflows isolated behind explicit deployment gates.
 
-### Jalon A — lancement public minimal
+### Production
 
-Le site peut être publié lorsque :
+- [x] GitHub deployment environments, secrets, and deployment switches configured.
+- [x] Production built with `SITE_URL=https://ethanbrosselard.com` and `SITE_NOINDEX=false`.
+- [x] Cloudflare Workers Static Assets deployment completed.
+- [x] Canonical apex domain connected with TLS.
+- [x] HTTP redirects permanently to HTTPS.
+- [x] `www` redirects permanently to the canonical apex while preserving the path and query string.
+- [x] Production smoke test covers all 18 bilingual routes, the real 404 response, headers, cache policies, metadata, sitemap, robots directives, and sharing images.
+- [x] Production responses set no tracking or analytics cookies.
+- [x] Google Search Console domain property verified and sitemap submitted.
 
-- les pages principales FR/EN sont cohérentes et factuelles ;
-- Palimia et Ludosaic sont clairement présentés comme des aperçus ;
-- le CV, les expériences et tout contenu incomplet sont masqués ;
-- le domaine, le SEO technique, les pages légales, la sécurité, l’accessibilité et les tests P0 sont terminés ;
-- le déploiement et le retour arrière ont été testés.
+### Human verification
 
-### Jalon B — V1 éditoriale complète
+Ethan confirmed on September 8, 2026 that the human verification work was completed. The confirmation is recorded in [`docs/qa/human-verification-2026-09-08.md`](qa/human-verification-2026-09-08.md).
 
-La V1 est atteinte lorsque :
+- [x] Review every public page in French and English.
+- [x] Navigate the complete site with a keyboard.
+- [x] Verify focus order, focus visibility, and the skip link in light and dark themes.
+- [x] Check headings, landmarks, lists, links, buttons, and accessible control names.
+- [x] Confirm that color is not the only way information is conveyed.
+- [x] Check touch targets and layout at 320 px.
+- [x] Check browser zoom and reflow at 200% and 400%.
+- [x] Check reduced-motion behavior.
+- [x] Review image alternatives and the absence of untranscribed informative video.
+- [x] Perform a screen-reader pass on the home, project, contact, and resume pages.
+- [x] Check French and English document language and pronunciation behavior.
+- [x] Check light, dark, and system themes on representative screen sizes.
+- [x] Review the HTML and PDF resumes, including reading order, page breaks, margins, links, and grayscale readability.
 
-- la biographie et le parcours sont finalisés ;
-- les deux projets ont une étude de cas FR/EN avec de vrais médias ;
-- le CV HTML et ses PDF FR/EN sont publiés depuis une source unique ;
-- la relecture factuelle et éditoriale complète est terminée.
+## Remaining work
 
-Le jalon B est indépendant de la première mise en ligne. Une rubrique incomplète reste absente au lieu d’afficher un faux contenu ou un placeholder.
+### P0 — close the current release state
 
-## Architecture de production retenue
+- [ ] Merge or otherwise integrate the two validated commits currently present on `develop` but not on `main`:
+  - `62be2a0 docs(seo): document indexing runbook`;
+  - `a6dd427 content(legal): align notices with production`.
+- [ ] Confirm the production deployment created from the resulting `main` SHA.
+- [ ] Archive a concise release record containing the version, timestamp, Git SHA, CI run, production deployment identifier, smoke-test result, and rollback target.
+- [ ] Create the `v0.1.0` tag after the final production SHA and release record are confirmed.
+- [ ] Retire the transitional `develop` workflow and use short-lived branches opened from `main` for future work.
 
-```text
-Ethan / contributeurs
-        │
-        ▼
-GitHub : branche courte → pull request ───────────→ fusion vers main
-                              │                            │
-                              ▼                            ▼
-                    validation sans secret       déploiement Workers
-                              │                            │
-                              ▼                            ▼
-                 preview manuelle après relecture   ethanbrosselard.com + TLS
-                       noindex + Access
-```
+### P1 — post-launch observation
 
-Choix structurants :
+- [ ] Inspect the French home page, English home page, and both project teasers in Google Search Console.
+- [ ] Review selected canonical URLs, structured-data reports, and indexing status after Google has had time to crawl the site.
+- [ ] Verify social previews after platform caches have refreshed.
+- [ ] Review field Core Web Vitals when enough real-user data exists; do not present synthetic Lighthouse results as field data.
+- [ ] Monitor unexpected 404 responses without adding an unapproved browser-side tracker.
+- [ ] Add the canonical portfolio domain to the public GitHub and LinkedIn profiles if desired.
+- [ ] Confirm Cloudflare's actual account-level security, logging, aggregate metrics, and retention settings against the legal and privacy text.
 
-- Astro en génération statique, sans serveur, base de données, authentification ni CMS pour la V1.
-- Tailwind CSS et TypeScript strict conservés.
-- Contenus versionnés dans Git : faits partagés dans `src/data/`, interface dans `src/i18n/`, projets dans les fichiers MDX FR/EN.
-- GitHub Actions valide le code puis publie `dist/` sur Workers Static Assets ;
-  aucun serveur d’origine ou runtime applicatif n’est déployé.
-- `main` représente exactement la production. Le flux durable recommandé est
-  une branche courte puis une pull request directe vers `main`. La branche
-  `develop` actuelle reste temporairement disponible pendant la migration, sans
-  imposer ensuite une double pull request.
-- Les pull requests exécutent la validation sans secret Cloudflare. Après
-  relecture, un mainteneur déclenche manuellement une version Workers non
-  promue pour une référence et un alias explicites, avec
-  `SITE_NOINDEX=true` et Cloudflare Access. La production utilise
-  `SITE_URL=https://ethanbrosselard.com` et `SITE_NOINDEX=false`.
-- Le domaine personnalisé, le DNS associé et TLS sont gérés par Cloudflare. Les
-  secrets de déploiement et d’accès aux previews restent dans les environnements
-  GitHub, jamais dans le dépôt.
-- Aucun chemin local vers Palimia ou Ludosaic ne doit être requis pendant le build.
+### P1 — editorial completion
 
-## État initial constaté
+- [ ] Refine the final professional title if the current broad wording changes.
+- [ ] Review the visible French and English copy after the next editorial change.
+- [ ] Complete and approve a full French case study for Palimia, then produce the equivalent English version.
+- [ ] Complete and approve a full French case study for Ludosaic, then produce the equivalent English version.
+- [ ] Add only validated dates, roles, metrics, user feedback, deployment claims, and public links.
+- [ ] Add project screenshots or videos only after privacy, licensing, metadata, responsive-format, alternative-text, and transcription checks.
+- [ ] Add certifications only when they exist and are explicitly approved for publication.
+- [ ] Add a portrait only if Ethan explicitly chooses to publish one.
 
-### Déjà en place
+Detailed missing editorial inputs remain listed in [`docs/content-backlog.md`](content-backlog.md) and the canonical answers remain in [`docs/site-content-questionnaire.md`](site-content-questionnaire.md).
 
-- [x] Astro 7, TypeScript strict, Tailwind CSS et MDX.
-- [x] Génération entièrement statique.
-- [x] Routes françaises et anglaises.
-- [x] Navigation entre les langues.
-- [x] Thèmes clair et sombre avec préférence système.
-- [x] Direction artistique « Violet Field — édition neutre » : noir, blanc et gris en structure, violet en accent secondaire, sans vert ni jaune.
-- [x] Données publiques centralisées dans `src/data/profile.ts`.
-- [x] Textes d’interface centralisés dans `src/i18n/copy.ts`.
-- [x] Palimia et Ludosaic disponibles en mode `teaser`.
-- [x] Canonical, `hreflang`, métadonnées sociales de base et JSON-LD préparés dans le layout.
-- [x] CI GitHub de base : installation propre, format, contrôle Astro/TypeScript et build.
-- [x] Dependabot configuré.
-- [x] Remote local corrigé vers le dépôt GitHub attendu.
-- [x] Auteur du commit initial : `Ethan Brosselard <ethan.brosselard@gmail.com>`.
-- [x] `main` suit `origin/main` localement.
+### P2 — optional improvements
 
-### Restant avant le jalon A
+- [ ] Decide whether to keep the system font stack or adopt self-hosted fonts with verified licenses.
+- [ ] Add ESLint only if a focused rule set catches issues not already covered by Astro, TypeScript, Prettier, and the existing validators.
+- [ ] Improve project media presentation only when real approved media is available.
+- [ ] Consider a contact form or privacy-preserving analytics only through a separate, explicitly approved change that updates the technical and legal documentation.
 
-- [ ] Configurer et vérifier le workflow GitHub distant.
-- [ ] Migrer la zone existante vers Cloudflare puis connecter le Custom Domain
-      sans interrompre les autres services.
-- [x] Injecter l’URL de production dans le build Astro depuis le workflow
-      GitHub Actions de production.
-- [x] Ajouter sitemap, `robots.txt` conditionnel, une image sociale générale et une par projet ; les trois variantes de build et le manifeste média les contrôlent.
-- [x] Ajouter les pages légales et confidentialité bilingues ; confirmer leurs informations d’hébergement lors du déploiement.
-- [x] Durcir les en-têtes et activer/tester la CSP localement.
-- [x] Ajouter les tests navigateur, accessibilité et liens.
-- [ ] Faire la recette complète localement puis sur une preview Workers
-      protégée par Access avant l'ouverture du domaine.
-- [ ] Tester le déploiement et le retour arrière.
-
-## Chemin critique
+## Release workflow
 
 ```text
-Périmètre de lancement validé
-  → GitHub et branches sécurisés
-  → zone et DNS existants inventoriés
-  → URL finale injectée dans Astro
-  → SEO + légal + sécurité terminés
-  → tests automatisés et recette humaine
-  → pull request vers main et validation sans secret
-  → preview Workers privée déclenchée manuellement et acceptée
-  → fusion puis déploiement production
-  → smoke test
-  → tag du jalon (`v0.1.0` minimal ou `v1.0.0` complet)
+short-lived branch from main
+  → pull request
+  → secret-free CI validation
+  → private noindex preview when required
+  → human approval
+  → merge to main
+  → gated production deployment
+  → production smoke test
+  → release record
 ```
 
-Les contenus longs, médias et CV avancent en parallèle. Ils ne bloquent le jalon A que si Ethan décide explicitement de les inclure au lancement.
-
-## Phase 0 — figer le périmètre de lancement
-
-**Priorité : P0**
-
-- [ ] `[Ethan]` Choisir le jalon de lancement : A minimal ou B complet.
-- [ ] `[Ethan]` Valider le titre temporaire « Développeur logiciel & créateur numérique », ou fournir le titre final.
-- [ ] `[Ethan]` Valider qu’aucune recherche d’emploi n’est affichée.
-- [ ] `[Ethan]` Valider que l’intérêt pour l’IA reste secondaire tant qu’aucun projet public ne le démontre.
-- [ ] `[Ethan]` Confirmer les faits déjà publics : nom, Paris/France, français/anglais, email, GitHub et LinkedIn ; la signature ZayKo est validée séparément.
-- [ ] `[Ethan]` Choisir si le portrait reste absent au lancement ; conserver la signature typographique ZayKo s’il n’y en a pas.
-- [ ] `[Ethan]` Décider si le CV et les études de cas complètes sont requis pour le premier lancement.
-- [ ] `[Dev]` Inscrire la décision de périmètre en haut de ce document.
-
-**Gate 0 :** le contenu affichable au lancement est listé, et tout le reste est explicitement masqué.
-
-## Phase 1 — sécuriser GitHub et le flux Git
-
-**Priorité : P0**
-
-### Identité et accès
-
-- [x] `[QA]` Vérifier l’URL du remote local avec `git remote -v`.
-- [x] `[QA]` Vérifier le nom et l’email du commit initial.
-- [ ] `[Ethan]` Tester la clé SSH dédiée avec l’alias configuré localement.
-- [ ] `[Ethan]` Vérifier dans GitHub que le dépôt appartient bien au compte lié depuis le portfolio.
-- [ ] `[Ethan]` Activer l’authentification à deux facteurs du compte GitHub.
-- [ ] `[Dev]` Résorber la branche `develop` actuelle pendant la migration, puis
-      utiliser des branches courtes ouvertes depuis `main`.
-- [ ] `[QA]` Vérifier sur GitHub que `main` pointe vers le commit de production
-      attendu.
-
-### Branches et intégration
-
-- [ ] `[Ethan]` Garder `main` comme branche par défaut et branche de production.
-- [ ] `[Ethan]` Créer une règle de protection ou un ruleset pour `main`.
-- [ ] `[Ethan]` Exiger une pull request avant fusion.
-- [ ] `[Ethan]` Exiger le check GitHub Actions `verify`.
-- [ ] `[Ethan]` Exiger un GO documenté sur la preview Workers déclenchée
-      manuellement avant fusion lorsqu’elle est applicable.
-- [ ] `[Ethan]` Bloquer les force-pushes et la suppression de `main`.
-- [ ] `[Ethan]` Appliquer les règles aux administrateurs si le plan GitHub le permet.
-- [x] `[Dev]` Valider les pull requests et `main` dans GitHub Actions.
-- [x] `[Dev]` Épingler les actions GitHub sur des SHA complets et laisser Dependabot proposer leurs mises à jour.
-- [ ] `[QA]` Ouvrir une pull request de test vers `main` et confirmer que la fusion est bloquée tant que la CI n’est pas verte.
-
-Convention :
-
-- `feature/<sujet>` ou `codex/<sujet>` pour une branche courte ;
-- `fix/<sujet>` pour un correctif ;
-- pull request directe vers `main`, preview manuelle après relecture, puis
-  fusion après validation ;
-- `develop` uniquement comme branche transitoire pendant la migration ;
-- `main` pour la production ;
-- commits Conventional Commits, par exemple `docs: add production roadmap`.
-
-**Gate 1 :** dépôt accessible avec le bon compte, branches distantes correctes, `main` protégée, PR de test et CI réussies.
-
-## Phase 2 — constituer la vérité éditoriale
-
-**Priorité : P1, sauf les textes déjà affichés qui sont P0**
-
-### Identité et parcours
-
-- [ ] `[Ethan]` Fournir une présentation brute en deux phrases.
-- [ ] `[Ethan]` Fournir une biographie de trois à six paragraphes.
-- [ ] `[Ethan]` Expliquer le point de départ dans l’informatique.
-- [ ] `[Ethan]` Décrire la manière de travailler et les problèmes préférés.
-- [ ] `[Ethan]` Lister les domaines déjà pratiqués et ceux seulement explorés.
-- [ ] `[Ethan]` Confirmer les centres d’intérêt publiables.
-- [ ] `[Ethan]` Fournir les expériences, études et certifications publiables.
-- [ ] `[Ethan]` Identifier toute information confidentielle à exclure.
-- [ ] `[Dev]` Rédiger d’abord la version française.
-- [ ] `[Ethan]` Relire et valider chaque fait en français.
-- [ ] `[Dev]` Traduire ensuite en anglais naturel.
-- [ ] `[QA]` Vérifier la parité des deux langues.
-
-Gabarit pour chaque expérience :
-
-```text
-Entreprise :
-Intitulé exact :
-Type de contrat :
-Lieu / télétravail :
-Dates :
-Description publiable :
-Responsabilités :
-Résultats mesurables et source :
-Technologies réellement utilisées :
-Informations confidentielles à exclure :
-```
-
-Gabarit pour chaque formation ou certification :
-
-```text
-Établissement / organisme :
-Intitulé exact :
-Dates :
-Diplôme ou certification obtenu :
-Lien public éventuel :
-Publication autorisée : oui/non
-```
-
-### Règles éditoriales
-
-- [ ] Aucun fait inventé, aucune fausse métrique, aucun faux témoignage.
-- [ ] Chaque chiffre indique sa date, son environnement et sa source.
-- [ ] Les preuves locales sont nommées « validation locale », jamais « résultat de production ».
-- [ ] Une section vide est masquée.
-- [x] Les libellés provisoires visibles, dont « Cette page évoluera » / « This page will evolve », sont remplacés par une information utile ou supprimés ; le build interdit aussi leurs variantes historiques FR/EN.
-- [ ] Une technologie n’est mise en avant que si un projet ou une expérience la prouve.
-- [ ] Les textes anglais sont localisés, pas traduits mot à mot.
-- [x] Chaque page possède un titre et une description uniques ; `scripts/validate-build.mjs` contrôle leur présence et refuse les doublons dans chaque langue.
-
-**Gate 2 :** les faits publiés sont validés par Ethan et identiques dans les deux langues.
-
-## Phase 3 — produire les études de cas
-
-**Priorité : P1 pour le jalon A, P0 pour le jalon B**
-
-Les questionnaires détaillés restent dans `docs/content-backlog.md`. Le statut d’un projet ne passe de `teaser` à `published` qu’après le gate de cette phase.
-
-### Palimia
-
-- [ ] `[Ethan]` Motivation et problème personnel initial.
-- [ ] `[Ethan]` Public cible.
-- [ ] `[Ethan]` Rôle exact et projet solo/équipe.
-- [ ] `[Ethan]` Dates et temps consacré si publiables.
-- [ ] `[Ethan]` Statut réel : utiliser « MVP avancé / bêta privée » tant qu’une production publique n’est pas prouvée.
-- [ ] `[Ethan]` Visibilité du dépôt et lien éventuel.
-- [ ] `[Ethan]` Démo accessible ou raison de son absence.
-- [ ] `[Ethan]` Testeurs, retours et changements réellement induits.
-- [ ] `[Ethan]` Décision technique la plus difficile.
-- [ ] `[Ethan]` Fausse piste, compromis et enseignements.
-- [ ] `[Ethan]` Résultat dont il est le plus fier.
-- [ ] `[Ethan]` Limites et prochaines étapes.
-- [ ] `[Ethan]` Détails de sécurité ou d’exploitation à ne pas publier.
-- [ ] `[Dev]` Raconter le problème, le produit, l’architecture et trois deep dives techniques.
-- [ ] `[Dev]` Montrer la normalisation multi-source, la frontière privé/public et les recommandations explicables si leur publication est autorisée.
-- [ ] `[QA]` Étiqueter les tests et chiffres existants comme preuves locales datées.
-
-### Ludosaic
-
-- [ ] `[Ethan]` Motivation et problème initial.
-- [ ] `[Ethan]` Public cible.
-- [ ] `[Ethan]` Rôle exact et projet solo/équipe.
-- [ ] `[Ethan]` Dates.
-- [ ] `[Ethan]` Visibilité du dépôt et lien éventuel.
-- [ ] `[Ethan]` Démo accessible ou raison de son absence.
-- [ ] `[Ethan]` Bêta-testeurs et retours publiables.
-- [ ] `[Ethan]` Décision technique difficile, compromis et limites.
-- [ ] `[Ethan]` Résultat le plus important et prochaines étapes.
-- [ ] `[Dev]` Raconter la plateforme modulaire, les règles déterministes, le chargement à la demande, le hors-ligne et l’autorité multijoueur.
-- [ ] `[QA]` Séparer les validations locales et connectées des résultats utilisateurs et de la preuve de production.
-
-### Structure de chaque étude
-
-- [x] `[QA]` Contrôler automatiquement les paires MDX FR/EN, leurs champs factuels partagés, leurs métriques et leur structure narrative.
-
-1. Résumé : rôle, dates, statut et technologies essentielles.
-2. Problème réel et contexte.
-3. Contraintes et objectifs.
-4. Réponse produit et parcours principal.
-5. Architecture lisible.
-6. Deux ou trois décisions techniques approfondies.
-7. Qualité : tests, accessibilité, sécurité et performance.
-8. Résultats vérifiables et limites.
-9. Ce qui a été appris et prochaine étape.
-
-**Gate 3 :** récit FR validé, traduction EN complète, médias disponibles, liens publics fonctionnels, statut exact et aucun détail sensible.
-
-## Phase 4 — produire et assainir les médias
-
-**Priorité : P1 pour le jalon A, P0 pour le jalon B**
-
-### Inventaire Palimia
-
-- [ ] Couverture 16:9.
-- [ ] Recherche multi-source.
-- [ ] Import d’une œuvre.
-- [ ] Fiche média.
-- [ ] Bibliothèque personnelle.
-- [ ] Statistiques.
-- [ ] Recommandation avec explication.
-- [ ] Profil ou liste publique.
-- [ ] Deux à quatre vues mobiles.
-- [ ] Démonstration vidéo courte.
-- [ ] Diagramme d’architecture et de données.
-
-### Inventaire Ludosaic
-
-- [ ] Couverture 16:9.
-- [ ] Catalogue et filtres de jeux.
-- [ ] Reflex Rush en solo ou défi quotidien.
-- [ ] Merge Forge et reprise de partie.
-- [ ] Grid Duel contre un bot ou en local.
-- [ ] Salon privé Grid Duel avec données de démonstration.
-- [ ] Profil invité, progression et succès.
-- [ ] Classement de scores vérifiés.
-- [ ] État hors-ligne et paramètres.
-- [ ] Démonstration vidéo courte.
-- [ ] Diagramme application, jeux, API, serveur temps réel et données.
-
-### Traitement commun
-
-- [ ] `[Dev]` Copier les médias retenus dans le portfolio ; ne jamais les importer depuis les dépôts voisins au build.
-- [ ] `[QA]` Utiliser uniquement des données de démonstration.
-- [ ] `[QA]` Retirer emails, numéros réels, clés, identifiants et notifications privées.
-- [ ] `[QA]` Vérifier les droits sur les logos, affiches et œuvres visibles.
-- [ ] `[QA]` Supprimer les métadonnées inutiles.
-- [ ] `[Dev]` Produire WebP/AVIF, variantes responsives et dimensions explicites.
-- [ ] `[Dev]` Ajouter un poster aux vidéos et éviter la lecture automatique avec son.
-- [ ] `[Dev]` Écrire des alternatives FR/EN et une transcription quand la vidéo porte de l’information.
-- [ ] `[QA]` Vérifier la netteté, le poids et l’absence de décalage de mise en page.
-
-**Gate 4 :** aucun média sensible ou sans droit, toutes les dimensions sont définies et toute information visuelle a une alternative utile.
-
-## Phase 5 — finaliser le design
-
-**Priorité : P0 pour la cohérence actuelle, P1 pour les médias avancés**
-
-- [x] `[Dev]` Formaliser palette, typographies, espacements, rayons, bordures, ombres et mouvement dans les tokens existants.
-- [ ] `[Ethan]` Choisir entre la pile système et des polices auto-hébergées avec licences vérifiées.
-- [x] `[Dev]` Utiliser la signature typographique ZayKo sans monogramme abrégé si aucun logo n’est fourni.
-- [x] `[Dev]` Créer favicon PNG et icône Apple touch depuis une source déterministe.
-- [x] `[Dev]` Créer une image Open Graph globale de 1200 × 630 px.
-- [x] `[Dev]` Créer une image Open Graph déterministe par projet à partir des compositions Violet Field existantes, avec alternative localisée dans chaque MDX.
-- [ ] `[Dev]` Intégrer les captures sans surcharger l’interface.
-- [ ] `[Dev]` Présenter les compétences par domaines et preuves, jamais en pourcentages.
-- [ ] `[Dev]` Rendre les captures agrandissables au clavier et au tactile si une lightbox est ajoutée.
-- [x] `[QA]` Vérifier toutes les routes en clair, sombre et préférence système ; les 36 captures locales et leur relecture sont consignées dans `docs/qa/visual-review-2026-08-02.md`.
-- [x] `[QA]` Vérifier mobile, tablette, desktop et écrans larges ; l'ensemble de la recette couvre 320, 768, 1440 et 1920 px, dont 30 captures représentatives sur les profils mobile, tablette et écran large dans les deux thèmes.
-- [x] `[QA]` Vérifier `prefers-reduced-motion` ; les dix contrôles représentatifs limitent animations et transitions à `0,00001 s`.
-
-**Gate 5 :** aucun écran factice, aucune dépendance au survol, thèmes cohérents et direction « Violet Field — édition neutre » reconnaissable sans décor gratuit.
-
-## Phase 6 — construire le CV depuis une source unique
-
-**Priorité : P1 ; ne bloque pas le jalon A si tous ses liens restent masqués**
-
-### Données requises
-
-- [ ] `[Ethan]` Titre professionnel et résumé.
-- [ ] `[Ethan]` Expériences et résultats autorisés.
-- [ ] `[Ethan]` Formation et certifications.
-- [ ] `[Ethan]` Compétences réellement pratiquées.
-- [ ] `[Ethan]` Langues et niveaux exacts.
-- [ ] `[Ethan]` Projets sélectionnés.
-- [ ] `[Ethan]` Coordonnées à publier.
-
-### Implémentation
-
-- [x] `[Dev]` Créer une source structurée unique : `src/data/resume.json`.
-- [x] `[Dev]` Créer `/cv/` et `/en/resume/`.
-- [ ] `[Dev]` Concevoir une version une colonne, lisible par les ATS et sans dépendance au graphisme.
-- [x] `[Dev]` Ajouter une feuille d’impression A4.
-- [x] `[Dev]` Générer un PDF FR et un PDF EN depuis la même source ; régénération vérifiée dans l’audit du 5 septembre.
-- [x] `[Dev]` Conserver du texte sélectionnable et des liens cliquables ; extraction et annotations contrôlées dans les deux PDF.
-- [x] `[Dev]` Définir la langue, le titre et les métadonnées de chaque PDF ; documents balisés FR/EN avec plan de navigation.
-- [ ] `[QA]` Vérifier ordre de lecture, coupures, marges et rendu en niveaux de gris.
-- [ ] `[QA]` Comparer automatiquement ou manuellement HTML et PDF.
-- [x] `[Dev]` Activer les liens CV uniquement lorsque pages et PDF existent ensemble.
-
-Ne pas publier adresse complète, date de naissance ou téléphone sans raison explicite.
-
-**Gate 6 :** HTML et PDF FR/EN sont factuellement identiques, accessibles, imprimables et disponibles sans lien mort.
-
-## Phase 7 — terminer SEO et partage
-
-**Priorité : P0**
-
-L’URL finale souhaitée `https://ethanbrosselard.com` est validée comme cible
-canonique. Cette phase prépare son usage par Astro ; la disponibilité du domaine,
-son registrar et ses enregistrements DNS restent à vérifier avant la bascule.
-
-- [x] `[Ethan]` Valider `ethanbrosselard.com` comme domaine final canonique.
-- [ ] `[Ethan]` Inventorier le registrar, la zone, le renouvellement et tous les
-      usages DNS existants avant la migration.
-- [ ] `[Ethan]` Activer 2FA, verrouillage du domaine, renouvellement automatique et moyen de paiement de secours chez le registrar.
-- [x] `[Ethan/Dev]` Définir `SITE_URL=https://ethanbrosselard.com` dans le job GitHub
-      Actions de production et une origine technique distincte dans les
-      previews `noindex`.
-- [x] `[Dev]` Installer et configurer `@astrojs/sitemap` conditionnellement à `SITE_URL`.
-- [x] `[Dev]` Générer `robots.txt` depuis `Astro.site` ou synchroniser son URL manuellement.
-- [x] `[Dev]` Ajouter `<link rel="sitemap">` lorsque `SITE_URL` est défini.
-- [x] `[Dev]` Ajouter `x-default` aux alternates de langue.
-- [x] `[QA]` Vérifier automatiquement canonical absolu et `hreflang` réciproque sur chaque paire FR/EN avec une origine de test ; répéter sur le domaine final.
-- [x] `[QA]` Exclure du sitemap les pages réellement `noindex` et le contrôler dans le build avec domaine de test.
-- [x] `[Dev]` Ajouter `og:image`, dimensions, type MIME et texte alternatif social lorsque pertinent.
-- [x] `[Dev]` Choisir `summary_large_image` quand l’image 1200 × 630 est prête.
-- [x] `[QA]` Aligner automatiquement titres, descriptions, nom du site et locales Open Graph/Twitter avec chaque document FR/EN, et supprimer toute métadonnée sociale des previews.
-- [x] `[QA]` Valider le JSON-LD et ne conserver que les propriétés vraies ; le build et les smoke tests imposent le type attendu par route, la parité avec le titre, la description et la langue visibles, la liste exacte des faits `Person` validés et l'absence d'email ou de propriété supplémentaire.
-- [ ] `[Ethan]` Décider si l’email doit rester dans le JSON-LD ; le retrait est recommandé pour réduire le scraping, même si l’adresse reste visible sur la page Contact.
-- [x] `[QA]` Vérifier automatiquement que chaque route importante est atteignable par des liens HTML depuis l’accueil.
-- [x] `[QA]` Tester les liens internes et externes, redirections comprises ; GitHub répond `200` et le refus LinkedIn `999` reste explicitement non concluant dans `docs/qa/external-links-review-2026-08-02.md`.
-- [x] `[Dev]` Créer une 404 bilingue ou une 404 neutre permettant de choisir la langue.
-- [x] `[QA]` Vérifier que Workers Static Assets sert réellement cette page avec
-      un statut 404 sur une preview et en production.
-
-**Gate 7 :** sitemap et robots accessibles, canonical/hreflang corrects, données structurées valides, aperçu social final et aucun lien cassé.
-
-## Phase 8 — légal, données personnelles et consentement
-
-**Priorité : P0**
-
-Cette checklist organise le travail ; elle ne remplace pas un avis juridique adapté au statut exact d’Ethan.
-
-- [ ] `[Ethan]` Déterminer si le site est édité à titre strictement personnel ou dans un cadre professionnel.
-- [ ] `[Ethan]` Vérifier les mentions obligatoires applicables à ce statut auprès d’une source officielle ou d’un professionnel.
-- [x] `[Dev]` Créer `/mentions-legales/` et `/en/legal-notice/`.
-- [x] `[Dev]` Créer `/confidentialite/` et `/en/privacy/`.
-- [ ] `[Dev]` Identifier l’éditeur, le moyen de contact et l’hébergeur avec les informations réellement exigées.
-- [x] `[Dev]` Expliquer les traitements existants : email public, données
-      techniques et métriques réseau Cloudflare, sans mesure d’audience côté
-      navigateur.
-- [x] `[Dev]` Indiquer finalités, base, destinataires, critères de conservation,
-      transferts, droits et moyen d’exercice applicables.
-- [x] `[QA]` Confirmer qu’aucun formulaire, tracker ou service tiers n’est chargé sans être documenté ; le build bloque les ressources externes, embeds, stockages et API de suivi non autorisés, et les smoke tests refusent tout `Set-Cookie`.
-- [ ] `[Dev/QA]` Relever les réglages et durées réels des journaux techniques
-      Cloudflare, les minimiser lorsque l’offre le permet et les décrire sans
-      prétendre qu’ils sont contrôlés par l’application.
-- [ ] `[Ethan]` Accepter explicitement le risque de spam lié à l’email public, ou choisir une adresse dédiée.
-- [x] `[Ethan]` Lancer sans mesure d’audience côté navigateur, conformément à la
-      décision validée le 1er septembre 2026 ; les métriques techniques
-      agrégées inhérentes au réseau Cloudflare restent documentées séparément.
-- [ ] `[Dev]` Si une mesure d’audience est ajoutée plus tard, documenter la configuration et vérifier les critères CNIL avant de conclure à une exemption de consentement.
-- [ ] `[Dev]` Si un traceur requiert le consentement, ne le charger qu’après choix positif et offrir un refus aussi simple.
-- [x] `[QA]` Vérifier les droits et crédits des polices, icônes, images, vidéos et contenus de tiers ; le site actuel ne distribue que cinq PNG générés dans ce dépôt, consignés avec leur source et leur empreinte dans `docs/media-provenance.json`. Le contrôle bloque tout média publiable non inventorié et toute police embarquée.
-
-**Gate 8 :** statut de l’éditeur clarifié, pages légales publiées dans les deux langues, traitements réels documentés et aucun traceur non maîtrisé.
-
-## Phase 9 — sécurité et confidentialité technique
-
-**Priorité : P0**
-
-Le site est statique et n’a besoin d’aucun secret en production. Toute future variable secrète doit rester côté serveur et ne jamais être préfixée pour être exposée au client.
-
-- [x] `[Dev]` Activer `security.csp` dans Astro avec des directives minimales adaptées au site.
-- [x] `[QA]` Tester la CSP avec `npm run build` puis `npm run preview` ; Astro ne la simule pas en mode `dev`.
-- [x] `[QA]` Vérifier que le bootstrap du thème et le JSON-LD inline sont placés après la CSP, couverts par leurs hashes exacts et sans `unsafe-inline`.
-- [x] `[Dev]` Ajouter `public/_headers` pour les protections servies par Workers
-      Static Assets.
-- [x] `[Dev]` Interdire l’embarquement avec `frame-ancestors 'none'` dans un en-tête CSP et/ou `X-Frame-Options: DENY`.
-- [x] `[Dev]` Ajouter `X-Content-Type-Options: nosniff`.
-- [x] `[Dev]` Définir `Referrer-Policy: strict-origin-when-cross-origin` ou une politique plus restrictive validée.
-- [x] `[Dev]` Ajouter HSTS pour un an sur Workers, sans `includeSubDomains` ni
-      préchargement tant que tous les autres sous-domaines ne sont pas audités.
-- [x] `[Dev]` Désactiver les API inutiles avec `Permissions-Policy`, notamment caméra, microphone et géolocalisation.
-- [x] `[Dev]` Ajouter `base-uri 'self'`, `object-src 'none'` et `form-action 'none'` tant qu’aucun formulaire n’existe ; passer à `'self'` seulement si un formulaire same-origin est ajouté.
-- [x] `[Dev/QA]` Vérifier que la configuration Workers ne contient aucun script
-      d’exécution, binding, secret applicatif ou service d’origine, seulement
-      `dist/` comme collection de Static Assets.
-- [x] `[Dev]` Conserver la revalidation des documents et mettre en cache un an,
-      avec `immutable`, uniquement les ressources Astro hashées.
-- [x] `[QA]` Vérifier statiquement les règles de `public/_headers` ; la preuve
-      réseau reste à répéter sur Workers.
-- [x] `[QA]` Répéter le contrôle des en-têtes sur la production.
-- [x] `[QA]` Vérifier la console navigateur sur toutes les routes pour détecter les violations CSP.
-- [x] `[QA]` Rechercher automatiquement les placeholders et motifs de secrets courants dans le build `dist/` ; conserver une relecture humaine avant production.
-- [x] `[QA]` Exécuter `npm audit --omit=dev --audit-level=high` et analyser chaque résultat, sans appliquer aveuglément un correctif majeur. Zéro vulnérabilité connue au 2 août 2026, preuve et limites consignées dans `docs/qa/dependency-audit-2026-08-02.md`.
-- [ ] `[Ethan]` Protéger GitHub, Cloudflare et le registrar avec 2FA et utiliser
-      des jetons à privilèges minimaux.
-- [x] `[Dev]` Ajouter et valider dans le build statique un mode
-      `SITE_NOINDEX=true` qui retire les signaux d'indexation et interdit le
-      crawl des previews.
-- [ ] `[QA]` Confirmer que toute URL de répétition distante n'est pas indexable.
-- [ ] `[Ethan/Dev]` Confirmer sur Cloudflare la route de production
-      `workers.dev` désactivée, les URL de version activées et protégées par
-      Access, Workers Logs et Web Analytics désactivés, puis rediriger
-      systématiquement `www` vers l’apex.
-
-**Gate 9 :** aucune fuite de secret, aucune violation CSP fonctionnelle, en-têtes confirmés sur le réseau et previews non indexées.
-
-## Phase 10 — accessibilité WCAG 2.2 AA
-
-**Priorité : P0**
-
-L’automatisation détecte seulement une partie des problèmes ; la recette humaine reste obligatoire.
-
-### Automatisation
-
-- [x] `[Dev]` Contrôler dans le build les contrastes des principaux tokens clair/sombre, le lien d’évitement, les noms de boutons, les alternatives d’images et les identifiants dupliqués.
-- [x] `[Dev]` Ajouter Playwright.
-- [x] `[Dev]` Ajouter `@axe-core/playwright`.
-- [x] `[Dev]` Tester toutes les routes publiques FR/EN dans les deux thèmes.
-- [x] `[QA]` Refuser les violations axe `serious` et `critical`.
-- [x] `[QA]` Conserver le rapport comme preuve de release en cas d'échec CI.
-- [x] `[QA]` Contrôler automatiquement le lien d'évitement, le mouvement réduit, les cibles tactiles et le reflow à 320 px.
-- [x] `[QA]` Contrôler automatiquement l'ordre DOM de tabulation et la visibilité du focus sur chaque route en clair et sombre.
-- [x] `[QA]` Contrôler sur chaque route le reflow desktop aux largeurs CSS équivalentes à un zoom de 200 % et 400 %, sans confondre cette preuve avec la recette manuelle du zoom navigateur.
-- [x] `[QA]` Contrôler automatiquement la langue de chaque route, la hiérarchie des titres, les régions principales, la page courante et les noms/états des sélecteurs de langue et de thème.
-
-### Recette humaine
-
-- [ ] `[QA]` Parcourir tout le site au clavier seul.
-- [ ] `[QA]` Vérifier l’ordre de focus et sa visibilité en clair/sombre.
-- [ ] `[QA]` Vérifier le lien d’évitement.
-- [ ] `[QA]` Vérifier titres, régions, listes, liens et boutons sémantiques.
-- [ ] `[QA]` Vérifier les noms accessibles du changement de langue et du thème.
-- [ ] `[QA]` Vérifier contraste du texte, focus, bordures utiles et états interactifs.
-- [ ] `[QA]` Vérifier que la couleur n’est jamais la seule information.
-- [ ] `[QA]` Vérifier les cibles tactiles d’au moins 44 × 44 px lorsque possible.
-- [ ] `[QA]` Tester 320 px de large sans défilement horizontal.
-- [ ] `[QA]` Tester zoom navigateur à 200 %, puis reflow à 400 % sur les pages essentielles.
-- [ ] `[QA]` Tester avec réduction des animations.
-- [ ] `[QA]` Vérifier les alternatives des images et transcriptions des vidéos.
-- [ ] `[QA]` Faire une passe lecteur d’écran sur l’accueil, un projet, le contact et le CV.
-- [ ] `[QA]` Vérifier la prononciation avec `lang="fr"` et `lang="en"`.
-- [ ] `[QA]` Vérifier que les erreurs éventuelles sont identifiées sans dépendre de la couleur.
-
-**Gate 10 :** zéro violation axe sérieuse/critique, parcours clavier complet et checklist humaine WCAG 2.2 AA signée.
-
-## Phase 11 — tests fonctionnels et qualité
-
-**Priorité : P0**
-
-### Tests à ajouter
-
-- [x] `[Dev]` Ajouter une validation statique de toutes les routes et des budgets HTML/CSS/JS.
-- [x] `[Dev]` Ajouter `npm run test:e2e`.
-- [x] `[Dev]` Ajouter un smoke test de chaque route publique.
-- [x] `[Dev]` Tester que chaque lien de langue mène à l’équivalent attendu.
-- [x] `[Dev]` Tester que le thème persiste et respecte la préférence système au premier chargement.
-- [x] `[Dev]` Tester les liens email, GitHub, LinkedIn et les CTA projet.
-- [x] `[Dev]` Tester les canonical, alternates, titres et descriptions, avec et sans `SITE_URL`.
-- [x] `[Dev]` Tester le contenu de la page 404 dans le build local.
-- [x] `[QA]` Contrôler son statut HTTP derrière Workers Static Assets.
-- [x] `[Dev]` Ajouter un contrôle des liens internes et de l’atteignabilité des routes.
-- [x] `[Dev]` Ajouter un contrôle séparé des liens externes avec une gestion explicite des faux positifs réseau.
-- [x] `[Dev]` Ajouter les tests E2E et accessibilité à GitHub Actions.
-- [x] `[QA]` Contrôler automatiquement l'alignement Node/npm entre `.nvmrc`,
-      les moteurs, le lockfile et la CI, ainsi que l'épinglage des actions.
-- [ ] `[Dev]` Ajouter ESLint seulement avec un jeu de règles utile et sans dupliquer les contrôles Astro/TypeScript.
-- [x] `[Dev]` Conserver les rapports Playwright en artefact seulement en cas d’échec ou pour une release.
-
-### Matrice navigateur
-
-- [x] Chromium desktop et mobile.
-- [x] Firefox desktop.
-- [x] WebKit desktop et émulation mobile ; 36 tests réussis et 12 scénarios non applicables ignorés dans l’image officielle Playwright 1.62.1, preuve consignée dans `docs/qa/webkit-review-2026-08-02.md`.
-- [ ] Au moins un téléphone réel Android.
-- [ ] Safari/iPhone réel si disponible ; sinon noter explicitement l’absence de preuve réelle.
-
-### Commandes de base
+Rules:
+
+- `main` must represent production.
+- Do not deploy directly from a feature branch.
+- Keep Cloudflare and Access credentials in protected GitHub environments.
+- A preview must use `SITE_NOINDEX=true` and Cloudflare Access.
+- Production must use `SITE_URL=https://ethanbrosselard.com` and `SITE_NOINDEX=false`.
+- Stage and commit French and English changes together.
+- Do not publish incomplete, private, guessed, or unapproved information.
+- Do not change DNS, deploy, merge, tag, or publish externally without Ethan's explicit authorization.
+
+## Validation commands
+
+For a clean worktree:
 
 ```sh
 nvm use
 npm ci
 npm run format
 npm run verify
-```
-
-Commandes à rendre disponibles avant la release :
-
-```sh
 npm run test:e2e
 npm run test:lighthouse
 npm run check:links
-npm run test:deployment -- --url https://staging-portfolio.account-subdomain.workers.dev --mode preview
 ```
 
-**Gate 11 :** installation depuis un checkout propre, CI verte, tests multi-navigateurs verts et aucun lien bloquant cassé.
-
-## Phase 12 — performance et robustesse
-
-**Priorité : P0**
-
-Budgets de référence au 75e percentile réel après collecte suffisante :
-
-- LCP ≤ 2,5 s ;
-- INP ≤ 200 ms ;
-- CLS ≤ 0,1.
-
-Pour la recette synthétique avant lancement : viser un score Lighthouse d’au moins 95 sur performance, accessibilité, bonnes pratiques et SEO pour les pages représentatives, sans considérer le score comme une preuve suffisante à lui seul.
-
-- [x] `[Dev]` Garder le JavaScript client au strict nécessaire pour le thème progressif.
-- [x] `[Dev/QA]` Dimensionner et borner chaque image actuellement publiée ; les cinq PNG d’icône ou de partage utilisent le format compatible avec leur destination, et le manifeste bloque dimensions ou budgets inattendus.
-- [x] `[Dev/QA]` Ne charger aucun média de contenu sous la ligne de flottaison dans le jalon A actuel ; appliquer le chargement paresseux et les formats modernes avant de publier de futures captures ou vidéos.
-- [x] `[Dev]` Ne pas précharger de ressource sans bénéfice mesuré ; aucun préchargement n'est actuellement émis.
-- [x] `[Dev]` Conserver la pile de polices locale/système tant qu'une police finale n'est pas validée.
-- [x] `[QA]` Contrôler CLS et poids encodé sur l'accueil, la liste et chaque aperçu de projet en mobile et desktop.
-- [x] `[QA]` Mesurer synthétiquement LCP et Lighthouse sur les pages représentatives ; la preuve historique du 2 août consigne quatre audits à 100 et des LCP de 902–903 ms, tandis que la revue Workers du 4 septembre confirme quatre scores à 100 et 903–905 ms. Mesurer l'INP réel après lancement, puis auditer aussi le CV s'il est publié.
-- [x] `[QA]` Tester Lighthouse sous réseau et CPU ralentis.
-- [x] `[QA]` Refuser automatiquement un CLS supérieur à 0,1 sur les pages représentatives actuelles.
-- [x] `[QA]` Vérifier le site sans JavaScript : lecture, navigation et contact restent utiles.
-- [x] `[QA]` Refuser plus de 300 Kio encodés sur une page représentative actuelle ; documenter toute future exception média.
-- [ ] `[QA]` Tester la preview Workers protégée par Access, pas seulement
-      `localhost`.
-
-**Gate 12 :** budgets synthétiques atteints ou écarts expliqués et acceptés, aucune régression visible sur réseau lent.
-
-## Phase 13 — configurer Cloudflare Workers et le domaine
-
-**Priorité : P0**
-
-Astro reste entièrement statique. Node.js génère `dist/`, puis Workers Static
-Assets publie ce répertoire sans script Worker, SSR, binding ou service
-d’origine. GitHub Actions est le seul chemin normal de publication.
-
-### Compte, Worker et GitHub
-
-- [ ] `[Ethan]` Protéger Cloudflare et le registrar avec 2FA.
-- [ ] `[Ethan]` Créer deux jetons API Cloudflare distincts pour `preview` et
-      `production`, limités au compte et aux permissions Workers strictement
-      nécessaires.
-- [ ] `[Ethan/Dev]` Créer le Worker avec le même nom que dans la configuration
-      Wrangler versionnée.
-- [x] `[Dev/QA]` Pointer Static Assets vers `dist/`, servir `404.html` avec un
-      statut 404, conserver les barres finales Astro, désactiver la route de
-      production `workers.dev`, activer explicitement les URL de preview et
-      désactiver observabilité et télémétrie dans la configuration versionnée.
-- [x] `[QA]` Consigner les builds, dry-runs Wrangler, contrôles de sécurité et
-      limites externes dans
-      `docs/qa/cloudflare-workers-readiness-2026-09-04.md`.
-- [ ] `[Ethan]` Créer les environnements GitHub `preview` et `production`, y
-      stocker les secrets prévus, définir le sous-domaine Workers comme
-      variable du dépôt, puis limiter l’environnement de production à `main`
-      avec approbation humaine obligatoire.
-- [ ] `[Ethan]` Protéger les previews du Worker avec la portée Cloudflare Access
-      **Previews only**, puis créer un service token distinct pour les smoke
-      tests automatisés.
-- [x] `[Dev/QA]` Construire la référence de preview sans aucun secret, puis
-      charger l’outillage de déploiement depuis `main` et revalider l’artefact
-      avant d’exposer le jeton Cloudflare.
-- [x] `[Dev/QA]` Vérifier que les secrets Cloudflare et Access ne sont jamais
-      injectés dans le build client, affichés ou conservés dans un rapport.
-- [ ] `[Ethan]` Définir `CLOUDFLARE_PREVIEWS_ENABLED=true` seulement après la
-      configuration des secrets et d’Access ; garder
-      `CLOUDFLARE_PRODUCTION_ENABLED` à `false` jusqu’au GO de bascule.
-
-Configuration attendue :
-
-| Paramètre                    | Valeur                                                                |
-| ---------------------------- | --------------------------------------------------------------------- |
-| Branche de production        | `main`                                                                |
-| Artefact                     | `dist/`                                                               |
-| Publication de preview       | `workflow_dispatch` avec ref + alias, puis `wrangler versions upload` |
-| Publication de production    | `wrangler deploy` après validation                                    |
-| URL canonique de production  | `SITE_URL=https://ethanbrosselard.com`                                |
-| Indexation de production     | `SITE_NOINDEX=false`                                                  |
-| Indexation de preview        | `SITE_NOINDEX=true`                                                   |
-| Protection de preview        | Cloudflare Access                                                     |
-| Secrets applicatifs          | aucun                                                                 |
-| Mesure d’audience navigateur | aucune au lancement                                                   |
-| Métriques réseau Cloudflare  | agrégées, inhérentes à la plateforme et documentées                   |
-| Journalisation persistante   | Workers Logs et exports désactivés                                    |
-
-### Première preview privée
-
-- [x] `[Dev]` Disposer d’un smoke test distant en lecture seule pour les modes
-      production et preview, avec rapport JSON optionnel.
-- [x] `[Dev/QA]` Adapter le smoke test aux deux en-têtes d’un service token
-      Cloudflare Access sans jamais les écrire dans le rapport.
-- [x] `[QA]` Vérifier dans le workflow que la pull request et le job qui exécute
-      la référence demandée n’accèdent à aucun secret et ne publient rien ; seul
-      le second job manuel, fondé sur l’outillage de `main`, crée une version non
-      promue après revalidation de `dist/`.
-- [ ] `[QA]` Noter l’URL de version, le SHA Git, l’identifiant Workers et
-      l’horodatage.
-- [ ] `[QA]` Exécuter les phases 7 à 12 sur cette URL.
-- [ ] `[QA]` Confirmer à la fois Cloudflare Access et `SITE_NOINDEX=true` ; la
-      CI doit prouver qu’une requête anonyme est refusée avant son smoke test
-      authentifié, et aucun des deux contrôles ne remplace l’autre.
-- [x] `[QA]` Conserver comme preuve historique le build depuis une archive Git
-      propre consigné dans `docs/qa/clean-source-review-2026-08-02.md`. Les
-      essais de conteneurs qu’il mentionne précèdent la migration et ne valent
-      pas validation de Workers.
-
-### Domaine, DNS et TLS
-
-- [ ] `[Ethan]` Ajouter `ethanbrosselard.com` comme zone Cloudflare et inventorier tous
-      les enregistrements existants avant de changer les nameservers : web,
-      MX, SPF, DKIM, DMARC, autres TXT et validations de services.
-- [ ] `[Ethan/QA]` Recopier puis vérifier cet inventaire depuis une source
-      externe avant la délégation ; conserver le registrar indépendant.
-- [ ] `[Ethan/QA]` Documenter l’enregistrement web incompatible de l’apex et sa
-      valeur de restauration, sans le retirer avant la fenêtre de publication de
-      la phase 15. Le job approuvé laissera alors `wrangler deploy` rattacher le
-      Custom Domain et Cloudflare créer le DNS associé ainsi que le certificat
-      TLS.
-- [x] `[Ethan]` Créer `www` comme enregistrement proxifié réservé à une Redirect
-      Rule permanente vers l’apex ; il ne sert jamais le contenu directement.
-- [x] `[Ethan/QA]` Activer **Always Use HTTPS**, ou une Redirect Rule
-      équivalente, après avoir vérifié que le service existant accepte HTTPS et
-      avant d’ouvrir la gate de production.
-- [x] `[Dev/QA]` Disposer d’une option de smoke test qui refuse les redirections
-      temporaires, destinations non canoniques, chemins ou paramètres perdus et
-      cookies sur les variantes déclarées.
-- [x] `[QA]` Vérifier DNS, certificat TLS, HTTP vers HTTPS, redirection `www` et
-      absence de boucle, avec conservation du chemin et des paramètres.
-- [x] `[QA]` Vérifier que le domaine final correspond exactement à `Astro.site`.
-
-**Gate 13 :** preview privée validée, secrets externes, zone et redirections
-préparées, valeur de restauration connue, messagerie préservée et configuration
-Workers vérifiée ; les éventuels services existants du domaine restent inchangés
-jusqu’à la phase 15.
-
-## Phase 14 — répétition de release
-
-**Priorité : P0**
-
-- [ ] `[Dev]` Créer une branche courte depuis `main` si des corrections de
-      recette sont nécessaires.
-- [ ] `[Dev]` Geler le contenu pendant la répétition.
-- [ ] `[QA]` Partir d’un checkout propre et lancer `npm ci`.
-- [ ] `[QA]` Lancer `npm run verify`.
-- [ ] `[QA]` Lancer tests E2E, axe et liens.
-- [ ] `[QA]` Lancer l’audit de l’arbre installé, y compris Wrangler.
-- [ ] `[QA]` Lancer Lighthouse sur les pages représentatives.
-- [ ] `[QA]` Relire les pages FR puis EN.
-- [ ] `[QA]` Vérifier les deux thèmes et la matrice d’écrans.
-- [ ] `[QA]` Vérifier la console et les en-têtes réseau.
-- [ ] `[QA]` Vérifier le contenu de `dist/` pour les secrets et placeholders.
-- [x] `[QA]` Documenter précisément le retour à la dernière version Workers
-      valide avant la première production ; `docs/deployment-runbook.md` décrit
-      le rollback Cloudflare, le repli Git par commit `git revert`, les
-      contrôles, les preuves et l’exercice restant à exécuter.
-- [ ] `[Ethan]` Donner un GO explicite sur la répétition privée.
-
-**Gate 14 :** toutes les preuves P0 sont réunies et le GO d’Ethan est enregistré.
-
-## Phase 15 — mise en production
-
-**Priorité : P0**
-
-### Avant fusion
-
-- [ ] `[Dev]` Ouvrir une pull request de la branche courte vers `main`.
-- [ ] `[QA]` Vérifier le diff complet, particulièrement contenu, scripts, dépendances, workflow et configuration.
-- [ ] `[QA]` Vérifier que la CI requise est verte sur le dernier SHA.
-- [ ] `[Ethan]` Relire le build de répétition attaché au dernier SHA.
-- [ ] `[Ethan]` Approuver la release.
-- [ ] `[Ethan/QA]` Préconfigurer et tester HTTP → HTTPS et `www` → apex sans
-      toucher aux enregistrements de messagerie.
-- [ ] `[Ethan]` Passer `CLOUDFLARE_PRODUCTION_ENABLED` à `true` avant le run CI
-      de release ; l’approbation obligatoire de l’environnement retient ensuite
-      le déploiement jusqu’à la bascule.
-
-### Publication
-
-- [ ] `[Dev]` Fusionner la pull request vers `main`.
-- [ ] `[QA]` Confirmer que le job de production existe et attend l’approbation ;
-      s’il a été ignoré, ne pas modifier l’apex et relancer une CI de type
-      `push` sur le HEAD courant.
-- [ ] `[Ethan]` Retirer uniquement l’ancien enregistrement web incompatible de
-      l’apex, puis approuver l’environnement `production`.
-- [ ] `[QA]` Suivre le déploiement GitHub Actions et Workers jusqu’au succès.
-- [ ] `[QA]` Confirmer que le SHA déployé est celui fusionné et que la
-      vérification anti-régression l’a comparé au HEAD courant de `main`.
-- [x] `[QA]` Exécuter le smoke test production immédiatement.
-- [ ] `[QA]` Tester accueil FR/EN, projets, contact, légal, confidentialité, 404, thème et langue.
-- [x] `[QA]` Vérifier HTTPS, redirections, canonical, sitemap, robots, CSP et autres en-têtes.
-- [ ] `[QA]` Vérifier les logs de build et la console navigateur.
-- [ ] `[Dev]` Créer le tag `v0.1.0` pour le jalon A ou `v1.0.0` pour le jalon B, uniquement après le smoke test réussi.
-- [ ] `[Dev]` Renseigner la fiche de preuve de release ci-dessous.
-
-### Fiche de preuve de release
-
-```text
-Version :
-Date et heure Europe/Paris :
-SHA Git :
-Pull request :
-URL de répétition validée :
-URL de production :
-Identifiant et horodatage de la version Workers :
-CI :
-E2E / axe / liens :
-Lighthouse :
-Validation éditoriale :
-GO donné par :
-Déploiement de retour arrière :
-Observations :
-```
-
-**Gate 15 :** production accessible et vérifiée, tag créé, preuves conservées et rollback identifié.
-
-## Procédure de retour arrière
-
-Le runbook opératoire complet, les critères de choix, les commandes de contrôle et la fiche d’incident vivent dans `docs/deployment-runbook.md`. Le résumé suivant reste la règle de décision :
-
-Déclencher un rollback en cas de page blanche, navigation principale cassée, fuite de donnée, violation CSP bloquante, erreur de domaine/canonical, régression d’accessibilité majeure ou taux élevé d’erreurs constaté.
-
-1. Suspendre toute nouvelle fusion vers `main`.
-2. Identifier le dernier SHA de production validé.
-3. Restaurer cette version depuis Workers > Deployments > Rollback ; n’utiliser
-   `wrangler rollback <version-id>` qu’avec une autorisation explicite.
-4. Vérifier qu’elle reçoit 100 % du trafic sans modifier le domaine, le DNS ou TLS.
-5. Vérifier immédiatement domaine, accueil FR/EN, navigation, contact et en-têtes.
-6. Revenir dans Git avec un commit de revert sur une branche dédiée, puis passer par une PR ; ne pas réécrire l’historique de `main`.
-7. Corriger, refaire les gates concernés et redéployer normalement.
-8. Documenter cause, impact, durée, SHA fautif, version restaurée et prévention.
-
-Notes :
-
-- Ne pas supprimer le Worker, le Custom Domain ou les enregistrements DNS pour
-  corriger un incident applicatif.
-- Le rollback Workers remet le site en ligne ; le revert Git remet ensuite
-  `main` en cohérence avec la production.
-
-## Phase 16 — indexation et suivi post-lancement
-
-**Priorité : P1 juste après la production**
-
-- [x] `[Ethan]` Ajouter et vérifier la propriété de domaine dans Google Search Console.
-- [x] `[Ethan]` Soumettre `sitemap-index.xml` dans le rapport Sitemaps.
-- [ ] `[QA]` Inspecter l’accueil FR, l’accueil EN et les deux projets.
-- [ ] `[QA]` Vérifier dans les jours suivants l’indexation, les canonical choisies et les erreurs structurées.
-- [ ] `[QA]` Vérifier les Core Web Vitals lorsqu’il existe assez de données terrain.
-- [ ] `[QA]` Vérifier les liens sociaux et les aperçus de partage après cache des plateformes.
-- [ ] `[QA]` Surveiller les erreurs 404 sans ajouter de tracker non décidé.
-- [ ] `[Ethan]` Ajouter le domaine au profil GitHub et à LinkedIn.
-- [ ] `[Dev]` Publier les études de cas et le CV progressivement via le même
-      flux branche courte → PR → preview manuelle → fusion vers `main`.
-
-La procédure reproductible de déploiement indexable, de validation distante et
-de déclaration dans Search Console est documentée dans
-[`docs/seo-indexing-runbook.md`](seo-indexing-runbook.md).
-
-## Maintenance
-
-### À chaque changement
-
-- [ ] Mettre à jour les faits FR et EN ensemble.
-- [ ] Vérifier les liens et médias touchés.
-- [ ] Lancer `npm run format` puis `npm run verify`.
-- [ ] Passer par une preview avant `main`.
-
-### Chaque mois
-
-- [ ] Examiner et fusionner prudemment les PR Dependabot.
-- [ ] Vérifier les alertes de sécurité GitHub, les déploiements Workers, les
-      erreurs de certificat et l’expiration des jetons Cloudflare/Access.
-- [ ] Vérifier les formulaires de contact inexistants ou, s’ils sont ajoutés, leur bon fonctionnement.
-- [ ] Contrôler les principaux liens externes.
-
-### Chaque trimestre
-
-- [ ] Refaire une passe accessibilité manuelle.
-- [ ] Refaire Lighthouse et comparer aux preuves précédentes.
-- [ ] Vérifier toutes les pages FR/EN et les informations devenues obsolètes.
-- [ ] Mettre à jour statuts, captures et résultats des projets.
-- [ ] Vérifier le renouvellement du domaine et les accès 2FA.
-- [ ] Restaurer un ancien déploiement dans un exercice contrôlé si le risque le justifie.
-
-### Chaque année
-
-- [ ] Revoir positionnement, biographie, CV et sélection de projets.
-- [ ] Revoir les pages légales et la politique de confidentialité.
-- [ ] Vérifier les licences des médias et polices.
-- [ ] Revoir les versions majeures Astro, Node et Tailwind dans une branche dédiée.
-
-## Décisions ouvertes
-
-| Décision                               | Responsable    | Échéance            | Valeur par défaut sûre                        |
-| -------------------------------------- | -------------- | ------------------- | --------------------------------------------- |
-| Jalon A ou B pour le premier lancement | Ethan          | Phase 0             | Jalon A                                       |
-| Titre professionnel final              | Ethan          | Avant gel éditorial | « Développeur logiciel & créateur numérique » |
-| Domaine effectivement utilisé          | Ethan          | Avant phase 7       | `ethanbrosselard.com`, sans `www`             |
-| Portrait public                        | Ethan          | Avant design final  | Aucun portrait, signature ZayKo               |
-| Logo ou signature                      | Ethan + design | Avant design final  | Signature typographique ZayKo                 |
-| CV requis au lancement                 | Ethan          | Phase 0             | Non, liens masqués                            |
-| Dépôts projets publics                 | Ethan          | Avant études de cas | Aucun lien si privé                           |
-| Démo/APK publics                       | Ethan          | Avant études de cas | Aucun lien si non validé                      |
-| Mesure d’audience navigateur           | Ethan          | Avant pages légales | Aucune                                        |
-| Formulaire de contact                  | Ethan          | Après lancement     | Email direct uniquement                       |
-| Polices                                | Ethan + design | Phase 5             | Pile système                                  |
-
-## Définition globale de « terminé »
-
-Le jalon choisi est terminé uniquement si toutes les conditions suivantes sont vraies :
-
-- [ ] Tous les P0 du jalon sont cochés avec preuve.
-- [ ] Le build est reproductible avec `npm ci` puis `npm run verify`.
-- [ ] La CI distante est verte sur le SHA de production.
-- [ ] Les contenus affichés sont vrais, autorisés, bilingues et relus.
-- [ ] Aucun placeholder, faux lien ou information confidentielle n’est publié.
-- [ ] Les projets sont honnêtement `teaser` ou entièrement `published`.
-- [ ] Le CV est complet dans ses quatre formats, ou totalement masqué.
-- [ ] La recette accessibilité, fonctionnelle, sécurité et performance est acceptée.
-- [ ] Le domaine canonique répond en HTTPS et redirige ses variantes.
-- [ ] SEO, sitemap, robots, données structurées et partage social sont vérifiés.
-- [ ] Pages légales et confidentialité reflètent le site réellement livré.
-- [ ] La production correspond au SHA annoncé.
-- [ ] Le rollback est possible et son déploiement cible est identifié.
-- [ ] La fiche de release est archivée.
-
-## Commandes de contrôle
+For production verification:
 
 ```sh
-# Identité Git et état local
-git status --short
-git remote -v
-git branch -vv
-git log -1 --format='%H%n%an <%ae>%n%s'
-
-# Installation et validation locale
-nvm use
-npm ci
-npm run format
-npm run verify
-
-# Audit de l’arbre installé, dont l’outillage de déploiement Wrangler
-npm audit --audit-level=high
-
-# Après ajout des scripts prévus
-npm run test:e2e
-npm run check:links
-
-# Vérification réseau sur la production
 npm run test:deployment -- \
-  --url https://domaine-final.example \
+  --url https://ethanbrosselard.com \
   --mode production \
   --check-http-redirect \
-  --redirect-from https://www.domaine-final.example \
-  --report deployment-reports/production.json
+  --redirect-from https://www.ethanbrosselard.com
 ```
 
-Ne jamais lancer `git push`, fusionner `main`, acheter un domaine, modifier le
-DNS ou déployer sur Cloudflare sans l’action ou l’accord explicite d’Ethan.
+## Maintenance cadence
 
-## Références officielles
+### For every change
 
-- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)
-- [Sites statiques et page 404](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/)
-- [En-têtes Static Assets](https://developers.cloudflare.com/workers/static-assets/headers/)
-- [GitHub Actions pour Workers](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
-- [URL de preview Workers](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/)
-- [Cloudflare Access pour Workers](https://developers.cloudflare.com/workers/configuration/cloudflare-access/)
-- [Service tokens Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
-- [Domaines personnalisés Workers](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
-- [Redirection de `www` vers l’apex](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#redirect-between-www-and-root-domain)
-- [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
-- [Rollbacks Workers](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/)
-- [Désactiver Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/get-started/)
-- [Cloudflare Privacy Policy](https://www.cloudflare.com/policies/privacy/)
-- [Cloudflare Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/)
-- [Configuration CSP Astro](https://docs.astro.build/en/reference/configuration-reference/#securitycsp)
-- [Sitemap officiel Astro](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-- [Protection des branches GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
-- [Tests d’accessibilité Playwright](https://playwright.dev/docs/accessibility-testing)
-- [WCAG 2.2 — W3C](https://www.w3.org/TR/WCAG22/)
-- [Seuils Core Web Vitals](https://web.dev/articles/defining-core-web-vitals-thresholds)
-- [Premières étapes RGPD — CNIL](https://www.cnil.fr/fr/passer-laction/rgpd-les-premieres-etapes)
-- [Mesure d’audience et consentement — CNIL](https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies-solutions-pour-les-outils-de-mesure-daudience)
-- [Rapport Sitemaps de Google Search Console](https://support.google.com/webmasters/answer/7451001)
+- [ ] Update French and English facts together.
+- [ ] Check all affected links, metadata, routes, and media.
+- [ ] Run the required formatting and verification commands.
+- [ ] Use a preview before production when the risk or visible scope warrants it.
 
-## Suivi de l’audit du 6 septembre 2026
+### Monthly
 
-Voir `docs/qa/audit-remediation-2026-09-06.md`. Les détails non validés ont été retirés des pages et CV FR/EN. La fraîcheur des PDF et toutes les violations axe bloquent maintenant les contrôles automatiques. Une installation isolée avec `npm ci` puis `npm run verify` a réussi. Les preuves de preview privée, domaine réel, recette humaine et rollback restent ouvertes ; aucune case relative à ces contrôles ne peut être cochée à partir de la seule validation locale.
+- [ ] Review Dependabot pull requests and GitHub security alerts.
+- [ ] Review Workers deployments, certificate errors, and token expiration dates.
+- [ ] Check the primary external links.
+
+### Quarterly
+
+- [ ] Repeat a focused manual accessibility review.
+- [ ] Repeat Lighthouse and compare it with earlier synthetic evidence.
+- [ ] Review all French and English pages for stale facts.
+- [ ] Review project status, media, and validated results.
+- [ ] Check domain renewal and account 2FA.
+- [ ] Exercise a rollback when operational risk justifies it.
+
+### Yearly
+
+- [ ] Review positioning, biography, resume, and project selection.
+- [ ] Review the legal notice and privacy policy.
+- [ ] Reconfirm media and font licenses.
+- [ ] Review major Astro, Node.js, Tailwind CSS, Playwright, and Wrangler upgrades in a dedicated branch.
+
+## Definition of done for future releases
+
+A future release is complete only when:
+
+- the intended scope is explicit;
+- the worktree is reproducible with `npm ci` and the required checks pass;
+- remote CI is green on the exact production SHA;
+- all visible content is factual, approved, bilingual, and reviewed;
+- no placeholder, broken link, secret, or private information is published;
+- project maturity is represented honestly;
+- accessibility, functionality, security, and performance checks appropriate to the change are accepted;
+- production metadata, redirects, headers, and routes pass the deployment smoke test;
+- the deployed revision matches the announced Git SHA;
+- a rollback target is known;
+- the release record is archived.
+
+## Operational references
+
+- [`docs/deployment-runbook.md`](deployment-runbook.md)
+- [`docs/seo-indexing-runbook.md`](seo-indexing-runbook.md)
+- [`docs/architecture.md`](architecture.md)
+- [`docs/design-system.md`](design-system.md)
+- [`docs/qa/production-audit-2026-09-05.md`](qa/production-audit-2026-09-05.md)
+- [`docs/qa/audit-remediation-2026-09-06.md`](qa/audit-remediation-2026-09-06.md)

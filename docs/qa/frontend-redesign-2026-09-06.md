@@ -1,34 +1,34 @@
-# Refonte frontend — 6 septembre 2026
+# Frontend redesign — September 6, 2026
 
-## Périmètre
+## Scope
 
-Refonte autorisée par Ethan pour présenter le portfolio à des entreprises, avec conservation du contenu. État initial : branche `develop`, worktree et index propres.
+Redesign authorized by Ethan to present the portfolio to companies, with preservation of the content. Initial state: clean branch `develop`, worktree and indexes.
 
-- Palette claire blanc cassé/blanc, sombre anthracite et contrastes renforcés ; violet secondaire conservé.
-- Typographie, largeur de lecture, navigation, boutons, surfaces et pied de page retravaillés.
-- Projets placés après l’introduction de l’accueil ; cartes en deux colonnes avec visuels et actions alignés, puis une colonne sur mobile.
-- Compositions CSS Palimia et Ludosaic affinées sans image tierce ni nouvelle affirmation produit.
-- Sources éditoriales runtime, récits, faits, liens, statuts et métadonnées inchangés. Aucun JavaScript ni dépendance ajouté.
-- Dix-huit routes FR/EN et la 404 affectées par les styles partagés. PDF et cinq images de marque régénérés ; empreintes mises à jour.
+- Light off-white/white palette, dark anthracite and enhanced contrasts; preserved secondary violet.
+- Reworked typography, reading width, navigation, buttons, surfaces and footer.
+- Projects placed after the introduction of the welcome; cards in two columns with aligned visuals and actions, then one column on mobile.
+- CSS Palimia and Ludosaic compositions refined without third-party images or new product claims.
+- Runtime editorial sources, stories, facts, links, status and metadata unchanged. No JavaScript or dependencies added.
+- Eighteen FR/EN routes and 404 affected by shared styles. Regenerated PDF and five brand images; updated fingerprints.
 
-## Validation locale
+## Local validation
 
-| Contrôle                                      | Résultat                                                                      |
-| --------------------------------------------- | ----------------------------------------------------------------------------- |
-| `npm run format` et `npm run verify`          | Réussite, dont types, parité, médias, fraîcheur PDF et trois modes de build   |
-| Playwright Chromium, Firefox, mobile Chromium | 120 réussis, 15 ignorés selon le profil                                       |
-| Playwright WebKit et mobile WebKit            | 77 réussis, 13 ignorés selon le profil                                        |
-| Lighthouse mobile, six routes représentatives | 100/100 en performance, accessibilité, bonnes pratiques et SEO                |
-| Budgets Lighthouse                            | LCP 902–903 ms, CLS maximal 0,001, TBT 0 ms                                   |
-| Liens externes                                | 4 vérifiés, 0 cassé, LinkedIn non concluant (HTTP 999)                        |
-| PDF FR/EN                                     | Deux pages par langue, quatre pages relues visuellement sans rognage constaté |
+| Control                                       | Result                                                                           |
+| --------------------------------------------- | -------------------------------------------------------------------------------- |
+| `npm run format` and `npm run verify`         | Success, including types, parity, media, PDF freshness and three build modes     |
+| Playwright Chromium, Firefox, mobile Chromium | 120 passed, 15 ignored according to profile                                      |
+| Playwright WebKit and mobile WebKit           | 77 passed, 13 ignored according to profile                                       |
+| Mobile lighthouse, six representative routes  | 100/100 in performance, accessibility, best practices and SEO                    |
+| Lighthouse Budgets                            | LCP 902–903 ms, maximum CLS 0.001, TBT 0 ms                                      |
+| External links                                | 4 verified, 0 broken, LinkedIn inconclusive (HTTP 999)                           |
+| PDF FR/EN                                     | Two pages per language, four pages review visually without any trimming observed |
 
-La première exécution native ne pouvait pas lancer WebKit faute de bibliothèques système. La recette a ensuite réussi dans l’image déjà disponible `mcr.microsoft.com/playwright:v1.62.1-noble`, avec l’utilisateur local et le dépôt monté dans `/work`. Aucune bibliothèque système n’a été installée.
+First native run could not launch WebKit due to lack of system libraries. The review then succeeded in the already available image `mcr.microsoft.com/playwright:v1.62.1-noble`, with the local user and the repository mounted in `/work`. No system libraries have been installed.
 
-Les tests couvrent les erreurs JavaScript/CSP, axe, les thèmes clair/sombre/système, le stockage indisponible, le clavier et le focus, la copie d’adresse, le mode sans JavaScript, la réduction des animations, les cibles tactiles et le reflow à partir de 320 px. Le nouveau scénario de `page-layout.spec.ts` contrôle les alignements des visuels/actions et l’ordre vertical mobile sur les accueils et listes de projets FR/EN. Les contrôles d’alignement des titres couvrent notamment 320, 375, 480, 768, 769, 1024 et 1440 px dans Chromium.
+Tests cover JavaScript and CSP errors, axe accessibility checks, light, dark, and system themes, unavailable storage, keyboard and focus behavior, address copying, no-JavaScript mode, reduced motion, touch targets, and reflow from 320 px. The new `page-layout.spec.ts` scenario checks visual and action alignment and mobile vertical order on French and English home pages and project lists. Title-alignment checks include 320, 375, 480, 768, 769, 1024, and 1440 px in Chromium.
 
-Relecture de captures de l’accueil FR clair/sombre et mobile, de l’accueil EN à 768 px, de la liste EN à 1024 px, d’À propos EN, de Contact FR et EN mobile, du CV FR, de Palimia sombre et des trois cartes sociales. Les captures et journaux intermédiaires sont des artefacts locaux non versionnés. Les rapports Lighthouse sont dans `lighthouse-reports/`, également ignoré par Git.
+Replaying captures of the light/dark and mobile FR welcome, the EN welcome at 768 px, the EN list at 1024 px, About EN, Contact FR and EN mobile, the FR CV, dark Palimia and the three social cards. Intermediate captures and logs are local, non-versioned artifacts. Lighthouse reports are in `lighthouse-reports/`, also ignored by Git.
 
-## Limites
+## Limits
 
-Ces mesures sont des preuves techniques locales, pas des résultats utilisateurs ou de production. Les émulations ne remplacent pas un téléphone réel, Safari sur matériel Apple, le zoom réel du navigateur ou une recette au lecteur d’écran. La validation esthétique finale appartient à Ethan. Aucun déploiement ni publication externe n’a été effectué.
+These measurements are local technical evidence, not user or production results. Emulations do not replace a real phone, Safari on Apple hardware, real browser zoom or a screen-reader review. The final aesthetic validation belongs to Ethan. No external deployment or release has been made.
