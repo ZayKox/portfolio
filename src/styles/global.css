@@ -1415,7 +1415,6 @@ h3 {
   display: grid;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--about-profile-text) 24%, transparent);
   list-style: none;
 }
 
