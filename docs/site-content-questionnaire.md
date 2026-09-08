@@ -1014,3 +1014,62 @@ corrige seulement ce qui est nécessaire, lance les validations et crée un comm
 Ethan demande une amélioration importante du frontend pour présenter le portfolio à des entreprises et autorise une évolution de la direction artistique. L’objectif validé est une présentation soignée, professionnelle et visuellement convaincante. Le contenu doit être conservé, sauf nécessité. Cette autorisation porte sur la refonte ; elle ne constitue pas une validation finale du rendu ni une autorisation de déploiement.
 
 Statut de la demande : PUBLIC — VALIDÉ dans la tâche du 6 septembre 2026.
+
+## 27. Informations CV validées dans la tâche du 8 septembre 2026
+
+Ethan a fourni ces informations afin d’améliorer les versions HTML et PDF de son
+CV. Elles sont `PUBLIC — VALIDÉ` pour les deux langues. Les noms d’employeurs,
+dates et intitulés déjà validés dans les sections précédentes restent les formes
+canoniques en cas de différence avec le document transmis.
+
+```text
+Positionnement du CV : Développeur Python, Data & IA avec plus de trois ans d’expérience en développement logiciel, migration, traitement et automatisation de données. Le positionnement général du portfolio reste volontairement plus large.
+Statut : PUBLIC — VALIDÉ
+
+Expérience Studio Beyowi : conception d’API et de flux de données avec Python, Flask et AWS Lambda ; migrations et synchronisations entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite avec AWS DMS ; déploiement et maintenance d’environnements AWS et on-premise ; intégration de services OpenAI ; conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; Docker, CI/CD, tests et supervision.
+Statut : PUBLIC — VALIDÉ
+
+Missions Studio Beyowi publiables : trois chantiers majeurs de migration portant sur plusieurs gigaoctets et combinant des traitements temps réel, synchrones et asynchrones ; ANSM, migration Cloud vers on-premise de données de référence sur les médicaments ; Thesorimed, maintenance du référentiel et automatisation de traitements par un ETL AWS ; Primotheus, API pour une plateforme immobilière et workflows IA d’analyse d’images et de documents ; outils internes Beyowi, API et scripts de maintenance planifiés.
+Statut : PUBLIC — VALIDÉ
+
+Expérience Intento Design : développement C++ du logiciel de CAO ID-Xplore consacré à la conception de circuits intégrés analogiques ; amélioration de fonctionnalités, participation aux algorithmes de génération et de validation, compatibilité multi-technologies, tests unitaires et documentation technique.
+Statut : PUBLIC — VALIDÉ
+
+Compétences complémentaires publiables : FastAPI, Pandas, NumPy, Docker et Docker Compose, EC2, S3, RDS, DMS, DataBrew, CloudWatch, IAM, Route 53, API Gateway, Step Functions, pytest, coverage, GitHub, Bitbucket, Jira, Scrum, Black et Ruff. Utiliser une sélection lisible et pertinente plutôt qu’un inventaire exhaustif.
+Statut : PUBLIC — VALIDÉ
+
+Langues : français langue maternelle ; anglais professionnel.
+Statut : PUBLIC — VALIDÉ
+```
+
+## 28. Compléments CV validés dans la tâche du 8 septembre 2026
+
+Ces compléments ont été explicitement fournis par Ethan pour enrichir le CV. Ils
+sont `PUBLIC — VALIDÉ` lorsqu’ils sont destinés au CV public. Les formulations
+obsolètes sur la durée des alternances ne remplacent pas les périodes canoniques
+déjà validées.
+
+```text
+Profil : forte motivation à développer continuellement ses compétences, curiosité informatique et capacité à travailler dans des domaines techniques variés. À exprimer de façon concise et factuelle.
+Statut : PUBLIC — VALIDÉ
+
+Baccalauréat : spécialités Numérique et Sciences Informatiques et mathématiques ; options EPS et mathématiques expertes ; mention Bien.
+Statut : PUBLIC — VALIDÉ
+
+Technologies pratiquées en formation ou sur des projets : C, C++, Java, VB.NET, Kotlin, Python, HTML, CSS, JavaScript, PHP, Next.js et Flask ; création et exploitation de bases de données ; Windows, Linux, Android et AWS. Ne pas présenter cette liste comme un même niveau de maîtrise professionnelle.
+Statut : PUBLIC — VALIDÉ
+
+Hackathon de terminale : création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie.
+Statut : PUBLIC — VALIDÉ
+
+Nuit de l’Info 2021 : création en une nuit, en première année de BUT Informatique, d’un système de recherche répertoriant les sauvetages en mer.
+Statut : PUBLIC — VALIDÉ
+
+Nuit de l’Info 2022 : création en une nuit, en deuxième année de BUT Informatique, d’une application de sensibilisation au VIH.
+Statut : PUBLIC — VALIDÉ
+
+Sealed Air Corporation : mission d’été de deux mois consacrée à la rénovation d’un bâtiment au sein d’une équipe.
+Statut : PUBLIC — VALIDÉ
+
+Adresse complète et téléphone : PRIVÉ — transmis séparément ; ne pas publier dans le CV du portfolio sans décision explicite distincte.
+```

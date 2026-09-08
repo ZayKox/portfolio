@@ -125,6 +125,7 @@ export const copy = {
       experience: "Expériences",
       education: "Formation",
       skills: "Compétences",
+      languages: "Langues",
       projects: "Projets et hackathons",
     },
     contact: {
@@ -321,6 +322,7 @@ export const copy = {
       experience: "Experience",
       education: "Education",
       skills: "Skills",
+      languages: "Languages",
       projects: "Projects and hackathons",
     },
     contact: {

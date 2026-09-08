@@ -1,13 +1,10 @@
 {
   "fr": {
     "documentTitle": "CV — Ethan Brosselard",
-    "role": "Développeur logiciel",
-    "summary": "Développeur logiciel travaillant principalement sur des applications web. J’aime partir d’un besoin concret, comprendre le système concerné et construire une solution claire, maintenable et agréable à utiliser.",
+    "role": "Développeur Python, Data & IA",
+    "summary": "Développeur logiciel curieux et polyvalent, avec plus de trois ans d’expérience en développement Python, migration, traitement et automatisation de données. Je conçois des API et des flux de données, puis les déploie et les maintiens dans des environnements AWS et on-premise, avec une attention constante portée à la fiabilité, aux tests et à la qualité logicielle.",
     "contact": [
-      {
-        "label": "Localisation",
-        "value": "Paris, France"
-      },
+      { "label": "Localisation", "value": "Paris, France" },
       {
         "label": "Email",
         "value": "ethan.brosselard@gmail.com",
@@ -30,25 +27,35 @@
         "organization": "Studio Beyowi",
         "period": "Octobre 2023 — Septembre 2026",
         "location": "Paris 13e, France",
-        "summary": "Gestion autonome de projets complexes de migration de données et d’intégration d’IA.",
+        "summary": "Conception et maintenance de solutions de migration de données et d’intégration d’IA, de l’API au déploiement AWS et on-premise.",
         "highlights": [
-          "Utilisation d’AWS, de Flask et d’AWS Lambda.",
-          "Migration et synchronisation de données multi-SGBD entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite.",
-          "Conception d’approches RAG et de recherche vectorielle avec PGVector et Qdrant."
+          "Conception d’API et de traitements de données avec Python, Flask et AWS Lambda.",
+          "Migration et synchronisation multi-SGBD entre Oracle, MySQL, PostgreSQL, MSSQL et SQLite avec AWS DMS.",
+          "Développement d’approches RAG et de recherche vectorielle avec PGVector et Qdrant ; intégration de services OpenAI pour l’analyse de données, d’images et de documents.",
+          "Contribution à trois chantiers majeurs de migration portant sur plusieurs gigaoctets : données de référence de l’ANSM, ETL du référentiel Thesorimed et API/workflows IA de la plateforme immobilière Primotheus.",
+          "Déploiement, tests, supervision et maintenance d’environnements multi-services avec AWS, Docker et des pipelines CI/CD."
         ],
-        "technologies": "Python, Flask, AWS Lambda, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
+        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker"
       },
       {
         "title": "Développeur Backend (alternant)",
         "organization": "Intento Design",
         "period": "Septembre 2022 — Août 2023",
-        "location": "Paris, France"
+        "location": "Paris, France",
+        "summary": "Développement C++ d’ID-Xplore, logiciel de CAO pour la conception de circuits intégrés analogiques.",
+        "highlights": [
+          "Développement et amélioration de fonctionnalités avec une attention portée aux performances et à la fiabilité.",
+          "Participation aux algorithmes de génération et de validation de circuits et à la compatibilité multi-technologies.",
+          "Contribution aux tests unitaires et à la documentation technique."
+        ],
+        "technologies": "C++ · Algorithmique · Tests unitaires"
       },
       {
         "title": "Agent de maintenance bâtiment",
         "organization": "Sealed Air Corporation",
         "period": "Juillet 2022 — Août 2022",
-        "location": "Épernon, France"
+        "location": "Épernon, France",
+        "summary": "Participation à la rénovation d’un bâtiment au sein d’une équipe pendant une mission d’été de deux mois."
       }
     ],
     "education": [
@@ -65,19 +72,39 @@
       {
         "title": "Baccalauréat général, mention Bien",
         "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021"
+        "period": "2018 — 2021",
+        "summary": "Spécialités Numérique et Sciences Informatiques et mathématiques ; options EPS et mathématiques expertes."
       }
     ],
-    "skills": [
-      "Frontend web et interfaces",
-      "Backend, API et bases de données",
-      "Architecture logicielle et analyse de systèmes",
-      "Tests, accessibilité et performance",
-      "UX / UI",
-      "Cloud AWS et automatisation",
-      "Intelligence artificielle appliquée, RAG et recherche vectorielle",
-      "Cybersécurité appliquée en apprentissage",
-      "Anglais professionnel"
+    "skillGroups": [
+      {
+        "category": "Backend & données",
+        "items": "Python, Flask, FastAPI, API REST, ETL, Pandas, NumPy, C++"
+      },
+      {
+        "category": "IA appliquée",
+        "items": "API OpenAI, RAG, recherche sémantique, PGVector, Qdrant"
+      },
+      {
+        "category": "Cloud & DevOps",
+        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD"
+      },
+      {
+        "category": "Bases de données",
+        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migrations et synchronisations"
+      },
+      {
+        "category": "Qualité & méthodes",
+        "items": "pytest, tests d’intégration, coverage, Git, Black, Ruff, Scrum, Jira"
+      },
+      {
+        "category": "Formation & projets",
+        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android"
+      }
+    ],
+    "languages": [
+      { "name": "Français", "level": "Langue maternelle" },
+      { "name": "Anglais", "level": "Professionnel" }
     ],
     "projects": [
       {
@@ -89,20 +116,29 @@
         "description": "Projet personnel de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu."
       },
       {
-        "title": "Hackathons et projets collectifs",
-        "description": "Application de révision histoire-géographie en 3 jours ; base de données de sauvetages en mer lors de la Nuit de l’Info 2021 ; application de sensibilisation au VIH lors de l’édition 2022 ; hackathon IA de 10 jours en équipe de trois pour des entreprises partenaires du master."
+        "title": "Hackathon de terminale",
+        "description": "Création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie."
+      },
+      {
+        "title": "Nuit de l’Info 2021",
+        "description": "Création en une nuit d’un système de recherche répertoriant les sauvetages en mer."
+      },
+      {
+        "title": "Nuit de l’Info 2022",
+        "description": "Création en une nuit d’une application de sensibilisation au VIH."
+      },
+      {
+        "title": "Hackathon IA",
+        "description": "Projet de dix jours en équipe de trois pour des entreprises partenaires du master."
       }
     ]
   },
   "en": {
     "documentTitle": "Resume — Ethan Brosselard",
-    "role": "Software developer",
-    "summary": "Software developer working primarily on web applications. I enjoy starting from a concrete need, understanding the relevant system, and building a clear, maintainable, and pleasant-to-use solution.",
+    "role": "Python, Data & AI Developer",
+    "summary": "Curious and versatile software developer with more than three years of experience in Python development, data migration, processing, and automation. I design APIs and data flows, then deploy and maintain them across AWS and on-premises environments, with consistent attention to reliability, testing, and software quality.",
     "contact": [
-      {
-        "label": "Location",
-        "value": "Paris, France"
-      },
+      { "label": "Location", "value": "Paris, France" },
       {
         "label": "Email",
         "value": "ethan.brosselard@gmail.com",
@@ -125,25 +161,35 @@
         "organization": "Studio Beyowi",
         "period": "October 2023 — September 2026",
         "location": "Paris 13th arrondissement, France",
-        "summary": "Independent ownership of complex data migration and AI integration projects.",
+        "summary": "Designed and maintained data migration and AI integration solutions, from APIs through AWS and on-premises deployment.",
         "highlights": [
-          "Used AWS, Flask, and AWS Lambda.",
-          "Migrated and synchronized data across Oracle, MySQL, PostgreSQL, MSSQL, and SQLite databases.",
-          "Designed RAG approaches and vector search with PGVector and Qdrant."
+          "Designed APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
+          "Migrated and synchronized data across Oracle, MySQL, PostgreSQL, MSSQL, and SQLite databases with AWS DMS.",
+          "Built RAG and vector-search approaches with PGVector and Qdrant; integrated OpenAI services for data, image, and document analysis.",
+          "Contributed to three major multi-gigabyte migration programmes: ANSM reference data, the Thesorimed repository ETL, and APIs/AI workflows for the Primotheus real-estate platform.",
+          "Deployed, tested, monitored, and maintained multi-service environments with AWS, Docker, and CI/CD pipelines."
         ],
-        "technologies": "Python, Flask, AWS Lambda, Oracle, MySQL, PostgreSQL, MSSQL, SQLite, PGVector, Qdrant"
+        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker"
       },
       {
         "title": "Backend Developer (apprentice)",
         "organization": "Intento Design",
         "period": "September 2022 — August 2023",
-        "location": "Paris, France"
+        "location": "Paris, France",
+        "summary": "C++ development for ID-Xplore, a CAD application for analogue integrated-circuit design.",
+        "highlights": [
+          "Developed and improved features with a focus on performance and reliability.",
+          "Contributed to circuit generation and validation algorithms and multi-technology compatibility.",
+          "Contributed to unit tests and technical documentation."
+        ],
+        "technologies": "C++ · Algorithms · Unit testing"
       },
       {
         "title": "Building Maintenance Agent",
         "organization": "Sealed Air Corporation",
         "period": "July 2022 — August 2022",
-        "location": "Épernon, France"
+        "location": "Épernon, France",
+        "summary": "Worked as part of a team renovating a building during a two-month summer assignment."
       }
     ],
     "education": [
@@ -158,21 +204,38 @@
         "period": "2021 — 2024"
       },
       {
-        "title": "French General Baccalaureate, honors",
+        "title": "French General Baccalaureate, honours",
         "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021"
+        "period": "2018 — 2021",
+        "summary": "Specialisms in Digital and Computer Science and mathematics; additional options in physical education and advanced mathematics."
       }
     ],
-    "skills": [
-      "Web frontend and interfaces",
-      "Backend, APIs, and databases",
-      "Software architecture and systems analysis",
-      "Testing, accessibility, and performance",
-      "UX / UI",
-      "AWS cloud and automation",
-      "Applied artificial intelligence, RAG, and vector search",
-      "Applied cybersecurity, currently learning",
-      "Professional English"
+    "skillGroups": [
+      {
+        "category": "Backend & data",
+        "items": "Python, Flask, FastAPI, REST APIs, ETL, Pandas, NumPy, C++"
+      },
+      { "category": "Applied AI", "items": "OpenAI API, RAG, semantic search, PGVector, Qdrant" },
+      {
+        "category": "Cloud & DevOps",
+        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD"
+      },
+      {
+        "category": "Databases",
+        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migration and synchronization"
+      },
+      {
+        "category": "Quality & delivery",
+        "items": "pytest, integration testing, coverage, Git, Black, Ruff, Scrum, Jira"
+      },
+      {
+        "category": "Education & projects",
+        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android"
+      }
+    ],
+    "languages": [
+      { "name": "French", "level": "Native" },
+      { "name": "English", "level": "Professional working proficiency" }
     ],
     "projects": [
       {
@@ -184,8 +247,20 @@
         "description": "Personal project for a modular web platform bringing together several mini-games and play modes."
       },
       {
-        "title": "Hackathons and group projects",
-        "description": "A 3-day history and geography revision app; a sea-rescue database for Nuit de l’Info 2021; an HIV-awareness app for the 2022 edition; and a 10-day AI hackathon in a team of three for companies partnered with the master’s program."
+        "title": "High-school hackathon",
+        "description": "Built a quiz application in three days to help students revise history and geography."
+      },
+      {
+        "title": "Nuit de l’Info 2021",
+        "description": "Built a search system cataloguing sea rescues during an overnight challenge."
+      },
+      {
+        "title": "Nuit de l’Info 2022",
+        "description": "Built an HIV-awareness application during an overnight challenge."
+      },
+      {
+        "title": "AI hackathon",
+        "description": "Ten-day project in a team of three for companies partnered with the master’s programme."
       }
     ]
   }

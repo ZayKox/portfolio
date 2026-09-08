@@ -125,9 +125,30 @@ const resumeUrl = profile.resume[locale];
 
     <section class="resume-section">
       <h2>{t.resume.skills}</h2>
-      <ul class="resume-skill-list">
-        {document.skills.map((skill) => <li>{skill}</li>)}
-      </ul>
+      <dl class="resume-skill-list">
+        {
+          document.skillGroups.map((group) => (
+            <div>
+              <dt>{group.category}</dt>
+              <dd>{group.items}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.languages}</h2>
+      <dl class="resume-language-list">
+        {
+          document.languages.map((language) => (
+            <div>
+              <dt>{language.name}</dt>
+              <dd>{language.level}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </section>
 
     <section class="resume-section">
