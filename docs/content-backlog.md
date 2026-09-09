@@ -75,6 +75,8 @@ For any future screenshot, diagram, or video:
 - Confirm Cloudflare's actual account-level logging, aggregate metrics, security, and retention settings against the legal and privacy text.
 - Keep browser-side analytics disabled unless a separate approved change documents its technical and legal impact.
 
-## Material intentionally removed after the September 5 audit
+## Editorial exclusions and later validated additions
 
-Interests, the personal origin story in computing, and the Letterboxd inspiration remain absent until explicitly validated. The resumes retain approved positions, dates, institutions, and skills. Unvalidated Intento details, course descriptions, and selected Beyowi technologies were removed from both languages. Reintroducing any of them requires updating the questionnaire, the French and English runtime sources, and the generated PDFs in the same change.
+Interests, the personal origin story in computing, and the Letterboxd inspiration remain absent until explicitly validated.
+
+The September 8 decisions in questionnaire sections 27 and 28 supersede the September 5 exclusions for the Intento Design responsibilities, additional Studio Beyowi missions and technologies, native French, baccalaureate details, and expanded hackathon descriptions. These approved additions are already present in the structured resume, both HTML pages, and both PDFs; they are not missing editorial inputs. Any further additions still require explicit validation and synchronized French, English, and PDF updates.
