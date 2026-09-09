@@ -266,6 +266,8 @@ for (const fragment of [
   "npm run deploy:production",
   "npm run test:deployment",
   "--redirect-from https://www.ethanbrosselard.com",
+  "--artifact-directory dist",
+  '--revision "$DEPLOYMENT_SHA"',
   "for attempt in {1..6}",
 ]) {
   requireCondition(
@@ -294,6 +296,9 @@ for (const fragment of [
   "/cdn-cgi/access/login/",
   "npm run test:deployment",
   "--mode preview",
+  "PORTFOLIO_CONTENT_ROOT: preview-content",
+  "--artifact-directory dist",
+  '--revision "$DEPLOYMENT_SHA"',
   "for attempt in {1..6}",
 ]) {
   requireCondition(

@@ -1,73 +1,21 @@
+import { publicRoutes, languagePairs, expectedSchemaTypes } from "./route-catalog.mjs";
 import { access, readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
+const contentRoot = process.env.PORTFOLIO_CONTENT_ROOT || root;
 const outputDirectory = path.join(root, "dist");
 const errors = [];
 const previewMode = process.env.SITE_NOINDEX === "true";
 const internalReferences = new Set();
 
-const expectedRoutes = [
-  "/",
-  "/a-propos/",
-  "/cv/",
-  "/contact/",
-  "/mentions-legales/",
-  "/confidentialite/",
-  "/projets/",
-  "/projets/ludosaic/",
-  "/projets/palimia/",
-  "/en/",
-  "/en/about/",
-  "/en/resume/",
-  "/en/contact/",
-  "/en/legal-notice/",
-  "/en/privacy/",
-  "/en/projects/",
-  "/en/projects/ludosaic/",
-  "/en/projects/palimia/",
-  "/404.html",
-];
+const expectedRoutes = [...publicRoutes.map((entry) => entry.path), "/404.html"];
 const expectedRouteSet = new Set(expectedRoutes);
-const routeSocialImages = new Map([
-  ["/projets/ludosaic/", "/ludosaic-social-card.png"],
-  ["/en/projects/ludosaic/", "/ludosaic-social-card.png"],
-  ["/projets/palimia/", "/palimia-social-card.png"],
-  ["/en/projects/palimia/", "/palimia-social-card.png"],
-]);
-const languagePairs = [
-  { fr: "/", en: "/en/" },
-  { fr: "/a-propos/", en: "/en/about/" },
-  { fr: "/cv/", en: "/en/resume/" },
-  { fr: "/contact/", en: "/en/contact/" },
-  { fr: "/mentions-legales/", en: "/en/legal-notice/" },
-  { fr: "/confidentialite/", en: "/en/privacy/" },
-  { fr: "/projets/", en: "/en/projects/" },
-  { fr: "/projets/ludosaic/", en: "/en/projects/ludosaic/" },
-  { fr: "/projets/palimia/", en: "/en/projects/palimia/" },
-];
-const expectedSchemaTypes = new Map([
-  ["/", "ProfilePage"],
-  ["/a-propos/", "ProfilePage"],
-  ["/cv/", "WebPage"],
-  ["/contact/", "ContactPage"],
-  ["/mentions-legales/", "WebPage"],
-  ["/confidentialite/", "WebPage"],
-  ["/projets/", "CollectionPage"],
-  ["/projets/ludosaic/", "WebPage"],
-  ["/projets/palimia/", "WebPage"],
-  ["/en/", "ProfilePage"],
-  ["/en/about/", "ProfilePage"],
-  ["/en/resume/", "WebPage"],
-  ["/en/contact/", "ContactPage"],
-  ["/en/legal-notice/", "WebPage"],
-  ["/en/privacy/", "WebPage"],
-  ["/en/projects/", "CollectionPage"],
-  ["/en/projects/ludosaic/", "WebPage"],
-  ["/en/projects/palimia/", "WebPage"],
-]);
+const routeSocialImages = new Map(
+  publicRoutes.filter((entry) => entry.socialImage).map((entry) => [entry.path, entry.socialImage]),
+);
 const expectedPerson = {
   "@type": "Person",
   name: "Ethan Brosselard",
@@ -381,12 +329,18 @@ function validateDocument(html, relativePath, route) {
     errors.push(`${relativePath}: expected one site header, found ${siteHeaderCount}`);
   }
   const navigationTags = tags(html, "nav");
-  if (navigationTags.length !== 1) {
-    errors.push(
-      `${relativePath}: expected one navigation landmark, found ${navigationTags.length}`,
-    );
-  } else if (!attribute(navigationTags[0], "aria-label")?.trim()) {
-    errors.push(`${relativePath}: navigation landmark has no accessible name`);
+  if (
+    navigationTags.filter((tag) => attribute(tag, "class")?.split(/\s+/).includes("main-nav"))
+      .length !== 1
+  ) {
+    errors.push(`${relativePath}: expected one primary navigation landmark`);
+  }
+  const navigationNames = navigationTags.map((tag) => attribute(tag, "aria-label")?.trim());
+  if (
+    navigationNames.some((name) => !name) ||
+    new Set(navigationNames).size !== navigationNames.length
+  ) {
+    errors.push(`${relativePath}: navigation landmarks need distinct accessible names`);
   }
   const footerCount = tags(html, "footer").length;
   if (footerCount !== 1) {
@@ -684,10 +638,15 @@ function validateDocument(html, relativePath, route) {
       errors.push(`${relativePath}: button has no accessible name`);
     }
   }
-  const themeToggle = tags(html, "button").find((tag) => /\bdata-theme-toggle\b/i.test(tag));
-  for (const attributeName of ["aria-label", "data-light-label", "data-dark-label"]) {
-    if (!attribute(themeToggle ?? "", attributeName)?.trim()) {
-      errors.push(`${relativePath}: theme toggle is missing ${attributeName}`);
+  const themeSelect = tags(html, "select").find((tag) => /\bdata-theme-select\b/i.test(tag));
+  if (!attribute(themeSelect ?? "", "aria-label")?.trim()) {
+    errors.push(`${relativePath}: theme select has no accessible name`);
+  }
+  const themeOptions =
+    html.match(/<select\b[^>]*data-theme-select[^>]*>([\s\S]*?)<\/select>/i)?.[1] ?? "";
+  for (const value of ["system", "light", "dark"]) {
+    if (!tags(themeOptions, "option").some((tag) => attribute(tag, "value") === value)) {
+      errors.push(`${relativePath}: theme select is missing ${value}`);
     }
   }
 
@@ -1003,8 +962,8 @@ if (!systemDarkThemeBlock) {
   }
 }
 
-const sourceCss = await readFile(path.join(root, "src/styles/global.css"), "utf8");
-const designSystem = await readFile(path.join(root, "docs/design-system.md"), "utf8");
+const sourceCss = await readFile(path.join(contentRoot, "src/styles/global.css"), "utf8");
+const designSystem = await readFile(path.join(contentRoot, "docs/design-system.md"), "utf8");
 const sourceLightThemeBlock = sourceCss.match(/^:root\s*\{([^}]*)\}/m)?.[1];
 const sourceDarkThemeBlock = sourceCss.match(/:root\[data-theme="dark"\]\s*\{([^}]*)\}/)?.[1];
 for (const token of requiredThemeTokens) {
@@ -1026,8 +985,16 @@ for (const token of requiredThemeTokens) {
   }
 }
 for (const token of requiredSharedTokens) {
-  if (!designSystem.includes(`\`--${token}\``)) {
+  if (!designSystem.includes(`\`--${token}\``))
     errors.push(`design system: missing shared --${token} reference`);
+}
+// Compare every documented scalar/layout token, not only its presence.
+for (const row of designSystem.split("\n")) {
+  const match = row.match(/^\|\s*`--([a-z0-9-]+)`\s*\|\s*`([^`]+)`/);
+  if (!match || requiredThemeTokens.includes(match[1])) continue;
+  const actual = declaration(sourceLightThemeBlock, match[1]);
+  if (actual?.replace(/\s+/g, "") !== match[2].replace(/\s+/g, "")) {
+    errors.push(`design system: --${match[1]} documented value differs from source CSS`);
   }
 }
 

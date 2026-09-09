@@ -1,63 +1,7 @@
-const publicRoutes = [
-  { path: "/", locale: "fr" },
-  { path: "/a-propos/", locale: "fr" },
-  { path: "/cv/", locale: "fr" },
-  { path: "/contact/", locale: "fr" },
-  { path: "/mentions-legales/", locale: "fr" },
-  { path: "/confidentialite/", locale: "fr" },
-  { path: "/projets/", locale: "fr" },
-  {
-    path: "/projets/ludosaic/",
-    locale: "fr",
-    socialImage: "/ludosaic-social-card.png",
-  },
-  { path: "/projets/palimia/", locale: "fr", socialImage: "/palimia-social-card.png" },
-  { path: "/en/", locale: "en" },
-  { path: "/en/about/", locale: "en" },
-  { path: "/en/resume/", locale: "en" },
-  { path: "/en/contact/", locale: "en" },
-  { path: "/en/legal-notice/", locale: "en" },
-  { path: "/en/privacy/", locale: "en" },
-  { path: "/en/projects/", locale: "en" },
-  {
-    path: "/en/projects/ludosaic/",
-    locale: "en",
-    socialImage: "/ludosaic-social-card.png",
-  },
-  { path: "/en/projects/palimia/", locale: "en", socialImage: "/palimia-social-card.png" },
-];
+import { jobs as resumeJobs } from "./resume-artifacts.mjs";
+import { validatePdfResponse, validateRemoteArtifact } from "./deployment-artifacts.mjs";
+import { publicRoutes, languagePairs, expectedSchemaTypes } from "./route-catalog.mjs";
 
-const languagePairs = [
-  { fr: "/", en: "/en/" },
-  { fr: "/a-propos/", en: "/en/about/" },
-  { fr: "/cv/", en: "/en/resume/" },
-  { fr: "/contact/", en: "/en/contact/" },
-  { fr: "/mentions-legales/", en: "/en/legal-notice/" },
-  { fr: "/confidentialite/", en: "/en/privacy/" },
-  { fr: "/projets/", en: "/en/projects/" },
-  { fr: "/projets/ludosaic/", en: "/en/projects/ludosaic/" },
-  { fr: "/projets/palimia/", en: "/en/projects/palimia/" },
-];
-const expectedSchemaTypes = new Map([
-  ["/", "ProfilePage"],
-  ["/a-propos/", "ProfilePage"],
-  ["/cv/", "WebPage"],
-  ["/contact/", "ContactPage"],
-  ["/mentions-legales/", "WebPage"],
-  ["/confidentialite/", "WebPage"],
-  ["/projets/", "CollectionPage"],
-  ["/projets/ludosaic/", "WebPage"],
-  ["/projets/palimia/", "WebPage"],
-  ["/en/", "ProfilePage"],
-  ["/en/about/", "ProfilePage"],
-  ["/en/resume/", "WebPage"],
-  ["/en/contact/", "ContactPage"],
-  ["/en/legal-notice/", "WebPage"],
-  ["/en/privacy/", "WebPage"],
-  ["/en/projects/", "CollectionPage"],
-  ["/en/projects/ludosaic/", "WebPage"],
-  ["/en/projects/palimia/", "WebPage"],
-]);
 const expectedPerson = {
   "@type": "Person",
   name: "Ethan Brosselard",
@@ -365,7 +309,7 @@ function validatePreviewMetadata(html, pathname) {
   assert(!html.includes("social-card.png"), `${pathname}: preview exposes the social image`);
 }
 
-function validateDocument(html, pathname, locale, mode, expectedSiteOrigin) {
+export function validateDocument(html, pathname, locale, mode, expectedSiteOrigin) {
   assert(html.includes(`<html lang="${locale}"`), `${pathname}: html language is not ${locale}`);
   assert(/<h1\b/i.test(html), `${pathname}: h1 is missing`);
   assert(html.includes("Ethan Brosselard"), `${pathname}: public name is missing`);
@@ -475,6 +419,7 @@ export async function validateDeployment({
   accessClientSecret,
   checkHttpRedirect = false,
   redirectOrigins = [],
+  expectedArtifact,
 }) {
   assert(["production", "preview"].includes(mode), "mode must be production or preview");
   assert(
@@ -573,6 +518,18 @@ export async function validateDeployment({
   }
   checks.push("favicon and Apple touch icon");
 
+  const pdfs = [];
+  for (const job of resumeJobs) {
+    const pathname = `/cv/${job.filename}`;
+    pdfs.push(await validatePdfResponse(await request(pathname), pathname));
+  }
+  checks.push("both complete PDF downloads");
+  const artifact = expectedArtifact
+    ? await validateRemoteArtifact(expectedArtifact, request)
+    : null;
+  if (artifact)
+    checks.push(`${artifact.verifiedFiles} files match the expected revision and artifact`);
+
   const robotsResponse = await request("/robots.txt");
   const robots = await robotsResponse.text();
   if (mode === "preview") {
@@ -655,6 +612,8 @@ export async function validateDeployment({
     requestOrigin: requestBase.origin,
     expectedSiteOrigin: expectedBase.origin,
     routeCount: publicRoutes.length,
+    pdfs,
+    artifact,
     routes: publicRoutes.map(({ path }) => path),
     cloudflareAccessUsed: Boolean(accessClientId),
     httpRedirectChecked: checkHttpRedirect,

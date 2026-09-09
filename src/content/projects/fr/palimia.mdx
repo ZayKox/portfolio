@@ -4,20 +4,36 @@ slug: palimia
 locale: fr
 order: 1
 featured: true
-publication: teaser
+publication: published
+review:
+  reviewedOn: "2026-09-09"
+  approvedBy: Ethan Brosselard
+  factsApproved: true
+  translationApproved: true
+  media:
+    status: withheld
+    note: Absence de captures validée par Ethan ; les compositions graphiques existantes sont conservées.
+  evidence:
+    status: included
+    note: Étude technique relue et validée par Ethan, sans démonstration, dépôt public ni métriques publiées.
 eyebrow: Profil culturel
 kind: Application web full-stack
 summary: Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
+shortSummary: Films, séries et jeux vidéo réunis dans une bibliothèque personnelle.
 stack:
   - Next.js
   - TypeScript
   - PostgreSQL
   - Prisma
   - Better Auth
-visual: palimia
+visual: cultural-library
 socialImage: /palimia-social-card.png
 socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
 ---
+
+## Ma contribution
+
+Je développe ce projet seul. Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
 
 ## Une bibliothèque culturelle personnelle
 
@@ -31,9 +47,13 @@ La première bêta prévue se concentre sur les films, les séries et les jeux v
 
 Les fonctions sociales développées — profils publics, avis, listes et relations — restent elles aussi désactivées. Le cœur du produit demeure donc un outil privé. Les recommandations envisagées suivent la même logique : elles doivent être personnelles et explicables, à partir de signaux compréhensibles plutôt que d’un score opaque.
 
-## Une fondation full-stack
+## Deux choix qui structurent le projet
+
+### Garder une application cohérente
 
 Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue, les références vers les fournisseurs et les états personnels, tandis que Better Auth gère l’authentification. Les appels aux fournisseurs restent côté serveur et leurs données sont validées puis normalisées avant import.
+
+### Séparer le catalogue et les données personnelles
 
 Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 

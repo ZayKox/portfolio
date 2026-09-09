@@ -105,8 +105,10 @@
   }
 }
 
-@view-transition {
-  navigation: auto;
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
 }
 
 *,
@@ -117,7 +119,8 @@
 
 html {
   border: 0;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  scroll-padding-top: calc(var(--header-height, 0px) + 1rem);
   background: var(--bg);
 }
 
@@ -190,6 +193,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
+  overflow-wrap: anywhere;
   font-weight: 650;
   letter-spacing: -0.055em;
   text-wrap: balance;
@@ -278,12 +282,16 @@ h3 {
 }
 
 .site-header {
-  position: sticky;
+  position: relative;
   z-index: 50;
   top: 0;
   border-bottom: 1px solid var(--border);
   background: var(--header-bg);
   backdrop-filter: blur(1rem) saturate(120%);
+}
+
+.site-header[data-sticky="true"] {
+  position: sticky;
 }
 
 .header-inner {
@@ -317,6 +325,7 @@ h3 {
 .main-nav {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
@@ -370,7 +379,7 @@ h3 {
 }
 
 .language-switch,
-.theme-toggle {
+.theme-select {
   min-width: 2.75rem;
   min-height: 2.75rem;
 }
@@ -383,36 +392,26 @@ h3 {
   font-size: 0.75rem;
 }
 
-.theme-toggle {
-  display: grid;
-  place-items: center;
+.theme-select {
+  max-width: 7.5rem;
+  padding: 0.4rem;
   border: 1px solid var(--border);
-  border-radius: 50%;
+  border-radius: var(--radius-control);
   color: var(--text);
   background: var(--surface);
+  font-size: 0.75rem;
   cursor: pointer;
-  transition:
-    transform var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out),
-    background-color var(--duration-base) var(--ease-out);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-0.1rem);
+.theme-select:hover {
   border-color: var(--accent);
 }
 
-.theme-toggle:active,
 .button:active {
   transform: scale(0.98);
 }
 
-.theme-toggle-symbol {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.theme-toggle[hidden],
+.theme-select[hidden],
 .contact-email-actions button[hidden] {
   display: none;
 }
@@ -905,7 +904,7 @@ h3 {
   content: "";
 }
 
-.project-visual--palimia {
+.project-visual--cultural-library {
   aspect-ratio: auto;
   min-height: 24rem;
   padding: clamp(1.25rem, 3vw, 3rem);
@@ -1036,7 +1035,7 @@ h3 {
   content: "·";
 }
 
-.project-visual--ludosaic {
+.project-visual--game-tiles {
   min-height: 24rem;
   aspect-ratio: auto;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1147,27 +1146,6 @@ h3 {
 
 .about-preview-copy {
   max-width: 45rem;
-}
-
-.interest-line {
-  display: grid;
-  grid-template-columns: 8rem 1fr;
-  gap: 1rem;
-  margin-block: 1rem;
-  padding-block: 0.75rem;
-  border-block: 1px solid var(--border);
-}
-
-.interest-line span {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-meta);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.interest-line p {
-  margin-bottom: 0;
 }
 
 .contact-band {
@@ -2368,13 +2346,9 @@ h3 {
     grid-row: 2;
     justify-content: flex-start;
     gap: 0.75rem;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    overflow: visible;
     padding-bottom: 0.1rem;
-    scrollbar-width: none;
-  }
-
-  .main-nav::-webkit-scrollbar {
-    display: none;
   }
 
   .main-nav a {
@@ -2395,7 +2369,26 @@ h3 {
   }
 
   .hero-panel-identity {
-    padding-block: var(--space-2);
+    padding-block: 0;
+  }
+
+  .hero-panel-identity strong {
+    max-width: none;
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  .hero-field {
+    padding: var(--space-4);
+  }
+
+  .hero-panel-projects a {
+    min-height: 2.75rem;
+    padding-block: 0.55rem;
+  }
+
+  .hero-panel-projects small {
+    display: none;
   }
 
   .project-list {
@@ -2408,8 +2401,8 @@ h3 {
     grid-row: auto;
   }
 
-  .project-visual--palimia,
-  .project-visual--ludosaic {
+  .project-visual--cultural-library,
+  .project-visual--game-tiles {
     min-height: 20rem;
   }
 
@@ -2580,16 +2573,12 @@ h3 {
     min-height: 2lh;
   }
 
-  .interest-line {
-    grid-template-columns: 1fr;
-  }
-
   .contact-card {
     min-height: 12rem;
   }
 
-  .project-visual--palimia,
-  .project-visual--ludosaic {
+  .project-visual--cultural-library,
+  .project-visual--game-tiles {
     min-height: 17rem;
   }
 
@@ -2680,11 +2669,11 @@ h3 {
   .resume-contact-list dt,
   .resume-entry-meta,
   .resume-technologies {
-    font-size: 6.7pt;
+    font-size: 8pt;
   }
 
   .resume-contact-list dd {
-    font-size: 7.4pt;
+    font-size: 8pt;
   }
 
   .resume-summary {
@@ -2699,7 +2688,7 @@ h3 {
 
   .resume-section > h2 {
     margin-bottom: 0.45rem;
-    font-size: 7pt;
+    font-size: 8.5pt;
     break-after: avoid;
   }
 
@@ -2724,7 +2713,7 @@ h3 {
 
   .resume-project-group > h3 {
     margin-bottom: 0.2rem;
-    font-size: 6.5pt;
+    font-size: 8pt;
   }
 
   .resume-entry-heading p,
@@ -2733,6 +2722,7 @@ h3 {
   }
 
   .resume-entry ul {
+    list-style: disc;
     gap: 0.15rem;
     margin: 0.4rem 0;
   }
@@ -2747,7 +2737,7 @@ h3 {
     grid-template-columns: 7.8rem 1fr;
     gap: 0.5rem;
     padding-block: 0.25rem;
-    font-size: 7.2pt;
+    font-size: 8.2pt;
   }
 
   .resume-project-list {
@@ -2760,7 +2750,7 @@ h3 {
   }
 
   .resume-project-list p {
-    font-size: 7.2pt;
+    font-size: 8.2pt;
     line-height: 1.35;
   }
 
@@ -2779,4 +2769,16 @@ h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+.project-visual--typographic {
+  display: grid;
+  place-items: center;
+  padding: var(--space-5);
+  background: var(--surface-subtle);
+}
+.project-visual-title {
+  font-family: var(--font-display);
+  font-size: var(--h2);
+  overflow-wrap: anywhere;
 }

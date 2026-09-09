@@ -4,20 +4,36 @@ slug: palimia
 locale: en
 order: 1
 featured: true
-publication: teaser
+publication: published
+review:
+  reviewedOn: "2026-09-09"
+  approvedBy: Ethan Brosselard
+  factsApproved: true
+  translationApproved: true
+  media:
+    status: withheld
+    note: Ethan approved the absence of screenshots; existing graphic compositions are retained.
+  evidence:
+    status: included
+    note: Technical case study reviewed and approved by Ethan, without a demo, public repository or published metrics.
 eyebrow: Cultural profile
 kind: Full-stack web application
 summary: A platform for tracking, rating, and organizing movies, TV series, and video games in a personal cultural library.
+shortSummary: Movies, TV series, and video games brought together in a personal library.
 stack:
   - Next.js
   - TypeScript
   - PostgreSQL
   - Prisma
   - Better Auth
-visual: palimia
+visual: cultural-library
 socialImage: /palimia-social-card.png
 socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
 ---
+
+## My contribution
+
+I develop this project independently. The technical choices and limitations below describe the work in progress.
 
 ## A personal cultural library
 
@@ -31,9 +47,13 @@ The planned first beta focuses on movies, TV series, and video games. The data m
 
 Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Planned recommendations follow the same principle: they should be personal and explainable, using understandable signals rather than an opaque score.
 
-## A full-stack foundation
+## Two choices that shape the project
+
+### Keep one coherent application
 
 The project is a modular monolith built with Next.js and strict TypeScript. PostgreSQL and Prisma support the catalog, provider references, and personal states, while Better Auth handles authentication. Provider calls remain server-side, and their data is validated and normalized before import.
+
+### Separate catalog data from personal data
 
 This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
 

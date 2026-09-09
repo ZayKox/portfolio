@@ -34,10 +34,7 @@ const isActive = (href: string) =>
       <span>{profile.brand}</span>
     </a>
 
-    <nav
-      class="main-nav"
-      aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"}
-    >
+    <nav class="main-nav" aria-label={t.nav.label}>
       {
         items.map((item) => (
           <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
@@ -53,73 +50,83 @@ const isActive = (href: string) =>
         href={alternatePath}
         lang={locale === "fr" ? "en" : "fr"}
         hreflang={locale === "fr" ? "en" : "fr"}
-        aria-label={locale === "fr" ? "View this page in English" : "Voir cette page en français"}
+        aria-label={t.languageSwitchLabel}
       >
         {t.alternateLocale}
       </a>
-      <button
-        class="theme-toggle"
-        type="button"
-        aria-label={t.themeLabel}
-        data-theme-toggle
-        data-light-label={t.themeLight}
-        data-dark-label={t.themeDark}
-        hidden
-      >
-        <span class="theme-toggle-symbol" aria-hidden="true">◐</span>
-      </button>
+      <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
+        <option value="system">{t.themeSystem}</option>
+        <option value="light">{t.themeLight}</option>
+        <option value="dark">{t.themeDark}</option>
+      </select>
     </div>
   </div>
 </header>
 
 <script>
-  const themeButton = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
-
-  function syncThemeButton(button: HTMLButtonElement) {
-    const isDark = document.documentElement.dataset.theme === "dark";
-    button.setAttribute("aria-pressed", String(isDark));
-    button.setAttribute(
-      "aria-label",
-      isDark
-        ? (button.dataset.lightLabel ?? "Light theme")
-        : (button.dataset.darkLabel ?? "Dark theme"),
-    );
+  const root = document.documentElement;
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  // Only keep a sticky header when its actual height can be reserved for focus/anchors.
+  // Without JavaScript the header stays in the normal document flow.
+  if (header) {
+    const measureHeader = () => {
+      const height = header.getBoundingClientRect().height;
+      const sticky = height < window.innerHeight / 3;
+      header.dataset.sticky = String(sticky);
+      root.style.setProperty("--header-height", `${sticky ? height : 0}px`);
+    };
+    new ResizeObserver(measureHeader).observe(header);
+    window.addEventListener("resize", measureHeader);
+    measureHeader();
+    document.addEventListener("focusin", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement) || target.closest(".site-header, .skip-link")) return;
+      requestAnimationFrame(() => {
+        if (document.activeElement !== target) return;
+        const rect = target.getBoundingClientRect();
+        const top = Math.max(0, header.getBoundingClientRect().bottom) + 12;
+        const offset =
+          rect.top < top
+            ? rect.top - top
+            : rect.bottom > innerHeight - 12
+              ? rect.bottom - innerHeight + 12
+              : 0;
+        if (offset) window.scrollBy({ top: offset, behavior: "instant" });
+      });
+    });
   }
 
-  if (themeButton && themeButton.dataset.ready !== "true") {
-    const root = document.documentElement;
+  const themeSelect = document.querySelector<HTMLSelectElement>("[data-theme-select]");
+  if (themeSelect) {
     const systemPreference = matchMedia("(prefers-color-scheme: dark)");
-    let visitorTheme: "light" | "dark" | null = null;
-
+    let visitorTheme: "light" | "dark" | "system" = "system";
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
       if (savedTheme === "light" || savedTheme === "dark") visitorTheme = savedTheme;
     } catch {
-      // A blocked storage API must not prevent the system theme or the control working.
+      // Blocked storage still permits a choice for this page.
     }
 
-    function applyTheme(theme: "light" | "dark") {
+    function applyTheme() {
       root.classList.add("theme-switching");
-      root.dataset.theme = theme;
+      root.dataset.theme =
+        visitorTheme === "system" ? (systemPreference.matches ? "dark" : "light") : visitorTheme;
       requestAnimationFrame(() => root.classList.remove("theme-switching"));
-      if (themeButton) syncThemeButton(themeButton);
     }
 
-    root.dataset.theme = visitorTheme ?? (systemPreference.matches ? "dark" : "light");
-    themeButton.dataset.ready = "true";
-    syncThemeButton(themeButton);
-    themeButton.hidden = false;
-
-    systemPreference.addEventListener("change", (event) => {
-      if (visitorTheme === null) applyTheme(event.matches ? "dark" : "light");
+    themeSelect.value = visitorTheme;
+    applyTheme();
+    themeSelect.hidden = false;
+    systemPreference.addEventListener("change", () => {
+      if (visitorTheme === "system") applyTheme();
     });
-
-    themeButton.addEventListener("click", () => {
-      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
-      visitorTheme = nextTheme;
-      applyTheme(nextTheme);
+    themeSelect.addEventListener("change", () => {
+      const value = themeSelect.value;
+      visitorTheme = value === "light" || value === "dark" ? value : "system";
+      applyTheme();
       try {
-        localStorage.setItem("portfolio-theme", nextTheme);
+        if (visitorTheme === "system") localStorage.removeItem("portfolio-theme");
+        else localStorage.setItem("portfolio-theme", visitorTheme);
       } catch {
         // The selected theme still applies for the current page.
       }

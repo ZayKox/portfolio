@@ -16,7 +16,7 @@
 | Public milestone    | Minimal public release completed         |
 | Last roadmap review | September 8, 2026                        |
 
-## Current outcome
+## Public baseline — September 8, 2026
 
 The portfolio is publicly available at <https://ethanbrosselard.com>. It presents Ethan as a versatile software developer and digital maker. AI remains one area of interest rather than an exclusive specialization.
 
@@ -31,6 +31,8 @@ The current public scope includes:
 - a static deployment with no application server, database, form, browser analytics, tracking cookies, or embedded third-party content.
 
 The portrait, complete project case studies, screenshots, videos, and unvalidated personal details remain intentionally absent. Their absence does not make the current release incomplete.
+
+The September 9 remediation adds two approved case studies and technical corrections in the local revision. Its release and external observations remain pending; see [the audit remediation status](audit-remediation.md).
 
 ## Verified baseline
 
@@ -105,8 +107,8 @@ Ethan confirmed on September 8, 2026 that the human verification work was comple
 
 - [ ] Refine the final professional title if the current broad wording changes.
 - [ ] Review the visible French and English copy after the next editorial change.
-- [ ] Complete and approve a full French case study for Palimia, then produce the equivalent English version.
-- [ ] Complete and approve a full French case study for Ludosaic, then produce the equivalent English version.
+- [x] Complete and approve a full French case study for Palimia, then produce the equivalent English version (September 9, 2026, questionnaire section 30; local revision awaiting deployment).
+- [x] Complete and approve a full French case study for Ludosaic, then produce the equivalent English version (September 9, 2026, questionnaire section 30; local revision awaiting deployment).
 - [ ] Add only validated dates, roles, metrics, user feedback, deployment claims, and public links.
 - [ ] Add project screenshots or videos only after privacy, licensing, metadata, responsive-format, alternative-text, and transcription checks.
 - [ ] Add certifications only when they exist and are explicitly approved for publication.

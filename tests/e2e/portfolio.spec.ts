@@ -1,26 +1,8 @@
+import { publicRoutes as routeCatalog } from "../../scripts/route-catalog.mjs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const publicRoutes = [
-  "/",
-  "/a-propos/",
-  "/cv/",
-  "/contact/",
-  "/mentions-legales/",
-  "/confidentialite/",
-  "/projets/",
-  "/projets/ludosaic/",
-  "/projets/palimia/",
-  "/en/",
-  "/en/about/",
-  "/en/resume/",
-  "/en/contact/",
-  "/en/legal-notice/",
-  "/en/privacy/",
-  "/en/projects/",
-  "/en/projects/ludosaic/",
-  "/en/projects/palimia/",
-] as const;
+const publicRoutes = routeCatalog.map((entry) => entry.path);
 
 for (const route of publicRoutes) {
   test(`${route} renders without runtime or accessibility errors`, async ({ page }) => {
@@ -38,7 +20,7 @@ for (const route of publicRoutes) {
 
     for (const theme of ["light", "dark"] as const) {
       if ((await page.locator("html").getAttribute("data-theme")) !== theme) {
-        await page.locator("[data-theme-toggle]").click();
+        await page.locator("[data-theme-select]").selectOption(theme);
       }
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
 
@@ -56,9 +38,9 @@ test("theme follows the system preference and persists the visitor choice", asyn
 
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await expect(page.locator("[data-theme-toggle]")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("[data-theme-select]")).toHaveValue("system");
 
-  await page.locator("[data-theme-toggle]").click();
+  await page.locator("[data-theme-select]").selectOption("light");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   expect(await page.evaluate(() => localStorage.getItem("portfolio-theme"))).toBe("light");
 
@@ -77,8 +59,7 @@ test("localized navigation controls expose names and states", async ({ page }, t
       navigationName: "Navigation principale",
       switchLanguage: "en",
       switchName: "View this page in English",
-      initialThemeName: "Activer le thème sombre",
-      toggledThemeName: "Activer le thème clair",
+      themeName: "Thème",
     },
     {
       route: "/en/",
@@ -86,8 +67,7 @@ test("localized navigation controls expose names and states", async ({ page }, t
       navigationName: "Main navigation",
       switchLanguage: "fr",
       switchName: "Voir cette page en français",
-      initialThemeName: "Use dark theme",
-      toggledThemeName: "Use light theme",
+      themeName: "Theme",
     },
   ] as const) {
     await page.goto(expectation.route);
@@ -98,13 +78,10 @@ test("localized navigation controls expose names and states", async ({ page }, t
     await expect(languageSwitch).toHaveAttribute("lang", expectation.switchLanguage);
     await expect(languageSwitch).toHaveAttribute("hreflang", expectation.switchLanguage);
 
-    const themeToggle = page.getByRole("button", { name: expectation.initialThemeName });
-    await expect(themeToggle).toHaveAttribute("aria-pressed", "false");
-    await themeToggle.click();
-    await expect(page.getByRole("button", { name: expectation.toggledThemeName })).toHaveAttribute(
-      "aria-pressed",
-      "true",
-    );
+    const themeSelect = page.getByRole("combobox", { name: expectation.themeName });
+    await themeSelect.selectOption("dark");
+    await expect(themeSelect).toHaveValue("dark");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await page.evaluate(() => localStorage.removeItem("portfolio-theme"));
   }
 });
@@ -154,7 +131,7 @@ test("interactive links meet the minimum touch target size", async ({ page }, te
     await page.goto(route);
 
     const targets = page.locator(
-      ".language-switch, [data-theme-toggle], .button, .main-nav a, .text-link, .footer-links a, .contact-socials a",
+      ".language-switch, [data-theme-select], .button, .main-nav a, .text-link, .footer-links a, .contact-socials a",
     );
 
     for (let index = 0; index < (await targets.count()); index += 1) {
@@ -174,7 +151,7 @@ test("unknown paths return the bilingual 404 page", async ({ page }) => {
   await expect(page.getByText("This page does not exist.", { exact: false })).toBeVisible();
   for (const theme of ["light", "dark"] as const) {
     if ((await page.locator("html").getAttribute("data-theme")) !== theme) {
-      await page.locator("[data-theme-toggle]").click();
+      await page.locator("[data-theme-select]").selectOption(theme);
     }
     await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
     const results = await new AxeBuilder({ page }).analyze();
@@ -242,8 +219,16 @@ test("keyboard focus follows DOM order and stays visible in both themes", async 
         0,
       );
 
-      for (let expectedOrder = 0; expectedOrder < focusableCount; expectedOrder += 1) {
-        await page.keyboard.press("Tab");
+      const order = Array.from({ length: focusableCount }, (_, index) => index);
+      const traversal = [
+        ...order.map((index) => ({ index, key: "Tab" })),
+        ...order
+          .slice(0, -1)
+          .reverse()
+          .map((index) => ({ index, key: "Shift+Tab" })),
+      ];
+      for (const { index: expectedOrder, key } of traversal) {
+        await page.keyboard.press(key);
         const context = `${route} in ${theme} theme, focus position ${expectedOrder}`;
 
         const readFocusState = () =>
@@ -259,6 +244,10 @@ test("keyboard focus follows DOM order and stays visible in both themes", async 
               outlineStyle: style.outlineStyle,
               outlineWidth: Number.parseFloat(style.outlineWidth),
               visibleInViewport:
+                (element.closest(".site-header, .skip-link") !== null ||
+                  rect.top >=
+                    (document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
+                      0)) &&
                 rect.width > 0 &&
                 rect.height > 0 &&
                 rect.bottom > 0 &&
@@ -298,7 +287,7 @@ test("reduced motion shortens transitions", async ({ browser }) => {
   const page = await context.newPage();
   await page.goto("/");
 
-  const durations = await page.locator("[data-theme-toggle]").evaluate((element) =>
+  const durations = await page.locator("[data-theme-select]").evaluate((element) =>
     getComputedStyle(element)
       .transitionDuration.split(",")
       .map((value) => value.trim())
@@ -421,7 +410,7 @@ test("primary mobile controls keep 44px touch targets", async ({ page }, testInf
 
   for (const route of publicRoutes) {
     await page.goto(route);
-    const controls = page.locator(".language-switch, [data-theme-toggle], .button");
+    const controls = page.locator(".language-switch, [data-theme-select], .button");
     for (let index = 0; index < (await controls.count()); index += 1) {
       const box = await controls.nth(index).boundingBox();
       expect(box, `${route} control ${index} should be rendered`).not.toBeNull();

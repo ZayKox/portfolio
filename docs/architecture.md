@@ -30,7 +30,7 @@ Indexable pages publish reciprocal French, English, and `x-default` alternates. 
 
 ## Projects
 
-Each project has one MDX entry per language. Frontmatter contains card, metadata, publication, visual, stack, and optional metric data. The body contains the longer narrative.
+Each project has one MDX entry per language. `src/lib/project-schema.mjs` is shared by Astro and the Node content validator; `js-yaml` parses frontmatter with a data-only JSON schema and rejects duplicate keys. Frontmatter contains card, metadata, publication, visual, stack, and optional metric data. The body contains the longer narrative.
 
 Supported publication states:
 
@@ -38,7 +38,7 @@ Supported publication states:
 - `teaser`: a short technical overview based only on validated facts;
 - `published`: a reviewed complete case study.
 
-Actual maturity, dates, roles, and product metrics remain absent until Ethan explicitly validates them in the questionnaire. A `teaser` does not imply production readiness.
+Solo contribution is validated for both current projects; dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them in the questionnaire. A `teaser` does not imply production readiness.
 
 `scripts/validate-content-parity.mjs` requires one French and one English entry for every slug. It checks publication state, order, featured state, stack, visual, metric values, and equivalent narrative depth. Titles, labels, summaries, and narratives remain naturally localizable.
 
@@ -126,3 +126,20 @@ The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playw
 ## Future content
 
 The content model can add future AI work, tools, articles, and projects from other domains without changing the overall architecture. Ethan's positioning must not depend on one stack or the two initial projects.
+
+## Audit remediation contracts — September 2026
+
+- `src/data/routes.json` holds the static FR/EN routes used by interface copy. `scripts/route-catalog.mjs` derives project routes, language pairs and metadata types from schema-validated paired content. Build, deployment and browser checks share that catalogue, while retaining independent assertions for public identity, privacy, reciprocal alternates and document metadata.
+- `visual` selects a presentation (`cultural-library`, `game-tiles`, or neutral `typographic`), not a project identity. Titles, short summaries and game labels come from each project. A third project requires paired content and any approved media; it does not require another manual route list.
+- A `published` project requires a dated `review` with factual and translation approval by Ethan and an explicit media/evidence disposition (`included`, `not-applicable`, or `withheld`, each explained). This records a real review; it is never a replacement for obtaining that review. Metrics require unique IDs, their nature, measurement date, context, source and explicit approval; these facts must match across languages and are displayed with the value.
+- `src/data/resume.json` separates shared timeline facts from localized descriptions. `resume-schema.mjs` validates IDs, paired entries, dates, organizations and project links. `resume.ts` formats periods for each language; a null end means an explicitly confirmed ongoing position. Contact values and the canonical portfolio URL come from `profile.ts` and are shared by HTML and PDF.
+- Media provenance accepts the existing generated brand assets and explicitly approved captures. Captures require dated publication approval, source version, rights, demo-data review and FR/EN alternatives, without pretending to have a generator. PNG, JPEG and WebP dimensions and byte hashes are verified; other formats are rejected until a suitable validation path exists. No new capture was supplied or implicitly approved by the audit correction request.
+- The theme uses a native system/light/dark select with a stable accessible label. The sticky header reserves its measured height and falls back to normal flow without JavaScript or when too tall. Focus is checked in both keyboard directions. Long headings wrap when visitor text spacing increases; cross-document animations are opt-in for `no-preference` only.
+- External link checks retain dated structured results for verified, broken and inconclusive links; transient failures receive one bounded retry. CI uploads `docs/qa/external-links.json`. An inconclusive result still requires review and does not certify availability.
+- Deployment smoke tests download both complete PDFs. With `--artifact-directory dist --revision <full SHA>`, they compare every served artifact file (HTML, scripts, styles, media, PDFs, robots and sitemap) byte-for-byte. `_headers` and `_redirects` are platform configuration and are checked separately, not fetched as public files. Reports retain the expected revision and artifact hash. Both deployment workflows require this comparison; manual availability-only checks explicitly report no verified artifact.
+
+### Dependency exception
+
+Astro 7.3.2 and SVGO 4.1.0 replace affected versions. Sharp is pinned to 0.35.4 for the build and media validator; the npm override also replaces Miniflare's pinned 0.35.2 through Wrangler 4.130.0. Remove the override only after the upstream dependency graph itself resolves a corrected Sharp version and `npm ci`, `npm audit --audit-level=high`, builds, PDF generation, media tests and Wrangler's local dry run succeed.
+
+Primary references: [Astro AVIF advisory](https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2), [Sharp advisory](https://github.com/lovell/sharp/security/advisories/GHSA-rgj7-g3m4-5g8c). The additional direct `js-yaml` and Sharp development dependencies expose libraries already used by the build, so repository validators do not rely on undeclared transitive imports.

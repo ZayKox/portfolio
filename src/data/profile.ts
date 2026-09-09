@@ -1,6 +1,7 @@
 export const profile = {
   name: "Ethan Brosselard",
   brand: "ZayKo",
+  siteUrl: "https://ethanbrosselard.com",
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
   languages: ["fr", "en"],

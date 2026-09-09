@@ -1,36 +1,23 @@
 ---
-import type { Locale } from "@/i18n/copy";
+import { getCopy, type Locale } from "@/i18n/copy";
 
 interface Props {
-  visual: "palimia" | "ludosaic";
+  visual: "cultural-library" | "game-tiles" | "typographic";
+  title: string;
+  items?: string[] | undefined;
   locale: Locale;
 }
 
-const { visual, locale } = Astro.props;
-const palimiaLabels =
-  locale === "fr"
-    ? {
-        profile: "UN SEUL PROFIL",
-        library: "BIBLIOTHÈQUE CULTURELLE",
-        worlds: "TOUS VOS UNIVERS",
-        media: ["FILM", "SÉRIES", "JEU"],
-        actions: ["SUIVRE", "NOTER", "ORGANISER"],
-      }
-    : {
-        profile: "ONE PROFILE",
-        library: "CULTURAL LIBRARY",
-        worlds: "ALL YOUR WORLDS",
-        media: ["FILM", "SERIES", "GAME"],
-        actions: ["TRACK", "RATE", "ORGANIZE"],
-      };
+const { visual, locale, title, items = [] } = Astro.props;
+const palimiaLabels = getCopy(locale).visual.library;
 ---
 
 <div class:list={["project-visual", `project-visual--${visual}`]} aria-hidden="true">
   {
-    visual === "palimia" ? (
+    visual === "cultural-library" ? (
       <div class="palimia-library">
         <header class="palimia-library-bar">
-          <strong>PALIMIA</strong>
+          <strong>{title}</strong>
           <span>{palimiaLabels.profile}</span>
         </header>
         <div class="palimia-library-heading">
@@ -55,28 +42,17 @@ const palimiaLabels =
           ))}
         </div>
       </div>
-    ) : (
+    ) : visual === "game-tiles" ? (
       <>
-        <div class="game-tile game-tile--reflex">
-          <>
-            <span>01</span>
-            <strong>REFLEX RUSH</strong>
-          </>
-        </div>
-        <div class="game-tile game-tile--merge">
-          <>
-            <span>02</span>
-            <strong>MERGE FORGE</strong>
-          </>
-        </div>
-        <div class="game-tile game-tile--grid">
-          <>
-            <span>03</span>
-            <strong>GRID DUEL</strong>
-          </>
-        </div>
-        <div class="game-status">SOLO · DAILY · LOCAL · ONLINE</div>
+        {items.map((item, index) => (
+          <div class:list={["game-tile", `game-tile--${["reflex", "merge", "grid"][index % 3]}`]}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{item}</strong>
+          </div>
+        ))}
       </>
+    ) : (
+      <strong class="project-visual-title">{title}</strong>
     )
   }
 </div>

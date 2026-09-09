@@ -58,5 +58,6 @@ jobs:
             playwright-report/
             test-results/
             lighthouse-reports/
+            docs/qa/external-links.json
           if-no-files-found: ignore
           retention-days: 7

@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { validateMediaAsset } from "./media-provenance.mjs";
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -65,59 +65,10 @@ for (const asset of assets) {
     continue;
   }
   manifestPaths.add(normalizedPath);
-  if (!String(asset.kind ?? "").trim()) errors.push(`${normalizedPath}: kind is missing`);
-  if (!String(asset.provenance ?? "").trim()) {
-    errors.push(`${normalizedPath}: provenance is missing`);
-  }
-  if (!/^[a-f0-9]{64}$/.test(asset.sha256 ?? "")) {
-    errors.push(`${normalizedPath}: SHA-256 is invalid`);
-  }
-  if (!Number.isSafeInteger(asset.maxBytes) || asset.maxBytes <= 0) {
-    errors.push(`${normalizedPath}: maxBytes must be a positive integer`);
-  }
-
-  const absolutePath = path.join(root, normalizedPath);
-  const contents = await readFile(absolutePath).catch(() => undefined);
-  if (!contents) {
-    errors.push(`${normalizedPath}: declared media file is missing`);
-  } else {
-    const actualHash = createHash("sha256").update(contents).digest("hex");
-    if (actualHash !== asset.sha256) {
-      errors.push(`${normalizedPath}: SHA-256 differs from the reviewed media manifest`);
-    }
-    if (Number.isSafeInteger(asset.maxBytes) && contents.length > asset.maxBytes) {
-      errors.push(
-        `${normalizedPath}: ${contents.length} bytes exceeds the ${asset.maxBytes}-byte budget`,
-      );
-    }
-    if (normalizedPath.toLowerCase().endsWith(".png")) {
-      const pngSignature = "89504e470d0a1a0a";
-      if (
-        contents.length < 24 ||
-        contents.subarray(0, 8).toString("hex") !== pngSignature ||
-        contents.subarray(12, 16).toString("ascii") !== "IHDR"
-      ) {
-        errors.push(`${normalizedPath}: file is not a valid PNG with an IHDR header`);
-      } else {
-        const actualWidth = contents.readUInt32BE(16);
-        const actualHeight = contents.readUInt32BE(20);
-        if (!Number.isSafeInteger(asset.width) || asset.width <= 0) {
-          errors.push(`${normalizedPath}: width must be a positive integer`);
-        } else if (actualWidth !== asset.width) {
-          errors.push(`${normalizedPath}: width ${actualWidth} differs from ${asset.width}`);
-        }
-        if (!Number.isSafeInteger(asset.height) || asset.height <= 0) {
-          errors.push(`${normalizedPath}: height must be a positive integer`);
-        } else if (actualHeight !== asset.height) {
-          errors.push(`${normalizedPath}: height ${actualHeight} differs from ${asset.height}`);
-        }
-      }
-    }
-  }
-
-  const generator = String(asset.generator ?? "");
-  if (!generator || generator.includes("..") || !(await exists(path.join(root, generator)))) {
-    errors.push(`${normalizedPath}: generator is missing or does not exist`);
+  try {
+    await validateMediaAsset(asset, root);
+  } catch (error) {
+    errors.push(error.message);
   }
 }
 

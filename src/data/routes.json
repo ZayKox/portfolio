@@ -1,0 +1,20 @@
+{
+  "fr": {
+    "home": "/",
+    "projects": "/projets/",
+    "about": "/a-propos/",
+    "resume": "/cv/",
+    "contact": "/contact/",
+    "legal": "/mentions-legales/",
+    "privacy": "/confidentialite/"
+  },
+  "en": {
+    "home": "/en/",
+    "projects": "/en/projects/",
+    "about": "/en/about/",
+    "resume": "/en/resume/",
+    "contact": "/en/contact/",
+    "legal": "/en/legal-notice/",
+    "privacy": "/en/privacy/"
+  }
+}

@@ -117,8 +117,22 @@ jobs:
           name: preview-assets
           path: dist/
 
+      - name: Checkout preview validation inputs as data
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ needs.build.outputs.deployment_sha }}
+          path: preview-content
+          persist-credentials: false
+          sparse-checkout: |
+            src/content/projects
+            src/data/routes.json
+            src/styles/global.css
+            docs/design-system.md
+          sparse-checkout-cone-mode: false
+
       - name: Revalidate downloaded assets
         env:
+          PORTFOLIO_CONTENT_ROOT: preview-content
           SITE_URL: ${{ needs.build.outputs.preview_url }}
           SITE_NOINDEX: "true"
         run: npm run validate:build
@@ -165,6 +179,8 @@ jobs:
 
       - name: Smoke test protected preview
         env:
+          PORTFOLIO_CONTENT_ROOT: preview-content
+          DEPLOYMENT_SHA: ${{ needs.build.outputs.deployment_sha }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           PREVIEW_ALIAS: ${{ needs.build.outputs.preview_alias }}
@@ -174,6 +190,8 @@ jobs:
             if npm run test:deployment -- \
               --url "$PREVIEW_URL" \
               --mode preview \
+              --artifact-directory dist \
+              --revision "$DEPLOYMENT_SHA" \
               --report "deployment-reports/preview-${PREVIEW_ALIAS}.json"; then
               exit 0
             fi

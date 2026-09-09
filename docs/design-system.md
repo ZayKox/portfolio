@@ -60,7 +60,7 @@ Smooth scaling is defined by `--display`, `--h1`, `--h2`, `--h3` and `--body-lar
 | `--radius-card`           | `1.25rem`                     | Cards and large panels                              |
 | `--container`             | `76rem`                       | Maximum content width                               |
 | `--gutter`                | `clamp(1.25rem, 4vw, 3rem)`   | Responsive page gutter                              |
-| `--space-1`               | `0.6rem`                      | Micro gap                                           |
+| `--space-1`               | `0.5rem`                      | Micro gap                                           |
 | `--space-2`               | `0.75rem`                     | Compact gap                                         |
 | `--space-3`               | `1rem`                        | Standard gap                                        |
 | `--space-4`               | `clamp(1.25rem, 2vw, 1.5rem)` | Internal card spacing                               |
@@ -72,7 +72,7 @@ Smooth scaling is defined by `--display`, `--h1`, `--h2`, `--h3` and `--body-lar
 
 The composition uses an off-white background, white surfaces and discreet light dividers; the dark transposes this hierarchy on three anthracite levels. Shadows are diffuse, corners softened, and purple accents limited to cues, controls, and depth of visuals.
 
-Container is limited to 76rem. The desktop header measures at least 4.75rem; the controls keep their targets of 2.75rem and the theme selector is circular. On mobile, the navigation remains visible on a second line, with no menu to open. The footer separates navigation links from secondary information with a rule and a second row.
+Container is limited to 76rem. The desktop header measures at least 4.75rem; the controls keep their targets of 2.75rem and the native theme selector offers system, light and dark. On mobile, navigation remains visible and wraps onto as many lines as needed, including with increased text spacing. The sticky header reserves its measured height for anchors and keyboard focus; without JavaScript, or when it would occupy a third of the viewport, it stays in document flow. The footer separates navigation links from secondary information with a rule and a second row.
 
 The welcome presents the introduction and the signature panel, then the projects, the method, the background and contact. The panel retains its navigation function, with two links separated by rules, and pairs the signature with the validated location. On desktop it stretches to match the introduction. A localized word in the home title receives the secondary violet accent without changing the sentence or heading scale. On tablet it becomes horizontal; on mobile it returns to one column. The title remains at the same scale as the other pages: `--h1` is `clamp(2.75rem, 5.4vw, 5.25rem)`, with a line height of 1.04. Section titles use `clamp(2.1rem, 3.6vw, 3.5rem)`.
 
@@ -93,7 +93,7 @@ French and English home heroes also use `--h1` and a fixed top alignment. At 480
 
 Theme change neutralizes transitions during one frame to avoid insufficient intermediate contrast. With `prefers-reduced-motion: reduce`, animations and transitions become almost instantaneous. No content or action depends on movement, hover, or color alone.
 
-Keyboard focus uses secondary purple with an outline of `0.19rem` and an offset of `0.22rem`. Primary interactive elements aim for at least `2.75rem` or `3rem` in height. The theme tracks system preference changes until a valid choice has been saved; unavailable storage does not block control. The theme and copy buttons remain hidden without JavaScript. The address copy announces its success or refusal in an accessible status region.
+Keyboard focus uses secondary purple with an outline of `0.19rem` and an offset of `0.22rem`. Primary interactive elements aim for at least `2.75rem` or `3rem` in height. The theme selector exposes system, light and dark choices with a stable accessible label. Choosing system clears the override and resumes tracking system changes; unavailable storage does not block control. The theme selector and copy button remain hidden without JavaScript. The address copy announces its success or refusal in an accessible status region.
 
 ## Brand and media
 
@@ -109,3 +109,5 @@ Future project media must be approved, cleaned of any private data, explicitly s
 4. Keep the main actions monochrome and reserve purple for secondary signals.
 5. Check contrast, focus, reduced motion, 320 px and both languages for any visible components.
 6. Update this document and build validation when a required token changes.
+
+On mobile, the identity panel uses a compact name and project links; the repeated project descriptions remain available in the cards immediately below. Cross-document transitions are enabled only when reduced motion is not requested.

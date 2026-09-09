@@ -191,3 +191,27 @@ Do not delete the Worker, custom domain, or DNS records to resolve an applicatio
 - [Workers rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/)
 - [Cloudflare Privacy Policy](https://www.cloudflare.com/policies/privacy/)
 - [Cloudflare Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/)
+
+## Proving the delivered artifact
+
+After an authorized deployment, run the smoke test against the exact retained build:
+
+```sh
+npm run test:deployment -- --url https://ethanbrosselard.com --mode production --artifact-directory dist --revision <full-deployed-sha> --check-http-redirect --redirect-from https://www.ethanbrosselard.com --report deployment-reports/production.json
+```
+
+Both CI deployment workflows supply these artifact options. The report records SHA, aggregate artifact hash, number of matching files and the actual hashes of both PDFs. A missing PDF, HTML fallback, truncated PDF or older artifact fails. Without the artifact options, a manual smoke test proves availability and metadata only. Keep the successful CI run URL, deployment/version identifier and previous known-good deployment alongside this report for rollback; do not infer a Cloudflare version ID from a Git commit.
+
+## Reproducing WebKit checks locally
+
+Playwright's test server uses Astro's programmatic preview API to stay in the test process group even in agent environments. If the host is missing WebKit's system libraries, the already available matching browser image can run the suite without changing the host:
+
+```sh
+docker run --rm --init --ipc=host --user 1000:1000 --volume "$PWD:/work" --workdir /work mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e node node_modules/@playwright/test/cli.js test --project=webkit --project=mobile-webkit --workers=4
+```
+
+Use the image matching the pinned Playwright version and the local user's UID. This is a test environment, not a deployment container. Run after native browser tests, since both suites own the same preview port and reports.
+
+Review every `inconclusive` entry in the CI external-link report in a normal browser. Record the URL, observation date and outcome; HTTP 999 from LinkedIn is an anti-bot response, not a successful verification. Recheck real broken links before replacing an approved public URL.
+
+The preview deploy job reads the requested revision's MDX, route JSON, CSS tokens and design documentation from a separate sparse checkout (`PORTFOLIO_CONTENT_ROOT`). Trusted validation scripts and schemas still execute from `main`. This lets a preview add a bilingual project without comparing its route catalog against an older `main`; no preview JavaScript is executed with deployment credentials.

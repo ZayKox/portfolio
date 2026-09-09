@@ -4,20 +4,40 @@ slug: ludosaic
 locale: fr
 order: 2
 featured: true
-publication: teaser
+publication: published
+review:
+  reviewedOn: "2026-09-09"
+  approvedBy: Ethan Brosselard
+  factsApproved: true
+  translationApproved: true
+  media:
+    status: withheld
+    note: Absence de captures validée par Ethan ; les compositions graphiques existantes sont conservées.
+  evidence:
+    status: included
+    note: Étude technique relue et validée par Ethan, sans démonstration, dépôt public ni métriques publiées.
 eyebrow: Plateforme de mini-jeux
 kind: Application web modulaire
 summary: Une plateforme web de mini-jeux en cours de développement, jouable sans compte en solo, contre un bot ou à plusieurs selon le jeu.
+shortSummary: Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.
 stack:
   - Next.js
   - TypeScript
   - React
   - PostgreSQL
   - Colyseus
-visual: ludosaic
+visual: game-tiles
+visualItems:
+  - Reflex Rush
+  - Merge Forge
+  - Grid Duel
 socialImage: /ludosaic-social-card.png
 socialImageAlt: Carte de partage Violet Field de Ludosaic, avec trois tuiles représentant Reflex Rush, Merge Forge et Grid Duel.
 ---
+
+## Ma contribution
+
+Je développe ce projet seul. Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
 
 ## Jouer rapidement, sans créer de compte
 
@@ -31,9 +51,13 @@ Un profil invité est généré localement pour conserver le nom d’affichage, 
 
 Ces trois jeux ne servent pas seulement à remplir un catalogue. Chacun éprouve une contrainte différente : le cycle de vie d’un moteur Phaser, une logique de puzzle rejouable, puis une autorité multijoueur capable de contrôler les tours et de conserver les résultats.
 
-## Des règles déterministes et partageables
+## Deux choix qui structurent la plateforme
+
+### Séparer les jeux de leurs interfaces
 
 Le monorepo sépare l’application Next.js, le serveur de jeu, chaque jeu et leurs contrats communs. React et Phaser portent les interfaces, PostgreSQL et Drizzle les données durables, Redis la coordination temporaire, et Colyseus l’autorité des salons privés.
+
+### Vérifier les résultats à partir des règles
 
 Les règles restent indépendantes du rendu et peuvent être rejouées à partir d’une graine et d’une suite d’actions. Pour un résultat connecté, le serveur reconstitue la partie au lieu d’accepter directement le score annoncé par le navigateur. Les jeux sont chargés uniquement lorsqu’ils sont ouverts, et le service worker permet de relancer certains modes déjà chargés sans connexion.
 

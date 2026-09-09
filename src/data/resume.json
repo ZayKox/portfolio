@@ -1,32 +1,72 @@
 {
-  "fr": {
-    "documentTitle": "CV — Ethan Brosselard",
-    "role": "Développeur Python, Data & IA",
-    "summary": "Développeur logiciel curieux et polyvalent, avec plus de trois ans d’expérience en développement Python, migration, traitement et automatisation de données. Je conçois des API et des flux de données, puis les déploie et les maintiens dans des environnements AWS et on-premise, avec une attention constante portée à la fiabilité, aux tests et à la qualité logicielle.",
-    "contact": [
-      { "label": "Localisation", "value": "Paris, France" },
-      {
-        "label": "Email",
-        "value": "ethan.brosselard@gmail.com",
-        "href": "mailto:ethan.brosselard@gmail.com"
+  "timeline": {
+    "beyowi": {
+      "organization": {
+        "fr": "Studio Beyowi",
+        "en": "Studio Beyowi"
       },
-      {
-        "label": "GitHub",
-        "value": "github.com/ZayKox",
-        "href": "https://github.com/ZayKox"
-      },
-      {
-        "label": "LinkedIn",
-        "value": "linkedin.com/in/ethan-brosselard-507334237",
-        "href": "https://www.linkedin.com/in/ethan-brosselard-507334237/"
+      "start": "2023-10",
+      "end": null,
+      "location": {
+        "fr": "Paris 13e, France",
+        "en": "Paris 13th arrondissement, France"
       }
-    ],
+    },
+    "intento": {
+      "organization": {
+        "fr": "Intento Design",
+        "en": "Intento Design"
+      },
+      "start": "2022-09",
+      "end": "2023-08",
+      "location": {
+        "fr": "Paris, France",
+        "en": "Paris, France"
+      }
+    },
+    "sealed-air": {
+      "organization": {
+        "fr": "Sealed Air Corporation",
+        "en": "Sealed Air Corporation"
+      },
+      "start": "2022-07",
+      "end": "2022-08",
+      "location": {
+        "fr": "Épernon, France",
+        "en": "Épernon, France"
+      }
+    },
+    "master-paris8": {
+      "organization": {
+        "fr": "Université Paris 8 Vincennes — Saint-Denis",
+        "en": "University Paris 8 Vincennes — Saint-Denis"
+      },
+      "start": "2024",
+      "end": "2026"
+    },
+    "but-paris-cite": {
+      "organization": {
+        "fr": "IUT Paris Rives de Seine — Université Paris Cité",
+        "en": "Paris Rives de Seine IUT — Université Paris Cité"
+      },
+      "start": "2021",
+      "end": "2024"
+    },
+    "baccalaureate": {
+      "organization": {
+        "fr": "Lycée Jehan de Beauce",
+        "en": "Lycée Jehan de Beauce"
+      },
+      "start": "2018",
+      "end": "2021"
+    }
+  },
+  "fr": {
+    "role": "Développeur Python, Data & IA",
+    "summary": "Développeur logiciel curieux et polyvalent, avec plus de trois ans d’expérience en développement logiciel. Mon travail porte notamment sur Python, les migrations et l’automatisation de données. Je conçois des API et des flux de données, puis les déploie et les maintiens dans des environnements AWS et on-premise, avec une attention constante à la fiabilité et aux tests.",
     "experience": [
       {
         "title": "Développeur Web (alternant)",
-        "organization": "Studio Beyowi",
-        "period": "Octobre 2023 — Septembre 2026",
-        "location": "Paris 13e, France",
         "summary": "Conception et maintenance de solutions de migration de données et d’intégration d’IA, de l’API au déploiement AWS et on-premise.",
         "highlights": [
           "Conception d’API et de traitements de données avec Python, Flask et AWS Lambda.",
@@ -35,76 +75,84 @@
           "Contribution à trois chantiers majeurs de migration portant sur plusieurs gigaoctets : données de référence de l’ANSM, ETL du référentiel Thesorimed et API/workflows IA de la plateforme immobilière Primotheus.",
           "Déploiement, tests, supervision et maintenance d’environnements multi-services avec AWS, Docker et des pipelines CI/CD."
         ],
-        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker"
+        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker",
+        "id": "beyowi"
       },
       {
         "title": "Développeur Backend (alternant)",
-        "organization": "Intento Design",
-        "period": "Septembre 2022 — Août 2023",
-        "location": "Paris, France",
         "summary": "Développement C++ d’ID-Xplore, logiciel de CAO pour la conception de circuits intégrés analogiques.",
         "highlights": [
           "Développement et amélioration de fonctionnalités avec une attention portée aux performances et à la fiabilité.",
           "Participation aux algorithmes de génération et de validation de circuits et à la compatibilité multi-technologies.",
           "Contribution aux tests unitaires et à la documentation technique."
         ],
-        "technologies": "C++ · Algorithmique · Tests unitaires"
+        "technologies": "C++ · Algorithmique · Tests unitaires",
+        "id": "intento"
       },
       {
         "title": "Agent de maintenance bâtiment",
-        "organization": "Sealed Air Corporation",
-        "period": "Juillet 2022 — Août 2022",
-        "location": "Épernon, France",
-        "summary": "Participation à la rénovation d’un bâtiment au sein d’une équipe pendant une mission d’été de deux mois."
+        "summary": "Participation à la rénovation d’un bâtiment au sein d’une équipe pendant une mission d’été de deux mois.",
+        "id": "sealed-air"
       }
     ],
     "education": [
       {
         "title": "Master Informatique — Ingénierie en Intelligence Artificielle",
-        "organization": "Université Paris 8 Vincennes — Saint-Denis",
-        "period": "2024 — 2026"
+        "id": "master-paris8"
       },
       {
         "title": "Bachelor Universitaire de Technologie (BUT) Informatique",
-        "organization": "IUT Paris Rives de Seine — Université Paris Cité",
-        "period": "2021 — 2024"
+        "id": "but-paris-cite"
       },
       {
         "title": "Baccalauréat général, mention Bien",
-        "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021",
-        "summary": "Spécialités Numérique et Sciences Informatiques et mathématiques ; options EPS et mathématiques expertes."
+        "summary": "Spécialités Numérique et Sciences Informatiques et mathématiques ; options EPS et mathématiques expertes.",
+        "id": "baccalaureate"
       }
     ],
     "skillGroups": [
       {
         "category": "Backend & données",
-        "items": "Python, Flask, FastAPI, API REST, ETL, Pandas, NumPy, C++"
+        "items": "Python, Flask, FastAPI, API REST, ETL, Pandas, NumPy, C++",
+        "id": "backend"
       },
       {
         "category": "IA appliquée",
-        "items": "API OpenAI, RAG, recherche sémantique, PGVector, Qdrant"
+        "items": "API OpenAI, RAG, recherche sémantique, PGVector, Qdrant",
+        "id": "ai"
       },
       {
         "category": "Cloud & DevOps",
-        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD"
+        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD",
+        "id": "cloud"
       },
       {
         "category": "Bases de données",
-        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migrations et synchronisations"
+        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migrations et synchronisations",
+        "id": "databases"
       },
       {
         "category": "Qualité & méthodes",
-        "items": "pytest, tests d’intégration, coverage, Git, Black, Ruff, Scrum, Jira"
+        "items": "pytest, tests d’intégration, coverage, Git, Black, Ruff, Scrum, Jira",
+        "id": "quality"
       },
       {
         "category": "Formation & projets",
-        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android"
+        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android",
+        "id": "education"
       }
     ],
     "languages": [
-      { "name": "Français", "level": "Langue maternelle" },
-      { "name": "Anglais", "level": "Professionnel" }
+      {
+        "name": "Français",
+        "level": "Langue maternelle",
+        "id": "fr"
+      },
+      {
+        "name": "Anglais",
+        "level": "Professionnel",
+        "id": "en"
+      }
     ],
     "projectGroups": [
       {
@@ -112,140 +160,139 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "Projet personnel pour réunir le suivi de films, séries et jeux vidéo dans une bibliothèque culturelle personnelle."
+            "description": "Projet personnel pour réunir le suivi de films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.",
+            "id": "palimia",
+            "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Projet personnel de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu."
+            "description": "Projet personnel de plateforme web modulaire réunissant plusieurs mini-jeux et modes de jeu.",
+            "id": "ludosaic",
+            "slug": "ludosaic"
           }
-        ]
+        ],
+        "id": "personal"
       },
       {
         "title": "Hackathons",
         "items": [
           {
             "title": "Hackathon IA",
-            "description": "Projet de dix jours en équipe de trois pour des entreprises partenaires du master."
+            "description": "Projet de dix jours en équipe de trois pour des entreprises partenaires du master.",
+            "id": "ai-hackathon"
           },
           {
             "title": "Nuit de l’Info 2022",
-            "description": "Création en une nuit d’une application de sensibilisation au VIH."
+            "description": "Création en une nuit d’une application de sensibilisation au VIH.",
+            "id": "nuit-info-2022"
           },
           {
             "title": "Nuit de l’Info 2021",
-            "description": "Création en une nuit d’un système de recherche répertoriant les sauvetages en mer."
+            "description": "Création en une nuit d’un système de recherche répertoriant les sauvetages en mer.",
+            "id": "nuit-info-2021"
           },
           {
             "title": "Hackathon de terminale",
-            "description": "Création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie."
+            "description": "Création en trois jours d’une application de quiz pour aider des élèves de première à réviser l’histoire-géographie.",
+            "id": "school-hackathon"
           }
-        ]
+        ],
+        "id": "hackathons"
       }
     ]
   },
   "en": {
-    "documentTitle": "Resume — Ethan Brosselard",
     "role": "Python, Data & AI Developer",
-    "summary": "Curious and versatile software developer with more than three years of experience in Python development, data migration, processing, and automation. I design APIs and data flows, then deploy and maintain them across AWS and on-premises environments, with consistent attention to reliability, testing, and software quality.",
-    "contact": [
-      { "label": "Location", "value": "Paris, France" },
-      {
-        "label": "Email",
-        "value": "ethan.brosselard@gmail.com",
-        "href": "mailto:ethan.brosselard@gmail.com"
-      },
-      {
-        "label": "GitHub",
-        "value": "github.com/ZayKox",
-        "href": "https://github.com/ZayKox"
-      },
-      {
-        "label": "LinkedIn",
-        "value": "linkedin.com/in/ethan-brosselard-507334237",
-        "href": "https://www.linkedin.com/in/ethan-brosselard-507334237/"
-      }
-    ],
+    "summary": "Curious and versatile software developer with more than three years of experience in software development. My work includes Python, data migration, and automation. I design APIs and data flows, then deploy and maintain them across AWS and on-premises environments, with consistent attention to reliability and testing.",
     "experience": [
       {
         "title": "Web Developer (apprentice)",
-        "organization": "Studio Beyowi",
-        "period": "October 2023 — September 2026",
-        "location": "Paris 13th arrondissement, France",
         "summary": "Designed and maintained data migration and AI integration solutions, from APIs through AWS and on-premises deployment.",
         "highlights": [
           "Designed APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
           "Migrated and synchronized data across Oracle, MySQL, PostgreSQL, MSSQL, and SQLite databases with AWS DMS.",
           "Built RAG and vector-search approaches with PGVector and Qdrant; integrated OpenAI services for data, image, and document analysis.",
-          "Contributed to three major multi-gigabyte migration programmes: ANSM reference data, the Thesorimed repository ETL, and APIs/AI workflows for the Primotheus real-estate platform.",
+          "Contributed to three major multi-gigabyte migration programs: ANSM reference data, the Thesorimed repository ETL, and APIs/AI workflows for the Primotheus real-estate platform.",
           "Deployed, tested, monitored, and maintained multi-service environments with AWS, Docker, and CI/CD pipelines."
         ],
-        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker"
+        "technologies": "Python · Flask · AWS Lambda · AWS DMS · PostgreSQL · MySQL · Oracle · MSSQL · SQLite · PGVector · Qdrant · Docker",
+        "id": "beyowi"
       },
       {
         "title": "Backend Developer (apprentice)",
-        "organization": "Intento Design",
-        "period": "September 2022 — August 2023",
-        "location": "Paris, France",
-        "summary": "C++ development for ID-Xplore, a CAD application for analogue integrated-circuit design.",
+        "summary": "C++ development for ID-Xplore, a CAD application for analog integrated-circuit design.",
         "highlights": [
           "Developed and improved features with a focus on performance and reliability.",
           "Contributed to circuit generation and validation algorithms and multi-technology compatibility.",
           "Contributed to unit tests and technical documentation."
         ],
-        "technologies": "C++ · Algorithms · Unit testing"
+        "technologies": "C++ · Algorithms · Unit testing",
+        "id": "intento"
       },
       {
         "title": "Building Maintenance Agent",
-        "organization": "Sealed Air Corporation",
-        "period": "July 2022 — August 2022",
-        "location": "Épernon, France",
-        "summary": "Worked as part of a team renovating a building during a two-month summer assignment."
+        "summary": "Worked as part of a team renovating a building during a two-month summer assignment.",
+        "id": "sealed-air"
       }
     ],
     "education": [
       {
         "title": "Master’s Degree in Computer Science — Artificial Intelligence Engineering",
-        "organization": "University Paris 8 Vincennes — Saint-Denis",
-        "period": "2024 — 2026"
+        "id": "master-paris8"
       },
       {
         "title": "Bachelor of Technology (BUT) in Computer Science",
-        "organization": "Paris Rives de Seine IUT — Université Paris Cité",
-        "period": "2021 — 2024"
+        "id": "but-paris-cite"
       },
       {
-        "title": "French General Baccalaureate, honours",
-        "organization": "Lycée Jehan de Beauce",
-        "period": "2018 — 2021",
-        "summary": "Specialisms in Digital and Computer Science and mathematics; additional options in physical education and advanced mathematics."
+        "title": "French General Baccalaureate, honors",
+        "summary": "Specializations in Digital and Computer Science and mathematics; additional options in physical education and advanced mathematics.",
+        "id": "baccalaureate"
       }
     ],
     "skillGroups": [
       {
         "category": "Backend & data",
-        "items": "Python, Flask, FastAPI, REST APIs, ETL, Pandas, NumPy, C++"
+        "items": "Python, Flask, FastAPI, REST APIs, ETL, Pandas, NumPy, C++",
+        "id": "backend"
       },
-      { "category": "Applied AI", "items": "OpenAI API, RAG, semantic search, PGVector, Qdrant" },
+      {
+        "category": "Applied AI",
+        "items": "OpenAI API, RAG, semantic search, PGVector, Qdrant",
+        "id": "ai"
+      },
       {
         "category": "Cloud & DevOps",
-        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD"
+        "items": "AWS (EC2, S3, RDS, DMS, Lambda, CloudWatch), Docker, CI/CD",
+        "id": "cloud"
       },
       {
         "category": "Databases",
-        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migration and synchronization"
+        "items": "PostgreSQL, MySQL, Oracle, MSSQL, SQLite, migration and synchronization",
+        "id": "databases"
       },
       {
         "category": "Quality & delivery",
-        "items": "pytest, integration testing, coverage, Git, Black, Ruff, Scrum, Jira"
+        "items": "pytest, integration testing, coverage, Git, Black, Ruff, Scrum, Jira",
+        "id": "quality"
       },
       {
         "category": "Education & projects",
-        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android"
+        "items": "C, Java, VB.NET, Kotlin, HTML, CSS, JavaScript, PHP, Next.js, Windows, Linux, Android",
+        "id": "education"
       }
     ],
     "languages": [
-      { "name": "French", "level": "Native" },
-      { "name": "English", "level": "Professional working proficiency" }
+      {
+        "name": "French",
+        "level": "Native",
+        "id": "fr"
+      },
+      {
+        "name": "English",
+        "level": "Professional working proficiency",
+        "id": "en"
+      }
     ],
     "projectGroups": [
       {
@@ -253,34 +300,44 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "Personal project bringing movie, TV series, and video game tracking into a personal cultural library."
+            "description": "Personal project bringing movie, TV series, and video game tracking into a personal cultural library.",
+            "id": "palimia",
+            "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Personal project for a modular web platform bringing together several mini-games and play modes."
+            "description": "Personal project for a modular web platform bringing together several mini-games and play modes.",
+            "id": "ludosaic",
+            "slug": "ludosaic"
           }
-        ]
+        ],
+        "id": "personal"
       },
       {
         "title": "Hackathons",
         "items": [
           {
             "title": "AI hackathon",
-            "description": "Ten-day project in a team of three for companies partnered with the master’s programme."
+            "description": "Ten-day project in a team of three for companies partnered with the master’s program.",
+            "id": "ai-hackathon"
           },
           {
             "title": "Nuit de l’Info 2022",
-            "description": "Built an HIV-awareness application during an overnight challenge."
+            "description": "Built an HIV-awareness application during an overnight challenge.",
+            "id": "nuit-info-2022"
           },
           {
             "title": "Nuit de l’Info 2021",
-            "description": "Built a search system cataloguing sea rescues during an overnight challenge."
+            "description": "Built a search system cataloging sea rescues during an overnight challenge.",
+            "id": "nuit-info-2021"
           },
           {
             "title": "High-school hackathon",
-            "description": "Built a quiz application in three days to help students revise history and geography."
+            "description": "Built a quiz application in three days to help students revise history and geography.",
+            "id": "school-hackathon"
           }
-        ]
+        ],
+        "id": "hackathons"
       }
     ]
   }

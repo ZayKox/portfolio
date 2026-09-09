@@ -4,20 +4,40 @@ slug: ludosaic
 locale: en
 order: 2
 featured: true
-publication: teaser
+publication: published
+review:
+  reviewedOn: "2026-09-09"
+  approvedBy: Ethan Brosselard
+  factsApproved: true
+  translationApproved: true
+  media:
+    status: withheld
+    note: Ethan approved the absence of screenshots; existing graphic compositions are retained.
+  evidence:
+    status: included
+    note: Technical case study reviewed and approved by Ethan, without a demo, public repository or published metrics.
 eyebrow: Mini-game platform
 kind: Modular web application
 summary: A web mini-game platform under active development, playable without an account in solo, against bots, or with others depending on the game.
+shortSummary: Web mini-games for solo play, against a bot, or with other players.
 stack:
   - Next.js
   - TypeScript
   - React
   - PostgreSQL
   - Colyseus
-visual: ludosaic
+visual: game-tiles
+visualItems:
+  - Reflex Rush
+  - Merge Forge
+  - Grid Duel
 socialImage: /ludosaic-social-card.png
 socialImageAlt: Violet Field sharing card for Ludosaic, with three tiles representing Reflex Rush, Merge Forge, and Grid Duel.
 ---
+
+## My contribution
+
+I develop this project independently. The technical choices and limitations below describe the work in progress.
 
 ## Start playing without creating an account
 
@@ -31,9 +51,13 @@ A guest profile is generated locally to preserve the display name, preferences, 
 
 These three games do more than fill a catalog. Each tests a different constraint: the lifecycle of a Phaser engine, replayable puzzle logic, and then a multiplayer authority able to control turns and persist results.
 
-## Deterministic, shareable rules
+## Two choices that shape the platform
+
+### Separate games from their interfaces
 
 The monorepo separates the Next.js application, game server, each game, and their shared contracts. React and Phaser power the interfaces, PostgreSQL and Drizzle store durable data, Redis handles temporary coordination, and Colyseus provides authority for private rooms.
+
+### Verify results against the rules
 
 Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 

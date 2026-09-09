@@ -1,3 +1,4 @@
+import { deploymentArtifact } from "./deployment-artifacts.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -9,6 +10,9 @@ function usage() {
   npm run test:deployment -- --url https://staging-worker.account.workers.dev --mode preview [--report deployment-reports/preview.json]
   npm run test:deployment -- --url https://example.com --mode production [--check-http-redirect] [--redirect-from https://www.example.com] [--report deployment-reports/production.json]
   npm run test:deployment -- --url https://technical.example --canonical-url https://example.com --mode production [--report deployment-reports/pre-dns.json]
+
+--artifact-directory compares every served file, including both PDFs, to the local build; pair it with --revision <full Git SHA>.
+Without these options the report verifies availability and metadata, not the deployed revision.
 
 --canonical-url validates metadata built for a different final origin while requesting --url.
 --redirect-from may be repeated for every HTTPS origin that must permanently redirect to the canonical origin.
@@ -37,7 +41,16 @@ function parseArguments(argumentsList) {
       index += 1;
       continue;
     }
-    if (["--url", "--canonical-url", "--mode", "--report"].includes(argument)) {
+    if (
+      [
+        "--url",
+        "--canonical-url",
+        "--mode",
+        "--report",
+        "--artifact-directory",
+        "--revision",
+      ].includes(argument)
+    ) {
       const value = argumentsList[index + 1];
       if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value.`);
       options[argument === "--canonical-url" ? "canonicalUrl" : argument.slice(2)] = value;
@@ -119,7 +132,14 @@ async function main() {
     throw new Error("--redirect-from must differ from the canonical origin.");
   }
 
+  if (Boolean(options["artifact-directory"]) !== Boolean(options.revision)) {
+    throw new Error("--artifact-directory and --revision must be supplied together.");
+  }
+  const expectedArtifact = options["artifact-directory"]
+    ? await deploymentArtifact(path.resolve(options["artifact-directory"]), options.revision)
+    : undefined;
   const report = await validateDeployment({
+    expectedArtifact,
     requestOrigin: options.url,
     expectedSiteOrigin: canonicalUrl.origin,
     mode: options.mode,

@@ -88,6 +88,8 @@ jobs:
             if npm run test:deployment -- \
               --url https://ethanbrosselard.com \
               --mode production \
+              --artifact-directory dist \
+              --revision "$DEPLOYMENT_SHA" \
               --check-http-redirect \
               --redirect-from https://www.ethanbrosselard.com \
               --report deployment-reports/production.json; then

@@ -1,6 +1,6 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import { z } from "astro/zod";
+import { projectSchema } from "./lib/project-schema.mjs";
 
 const projects = defineCollection({
   loader: glob({
@@ -8,29 +8,7 @@ const projects = defineCollection({
     base: "./src/content/projects",
     generateId: ({ data }) => `${String(data.locale)}/${String(data.slug)}`,
   }),
-  schema: z.object({
-    title: z.string(),
-    slug: z.string(),
-    locale: z.enum(["fr", "en"]),
-    order: z.number().int().positive(),
-    featured: z.boolean().default(false),
-    publication: z.enum(["draft", "teaser", "published"]),
-    eyebrow: z.string(),
-    kind: z.string(),
-    summary: z.string(),
-    stack: z.array(z.string()).min(1),
-    visual: z.enum(["palimia", "ludosaic"]),
-    socialImage: z.string().regex(/^\/[a-z0-9-]+\.png$/),
-    socialImageAlt: z.string().min(1),
-    metrics: z
-      .array(
-        z.object({
-          value: z.string(),
-          label: z.string(),
-        }),
-      )
-      .optional(),
-  }),
+  schema: projectSchema,
 });
 
 export const collections = { projects };

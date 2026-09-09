@@ -19,7 +19,12 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
 
 <article class="project-card reveal">
   <a class="project-card-visual" href={href} aria-label={visualLabel}>
-    <ProjectVisual visual={entry.data.visual} {locale} />
+    <ProjectVisual
+      visual={entry.data.visual}
+      title={entry.data.title}
+      items={entry.data.visualItems}
+      {locale}
+    />
   </a>
   <div class="project-card-content">
     <div class="project-card-heading">

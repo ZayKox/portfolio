@@ -7,14 +7,14 @@ This working list is not rendered on the public site. The canonical source for E
 - The production site, domain, canonical redirects, metadata, legal pages, resume pages, and French/English PDF files are live.
 - GitHub Actions production, protected environment secrets, and deployment switches were configured and validated on September 8, 2026.
 - Ethan confirmed completion of the human verification checklist on September 8, 2026. Detailed QA working records remain local and are intentionally excluded from the remote repository.
-- Palimia and Ludosaic remain factual `teaser` entries. Their selection, order, and the removal of FiltreAppels were validated on August 29, 2026.
+- Palimia and Ludosaic have reviewed FR/EN case studies, approved on September 9, 2026 (questionnaire section 30). Their local editorial state is `published`; deployment of this revision is still pending. Screenshots, public demos, repositories and metrics may remain absent.
 - The September 6 editorial redesign, Violet Field social cards, and ZayKo signature have been reviewed for the current release.
 - The validated public contact email remains in use. A dedicated address is still optional.
 - The email address remains absent from JSON-LD to limit scraping.
 - The site launches without browser-side analytics, tracking cookies, a form, or embedded third-party content.
 - The site remains a personal publication. Any private legal information that becomes necessary must be provided separately and never committed here.
 
-The portrait, complete case studies, screenshots, and videos may remain absent. Their absence does not block the current public release.
+The portrait, screenshots, and videos may remain absent. The two reviewed case studies are complete for the approved scope; the additions below are optional enrichments or readiness work for the products themselves.
 
 ## Identity
 
@@ -24,6 +24,8 @@ The portrait, complete case studies, screenshots, and videos may remain absent. 
 
 ## Resume
 
+- Studio Beyowi is ongoing, as confirmed on September 9, 2026; do not reinstate the previously planned September 2026 end date.
+
 - Update the structured resume source, HTML pages, and both generated PDFs together whenever an experience, education entry, skill selection, or project changes.
 
 ## Palimia case study
@@ -32,8 +34,8 @@ The portrait, complete case studies, screenshots, and videos may remain absent. 
 - Complete deployment, operations, backup and recovery, monitoring, staging, and legal-review evidence for Palimia's target environment.
 - Explicitly validate every displayed date and metric.
 - Document the initial motivation and personal problem.
-- Confirm Ethan's exact role, project dates, and approximate time spent.
-- Decide repository visibility, public status, and whether a demonstration link can be shared.
+- Solo development is validated in questionnaire section 29; dates remain intentionally omitted. Approximate time spent and additional personal context are still unconfirmed.
+- Public repository and demonstration links remain absent by explicit approval (section 30).
 - Add real tester feedback and outcomes, clearly separated from local technical validation.
 - Explain major decisions, rejected approaches, trade-offs, and lessons learned.
 - Prepare recent screenshots and an optional demonstration video using privacy-safe demo data.
@@ -44,8 +46,8 @@ The portrait, complete case studies, screenshots, and videos may remain absent. 
 - Complete and validate MVP criteria for the three games and connected services.
 - Complete an external deployment and validate backup, recovery, TLS/WSS, monitoring, and critical journeys before presenting Ludosaic as production-ready.
 - Explicitly validate every displayed date and metric.
-- Document the motivation, target audience, exact role, and dates.
-- Decide repository visibility, public status, and whether a demonstration URL can be shared.
+- Document the motivation and target audience. Solo development is validated in section 29; dates remain intentionally omitted.
+- Public repository and demonstration links remain absent by explicit approval (section 30).
 - Add real tester feedback and outcomes, clearly separated from local and connected technical validation.
 - Explain decisions and trade-offs concerning deterministic rules, offline behavior, and multiplayer authority.
 - Prepare screenshots of Reflex Rush, Merge Forge, and Grid Duel using demonstration profiles and scores.

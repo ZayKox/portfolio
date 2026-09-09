@@ -31,15 +31,21 @@
     "verify:site": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run validate:build",
     "verify:preview": "cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run build && cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run validate:build",
     "verify:no-site": "cross-env SITE_URL= SITE_NOINDEX=false npm run build && cross-env SITE_URL= SITE_NOINDEX=false npm run validate:build",
-    "verify": "npm run format:check && npm run check:toolchain && npm run check:content && npm run check:media && npm run check:resume && npm run test:resume-artifacts && npm run test:deployment-redirects && npm run check && npm run verify:site && npm run verify:preview && npm run verify:no-site",
+    "verify": "npm run format:check && npm run check:toolchain && npm run check:content && npm run check:resume-data && npm run test:content && npm run test:links && npm run check:media && npm run test:media && npm run check:resume && npm run test:resume-artifacts && npm run test:deployment-redirects && npm run test:deployment-artifacts && npm run check && npm run verify:site && npm run test:document-guards && npm run verify:preview && npm run verify:no-site",
     "check:resume": "node scripts/validate-resume-artifacts.mjs",
-    "test:resume-artifacts": "node --test scripts/test-resume-artifacts.mjs"
+    "test:resume-artifacts": "node --test scripts/test-resume-artifacts.mjs",
+    "check:resume-data": "node scripts/validate-resume-data.mjs",
+    "test:content": "node --test scripts/test-content.mjs",
+    "test:media": "node --test scripts/test-media.mjs",
+    "test:links": "node --test scripts/test-links.mjs",
+    "test:deployment-artifacts": "node --test scripts/test-deployment-artifacts.mjs",
+    "test:document-guards": "node --test scripts/test-document-guards.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "7.0.3",
     "@astrojs/sitemap": "3.7.3",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.1.3",
+    "astro": "7.3.2",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
@@ -47,10 +53,15 @@
     "@axe-core/playwright": "4.10.2",
     "@playwright/test": "1.62.1",
     "cross-env": "10.1.0",
+    "js-yaml": "4.3.2",
     "lighthouse": "13.4.1",
     "prettier": "3.6.2",
     "prettier-plugin-astro": "0.14.1",
+    "sharp": "0.35.4",
     "typescript": "5.9.3",
-    "wrangler": "4.129.0"
+    "wrangler": "4.130.0"
+  },
+  "overrides": {
+    "sharp": "0.35.4"
   }
 }

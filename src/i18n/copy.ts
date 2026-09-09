@@ -1,35 +1,19 @@
 export type Locale = "fr" | "en";
 
-export const routes = {
-  fr: {
-    home: "/",
-    projects: "/projets/",
-    about: "/a-propos/",
-    resume: "/cv/",
-    contact: "/contact/",
-    legal: "/mentions-legales/",
-    privacy: "/confidentialite/",
-  },
-  en: {
-    home: "/en/",
-    projects: "/en/projects/",
-    about: "/en/about/",
-    resume: "/en/resume/",
-    contact: "/en/contact/",
-    legal: "/en/legal-notice/",
-    privacy: "/en/privacy/",
-  },
-} as const;
+export { default as routes } from "../data/routes.json";
 
 export const copy = {
   fr: {
     localeName: "Français",
     alternateLocale: "EN",
     skipLink: "Aller au contenu",
-    themeLabel: "Changer de thème",
-    themeLight: "Activer le thème clair",
-    themeDark: "Activer le thème sombre",
+    themeLabel: "Thème",
+    themeSystem: "Système",
+    languageSwitchLabel: "View this page in English",
+    themeLight: "Clair",
+    themeDark: "Sombre",
     nav: {
+      label: "Navigation principale",
       home: "Accueil",
       projects: "Projets",
       about: "À propos",
@@ -80,10 +64,6 @@ export const copy = {
       selectedProjects: "Ce que je construis.",
       selectedProjectsIntro:
         "Une sélection de projets personnels présentés à travers leur usage, leur conception et les choix techniques qui les font évoluer.",
-      heroProjectDescriptions: {
-        palimia: "Films, séries et jeux vidéo réunis dans une bibliothèque personnelle.",
-        ludosaic: "Des mini-jeux sur le web, en solo, contre un bot ou à plusieurs.",
-      },
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
@@ -112,6 +92,8 @@ export const copy = {
       nowLabel: "Maintenant",
       nowText:
         "Faire évoluer mes projets personnels et approfondir la sécurité appliquée au développement logiciel.",
+      resumeCta: "Découvrir mon parcours et mon CV",
+      projectsCta: "Voir les projets et leurs choix techniques",
       proofLabel: "Ce que montre ce portfolio",
       proofText:
         "Des projets, un parcours et des choix techniques expliqués avec leurs validations et leurs limites connues.",
@@ -122,6 +104,8 @@ export const copy = {
       intro:
         "Un aperçu structuré de mon parcours, de mes compétences et des projets qui l’accompagnent.",
       download: "Télécharger le PDF",
+      portfolio: "Portfolio",
+      present: "Aujourd’hui",
       contact: "Contact et liens",
       experience: "Expériences",
       education: "Formation",
@@ -203,13 +187,31 @@ export const copy = {
       updatedLabel: "Dernière mise à jour",
       updatedValue: "8 septembre 2026",
     },
+    visual: {
+      library: {
+        profile: "UN SEUL PROFIL",
+        library: "BIBLIOTHÈQUE CULTURELLE",
+        worlds: "TOUS VOS UNIVERS",
+        media: ["FILM", "SÉRIES", "JEU"],
+        actions: ["SUIVRE", "NOTER", "ORGANISER"],
+      },
+    },
     project: {
+      next: "Poursuivre la découverte",
+      contact: "Échanger sur ce projet",
       back: "Tous les projets",
       stack: "Socle technique",
       evidence: "Validation technique documentée",
-      evidenceNote: "Mesures locales, distinctes de résultats utilisateurs ou de production.",
+      evidenceNote: "Chaque mesure précise sa nature, son contexte et sa source.",
+      metricKinds: {
+        local: "Validation locale",
+        production: "Mesure en production",
+        user: "Résultat utilisateur",
+      },
+      source: "Source",
     },
     footer: {
+      navigationLabel: "Liens de navigation",
       note: "Projets, choix d’architecture et validations techniques.",
       noTracking: "Sans mesure d’audience côté navigateur ni cookies de suivi.",
       legal: "Mentions légales",
@@ -225,10 +227,13 @@ export const copy = {
     localeName: "English",
     alternateLocale: "FR",
     skipLink: "Skip to content",
-    themeLabel: "Change theme",
-    themeLight: "Use light theme",
-    themeDark: "Use dark theme",
+    themeLabel: "Theme",
+    themeSystem: "System",
+    languageSwitchLabel: "Voir cette page en français",
+    themeLight: "Light",
+    themeDark: "Dark",
     nav: {
+      label: "Main navigation",
       home: "Home",
       projects: "Projects",
       about: "About",
@@ -279,10 +284,6 @@ export const copy = {
       selectedProjects: "What I build.",
       selectedProjectsIntro:
         "A selection of personal projects presented through their use, their design, and the technical choices shaping them.",
-      heroProjectDescriptions: {
-        palimia: "Movies, TV series, and video games brought together in a personal library.",
-        ludosaic: "Web mini-games for solo play, against a bot, or with other players.",
-      },
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
@@ -311,6 +312,8 @@ export const copy = {
       nowLabel: "Now",
       nowText:
         "Evolving my personal projects and deepening my knowledge of applied software security.",
+      resumeCta: "Explore my experience and resume",
+      projectsCta: "Explore the projects and their technical choices",
       proofLabel: "What this portfolio shows",
       proofText:
         "Projects, a professional path, and technical choices explained with their validation and known limitations.",
@@ -320,6 +323,8 @@ export const copy = {
       title: "Resume and experience",
       intro: "A structured overview of my background, skills, and the projects that support them.",
       download: "Download PDF",
+      portfolio: "Portfolio",
+      present: "Present",
       contact: "Contact and links",
       experience: "Experience",
       education: "Education",
@@ -365,7 +370,7 @@ export const copy = {
     privacy: {
       eyebrow: "Personal data",
       title: "Privacy policy",
-      intro: "This website is designed to minimise the collection and use of personal data.",
+      intro: "This website is designed to minimize the collection and use of personal data.",
       controllerTitle: "Controller",
       controllerText:
         "Ethan Brosselard is responsible for the processing activities he determines for this website. Cloudflare processes certain technical data to provide the infrastructure under its Data Processing Addendum and, where it determines its own purposes, under its Privacy Policy. For a question or request about your data, you can write to the address below.",
@@ -399,13 +404,31 @@ export const copy = {
       updatedLabel: "Last updated",
       updatedValue: "8 September 2026",
     },
+    visual: {
+      library: {
+        profile: "ONE PROFILE",
+        library: "CULTURAL LIBRARY",
+        worlds: "ALL YOUR WORLDS",
+        media: ["FILM", "SERIES", "GAME"],
+        actions: ["TRACK", "RATE", "ORGANIZE"],
+      },
+    },
     project: {
+      next: "Continue exploring",
+      contact: "Discuss this project",
       back: "All projects",
       stack: "Technical foundation",
       evidence: "Documented technical validation",
-      evidenceNote: "Local measurements, separate from user or production outcomes.",
+      evidenceNote: "Each measurement identifies its type, context, and source.",
+      metricKinds: {
+        local: "Local validation",
+        production: "Production measurement",
+        user: "User outcome",
+      },
+      source: "Source",
     },
     footer: {
+      navigationLabel: "Navigation links",
       note: "Projects, architecture decisions, and technical validation.",
       noTracking: "No browser-side visitor analytics or tracking cookies.",
       legal: "Legal notice",
