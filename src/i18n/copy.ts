@@ -142,12 +142,12 @@ export const copy = {
         "L’hébergement de production est assuré par Cloudflare Workers Static Assets. Les fichiers du site sont générés statiquement puis distribués depuis le réseau mondial de Cloudflare. Cloudflare assure également le certificat TLS, la redirection de HTTP vers HTTPS et celle de www vers le domaine canonique ; aucune fonction applicative, base de données ou autre runtime n’est exécuté pour les pages publiques.",
       intellectualPropertyTitle: "Propriété intellectuelle",
       intellectualPropertyText:
-        "Sauf mention contraire, les textes, le code source et les éléments graphiques de ce site sont protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers ne sont utilisés que lorsqu’ils sont autorisés et restent soumis à leurs droits respectifs.",
+        "Le code source original est mis à disposition selon les conditions et le périmètre définis dans le fichier LICENSE du dépôt. Les textes, données biographiques, récits de projets, éléments d’identité visuelle et médias ne sont pas couverts par cette licence et restent protégés par le droit de la propriété intellectuelle. Leur reproduction, représentation ou adaptation, totale ou partielle, nécessite l’accord préalable de leur titulaire. Les éléments de tiers restent soumis à leurs droits respectifs.",
       externalLinksTitle: "Liens externes",
       externalLinksText:
         "Les liens vers des sites tiers sont fournis pour information. Leur contenu, leur disponibilité et leurs pratiques de confidentialité relèvent de la responsabilité de leurs éditeurs respectifs.",
       updatedLabel: "Dernière mise à jour",
-      updatedValue: "8 septembre 2026",
+      updatedValue: "9 septembre 2026",
     },
     privacy: {
       eyebrow: "Données personnelles",
@@ -360,12 +360,12 @@ export const copy = {
         "Cloudflare Workers Static Assets provides production hosting. The website’s files are generated statically and delivered through Cloudflare’s global network. Cloudflare also provides the TLS certificate, redirects HTTP to HTTPS, and redirects www to the canonical domain; no application function, database, or other runtime runs for public pages.",
       intellectualPropertyTitle: "Intellectual property",
       intellectualPropertyText:
-        "Unless otherwise stated, this website’s text, source code, and visual elements are protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material is used only when authorized and remains subject to its respective rights.",
+        "Original source code is made available under the terms and scope defined in the repository’s LICENSE file. Portfolio copy, biographical data, project narratives, visual-identity elements, and media are not covered by that license and remain protected by intellectual-property law. Their full or partial reproduction, representation, or adaptation requires the prior permission of the rightsholder. Third-party material remains subject to its respective rights.",
       externalLinksTitle: "External links",
       externalLinksText:
         "Links to third-party sites are provided for information only. Their content, availability, and privacy practices remain the responsibility of their respective publishers.",
       updatedLabel: "Last updated",
-      updatedValue: "8 September 2026",
+      updatedValue: "9 September 2026",
     },
     privacy: {
       eyebrow: "Personal data",

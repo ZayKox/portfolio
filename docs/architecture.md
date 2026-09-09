@@ -38,7 +38,7 @@ Supported publication states:
 - `teaser`: a short technical overview based only on validated facts;
 - `published`: a reviewed complete case study.
 
-Solo contribution is validated for both current projects; dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them in the questionnaire. A `teaser` does not imply production readiness.
+Solo contribution is validated for both current projects; dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them for publication in a task. A `teaser` does not imply production readiness.
 
 `scripts/validate-content-parity.mjs` requires one French and one English entry for every slug. It checks publication state, order, featured state, stack, visual, metric values, and equivalent narrative depth. Titles, labels, summaries, and narratives remain naturally localizable.
 

@@ -16,7 +16,7 @@ This runbook describes how the static portfolio is previewed and deployed throug
 - The public artifact enables no browser-side analytics, tracking cookies, form, account, or embedded third-party content.
 - Workers Logs, log exports, Wrangler telemetry, and dependency instrumentation remain disabled in the versioned configuration.
 
-The first public production deployment was completed on September 8, 2026. The current roadmap and remaining release-record work are tracked in [`docs/production-plan.md`](production-plan.md).
+The first public production deployment was completed on September 8, 2026. Approved public release facts are summarized in [`docs/public-content-record.md`](public-content-record.md); operational follow-up remains outside the tracked repository.
 
 ## Secrets and variables
 

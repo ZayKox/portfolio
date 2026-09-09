@@ -23,3 +23,15 @@ lighthouse-reports/
 deployment-reports/
 docs/qa/
 *.log
+
+# Private editorial and project-management working documents
+docs/site-content-questionnaire.md
+docs/content-backlog.md
+docs/production-plan.md
+docs/audit-remediation.md
+
+# Private keys and certificate bundles
+*.pem
+*.key
+*.p12
+*.pfx

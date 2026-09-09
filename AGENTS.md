@@ -14,9 +14,8 @@ Before changing project files:
 2. Record the current branch and `git status --short`, then preserve all pre-existing changes.
 3. Read the relevant parts of:
    - `docs/architecture.md` for technical structure;
-   - `docs/site-content-questionnaire.md` for Ethan’s approved inputs;
-   - `docs/content-backlog.md` for remaining editorial work;
-   - `docs/production-plan.md` for release requirements;
+   - `docs/public-content-record.md` for approved publication decisions not already encoded in runtime content;
+   - `docs/deployment-runbook.md` for release requirements when applicable;
    - `src/data/profile.ts`, `src/i18n/copy.ts`, and `src/content.config.ts` for runtime content rules.
 4. Identify every affected French and English route before editing.
 5. Implement the smallest coherent change that satisfies the request.
@@ -25,31 +24,30 @@ Before changing project files:
 
 ## Sources of truth
 
-| Information                                      | Canonical location                                                           |
-| ------------------------------------------------ | ---------------------------------------------------------------------------- |
-| Raw answers and publication decisions from Ethan | `docs/site-content-questionnaire.md`                                         |
-| Shared public identity, links, portrait, CV link | `src/data/profile.ts`                                                        |
-| Interface copy and short page content            | `src/i18n/copy.ts`                                                           |
-| Project card metadata and long case studies      | paired files under `src/content/projects/fr/` and `src/content/projects/en/` |
-| Content schema                                   | `src/content.config.ts`                                                      |
-| Design tokens and global behavior                | `src/styles/global.css`                                                      |
-| Architecture decisions                           | `docs/architecture.md`                                                       |
-| Production readiness                             | `docs/production-plan.md`                                                    |
+| Information                                                   | Canonical location                                                           |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Shared public identity, links, portrait, CV link              | `src/data/profile.ts`                                                        |
+| Interface copy and short page content                         | `src/i18n/copy.ts`                                                           |
+| Resume facts and localized descriptions                       | `src/data/resume.json`                                                       |
+| Project card metadata, reviews, and long case studies         | paired files under `src/content/projects/fr/` and `src/content/projects/en/` |
+| Approved publication decisions not encoded in runtime content | `docs/public-content-record.md`                                              |
+| Content schema                                                | `src/content.config.ts`                                                      |
+| Design tokens and global behavior                             | `src/styles/global.css`                                                      |
+| Architecture decisions                                        | `docs/architecture.md`                                                       |
+| Deployment procedure                                          | `docs/deployment-runbook.md`                                                 |
 
-The questionnaire is an input document, not runtime content. Convert only approved answers into the appropriate runtime source. Do not make pages read from `docs/` at build time.
-
-`docs/content-backlog.md` is a derived convenience summary, not a source of truth. When it disagrees with the questionnaire, use the questionnaire and update the backlog in the same task.
+Private questionnaires, drafts, backlogs, audit notes, and planning documents are working material outside the tracked repository. Do not make pages read from `docs/` at build time.
 
 ## Factual and privacy rules
 
 - Use only facts already present in the repository or explicitly supplied by Ethan.
-- Treat questionnaire entries marked `À REMPLIR`, `À CONFIRMER`, `BROUILLON`, or `PRIVÉ` as unavailable for publication.
-- Publish an answer only when its status is `PUBLIC — VALIDÉ` or Ethan explicitly validates it in the current task.
-- When Ethan validates new public, non-sensitive information in a task, record that validation in the questionnaire during the same task so the canonical input remains current.
+- Treat private notes, drafts, unanswered questions, and unconfirmed statements as unavailable for publication.
+- Publish new information only when Ethan explicitly validates it as public in the current task or it is already present in a canonical tracked source.
+- When Ethan validates new public, non-sensitive information in a task, update the appropriate runtime source and record any lasting publication decision in `docs/public-content-record.md` during the same task.
 - Never invent biography, role, dates, experience, education, certification, client, employer, impact, user count, performance, testimonial, production status, public URL, or availability.
 - Label local tests and repository measurements as technical evidence, never as user impact or production results.
 - Do not expose secrets, private addresses, phone numbers, private repositories, credentials, internal URLs, real phone-call data, or third-party personal data.
-- Do not commit sensitive answers to the questionnaire. Record only `PRIVÉ — transmis séparément` when private information is required.
+- Do not commit private editorial working material. Keep sensitive information out of tracked files entirely.
 - Hide incomplete optional sections. Never render `TBD`, `TODO`, “coming soon,” guessed copy, empty cards, fake testimonials, or decorative metrics.
 - Keep the public email out of structured data unless Ethan explicitly accepts the additional scraping exposure.
 
@@ -89,7 +87,7 @@ The questionnaire is an input document, not runtime content. Convert only approv
 
 ## Adding or publishing a project
 
-1. Complete the project section in `docs/site-content-questionnaire.md`.
+1. Obtain Ethan’s explicit approval for every new public fact and record the lasting publication decisions in `docs/public-content-record.md`.
 2. Add or update one FR and one EN MDX entry with the typed schema.
 3. Use `draft` for non-public work, `teaser` for a factual preview, and `published` only for a reviewed case study.
 4. Copy approved media under `src/assets/projects/<slug>/`.
@@ -149,10 +147,10 @@ Commit rules:
 - Never include pre-existing or unrelated user changes.
 - If the index already contained staged changes before the task, do not create an automatic commit unless Ethan explicitly asks to include those exact staged changes.
 - If a task overlaps an existing user change and cannot be staged safely, do not commit; explain why.
-- Never stage a questionnaire answer or other manual edit that existed before the task unless Ethan explicitly asks to include it.
+- Never stage a private working document or other manual edit that existed before the task unless Ethan explicitly asks to include that exact public-safe change.
 - Always stage explicit paths with `git add -- <path>...`; never use `git add .`, `git add -A`, or a broad glob.
 - Never use `git commit -a`.
-- Never commit secrets, `.env` files, build output, dependency folders, screenshots containing private data, or private questionnaire answers.
+- Never commit secrets, `.env` files, build output, dependency folders, screenshots containing private data, or private editorial working material.
 - Never bypass failing hooks or checks with `--no-verify`.
 - Never amend, rebase, reset, force-push, tag, delete branches, or rewrite history unless Ethan explicitly asks.
 - Never push, open a pull request, merge, deploy, modify DNS, or publish externally unless Ethan explicitly asks.
@@ -165,7 +163,7 @@ Examples:
 feat(projects): publish Palimia case study
 content(about): add validated career history
 fix(i18n): align English project metadata
-docs: add portfolio content questionnaire
+docs: record approved publication decisions
 ci: add accessibility checks
 ```
 

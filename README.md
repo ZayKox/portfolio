@@ -6,11 +6,15 @@ The public site is available at <https://ethanbrosselard.com>. French is served 
 
 ## Local development
 
+Use Node.js 22.12 or newer and npm 10 or newer. Install the exact dependency versions from `package-lock.json`, then start Astro:
+
 ```sh
 nvm use
-npm install
+npm ci
 npm run dev
 ```
+
+Copy `.env.example` only when a local build needs documented environment variables. Never commit a populated `.env` file.
 
 ## Validation
 
@@ -90,9 +94,13 @@ Production uses `SITE_URL=https://ethanbrosselard.com` and `SITE_NOINDEX=false`.
 - `src/data/resume.json`: structured bilingual resume content.
 - `src/i18n/copy.ts`: localized interface copy.
 - `src/styles/global.css`: Violet Field tokens and global behavior.
-- `docs/content-backlog.md`: missing or optional editorial inputs.
-- `docs/production-plan.md`: current post-launch roadmap.
+- `docs/public-content-record.md`: approved publication decisions not encoded in runtime sources.
+- `docs/architecture.md`: technical and content architecture.
 - `docs/deployment-runbook.md`: preview, production, and rollback procedure.
 - `skills/maintain-portfolio/`: repository-specific maintenance instructions.
 
 The portfolio build never depends on the local Palimia or Ludosaic repositories. Approved text and media must be curated into this repository.
+
+## License
+
+Original software source code is available under the MIT License. Portfolio copy, biographical and resume data, project narratives, visual identity, generated visual assets, PDFs, and other personal or creative content are excluded from that grant and remain all rights reserved. See [`LICENSE`](LICENSE) for the exact scope.
