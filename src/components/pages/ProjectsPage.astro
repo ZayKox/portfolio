@@ -33,7 +33,9 @@ const projects = (
   </PageHero>
   <section class="section page-projects">
     <div class="container project-list">
-      {projects.map((entry) => <ProjectCard {entry} {locale} headingLevel={2} />)}
+      {projects.map((entry) => (
+        <ProjectCard {entry} {locale} headingLevel={2} />
+      ))}
     </div>
   </section>
 </BaseLayout>

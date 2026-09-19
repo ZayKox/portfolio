@@ -71,7 +71,7 @@ The versioned configuration disables Workers Logs, log exports, Wrangler telemet
 
 ## Hosting and deployment
 
-Node.js 22 generates `dist/`; Cloudflare Workers Static Assets publishes only that directory. `wrangler.jsonc` preserves Astro trailing-slash URLs and serves `404.html` with an HTTP 404 status. No Astro Cloudflare adapter is required while output remains static. Because `SITE_URL` is build-time data, a domain change requires a new build and deployment.
+Node.js 24 LTS generates `dist/`; Cloudflare Workers Static Assets publishes only that directory. `wrangler.jsonc` preserves Astro trailing-slash URLs and serves `404.html` with an HTTP 404 status. No Astro Cloudflare adapter is required while output remains static. Because `SITE_URL` is build-time data, a domain change requires a new build and deployment.
 
 GitHub Actions is the normal publication path:
 
@@ -138,8 +138,8 @@ The content model can add future AI work, tools, articles, and projects from oth
 - External link checks retain dated structured results for verified, broken and inconclusive links; transient failures receive one bounded retry. CI uploads `docs/qa/external-links.json`. An inconclusive result still requires review and does not certify availability.
 - Deployment smoke tests download both complete PDFs. With `--artifact-directory dist --revision <full SHA>`, they compare every served artifact file (HTML, scripts, styles, media, PDFs, robots and sitemap) byte-for-byte. `_headers` and `_redirects` are platform configuration and are checked separately, not fetched as public files. Reports retain the expected revision and artifact hash. Both deployment workflows require this comparison; manual availability-only checks explicitly report no verified artifact.
 
-### Dependency exception
+### Dependency baseline
 
-Astro 7.3.2 and SVGO 4.1.0 replace affected versions. Sharp is pinned to 0.35.4 for the build and media validator; the npm override also replaces Miniflare's pinned 0.35.2 through Wrangler 4.130.0. Transitive overrides keep devalue at 5.9.2 and smol-toml at 1.7.1, the first patched releases for their September 2026 denial-of-service advisories. Remove an override only after the upstream dependency graph itself resolves the corrected version and `npm ci`, `npm audit --audit-level=high`, builds, PDF generation, media tests and Wrangler's local dry run succeed.
+The September 2026 toolchain baseline uses Node.js 24 LTS, npm 11, Astro 7.3.3, TypeScript 6, Playwright 1.63 and Wrangler 4.135. TypeScript 6 is the latest major accepted by `@astrojs/check` 0.9.10; TypeScript 7 remains deferred until that peer range supports it. The dependency graph resolves patched devalue, smol-toml, Sharp and SVGO releases without npm overrides. `npm ci`, `npm audit --audit-level=high`, builds, PDF generation, browser tests, media tests and Wrangler's local dry run validate this baseline.
 
-Primary references: [Astro AVIF advisory](https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2), [Sharp advisory](https://github.com/lovell/sharp/security/advisories/GHSA-rgj7-g3m4-5g8c), [devalue advisory](https://github.com/advisories/GHSA-9rgm-9g3h-6x36), and [smol-toml advisory](https://github.com/advisories/GHSA-7w5x-hrqm-74c2). The additional direct `js-yaml` and Sharp development dependencies expose libraries already used by the build, so repository validators do not rely on undeclared transitive imports.
+Primary references: [Astro AVIF advisory](https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2), [Sharp advisory](https://github.com/lovell/sharp/security/advisories/GHSA-rgj7-g3m4-5g8c), [devalue advisory](https://github.com/advisories/GHSA-9rgm-9g3h-6x36), and [smol-toml advisory](https://github.com/advisories/GHSA-7w5x-hrqm-74c2). The direct `js-yaml` and Sharp development dependencies expose libraries already used by the build, so repository validators do not rely on undeclared transitive imports.

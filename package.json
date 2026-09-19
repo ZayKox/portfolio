@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "packageManager": "npm@10.9.8",
+  "packageManager": "npm@11.19.0",
   "engines": {
-    "node": ">=22.12.0",
-    "npm": ">=10.0.0"
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
   },
   "scripts": {
     "dev": "cross-env ASTRO_TELEMETRY_DISABLED=1 astro dev",
@@ -42,28 +42,23 @@
     "test:document-guards": "node --test scripts/test-document-guards.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "7.0.3",
-    "@astrojs/sitemap": "3.7.3",
+    "@astrojs/mdx": "8.0.1",
+    "@astrojs/sitemap": "3.7.4",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.3.2",
+    "astro": "7.3.3",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.6",
-    "@axe-core/playwright": "4.10.2",
-    "@playwright/test": "1.62.1",
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
     "cross-env": "10.1.0",
-    "js-yaml": "4.3.2",
-    "lighthouse": "13.4.1",
-    "prettier": "3.6.2",
-    "prettier-plugin-astro": "0.14.1",
+    "js-yaml": "5.4.2",
+    "lighthouse": "13.5.0",
+    "prettier": "3.9.8",
+    "prettier-plugin-astro": "1.0.1",
     "sharp": "0.35.4",
-    "typescript": "5.9.3",
-    "wrangler": "4.130.0"
-  },
-  "overrides": {
-    "devalue": "5.9.2",
-    "smol-toml": "1.7.1",
-    "sharp": "0.35.4"
+    "typescript": "6.0.3",
+    "wrangler": "4.135.0"
   }
 }

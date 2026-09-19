@@ -61,14 +61,12 @@ const t = getCopy(locale);
         </ul>
       </aside>
       <ol class="about-story-list reveal">
-        {
-          t.about.paragraphs.map((paragraph, index) => (
-            <li>
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-              <p>{paragraph}</p>
-            </li>
-          ))
-        }
+        {t.about.paragraphs.map((paragraph, index) => (
+          <li>
+            <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <p>{paragraph}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
@@ -78,12 +76,16 @@ const t = getCopy(locale);
       <article class="note-card reveal">
         <p class="eyebrow">{t.about.nowLabel}</p>
         <p>{t.about.nowText}</p>
-        <a class="text-link" href={routes[locale].resume}>{t.about.resumeCta}</a>
+        <a class="text-link" href={routes[locale].resume}>
+          {t.about.resumeCta}
+        </a>
       </article>
       <article class="note-card reveal">
         <p class="eyebrow">{t.about.proofLabel}</p>
         <p>{t.about.proofText}</p>
-        <a class="text-link" href={routes[locale].projects}>{t.about.projectsCta}</a>
+        <a class="text-link" href={routes[locale].projects}>
+          {t.about.projectsCta}
+        </a>
       </article>
     </div>
   </section>

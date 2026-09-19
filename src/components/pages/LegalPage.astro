@@ -21,127 +21,125 @@ const currentPath = routes[locale][kind];
     <p class="page-lead">{page.intro}</p>
   </PageHero>
 
-  {
-    kind === "legal" ? (
-      <article class="container legal-document">
-        <section>
-          <h2>{t.legal.publisherTitle}</h2>
-          <p>{t.legal.publisherText}</p>
-          <dl>
-            <div>
-              <dt>{t.legal.publisherLabel}</dt>
-              <dd>{profile.name}</dd>
-            </div>
-            <div>
-              <dt>{t.legal.contactLabel}</dt>
-              <dd>
-                <a href={`mailto:${profile.email}`}>{profile.email}</a>
-              </dd>
-            </div>
-          </dl>
-        </section>
+  {kind === "legal" ? (
+    <article class="container legal-document">
+      <section>
+        <h2>{t.legal.publisherTitle}</h2>
+        <p>{t.legal.publisherText}</p>
+        <dl>
+          <div>
+            <dt>{t.legal.publisherLabel}</dt>
+            <dd>{profile.name}</dd>
+          </div>
+          <div>
+            <dt>{t.legal.contactLabel}</dt>
+            <dd>
+              <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            </dd>
+          </div>
+        </dl>
+      </section>
 
-        <section>
-          <h2>{t.legal.hostingTitle}</h2>
-          <p>{t.legal.hostingText}</p>
-          <address>
-            <>
-              <strong>Cloudflare, Inc.</strong>
-              <br />
-            </>
-            101 Townsend Street
+      <section>
+        <h2>{t.legal.hostingTitle}</h2>
+        <p>{t.legal.hostingText}</p>
+        <address>
+          <>
+            <strong>Cloudflare, Inc.</strong>
             <br />
-            {locale === "fr"
-              ? "San Francisco, CA 94107, États-Unis"
-              : "San Francisco, CA 94107, United States"}
-            <br />
-            <a href="tel:+16503198930">+1 (650) 319-8930</a> ·{" "}
-            <a href="https://www.cloudflare.com/terms/">Cloudflare</a>
-          </address>
-        </section>
+          </>
+          101 Townsend Street
+          <br />
+          {locale === "fr"
+            ? "San Francisco, CA 94107, États-Unis"
+            : "San Francisco, CA 94107, United States"}
+          <br />
+          <a href="tel:+16503198930">+1 (650) 319-8930</a> ·{" "}
+          <a href="https://www.cloudflare.com/terms/">Cloudflare</a>
+        </address>
+      </section>
 
-        <section>
-          <h2>{t.legal.intellectualPropertyTitle}</h2>
-          <p>{t.legal.intellectualPropertyText}</p>
-        </section>
+      <section>
+        <h2>{t.legal.intellectualPropertyTitle}</h2>
+        <p>{t.legal.intellectualPropertyText}</p>
+      </section>
 
-        <section>
-          <h2>{t.legal.externalLinksTitle}</h2>
-          <p>{t.legal.externalLinksText}</p>
-        </section>
+      <section>
+        <h2>{t.legal.externalLinksTitle}</h2>
+        <p>{t.legal.externalLinksText}</p>
+      </section>
 
-        <p class="legal-updated">
-          {t.legal.updatedLabel} : {t.legal.updatedValue}
+      <p class="legal-updated">
+        {t.legal.updatedLabel} : {t.legal.updatedValue}
+      </p>
+    </article>
+  ) : (
+    <article class="container legal-document">
+      <section>
+        <h2>{t.privacy.controllerTitle}</h2>
+        <p>{t.privacy.controllerText}</p>
+        <dl>
+          <div>
+            <dt>{t.privacy.contactLabel}</dt>
+            <dd>
+              <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>{t.privacy.collectionTitle}</h2>
+        <p>{t.privacy.collectionText}</p>
+      </section>
+
+      <section>
+        <h2>{t.privacy.emailTitle}</h2>
+        <p>{t.privacy.emailText}</p>
+      </section>
+
+      <section>
+        <h2>{t.privacy.technicalTitle}</h2>
+        <p>{t.privacy.technicalText}</p>
+      </section>
+
+      <section>
+        <h2>{t.privacy.purposeTitle}</h2>
+        <p>{t.privacy.purposeText}</p>
+      </section>
+
+      <section>
+        <h2>{t.privacy.recipientsTitle}</h2>
+        <p>{t.privacy.recipientsText}</p>
+      </section>
+
+      <section>
+        <h2>{t.privacy.transfersTitle}</h2>
+        <p>{t.privacy.transfersText}</p>
+        <p>
+          <a href="https://www.cloudflare.com/policies/privacy/">
+            {t.privacy.cloudflarePrivacyLabel}
+          </a>{" "}
+          ·{" "}
+          <a href="https://www.cloudflare.com/cloudflare-customer-dpa/">
+            {t.privacy.cloudflareDpaLabel}
+          </a>
         </p>
-      </article>
-    ) : (
-      <article class="container legal-document">
-        <section>
-          <h2>{t.privacy.controllerTitle}</h2>
-          <p>{t.privacy.controllerText}</p>
-          <dl>
-            <div>
-              <dt>{t.privacy.contactLabel}</dt>
-              <dd>
-                <a href={`mailto:${profile.email}`}>{profile.email}</a>
-              </dd>
-            </div>
-          </dl>
-        </section>
+      </section>
 
-        <section>
-          <h2>{t.privacy.collectionTitle}</h2>
-          <p>{t.privacy.collectionText}</p>
-        </section>
+      <section>
+        <h2>{t.privacy.rightsTitle}</h2>
+        <p>{t.privacy.rightsText}</p>
+      </section>
 
-        <section>
-          <h2>{t.privacy.emailTitle}</h2>
-          <p>{t.privacy.emailText}</p>
-        </section>
+      <section>
+        <h2>{t.privacy.changesTitle}</h2>
+        <p>{t.privacy.changesText}</p>
+      </section>
 
-        <section>
-          <h2>{t.privacy.technicalTitle}</h2>
-          <p>{t.privacy.technicalText}</p>
-        </section>
-
-        <section>
-          <h2>{t.privacy.purposeTitle}</h2>
-          <p>{t.privacy.purposeText}</p>
-        </section>
-
-        <section>
-          <h2>{t.privacy.recipientsTitle}</h2>
-          <p>{t.privacy.recipientsText}</p>
-        </section>
-
-        <section>
-          <h2>{t.privacy.transfersTitle}</h2>
-          <p>{t.privacy.transfersText}</p>
-          <p>
-            <a href="https://www.cloudflare.com/policies/privacy/">
-              {t.privacy.cloudflarePrivacyLabel}
-            </a>{" "}
-            ·{" "}
-            <a href="https://www.cloudflare.com/cloudflare-customer-dpa/">
-              {t.privacy.cloudflareDpaLabel}
-            </a>
-          </p>
-        </section>
-
-        <section>
-          <h2>{t.privacy.rightsTitle}</h2>
-          <p>{t.privacy.rightsText}</p>
-        </section>
-
-        <section>
-          <h2>{t.privacy.changesTitle}</h2>
-          <p>{t.privacy.changesText}</p>
-        </section>
-
-        <p class="legal-updated">
-          {t.privacy.updatedLabel} : {t.privacy.updatedValue}
-        </p>
-      </article>
-    )
-  }
+      <p class="legal-updated">
+        {t.privacy.updatedLabel} : {t.privacy.updatedValue}
+      </p>
+    </article>
+  )}
 </BaseLayout>

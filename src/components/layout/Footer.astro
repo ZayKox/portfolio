@@ -15,12 +15,18 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="footer-name" href={routes[locale].home}>{profile.brand}</a>
+      <a class="footer-name" href={routes[locale].home}>
+        {profile.brand}
+      </a>
       <p>{t.footer.note}</p>
     </div>
     <div class="footer-links" aria-label={t.footer.navigationLabel}>
-      <a href={profile.socials.github} rel="me">GitHub <span aria-hidden="true">↗</span></a>
-      <a href={profile.socials.linkedin} rel="me">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href={profile.socials.github} rel="me">
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+      <a href={profile.socials.linkedin} rel="me">
+        LinkedIn <span aria-hidden="true">↗</span>
+      </a>
       <a href={routes[locale].resume}>{t.nav.resume}</a>
       <a href={`mailto:${profile.email}`}>Email</a>
       <a
@@ -37,7 +43,9 @@ const year = new Date().getFullYear();
       </a>
     </div>
     <div class="footer-meta">
-      <p>© {year} {profile.name}</p>
+      <p>
+        © {year} {profile.name}
+      </p>
       <p>{t.footer.noTracking}</p>
     </div>
   </div>

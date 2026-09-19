@@ -13,46 +13,44 @@ const palimiaLabels = getCopy(locale).visual.library;
 ---
 
 <div class:list={["project-visual", `project-visual--${visual}`]} aria-hidden="true">
-  {
-    visual === "cultural-library" ? (
-      <div class="palimia-library">
-        <header class="palimia-library-bar">
-          <strong>{title}</strong>
-          <span>{palimiaLabels.profile}</span>
-        </header>
-        <div class="palimia-library-heading">
-          <div>
-            <span>{palimiaLabels.library}</span>
-            <strong>{palimiaLabels.worlds}</strong>
-          </div>
-          <span class="palimia-library-count">
-            {String(palimiaLabels.media.length).padStart(2, "0")}
-          </span>
+  {visual === "cultural-library" ? (
+    <div class="palimia-library">
+      <header class="palimia-library-bar">
+        <strong>{title}</strong>
+        <span>{palimiaLabels.profile}</span>
+      </header>
+      <div class="palimia-library-heading">
+        <div>
+          <span>{palimiaLabels.library}</span>
+          <strong>{palimiaLabels.worlds}</strong>
         </div>
-        <div class="palimia-library-shelf">
-          {palimiaLabels.media.map((label) => (
-            <div class="palimia-media-card">
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-        <div class="palimia-library-footer">
-          {palimiaLabels.actions.map((label) => (
-            <span>{label}</span>
-          ))}
-        </div>
+        <span class="palimia-library-count">
+          {String(palimiaLabels.media.length).padStart(2, "0")}
+        </span>
       </div>
-    ) : visual === "game-tiles" ? (
-      <>
-        {items.map((item, index) => (
-          <div class:list={["game-tile", `game-tile--${["reflex", "merge", "grid"][index % 3]}`]}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item}</strong>
+      <div class="palimia-library-shelf">
+        {palimiaLabels.media.map((label) => (
+          <div class="palimia-media-card">
+            <span>{label}</span>
           </div>
         ))}
-      </>
-    ) : (
-      <strong class="project-visual-title">{title}</strong>
-    )
-  }
+      </div>
+      <div class="palimia-library-footer">
+        {palimiaLabels.actions.map((label) => (
+          <span>{label}</span>
+        ))}
+      </div>
+    </div>
+  ) : visual === "game-tiles" ? (
+    <>
+      {items.map((item, index) => (
+        <div class:list={["game-tile", `game-tile--${["reflex", "merge", "grid"][index % 3]}`]}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{item}</strong>
+        </div>
+      ))}
+    </>
+  ) : (
+    <strong class="project-visual-title">{title}</strong>
+  )}
 </div>

@@ -6,7 +6,7 @@ The public site is available at <https://ethanbrosselard.com>. French is served 
 
 ## Local development
 
-Use Node.js 22.12 or newer and npm 10 or newer. Install the exact dependency versions from `package-lock.json`, then start Astro:
+Use Node.js 24 LTS or newer and npm 11 or newer. Install the exact dependency versions from `package-lock.json`, then start Astro:
 
 ```sh
 nvm use

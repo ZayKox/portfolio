@@ -33,11 +33,15 @@ const projects = (
       <div class="hero-copy reveal">
         <p class="eyebrow hero-eyebrow">{t.home.eyebrow}</p>
         <h1>
-          {titleBefore}<span class="hero-title-emphasis">{t.home.titleEmphasis}</span>{titleAfter}
+          {titleBefore}
+          <span class="hero-title-emphasis">{t.home.titleEmphasis}</span>
+          {titleAfter}
         </h1>
         <p class="hero-intro">{t.home.intro}</p>
         <div class="button-row">
-          <a class="button button--primary" href={localizedRoutes.projects}>{t.home.projectsCta}</a>
+          <a class="button button--primary" href={localizedRoutes.projects}>
+            {t.home.projectsCta}
+          </a>
           <a class="button button--secondary" href={profile.socials.github} rel="me">
             {t.home.githubCta}
             <span aria-hidden="true">↗</span>
@@ -49,30 +53,28 @@ const projects = (
         <div class="hero-field-grid" aria-hidden="true"></div>
         <div class="hero-panel-identity">
           <strong>{profile.name}</strong>
-          <span>{profile.brand} <span aria-hidden="true">/</span> {profile.location}</span>
+          <span>
+            {profile.brand} <span aria-hidden="true">/</span> {profile.location}
+          </span>
         </div>
 
         <div class="hero-panel-projects">
-          {
-            projects.map((entry) => {
-              const href =
-                locale === "fr"
-                  ? `/projets/${entry.data.slug}/`
-                  : `/en/projects/${entry.data.slug}/`;
+          {projects.map((entry) => {
+            const href =
+              locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
 
-              return (
-                <a href={href} aria-label={`${entry.data.title} — ${t.projects.viewProject}`}>
-                  <span class="hero-panel-project-copy">
-                    <strong>{entry.data.title}</strong>
-                    <small>{entry.data.shortSummary}</small>
-                  </span>
-                  <span class="hero-panel-project-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
-              );
-            })
-          }
+            return (
+              <a href={href} aria-label={`${entry.data.title} — ${t.projects.viewProject}`}>
+                <span class="hero-panel-project-copy">
+                  <strong>{entry.data.title}</strong>
+                  <small>{entry.data.shortSummary}</small>
+                </span>
+                <span class="hero-panel-project-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            );
+          })}
         </div>
       </aside>
     </div>
@@ -87,7 +89,9 @@ const projects = (
       <p>{t.home.selectedProjectsIntro}</p>
     </div>
     <div class="container project-list">
-      {projects.map((entry) => <ProjectCard {entry} {locale} />)}
+      {projects.map((entry) => (
+        <ProjectCard {entry} {locale} />
+      ))}
     </div>
   </section>
 
@@ -100,15 +104,13 @@ const projects = (
       <p>{t.home.fieldsIntro}</p>
     </div>
     <div class="container field-grid">
-      {
-        t.home.fields.map((field) => (
-          <article class="field-card reveal">
-            <span class="field-index">{field.index}</span>
-            <h3>{field.title}</h3>
-            <p>{field.text}</p>
-          </article>
-        ))
-      }
+      {t.home.fields.map((field) => (
+        <article class="field-card reveal">
+          <span class="field-index">{field.index}</span>
+          <h3>{field.title}</h3>
+          <p>{field.text}</p>
+        </article>
+      ))}
     </div>
   </section>
 
