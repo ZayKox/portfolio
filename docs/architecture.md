@@ -91,6 +91,7 @@ Workers uses revalidation for HTML and long-lived immutable browser caching only
 `npm run verify` checks:
 
 - formatting;
+- 100% line, branch, and function coverage for the pure validation libraries;
 - Node, npm, CI, Wrangler, and Dependabot consistency;
 - Workers configuration;
 - bilingual project parity;
@@ -101,11 +102,15 @@ Workers uses revalidation for HTML and long-lived immutable browser caching only
 - a fully `noindex` preview build;
 - a build without a domain.
 
+The coverage gate targets deterministic library code for deployment artifacts, external links, media provenance, project parsing, resume fingerprints, and route generation. Build-time Astro components and browser scripts use behavior-level coverage instead: every public route is built and inspected, then exercised through the browser matrix. This avoids presenting a source-instrumentation percentage as proof that generated HTML, CSS, accessibility, or browser behavior is correct.
+
 `scripts/validate-build.mjs` checks routes, internal reachability, French/English pairs, titles, descriptions, Open Graph locales, sitemap, robots directives, CSP hashes, JSON-LD, document languages, heading hierarchy, main landmarks, current-page state, control names, external-resource restrictions, tracking restrictions, required Violet Field tokens, theme parity, primary contrast ratios, HTML/CSS/JavaScript budgets, placeholders, and common secret patterns.
 
 ## Browser validation
 
 `npm run test:e2e` tests all public routes in Chromium, Firefox, WebKit, and mobile Chromium and WebKit profiles. Coverage includes rendering, JavaScript and CSP errors, themes, saved and system preferences, localized control names and states, major links, real 404 behavior, skip-link behavior, DOM tab order, focus visibility, reduced motion, touch targets, 320 px overflow, and axe violations.
+
+Every language selector is also followed in Chromium to prove that each French route resolves to its exact English equivalent and back. CI lints all GitHub Actions workflows with a checksum-verified pinned Actionlint binary before running Node-based validation.
 
 Chromium also checks viewport widths corresponding to 200% and 400% reflow from a 1280 px desktop viewport. The site remains readable and navigable without JavaScript. Synthetic checks do not replace real browser zoom, a physical device, or screen-reader review.
 
@@ -122,6 +127,8 @@ Production mode checks canonical URLs, alternates, JSON-LD, social cards, and th
 The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
 
 `check:resume`, included in `verify`, compares each PDF with a conservative manifest covering relevant sources, Astro and TypeScript configuration, npm manifests, the lockfile, and the generator. A source change may therefore require `npm run generate:resume-pdfs` even when the visible resume does not change. Freshness validation detects stale artifacts; it does not certify visual quality or PDF/UA compliance.
+
+PDF semantic tests independently extract both documents, require two readable pages, verify the declared language and title, check the expected section headings and localized links, reject forms and placeholders, and require a structure tree. This is stronger than a byte hash but still does not constitute formal PDF/UA certification or a manual assistive-technology review.
 
 ## Future content
 

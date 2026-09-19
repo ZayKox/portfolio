@@ -27,6 +27,36 @@ for (const [name, mutate, message] of [
     /CSP/,
   ],
   [
+    "external CSP source",
+    (source) => source.replace("default-src 'self'", "default-src 'self' https://tracker.example"),
+    /external source/,
+  ],
+  [
+    "external script",
+    (source) =>
+      source.replace("</body>", '<script src="https://tracker.example/x.js"></script></body>'),
+    /external script/,
+  ],
+  [
+    "document language",
+    (source) => source.replace('<html lang="fr"', '<html lang="en"'),
+    /language/,
+  ],
+  ["main heading", (source) => source.replace(/<h1\b[^>]*>/i, "<h2>"), /h1/],
+  ["title", (source) => source.replace(/<title>[\s\S]*?<\/title>/i, ""), /title/],
+  [
+    "description",
+    (source) => source.replace(/<meta\b[^>]*name="description"[^>]*>/i, ""),
+    /description/,
+  ],
+  ["visible placeholder", (source) => source.replace("</body>", "TODO</body>"), /placeholder/],
+  ["favicon", (source) => source.replace(/<link\b[^>]*rel="icon"[^>]*>/i, ""), /favicon/],
+  [
+    "Apple touch icon",
+    (source) => source.replace(/<link\b[^>]*rel="apple-touch-icon"[^>]*>/i, ""),
+    /Apple touch icon/,
+  ],
+  [
     "JSON-LD language",
     (source) => source.replace('"inLanguage":"fr"', '"inLanguage":"en"'),
     /language/,

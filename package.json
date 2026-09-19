@@ -20,6 +20,7 @@
     "deploy:preview": "wrangler versions upload",
     "deploy:production": "wrangler deploy",
     "test:e2e": "playwright test",
+    "test:coverage": "node --test --experimental-test-coverage --test-coverage-lines=100 --test-coverage-functions=100 --test-coverage-branches=100 --test-coverage-include=scripts/deployment-artifacts.mjs --test-coverage-include=scripts/link-checks.mjs --test-coverage-include=scripts/media-provenance.mjs --test-coverage-include=scripts/project-content.mjs --test-coverage-include=scripts/resume-artifacts.mjs --test-coverage-include=scripts/route-catalog.mjs scripts/test-content.mjs scripts/test-deployment-artifacts.mjs scripts/test-links.mjs scripts/test-media.mjs scripts/test-resume-artifacts.mjs",
     "test:lighthouse": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && node scripts/run-lighthouse.mjs",
     "test:deployment": "node scripts/validate-deployment.mjs",
     "test:deployment-redirects": "node scripts/test-deployment-redirects.mjs",
@@ -31,7 +32,7 @@
     "verify:site": "cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run build && cross-env SITE_URL=https://portfolio.example SITE_NOINDEX=false npm run validate:build",
     "verify:preview": "cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run build && cross-env SITE_URL=https://preview.portfolio.example SITE_NOINDEX=true npm run validate:build",
     "verify:no-site": "cross-env SITE_URL= SITE_NOINDEX=false npm run build && cross-env SITE_URL= SITE_NOINDEX=false npm run validate:build",
-    "verify": "npm run format:check && npm run check:toolchain && npm run check:content && npm run check:resume-data && npm run test:content && npm run test:links && npm run check:media && npm run test:media && npm run check:resume && npm run test:resume-artifacts && npm run test:deployment-redirects && npm run test:deployment-artifacts && npm run check && npm run verify:site && npm run test:document-guards && npm run verify:preview && npm run verify:no-site",
+    "verify": "npm run format:check && npm run check:toolchain && npm run check:content && npm run check:resume-data && npm run test:coverage && npm run check:media && npm run check:resume && npm run test:resume-pdf-content && npm run test:deployment-redirects && npm run check && npm run test:document-guards && npm run verify:preview && npm run verify:no-site",
     "check:resume": "node scripts/validate-resume-artifacts.mjs",
     "test:resume-artifacts": "node --test scripts/test-resume-artifacts.mjs",
     "check:resume-data": "node scripts/validate-resume-data.mjs",
@@ -39,7 +40,8 @@
     "test:media": "node --test scripts/test-media.mjs",
     "test:links": "node --test scripts/test-links.mjs",
     "test:deployment-artifacts": "node --test scripts/test-deployment-artifacts.mjs",
-    "test:document-guards": "node --test scripts/test-document-guards.mjs"
+    "test:document-guards": "npm run verify:site && node --test scripts/test-document-guards.mjs",
+    "test:resume-pdf-content": "node --test scripts/test-resume-pdf-content.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "8.0.1",
@@ -55,6 +57,7 @@
     "cross-env": "10.1.0",
     "js-yaml": "5.4.2",
     "lighthouse": "13.5.0",
+    "pdfjs-dist": "6.3.289",
     "prettier": "3.9.8",
     "prettier-plugin-astro": "1.0.1",
     "sharp": "0.35.4",

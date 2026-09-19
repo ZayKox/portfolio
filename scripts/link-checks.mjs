@@ -7,6 +7,7 @@ export async function checkLink(
   } = {},
 ) {
   const attempts = [];
+  let finalReason = "Network requests failed; manual review required";
   const send = (method) =>
     request(url, {
       method,
@@ -30,23 +31,19 @@ export async function checkLink(
       if (response.ok) return { url, status: "verified", attempts };
       if ([404, 410].includes(status))
         return { url, status: "broken", reason: `HTTP ${status}`, attempts };
-      if (status < 500 || status > 599 || attempt === 1)
+      finalReason = `HTTP ${status}; manual review required`;
+      if (status < 500 || status > 599)
         return {
           url,
           status: "inconclusive",
-          reason: `HTTP ${status}; manual review required`,
+          reason: finalReason,
           attempts,
         };
     } catch (error) {
       attempts.push({ error: error instanceof Error ? error.message : "Network error" });
-      if (attempt === 1)
-        return {
-          url,
-          status: "inconclusive",
-          reason: "Network requests failed; manual review required",
-          attempts,
-        };
+      finalReason = "Network requests failed; manual review required";
     }
-    await pause(1000);
+    if (attempt === 0) await pause(1000);
   }
+  return { url, status: "inconclusive", reason: finalReason, attempts };
 }

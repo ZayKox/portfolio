@@ -20,6 +20,7 @@ Copy `.env.example` only when a local build needs documented environment variabl
 
 ```sh
 npm run verify
+npm run test:coverage
 npm run test:e2e
 npm run test:lighthouse
 npm run check:links
@@ -36,6 +37,8 @@ npx playwright install --with-deps chromium firefox webkit
 - an indexable build with a reserved HTTPS origin;
 - a fully `noindex` preview build;
 - a build without `SITE_URL`, which must not emit misleading absolute metadata.
+
+The verification gate also requires 100% line, branch, and function coverage for the pure validation libraries that parse content, check links and media, fingerprint resumes, and compare deployment artifacts. Astro rendering and browser behavior are covered separately by build, Playwright, Axe, and Lighthouse tests because source-instrumentation percentages do not describe those generated pages faithfully.
 
 For a production-style local build, provide an HTTPS origin without a path:
 

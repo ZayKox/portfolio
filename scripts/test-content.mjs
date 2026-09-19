@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { cp, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import test from "node:test";
 import { projectSchema } from "../src/lib/project-schema.mjs";
 import { resumeSchema } from "../src/data/resume-schema.mjs";
@@ -105,6 +108,53 @@ test("YAML duplicate keys fail instead of silently changing a publication decisi
       ),
     /duplicated mapping key/,
   );
+  assert.throws(() => parseProject("No frontmatter", "fixture"), /frontmatter/);
+  assert.throws(
+    () => parseProject(source.replace(/\n---\n[\s\S]*$/, "\n---\n   "), "fixture"),
+    /missing narrative/,
+  );
+  assert.equal(parseProject(source, "fixture").data.locale, "fr");
+});
+
+test("project loading rejects content whose locale or slug differs from its path", async (t) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "portfolio-content-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(path.join(root, "src/content"), { recursive: true });
+  await cp("src/content/projects", path.join(root, "src/content/projects"), { recursive: true });
+  const filename = path.join(root, "src/content/projects/fr/palimia.mdx");
+  const source = await readFile(filename, "utf8");
+  await writeFile(path.join(root, "src/content/projects/fr/ignored.txt"), "ignored");
+  await writeFile(filename, source.replace("locale: fr", "locale: en"));
+  assert.throws(() => loadProjects(root), /locale and slug/);
+  await writeFile(filename, source.replace("slug: palimia", "slug: wrong-slug"));
+  assert.throws(() => loadProjects(root), /locale and slug/);
+});
+
+test("project parity rejects duplicate identity, order, facts and narrative structure", () => {
+  const duplicate = structuredClone(projects);
+  duplicate.push(structuredClone(duplicate[0]));
+  assert.throws(() => assertProjectParity(duplicate), /duplicate/);
+
+  const duplicateOrder = structuredClone(projects);
+  duplicateOrder[1].data.order = duplicateOrder[0].data.order;
+  duplicateOrder[1].data.slug = `${duplicateOrder[1].data.slug}-unique`;
+  assert.throws(() => assertProjectParity(duplicateOrder), /duplicate/);
+
+  const review = structuredClone(projects);
+  review[0].data.review.reviewedOn = "2026-09-10";
+  assert.throws(() => assertProjectParity(review), /review or metric facts/);
+
+  const narrative = structuredClone(projects);
+  narrative[0].body += "\n\n## Additional section\nFixture";
+  assert.throws(() => assertProjectParity(narrative), /narrative structure/);
+
+  const optionalFacts = structuredClone(projects);
+  for (const project of optionalFacts) {
+    delete project.data.review;
+    delete project.data.metrics;
+    project.body = "Narrative without headings";
+  }
+  assertProjectParity(optionalFacts);
 });
 test("resume rejects unknown contacts, missing timeline facts, invalid chronology and unpaired items", () => {
   const resume = JSON.parse(readFileSync("src/data/resume.json", "utf8"));

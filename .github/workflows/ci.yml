@@ -22,6 +22,19 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Lint GitHub Actions workflows
+        shell: bash
+        run: |
+          actionlint_version="1.7.12"
+          actionlint_archive="actionlint_${actionlint_version}_linux_amd64.tar.gz"
+          actionlint_sha256="8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+          curl --fail --location --silent --show-error \
+            --output "/tmp/${actionlint_archive}" \
+            "https://github.com/rhysd/actionlint/releases/download/v${actionlint_version}/${actionlint_archive}"
+          echo "${actionlint_sha256}  /tmp/${actionlint_archive}" | sha256sum --check --strict
+          tar --extract --gzip --file "/tmp/${actionlint_archive}" --directory /tmp actionlint
+          /tmp/actionlint
+
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:

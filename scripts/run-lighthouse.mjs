@@ -97,16 +97,15 @@ function numericAudit(lhr, id) {
 
 const port = await availablePort();
 const origin = `http://127.0.0.1:${port}`;
-const astroBin = path.join(root, "node_modules", "astro", "bin", "astro.mjs");
-const preview = spawn(
-  process.execPath,
-  [astroBin, "preview", "--host", "127.0.0.1", "--port", `${port}`],
-  {
-    cwd: root,
-    env: { ...process.env, ASTRO_TELEMETRY_DISABLED: "1" },
-    stdio: ["ignore", "pipe", "pipe"],
+const preview = spawn(process.execPath, [path.join(root, "scripts", "preview-test-server.mjs")], {
+  cwd: root,
+  env: {
+    ...process.env,
+    ASTRO_TELEMETRY_DISABLED: "1",
+    PORTFOLIO_PREVIEW_PORT: String(port),
   },
-);
+  stdio: ["ignore", "pipe", "pipe"],
+});
 let previewError = "";
 preview.stderr.on("data", (chunk) => {
   previewError += chunk.toString();

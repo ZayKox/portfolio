@@ -1,4 +1,4 @@
-import { publicRoutes as routeCatalog } from "../../scripts/route-catalog.mjs";
+import { languagePairs, publicRoutes as routeCatalog } from "../../scripts/route-catalog.mjs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
@@ -83,6 +83,24 @@ test("localized navigation controls expose names and states", async ({ page }, t
     await expect(themeSelect).toHaveValue("dark");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await page.evaluate(() => localStorage.removeItem("portfolio-theme"));
+  }
+});
+
+test("every language switch opens the exact equivalent route", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "One browser proof is enough");
+
+  for (const pair of languagePairs) {
+    for (const [source, destination, label, language] of [
+      [pair.fr, pair.en, "View this page in English", "en"],
+      [pair.en, pair.fr, "Voir cette page en français", "fr"],
+    ] as const) {
+      await page.goto(source);
+      const languageSwitch = page.getByRole("link", { name: label });
+      await expect(languageSwitch).toHaveAttribute("href", destination);
+      await languageSwitch.click();
+      await expect(page).toHaveURL(new RegExp(`${destination.replaceAll("/", "\\/")}$`));
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+    }
   }
 });
 

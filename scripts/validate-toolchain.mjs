@@ -129,6 +129,16 @@ requireCondition(
   "npm run verify must include the canonical redirect test",
 );
 requireCondition(
+  packageJson.scripts?.verify?.includes("npm run test:coverage"),
+  "npm run verify must enforce the 100% core coverage gate",
+);
+requireCondition(
+  packageJson.scripts?.["test:coverage"]?.includes("--test-coverage-lines=100") &&
+    packageJson.scripts?.["test:coverage"]?.includes("--test-coverage-branches=100") &&
+    packageJson.scripts?.["test:coverage"]?.includes("--test-coverage-functions=100"),
+  "the core coverage command must require 100% lines, branches and functions",
+);
+requireCondition(
   !Object.keys(packageJson.scripts ?? {}).some((name) => name.includes("container")),
   "package.json must not retain obsolete container validation commands",
 );
@@ -244,6 +254,13 @@ for (const command of [
 ]) {
   requireCondition(ciWorkflow.includes(`run: ${command}`), `CI is missing: ${command}`);
 }
+requireCondition(
+  /actionlint_version="1\.7\.12"/.test(ciWorkflow) &&
+    /actionlint_sha256="[a-f0-9]{64}"/.test(ciWorkflow) &&
+    /sha256sum --check --strict/.test(ciWorkflow) &&
+    /\/tmp\/actionlint/.test(ciWorkflow),
+  "CI must run a checksum-verified pinned actionlint binary",
+);
 requireCondition(!ciWorkflow.includes("container"), "CI must not retain container smoke tests");
 requireCondition(
   !/CLOUDFLARE_|CF_ACCESS_|wrangler\s+(?:deploy|versions\s+upload)/.test(ciWorkflow),

@@ -1,12 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, writeFile, rm, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
   jobs,
   manifestPath,
   artifactManifest,
+  sourceFingerprint,
   validateResumeArtifacts,
 } from "./resume-artifacts.mjs";
 
@@ -31,6 +32,12 @@ test("PDF validation rejects changed, added, removed sources and missing or tamp
     writeFile(path.join(root, manifestPath), JSON.stringify(await artifactManifest(root)));
   await record();
   await validateResumeArtifacts(root);
+  const saved = JSON.parse(await readFile(path.join(root, manifestPath), "utf8"));
+  await writeFile(path.join(root, manifestPath), JSON.stringify({ ...saved, version: 2 }));
+  await assert.rejects(validateResumeArtifacts(root), /stale/);
+  await writeFile(path.join(root, manifestPath), JSON.stringify({ ...saved, outputs: undefined }));
+  await assert.rejects(validateResumeArtifacts(root), /stale/);
+  await record();
   await writeFile(path.join(root, "src/nested/content.ts"), "changed");
   await assert.rejects(validateResumeArtifacts(root), /stale/);
   await record();
@@ -45,4 +52,13 @@ test("PDF validation rejects changed, added, removed sources and missing or tamp
   await record();
   await rm(path.join(root, "public/cv", jobs[1].filename));
   await assert.rejects(validateResumeArtifacts(root), /ENOENT/);
+});
+
+test("resume source fingerprints reject symbolic links", async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), "resume-symlink-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(path.join(root, "src"));
+  await writeFile(path.join(root, "target.ts"), "fixture");
+  await symlink("../target.ts", path.join(root, "src", "linked.ts"));
+  await assert.rejects(sourceFingerprint(root), /Unsupported symlink/);
 });

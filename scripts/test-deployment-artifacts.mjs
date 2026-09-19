@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, mkdir, writeFile, rm, symlink } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -38,6 +38,7 @@ test("artifact comparison detects an old PDF and maps static routes correctly", 
     await writeFile(path.join(root, "404.html"), "missing");
     await writeFile(path.join(root, "cv/test.pdf"), pdf);
     await writeFile(path.join(root, "_headers"), "not served");
+    await writeFile(path.join(root, "_redirects"), "not served either");
     const artifact = await deploymentArtifact(root, "a".repeat(40));
     assert.equal(artifact.files.length, 3);
     assert(artifact.files.some((file) => file.route === "/"));
@@ -56,4 +57,40 @@ test("artifact comparison detects an old PDF and maps static routes correctly", 
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+test("artifact manifests reject empty directories and symlinks", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "portfolio-artifact-invalid-"));
+  try {
+    await assert.rejects(deploymentArtifact(root, "a".repeat(40)), /empty/);
+    await assert.rejects(deploymentArtifact(root), /full expected Git revision/);
+    await writeFile(path.join(root, "target.txt"), "target");
+    await symlink("target.txt", path.join(root, "linked.txt"));
+    await assert.rejects(deploymentArtifact(root, "a".repeat(40)), /symlink/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("PDF validation rejects a missing signature and a missing trailer independently", async () => {
+  await assert.rejects(
+    validatePdfResponse(new Response("%PDF-1.7\n%%EOF"), "/cv/test.pdf"),
+    /content type/,
+  );
+  await assert.rejects(
+    validatePdfResponse(
+      new Response("not-a-pdf\n%%EOF", { headers: { "content-type": "application/pdf" } }),
+      "/cv/test.pdf",
+    ),
+    /incomplete PDF/,
+  );
+  await assert.rejects(
+    validatePdfResponse(
+      new Response("%PDF-1.7\nwithout trailer", {
+        headers: { "content-type": "application/pdf" },
+      }),
+      "/cv/test.pdf",
+    ),
+    /incomplete PDF/,
+  );
 });
