@@ -63,13 +63,19 @@ jobs:
           fi
           deployment_sha="$(git rev-parse HEAD)"
           preview_url="https://${PREVIEW_ALIAS}-portfolio.${WORKERS_SUBDOMAIN}.workers.dev"
-          echo "SITE_URL=$preview_url" >> "$GITHUB_ENV"
-          echo "SITE_NOINDEX=true" >> "$GITHUB_ENV"
-          echo "deployment_sha=$deployment_sha" >> "$GITHUB_OUTPUT"
-          echo "preview_alias=$PREVIEW_ALIAS" >> "$GITHUB_OUTPUT"
-          echo "preview_url=$preview_url" >> "$GITHUB_OUTPUT"
-          echo "Revision: \`$deployment_sha\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "Preview URL: $preview_url" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "SITE_URL=$preview_url"
+            echo "SITE_NOINDEX=true"
+          } >> "$GITHUB_ENV"
+          {
+            echo "deployment_sha=$deployment_sha"
+            echo "preview_alias=$PREVIEW_ALIAS"
+            echo "preview_url=$preview_url"
+          } >> "$GITHUB_OUTPUT"
+          {
+            echo "Revision: \`$deployment_sha\`"
+            echo "Preview URL: $preview_url"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Install dependencies without deployment credentials
         run: npm ci
