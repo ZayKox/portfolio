@@ -53,6 +53,32 @@ for (const route of ["/", "/en/", "/cv/", "/en/resume/", "/contact/", "/en/conta
 }
 
 for (const route of ["/", "/en/"]) {
+  test(`${route} aligns the mobile contact action after the accent rule`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 720 });
+    await page.goto(route);
+
+    const alignment = await page.evaluate(() => {
+      const band = document.querySelector<HTMLElement>(".contact-band-inner")!;
+      const copy = document.querySelector<HTMLElement>(".contact-band-copy")!;
+      const action = document.querySelector<HTMLElement>(".contact-band .button")!;
+      const bandRect = band.getBoundingClientRect();
+      const copyRect = copy.getBoundingClientRect();
+      const actionRect = action.getBoundingClientRect();
+
+      return {
+        bandLeft: bandRect.left,
+        bandRight: bandRect.right,
+        copyLeft: copyRect.left,
+        actionLeft: actionRect.left,
+        actionRight: actionRect.right,
+      };
+    });
+
+    expect(alignment.copyLeft).toBeGreaterThan(alignment.bandLeft);
+    expect(alignment.actionLeft).toBe(alignment.copyLeft);
+    expect(alignment.actionRight).toBeLessThanOrEqual(alignment.bandRight);
+  });
+
   test(`${route} keeps navigation readable with WCAG text spacing`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
     await page.goto(route);
@@ -100,5 +126,16 @@ for (const route of ["/", "/en/"]) {
     await page.locator(".hero-copy .button--primary").click();
     await expect(page).toHaveURL(route === "/" ? /\/projets\/$/ : /\/en\/projects\/$/);
     await expect(page.locator("html")).toHaveAttribute("data-had-view-transition", "false");
+  });
+}
+
+for (const route of ["/cv/", "/en/resume/"]) {
+  test(`${route} keeps the mobile resume document centered`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 720 });
+    await page.goto(route);
+
+    const documentRect = await page.locator(".resume-document").boundingBox();
+    expect(documentRect).not.toBeNull();
+    expect(documentRect!.x).toBeCloseTo((320 - documentRect!.width) / 2, 1);
   });
 }
