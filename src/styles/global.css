@@ -1829,7 +1829,7 @@ h3 {
 
 .resume-document-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.65fr);
+  grid-template-columns: 1fr;
   gap: var(--space-4);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border);
@@ -1853,17 +1853,25 @@ h3 {
 }
 
 .resume-contact-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.resume-contact-list div {
+.resume-contact-list li {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
   min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
-.resume-contact-list dt,
+.resume-contact-label,
 .resume-entry-meta,
 .resume-technologies {
   color: var(--text-muted);
@@ -1872,11 +1880,8 @@ h3 {
   line-height: 1.45;
 }
 
-.resume-contact-list dd {
-  margin: 0.1rem 0 0;
-  overflow-wrap: anywhere;
-  font-size: 0.82rem;
-  line-height: 1.4;
+.resume-contact-label {
+  font-weight: 650;
 }
 
 .resume-contact-list a {
@@ -1891,6 +1896,14 @@ h3 {
 
 .resume-section {
   margin-top: var(--space-5);
+}
+
+.resume-section--profile {
+  margin-top: var(--space-4);
+}
+
+.resume-section--profile .resume-summary {
+  margin-top: 0;
 }
 
 .resume-section > h2 {
@@ -2593,10 +2606,6 @@ h3 {
     border-radius: 0;
   }
 
-  .resume-contact-list {
-    grid-template-columns: 1fr;
-  }
-
   .resume-skill-list div,
   .resume-language-list div {
     grid-template-columns: 1fr;
@@ -2667,13 +2676,9 @@ h3 {
     gap: 0.45rem 0.8rem;
   }
 
-  .resume-contact-list dt,
+  .resume-contact-list li,
   .resume-entry-meta,
   .resume-technologies {
-    font-size: 8pt;
-  }
-
-  .resume-contact-list dd {
     font-size: 8pt;
   }
 
@@ -2691,10 +2696,6 @@ h3 {
     margin-bottom: 0.45rem;
     font-size: 8.5pt;
     break-after: avoid;
-  }
-
-  .resume-section--education {
-    break-before: page;
   }
 
   .resume-entry-list,

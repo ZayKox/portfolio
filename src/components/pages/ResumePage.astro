@@ -55,21 +55,23 @@ const resumeUrl = profile.resume[locale];
   <article class="container resume-document" aria-label={`${t.nav.resume} — ${profile.name}`}>
     <header class="resume-document-header">
       <div>
-        <p class="eyebrow">{profile.brand}</p>
         <h2>{profile.name}</h2>
         <p class="resume-role">{document.role}</p>
       </div>
-      <dl class="resume-contact-list">
+      <ul class="resume-contact-list" aria-label={t.resume.contact}>
         {contacts.map((item) => (
-          <div>
-            <dt>{item.label}</dt>
-            <dd>{item.href ? <a href={item.href}>{item.value}</a> : item.value}</dd>
-          </div>
+          <li>
+            <span class="resume-contact-label">{item.label}:</span>{" "}
+            {item.href ? <a href={item.href}>{item.value}</a> : item.value}
+          </li>
         ))}
-      </dl>
+      </ul>
     </header>
 
-    <p class="resume-summary">{document.summary}</p>
+    <section class="resume-section resume-section--profile">
+      <h2>{t.resume.profile}</h2>
+      <p class="resume-summary">{document.summary}</p>
+    </section>
 
     <section class="resume-section">
       <h2>{t.resume.experience}</h2>
@@ -94,9 +96,21 @@ const resumeUrl = profile.resume[locale];
             {"summary" in entry && entry.summary && <p>{entry.summary}</p>}
             {"highlights" in entry && entry.highlights && (
               <ul>
-                {entry.highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
+                {entry.highlights.map((highlight) => {
+                  const separatorIndex = highlight.indexOf(" — ");
+                  return (
+                    <li>
+                      {separatorIndex < 0 ? (
+                        highlight
+                      ) : (
+                        <span>
+                          <strong>{highlight.slice(0, separatorIndex)}</strong>
+                          {highlight.slice(separatorIndex)}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             )}
             {"technologies" in entry && entry.technologies && (
@@ -105,6 +119,18 @@ const resumeUrl = profile.resume[locale];
           </article>
         ))}
       </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.skills}</h2>
+      <dl class="resume-skill-list">
+        {document.skillGroups.map((group) => (
+          <div>
+            <dt>{group.category}</dt>
+            <dd>{group.items}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
 
     <section class="resume-section resume-section--education">
@@ -131,30 +157,6 @@ const resumeUrl = profile.resume[locale];
           </article>
         ))}
       </div>
-    </section>
-
-    <section class="resume-section">
-      <h2>{t.resume.skills}</h2>
-      <dl class="resume-skill-list">
-        {document.skillGroups.map((group) => (
-          <div>
-            <dt>{group.category}</dt>
-            <dd>{group.items}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-
-    <section class="resume-section">
-      <h2>{t.resume.languages}</h2>
-      <dl class="resume-language-list">
-        {document.languages.map((language) => (
-          <div>
-            <dt>{language.name}</dt>
-            <dd>{language.level}</dd>
-          </div>
-        ))}
-      </dl>
     </section>
 
     <section class="resume-section">
@@ -187,6 +189,18 @@ const resumeUrl = profile.resume[locale];
           </div>
         ))}
       </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>{t.resume.languages}</h2>
+      <dl class="resume-language-list">
+        {document.languages.map((language) => (
+          <div>
+            <dt>{language.name}</dt>
+            <dd>{language.level}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   </article>
 </BaseLayout>
