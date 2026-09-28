@@ -42,6 +42,7 @@ const resumeUrl = profile.resume[locale];
       <p class="page-lead">{t.resume.intro}</p>
       <ul class="resume-hero-meta" aria-label={t.resume.contact}>
         <li>{document.role}</li>
+        <li>{document.objective}</li>
         <li>{profile.location}</li>
       </ul>
       <div class="button-row resume-actions">
@@ -57,6 +58,7 @@ const resumeUrl = profile.resume[locale];
       <div>
         <h2>{profile.name}</h2>
         <p class="resume-role">{document.role}</p>
+        <p class="resume-objective">{document.objective}</p>
       </div>
       <ul class="resume-contact-list" aria-label={t.resume.contact}>
         {contacts.map((item) => (

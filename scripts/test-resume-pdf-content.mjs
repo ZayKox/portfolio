@@ -9,7 +9,16 @@ const expectations = {
   "ethan-brosselard-cv-fr.pdf": {
     language: "fr",
     title: "CV — Ethan Brosselard",
-    headings: ["EXPÉRIENCES", "FORMATION", "COMPÉTENCES", "LANGUES", "PROJETS"],
+    role: "Développeur logiciel junior",
+    objective: "CDI ou CDD · Télétravail",
+    headings: [
+      "Profil",
+      "Expériences professionnelles",
+      "Compétences",
+      "Formation",
+      "Projets",
+      "Langues",
+    ],
     localLinks: [
       "https://ethanbrosselard.com/",
       "https://ethanbrosselard.com/projets/ludosaic/",
@@ -19,7 +28,9 @@ const expectations = {
   "ethan-brosselard-resume-en.pdf": {
     language: "en",
     title: "Resume — Ethan Brosselard",
-    headings: ["EXPERIENCE", "EDUCATION", "SKILLS", "LANGUAGES", "PROJECTS"],
+    role: "Junior Software Developer",
+    objective: "Permanent or fixed-term employment · Remote",
+    headings: ["Profile", "Work experience", "Skills", "Education", "Projects", "Languages"],
     localLinks: [
       "https://ethanbrosselard.com/en/",
       "https://ethanbrosselard.com/en/projects/ludosaic/",
@@ -43,7 +54,7 @@ for (const job of jobs) {
     try {
       const expected = expectations[job.filename];
       assert(expected, `Missing expectations for ${job.filename}`);
-      assert.equal(document.numPages, 2);
+      assert.equal(document.numPages, 1, "The complete resume must fit on one readable page");
       const { info, hasStructTree } = await document.getMetadata();
       assert.equal(info.Language, expected.language);
       assert.equal(info.Title, expected.title);
@@ -66,10 +77,16 @@ for (const job of jobs) {
       }
 
       const normalizedText = text.join(" ").replace(/\s+/g, " ");
-      const compactText = normalizedText.replace(/\s+/g, "");
       assert.match(normalizedText, /Ethan Brosselard/);
-      for (const heading of expected.headings)
-        assert(compactText.includes(heading.replace(/\s+/g, "")), heading);
+      assert(normalizedText.includes(expected.role));
+      assert(normalizedText.includes(expected.objective));
+      let previousHeading = -1;
+      for (const heading of expected.headings) {
+        // Preserve word boundaries: stripping every space masked letter-spaced headings.
+        const position = normalizedText.indexOf(heading);
+        assert(position > previousHeading, `${heading} must extract intact and in reading order`);
+        previousHeading = position;
+      }
       assert(!/\b(?:TODO|TBD|coming soon)\b/i.test(normalizedText));
       assert.deepEqual([...links].sort(), [...expectedLinks, ...expected.localLinks].sort());
     } finally {

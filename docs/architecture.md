@@ -128,7 +128,7 @@ The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playw
 
 `check:resume`, included in `verify`, compares each PDF with a conservative manifest covering relevant sources, Astro and TypeScript configuration, npm manifests, the lockfile, and the generator. A source change may therefore require `npm run generate:resume-pdfs` even when the visible resume does not change. Freshness validation detects stale artifacts; it does not certify visual quality or PDF/UA compliance.
 
-PDF semantic tests independently extract both documents, require two readable pages, verify the declared language and title, check the expected section headings and localized links, reject forms and placeholders, and require a structure tree. This is stronger than a byte hash but still does not constitute formal PDF/UA certification or a manual assistive-technology review.
+PDF semantic tests independently extract both documents, require one readable page, verify the declared language and title, check the role and employment objective, require intact section headings in reading order without removing spaces, check localized links, reject forms and placeholders, and require a structure tree. Print styles use normal letter spacing and a 10pt body with 9.5pt supporting text. These checks do not certify compatibility with every applicant tracking system, formal PDF/UA compliance, or a manual assistive-technology review.
 
 ## Future content
 

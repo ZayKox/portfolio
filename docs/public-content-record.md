@@ -8,7 +8,8 @@ This file records approved publication decisions that are not already fully repr
 - The provisional positioning remains broad: software developer and digital maker. It must not be narrowed to one platform, stack, project, or AI.
 - French is the default language at `/`; equivalent English content lives under `/en/`.
 - The public portfolio includes bilingual HTML and PDF resumes generated from one structured source.
-- The bilingual resume identifies Ethan as a Python backend developer, states 4+ years of apprenticeship experience, and records his AI-engineering master's degree as completed in 2026.
+- On September 28, 2026, Ethan approved a general junior software developer resume for remote permanent or fixed-term employment (CDI/CDD), with offer-specific keyword tailoring deferred. This application title does not replace the portfolio’s broader positioning.
+- The bilingual resume records apprenticeship experience since 2022 and an AI-engineering master's degree completed in 2026. Remote work is a search preference, not a claim about past working arrangements, immediate availability, or eligibility to work in any country.
 - Palimia and Ludosaic are independently developed projects with paired French and English case studies approved on September 9, 2026.
 - Project dates, user metrics, public repositories, public demos, and project screenshots remain absent where they have not been explicitly approved or do not exist.
 - Palimia is not presented as being in production. Ludosaic is presented as under active development without an external production deployment.

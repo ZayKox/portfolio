@@ -42,31 +42,27 @@
     }
   },
   "fr": {
-    "role": "Développeur Backend Python",
-    "summary": "Développeur backend Python avec 4+ ans d’expérience en alternance dans le développement logiciel, les API REST, les traitements et migrations de données. Expérience avec Python, Flask, FastAPI, SQL, PostgreSQL, AWS, Docker et CI/CD. Développement et déploiement de solutions backend, ETL et IA/RAG en environnements cloud et on-premise.",
+    "role": "Développeur logiciel junior",
+    "objective": "CDI ou CDD · Télétravail",
+    "summary": "Diplômé d’un master informatique en 2026, avec une expérience en alternance depuis 2022. Développement d’API Python, traitements et migrations de données SQL, et contribution à un logiciel de CAO en C++.",
     "experience": [
       {
-        "title": "Développeur logiciel Python — Backend, Data & IA — Alternance",
-        "summary": "Développement et maintenance de solutions de migration de données et d’intégration d’IA, de l’API au déploiement sur AWS et on-premise.",
+        "title": "Développeur logiciel Python — Alternance",
         "highlights": [
-          "Participé à 3 projets majeurs de migration portant sur plusieurs Go de données — notamment les données de référence de l’ANSM, l’ETL du référentiel Thesorimed et les API/workflows IA de la plateforme immobilière Primotheus.",
-          "Conçu des API et traitements de données avec Python, Flask et AWS Lambda — du développement au déploiement et à la maintenance sur AWS et on-premise.",
-          "Développé et maintenu des pipelines de migration et de synchronisation de données — entre Oracle, MySQL, PostgreSQL, SQL Server et SQLite avec AWS DMS.",
-          "Implémenté des approches RAG et de recherche vectorielle — avec PGVector, Qdrant et les services OpenAI pour analyser des données, images et documents.",
-          "Déployé et maintenu des environnements multi-services — avec AWS et Docker, en automatisant tests et déploiements par des pipelines CI/CD."
+          "Conception d’API REST et de traitements de données avec Python, Flask et AWS Lambda.",
+          "Contribution à 3 projets portant sur plusieurs Go de données : référentiel ANSM, ETL Thesorimed et API/workflows IA de Primotheus.",
+          "Développement et maintenance de pipelines de migration et de synchronisation entre bases SQL avec AWS DMS.",
+          "Intégration de RAG et de recherche vectorielle avec PGVector, Qdrant et les services OpenAI.",
+          "Déploiement et maintenance sur AWS et sur site avec Docker ; automatisation des tests et des déploiements par CI/CD."
         ],
-        "technologies": "Python · Flask · FastAPI · AWS Lambda/DMS · SQL · PostgreSQL · MySQL · Oracle · SQL Server (MSSQL) · SQLite · PGVector · Qdrant · Docker · CI/CD",
         "id": "beyowi"
       },
       {
-        "title": "Développeur Backend (alternant)",
-        "summary": "Développement C++ d’ID-Xplore, logiciel de CAO pour la conception de circuits intégrés analogiques.",
+        "title": "Développeur backend C++ — Alternance",
         "highlights": [
-          "Amélioré des fonctionnalités — avec une attention portée aux performances et à la fiabilité.",
-          "Contribué aux algorithmes de génération et de validation de circuits — ainsi qu’à la compatibilité multi-technologies.",
-          "Contribué aux tests unitaires et à la documentation technique."
+          "Développement de fonctionnalités et contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore, logiciel de CAO en C++.",
+          "Contribution aux tests unitaires, à la compatibilité multi-technologies et à la documentation technique."
         ],
-        "technologies": "C++ · Algorithmique · Tests unitaires",
         "id": "intento"
       }
     ],
@@ -83,28 +79,28 @@
     "skillGroups": [
       {
         "id": "backend",
-        "category": "Backend & API",
-        "items": "Python, SQL, REST, API REST, Flask, FastAPI, pytest, Git"
+        "category": "Développement & API",
+        "items": "Python, C++, SQL, API REST, Flask, FastAPI"
       },
       {
-        "id": "ai",
-        "category": "Data & IA",
-        "items": "ETL, Pandas, NumPy, LLM, RAG, API OpenAI, recherche vectorielle, PGVector, Qdrant"
+        "id": "delivery",
+        "category": "Tests & déploiement",
+        "items": "Tests unitaires, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
       },
       {
         "id": "databases",
         "category": "Bases de données",
-        "items": "PostgreSQL, MySQL, Oracle, SQL Server, MSSQL, SQLite"
+        "items": "PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
       },
       {
-        "id": "cloud",
-        "category": "Cloud & DevOps",
-        "items": "AWS (Lambda, DMS, EC2, S3, RDS, CloudWatch), Docker, CI/CD, GitHub Actions"
+        "id": "ai",
+        "category": "Data & IA",
+        "items": "ETL, Pandas, NumPy, RAG, PGVector, Qdrant, API OpenAI"
       },
       {
         "id": "complementary",
         "category": "Connaissances complémentaires",
-        "items": "C++, Java, JavaScript/TypeScript, Linux"
+        "items": "Java, JavaScript/TypeScript, Linux"
       }
     ],
     "languages": [
@@ -126,13 +122,13 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "Développement d’une application full-stack pour suivre, noter et organiser films, séries et jeux vidéo — Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
+            "description": "Application de suivi et d’organisation de films, séries et jeux vidéo : Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
             "id": "palimia",
             "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Plateforme modulaire de mini-jeux web en cours de développement, avec des modes solo, contre un bot ou à plusieurs selon le jeu — Next.js, TypeScript, React, PostgreSQL, Colyseus.",
+            "description": "Mini-jeux web en développement, avec modes solo et multijoueurs selon le jeu : Next.js, TypeScript, React, PostgreSQL, Colyseus.",
             "id": "ludosaic",
             "slug": "ludosaic"
           }
@@ -141,31 +137,27 @@
     ]
   },
   "en": {
-    "role": "Python Backend Developer",
-    "summary": "Python backend developer with 4+ years of apprenticeship experience in software development, REST APIs, data processing, and migrations. Experienced with Python, Flask, FastAPI, SQL, PostgreSQL, AWS, Docker, and CI/CD. Develops and deploys backend, ETL, and AI/RAG solutions in cloud and on-premises environments.",
+    "role": "Junior Software Developer",
+    "objective": "Permanent or fixed-term employment · Remote",
+    "summary": "Computer science master’s graduate (2026) with apprenticeship experience since 2022. Development of Python APIs, SQL data processing and migrations, and contributions to a C++ CAD application.",
     "experience": [
       {
-        "title": "Python Software Developer — Backend, Data & AI — Apprenticeship",
-        "summary": "Developing and maintaining data migration and AI integration solutions, from APIs through deployment on AWS and on-premises environments.",
+        "title": "Python Software Developer — Apprenticeship",
         "highlights": [
-          "Contributed to 3 major migration projects involving several GB of data — including ANSM reference data, the Thesorimed repository ETL, and API/AI workflows for the Primotheus real-estate platform.",
-          "Designed APIs and data-processing workflows with Python, Flask, and AWS Lambda — from development through deployment and maintenance on AWS and on-premises environments.",
-          "Developed and maintained data migration and synchronization pipelines — across Oracle, MySQL, PostgreSQL, SQL Server, and SQLite with AWS DMS.",
-          "Implemented RAG and vector-search approaches — with PGVector, Qdrant, and OpenAI services for data, image, and document analysis.",
-          "Deployed and maintained multi-service environments — with AWS and Docker, using CI/CD pipelines to automate tests and deployments."
+          "Designed REST APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
+          "Contributed to 3 projects involving several GB of data: ANSM reference data, Thesorimed ETL, and Primotheus API/AI workflows.",
+          "Developed and maintained data migration and synchronization pipelines between SQL databases with AWS DMS.",
+          "Integrated RAG and vector search with PGVector, Qdrant, and OpenAI services.",
+          "Deployed and maintained services on AWS and on premises with Docker; automated tests and deployments through CI/CD."
         ],
-        "technologies": "Python · Flask · FastAPI · AWS Lambda/DMS · SQL · PostgreSQL · MySQL · Oracle · SQL Server (MSSQL) · SQLite · PGVector · Qdrant · Docker · CI/CD",
         "id": "beyowi"
       },
       {
-        "title": "Backend Developer (apprentice)",
-        "summary": "C++ development for ID-Xplore, a CAD application for analog integrated-circuit design.",
+        "title": "C++ Backend Developer — Apprenticeship",
         "highlights": [
-          "Improved features — with a focus on performance and reliability.",
-          "Contributed to circuit-generation and validation algorithms — as well as multi-technology compatibility.",
-          "Contributed to unit tests and technical documentation."
+          "Developed features and contributed to circuit-generation and validation algorithms for ID-Xplore, a C++ CAD application.",
+          "Contributed to unit tests, compatibility across circuit technologies, and technical documentation."
         ],
-        "technologies": "C++ · Algorithms · Unit testing",
         "id": "intento"
       }
     ],
@@ -182,28 +174,28 @@
     "skillGroups": [
       {
         "id": "backend",
-        "category": "Backend & APIs",
-        "items": "Python, SQL, REST, REST APIs, Flask, FastAPI, pytest, Git"
+        "category": "Development & APIs",
+        "items": "Python, C++, SQL, REST APIs, Flask, FastAPI"
       },
       {
-        "id": "ai",
-        "category": "Data & AI",
-        "items": "ETL, Pandas, NumPy, LLM, RAG, OpenAI API, vector search, PGVector, Qdrant"
+        "id": "delivery",
+        "category": "Testing & deployment",
+        "items": "Unit testing, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
       },
       {
         "id": "databases",
         "category": "Databases",
-        "items": "PostgreSQL, MySQL, Oracle, SQL Server, MSSQL, SQLite"
+        "items": "PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
       },
       {
-        "id": "cloud",
-        "category": "Cloud & DevOps",
-        "items": "AWS (Lambda, DMS, EC2, S3, RDS, CloudWatch), Docker, CI/CD, GitHub Actions"
+        "id": "ai",
+        "category": "Data & AI",
+        "items": "ETL, Pandas, NumPy, RAG, PGVector, Qdrant, OpenAI API"
       },
       {
         "id": "complementary",
         "category": "Additional knowledge",
-        "items": "C++, Java, JavaScript/TypeScript, Linux"
+        "items": "Java, JavaScript/TypeScript, Linux"
       }
     ],
     "languages": [
@@ -225,13 +217,13 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "Developing a full-stack app to track, rate, and organize movies, TV series, and video games — Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
+            "description": "App to track and organize movies, TV series, and video games: Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
             "id": "palimia",
             "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Modular web mini-game platform under active development, with solo, bot, and multiplayer modes depending on the game — Next.js, TypeScript, React, PostgreSQL, Colyseus.",
+            "description": "Web mini-games under development, with solo and multiplayer modes depending on the game: Next.js, TypeScript, React, PostgreSQL, Colyseus.",
             "id": "ludosaic",
             "slug": "ludosaic"
           }
