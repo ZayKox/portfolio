@@ -32,7 +32,7 @@ export const copy = {
       title: "Je transforme des idées en produits numériques fiables.",
       titleEmphasis: "fiables",
       intro:
-        "Développeur web chez Studio Beyowi, je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
+        "Je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
       projectsCta: "Explorer mes projets",
       githubCta: "Voir mon GitHub",
       signalLabel: "Méthode",
@@ -84,7 +84,7 @@ export const copy = {
     about: {
       eyebrow: "À propos",
       title: "Construire, comprendre, recommencer.",
-      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris et développeur web chez Studio Beyowi.",
+      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
       paragraphs: [
         "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
         "En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance. Mon master en ingénierie de l’intelligence artificielle nourrit aussi une pratique réfléchie de l’IA : un outil qui aide à transformer de bonnes idées en réalisations, lorsqu’il est utilisé avec compréhension.",
@@ -253,7 +253,7 @@ export const copy = {
       title: "I turn ideas into reliable digital products.",
       titleEmphasis: "reliable",
       intro:
-        "As a web developer at Studio Beyowi, I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
+        "I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
       projectsCta: "Explore my projects",
       githubCta: "View my GitHub",
       signalLabel: "Method",
@@ -305,7 +305,7 @@ export const copy = {
     about: {
       eyebrow: "About",
       title: "Build, understand, start again.",
-      lead: "I’m Ethan Brosselard, a software developer based in Paris and a web developer at Studio Beyowi.",
+      lead: "I’m Ethan Brosselard, a software developer based in Paris.",
       paragraphs: [
         "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
         "Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance. My master’s degree in AI engineering also supports a thoughtful approach to AI: a tool that can help turn good ideas into real work when used with understanding.",
