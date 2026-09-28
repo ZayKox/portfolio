@@ -29,6 +29,7 @@ const entry = z
 const language = z
   .object({
     role: text,
+    objective: text,
     summary: text,
     experience: z.array(entry).min(1),
     education: z.array(entry).min(1),
