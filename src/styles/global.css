@@ -487,7 +487,7 @@ h3 {
   padding-block: var(--page-hero-top-space) 0;
 }
 
-.hero + .projects-section {
+.hero + .experience-section {
   padding-top: var(--section-space);
 }
 
@@ -521,6 +521,67 @@ h3 {
   margin-bottom: var(--space-5);
   color: var(--text-muted);
   font-size: var(--body-large);
+}
+
+.hero-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.hero-quick-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 700;
+  text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.experience-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+.experience-card-heading h3 {
+  max-width: 25ch;
+  margin-bottom: var(--space-2);
+  font-size: var(--h3);
+}
+
+.experience-period {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+.experience-card li + li {
+  margin-top: var(--space-2);
+}
+
+.experience-card li::marker {
+  color: var(--accent);
+}
+
+.experience-footer {
+  margin-top: var(--space-3);
 }
 
 .hero-field {
@@ -814,11 +875,9 @@ h3 {
 }
 
 .project-card-heading {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
   margin-bottom: 1rem;
 }
 
@@ -840,9 +899,8 @@ h3 {
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: var(--text-meta);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  max-width: 22rem;
+  letter-spacing: 0.02em;
 }
 
 .project-card-status::before {
@@ -855,9 +913,60 @@ h3 {
 
 .project-summary {
   max-width: 40rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-3);
   color: var(--text-muted);
   font-size: var(--body-large);
+}
+
+.project-card-decision {
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+}
+
+.project-card-decision strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+  font-size: var(--text-small);
+}
+
+.case-flow-section {
+  padding-block: var(--space-5);
+}
+
+.case-flow-section h2 {
+  font-size: var(--h3);
+}
+
+.case-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow;
+}
+
+.case-flow li {
+  position: relative;
+  min-width: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  counter-increment: flow;
+}
+
+.case-flow li::before {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  content: counter(flow, decimal-leading-zero);
 }
 
 .tag-list {
@@ -1598,9 +1707,7 @@ h3 {
 .contact-card--email {
   color: var(--primary-contrast);
   background: var(--primary);
-  transition:
-    transform var(--duration-base) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out);
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
 .contact-card--email:hover {
@@ -2066,7 +2173,9 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: var(--text-meta);
@@ -2076,6 +2185,7 @@ h3 {
 
 .case-hero-status::before {
   width: 0.38rem;
+  flex: 0 0 0.38rem;
   aspect-ratio: 1;
   border-radius: 50%;
   background: currentcolor;
@@ -2290,6 +2400,14 @@ h3 {
 }
 
 @media (max-width: 64rem) {
+  .experience-card {
+    grid-template-columns: 1fr;
+  }
+
+  .case-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-grid,
   .case-hero-grid {
     grid-template-columns: 1fr;
@@ -2322,10 +2440,6 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .project-card-heading {
-    flex-direction: column;
-  }
-
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -2353,6 +2467,10 @@ h3 {
 }
 
 @media (max-width: 48rem) {
+  .case-flow {
+    grid-template-columns: 1fr;
+  }
+
   .header-inner {
     grid-template-columns: 1fr auto;
     gap: 0.5rem 1rem;

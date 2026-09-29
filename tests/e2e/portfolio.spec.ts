@@ -106,14 +106,21 @@ test("every language switch opens the exact equivalent route", async ({ page }, 
 
 test("primary links expose the expected destinations", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Explorer mes projets" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Voir mon expérience" })).toHaveAttribute(
+    "href",
+    "#experience",
+  );
+  await expect(page.getByRole("link", { name: "Télécharger mon CV" })).toHaveAttribute(
+    "href",
+    "/cv/ethan-brosselard-cv-fr.pdf",
+  );
+  await expect(page.getByRole("link", { name: "Projets", exact: true }).last()).toHaveAttribute(
     "href",
     "/projets/",
   );
-  await expect(page.getByRole("link", { name: /Voir mon GitHub/ })).toHaveAttribute(
-    "href",
-    "https://github.com/ZayKox",
-  );
+  await expect(
+    page.getByRole("navigation", { name: "Liens directs" }).getByRole("link", { name: /GitHub/ }),
+  ).toHaveAttribute("href", "https://github.com/ZayKox");
 
   await page.goto("/cv/");
   await expect(page.getByRole("link", { name: "Télécharger le PDF" })).toHaveAttribute(
@@ -325,7 +332,10 @@ test("navigation and contact remain useful without JavaScript", async ({ browser
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
-  await page.getByRole("link", { name: "Explorer mes projets" }).click();
+  await page
+    .getByRole("navigation", { name: "Liens directs" })
+    .getByRole("link", { name: "Projets" })
+    .click();
   await expect(page).toHaveURL(/\/projets\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 

@@ -34,11 +34,12 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
           <a href={href}>{entry.data.title}</a>
         </Heading>
       </div>
-      {entry.data.publication === "teaser" && (
-        <span class="project-card-status">{t.projects.teaser}</span>
-      )}
+      <span class="project-card-status">{entry.data.currentStatus}</span>
     </div>
     <p class="project-summary">{entry.data.summary}</p>
+    <p class="project-card-decision">
+      <strong>{t.project.decision}</strong> {entry.data.cardDecision}
+    </p>
     <ul class="tag-list" aria-label={t.project.stack}>
       {entry.data.stack.slice(0, 5).map((technology) => (
         <li>{technology}</li>

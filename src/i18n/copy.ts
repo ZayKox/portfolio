@@ -23,54 +23,62 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
       description:
-        "Portfolio d’Ethan Brosselard. Projets logiciels, plateformes web, architecture et explorations autour de l’IA.",
+        "Ethan Brosselard, développeur logiciel. Expérience en Python, backend, données et cloud ; projets personnels, CV et contact.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
     home: {
-      eyebrow: "Développement logiciel · Produits numériques",
-      title: "Je transforme des idées en produits numériques fiables.",
-      titleEmphasis: "fiables",
+      eyebrow: "Ethan Brosselard · ZayKo",
+      title: "Développeur logiciel. De la donnée au produit.",
+      titleEmphasis: "Développeur logiciel",
       intro:
-        "Je conçois, construis et fais évoluer des produits numériques. J’aime comprendre un système de bout en bout, choisir les outils adaptés et apprendre ce que le projet demande.",
-      projectsCta: "Explorer mes projets",
-      githubCta: "Voir mon GitHub",
-      signalLabel: "Méthode",
-      fieldsTitle: "Un produit forme un tout.",
+        "Plus de trois ans d’expérience professionnelle en développement logiciel, notamment avec Python, les services backend, les données, le cloud et l’IA appliquée. Je construis aussi mes propres produits pour explorer d’autres problèmes techniques et usages.",
+      experienceCta: "Voir mon expérience",
+      resumePdfCta: "Télécharger mon CV",
+      projectsCta: "Projets",
+      quickLinksLabel: "Liens directs",
+      experienceEyebrow: "Parcours professionnel",
+      experienceTitle: "Du logiciel en conditions réelles.",
+      experienceIntro:
+        "Deux expériences en alternance, du traitement de données et des API Python à un logiciel de CAO en C++.",
+      experienceMore: "Voir le CV complet",
+      signalLabel: "Pratique",
+      fieldsTitle: "Des capacités mises en œuvre.",
       fieldsIntro:
-        "Je ne sépare pas le produit de sa technique : chaque couche répond au même besoin, de l’interface jusqu’à la fiabilité du système.",
+        "Un aperçu des sujets que j’ai travaillés en équipe et dans mes projets personnels.",
       fields: [
         {
           index: "01",
-          title: "Interface",
-          text: "Des parcours clairs, accessibles et adaptés à l’usage.",
+          title: "Produits & interfaces",
+          text: "Parcours accessibles et applications web pensées pour leur usage.",
         },
         {
           index: "02",
-          title: "Services",
-          text: "APIs, logique applicative et données structurées.",
+          title: "Backend & données",
+          text: "API Python, traitements SQL, migrations et synchronisation de données.",
         },
         {
           index: "03",
-          title: "Fiabilité",
-          text: "Architecture, tests, sécurité et performance.",
+          title: "Livraison & fiabilité",
+          text: "Tests, Docker, CI/CD et maintenance de services sur AWS et sur site.",
         },
         {
           index: "04",
-          title: "Exploration",
-          text: "IA et automatisation étudiées lorsqu’elles servent réellement le projet.",
+          title: "IA appliquée & systèmes",
+          text: "Recherche vectorielle et RAG ; développement C++ pour un logiciel de CAO.",
         },
       ],
-      selectedProjects: "Ce que je construis.",
+      selectedProjects: "Projets personnels.",
       selectedProjectsIntro:
-        "Une sélection de projets personnels présentés à travers leur usage, leur conception et les choix techniques qui les font évoluer.",
+        "Deux produits conçus et développés en autonomie, avec leurs décisions techniques et leurs limites actuelles.",
       aboutEyebrow: "À propos",
       aboutTitle: "Construire, comprendre, recommencer.",
       aboutText:
         "Je m’appelle Ethan Brosselard, aussi connu sous le nom de ZayKo. Ce site présente les projets que je construis, les problèmes qu’ils cherchent à résoudre et les choix qui les façonnent.",
       aboutCta: "En savoir plus",
-      contactTitle: "Une idée, une question, ou simplement envie de parler tech ?",
-      contactText: "Écrivez-moi directement. Je réponds dès que possible.",
+      contactTitle: "Échangeons sur votre équipe ou votre projet.",
+      contactText:
+        "Je recherche ma prochaine opportunité en développement logiciel et reste ouvert à des sujets variés. Vous pouvez m’écrire directement.",
       contactCta: "M’écrire",
     },
     projects: {
@@ -116,9 +124,9 @@ export const copy = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Parlons produits, code ou idées.",
+      title: "Parlons de votre prochain besoin logiciel.",
       intro:
-        "Ce portfolio vise d’abord à partager ce que je construis. Pour une question, un retour ou une discussion technique, le plus simple reste l’email.",
+        "Je recherche ma prochaine opportunité en développement logiciel. Le backend, les données, le cloud, l’IA appliquée et la création de produits m’intéressent, ainsi que des sujets logiciels plus larges. Écrivez-moi directement pour en discuter.",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
       copiedEmail: "Adresse copiée",
@@ -210,6 +218,8 @@ export const copy = {
         user: "Résultat utilisateur",
       },
       source: "Source",
+      decision: "Choix technique",
+      flow: "Comment ça fonctionne",
     },
     footer: {
       navigationLabel: "Liens de navigation",
@@ -244,54 +254,61 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Software developer & digital maker",
       description:
-        "Portfolio of Ethan Brosselard. Software projects, web platforms, architecture, and AI explorations.",
+        "Ethan Brosselard, software developer. Experience in Python, backend systems, data and cloud; personal projects, resume and contact.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
     home: {
-      eyebrow: "Software development · Digital products",
-      title: "I turn ideas into reliable digital products.",
-      titleEmphasis: "reliable",
+      eyebrow: "Ethan Brosselard · ZayKo",
+      title: "Software developer. From data to product.",
+      titleEmphasis: "Software developer",
       intro:
-        "I design, build, and evolve digital products. I like understanding a system end to end, choosing fitting tools, and learning what each project calls for.",
-      projectsCta: "Explore my projects",
-      githubCta: "View my GitHub",
-      signalLabel: "Method",
-      fieldsTitle: "A product works as a whole.",
-      fieldsIntro:
-        "I don’t separate the product from its technology: every layer serves the same need, from the interface to the reliability of the system.",
+        "Over three years of professional software development experience across Python, backend services, data, cloud, and applied AI. I also build my own products to explore other technical problems and user needs.",
+      experienceCta: "View my experience",
+      resumePdfCta: "Download my resume",
+      projectsCta: "Projects",
+      quickLinksLabel: "Quick links",
+      experienceEyebrow: "Professional experience",
+      experienceTitle: "Software built in real settings.",
+      experienceIntro:
+        "Two apprenticeships spanning Python data workflows and APIs through to C++ CAD software.",
+      experienceMore: "View full resume",
+      signalLabel: "Practice",
+      fieldsTitle: "Capabilities put to work.",
+      fieldsIntro: "A view of the work I have done with teams and in my own projects.",
       fields: [
         {
           index: "01",
-          title: "Interface",
-          text: "Clear, accessible flows shaped around actual use.",
+          title: "Products & interfaces",
+          text: "Accessible journeys and web applications shaped around use.",
         },
         {
           index: "02",
-          title: "Services",
-          text: "APIs, application logic, and structured data.",
+          title: "Backend & data",
+          text: "Python APIs, SQL processing, data migration, and synchronization.",
         },
         {
           index: "03",
-          title: "Reliability",
-          text: "Architecture, testing, security, and performance.",
+          title: "Delivery & reliability",
+          text: "Testing, Docker, CI/CD, and maintaining services on AWS and on premises.",
         },
         {
           index: "04",
-          title: "Exploration",
-          text: "AI and automation considered when they genuinely serve the project.",
+          title: "Applied AI & systems",
+          text: "Vector search and RAG; C++ development for CAD software.",
         },
       ],
-      selectedProjects: "What I build.",
+      selectedProjects: "Personal projects.",
       selectedProjectsIntro:
-        "A selection of personal projects presented through their use, their design, and the technical choices shaping them.",
+        "Two products I design and build independently, with their technical decisions and current limits.",
       aboutEyebrow: "About",
       aboutTitle: "Build, understand, start again.",
       aboutText:
         "I’m Ethan Brosselard, also known as ZayKo. This site presents the projects I build, the problems they address, and the choices that shape them.",
       aboutCta: "Learn more",
-      contactTitle: "Have an idea, a question, or just want to talk tech?",
-      contactText: "Email me directly. I’ll get back to you as soon as I can.",
+      contactTitle: "Let’s talk about your team or project.",
+      contactText:
+        "I’m looking for my next software development opportunity and remain open to a range of challenges. You can email me directly.",
       contactCta: "Get in touch",
     },
     projects: {
@@ -336,9 +353,9 @@ export const copy = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Let’s talk products, code, or ideas.",
+      title: "Let’s discuss your next software challenge.",
       intro:
-        "This portfolio primarily exists to share what I build. For a question, feedback, or a technical discussion, email is the simplest option.",
+        "I’m looking for my next software development opportunity. I’m interested in backend systems, data, cloud, applied AI, and product development, as well as broader software challenges. Email me directly to start a conversation.",
       emailLabel: "Email",
       copyEmail: "Copy address",
       copiedEmail: "Address copied",
@@ -428,6 +445,8 @@ export const copy = {
         user: "User outcome",
       },
       source: "Source",
+      decision: "Technical decision",
+      flow: "How it works",
     },
     footer: {
       navigationLabel: "Navigation links",

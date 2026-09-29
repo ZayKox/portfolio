@@ -38,9 +38,7 @@ const { Content } = await render(entry);
               <a class="back-link" href={routes[locale].projects}>
                 ← {t.project.back}
               </a>
-              {entry.data.publication === "teaser" && (
-                <span class="case-hero-status">{t.projects.teaser}</span>
-              )}
+              <span class="case-hero-status">{entry.data.currentStatus}</span>
             </div>
             <div class="case-stack">
               <span>{t.project.stack}</span>
@@ -89,6 +87,18 @@ const { Content } = await render(entry);
         </div>
       </section>
     )}
+
+    <section class="section case-flow-section section--bordered" aria-labelledby="case-flow-title">
+      <div class="container">
+        <p class="eyebrow">{t.project.decision}</p>
+        <h2 id="case-flow-title">{t.project.flow}</h2>
+        <ol class="case-flow">
+          {entry.data.flow.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ol>
+      </div>
+    </section>
 
     <section class="section case-body-section section--bordered">
       <div class="container case-body-grid">
