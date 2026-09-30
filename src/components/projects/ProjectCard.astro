@@ -38,7 +38,8 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
     </div>
     <p class="project-summary">{entry.data.summary}</p>
     <p class="project-card-decision">
-      <strong>{t.project.decision}</strong> {entry.data.cardDecision}
+      <strong>{t.project.decision}</strong>
+      {entry.data.cardDecision}
     </p>
     <ul class="tag-list" aria-label={t.project.stack}>
       {entry.data.stack.slice(0, 5).map((technology) => (

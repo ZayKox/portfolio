@@ -1,6 +1,58 @@
 import { publicRoutes as routeCatalog } from "../../scripts/route-catalog.mjs";
 import { expect, test } from "@playwright/test";
 
+test("resume and contact introductions keep actions below readable text at tablet widths", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "Breakpoint regression check");
+  for (const width of [1024, 900, 769, 768, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const route of ["/cv/", "/en/resume/", "/contact/", "/en/contact/"]) {
+      await page.goto(route);
+      const layout = await page.locator(".page-hero-inner").evaluate((element) => {
+        const lead = element.querySelector(".page-lead")!.getBoundingClientRect();
+        const details = element
+          .querySelector(".resume-hero-details, .contact-hero-details")!
+          .getBoundingClientRect();
+        const actions = element.querySelector(".button-row")!.getBoundingClientRect();
+        return {
+          leadWidth: lead.width,
+          detailsWidth: details.width,
+          leadBottom: lead.bottom,
+          actionTop: actions.top,
+        };
+      });
+      expect(layout.actionTop, `${route} at ${width}px`).toBeGreaterThan(layout.leadBottom);
+      expect(layout.leadWidth / layout.detailsWidth).toBeGreaterThan(0.85);
+    }
+  }
+});
+
+for (const route of [
+  "/projets/palimia/",
+  "/projets/ludosaic/",
+  "/en/projects/palimia/",
+  "/en/projects/ludosaic/",
+]) {
+  test(`${route} lets readers jump to every case-study section`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto(route);
+    const links = page.locator(".case-contents a");
+    expect(await links.count()).toBeGreaterThan(1);
+    for (const link of await links.all()) {
+      const href = await link.getAttribute("href");
+      expect(href).toMatch(/^#.+/);
+      const heading = page.locator(`[id=${JSON.stringify(href!.slice(1))}]`);
+      await expect(heading).toHaveText(await link.innerText());
+      await link.click();
+      await expect(heading).toBeInViewport();
+      const bounds = await heading.boundingBox();
+      const header = await page.locator(".site-header").boundingBox();
+      expect(bounds!.y).toBeGreaterThanOrEqual(Math.max(0, header!.y + header!.height));
+    }
+  });
+}
+
 const pageRoutes = routeCatalog.map((entry) => entry.path);
 
 test("page headings including both homepages share alignment and typography across routes", async ({

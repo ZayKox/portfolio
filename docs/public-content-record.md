@@ -15,6 +15,7 @@ This file records approved publication decisions that are not already fully repr
 - Project dates, user metrics, public repositories, public demos, and project screenshots remain absent where they have not been explicitly approved or do not exist.
 - Palimia is not presented as being in production. Ludosaic is presented as under active development without an external production deployment.
 - On September 29, 2026, Ethan approved making his job search visible on the portfolio while retaining broad software-developer positioning. The two apprenticeships in the structured resume support the homepage statement of more than three years of professional experience.
+- On September 30, 2026, Ethan requested portfolio improvements for job applications while keeping the resume general and tailoring it separately to individual offers. The homepage and contact page surface the existing resume employment objective; professional experience and education continue to come from the structured resume.
 - Ethan confirmed that Palimia's launch is blocked pending clarification of permissions for some provider data. Ludosaic's complete MVP remains unfinished, and it has not been deployed externally. Neither project has a public demo, public repository, published user metrics, or published screenshots.
 - The production portfolio is a static site with no form, browser-side analytics, tracking cookies, user account, database, or embedded third-party content.
 - The canonical public origin is `https://ethanbrosselard.com`; `www` redirects to the apex domain.

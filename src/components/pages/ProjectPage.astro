@@ -12,7 +12,8 @@ interface Props {
 
 const { locale, alternatePath, entry } = Astro.props;
 const t = getCopy(locale);
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const sections = headings.filter((heading) => heading.depth === 2);
 ---
 
 <BaseLayout
@@ -101,7 +102,25 @@ const { Content } = await render(entry);
     </section>
 
     <section class="section case-body-section section--bordered">
-      <div class="container case-body-grid">
+      <div
+        class:list={[
+          "container",
+          "case-body-grid",
+          { "case-body-grid--with-contents": sections.length > 1 },
+        ]}
+      >
+        {sections.length > 1 && (
+          <nav class="case-contents" aria-label={t.project.contents}>
+            <p class="eyebrow">{t.project.contents}</p>
+            <ol>
+              {sections.map((heading) => (
+                <li>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
         <div class="case-prose prose reveal">
           <Content />
           <nav aria-label={t.project.next} class="button-row case-next">

@@ -30,15 +30,20 @@ export const copy = {
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
       title: "Développeur logiciel. De la donnée au produit.",
-      titleEmphasis: "Développeur logiciel",
+      titleEmphasis: "Développeur logiciel.",
       intro:
-        "Plus de trois ans d’expérience professionnelle en développement logiciel, notamment avec Python, les services backend, les données, le cloud et l’IA appliquée. Je construis aussi mes propres produits pour explorer d’autres problèmes techniques et usages.",
+        "Plus de trois ans d’expérience professionnelle en alternance : API Python, données SQL, services cloud et logiciel de CAO en C++. Mes projets personnels prolongent ce parcours, de la conception du produit à ses choix d’architecture.",
+      searchLabel: "En recherche d’un poste",
+      searchTitle: "Mon prochain chapitre, en équipe.",
+      searchText: "Je recherche un poste en développement logiciel, sur des sujets variés.",
+      resumeOnlineCta: "Lire mon CV en ligne",
+      educationLabel: "Formation",
       experienceCta: "Voir mon expérience",
       resumePdfCta: "Télécharger mon CV",
       projectsCta: "Projets",
       quickLinksLabel: "Liens directs",
       experienceEyebrow: "Parcours professionnel",
-      experienceTitle: "Du logiciel en conditions réelles.",
+      experienceTitle: "Une expérience concrète, en équipe.",
       experienceIntro:
         "Deux expériences en alternance, du traitement de données et des API Python à un logiciel de CAO en C++.",
       experienceMore: "Voir le CV complet",
@@ -72,9 +77,9 @@ export const copy = {
       selectedProjectsIntro:
         "Deux produits conçus et développés en autonomie, avec leurs décisions techniques et leurs limites actuelles.",
       aboutEyebrow: "À propos",
-      aboutTitle: "Construire, comprendre, recommencer.",
+      aboutTitle: "Un parcours, plusieurs terrains techniques.",
       aboutText:
-        "Je m’appelle Ethan Brosselard, aussi connu sous le nom de ZayKo. Ce site présente les projets que je construis, les problèmes qu’ils cherchent à résoudre et les choix qui les façonnent.",
+        "Du backend Python au C++, puis à mes propres applications : j’aime comprendre le problème, construire une solution et vérifier son fonctionnement. Mon master en ingénierie de l’IA complète cette pratique du développement logiciel.",
       aboutCta: "En savoir plus",
       contactTitle: "Échangeons sur votre équipe ou votre projet.",
       contactText:
@@ -83,23 +88,24 @@ export const copy = {
     },
     projects: {
       eyebrow: "Projets",
-      title: "Des produits, pas seulement des stacks.",
+      title: "De l’idée aux choix techniques.",
       intro:
-        "Chaque aperçu présente le problème traité, le socle technique, les décisions d’architecture et les limites actuellement vérifiables.",
-      viewProject: "Voir le projet",
+        "Palimia et Ludosaic sont deux projets personnels développés en autonomie. Ces études présentent leur fonctionnement, mes décisions d’architecture et leur état d’avancement.",
+      viewProject: "Lire l’étude de projet",
       teaser: "Aperçu technique",
     },
     about: {
       eyebrow: "À propos",
-      title: "Construire, comprendre, recommencer.",
+      title: "Mon parcours et ma façon de travailler.",
       lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
       paragraphs: [
-        "Je construis des applications et des outils qui répondent à un besoin précis, avec une architecture claire et une interface agréable à utiliser. Je préfère comprendre un problème avant de choisir une technologie, puis découper le travail pour avancer progressivement et durablement.",
-        "En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance. Mon master en ingénierie de l’intelligence artificielle nourrit aussi une pratique réfléchie de l’IA : un outil qui aide à transformer de bonnes idées en réalisations, lorsqu’il est utilisé avec compréhension.",
+        "Mon parcours en alternance m’a amené à contribuer à un logiciel de CAO en C++ chez Intento Design, puis à développer des API Python, des traitements de données et des services sur AWS chez Studio Beyowi. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
+        "Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
+        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Ces projets complètent mon expérience professionnelle et me donnent d’autres problèmes à résoudre.",
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Faire évoluer mes projets personnels et approfondir la sécurité appliquée au développement logiciel.",
+        "Je recherche un poste en développement logiciel, tout en faisant évoluer mes projets personnels et en approfondissant la sécurité appliquée au développement.",
       resumeCta: "Découvrir mon parcours et mon CV",
       projectsCta: "Voir les projets et leurs choix techniques",
       proofLabel: "Ce que montre ce portfolio",
@@ -124,9 +130,10 @@ export const copy = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Parlons de votre prochain besoin logiciel.",
+      title: "Parlons de votre équipe.",
       intro:
-        "Je recherche ma prochaine opportunité en développement logiciel. Le backend, les données, le cloud, l’IA appliquée et la création de produits m’intéressent, ainsi que des sujets logiciels plus larges. Écrivez-moi directement pour en discuter.",
+        "Vous recrutez en développement logiciel ? Écrivez-moi pour échanger sur le poste, les défis techniques et votre équipe. Mon parcours couvre le backend, les données, le cloud et l’IA appliquée ; je reste ouvert à d’autres sujets logiciels.",
+      searchLabel: "Recherche actuelle",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
       copiedEmail: "Adresse copiée",
@@ -220,6 +227,7 @@ export const copy = {
       source: "Source",
       decision: "Choix technique",
       flow: "Comment ça fonctionne",
+      contents: "Dans cette étude",
     },
     footer: {
       navigationLabel: "Liens de navigation",
@@ -261,15 +269,21 @@ export const copy = {
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
       title: "Software developer. From data to product.",
-      titleEmphasis: "Software developer",
+      titleEmphasis: "Software developer.",
       intro:
-        "Over three years of professional software development experience across Python, backend services, data, cloud, and applied AI. I also build my own products to explore other technical problems and user needs.",
+        "Over three years of professional apprenticeship experience: Python APIs, SQL data, cloud services, and C++ CAD software. My personal projects extend that experience, from product design to architecture decisions.",
+      searchLabel: "Looking for a software role",
+      searchTitle: "My next chapter, with a team.",
+      searchText:
+        "I’m looking for a software development role and am open to a range of challenges.",
+      resumeOnlineCta: "Read my resume online",
+      educationLabel: "Education",
       experienceCta: "View my experience",
       resumePdfCta: "Download my resume",
       projectsCta: "Projects",
       quickLinksLabel: "Quick links",
       experienceEyebrow: "Professional experience",
-      experienceTitle: "Software built in real settings.",
+      experienceTitle: "Hands-on experience with teams.",
       experienceIntro:
         "Two apprenticeships spanning Python data workflows and APIs through to C++ CAD software.",
       experienceMore: "View full resume",
@@ -302,9 +316,9 @@ export const copy = {
       selectedProjectsIntro:
         "Two products I design and build independently, with their technical decisions and current limits.",
       aboutEyebrow: "About",
-      aboutTitle: "Build, understand, start again.",
+      aboutTitle: "One path, several technical fields.",
       aboutText:
-        "I’m Ethan Brosselard, also known as ZayKo. This site presents the projects I build, the problems they address, and the choices that shape them.",
+        "From Python backend development to C++, then to my own applications: I enjoy understanding the problem, building a solution, and checking how it works. My master’s degree in AI engineering complements this software development experience.",
       aboutCta: "Learn more",
       contactTitle: "Let’s talk about your team or project.",
       contactText:
@@ -313,23 +327,24 @@ export const copy = {
     },
     projects: {
       eyebrow: "Projects",
-      title: "Products, not just stacks.",
+      title: "From ideas to technical decisions.",
       intro:
-        "Each overview covers the problem being addressed, its technical foundation, architecture decisions, and currently verifiable limits.",
-      viewProject: "View project",
+        "Palimia and Ludosaic are two personal projects I develop independently. These case studies explain how they work, my architecture decisions, and their current progress.",
+      viewProject: "Read the case study",
       teaser: "Technical overview",
     },
     about: {
       eyebrow: "About",
-      title: "Build, understand, start again.",
+      title: "My background and how I work.",
       lead: "I’m Ethan Brosselard, a software developer based in Paris.",
       paragraphs: [
-        "I build applications and tools that answer a specific need, with clear architecture and pleasant interfaces. I prefer understanding a problem before choosing a technology, then breaking work into smaller pieces to move forward steadily and sustainably.",
-        "Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance. My master’s degree in AI engineering also supports a thoughtful approach to AI: a tool that can help turn good ideas into real work when used with understanding.",
+        "My apprenticeships took me from contributing to C++ CAD software at Intento Design to developing Python APIs, data workflows, and AWS services at Studio Beyowi. I completed my computer science master’s degree in AI engineering in 2026.",
+        "I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance.",
+        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. These projects complement my professional experience and give me other problems to solve.",
       ],
       nowLabel: "Now",
       nowText:
-        "Evolving my personal projects and deepening my knowledge of applied software security.",
+        "I’m looking for a software development role while evolving my personal projects and deepening my knowledge of applied software security.",
       resumeCta: "Explore my experience and resume",
       projectsCta: "Explore the projects and their technical choices",
       proofLabel: "What this portfolio shows",
@@ -353,9 +368,10 @@ export const copy = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Let’s discuss your next software challenge.",
+      title: "Let’s talk about your team.",
       intro:
-        "I’m looking for my next software development opportunity. I’m interested in backend systems, data, cloud, applied AI, and product development, as well as broader software challenges. Email me directly to start a conversation.",
+        "Hiring a software developer? Email me to discuss the role, technical challenges, and your team. My background covers backend systems, data, cloud, and applied AI; I’m also open to other software challenges.",
+      searchLabel: "Current job search",
       emailLabel: "Email",
       copyEmail: "Copy address",
       copiedEmail: "Address copied",
@@ -447,6 +463,7 @@ export const copy = {
       source: "Source",
       decision: "Technical decision",
       flow: "How it works",
+      contents: "In this case study",
     },
     footer: {
       navigationLabel: "Navigation links",

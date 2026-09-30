@@ -14,7 +14,8 @@ interface Props {
 const { locale, alternatePath } = Astro.props;
 const t = getCopy(locale);
 const localizedRoutes = routes[locale];
-const experience = getResume(locale).experience;
+const resume = getResume(locale);
+const experience = resume.experience;
 const [titleBefore, titleAfter] = t.home.title.split(t.home.titleEmphasis);
 const projects = (
   await getCollection(
@@ -41,50 +42,50 @@ const projects = (
         </h1>
         <p class="hero-intro">{t.home.intro}</p>
         <div class="button-row">
-          <a class="button button--primary" href="#experience">
-            {t.home.experienceCta}
-          </a>
-          <a class="button button--secondary" href={profile.resume[locale]} download>
+          <a class="button button--primary" href={profile.resume[locale]} download>
             {t.home.resumePdfCta}
+          </a>
+          <a class="button button--secondary" href="#experience">
+            {t.home.experienceCta}
           </a>
         </div>
         <nav class="hero-quick-links" aria-label={t.home.quickLinksLabel}>
           <a href={localizedRoutes.projects}>{t.home.projectsCta}</a>
           <a href={profile.socials.github} rel="me">
-            GitHub ↗
+            {" "}
+            GitHub ↗{" "}
           </a>
           <a href={profile.socials.linkedin} rel="me">
-            LinkedIn ↗
+            {" "}
+            LinkedIn ↗{" "}
           </a>
         </nav>
       </div>
 
-      <aside class="hero-field reveal" aria-label={t.home.selectedProjects}>
+      <aside class="hero-field reveal" aria-labelledby="job-search-title">
         <div class="hero-field-grid" aria-hidden="true"></div>
         <div class="hero-panel-identity">
-          <strong>{profile.name}</strong>
-          <span>
-            {profile.brand} <span aria-hidden="true">/</span> {profile.location}
-          </span>
+          <p class="hero-search-label">{t.home.searchLabel}</p>
+          <h2 id="job-search-title">{t.home.searchTitle}</h2>
+          <span>{profile.location}</span>
         </div>
-
+        <div class="hero-search-copy">
+          <p>{t.home.searchText}</p>
+          <p class="hero-search-objective">{resume.objective}</p>
+        </div>
         <div class="hero-panel-projects">
-          {projects.map((entry) => {
-            const href =
-              locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
-
-            return (
-              <a href={href} aria-label={`${entry.data.title} — ${t.projects.viewProject}`}>
-                <span class="hero-panel-project-copy">
-                  <strong>{entry.data.title}</strong>
-                  <small>{entry.data.shortSummary}</small>
-                </span>
-                <span class="hero-panel-project-arrow" aria-hidden="true">
-                  ↗
-                </span>
-              </a>
-            );
-          })}
+          <a href={localizedRoutes.resume}>
+            <strong>{t.home.resumeOnlineCta}</strong>
+            <span class="hero-panel-project-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <a href={`mailto:${profile.email}`}>
+            <strong>{t.home.contactCta}</strong>
+            <span class="hero-panel-project-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
         </div>
       </aside>
     </div>
@@ -109,9 +110,11 @@ const projects = (
             <p class="experience-period">{entry.period}</p>
           </div>
           <ul>
-            {entry.highlights?.slice(0, entry.id === "beyowi" ? 3 : 2).map((highlight) => (
-              <li>{highlight}</li>
-            ))}
+            {entry.highlights
+              ?.filter((_, index) => entry.id !== "beyowi" || [0, 2, 4].includes(index))
+              .map((highlight) => (
+                <li>{highlight}</li>
+              ))}
           </ul>
         </article>
       ))}
@@ -121,6 +124,19 @@ const projects = (
         {t.home.experienceMore}
         <span aria-hidden="true">↗</span>
       </a>
+    </div>
+    <div class="container education-preview">
+      <p class="eyebrow">{t.home.educationLabel}</p>
+      <ul>
+        {resume.education.map((entry) => (
+          <li>
+            <strong>{entry.title}</strong>
+            <span>
+              {entry.organization} · {entry.period}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
