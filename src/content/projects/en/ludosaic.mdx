@@ -44,7 +44,13 @@ socialImageAlt: Violet Field sharing card for Ludosaic, with three tiles represe
 
 ## My contribution
 
-I develop this project independently. The technical choices and limitations below describe the work in progress.
+I develop Ludosaic independently, from the web application to the mini-game rules. My work includes:
+
+- separating games, their interfaces, and the server within a monorepo;
+- rules that can be replayed from a seed and action sequence to verify results on the server;
+- a foundation for private rooms with Colyseus, tested locally with two browsers for Grid Duel.
+
+The technical choices and limitations below describe the work in progress.
 
 ## Start playing without creating an account
 
@@ -68,7 +74,7 @@ The monorepo separates the Next.js application, game server, each game, and thei
 
 Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 
-## A project still under development
+## Validation and current limitations
 
 Ludosaic is still under active development. The repository contains a locally validated foundation and playable local or connected beta journeys, but the complete MVP has not been delivered. Grid Duel private rooms, for example, have a foundation tested with two browsers without yet representing a production-ready multiplayer experience.
 

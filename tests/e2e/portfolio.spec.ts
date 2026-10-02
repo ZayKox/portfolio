@@ -105,6 +105,21 @@ test("every language switch opens the exact equivalent route", async ({ page }, 
 });
 
 test("primary links expose the expected destinations", async ({ page }) => {
+  for (const route of ["/", "/en/"]) {
+    await page.goto(route);
+    const hero = page.locator(".hero-copy");
+    await expect(hero.locator(".hero-objective")).toContainText(
+      route === "/" ? "CDI ou CDD · Télétravail" : "Permanent or fixed-term employment · Remote",
+    );
+    await expect(hero.getByRole("link", { name: /PDF/ })).toHaveAttribute(
+      "href",
+      route === "/" ? "/cv/ethan-brosselard-cv-fr.pdf" : "/cv/ethan-brosselard-resume-en.pdf",
+    );
+    await expect(
+      hero.getByRole("link", { name: route === "/" ? "M’écrire" : "Get in touch" }),
+    ).toHaveAttribute("href", "mailto:ethan.brosselard@gmail.com");
+  }
+
   await page.goto("/");
   await expect(page.getByRole("link", { name: "Voir mon expérience" })).toHaveAttribute(
     "href",

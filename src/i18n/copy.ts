@@ -23,7 +23,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
       description:
-        "Ethan Brosselard, développeur logiciel. Expérience en Python, backend, données et cloud ; projets personnels, CV et contact.",
+        "Développeur logiciel à Paris, en recherche d’un CDI ou CDD en télétravail. Expérience Python, C++, données et cloud. Projets, CV et contact.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
@@ -32,14 +32,14 @@ export const copy = {
       title: "Développeur logiciel. De la donnée au produit.",
       titleEmphasis: "Développeur logiciel.",
       intro:
-        "Plus de trois ans d’expérience professionnelle en alternance : API Python, données SQL, services cloud et logiciel de CAO en C++. Mes projets personnels prolongent ce parcours, de la conception du produit à ses choix d’architecture.",
+        "Je développe des API Python, des traitements de données SQL et des services cloud. Plus de trois ans d’expérience professionnelle en alternance, avec aussi une contribution à un logiciel de CAO en C++.",
       searchLabel: "En recherche d’un poste",
       searchTitle: "Mon prochain chapitre, en équipe.",
       searchText: "Je recherche un poste en développement logiciel, sur des sujets variés.",
       resumeOnlineCta: "Lire mon CV en ligne",
       educationLabel: "Formation",
       experienceCta: "Voir mon expérience",
-      resumePdfCta: "Télécharger mon CV",
+      resumePdfCta: "Télécharger mon CV (PDF)",
       projectsCta: "Projets",
       quickLinksLabel: "Liens directs",
       experienceEyebrow: "Parcours professionnel",
@@ -47,30 +47,38 @@ export const copy = {
       experienceIntro:
         "Deux expériences en alternance, du traitement de données et des API Python à un logiciel de CAO en C++.",
       experienceMore: "Voir le CV complet",
-      signalLabel: "Pratique",
-      fieldsTitle: "Des capacités mises en œuvre.",
+      signalLabel: "Compétences",
+      fieldsTitle: "Des compétences en pratique.",
       fieldsIntro:
-        "Un aperçu des sujets que j’ai travaillés en équipe et dans mes projets personnels.",
+        "Chaque domaine s’appuie sur une expérience professionnelle ou un projet détaillé.",
       fields: [
         {
           index: "01",
-          title: "Produits & interfaces",
-          text: "Parcours accessibles et applications web pensées pour leur usage.",
+          title: "Backend & données",
+          text: "API Python, migrations SQL et services AWS chez Studio Beyowi.",
+          linkLabel: "Expérience Python",
+          href: "#experience-beyowi",
         },
         {
           index: "02",
-          title: "Backend & données",
-          text: "API Python, traitements SQL, migrations et synchronisation de données.",
+          title: "Logiciel & tests",
+          text: "Fonctionnalités C++, algorithmes de circuits et tests unitaires chez Intento Design.",
+          linkLabel: "Expérience C++",
+          href: "#experience-intento",
         },
         {
           index: "03",
-          title: "Livraison & fiabilité",
-          text: "Tests, Docker, CI/CD et maintenance de services sur AWS et sur site.",
+          title: "Produits web",
+          text: "Catalogue culturel, bibliothèque personnelle et séparation des données dans Palimia.",
+          linkLabel: "Étude Palimia",
+          href: "/projets/palimia/",
         },
         {
           index: "04",
-          title: "IA appliquée & systèmes",
-          text: "Recherche vectorielle et RAG ; développement C++ pour un logiciel de CAO.",
+          title: "Règles & temps réel",
+          text: "Règles de jeu rejouables et vérification des résultats côté serveur dans Ludosaic.",
+          linkLabel: "Étude Ludosaic",
+          href: "/projets/ludosaic/",
         },
       ],
       selectedProjects: "Projets personnels.",
@@ -262,7 +270,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Software developer & digital maker",
       description:
-        "Ethan Brosselard, software developer. Experience in Python, backend systems, data and cloud; personal projects, resume and contact.",
+        "Software developer based in Paris, seeking a permanent or fixed-term remote role. Python, C++, data and cloud experience. Projects, resume and contact.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
@@ -271,7 +279,7 @@ export const copy = {
       title: "Software developer. From data to product.",
       titleEmphasis: "Software developer.",
       intro:
-        "Over three years of professional apprenticeship experience: Python APIs, SQL data, cloud services, and C++ CAD software. My personal projects extend that experience, from product design to architecture decisions.",
+        "I develop Python APIs, SQL data workflows, and cloud services. I have over three years of professional apprenticeship experience, including contributions to C++ CAD software.",
       searchLabel: "Looking for a software role",
       searchTitle: "My next chapter, with a team.",
       searchText:
@@ -279,7 +287,7 @@ export const copy = {
       resumeOnlineCta: "Read my resume online",
       educationLabel: "Education",
       experienceCta: "View my experience",
-      resumePdfCta: "Download my resume",
+      resumePdfCta: "Download my resume (PDF)",
       projectsCta: "Projects",
       quickLinksLabel: "Quick links",
       experienceEyebrow: "Professional experience",
@@ -287,29 +295,38 @@ export const copy = {
       experienceIntro:
         "Two apprenticeships spanning Python data workflows and APIs through to C++ CAD software.",
       experienceMore: "View full resume",
-      signalLabel: "Practice",
-      fieldsTitle: "Capabilities put to work.",
-      fieldsIntro: "A view of the work I have done with teams and in my own projects.",
+      signalLabel: "Skills",
+      fieldsTitle: "Skills in practice.",
+      fieldsIntro:
+        "Each area is backed by professional experience or a detailed project case study.",
       fields: [
         {
           index: "01",
-          title: "Products & interfaces",
-          text: "Accessible journeys and web applications shaped around use.",
+          title: "Backend & data",
+          text: "Python APIs, SQL migrations, and AWS services at Studio Beyowi.",
+          linkLabel: "Python experience",
+          href: "#experience-beyowi",
         },
         {
           index: "02",
-          title: "Backend & data",
-          text: "Python APIs, SQL processing, data migration, and synchronization.",
+          title: "Software & testing",
+          text: "C++ features, circuit algorithms, and unit tests at Intento Design.",
+          linkLabel: "C++ experience",
+          href: "#experience-intento",
         },
         {
           index: "03",
-          title: "Delivery & reliability",
-          text: "Testing, Docker, CI/CD, and maintaining services on AWS and on premises.",
+          title: "Web products",
+          text: "A cultural catalog, personal library, and separation of data in Palimia.",
+          linkLabel: "Palimia case study",
+          href: "/en/projects/palimia/",
         },
         {
           index: "04",
-          title: "Applied AI & systems",
-          text: "Vector search and RAG; C++ development for CAD software.",
+          title: "Game logic & real time",
+          text: "Replayable game rules and server-side result verification in Ludosaic.",
+          linkLabel: "Ludosaic case study",
+          href: "/en/projects/ludosaic/",
         },
       ],
       selectedProjects: "Personal projects.",

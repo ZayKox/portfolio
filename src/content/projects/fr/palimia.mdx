@@ -40,7 +40,13 @@ socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines cult
 
 ## Ma contribution
 
-Je développe ce projet seul. Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
+Je développe seul Palimia, une application Next.js en TypeScript strict. Mon travail comprend notamment :
+
+- la modélisation du catalogue et de la bibliothèque personnelle avec PostgreSQL et Prisma ;
+- la validation et la normalisation des données fournisseurs côté serveur avant import ;
+- les tests unitaires, composants, PostgreSQL et Playwright qui accompagnent le développement.
+
+Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
 
 ## Une bibliothèque culturelle personnelle
 
@@ -64,7 +70,7 @@ Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript st
 
 Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 
-## Pourquoi Palimia n’est pas en production
+## Validation et limites actuelles
 
 Palimia n’est pas en production et son statut de lancement reste bloqué. Les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées. Le périmètre public doit notamment exclure les sources qui n’autorisent pas encore le suivi, le stockage ou l’affichage envisagés.
 

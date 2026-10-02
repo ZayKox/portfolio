@@ -123,7 +123,9 @@ for (const route of ["/", "/en/"]) {
       });
     });
     await page.goto(route);
-    await page.locator(".hero-quick-links a").first().click();
+    await page
+      .locator(`.hero-quick-links a[href="${route === "/" ? "/projets/" : "/en/projects/"}"]`)
+      .click();
     await expect(page).toHaveURL(route === "/" ? /\/projets\/$/ : /\/en\/projects\/$/);
     await expect(page.locator("html")).toHaveAttribute("data-had-view-transition", "false");
   });

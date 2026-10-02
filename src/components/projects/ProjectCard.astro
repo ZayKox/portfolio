@@ -46,7 +46,7 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
         <li>{technology}</li>
       ))}
     </ul>
-    <a class="text-link" href={href}>
+    <a class="text-link" href={href} aria-label={`${t.projects.viewProject} — ${entry.data.title}`}>
       {t.projects.viewProject}
       <span aria-hidden="true">↗</span>
     </a>

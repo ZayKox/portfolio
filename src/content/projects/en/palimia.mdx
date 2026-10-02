@@ -40,7 +40,13 @@ socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arr
 
 ## My contribution
 
-I develop this project independently. The technical choices and limitations below describe the work in progress.
+I develop Palimia independently, using Next.js and strict TypeScript. My work includes:
+
+- modeling the catalog and personal library with PostgreSQL and Prisma;
+- validating and normalizing provider data on the server before import;
+- unit, component, PostgreSQL, and Playwright tests that support development.
+
+The technical choices and limitations below describe the work in progress.
 
 ## A personal cultural library
 
@@ -64,7 +70,7 @@ The project is a modular monolith built with Next.js and strict TypeScript. Post
 
 This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
 
-## Why Palimia is not in production
+## Validation and current limitations
 
 Palimia is not in production, and its launch status remains blocked. The written permissions required for some uses of provider data have not all been obtained and reviewed. In particular, the public scope must exclude sources that do not yet allow the intended tracking, storage, or display.
 

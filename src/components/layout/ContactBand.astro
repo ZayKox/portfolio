@@ -1,0 +1,25 @@
+---
+import { profile } from "@/data/profile";
+import { getCopy, type Locale } from "@/i18n/copy";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section class="section contact-band">
+  <div class="container contact-band-inner reveal">
+    <div class="contact-band-copy">
+      <p class="eyebrow">{t.nav.contact}</p>
+      <h2>{t.home.contactTitle}</h2>
+      <p>{t.home.contactText}</p>
+    </div>
+    <a class="button button--primary" href={`mailto:${profile.email}`}>
+      {t.home.contactCta}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>

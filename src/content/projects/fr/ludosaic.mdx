@@ -44,7 +44,13 @@ socialImageAlt: Carte de partage Violet Field de Ludosaic, avec trois tuiles rep
 
 ## Ma contribution
 
-Je développe ce projet seul. Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
+Je développe seul Ludosaic, de l’application web aux règles des mini-jeux. Mon travail comprend notamment :
+
+- la séparation des jeux, de leurs interfaces et du serveur dans un monorepo ;
+- des règles rejouables à partir d’une graine et d’une suite d’actions pour vérifier les résultats côté serveur ;
+- une fondation de salons privés avec Colyseus, testée localement avec deux navigateurs pour Grid Duel.
+
+Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
 
 ## Jouer rapidement, sans créer de compte
 
@@ -68,7 +74,7 @@ Le monorepo sépare l’application Next.js, le serveur de jeu, chaque jeu et le
 
 Les règles restent indépendantes du rendu et peuvent être rejouées à partir d’une graine et d’une suite d’actions. Pour un résultat connecté, le serveur reconstitue la partie au lieu d’accepter directement le score annoncé par le navigateur. Les jeux sont chargés uniquement lorsqu’ils sont ouverts, et le service worker permet de relancer certains modes déjà chargés sans connexion.
 
-## Un projet encore en développement
+## Validation et limites actuelles
 
 Ludosaic est toujours en cours de développement. Le dépôt contient une fondation validée localement et des parcours jouables en bêta locale ou connectée, mais le MVP complet n’est pas encore livré. Les salons privés de Grid Duel disposent par exemple d’une fondation testée avec deux navigateurs, sans constituer encore une expérience multijoueur finalisée pour la production.
 
