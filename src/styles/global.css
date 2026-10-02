@@ -629,9 +629,9 @@ h3 {
 
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   align-self: stretch;
-  min-height: 24rem;
+  min-height: 21rem;
   gap: var(--space-4);
   padding: var(--space-5);
   overflow: hidden;
@@ -682,26 +682,11 @@ h3 {
   text-wrap: balance;
 }
 
-.hero-search-label {
+.hero-panel-label {
   margin-bottom: var(--space-3);
   color: var(--hero-field-accent);
   font-family: var(--font-mono);
   font-size: var(--text-meta);
-  font-weight: 700;
-}
-
-.hero-search-copy {
-  align-self: center;
-  color: color-mix(in srgb, var(--hero-field-text) 80%, transparent);
-}
-
-.hero-search-copy p {
-  margin-bottom: var(--space-2);
-}
-
-.hero-search-copy .hero-search-objective {
-  margin-bottom: 0;
-  color: var(--hero-field-text);
   font-weight: 700;
 }
 
@@ -721,6 +706,7 @@ h3 {
 
 .hero-panel-projects {
   display: grid;
+  align-content: end;
   gap: 0;
 }
 
@@ -2458,6 +2444,38 @@ h3 {
   color: var(--text);
 }
 
+.project-capture {
+  margin: var(--space-4) 0 var(--space-5);
+}
+
+.project-capture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+
+.project-capture figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-3);
+  padding-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.project-capture figcaption > span {
+  flex: 1 1 24rem;
+}
+
+.project-capture figcaption > a {
+  flex-shrink: 0;
+}
+
 .not-found {
   display: grid;
   min-height: calc(100svh - 3.6rem);
@@ -2560,7 +2578,7 @@ h3 {
 
   .hero-panel-projects {
     grid-column: 1 / -1;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-4);
   }
 
@@ -2641,6 +2659,11 @@ h3 {
 
   .hero-copy h1 {
     max-width: 17ch;
+  }
+
+  .hero-intro {
+    margin-bottom: var(--space-4);
+    font-size: 1rem;
   }
 
   .hero-field {

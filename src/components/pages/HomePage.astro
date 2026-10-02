@@ -65,16 +65,12 @@ const projects = (
         </nav>
       </div>
 
-      <aside class="hero-field reveal" aria-labelledby="job-search-title">
+      <aside class="hero-field reveal" aria-labelledby="explore-title">
         <div class="hero-field-grid" aria-hidden="true"></div>
         <div class="hero-panel-identity">
-          <p class="hero-search-label">{t.home.searchLabel}</p>
-          <h2 id="job-search-title">{t.home.searchTitle}</h2>
+          <p class="hero-panel-label">{t.home.exploreLabel}</p>
+          <h2 id="explore-title">{t.home.exploreTitle}</h2>
           <span>{profile.location}</span>
-        </div>
-        <div class="hero-search-copy">
-          <p>{t.home.searchText}</p>
-          <p class="hero-search-objective">{resume.objective}</p>
         </div>
         <div class="hero-panel-projects">
           <a href={localizedRoutes.resume}>
@@ -83,8 +79,14 @@ const projects = (
               ↗
             </span>
           </a>
-          <a href={`mailto:${profile.email}`}>
-            <strong>{t.home.contactCta}</strong>
+          <a href={localizedRoutes.projects}>
+            <strong>{t.home.allProjectsCta}</strong>
+            <span class="hero-panel-project-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <a href={`${localizedRoutes.projects}zaykohub/`}>
+            <strong>{t.home.homelabCta}</strong>
             <span class="hero-panel-project-arrow" aria-hidden="true">
               ↗
             </span>

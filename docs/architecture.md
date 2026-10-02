@@ -38,7 +38,7 @@ Supported publication states:
 - `teaser`: a short technical overview based only on validated facts;
 - `published`: a reviewed complete case study.
 
-Solo contribution is validated for both current projects; dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them for publication in a task. A `teaser` does not imply production readiness.
+Solo contribution is validated for the Palimia and Ludosaic case studies. ZaykoHub is a personal homelab overview published as a `teaser`, with local preparation and tests and no deployed services. Project dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them for publication in a task. A `teaser` does not imply production readiness.
 
 `scripts/validate-content-parity.mjs` requires one French and one English entry for every slug. It checks publication state, order, featured state, stack, visual, metric values, and equivalent narrative depth. Titles, labels, summaries, and narratives remain naturally localizable.
 
@@ -53,9 +53,9 @@ The build never invents a domain.
 
 The `noindex` mode reduces accidental indexing risk but does not replace Cloudflare Access or another network restriction for previews.
 
-`scripts/generate-brand-assets.mjs` generates the 64 × 64 favicon, 180 × 180 Apple touch icon, general 1200 × 630 social card, and one 1200 × 630 social card per project from deterministic HTML and CSS based on Violet Field tokens. Generated PNG files are versioned under `public/`; production builds do not run Chromium.
+`scripts/generate-brand-assets.mjs` generates the 64 × 64 favicon, 180 × 180 Apple touch icon, general 1200 × 630 social card, and dedicated Palimia and Ludosaic social cards from deterministic HTML and CSS based on Violet Field tokens. ZaykoHub uses the general portfolio social card. Generated PNG files are versioned under `public/`; production builds do not run Chromium.
 
-`docs/media-provenance.json` records every publishable media file, its source, SHA-256 hash, dimensions when applicable, and byte budget. Validation rejects missing or unlisted media, modified hashes or dimensions, budget overruns, and bundled fonts. Apart from the five generated brand assets, the current interface distributes no image, video, third-party visual, or font file.
+`docs/media-provenance.json` records every publishable media file, its source, SHA-256 hash, dimensions when applicable, and byte budget. Validation rejects missing or unlisted media, modified hashes or dimensions, budget overruns, and bundled fonts. Approved application captures live under `src/assets/projects/<slug>/` and are imported by the paired MDX entries. `ProjectCapture.astro` uses Astro's image pipeline for responsive WebP sizes, explicit dimensions and lazy loading, and links to the full-size capture. Capturing applications is a separate local editorial operation; the portfolio build never reads or starts their repositories. The interface distributes no video, third-party media or font files.
 
 ## Security and privacy
 
@@ -118,7 +118,7 @@ Representative pages must remain below a CLS of 0.1 and an encoded transfer budg
 
 ## Deployment validation
 
-`npm run test:deployment -- --url <https-origin> --mode <production|preview>` performs read-only assertions against a Workers origin. It checks all 18 bilingual routes, the real 404 response, CSP and headers, HTML and fingerprinted-asset cache policies, icons, metadata, robots directives, and sitemap behavior.
+`npm run test:deployment -- --url <https-origin> --mode <production|preview>` performs read-only assertions against a Workers origin. It checks all public bilingual routes, the real 404 response, CSP and headers, HTML and fingerprinted-asset cache policies, icons, metadata, robots directives, and sitemap behavior.
 
 Production mode checks canonical URLs, alternates, JSON-LD, social cards, and the exact sitemap. Preview mode checks removal of all indexing signals. `--check-http-redirect` verifies a permanent HTTP-to-HTTPS redirect. Repeatable `--redirect-from` options verify permanent canonical redirects with preserved paths and query strings. Preview authentication headers are read only from external secrets and are never written to the optional JSON report.
 
@@ -140,7 +140,7 @@ The content model can add future AI work, tools, articles, and projects from oth
 - `visual` selects a presentation (`cultural-library`, `game-tiles`, or neutral `typographic`), not a project identity. Titles, short summaries and game labels come from each project. A third project requires paired content and any approved media; it does not require another manual route list.
 - A `published` project requires a dated `review` with factual and translation approval by Ethan and an explicit media/evidence disposition (`included`, `not-applicable`, or `withheld`, each explained). This records a real review; it is never a replacement for obtaining that review. Metrics require unique IDs, their nature, measurement date, context, source and explicit approval; these facts must match across languages and are displayed with the value.
 - `src/data/resume.json` separates shared timeline facts from localized descriptions. `resume-schema.mjs` validates IDs, paired entries, dates, organizations and project links. `resume.ts` formats periods for each language; a null end means an explicitly confirmed ongoing position. Contact values and the canonical portfolio URL come from `profile.ts` and are shared by HTML and PDF.
-- Media provenance accepts the existing generated brand assets and explicitly approved captures. Captures require dated publication approval, source version, rights, demo-data review and FR/EN alternatives, without pretending to have a generator. PNG, JPEG and WebP dimensions and byte hashes are verified; other formats are rejected until a suitable validation path exists. No new capture was supplied or implicitly approved by the audit correction request.
+- Media provenance accepts the existing generated brand assets and explicitly approved captures. Captures require dated publication approval, source version, rights, demo-data review and FR/EN alternatives, without pretending to have a generator. PNG, JPEG and WebP dimensions and byte hashes are verified; other formats are rejected until a suitable validation path exists. Ethan explicitly authorized application captures with demonstration data on October 2, 2026.
 - The theme uses a native system/light/dark select with a stable accessible label. The sticky header reserves its measured height and falls back to normal flow without JavaScript or when too tall. Focus is checked in both keyboard directions. Long headings wrap when visitor text spacing increases; cross-document animations are opt-in for `no-preference` only.
 - External link checks retain dated structured results for verified, broken and inconclusive links; transient failures receive one bounded retry. CI uploads `docs/qa/external-links.json`. An inconclusive result still requires review and does not certify availability.
 - Deployment smoke tests download both complete PDFs. With `--artifact-directory dist --revision <full SHA>`, they compare every served artifact file (HTML, scripts, styles, media, PDFs, robots and sitemap) byte-for-byte. `_headers` and `_redirects` are platform configuration and are checked separately, not fetched as public files. Reports retain the expected revision and artifact hash. Both deployment workflows require this comparison; manual availability-only checks explicitly report no verified artifact.

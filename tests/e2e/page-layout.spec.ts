@@ -1,6 +1,19 @@
 import { publicRoutes as routeCatalog } from "../../scripts/route-catalog.mjs";
 import { expect, test } from "@playwright/test";
 
+test("home keeps the resume and contact actions in the first mobile viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const route of ["/", "/en/"]) {
+    await page.goto(route);
+    const hero = page.locator(".hero-copy");
+    await expect(hero.getByRole("link", { name: /PDF/ })).toBeInViewport({ ratio: 1 });
+    await expect(
+      hero.getByRole("link", { name: route === "/" ? "M’écrire" : "Get in touch" }),
+    ).toBeInViewport({ ratio: 1 });
+  }
+});
+
 test("resume and contact introductions keep actions below readable text at tablet widths", async ({
   page,
 }, testInfo) => {
@@ -33,6 +46,8 @@ for (const route of [
   "/projets/ludosaic/",
   "/en/projects/palimia/",
   "/en/projects/ludosaic/",
+  "/projets/zaykohub/",
+  "/en/projects/zaykohub/",
 ]) {
   test(`${route} lets readers jump to every case-study section`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });

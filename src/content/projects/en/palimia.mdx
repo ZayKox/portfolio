@@ -6,16 +6,16 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-09-09"
+  reviewedOn: "2026-10-02"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
-    status: withheld
-    note: Ethan approved the absence of screenshots; existing graphic compositions are retained.
+    status: included
+    note: Screenshots of the local application with fictional data, authorized by Ethan on October 2, 2026.
   evidence:
     status: included
-    note: Technical case study reviewed and approved by Ethan, without a demo, public repository or published metrics.
+    note: Technical case study reviewed and approved by Ethan, without a public demo, public repository or published metrics.
 eyebrow: Cultural profile
 kind: Full-stack web application
 summary: A platform for tracking, rating, and organizing movies, TV series, and video games in a personal cultural library.
@@ -38,15 +38,38 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
 ---
 
+import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
+import libraryCapture from "../../../assets/projects/palimia/library.webp";
+import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
+
 ## My contribution
 
 I develop Palimia independently, using Next.js and strict TypeScript. My work includes:
 
 - modeling the catalog and personal library with PostgreSQL and Prisma;
 - validating and normalizing provider data on the server before import;
+- explainable recommendations, personal data export, and account deletion;
 - unit, component, PostgreSQL, and Playwright tests that support development.
 
 The technical choices and limitations below describe the work in progress.
+
+## Inside the application
+
+These screenshots show the application running locally, with its French interface. The works, ratings, and counters shown are fictional demonstration data.
+
+<ProjectCapture
+  src={libraryCapture}
+  alt="Palimia library showing three fictional works with their statuses, ratings, and progress."
+  caption="The private library brings movies, TV series, and video games together with their tracking details."
+  locale="en"
+/>
+
+<ProjectCapture
+  src={recommendationsCapture}
+  alt="Three Palimia recommendations with explanations based on preferred genres and media types."
+  caption="Recommendation details: each suggestion displays the reasons why it was selected."
+  locale="en"
+/>
 
 ## A personal cultural library
 
@@ -58,7 +81,7 @@ The main journey starts with searching a catalog supplied by external providers,
 
 The planned first beta focuses on movies, TV series, and video games. The data model and some integrations also anticipate anime, manga, and books, but these media remain outside the public scope until their sources and usage rights have been reviewed.
 
-Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Planned recommendations follow the same principle: they should be personal and explainable, using understandable signals rather than an opaque score.
+Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Recommendations are implemented: each suggestion includes understandable reasons explaining why it was selected.
 
 ## Two choices that shape the project
 
@@ -69,6 +92,8 @@ The project is a modular monolith built with Next.js and strict TypeScript. Post
 ### Separate catalog data from personal data
 
 This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
+
+Users can also export their personal data or delete their account. These flows are part of the application's current implementation.
 
 ## Validation and current limitations
 

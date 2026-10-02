@@ -14,7 +14,9 @@ const { entry, locale, headingLevel = 3 } = Astro.props;
 const t = getCopy(locale);
 const href = locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`;
 const Heading = headingLevel === 2 ? "h2" : "h3";
-const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
+const actionLabel =
+  entry.data.publication === "teaser" ? t.projects.teaser : t.projects.viewProject;
+const visualLabel = `${entry.data.title} — ${actionLabel}`;
 ---
 
 <article class="project-card reveal">
@@ -46,8 +48,8 @@ const visualLabel = `${entry.data.title} — ${t.projects.viewProject}`;
         <li>{technology}</li>
       ))}
     </ul>
-    <a class="text-link" href={href} aria-label={`${t.projects.viewProject} — ${entry.data.title}`}>
-      {t.projects.viewProject}
+    <a class="text-link" href={href} aria-label={`${actionLabel} — ${entry.data.title}`}>
+      {actionLabel}
       <span aria-hidden="true">↗</span>
     </a>
   </div>

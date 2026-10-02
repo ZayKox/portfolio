@@ -55,6 +55,86 @@
       "height": 630,
       "maxBytes": 307200,
       "sha256": "2ad83b40cb8e508fe0c4e1743dd78225924b0f26af4b05a38b879271762e84b8"
+    },
+    {
+      "path": "src/assets/projects/palimia/library.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Palimia interface in an isolated development copy on 2026-10-02. A disposable account and fictional works, ratings and progress populate a dedicated temporary database. No provider calls or provider artwork. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
+      "rights": "Application screenshot authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Bibliothèque Palimia montrant trois œuvres fictives, leurs statuts, notes et progression.",
+        "en": "Palimia library showing three fictional works with their statuses, ratings, and progress."
+      },
+      "width": 1440,
+      "height": 1416,
+      "maxBytes": 204800,
+      "sha256": "297b20babd135fa0e8fec96c81140af9c8b27407569c312b7c28c46e2d07ddb8"
+    },
+    {
+      "path": "src/assets/projects/palimia/recommendations.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Palimia interface in an isolated development copy on 2026-10-02. A disposable account and fictional works, ratings and progress populate a dedicated temporary database. No provider calls or provider artwork. The recommendations capture frames the actual results section. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
+      "rights": "Application screenshot authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Trois recommandations Palimia accompagnées de raisons liées aux genres et aux types de médias appréciés.",
+        "en": "Three Palimia recommendations with explanations based on preferred genres and media types."
+      },
+      "width": 1352,
+      "height": 840,
+      "maxBytes": 204800,
+      "sha256": "57089c6614ee136aeba42c0d54f786d1f962aa46c4d75221d315a70e3828b951"
+    },
+    {
+      "path": "src/assets/projects/ludosaic/catalog.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Ludosaic interface in an isolated development copy on 2026-10-02. Original application artwork and a local two-player demonstration game only. No real player account, production data or private room information. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "ludosaic at 236f6a87608fddc94cca2acd41ec621624ed3a1f",
+      "rights": "Application screenshots authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data. Ludosaic game artwork is documented as original in its ASSET_PROVENANCE record.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Catalogue Ludosaic présentant Grid Duel, Merge Forge et Reflex Rush, avec les filtres de catégorie et de mode.",
+        "en": "Ludosaic catalog showing Grid Duel, Merge Forge, and Reflex Rush, with category and game-mode filters."
+      },
+      "width": 1440,
+      "height": 1289,
+      "maxBytes": 204800,
+      "sha256": "87cc241731551f9b2278900288cb08a28344177bcf0d5d5892aefd107dc5bf6b"
+    },
+    {
+      "path": "src/assets/projects/ludosaic/grid-duel.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Ludosaic interface in an isolated development copy on 2026-10-02. Original application artwork and a local two-player demonstration game only. No real player account, production data or private room information. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "ludosaic at 236f6a87608fddc94cca2acd41ec621624ed3a1f",
+      "rights": "Application screenshots authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data. Ludosaic game artwork is documented as original in its ASSET_PROVENANCE record.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Partie locale de Grid Duel montrant le plateau, les jetons joués et l’indication du joueur actif.",
+        "en": "Local Grid Duel game showing the board, played pieces, and the active player indicator."
+      },
+      "width": 1440,
+      "height": 1242,
+      "maxBytes": 204800,
+      "sha256": "ffefdb918e8d5f055aa47914df164088d38356b5e15c9ca96a551ce78c6386ca"
     }
   ]
 }

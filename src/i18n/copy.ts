@@ -29,13 +29,14 @@ export const copy = {
     },
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
-      title: "Développeur logiciel. De la donnée au produit.",
+      title: "Développeur logiciel.",
       titleEmphasis: "Développeur logiciel.",
       intro:
-        "Je développe des API Python, des traitements de données SQL et des services cloud. Plus de trois ans d’expérience professionnelle en alternance, avec aussi une contribution à un logiciel de CAO en C++.",
-      searchLabel: "En recherche d’un poste",
-      searchTitle: "Mon prochain chapitre, en équipe.",
-      searchText: "Je recherche un poste en développement logiciel, sur des sujets variés.",
+        "Plus de trois ans d’expérience en alternance, entre API Python, données SQL, cloud et logiciel de CAO en C++.",
+      exploreLabel: "Pour aller plus loin",
+      exploreTitle: "Du parcours aux projets.",
+      allProjectsCta: "Découvrir tous les projets",
+      homelabCta: "Aperçu du homelab ZaykoHub",
       resumeOnlineCta: "Lire mon CV en ligne",
       educationLabel: "Formation",
       experienceCta: "Voir mon expérience",
@@ -98,7 +99,7 @@ export const copy = {
       eyebrow: "Projets",
       title: "De l’idée aux choix techniques.",
       intro:
-        "Palimia et Ludosaic sont deux projets personnels développés en autonomie. Ces études présentent leur fonctionnement, mes décisions d’architecture et leur état d’avancement.",
+        "Deux applications développées en autonomie et un homelab en préparation. Je présente leur fonctionnement, mes choix techniques et leur état d’avancement.",
       viewProject: "Lire l’étude de projet",
       teaser: "Aperçu technique",
     },
@@ -109,7 +110,7 @@ export const copy = {
       paragraphs: [
         "Mon parcours en alternance m’a amené à contribuer à un logiciel de CAO en C++ chez Intento Design, puis à développer des API Python, des traitements de données et des services sur AWS chez Studio Beyowi. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
         "Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
-        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Ces projets complètent mon expérience professionnelle et me donnent d’autres problèmes à résoudre.",
+        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Je prépare également ZaykoHub, mon homelab personnel, avec des configurations versionnées et des validations locales.",
       ],
       nowLabel: "Maintenant",
       nowText:
@@ -236,6 +237,7 @@ export const copy = {
       decision: "Choix technique",
       flow: "Comment ça fonctionne",
       contents: "Dans cette étude",
+      enlargeCapture: "Agrandir la capture",
     },
     footer: {
       navigationLabel: "Liens de navigation",
@@ -276,14 +278,14 @@ export const copy = {
     },
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
-      title: "Software developer. From data to product.",
+      title: "Software developer.",
       titleEmphasis: "Software developer.",
       intro:
-        "I develop Python APIs, SQL data workflows, and cloud services. I have over three years of professional apprenticeship experience, including contributions to C++ CAD software.",
-      searchLabel: "Looking for a software role",
-      searchTitle: "My next chapter, with a team.",
-      searchText:
-        "I’m looking for a software development role and am open to a range of challenges.",
+        "Over three years of apprenticeship experience spanning Python APIs, SQL data workflows, cloud services, and C++ CAD software.",
+      exploreLabel: "Explore my work",
+      exploreTitle: "From experience to projects.",
+      allProjectsCta: "Explore all projects",
+      homelabCta: "ZaykoHub homelab overview",
       resumeOnlineCta: "Read my resume online",
       educationLabel: "Education",
       experienceCta: "View my experience",
@@ -346,7 +348,7 @@ export const copy = {
       eyebrow: "Projects",
       title: "From ideas to technical decisions.",
       intro:
-        "Palimia and Ludosaic are two personal projects I develop independently. These case studies explain how they work, my architecture decisions, and their current progress.",
+        "Two applications I develop independently and a homelab in preparation. I explain how they work, my technical choices, and their current progress.",
       viewProject: "Read the case study",
       teaser: "Technical overview",
     },
@@ -357,7 +359,7 @@ export const copy = {
       paragraphs: [
         "My apprenticeships took me from contributing to C++ CAD software at Intento Design to developing Python APIs, data workflows, and AWS services at Studio Beyowi. I completed my computer science master’s degree in AI engineering in 2026.",
         "I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance.",
-        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. These projects complement my professional experience and give me other problems to solve.",
+        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. I’m also preparing ZaykoHub, my personal homelab, with versioned configurations and local validation.",
       ],
       nowLabel: "Now",
       nowText:
@@ -481,6 +483,7 @@ export const copy = {
       decision: "Technical decision",
       flow: "How it works",
       contents: "In this case study",
+      enlargeCapture: "Enlarge screenshot",
     },
     footer: {
       navigationLabel: "Navigation links",

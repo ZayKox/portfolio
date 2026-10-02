@@ -6,16 +6,16 @@ order: 2
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-09-09"
+  reviewedOn: "2026-10-02"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
-    status: withheld
-    note: Absence de captures validée par Ethan ; les compositions graphiques existantes sont conservées.
+    status: included
+    note: Captures de l’application locale et d’une partie de démonstration, autorisées par Ethan le 2 octobre 2026.
   evidence:
     status: included
-    note: Étude technique relue et validée par Ethan, sans démonstration, dépôt public ni métriques publiées.
+    note: Étude technique relue et validée par Ethan, sans démonstration publique, dépôt public ni métriques publiées.
 eyebrow: Plateforme de mini-jeux
 kind: Application web modulaire
 summary: Une plateforme web de mini-jeux en cours de développement, jouable sans compte en solo, contre un bot ou à plusieurs selon le jeu.
@@ -42,15 +42,38 @@ socialImage: /ludosaic-social-card.png
 socialImageAlt: Carte de partage Violet Field de Ludosaic, avec trois tuiles représentant Reflex Rush, Merge Forge et Grid Duel.
 ---
 
+import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
+import catalogCapture from "../../../assets/projects/ludosaic/catalog.webp";
+import gridDuelCapture from "../../../assets/projects/ludosaic/grid-duel.webp";
+
 ## Ma contribution
 
 Je développe seul Ludosaic, de l’application web aux règles des mini-jeux. Mon travail comprend notamment :
 
 - la séparation des jeux, de leurs interfaces et du serveur dans un monorepo ;
 - des règles rejouables à partir d’une graine et d’une suite d’actions pour vérifier les résultats côté serveur ;
+- la conservation locale des résultats en attente et leur renvoi après reconnexion, avec prévention des doublons ;
 - une fondation de salons privés avec Colyseus, testée localement avec deux navigateurs pour Grid Duel.
 
 Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
+
+## L’application en images
+
+Ces captures montrent le catalogue et une partie de démonstration exécutés localement. La partie illustrée se joue à deux sur le même appareil.
+
+<ProjectCapture
+  src={catalogCapture}
+  alt="Catalogue Ludosaic présentant Grid Duel, Merge Forge et Reflex Rush, avec les filtres de catégorie et de mode."
+  caption="Le catalogue rassemble les trois mini-jeux et leurs modes de jeu."
+  locale="fr"
+/>
+
+<ProjectCapture
+  src={gridDuelCapture}
+  alt="Partie locale de Grid Duel montrant le plateau, les jetons joués et l’indication du joueur actif."
+  caption="Grid Duel pendant une partie locale de démonstration à deux joueurs."
+  locale="fr"
+/>
 
 ## Jouer rapidement, sans créer de compte
 
@@ -64,7 +87,7 @@ Un profil invité est généré localement pour conserver le nom d’affichage, 
 
 Ces trois jeux ne servent pas seulement à remplir un catalogue. Chacun éprouve une contrainte différente : le cycle de vie d’un moteur Phaser, une logique de puzzle rejouable, puis une autorité multijoueur capable de contrôler les tours et de conserver les résultats.
 
-## Deux choix qui structurent la plateforme
+## Des choix qui structurent la plateforme
 
 ### Séparer les jeux de leurs interfaces
 
@@ -73,6 +96,12 @@ Le monorepo sépare l’application Next.js, le serveur de jeu, chaque jeu et le
 ### Vérifier les résultats à partir des règles
 
 Les règles restent indépendantes du rendu et peuvent être rejouées à partir d’une graine et d’une suite d’actions. Pour un résultat connecté, le serveur reconstitue la partie au lieu d’accepter directement le score annoncé par le navigateur. Les jeux sont chargés uniquement lorsqu’ils sont ouverts, et le service worker permet de relancer certains modes déjà chargés sans connexion.
+
+### Reprendre après une interruption
+
+Les résultats en attente sont conservés localement puis renvoyés après reconnexion. Leur vérification côté serveur et la prévention des doublons permettent de traiter les nouvelles tentatives d’envoi sans compter plusieurs fois la même partie.
+
+Les salons privés de Grid Duel comprennent également un mécanisme de reprise. Ces fonctionnalités font partie du travail sur la continuité des parties, dont la validation en environnement cible reste à compléter.
 
 ## Validation et limites actuelles
 
