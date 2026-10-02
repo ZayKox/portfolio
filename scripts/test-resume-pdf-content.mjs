@@ -42,7 +42,7 @@ const expectations = {
 const expectedLinks = [
   "mailto:ethan.brosselard@gmail.com",
   "https://github.com/ZayKox",
-  "https://www.linkedin.com/in/ethan-brosselard-507334237/",
+  "https://www.linkedin.com/in/ethan-brosselard/",
 ];
 
 for (const job of jobs) {

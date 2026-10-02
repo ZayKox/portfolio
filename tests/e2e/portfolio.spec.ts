@@ -160,7 +160,7 @@ test("primary links expose the expected destinations", async ({ page }) => {
   );
   await expect(page.getByRole("link", { name: "LinkedIn ↗", exact: true })).toHaveAttribute(
     "href",
-    "https://www.linkedin.com/in/ethan-brosselard-507334237/",
+    "https://www.linkedin.com/in/ethan-brosselard/",
   );
 });
 

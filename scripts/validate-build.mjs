@@ -20,7 +20,7 @@ const expectedPerson = {
   "@type": "Person",
   name: "Ethan Brosselard",
   homeLocation: { "@type": "Place", name: "Paris, France" },
-  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard-507334237/"],
+  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard/"],
 };
 
 const forbiddenPlaceholders = [

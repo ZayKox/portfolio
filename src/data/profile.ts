@@ -7,7 +7,7 @@ export const profile = {
   languages: ["fr", "en"],
   socials: {
     github: "https://github.com/ZayKox",
-    linkedin: "https://www.linkedin.com/in/ethan-brosselard-507334237/",
+    linkedin: "https://www.linkedin.com/in/ethan-brosselard/",
   },
   resume: {
     fr: "/cv/ethan-brosselard-cv-fr.pdf",
