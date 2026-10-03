@@ -32,7 +32,7 @@ export const copy = {
       title: "Développeur logiciel.",
       titleEmphasis: "Développeur logiciel.",
       intro:
-        "Plus de quatre ans d’expérience en alternance, entre API Python, données SQL, cloud et logiciel de CAO en C++.",
+        "Plus de quatre ans d’expérience en alternance, entre API Python, données SQL, cloud et logiciel de CAO en C++. Un parcours complété par un master en ingénierie de l’intelligence artificielle.",
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
@@ -285,7 +285,7 @@ export const copy = {
       title: "Software developer.",
       titleEmphasis: "Software developer.",
       intro:
-        "Over four years of apprenticeship experience spanning Python APIs, SQL data workflows, cloud services, and C++ CAD software.",
+        "Over four years of apprenticeship experience spanning Python APIs, SQL data workflows, cloud services, and C++ CAD software, complemented by a master’s degree in AI engineering.",
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
