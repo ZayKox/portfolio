@@ -5,10 +5,11 @@ This file records approved publication decisions that are not already fully repr
 ## Current public scope
 
 - Ethan Brosselard also uses the ZayKo signature.
-- The provisional positioning remains broad: software developer and digital maker. It must not be narrowed to one platform, stack, project, or AI.
+- The public positioning emphasizes backend development and remains open to different programming languages and environments. It must not be narrowed to one stack, project, or AI.
 - French is the default language at `/`; equivalent English content lives under `/en/`.
 - The public portfolio includes bilingual HTML and PDF resumes generated from one structured source.
 - On September 28, 2026, Ethan approved a general junior software developer resume for remote permanent or fixed-term employment (CDI/CDD), with offer-specific keyword tailoring deferred. This application title does not replace the portfolio’s broader positioning.
+- On October 3, 2026, Ethan approved emphasizing backend development across the bilingual portfolio and resumes. Python is presented as his main professional language, supported by his existing C++ experience and TypeScript projects; the job search remains open to different backend languages and environments. Applied AI, data and cloud complement this positioning. This supersedes the general resume title above without claiming proficiency in every language, new experience, production results or a change in employment preferences.
 - The bilingual resume records apprenticeship experience since 2022 and an AI-engineering master's degree completed in 2026. Remote work is a search preference, not a claim about past working arrangements, immediate availability, or eligibility to work in any country.
 - Ethan confirmed that the Studio Beyowi apprenticeship ends in September 2026. The resume retains the employer as a work-history fact; introductory copy no longer describes him as currently working there.
 - Palimia and Ludosaic are independently developed projects with paired French and English case studies approved on September 9, 2026.

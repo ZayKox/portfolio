@@ -21,18 +21,18 @@ export const copy = {
       contact: "Contact",
     },
     meta: {
-      title: "Ethan Brosselard — Développeur logiciel & créateur numérique",
+      title: "Ethan Brosselard — Développeur backend",
       description:
-        "Développeur logiciel à Paris, en recherche d’un CDI ou CDD en télétravail. Expérience Python, C++, données et cloud. Projets, CV et contact.",
+        "Développeur backend à Paris : API, données, IA appliquée et cloud. Expérience principale en Python, ouvert à d’autres langages. CDI ou CDD en télétravail.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
-      title: "Développeur logiciel.",
-      titleEmphasis: "Développeur logiciel.",
+      title: "Développeur backend.",
+      titleEmphasis: "Développeur backend.",
       intro:
-        "Expérience en alternance depuis 2022, entre API Python, données SQL, cloud et CAO en C++. Diplômé d’un master en ingénierie de l’intelligence artificielle.",
+        "API, logique métier et données. Expérience en alternance depuis 2022, principalement en Python, complétée par le C++ et des projets TypeScript. Master en ingénierie de l’IA ; ouvert à différents langages backend.",
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
@@ -46,77 +46,77 @@ export const copy = {
       experienceEyebrow: "Parcours professionnel",
       experienceTitle: "Une expérience concrète, en équipe.",
       experienceIntro:
-        "Deux expériences en alternance, du traitement de données et des API Python à un logiciel de CAO en C++.",
+        "Des API aux pipelines de données et à l’IA appliquée, avec une pratique des algorithmes et des tests en C++.",
       experienceMore: "Voir le CV complet",
       signalLabel: "Compétences",
-      fieldsTitle: "Des compétences en pratique.",
+      fieldsTitle: "Construire et fiabiliser le backend.",
       fieldsIntro:
         "Chaque domaine s’appuie sur une expérience professionnelle ou un projet détaillé.",
       fields: [
         {
           index: "01",
-          title: "Backend & données",
-          text: "API Python, migrations SQL et services AWS chez Studio Beyowi.",
-          linkLabel: "Expérience Python",
+          title: "Backend & API",
+          text: "API REST en Python chez Studio Beyowi ; logique serveur en TypeScript dans mes projets personnels.",
+          linkLabel: "Expérience backend",
           href: "#experience-beyowi",
         },
         {
           index: "02",
-          title: "Logiciel & tests",
-          text: "Fonctionnalités C++, algorithmes de circuits et tests unitaires chez Intento Design.",
-          linkLabel: "Expérience C++",
-          href: "#experience-intento",
+          title: "IA appliquée",
+          text: "RAG et recherche vectorielle avec PGVector et Qdrant chez Studio Beyowi, complétés par un master en ingénierie de l’IA.",
+          linkLabel: "Intégration de l’IA",
+          href: "#experience-beyowi",
         },
         {
           index: "03",
-          title: "Produits web",
-          text: "Catalogue culturel, bibliothèque personnelle et séparation des données dans Palimia.",
-          linkLabel: "Étude Palimia",
+          title: "Données & SQL",
+          text: "ETL et migrations SQL en entreprise ; catalogue normalisé et données personnelles séparées dans Palimia.",
+          linkLabel: "Modélisation dans Palimia",
           href: "/projets/palimia/",
         },
         {
           index: "04",
-          title: "Règles & temps réel",
-          text: "Règles de jeu rejouables et vérification des résultats côté serveur dans Ludosaic.",
-          linkLabel: "Étude Ludosaic",
-          href: "/projets/ludosaic/",
+          title: "Tests & cloud",
+          text: "Tests, CI/CD, AWS et Docker en entreprise ; automatisation et validations locales pour mon homelab.",
+          linkLabel: "Automatisation du homelab",
+          href: "/projets/zaykohub/",
         },
       ],
-      selectedProjects: "Projets personnels.",
+      selectedProjects: "Le backend à travers mes projets.",
       selectedProjectsIntro:
-        "Deux produits conçus et développés en autonomie, avec leurs décisions techniques et leurs limites actuelles.",
+        "Deux applications développées en autonomie, avec leurs choix de logique serveur, de modèles de données et de validation.",
       aboutEyebrow: "À propos",
-      aboutTitle: "Un parcours, plusieurs terrains techniques.",
+      aboutTitle: "Un socle backend, plusieurs langages.",
       aboutText:
-        "Du backend Python au C++, puis à mes propres applications : j’aime comprendre le problème, construire une solution et vérifier son fonctionnement. Mon master en ingénierie de l’IA complète cette pratique du développement logiciel.",
+        "API, règles métier, données et tests structurent mon travail. Mon expérience en Python et C++ et mes projets TypeScript nourrissent une approche du backend ouverte à différents langages, complétée par un master en ingénierie de l’IA.",
       aboutCta: "En savoir plus",
       contactTitle: "Échangeons sur votre équipe ou votre projet.",
       contactText:
-        "Je recherche ma prochaine opportunité en développement logiciel et reste ouvert à des sujets variés. Vous pouvez m’écrire directement.",
+        "Je recherche un poste en développement backend, avec un intérêt pour l’IA appliquée, les données et le cloud, et une ouverture à différents langages. Vous pouvez m’écrire directement.",
       contactCta: "M’écrire",
     },
     projects: {
       eyebrow: "Projets",
       title: "De l’idée aux choix techniques.",
       intro:
-        "Deux applications développées en autonomie et un homelab en préparation. Je présente leur fonctionnement, mes choix techniques et leur état d’avancement.",
+        "Deux applications développées en autonomie et un homelab en préparation : logique serveur, données, tests et automatisation, avec leurs limites actuelles.",
       viewProject: "Lire l’étude de projet",
       teaser: "Aperçu technique",
     },
     about: {
       description:
-        "Parcours d’Ethan Brosselard : API Python et données chez Studio Beyowi, CAO en C++ chez Intento Design, master en IA et projets personnels.",
+        "Parcours backend d’Ethan Brosselard : API Python, données et RAG chez Studio Beyowi, C++ chez Intento Design, projets TypeScript et master en IA.",
       eyebrow: "À propos",
       title: "Mon parcours et ma façon de travailler.",
-      lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
+      lead: "Je suis Ethan Brosselard, développeur backend basé à Paris.",
       paragraphs: [
-        "Mon parcours en alternance m’a amené à contribuer à un logiciel de CAO en C++ chez Intento Design, puis à développer des API Python, des traitements de données et des services sur AWS chez Studio Beyowi. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
-        "Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
-        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Je prépare également mon homelab personnel, avec des configurations versionnées et des validations locales.",
+        "Mon parcours en alternance depuis 2022 associe des API Python, des traitements SQL et des services AWS chez Studio Beyowi à une première expérience en C++ chez Intento Design. Chez Studio Beyowi, j’ai aussi contribué à l’intégration de RAG et de recherche vectorielle. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
+        "Je recherche un poste backend, avec Python comme expérience principale et une ouverture à d’autres langages et environnements. Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
+        "Avec Palimia et Ludosaic, j’explore les modèles de données, la validation côté serveur, les règles métier et les contraintes de déploiement. Mon homelab en préparation complète cette pratique avec des configurations versionnées, de l’automatisation et des validations locales.",
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Je recherche un poste en développement logiciel, tout en faisant évoluer mes projets personnels et en approfondissant la sécurité appliquée au développement.",
+        "Je recherche un poste en développement backend, avec un intérêt pour l’IA appliquée, les données et le cloud. Je reste ouvert à différents langages et environnements.",
       resumeCta: "Découvrir mon parcours et mon CV",
       projectsCta: "Voir les projets et leurs choix techniques",
       proofLabel: "Ce que montre ce portfolio",
@@ -125,7 +125,7 @@ export const copy = {
     },
     resume: {
       description:
-        "CV d’Ethan Brosselard, développeur logiciel junior : expériences Python et C++, master en IA, compétences et PDF. Recherche CDI ou CDD en télétravail.",
+        "CV d’Ethan Brosselard, développeur backend junior : API Python, données, RAG, AWS, C++ et projets TypeScript. Recherche CDI ou CDD en télétravail.",
       eyebrow: "Parcours",
       title: "CV et expériences",
       intro:
@@ -143,11 +143,11 @@ export const copy = {
     },
     contact: {
       description:
-        "Contacter Ethan Brosselard pour un poste en développement logiciel. Recherche CDI ou CDD en télétravail. Email, liens professionnels et CV.",
+        "Contacter Ethan Brosselard pour un poste backend : API, IA appliquée, données et cloud, avec une ouverture à différents langages. CDI ou CDD en télétravail.",
       eyebrow: "Contact",
       title: "Parlons de votre équipe.",
       intro:
-        "Vous recrutez en développement logiciel ? Échangeons sur votre équipe et ses défis techniques. Je recherche un CDI ou CDD en télétravail et reste ouvert à des sujets variés.",
+        "Vous recrutez en développement backend ? Je recherche un CDI ou CDD en télétravail, avec Python comme expérience principale et une ouverture à d’autres langages, ainsi qu’aux sujets IA, données et cloud.",
       searchLabel: "Recherche actuelle",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
@@ -292,18 +292,18 @@ export const copy = {
       contact: "Contact",
     },
     meta: {
-      title: "Ethan Brosselard — Software developer & digital maker",
+      title: "Ethan Brosselard — Backend developer",
       description:
-        "Software developer based in Paris, seeking a permanent or fixed-term remote role. Python, C++, data and cloud experience. Projects, resume and contact.",
+        "Backend developer in Paris: APIs, data, applied AI and cloud. Experience primarily in Python, open to other languages. Seeking permanent or fixed-term remote work.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
     home: {
       eyebrow: "Ethan Brosselard · ZayKo",
-      title: "Software developer.",
-      titleEmphasis: "Software developer.",
+      title: "Backend developer.",
+      titleEmphasis: "Backend developer.",
       intro:
-        "Apprenticeship experience since 2022: Python APIs, SQL data workflows, cloud services, and C++ CAD software. Master’s graduate in AI engineering.",
+        "APIs, business logic and data. Apprenticeship experience since 2022, primarily in Python, complemented by C++ and personal TypeScript projects. Master’s in AI engineering; open to different backend languages.",
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
@@ -317,77 +317,77 @@ export const copy = {
       experienceEyebrow: "Professional experience",
       experienceTitle: "Hands-on experience with teams.",
       experienceIntro:
-        "Two apprenticeships spanning Python data workflows and APIs through to C++ CAD software.",
+        "From APIs to data pipelines and applied AI, alongside experience with C++ algorithms and testing.",
       experienceMore: "View full resume",
       signalLabel: "Skills",
-      fieldsTitle: "Skills in practice.",
+      fieldsTitle: "Building reliable backend systems.",
       fieldsIntro:
         "Each area is backed by professional experience or a detailed project case study.",
       fields: [
         {
           index: "01",
-          title: "Backend & data",
-          text: "Python APIs, SQL migrations, and AWS services at Studio Beyowi.",
-          linkLabel: "Python experience",
+          title: "Backend & APIs",
+          text: "Python REST APIs at Studio Beyowi; server-side logic in my personal TypeScript projects.",
+          linkLabel: "Backend experience",
           href: "#experience-beyowi",
         },
         {
           index: "02",
-          title: "Software & testing",
-          text: "C++ features, circuit algorithms, and unit tests at Intento Design.",
-          linkLabel: "C++ experience",
-          href: "#experience-intento",
+          title: "Applied AI",
+          text: "RAG and vector search with PGVector and Qdrant at Studio Beyowi, complemented by a master’s in AI engineering.",
+          linkLabel: "AI integration",
+          href: "#experience-beyowi",
         },
         {
           index: "03",
-          title: "Web products",
-          text: "A cultural catalog, personal library, and separation of data in Palimia.",
-          linkLabel: "Palimia case study",
+          title: "Data & SQL",
+          text: "ETL and SQL migrations at work; a normalized catalog and separate personal data in Palimia.",
+          linkLabel: "Palimia data modeling",
           href: "/en/projects/palimia/",
         },
         {
           index: "04",
-          title: "Game logic & real time",
-          text: "Replayable game rules and server-side result verification in Ludosaic.",
-          linkLabel: "Ludosaic case study",
-          href: "/en/projects/ludosaic/",
+          title: "Testing & cloud",
+          text: "Testing, CI/CD, AWS and Docker at work; automation and local validation for my homelab.",
+          linkLabel: "Homelab automation",
+          href: "/en/projects/zaykohub/",
         },
       ],
-      selectedProjects: "Personal projects.",
+      selectedProjects: "Backend development in my projects.",
       selectedProjectsIntro:
-        "Two products I design and build independently, with their technical decisions and current limits.",
+        "Two applications I develop independently, with decisions around server-side logic, data models and validation.",
       aboutEyebrow: "About",
-      aboutTitle: "One path, several technical fields.",
+      aboutTitle: "Backend foundations, several languages.",
       aboutText:
-        "From Python backend development to C++, then to my own applications: I enjoy understanding the problem, building a solution, and checking how it works. My master’s degree in AI engineering complements this software development experience.",
+        "APIs, business rules, data and testing shape my work. My Python and C++ experience and TypeScript projects support an approach to backend development that is open to different languages, complemented by a master’s in AI engineering.",
       aboutCta: "Learn more",
       contactTitle: "Let’s talk about your team or project.",
       contactText:
-        "I’m looking for my next software development opportunity and remain open to a range of challenges. You can email me directly.",
+        "I’m looking for a backend development role, with an interest in applied AI, data and cloud, and openness to different languages. You can email me directly.",
       contactCta: "Get in touch",
     },
     projects: {
       eyebrow: "Projects",
       title: "From ideas to technical decisions.",
       intro:
-        "Two applications I develop independently and a homelab in preparation. I explain how they work, my technical choices, and their current progress.",
+        "Two applications I develop independently and a homelab in preparation: server-side logic, data, testing and automation, with their current limitations.",
       viewProject: "Read the case study",
       teaser: "Technical overview",
     },
     about: {
       description:
-        "Ethan Brosselard’s background: Python APIs and data at Studio Beyowi, C++ CAD at Intento Design, an AI master’s degree, and personal projects.",
+        "Ethan Brosselard’s backend experience: Python APIs, data and RAG at Studio Beyowi, C++ at Intento Design, TypeScript projects and a master’s in AI.",
       eyebrow: "About",
       title: "My background and how I work.",
-      lead: "I’m Ethan Brosselard, a software developer based in Paris.",
+      lead: "I’m Ethan Brosselard, a backend developer based in Paris.",
       paragraphs: [
-        "My apprenticeships took me from contributing to C++ CAD software at Intento Design to developing Python APIs, data workflows, and AWS services at Studio Beyowi. I completed my computer science master’s degree in AI engineering in 2026.",
-        "I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance.",
-        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. I’m also preparing my personal homelab, with versioned configurations and local validation.",
+        "My apprenticeships since 2022 combine Python APIs, SQL workflows and AWS services at Studio Beyowi with earlier C++ experience at Intento Design. At Studio Beyowi, I also contributed to RAG and vector search integration. I completed my computer science master’s degree in AI engineering in 2026.",
+        "I’m looking for a backend role, with experience primarily in Python and openness to other languages and environments. I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security and performance.",
+        "With Palimia and Ludosaic, I explore data models, server-side validation, business rules and deployment constraints. My homelab in preparation complements this work with versioned configurations, automation and local validation.",
       ],
       nowLabel: "Now",
       nowText:
-        "I’m looking for a software development role while evolving my personal projects and deepening my knowledge of applied software security.",
+        "I’m looking for a backend development role, with an interest in applied AI, data and cloud. I’m open to different languages and environments.",
       resumeCta: "Explore my experience and resume",
       projectsCta: "Explore the projects and their technical choices",
       proofLabel: "What this portfolio shows",
@@ -396,7 +396,7 @@ export const copy = {
     },
     resume: {
       description:
-        "Ethan Brosselard’s resume: junior software developer, Python and C++ experience, AI master’s degree, skills, and PDF. Seeking permanent or fixed-term remote work.",
+        "Ethan Brosselard’s resume: junior backend developer, Python APIs, data, RAG, AWS, C++ and TypeScript projects. Seeking permanent or fixed-term remote work.",
       eyebrow: "Background",
       title: "Resume and experience",
       intro: "A structured overview of my background, skills, and the projects that support them.",
@@ -413,11 +413,11 @@ export const copy = {
     },
     contact: {
       description:
-        "Contact Ethan Brosselard about a software developer role. Seeking permanent or fixed-term remote work. Email, professional links, and resume.",
+        "Contact Ethan Brosselard about a backend role: APIs, applied AI, data and cloud, with openness to different languages. Seeking permanent or fixed-term remote work.",
       eyebrow: "Contact",
       title: "Let’s talk about your team.",
       intro:
-        "Hiring a software developer? Let’s discuss your team and its technical challenges. I’m seeking a permanent or fixed-term remote role and remain open to varied software work.",
+        "Hiring a backend developer? I’m seeking permanent or fixed-term remote work, with experience primarily in Python and openness to other languages, as well as AI, data and cloud work.",
       searchLabel: "Current job search",
       emailLabel: "Email",
       copyEmail: "Copy address",

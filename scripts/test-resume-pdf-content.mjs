@@ -10,7 +10,7 @@ const expectations = {
   "ethan-brosselard-cv-fr.pdf": {
     language: "fr",
     title: "CV — Ethan Brosselard",
-    role: "Développeur logiciel junior",
+    role: "Développeur backend junior",
     objective: "CDI ou CDD · Télétravail",
     headings: [
       "Profil",
@@ -29,7 +29,7 @@ const expectations = {
   "ethan-brosselard-resume-en.pdf": {
     language: "en",
     title: "Resume — Ethan Brosselard",
-    role: "Junior Software Developer",
+    role: "Junior Backend Developer",
     objective: "Permanent or fixed-term employment · Remote",
     headings: ["Profile", "Work experience", "Skills", "Education", "Projects", "Languages"],
     localLinks: [

@@ -98,9 +98,21 @@ const projects = (
             <p class="experience-period">{entry.period}</p>
           </div>
           <ul>
-            {entry.highlights?.map((highlight) => (
-              <li>{highlight}</li>
-            ))}
+            {entry.highlights?.map((highlight) => {
+              const separatorIndex = highlight.indexOf(" — ");
+              return (
+                <li>
+                  {separatorIndex < 0 ? (
+                    highlight
+                  ) : (
+                    <>
+                      <strong>{highlight.slice(0, separatorIndex)}</strong>
+                      {highlight.slice(separatorIndex)}
+                    </>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </article>
       ))}
@@ -126,21 +138,6 @@ const projects = (
     </div>
   </section>
 
-  <section class="section projects-section">
-    <div class="container section-heading section-heading--split reveal">
-      <div>
-        <p class="eyebrow">{t.projects.eyebrow}</p>
-        <h2>{t.home.selectedProjects}</h2>
-      </div>
-      <p>{t.home.selectedProjectsIntro}</p>
-    </div>
-    <div class="container project-list">
-      {projects.map((entry) => (
-        <ProjectCard {entry} {locale} />
-      ))}
-    </div>
-  </section>
-
   <section class="section section--bordered fields-section">
     <div class="container section-heading section-heading--split reveal">
       <div>
@@ -160,6 +157,21 @@ const projects = (
             <span aria-hidden="true">↗</span>
           </a>
         </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section projects-section">
+    <div class="container section-heading section-heading--split reveal">
+      <div>
+        <p class="eyebrow">{t.projects.eyebrow}</p>
+        <h2>{t.home.selectedProjects}</h2>
+      </div>
+      <p>{t.home.selectedProjectsIntro}</p>
+    </div>
+    <div class="container project-list">
+      {projects.map((entry) => (
+        <ProjectCard {entry} {locale} />
       ))}
     </div>
   </section>
