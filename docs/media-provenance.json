@@ -59,42 +59,42 @@
     {
       "path": "src/assets/projects/palimia/library.webp",
       "kind": "approved-capture",
-      "provenance": "Captured from the unmodified local Palimia interface in an isolated development copy on 2026-10-02. A disposable account and fictional works, ratings and progress populate a dedicated temporary database. No provider calls or provider artwork. Only framework development tooling is excluded from the frame.",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account and 21 fictional catalog works populate a dedicated temporary PostgreSQL database: 12 tracked works and nine recommendation candidates. The frame shows the summary, filters and first six of 12 library entries. No provider calls, provider artwork or real personal data. Only framework development tooling is excluded from the frame.",
       "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
-      "rights": "Application screenshot authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data.",
+      "rights": "Application screenshots requested by Ethan Brosselard on 2026-10-03, continuing his 2026-10-02 publication approval. Original application UI; no third-party artwork or personal data.",
       "approval": {
         "by": "Ethan Brosselard",
-        "date": "2026-10-02"
+        "date": "2026-10-03"
       },
       "contentSafety": "demo-data-only",
       "alt": {
-        "fr": "Bibliothèque Palimia montrant trois œuvres fictives, leurs statuts, notes et progression.",
-        "en": "Palimia library showing three fictional works with their statuses, ratings, and progress."
+        "fr": "Bibliothèque Palimia en mode sombre : 12 œuvres suivies et six entrées visibles avec leurs statuts, notes et progressions.",
+        "en": "Palimia library in dark mode: 12 tracked works and six visible entries with their statuses, ratings, and progress."
       },
       "width": 1440,
-      "height": 1416,
+      "height": 1476,
       "maxBytes": 204800,
-      "sha256": "297b20babd135fa0e8fec96c81140af9c8b27407569c312b7c28c46e2d07ddb8"
+      "sha256": "0de7bd5761b620d44972961c77af6d9703bca86731cfbb1cb95997a86b744488"
     },
     {
       "path": "src/assets/projects/palimia/recommendations.webp",
       "kind": "approved-capture",
-      "provenance": "Captured from the unmodified local Palimia interface in an isolated development copy on 2026-10-02. A disposable account and fictional works, ratings and progress populate a dedicated temporary database. No provider calls or provider artwork. The recommendations capture frames the actual results section. Only framework development tooling is excluded from the frame.",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account and 21 fictional catalog works populate a dedicated temporary PostgreSQL database: 12 tracked works and nine recommendation candidates. The frame shows the first six of nine calculated recommendations. No provider calls, provider artwork or real personal data. Only framework development tooling is excluded from the frame.",
       "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
-      "rights": "Application screenshot authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data.",
+      "rights": "Application screenshots requested by Ethan Brosselard on 2026-10-03, continuing his 2026-10-02 publication approval. Original application UI; no third-party artwork or personal data.",
       "approval": {
         "by": "Ethan Brosselard",
-        "date": "2026-10-02"
+        "date": "2026-10-03"
       },
       "contentSafety": "demo-data-only",
       "alt": {
-        "fr": "Trois recommandations Palimia accompagnées de raisons liées aux genres et aux types de médias appréciés.",
-        "en": "Three Palimia recommendations with explanations based on preferred genres and media types."
+        "fr": "Six recommandations Palimia en mode sombre, accompagnées de raisons liées aux genres et aux types de médias appréciés.",
+        "en": "Six Palimia recommendations in dark mode with explanations based on preferred genres and media types."
       },
       "width": 1352,
-      "height": 840,
+      "height": 1055,
       "maxBytes": 204800,
-      "sha256": "57089c6614ee136aeba42c0d54f786d1f962aa46c4d75221d315a70e3828b951"
+      "sha256": "af0541e3a08b246a78750958a9df0898e8c4d1aa0a18b3c3dd96cbee472d525a"
     },
     {
       "path": "src/assets/projects/ludosaic/catalog.webp",
