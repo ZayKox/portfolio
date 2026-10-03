@@ -3,7 +3,7 @@
   "policy": {
     "fonts": "system-only",
     "icons": "text-and-css-only",
-    "thirdPartyMedia": false
+    "thirdPartyMedia": "approved-captures-only"
   },
   "assets": [
     {
@@ -59,42 +59,144 @@
     {
       "path": "src/assets/projects/palimia/library.webp",
       "kind": "approved-capture",
-      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account and 21 fictional catalog works populate a dedicated temporary PostgreSQL database: 12 tracked works and nine recommendation candidates. The frame shows the summary, filters and first six of 12 library entries. No provider calls, provider artwork or real personal data. Only framework development tooling is excluded from the frame.",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account uses 21 real movie records fetched through the configured TMDB developer API, including original poster CDN URLs, with 12 tracked movies and nine recommendation candidates. The frame shows the summary, filters and first six of 12 library entries. Ratings, favorites and progress are synthetic demonstration data. No real personal data. Palimia retains its existing TMDB credits on /sources. Only framework development tooling is excluded from the frame.",
       "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
-      "rights": "Application screenshots requested by Ethan Brosselard on 2026-10-03, continuing his 2026-10-02 publication approval. Original application UI; no third-party artwork or personal data.",
+      "rights": "Ethan Brosselard explicitly requested real movies and their posters in these application screenshots on 2026-10-03. Posters are sourced through the TMDB developer API for the local demonstration; copyright remains with the respective rights holders. This request authorizes the application capture and does not transfer poster copyright. TMDB is credited in both portfolio case studies; official developer FAQ reviewed on 2026-10-03: https://developer.themoviedb.org/docs/faq. No standalone poster assets are published.",
       "approval": {
         "by": "Ethan Brosselard",
         "date": "2026-10-03"
       },
       "contentSafety": "demo-data-only",
       "alt": {
-        "fr": "Bibliothèque Palimia en mode sombre : 12 œuvres suivies et six entrées visibles avec leurs statuts, notes et progressions.",
-        "en": "Palimia library in dark mode: 12 tracked works and six visible entries with their statuses, ratings, and progress."
+        "fr": "Bibliothèque Palimia en mode sombre : 12 films suivis et six entrées visibles avec leurs affiches, statuts, notes et progressions.",
+        "en": "Palimia library in dark mode: 12 tracked movies and six visible entries with their posters, statuses, ratings, and progress."
       },
       "width": 1440,
-      "height": 1476,
+      "height": 1483,
       "maxBytes": 204800,
-      "sha256": "0de7bd5761b620d44972961c77af6d9703bca86731cfbb1cb95997a86b744488"
+      "sha256": "d695c2d198fb8bfa7f575aeef7e2fd83038e6222fc320e2f434425e53265e023",
+      "artworkSources": {
+        "provider": "TMDB",
+        "obtainedOn": "2026-10-03",
+        "reviewBy": "2027-04-03",
+        "creditsUrl": "https://www.themoviedb.org",
+        "termsReference": "https://developer.themoviedb.org/docs/faq",
+        "films": [
+          {
+            "tmdbId": 157336,
+            "title": "Interstellar",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/1pnigkWWy8W032o9TKDneBa3eVK.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/157336",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 27205,
+            "title": "Inception",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/aej3LRUga5rhgkmRP6XMFw3ejbl.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/27205",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 438631,
+            "title": "Dune",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/438631",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 693134,
+            "title": "Dune : Deuxième partie",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/iRNbRAIGQQr5diGnjpwJFm0dgt4.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/693134",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 603,
+            "title": "Matrix",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/pEoqbqtLc4CcwDUDqxmEDSWpWTZ.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/603",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 129,
+            "title": "Le Voyage de Chihiro",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/12TAqK0AUgdcYE9ZYZ9r7ASbH5Q.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/129",
+            "obtainedOn": "2026-10-03"
+          }
+        ]
+      }
     },
     {
       "path": "src/assets/projects/palimia/recommendations.webp",
       "kind": "approved-capture",
-      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account and 21 fictional catalog works populate a dedicated temporary PostgreSQL database: 12 tracked works and nine recommendation candidates. The frame shows the first six of nine calculated recommendations. No provider calls, provider artwork or real personal data. Only framework development tooling is excluded from the frame.",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account uses 21 real movie records fetched through the configured TMDB developer API, including original poster CDN URLs, with 12 tracked movies and nine recommendation candidates. The frame shows the first six of nine calculated recommendations. Ratings, favorites and progress are synthetic demonstration data. No real personal data. Palimia retains its existing TMDB credits on /sources. Only framework development tooling is excluded from the frame.",
       "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
-      "rights": "Application screenshots requested by Ethan Brosselard on 2026-10-03, continuing his 2026-10-02 publication approval. Original application UI; no third-party artwork or personal data.",
+      "rights": "Ethan Brosselard explicitly requested real movies and their posters in these application screenshots on 2026-10-03. Posters are sourced through the TMDB developer API for the local demonstration; copyright remains with the respective rights holders. This request authorizes the application capture and does not transfer poster copyright. TMDB is credited in both portfolio case studies; official developer FAQ reviewed on 2026-10-03: https://developer.themoviedb.org/docs/faq. No standalone poster assets are published.",
       "approval": {
         "by": "Ethan Brosselard",
         "date": "2026-10-03"
       },
       "contentSafety": "demo-data-only",
       "alt": {
-        "fr": "Six recommandations Palimia en mode sombre, accompagnées de raisons liées aux genres et aux types de médias appréciés.",
-        "en": "Six Palimia recommendations in dark mode with explanations based on preferred genres and media types."
+        "fr": "Six recommandations de films Palimia en mode sombre, avec leurs affiches et les raisons de leur sélection.",
+        "en": "Six Palimia movie recommendations in dark mode, with their posters and selection reasons."
       },
       "width": 1352,
-      "height": 1055,
+      "height": 1131,
       "maxBytes": 204800,
-      "sha256": "af0541e3a08b246a78750958a9df0898e8c4d1aa0a18b3c3dd96cbee472d525a"
+      "sha256": "9452f92e9c426b3b06b2be32d98cfe8a837548bea6bd9e14e6e403e115233344",
+      "artworkSources": {
+        "provider": "TMDB",
+        "obtainedOn": "2026-10-03",
+        "reviewBy": "2027-04-03",
+        "creditsUrl": "https://www.themoviedb.org",
+        "termsReference": "https://developer.themoviedb.org/docs/faq",
+        "films": [
+          {
+            "tmdbId": 105,
+            "title": "Retour vers le futur",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/iCgFtDUZxN8iUzNBCisjUrBmg2q.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/105",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 335984,
+            "title": "Blade Runner 2049",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qWD9E0Wgn8w6nMMutCNFAUiSHrX.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/335984",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 1124,
+            "title": "Le Prestige",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/37Fr7lY4QBHsuxlLJIfTNxW6nGW.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/1124",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 329865,
+            "title": "Premier Contact",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/mSgYBWMybY9Ug4ZnCGsttPIjUx7.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/329865",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 497,
+            "title": "La Ligne verte",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/cRBUYC02CPsVa1GqBq6rfHn5a8g.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/497",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 244786,
+            "title": "Whiplash",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/3XriEpTdnplQRzyphAC0cu3emns.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/244786",
+            "obtainedOn": "2026-10-03"
+          }
+        ]
+      }
     },
     {
       "path": "src/assets/projects/ludosaic/catalog.webp",

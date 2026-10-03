@@ -12,7 +12,7 @@ review:
   translationApproved: true
   media:
     status: included
-    note: Dark-mode screenshots of the local application with a richer demonstration database, requested by Ethan on October 3, 2026.
+    note: Dark-mode screenshots of the local application with real movies and their TMDB posters, requested by Ethan on October 3, 2026.
   evidence:
     status: included
     note: Technical case study reviewed and approved by Ethan, without a public demo, public repository or published metrics.
@@ -55,21 +55,25 @@ The technical choices and limitations below describe the work in progress.
 
 ## Inside the application
 
-These screenshots show the application running locally in dark mode, with its French interface, 12 tracked works, and 9 calculated suggestions. The works, ratings, progress, and counters shown are fictional demonstration data.
+These screenshots show the application running locally in dark mode, with its French interface, 12 tracked movies, and 9 calculated suggestions. Titles and posters come from TMDB; ratings, favorites, and progress are demonstration data.
 
 <ProjectCapture
   src={libraryCapture}
-  alt="Palimia library in dark mode: 12 tracked works and six visible entries with their statuses, ratings, and progress."
-  caption="The private library brings movies, TV series, and video games together: favorites, ratings, and completed, ongoing, or planned works."
+  alt="Palimia library in dark mode: 12 tracked movies and six visible entries with their posters, statuses, ratings, and progress."
+  caption="Interstellar, Inception, Dune, and other tracked movies with their posters, ratings, favorites, and progress."
   locale="en"
 />
 
 <ProjectCapture
   src={recommendationsCapture}
-  alt="Six Palimia recommendations in dark mode with explanations based on preferred genres and media types."
+  alt="Six Palimia movie recommendations in dark mode, with their posters and selection reasons."
   caption="A selection of the nine recommendations: each suggestion displays the reasons why it was selected."
   locale="en"
 />
+
+Titles and posters: [The Movie Database (TMDB)](https://www.themoviedb.org). Poster copyright remains with the respective rights holders.
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
 
 ## A personal cultural library
 
