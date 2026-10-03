@@ -53,26 +53,27 @@ const infrastructureLabels = getCopy(locale).visual.infrastructure;
     </>
   ) : visual === "infrastructure" ? (
     <div class="infrastructure-blueprint">
-      <div class="infrastructure-heading">
-        <span class="infrastructure-mark">
+      <div class="infrastructure-heading">{infrastructureLabels.heading}</div>
+      <div class="infrastructure-host">
+        <span class="infrastructure-server">
           <i></i>
           <i></i>
           <i></i>
         </span>
-        <span>{infrastructureLabels.heading}</span>
+        <div>
+          <strong>{infrastructureLabels.host}</strong>
+          <span>{infrastructureLabels.hostDetail}</span>
+        </div>
       </div>
       <div class="infrastructure-nodes">
-        {items.map((item) => (
+        {infrastructureLabels.nodes.map((node) => (
           <div class="infrastructure-node">
-            <strong>{item}</strong>
-            <span class="infrastructure-ports">
-              <i></i>
-              <i></i>
-              <i></i>
-            </span>
+            <strong>{node.name}</strong>
+            <span>{node.detail}</span>
           </div>
         ))}
       </div>
+      <div class="infrastructure-backup">{infrastructureLabels.backup}</div>
       <div class="infrastructure-footer">{infrastructureLabels.footer}</div>
     </div>
   ) : (

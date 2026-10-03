@@ -1052,6 +1052,35 @@ h3 {
   font-size: var(--text-small);
 }
 
+.case-prose table {
+  width: 100%;
+  margin-block: var(--space-4);
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+
+.case-prose :is(th, td) {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.case-prose th {
+  background: var(--surface-subtle);
+}
+
+.case-prose :is(th, td):first-child {
+  width: 25%;
+  font-weight: 600;
+}
+
+@media (max-width: 30rem) {
+  .case-prose :is(th, td) {
+    padding: var(--space-2) var(--space-1);
+  }
+}
+
 .case-flow-section {
   padding-block: var(--space-6);
 }
@@ -1275,7 +1304,8 @@ h3 {
 }
 
 .infrastructure-blueprint {
-  width: min(100%, 26rem);
+  width: min(100%, 30rem);
+  padding: 1rem;
   border: 1px solid var(--border);
   border-radius: calc(var(--radius-card) - 0.2rem);
   background: var(--surface);
@@ -1284,107 +1314,106 @@ h3 {
 
 .infrastructure-heading,
 .infrastructure-footer {
-  padding: 1rem;
+  color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.06em;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
 }
 
 .infrastructure-heading {
+  margin-bottom: 1rem;
+}
+
+.infrastructure-host {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.infrastructure-mark {
-  display: flex;
-  align-items: end;
-  gap: 0.15rem;
-  height: 1rem;
-}
-
-.infrastructure-mark i {
-  width: 0.25rem;
-  height: 75%;
-  background: var(--accent);
-}
-
-.infrastructure-mark i:nth-child(2) {
-  height: 100%;
-}
-
-.infrastructure-mark i:nth-child(3) {
-  height: 50%;
-}
-
-.infrastructure-nodes {
-  position: relative;
-  display: grid;
-  gap: 0.75rem;
-  padding: 1.5rem 1rem 1.5rem 2.5rem;
-}
-
-.infrastructure-nodes::before {
-  position: absolute;
-  top: 3rem;
-  bottom: 3rem;
-  left: 1.15rem;
-  width: 1px;
-  background: var(--accent);
-  content: "";
-}
-
-.infrastructure-node {
-  position: relative;
-  display: flex;
-  min-height: 3rem;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem;
+  padding: 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-control);
   background: var(--surface-subtle);
-  font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
 }
 
-.infrastructure-node::before {
-  position: absolute;
-  left: -1.65rem;
-  width: 0.6rem;
-  height: 0.6rem;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  background: var(--surface);
-  content: "";
+.infrastructure-host strong,
+.infrastructure-host span,
+.infrastructure-node strong,
+.infrastructure-node span {
+  display: block;
 }
 
-.infrastructure-node::after {
-  position: absolute;
-  left: -1.05rem;
-  width: 1.05rem;
-  height: 1px;
-  background: var(--accent);
-  content: "";
+.infrastructure-host strong {
+  font-size: 1rem;
 }
 
-.infrastructure-ports {
-  display: flex;
+.infrastructure-host div > span,
+.infrastructure-node span {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.infrastructure-host .infrastructure-server {
+  display: grid;
   flex-shrink: 0;
   gap: 0.2rem;
+  width: 1.75rem;
 }
 
-.infrastructure-ports i {
-  width: 0.25rem;
-  height: 0.6rem;
-  border: 1px solid var(--muted);
+.infrastructure-server i {
+  height: 0.45rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.1rem;
+}
+
+.infrastructure-nodes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-block: 0.75rem;
+}
+
+.infrastructure-node {
+  grid-column: span 2;
+  min-width: 0;
+  padding: 0.65rem;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius-control);
+  background: var(--surface-subtle);
+  overflow-wrap: anywhere;
+}
+
+.infrastructure-node:nth-child(n + 4) {
+  grid-column: span 3;
+}
+
+.infrastructure-node strong {
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.infrastructure-backup {
+  padding: 0.65rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-control);
+  color: var(--text-muted);
+  font-size: 0.7rem;
 }
 
 .infrastructure-footer {
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 30rem) {
+  .infrastructure-nodes {
+    grid-template-columns: 1fr;
+  }
+
+  .infrastructure-node,
+  .infrastructure-node:nth-child(n + 4) {
+    grid-column: auto;
+  }
 }
 
 .project-visual--game-tiles {

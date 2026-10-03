@@ -214,8 +214,18 @@ export const copy = {
     },
     visual: {
       infrastructure: {
-        heading: "CONFIGURATIONS VERSIONNÉES",
-        footer: "PRÉPARATION ET ESSAIS LOCAUX",
+        heading: "ARCHITECTURE CIBLE",
+        host: "Proxmox VE",
+        hostDetail: "Virtualisation · serveur unique",
+        nodes: [
+          { name: "Socle", detail: "DNS · identité · accès" },
+          { name: "Applications", detail: "Fichiers · médias · outils" },
+          { name: "Projets publics", detail: "Ludosaic · Palimia" },
+          { name: "Domotique", detail: "Home Assistant OS" },
+          { name: "Récupération", detail: "Proxmox Backup Server" },
+        ],
+        backup: "Restic · sauvegarde indépendante",
+        footer: "PRÉVU · AUCUN SERVICE DÉPLOYÉ",
       },
       library: {
         profile: "UN SEUL PROFIL",
@@ -464,8 +474,18 @@ export const copy = {
     },
     visual: {
       infrastructure: {
-        heading: "VERSIONED CONFIGURATIONS",
-        footer: "LOCAL PREPARATION AND TESTING",
+        heading: "TARGET ARCHITECTURE",
+        host: "Proxmox VE",
+        hostDetail: "Virtualisation · single server",
+        nodes: [
+          { name: "Foundation", detail: "DNS · identity · access" },
+          { name: "Applications", detail: "Files · media · tools" },
+          { name: "Public projects", detail: "Ludosaic · Palimia" },
+          { name: "Home automation", detail: "Home Assistant OS" },
+          { name: "Recovery", detail: "Proxmox Backup Server" },
+        ],
+        backup: "Restic · independent backup",
+        footer: "PLANNED · NO SERVICES DEPLOYED",
       },
       library: {
         profile: "ONE PROFILE",

@@ -7,36 +7,82 @@ featured: false
 publication: teaser
 eyebrow: Homelab personnel
 kind: Infrastructure et automatisation
-summary: Un homelab en préparation, avec des inventaires versionnés, des configurations Docker Compose, des playbooks Ansible et des validations Python.
-shortSummary: Préparer et valider une infrastructure personnelle avant son déploiement.
-cardDecision: Versionner les inventaires et valider les configurations avant déploiement.
+summary: Un homelab en préparation pour les fichiers, les médias, la domotique et mes projets, avec une architecture Proxmox, des accès séparés et des sauvegardes indépendantes.
+shortSummary: Concevoir une infrastructure personnelle, de la virtualisation à la restauration.
+cardDecision: Séparer les usages privés et publics, puis valider les accès, la capacité et la restauration avant activation.
 currentStatus: Préparation et essais locaux, aucun service déployé.
 flow:
-  - Inventaires versionnés
-  - Configurations Docker Compose et Ansible
-  - Validations et essais locaux
+  - Architecture Proxmox
+  - Services privés et projets publics
+  - Supervision et sauvegardes
+  - Validation avant activation
 stack:
+  - Proxmox VE
   - Docker Compose
   - Ansible
   - Python
+  - Restic
 visual: infrastructure
 socialImage: /social-card.png
 socialImageAlt: Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.
 ---
 
-## Préparer une infrastructure personnelle
+## Un environnement personnel à construire
 
-Je prépare les configurations et les procédures de mon homelab personnel avant de déployer les services. Ce travail complète mes applications personnelles par la pratique de l’infrastructure et de l’automatisation.
+Je prépare un homelab pour regrouper des services personnels et familiaux, expérimenter l’administration système et prévoir l’hébergement de mes applications. Le dépôt décrit l’architecture cible, les configurations, les dépendances et les procédures de récupération. Aucun service n’est actuellement déployé sur l’infrastructure cible.
 
-Les inventaires versionnés servent de référence aux configurations Docker Compose et aux playbooks Ansible. Des validations Python et des essais locaux accompagnent cette préparation.
+Le catalogue est une feuille de route : il ne signifie pas que tous les services pourront fonctionner simultanément. L’activation sera progressive, selon les ressources disponibles et les essais réalisés sur le matériel.
 
-## Mon travail actuel
+## Architecture cible
 
-- Structurer les inventaires et versionner les configurations.
-- Préparer l’automatisation avec Docker Compose et Ansible.
-- Valider localement les configurations avec Python.
-- Préparer la supervision, les sauvegardes et la restauration.
+Proxmox VE doit accueillir trois machines virtuelles Debian avec Docker : un socle pour le DNS, l’identité et les accès ; un environnement pour les applications privées et partagées ; et un environnement séparé pour l’entrée publique et les projets personnels. Home Assistant OS et Proxmox Backup Server disposent chacun d’une machine virtuelle dédiée.
 
-## État du projet
+Cette séparation vise à limiter les conséquences d’une panne ou d’un compromis. Les projets publics ne doivent pas recevoir les données, les montages ou les identifiants des applications privées. Le projet repose sur un seul serveur : il ne promet ni haute disponibilité, ni cluster Kubernetes.
 
-Le homelab est en préparation : aucun service n’est déployé. Les configurations et essais locaux présentés ici décrivent ce travail préparatoire. Le fonctionnement sur l’infrastructure cible reste à valider.
+Le stockage prévu distingue un SSD de 1 To pour les systèmes et l’état applicatif d’un miroir ZFS de deux disques durs de 4 To pour les données volumineuses. Le miroir vise environ 4 To utiles avant les frais du système de fichiers, plutôt que 8 To. Le miroir apporte de la redondance, mais ne remplace pas une sauvegarde indépendante. La compatibilité du matériel, le passage des périphériques USB et l’éventuelle accélération graphique restent à qualifier.
+
+## Services et usages prévus
+
+Les services suivants sont des objectifs d’installation, avec des exigences documentées ; leur présence dans le catalogue ne constitue pas une preuve de fonctionnement.
+
+| Domaine                      | Services prévus et rôle                                                                                                                                                                                                                                  |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Socle et administration      | Proxmox VE pour la virtualisation ; Docker et Compose pour les services ; Arcane pour leur gestion ; Homepage pour la navigation.                                                                                                                        |
+| Réseau et accès              | AdGuard Home pour le DNS ; Tailscale pour l’administration distante ; Caddy pour les accès HTTPS publics et privés séparés ; Authentik pour l’identité du homelab ; CrowdSec pour la détection et le blocage à l’entrée.                                 |
+| Fichiers et photos           | Nextcloud pour les fichiers, Immich pour les photos et vidéos, Syncthing pour un espace d’échange distinct, PairDrop pour les transferts temporaires et FileBrowser Quantum pour l’accès aux dossiers autorisés.                                         |
+| Films et séries              | Jellyfin et son client Streamyfin pour la lecture ; Seerr pour les demandes ; Sonarr, Radarr, Bazarr et Prowlarr pour organiser les bibliothèques, les sous-titres et les sources autorisées. Le choix des sources et du téléchargement reste à définir. |
+| Musique et lecture           | Navidrome, Lidarr et Maloja pour la musique et l’historique d’écoute ; Audiobookshelf pour les livres audio et podcasts ; Kavita pour les livres et mangas.                                                                                              |
+| Documents et vie personnelle | Paperless-ngx pour l’archivage et l’OCR ; Stirling PDF pour les traitements PDF ; Vaultwarden pour les mots de passe ; BookStack et Memos pour les notes ; Actual Budget pour le suivi budgétaire.                                                       |
+| Domotique et automatisation  | Home Assistant OS, ESPHome, Zigbee2MQTT et Mosquitto pour les équipements et les échanges MQTT ; n8n pour les workflows. Le coordinateur Zigbee reste à sélectionner et tester.                                                                          |
+| Supervision                  | Uptime Kuma pour les contrôles de disponibilité ; Scrutiny pour les disques ; Prometheus et Grafana pour les métriques ; Loki et Alloy pour les journaux ; Alertmanager et ntfy pour les alertes.                                                        |
+| Développement                | Forgejo pour Git ; Ansible pour la configuration ; Semaphore UI comme ordonnanceur optionnel de tâches Ansible revues.                                                                                                                                   |
+| Outils quotidiens            | IT-Tools, CyberChef, PrivateBin, ChangeDetection.io, Speedtest Tracker, Homebox, ConvertX et Zipline pour les utilitaires, le partage, la veille, l’inventaire et la conversion.                                                                         |
+| Sauvegardes et projets       | Proxmox Backup Server pour la récupération locale ; Restic pour les copies chiffrées indépendantes ; hébergement futur de Ludosaic et Palimia, sous réserve de leurs propres conditions de lancement.                                                    |
+
+## Accès et protection des données
+
+Le modèle d’accès prévoit un refus par défaut et des permissions par usage. Les interfaces d’administration et les applications sensibles restent privées. Authentik gère l’identité du homelab ; Ludosaic et Palimia conservent leur authentification produit pour les utilisateurs publics.
+
+Les secrets d’infrastructure sont préparés avec SOPS et age, puis transmis à des fichiers de runtime protégés. Vaultwarden est un service prévu pour les utilisateurs, pas le magasin de secrets nécessaire au démarrage de l’infrastructure.
+
+## Sauvegarder et savoir restaurer
+
+Proxmox Backup Server fournit une récupération locale de disques de machines virtuelles sélectionnés. Restic doit conserver des copies chiffrées des données importantes sur une destination indépendante, encore à choisir. Une copie sur le même serveur ne protège pas d’une perte complète de ce serveur.
+
+Les procédures associent les exports cohérents des bases de données aux fichiers correspondants. Elles prévoient des contrôles d’intégrité, la restauration d’un instantané précis et la vérification du service récupéré avant toute remise en fonctionnement. Les clés et instructions de récupération doivent rester accessibles sans le homelab.
+
+## Travail déjà réalisé dans le dépôt
+
+Les inventaires et décisions d’architecture sont versionnés. Des stacks Compose et des rôles Ansible ont été préparés pour une partie des services, notamment l’identité, la supervision, les échanges de fichiers, MQTT, la musique et les outils de développement.
+
+Les outils Python valident les métadonnées, les configurations et les conditions d’exécution. Des essais isolés couvrent notamment le démarrage de services, l’authentification, le refus d’accès anonyme, la révocation de permissions et des cycles de sauvegarde et restauration chiffrées. La validation continue contrôle les artefacts sans déployer le homelab. Ces résultats sont des preuves locales, pas une validation sur le serveur cible.
+
+## Étapes restantes et limites
+
+1. Réceptionner et vérifier le matériel sans modifier les disques, puis qualifier le stockage, les périphériques et l’onduleur.
+2. Installer Proxmox, créer les machines virtuelles et vérifier les accès de récupération.
+3. Mettre en place le réseau, l’identité, les accès HTTPS, la supervision et une destination de sauvegarde indépendante.
+4. Activer les applications progressivement, mesurer la mémoire, le stockage et les tâches lourdes, puis tester la restauration sur l’environnement cible.
+5. Envisager les projets publics après validation des domaines, de la capacité et des conditions de lancement propres à chaque application.
+
+Le profil initial vise 32 Gio de mémoire, avec une évolution prévue vers 64 Gio pour les charges plus importantes et les deux projets publics. Ces budgets sont des hypothèses de planification. Les essais de capacité, la connectivité, les sauvegardes indépendantes et la compatibilité physique restent des conditions de mise en service.
