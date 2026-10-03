@@ -59,7 +59,7 @@
     "js-yaml": "5.4.2",
     "lighthouse": "13.5.0",
     "pdfjs-dist": "6.3.289",
-    "prettier": "3.9.8",
+    "prettier": "3.9.9",
     "prettier-plugin-astro": "1.0.1",
     "sharp": "0.35.4",
     "typescript": "6.0.3",
