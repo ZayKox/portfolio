@@ -918,7 +918,7 @@ h3 {
 .project-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 var(--space-5);
+  gap: var(--space-5);
 }
 
 .project-card {
