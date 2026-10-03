@@ -13,6 +13,7 @@ This file records approved publication decisions that are not already fully repr
 - On October 3, 2026, Ethan approved publishing his proficiency with n8n and multiple AWS services in the bilingual portfolio and resumes. Skills summaries no longer limit AWS to Lambda and DMS; existing work-history examples remain specific. Additional AWS service names and an employer or project context for n8n were not supplied.
 - The bilingual resume records apprenticeship experience since 2022 and an AI-engineering master's degree completed in 2026. Remote work is a search preference, not a claim about past working arrangements, immediate availability, or eligibility to work in any country.
 - Ethan confirmed that the Studio Beyowi apprenticeship ends in September 2026. The resume retains the employer as a work-history fact; introductory copy no longer describes him as currently working there.
+- On October 3, 2026, Ethan approved specifying Paris’s 1st arrondissement as the location of his Intento Design apprenticeship in both resume languages.
 - Palimia and Ludosaic are independently developed projects with paired French and English case studies approved on September 9, 2026.
 - Project dates, user metrics, public repositories, public demos, and project screenshots remain absent where they have not been explicitly approved or do not exist.
 - Palimia is not presented as being in production. Ludosaic is presented as under active development without an external production deployment.
