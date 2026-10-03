@@ -6,20 +6,27 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-09-09"
+  reviewedOn: "2026-10-03"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
-    status: withheld
-    note: Ethan approved the absence of screenshots; existing graphic compositions are retained.
+    status: included
+    note: Dark-mode screenshots of the local application with real movies and their TMDB posters, requested by Ethan on October 3, 2026.
   evidence:
     status: included
-    note: Technical case study reviewed and approved by Ethan, without a demo, public repository or published metrics.
-eyebrow: Cultural profile
+    note: Technical case study reviewed and approved by Ethan, without a public demo, public repository or published metrics.
+eyebrow: Backend & data
 kind: Full-stack web application
-summary: A platform for tracking, rating, and organizing movies, TV series, and video games in a personal cultural library.
-shortSummary: Movies, TV series, and video games brought together in a personal library.
+summary: A personal cultural library with a catalog normalized on the server, separate private data and explainable recommendations.
+shortSummary: A normalized cultural catalog, separate personal data and explainable recommendations.
+cardDecision: Provider catalogs are normalized on the server and kept separate from personal data.
+currentStatus: Launch blocked pending permissions for provider data.
+flow:
+  - Provider catalogs
+  - Server-side validation and normalization
+  - Shared catalog
+  - Personal library and choices
 stack:
   - Next.js
   - TypeScript
@@ -31,9 +38,45 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
 ---
 
+import TmdbCredit from "../../../components/projects/TmdbCredit.astro";
+import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
+import libraryCapture from "../../../assets/projects/palimia/library.webp";
+import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
+
 ## My contribution
 
-I develop this project independently. The technical choices and limitations below describe the work in progress.
+I develop Palimia independently, using Next.js and strict TypeScript. My work includes:
+
+- modeling the catalog and personal library with PostgreSQL and Prisma;
+- validating and normalizing provider data on the server before import;
+- explainable recommendations, personal data export, and account deletion;
+- unit, component, PostgreSQL, and Playwright tests that support development.
+
+The technical choices and limitations below describe the work in progress.
+
+## Inside the application
+
+These screenshots show the application running locally in dark mode, with its French interface, 12 tracked movies, and 9 calculated suggestions. Titles and posters come from TMDB; ratings, favorites, and progress are demonstration data.
+
+<ProjectCapture
+  src={libraryCapture}
+  detail={{
+    view: "library-entry",
+    alt: "Interstellar detail: completed status, a demonstration rating of 9/10, and favorite status in the Palimia library.",
+  }}
+  alt="Palimia library in dark mode: 12 tracked movies and six visible entries with their posters, statuses, ratings, and progress."
+  caption="Interstellar, Inception, Dune, and other tracked movies with their posters, ratings, favorites, and progress."
+  locale="en"
+/>
+
+<ProjectCapture
+  src={recommendationsCapture}
+  alt="Six Palimia movie recommendations in dark mode, with their posters and selection reasons."
+  caption="A selection of the nine recommendations: each suggestion displays the reasons why it was selected."
+  locale="en"
+/>
+
+<TmdbCredit locale="en" />
 
 ## A personal cultural library
 
@@ -45,7 +88,7 @@ The main journey starts with searching a catalog supplied by external providers,
 
 The planned first beta focuses on movies, TV series, and video games. The data model and some integrations also anticipate anime, manga, and books, but these media remain outside the public scope until their sources and usage rights have been reviewed.
 
-Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Planned recommendations follow the same principle: they should be personal and explainable, using understandable signals rather than an opaque score.
+Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Recommendations are implemented: each suggestion includes understandable reasons explaining why it was selected.
 
 ## Two choices that shape the project
 
@@ -55,9 +98,13 @@ The project is a modular monolith built with Next.js and strict TypeScript. Post
 
 ### Separate catalog data from personal data
 
+For example, repeating a provider import should find the same catalog work while preserving each person’s ratings and progress. Idempotent imports and the data separation address this requirement.
+
 This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
 
-## Why Palimia is not in production
+Users can also export their personal data or delete their account. These flows are part of the application's current implementation.
+
+## Validation and current limitations
 
 Palimia is not in production, and its launch status remains blocked. The written permissions required for some uses of provider data have not all been obtained and reviewed. In particular, the public scope must exclude sources that do not yet allow the intended tracking, storage, or display.
 

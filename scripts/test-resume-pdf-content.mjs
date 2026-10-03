@@ -1,3 +1,4 @@
+import { profile } from "../src/data/profile.ts";
 import assert from "node:assert/strict";
 import path from "node:path";
 import test from "node:test";
@@ -9,7 +10,7 @@ const expectations = {
   "ethan-brosselard-cv-fr.pdf": {
     language: "fr",
     title: "CV — Ethan Brosselard",
-    role: "Développeur logiciel junior",
+    role: "Développeur backend junior",
     objective: "CDI ou CDD · Télétravail",
     headings: [
       "Profil",
@@ -28,7 +29,7 @@ const expectations = {
   "ethan-brosselard-resume-en.pdf": {
     language: "en",
     title: "Resume — Ethan Brosselard",
-    role: "Junior Software Developer",
+    role: "Junior Backend Developer",
     objective: "Permanent or fixed-term employment · Remote",
     headings: ["Profile", "Work experience", "Skills", "Education", "Projects", "Languages"],
     localLinks: [
@@ -39,11 +40,7 @@ const expectations = {
   },
 };
 
-const expectedLinks = [
-  "mailto:ethan.brosselard@gmail.com",
-  "https://github.com/ZayKox",
-  "https://www.linkedin.com/in/ethan-brosselard-507334237/",
-];
+const expectedLinks = [`mailto:${profile.email}`, ...Object.values(profile.socials)];
 
 for (const job of jobs) {
   test(`${job.filename} contains readable, tagged, localized resume content`, async () => {

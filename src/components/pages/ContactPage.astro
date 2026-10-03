@@ -1,5 +1,6 @@
 ---
 import { profile } from "@/data/profile";
+import { getResume } from "@/data/resume";
 import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -11,6 +12,7 @@ interface Props {
 
 const { locale, alternatePath } = Astro.props;
 const t = getCopy(locale);
+const resume = getResume(locale);
 ---
 
 <BaseLayout
@@ -18,7 +20,7 @@ const t = getCopy(locale);
   currentPath={routes[locale].contact}
   {alternatePath}
   title={t.nav.contact}
-  description={t.contact.intro}
+  description={t.contact.description}
   schemaType="ContactPage"
   mainClass="contact-page"
 >
@@ -26,12 +28,16 @@ const t = getCopy(locale);
     <div class="contact-hero-details">
       <p class="page-lead">{t.contact.intro}</p>
       <ul class="contact-hero-meta">
+        <li>{resume.objective}</li>
         <li>{profile.location}</li>
         <li>FR · EN</li>
       </ul>
       <div class="button-row contact-hero-actions">
         <a class="button button--primary" href={`mailto:${profile.email}`}>
           {t.home.contactCta}
+        </a>
+        <a class="button button--secondary" href={profile.resume[locale]} download>
+          {t.home.resumePdfCta}
         </a>
       </div>
     </div>
@@ -65,17 +71,19 @@ const t = getCopy(locale);
         <span>{t.contact.socialLabel}</span>
         <div class="contact-socials">
           <a href={profile.socials.github} rel="me">
-            GitHub ↗
+            {" "}
+            GitHub ↗{" "}
           </a>
           <a href={profile.socials.linkedin} rel="me">
-            LinkedIn ↗
+            {" "}
+            LinkedIn ↗{" "}
           </a>
         </div>
       </div>
       <div class="contact-card reveal">
-        <span>{t.contact.locationLabel}</span>
-        <strong>{profile.location}</strong>
-        <span>FR · EN</span>
+        <span>{t.contact.searchLabel}</span>
+        <strong>{resume.objective}</strong>
+        <span>{profile.location} · FR · EN</span>
       </div>
     </div>
     <p class="container privacy-note">{t.contact.note}</p>

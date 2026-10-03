@@ -8,62 +8,68 @@ import sharp from "sharp";
 import { validateMediaAsset } from "./media-provenance.mjs";
 
 for (const format of ["png", "jpeg", "webp"]) {
-  test(`${format} capture requires approval and matching bytes/dimensions`, async () => {
-    const root = await mkdtemp(path.join(os.tmpdir(), "portfolio-media-"));
-    try {
-      await mkdir(path.join(root, "public"));
-      const bytes = await sharp({
-        create: { width: 4, height: 3, channels: 3, background: "#000000" },
-      })
-        .toFormat(format)
-        .toBuffer();
-      const asset = {
-        path: `public/fixture.${format}`,
-        kind: "approved-capture",
-        provenance: "Generated fixture, not public content",
-        sourceVersion: "fixture",
-        rights: "Test fixture",
-        contentSafety: "demo-data-only",
-        approval: { by: "Ethan Brosselard", date: "2026-09-09" },
-        alt: { fr: "Fixture", en: "Fixture" },
-        width: 4,
-        height: 3,
-        maxBytes: 4096,
-        sha256: createHash("sha256").update(bytes).digest("hex"),
-      };
-      await writeFile(path.join(root, asset.path), bytes);
-      await validateMediaAsset(asset, root);
-      for (const mutation of [
-        { path: undefined },
-        { path: `private/fixture.${format}` },
-        { sha256: undefined },
-        { sha256: "invalid" },
-        { provenance: " " },
-        { maxBytes: 1.5 },
-        { maxBytes: 0 },
-        { width: 5 },
-        { width: 0 },
-        { height: 4 },
-        { height: 1.5 },
-        { maxBytes: 1 },
-        { sha256: "0".repeat(64) },
-        { generator: "scripts/fake.mjs" },
-        { approval: undefined },
-        { approval: { by: "Someone else", date: "2026-09-09" } },
-        { approval: { by: "Ethan Brosselard" } },
-        { approval: { by: "Ethan Brosselard", date: "09/09/2026" } },
-        { approval: { by: "Ethan Brosselard", date: "2026-02-30" } },
-        { sourceVersion: " " },
-        { rights: " " },
-        { alt: { fr: "Only French" } },
-        { alt: { en: "Only English" } },
-        { contentSafety: "unreviewed" },
-      ])
-        await assert.rejects(validateMediaAsset({ ...asset, ...mutation }, root));
-    } finally {
-      await rm(root, { recursive: true, force: true });
-    }
-  });
+  for (const [kind, contentSafety] of Object.entries({
+    "approved-capture": "demo-data-only",
+    "approved-portrait": "approved-public-identity",
+    "approved-attribution": "third-party-attribution",
+  })) {
+    test(`${format} ${kind} requires approval and matching bytes/dimensions`, async () => {
+      const root = await mkdtemp(path.join(os.tmpdir(), "portfolio-media-"));
+      try {
+        await mkdir(path.join(root, "public"));
+        const bytes = await sharp({
+          create: { width: 4, height: 3, channels: 3, background: "#000000" },
+        })
+          .toFormat(format)
+          .toBuffer();
+        const asset = {
+          path: `public/fixture.${format}`,
+          kind,
+          provenance: "Generated fixture, not public content",
+          sourceVersion: "fixture",
+          rights: "Test fixture",
+          contentSafety,
+          approval: { by: "Ethan Brosselard", date: "2026-09-09" },
+          alt: { fr: "Fixture", en: "Fixture" },
+          width: 4,
+          height: 3,
+          maxBytes: 4096,
+          sha256: createHash("sha256").update(bytes).digest("hex"),
+        };
+        await writeFile(path.join(root, asset.path), bytes);
+        await validateMediaAsset(asset, root);
+        for (const mutation of [
+          { path: undefined },
+          { path: `private/fixture.${format}` },
+          { sha256: undefined },
+          { sha256: "invalid" },
+          { provenance: " " },
+          { maxBytes: 1.5 },
+          { maxBytes: 0 },
+          { width: 5 },
+          { width: 0 },
+          { height: 4 },
+          { height: 1.5 },
+          { maxBytes: 1 },
+          { sha256: "0".repeat(64) },
+          { generator: "scripts/fake.mjs" },
+          { approval: undefined },
+          { approval: { by: "Someone else", date: "2026-09-09" } },
+          { approval: { by: "Ethan Brosselard" } },
+          { approval: { by: "Ethan Brosselard", date: "09/09/2026" } },
+          { approval: { by: "Ethan Brosselard", date: "2026-02-30" } },
+          { sourceVersion: " " },
+          { rights: " " },
+          { alt: { fr: "Only French" } },
+          { alt: { en: "Only English" } },
+          { contentSafety: "unreviewed" },
+        ])
+          await assert.rejects(validateMediaAsset({ ...asset, ...mutation }, root));
+      } finally {
+        await rm(root, { recursive: true, force: true });
+      }
+    });
+  }
 }
 
 test("generated media requires a real generator and exact static image format", async (t) => {

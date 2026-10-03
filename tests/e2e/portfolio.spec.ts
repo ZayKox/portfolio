@@ -49,6 +49,33 @@ test("theme follows the system preference and persists the visitor choice", asyn
   await context.close();
 });
 
+test("theme changes keep link text on the active palette from the first frame", async ({
+  page,
+}) => {
+  await page.goto("/en/projects/");
+  const frames = await page.evaluate(async () => {
+    const select = document.querySelector<HTMLSelectElement>("[data-theme-select]")!;
+    const link = document.querySelector<HTMLElement>("main .text-link")!;
+    const samples: { actual: string; expected: string }[] = [];
+    const sample = () =>
+      samples.push({
+        actual: getComputedStyle(link).color,
+        expected: getComputedStyle(document.body).color,
+      });
+    for (const theme of ["light", "dark", "light", "dark"]) {
+      select.value = theme;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      sample();
+      for (let frame = 0; frame < 4; frame++) {
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        sample();
+      }
+    }
+    return samples;
+  });
+  for (const frame of frames) expect(frame.actual).toBe(frame.expected);
+});
+
 test("localized navigation controls expose names and states", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "chromium", "One browser proof is enough");
 
@@ -105,15 +132,37 @@ test("every language switch opens the exact equivalent route", async ({ page }, 
 });
 
 test("primary links expose the expected destinations", async ({ page }) => {
+  for (const route of ["/", "/en/"]) {
+    await page.goto(route);
+    const hero = page.locator(".hero-copy");
+    await expect(hero.locator(".hero-objective")).toContainText(
+      route === "/" ? "CDI ou CDD · Télétravail" : "Permanent or fixed-term employment · Remote",
+    );
+    await expect(hero.getByRole("link", { name: /PDF/ })).toHaveAttribute(
+      "href",
+      route === "/" ? "/cv/ethan-brosselard-cv-fr.pdf" : "/cv/ethan-brosselard-resume-en.pdf",
+    );
+    await expect(
+      hero.getByRole("link", { name: route === "/" ? "M’écrire" : "Get in touch" }),
+    ).toHaveAttribute("href", "mailto:ethan.brosselard@gmail.com");
+  }
+
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Explorer mes projets" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "Voir mon expérience" })).toHaveAttribute(
+    "href",
+    "#experience",
+  );
+  await expect(page.getByRole("link", { name: "Télécharger mon CV" })).toHaveAttribute(
+    "href",
+    "/cv/ethan-brosselard-cv-fr.pdf",
+  );
+  await expect(page.getByRole("link", { name: "Projets", exact: true }).last()).toHaveAttribute(
     "href",
     "/projets/",
   );
-  await expect(page.getByRole("link", { name: /Voir mon GitHub/ })).toHaveAttribute(
-    "href",
-    "https://github.com/ZayKox",
-  );
+  await expect(
+    page.getByRole("navigation", { name: "Liens directs" }).getByRole("link", { name: /GitHub/ }),
+  ).toHaveAttribute("href", "https://github.com/ZayKox");
 
   await page.goto("/cv/");
   await expect(page.getByRole("link", { name: "Télécharger le PDF" })).toHaveAttribute(
@@ -138,7 +187,7 @@ test("primary links expose the expected destinations", async ({ page }) => {
   );
   await expect(page.getByRole("link", { name: "LinkedIn ↗", exact: true })).toHaveAttribute(
     "href",
-    "https://www.linkedin.com/in/ethan-brosselard-507334237/",
+    "https://www.linkedin.com/in/ethan-brosselard/",
   );
 });
 
@@ -201,6 +250,7 @@ test("keyboard focus follows DOM order and stays visible in both themes", async 
     "input:not([disabled]):not([type='hidden'])",
     "select:not([disabled])",
     "textarea:not([disabled])",
+    "details > summary:first-of-type",
     "[tabindex]:not([tabindex='-1'])",
   ].join(",");
 
@@ -325,7 +375,10 @@ test("navigation and contact remain useful without JavaScript", async ({ browser
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
-  await page.getByRole("link", { name: "Explorer mes projets" }).click();
+  await page
+    .getByRole("navigation", { name: "Liens directs" })
+    .getByRole("link", { name: "Projets" })
+    .click();
   await expect(page).toHaveURL(/\/projets\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 

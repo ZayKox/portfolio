@@ -6,20 +6,27 @@ order: 2
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-09-09"
+  reviewedOn: "2026-10-03"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
-    status: withheld
-    note: Ethan approved the absence of screenshots; existing graphic compositions are retained.
+    status: included
+    note: Screenshots of the local application and a demonstration game, authorized by Ethan on October 2, 2026.
   evidence:
     status: included
-    note: Technical case study reviewed and approved by Ethan, without a demo, public repository or published metrics.
-eyebrow: Mini-game platform
+    note: Technical case study reviewed and approved by Ethan, without a public demo, public repository or published metrics.
+eyebrow: Backend & real time
 kind: Modular web application
-summary: A web mini-game platform under active development, playable without an account in solo, against bots, or with others depending on the game.
-shortSummary: Web mini-games for solo play, against a bot, or with other players.
+summary: A mini-game platform under development with replayable rules, server-verified results and recovery after interruption.
+shortSummary: Mini-games with replayable rules, server-verified results and recovery after interruption.
+cardDecision: Rules are separate from rendering; the server replays runs to verify connected results.
+currentStatus: MVP under development, with no external deployment.
+flow:
+  - Player actions
+  - Replayable game rules
+  - Server-side reconstruction
+  - Verified connected result
 stack:
   - Next.js
   - TypeScript
@@ -35,9 +42,42 @@ socialImage: /ludosaic-social-card.png
 socialImageAlt: Violet Field sharing card for Ludosaic, with three tiles representing Reflex Rush, Merge Forge, and Grid Duel.
 ---
 
+import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
+import catalogCapture from "../../../assets/projects/ludosaic/catalog.webp";
+import gridDuelCapture from "../../../assets/projects/ludosaic/grid-duel.webp";
+
 ## My contribution
 
-I develop this project independently. The technical choices and limitations below describe the work in progress.
+I develop Ludosaic independently, from the web application to the mini-game rules. My work includes:
+
+- separating games, their interfaces, and the server within a monorepo;
+- rules that can be replayed from a seed and action sequence to verify results on the server;
+- storing pending results locally and resending them after reconnection, with duplicate prevention;
+- a foundation for private rooms with Colyseus, tested locally with two browsers for Grid Duel.
+
+The technical choices and limitations below describe the work in progress.
+
+## Inside the application
+
+These screenshots show the catalog and a demonstration game running locally, with the French interface. The illustrated game uses the two-player mode on one device.
+
+<ProjectCapture
+  src={catalogCapture}
+  alt="Ludosaic catalog showing Grid Duel, Merge Forge, and Reflex Rush, with category and game-mode filters."
+  caption="The catalog brings together the three mini-games and their game modes."
+  locale="en"
+/>
+
+<ProjectCapture
+  src={gridDuelCapture}
+  detail={{
+    view: "game-board",
+    alt: "Detail of the Grid Duel board and column selection during the local demonstration game.",
+  }}
+  alt="Local Grid Duel game showing the board, played pieces, and the active player indicator."
+  caption="Grid Duel during a local two-player demonstration game."
+  locale="en"
+/>
 
 ## Start playing without creating an account
 
@@ -51,7 +91,7 @@ A guest profile is generated locally to preserve the display name, preferences, 
 
 These three games do more than fill a catalog. Each tests a different constraint: the lifecycle of a Phaser engine, replayable puzzle logic, and then a multiplayer authority able to control turns and persist results.
 
-## Two choices that shape the platform
+## Choices that shape the platform
 
 ### Separate games from their interfaces
 
@@ -61,7 +101,15 @@ The monorepo separates the Next.js application, game server, each game, and thei
 
 Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 
-## A project still under development
+### Resume after an interruption
+
+For example, a connection lost after a game should neither discard its result nor count it twice when sending is retried. The local queue and duplicate prevention address this requirement.
+
+Pending results are stored locally and resent after reconnection. Server-side verification and duplicate prevention allow submission retries without counting the same run more than once.
+
+Grid Duel private rooms also include a recovery mechanism. These features support continuity of play, with validation in the target environment still to be completed.
+
+## Validation and current limitations
 
 Ludosaic is still under active development. The repository contains a locally validated foundation and playable local or connected beta journeys, but the complete MVP has not been delivered. Grid Duel private rooms, for example, have a foundation tested with two browsers without yet representing a production-ready multiplayer experience.
 

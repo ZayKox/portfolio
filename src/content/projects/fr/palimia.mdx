@@ -6,20 +6,27 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-09-09"
+  reviewedOn: "2026-10-03"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
-    status: withheld
-    note: Absence de captures validée par Ethan ; les compositions graphiques existantes sont conservées.
+    status: included
+    note: Captures de l’application locale en mode sombre avec de vrais films et leurs affiches TMDB, demandées par Ethan le 3 octobre 2026.
   evidence:
     status: included
-    note: Étude technique relue et validée par Ethan, sans démonstration, dépôt public ni métriques publiées.
-eyebrow: Profil culturel
+    note: Étude technique relue et validée par Ethan, sans démonstration publique, dépôt public ni métriques publiées.
+eyebrow: Backend & données
 kind: Application web full-stack
-summary: Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
-shortSummary: Films, séries et jeux vidéo réunis dans une bibliothèque personnelle.
+summary: Une bibliothèque culturelle personnelle avec un catalogue normalisé côté serveur, des données privées séparées et des recommandations explicables.
+shortSummary: Un catalogue culturel normalisé, des données personnelles séparées et des recommandations explicables.
+cardDecision: Catalogue externe normalisé côté serveur, séparé des données personnelles.
+currentStatus: Lancement bloqué dans l’attente d’autorisations liées aux données fournisseurs.
+flow:
+  - Catalogues fournisseurs
+  - Validation et normalisation côté serveur
+  - Catalogue commun
+  - Bibliothèque et choix personnels
 stack:
   - Next.js
   - TypeScript
@@ -31,9 +38,45 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
 ---
 
+import TmdbCredit from "../../../components/projects/TmdbCredit.astro";
+import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
+import libraryCapture from "../../../assets/projects/palimia/library.webp";
+import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
+
 ## Ma contribution
 
-Je développe ce projet seul. Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
+Je développe seul Palimia, une application Next.js en TypeScript strict. Mon travail comprend notamment :
+
+- la modélisation du catalogue et de la bibliothèque personnelle avec PostgreSQL et Prisma ;
+- la validation et la normalisation des données fournisseurs côté serveur avant import ;
+- les recommandations explicables, l’export des données personnelles et la suppression du compte ;
+- les tests unitaires, composants, PostgreSQL et Playwright qui accompagnent le développement.
+
+Les choix techniques et les limites présentés ci-dessous décrivent le travail en cours.
+
+## L’application en images
+
+Ces captures proviennent de l’application exécutée localement en mode sombre, avec une bibliothèque de 12 films suivis et 9 suggestions calculées. Les titres et affiches proviennent de TMDB ; les notes, favoris et progressions sont des données de démonstration.
+
+<ProjectCapture
+  src={libraryCapture}
+  detail={{
+    view: "library-entry",
+    alt: "Détail d’Interstellar : statut terminé, note de démonstration de 9/10 et favori dans la bibliothèque Palimia.",
+  }}
+  alt="Bibliothèque Palimia en mode sombre : 12 films suivis et six entrées visibles avec leurs affiches, statuts, notes et progressions."
+  caption="Interstellar, Inception, Dune et d’autres films suivis avec leurs affiches, notes, favoris et progressions."
+  locale="fr"
+/>
+
+<ProjectCapture
+  src={recommendationsCapture}
+  alt="Six recommandations de films Palimia en mode sombre, avec leurs affiches et les raisons de leur sélection."
+  caption="Extrait des neuf recommandations : chaque suggestion affiche les raisons de sa sélection."
+  locale="fr"
+/>
+
+<TmdbCredit locale="fr" />
 
 ## Une bibliothèque culturelle personnelle
 
@@ -45,7 +88,7 @@ Le parcours principal va de la recherche dans un catalogue alimenté par des fou
 
 La première bêta prévue se concentre sur les films, les séries et les jeux vidéo. Les modèles de données et certaines intégrations anticipent aussi les anime, les manga et les livres, mais ces médias restent hors du périmètre public tant que leurs sources et leurs droits d’utilisation ne sont pas validés.
 
-Les fonctions sociales développées — profils publics, avis, listes et relations — restent elles aussi désactivées. Le cœur du produit demeure donc un outil privé. Les recommandations envisagées suivent la même logique : elles doivent être personnelles et explicables, à partir de signaux compréhensibles plutôt que d’un score opaque.
+Les fonctions sociales développées — profils publics, avis, listes et relations — restent elles aussi désactivées. Le cœur du produit demeure donc un outil privé. Les recommandations sont implémentées : chaque suggestion est accompagnée de raisons compréhensibles pour expliquer sa sélection.
 
 ## Deux choix qui structurent le projet
 
@@ -55,9 +98,13 @@ Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript st
 
 ### Séparer le catalogue et les données personnelles
 
+Par exemple, relancer un import fournisseur doit retrouver la même œuvre dans le catalogue, tout en conservant les notes et la progression propres à chaque personne. C’est le rôle de l’import idempotent et de la séparation des données.
+
 Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 
-## Pourquoi Palimia n’est pas en production
+L’utilisateur peut également exporter ses données personnelles ou supprimer son compte. Ces parcours font partie du fonctionnement actuel de l’application.
+
+## Validation et limites actuelles
 
 Palimia n’est pas en production et son statut de lancement reste bloqué. Les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées. Le périmètre public doit notamment exclure les sources qui n’autorisent pas encore le suivi, le stockage ou l’affichage envisagés.
 

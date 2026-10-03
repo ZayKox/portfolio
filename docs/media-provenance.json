@@ -3,7 +3,7 @@
   "policy": {
     "fonts": "system-only",
     "icons": "text-and-css-only",
-    "thirdPartyMedia": false
+    "thirdPartyMedia": "approved-captures-and-attribution"
   },
   "assets": [
     {
@@ -34,7 +34,7 @@
       "width": 1200,
       "height": 630,
       "maxBytes": 204800,
-      "sha256": "fafda813319ecbae000696fd2865d5397f211762b7d4efa3dc20a5a768fe3702"
+      "sha256": "33b986a55db556975aa487b09e1c3642ec5070e7e9df1af32bcda80c1ad0de02"
     },
     {
       "path": "public/palimia-social-card.png",
@@ -55,6 +55,248 @@
       "height": 630,
       "maxBytes": 307200,
       "sha256": "2ad83b40cb8e508fe0c4e1743dd78225924b0f26af4b05a38b879271762e84b8"
+    },
+    {
+      "path": "src/assets/projects/palimia/library.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account uses 21 real movie records fetched through the configured TMDB developer API, including original poster CDN URLs, with 12 tracked movies and nine recommendation candidates. The frame shows the summary, filters and first six of 12 library entries. Ratings, favorites and progress are synthetic demonstration data. No real personal data. Palimia retains its existing TMDB credits on /sources. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
+      "rights": "Ethan Brosselard explicitly requested real movies and their posters in these application screenshots on 2026-10-03. Posters are sourced through the TMDB developer API for the local demonstration; copyright remains with the respective rights holders. This request authorizes the application capture and does not transfer poster copyright. TMDB is credited in both portfolio case studies; official developer FAQ reviewed on 2026-10-03: https://developer.themoviedb.org/docs/faq. No standalone poster assets are published.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Bibliothèque Palimia en mode sombre : 12 films suivis et six entrées visibles avec leurs affiches, statuts, notes et progressions.",
+        "en": "Palimia library in dark mode: 12 tracked movies and six visible entries with their posters, statuses, ratings, and progress."
+      },
+      "width": 1440,
+      "height": 1483,
+      "maxBytes": 204800,
+      "sha256": "d695c2d198fb8bfa7f575aeef7e2fd83038e6222fc320e2f434425e53265e023",
+      "artworkSources": {
+        "provider": "TMDB",
+        "obtainedOn": "2026-10-03",
+        "reviewBy": "2027-04-03",
+        "creditsUrl": "https://www.themoviedb.org",
+        "termsReference": "https://developer.themoviedb.org/docs/faq",
+        "films": [
+          {
+            "tmdbId": 157336,
+            "title": "Interstellar",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/1pnigkWWy8W032o9TKDneBa3eVK.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/157336",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 27205,
+            "title": "Inception",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/aej3LRUga5rhgkmRP6XMFw3ejbl.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/27205",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 438631,
+            "title": "Dune",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/438631",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 693134,
+            "title": "Dune : Deuxième partie",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/iRNbRAIGQQr5diGnjpwJFm0dgt4.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/693134",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 603,
+            "title": "Matrix",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/pEoqbqtLc4CcwDUDqxmEDSWpWTZ.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/603",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 129,
+            "title": "Le Voyage de Chihiro",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/12TAqK0AUgdcYE9ZYZ9r7ASbH5Q.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/129",
+            "obtainedOn": "2026-10-03"
+          }
+        ]
+      }
+    },
+    {
+      "path": "src/assets/projects/palimia/recommendations.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Palimia interface in dark mode in an isolated development copy on 2026-10-03. A disposable account uses 21 real movie records fetched through the configured TMDB developer API, including original poster CDN URLs, with 12 tracked movies and nine recommendation candidates. The frame shows the first six of nine calculated recommendations. Ratings, favorites and progress are synthetic demonstration data. No real personal data. Palimia retains its existing TMDB credits on /sources. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "palimia at 34a5d2498ab2f7105221668264df7196d434bf46",
+      "rights": "Ethan Brosselard explicitly requested real movies and their posters in these application screenshots on 2026-10-03. Posters are sourced through the TMDB developer API for the local demonstration; copyright remains with the respective rights holders. This request authorizes the application capture and does not transfer poster copyright. TMDB is credited in both portfolio case studies; official developer FAQ reviewed on 2026-10-03: https://developer.themoviedb.org/docs/faq. No standalone poster assets are published.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Six recommandations de films Palimia en mode sombre, avec leurs affiches et les raisons de leur sélection.",
+        "en": "Six Palimia movie recommendations in dark mode, with their posters and selection reasons."
+      },
+      "width": 1352,
+      "height": 1131,
+      "maxBytes": 204800,
+      "sha256": "9452f92e9c426b3b06b2be32d98cfe8a837548bea6bd9e14e6e403e115233344",
+      "artworkSources": {
+        "provider": "TMDB",
+        "obtainedOn": "2026-10-03",
+        "reviewBy": "2027-04-03",
+        "creditsUrl": "https://www.themoviedb.org",
+        "termsReference": "https://developer.themoviedb.org/docs/faq",
+        "films": [
+          {
+            "tmdbId": 105,
+            "title": "Retour vers le futur",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/iCgFtDUZxN8iUzNBCisjUrBmg2q.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/105",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 335984,
+            "title": "Blade Runner 2049",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qWD9E0Wgn8w6nMMutCNFAUiSHrX.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/335984",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 1124,
+            "title": "Le Prestige",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/37Fr7lY4QBHsuxlLJIfTNxW6nGW.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/1124",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 329865,
+            "title": "Premier Contact",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/mSgYBWMybY9Ug4ZnCGsttPIjUx7.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/329865",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 497,
+            "title": "La Ligne verte",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/cRBUYC02CPsVa1GqBq6rfHn5a8g.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/497",
+            "obtainedOn": "2026-10-03"
+          },
+          {
+            "tmdbId": 244786,
+            "title": "Whiplash",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/3XriEpTdnplQRzyphAC0cu3emns.jpg",
+            "sourceUrl": "https://www.themoviedb.org/movie/244786",
+            "obtainedOn": "2026-10-03"
+          }
+        ]
+      }
+    },
+    {
+      "path": "src/assets/projects/ludosaic/catalog.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Ludosaic interface in an isolated development copy on 2026-10-02. Original application artwork and a local two-player demonstration game only. No real player account, production data or private room information. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "ludosaic at 236f6a87608fddc94cca2acd41ec621624ed3a1f",
+      "rights": "Application screenshots authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data. Ludosaic game artwork is documented as original in its ASSET_PROVENANCE record.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Catalogue Ludosaic présentant Grid Duel, Merge Forge et Reflex Rush, avec les filtres de catégorie et de mode.",
+        "en": "Ludosaic catalog showing Grid Duel, Merge Forge, and Reflex Rush, with category and game-mode filters."
+      },
+      "width": 1440,
+      "height": 1289,
+      "maxBytes": 204800,
+      "sha256": "87cc241731551f9b2278900288cb08a28344177bcf0d5d5892aefd107dc5bf6b"
+    },
+    {
+      "path": "src/assets/projects/ludosaic/grid-duel.webp",
+      "kind": "approved-capture",
+      "provenance": "Captured from the unmodified local Ludosaic interface in an isolated development copy on 2026-10-02. Original application artwork and a local two-player demonstration game only. No real player account, production data or private room information. Only framework development tooling is excluded from the frame.",
+      "sourceVersion": "ludosaic at 236f6a87608fddc94cca2acd41ec621624ed3a1f",
+      "rights": "Application screenshots authorized by Ethan Brosselard on 2026-10-02. Original application UI; no third-party artwork or personal data. Ludosaic game artwork is documented as original in its ASSET_PROVENANCE record.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-02"
+      },
+      "contentSafety": "demo-data-only",
+      "alt": {
+        "fr": "Partie locale de Grid Duel montrant le plateau, les jetons joués et l’indication du joueur actif.",
+        "en": "Local Grid Duel game showing the board, played pieces, and the active player indicator."
+      },
+      "width": 1440,
+      "height": 1242,
+      "maxBytes": 204800,
+      "sha256": "ffefdb918e8d5f055aa47914df164088d38356b5e15c9ca96a551ce78c6386ca"
+    },
+    {
+      "path": "public/images/ethan-brosselard-320.webp",
+      "kind": "approved-portrait",
+      "provenance": "User-supplied portrait published at Ethan’s explicit request on 2026-10-03. Resized and encoded as WebP without retouching; embedded metadata removed.",
+      "sourceVersion": "User attachment received 2026-10-03",
+      "rights": "Ethan Brosselard supplied his portrait and explicitly requested its inclusion in this portfolio on 2026-10-03. No third-party identity is depicted.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "approved-public-identity",
+      "alt": {
+        "fr": "Portrait d’Ethan Brosselard",
+        "en": "Portrait of Ethan Brosselard"
+      },
+      "width": 320,
+      "height": 320,
+      "maxBytes": 65536,
+      "sha256": "d1b9d38d749ce5ece87cce5ffa9e0346875bad44daa4a89578c24fde0fdfc84a"
+    },
+    {
+      "path": "public/images/ethan-brosselard-640.webp",
+      "kind": "approved-portrait",
+      "provenance": "User-supplied portrait published at Ethan’s explicit request on 2026-10-03. Resized and encoded as WebP without retouching; embedded metadata removed.",
+      "sourceVersion": "User attachment received 2026-10-03",
+      "rights": "Ethan Brosselard supplied his portrait and explicitly requested its inclusion in this portfolio on 2026-10-03. No third-party identity is depicted.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "approved-public-identity",
+      "alt": {
+        "fr": "Portrait d’Ethan Brosselard",
+        "en": "Portrait of Ethan Brosselard"
+      },
+      "width": 640,
+      "height": 640,
+      "maxBytes": 65536,
+      "sha256": "1efa0043e8297021c487311408399cdf78b327fd8ef20fe3f8ddcb7082363b83"
+    },
+    {
+      "path": "public/images/tmdb-attribution.png",
+      "kind": "approved-attribution",
+      "provenance": "Official unmodified TMDB alternate short blue logo, obtained from https://www.themoviedb.org/about/logos-attribution on 2026-10-03. Rasterized locally preserving proportions and colors; used solely for source attribution.",
+      "sourceVersion": "Official logo blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg",
+      "rights": "TMDB trademark. Attribution use permitted by the official developer FAQ and Logos & Attribution guidelines: https://developer.themoviedb.org/docs/faq and https://www.themoviedb.org/about/logos-attribution. This identifies screenshot sources without suggesting endorsement.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "third-party-attribution",
+      "alt": {
+        "fr": "The Movie Database (TMDB)",
+        "en": "The Movie Database (TMDB)"
+      },
+      "width": 280,
+      "height": 36,
+      "maxBytes": 8192,
+      "sha256": "ebeef2a11d966b799449ef8bc354a3362bc186605244893e9e108a73a43196d0"
     }
   ]
 }

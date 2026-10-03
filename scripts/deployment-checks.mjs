@@ -1,12 +1,13 @@
+import { profile } from "../src/data/profile.ts";
 import { jobs as resumeJobs } from "./resume-artifacts.mjs";
 import { validatePdfResponse, validateRemoteArtifact } from "./deployment-artifacts.mjs";
 import { publicRoutes, languagePairs, expectedSchemaTypes } from "./route-catalog.mjs";
 
 const expectedPerson = {
   "@type": "Person",
-  name: "Ethan Brosselard",
-  homeLocation: { "@type": "Place", name: "Paris, France" },
-  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard-507334237/"],
+  name: profile.name,
+  homeLocation: { "@type": "Place", name: profile.location },
+  sameAs: Object.values(profile.socials),
 };
 
 const forbiddenPlaceholders = ["TODO", "TBD", "À REMPLIR", "coming soon"];

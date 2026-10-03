@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/projects/ProjectCard.astro";
+import ContactBand from "@/components/layout/ContactBand.astro";
 import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -38,4 +39,5 @@ const projects = (
       ))}
     </div>
   </section>
+  <ContactBand {locale} />
 </BaseLayout>
