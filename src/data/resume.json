@@ -94,8 +94,8 @@
       },
       {
         "id": "delivery",
-        "category": "Tests & cloud",
-        "items": "Tests unitaires, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
+        "category": "Cloud & automatisation",
+        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, tests unitaires, pytest"
       },
       {
         "id": "complementary",
@@ -189,8 +189,8 @@
       },
       {
         "id": "delivery",
-        "category": "Testing & cloud",
-        "items": "Unit testing, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
+        "category": "Cloud & automation",
+        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, unit testing, pytest"
       },
       {
         "id": "complementary",
