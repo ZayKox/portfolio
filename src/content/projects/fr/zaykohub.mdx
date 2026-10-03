@@ -33,6 +33,12 @@ Je prépare un homelab pour regrouper des services personnels et familiaux, exp�
 
 Le catalogue est une feuille de route : il ne signifie pas que tous les services pourront fonctionner simultanément. L’activation sera progressive, selon les ressources disponibles et les essais réalisés sur le matériel.
 
+## Travail déjà réalisé dans le dépôt
+
+Les inventaires et décisions d’architecture sont versionnés. Des stacks Compose et des rôles Ansible ont été préparés pour une partie des services, notamment l’identité, la supervision, les échanges de fichiers, MQTT, la musique et les outils de développement.
+
+Les outils Python valident les métadonnées, les configurations et les conditions d’exécution. Des essais isolés couvrent notamment le démarrage de services, l’authentification, le refus d’accès anonyme, la révocation de permissions et des cycles de sauvegarde et restauration chiffrées. La validation continue contrôle les artefacts sans déployer le homelab. Ces résultats sont des preuves locales, pas une validation sur le serveur cible.
+
 ## Architecture cible
 
 Proxmox VE doit accueillir trois machines virtuelles Debian avec Docker : un socle pour le DNS, l’identité et les accès ; un environnement pour les applications privées et partagées ; et un environnement séparé pour l’entrée publique et les projets personnels. Home Assistant OS et Proxmox Backup Server disposent chacun d’une machine virtuelle dédiée.
@@ -44,6 +50,9 @@ Le stockage prévu distingue un SSD de 1 To pour les systèmes et l’état appl
 ## Services et usages prévus
 
 Les services suivants sont des objectifs d’installation, avec des exigences documentées ; leur présence dans le catalogue ne constitue pas une preuve de fonctionnement.
+
+<details class="service-catalog">
+<summary>Voir le catalogue des services prévus</summary>
 
 | Domaine                      | Services prévus et rôle                                                                                                                                                                                                                                  |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,6 +68,8 @@ Les services suivants sont des objectifs d’installation, avec des exigences do
 | Outils quotidiens            | IT-Tools, CyberChef, PrivateBin, ChangeDetection.io, Speedtest Tracker, Homebox, ConvertX et Zipline pour les utilitaires, le partage, la veille, l’inventaire et la conversion.                                                                         |
 | Sauvegardes et projets       | Proxmox Backup Server pour la récupération locale ; Restic pour les copies chiffrées indépendantes ; hébergement futur de Ludosaic et Palimia, sous réserve de leurs propres conditions de lancement.                                                    |
 
+</details>
+
 ## Accès et protection des données
 
 Le modèle d’accès prévoit un refus par défaut et des permissions par usage. Les interfaces d’administration et les applications sensibles restent privées. Authentik gère l’identité du homelab ; Ludosaic et Palimia conservent leur authentification produit pour les utilisateurs publics.
@@ -70,12 +81,6 @@ Les secrets d’infrastructure sont préparés avec SOPS et age, puis transmis �
 Proxmox Backup Server fournit une récupération locale de disques de machines virtuelles sélectionnés. Restic doit conserver des copies chiffrées des données importantes sur une destination indépendante, encore à choisir. Une copie sur le même serveur ne protège pas d’une perte complète de ce serveur.
 
 Les procédures associent les exports cohérents des bases de données aux fichiers correspondants. Elles prévoient des contrôles d’intégrité, la restauration d’un instantané précis et la vérification du service récupéré avant toute remise en fonctionnement. Les clés et instructions de récupération doivent rester accessibles sans le homelab.
-
-## Travail déjà réalisé dans le dépôt
-
-Les inventaires et décisions d’architecture sont versionnés. Des stacks Compose et des rôles Ansible ont été préparés pour une partie des services, notamment l’identité, la supervision, les échanges de fichiers, MQTT, la musique et les outils de développement.
-
-Les outils Python valident les métadonnées, les configurations et les conditions d’exécution. Des essais isolés couvrent notamment le démarrage de services, l’authentification, le refus d’accès anonyme, la révocation de permissions et des cycles de sauvegarde et restauration chiffrées. La validation continue contrôle les artefacts sans déployer le homelab. Ces résultats sont des preuves locales, pas une validation sur le serveur cible.
 
 ## Étapes restantes et limites
 

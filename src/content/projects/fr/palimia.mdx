@@ -38,6 +38,7 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
 ---
 
+import TmdbCredit from "../../../components/projects/TmdbCredit.astro";
 import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
 import libraryCapture from "../../../assets/projects/palimia/library.webp";
 import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
@@ -59,6 +60,10 @@ Ces captures proviennent de l’application exécutée localement en mode sombre
 
 <ProjectCapture
   src={libraryCapture}
+  detail={{
+    view: "library-entry",
+    alt: "Détail d’Interstellar : statut terminé, note de démonstration de 9/10 et favori dans la bibliothèque Palimia.",
+  }}
   alt="Bibliothèque Palimia en mode sombre : 12 films suivis et six entrées visibles avec leurs affiches, statuts, notes et progressions."
   caption="Interstellar, Inception, Dune et d’autres films suivis avec leurs affiches, notes, favoris et progressions."
   locale="fr"
@@ -71,9 +76,7 @@ Ces captures proviennent de l’application exécutée localement en mode sombre
   locale="fr"
 />
 
-Titres et affiches : [The Movie Database (TMDB)](https://www.themoviedb.org). Les affiches restent la propriété de leurs ayants droit.
-
-This product uses the TMDB API but is not endorsed or certified by TMDB.
+<TmdbCredit locale="fr" />
 
 ## Une bibliothèque culturelle personnelle
 
@@ -94,6 +97,8 @@ Les fonctions sociales développées — profils publics, avis, listes et relati
 Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue, les références vers les fournisseurs et les états personnels, tandis que Better Auth gère l’authentification. Les appels aux fournisseurs restent côté serveur et leurs données sont validées puis normalisées avant import.
 
 ### Séparer le catalogue et les données personnelles
+
+Par exemple, relancer un import fournisseur doit retrouver la même œuvre dans le catalogue, tout en conservant les notes et la progression propres à chaque personne. C’est le rôle de l’import idempotent et de la séparation des données.
 
 Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 

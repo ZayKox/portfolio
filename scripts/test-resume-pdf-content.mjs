@@ -1,3 +1,4 @@
+import { profile } from "../src/data/profile.ts";
 import assert from "node:assert/strict";
 import path from "node:path";
 import test from "node:test";
@@ -39,11 +40,7 @@ const expectations = {
   },
 };
 
-const expectedLinks = [
-  "mailto:ethan.brosselard@gmail.com",
-  "https://github.com/ZayKox",
-  "https://www.linkedin.com/in/ethan-brosselard/",
-];
+const expectedLinks = [`mailto:${profile.email}`, ...Object.values(profile.socials)];
 
 for (const job of jobs) {
   test(`${job.filename} contains readable, tagged, localized resume content`, async () => {

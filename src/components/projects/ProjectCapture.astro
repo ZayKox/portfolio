@@ -8,9 +8,10 @@ interface Props {
   alt: string;
   caption: string;
   locale: Locale;
+  detail?: { view: "library-entry" | "game-board"; alt: string };
 }
 
-const { src, alt, caption, locale } = Astro.props;
+const { src, alt, caption, locale, detail } = Astro.props;
 const t = getCopy(locale);
 ---
 
@@ -25,6 +26,21 @@ const t = getCopy(locale);
     loading="lazy"
     decoding="async"
   />
+  {detail && (
+    <details class="capture-detail">
+      <summary>{t.project.captureDetail}</summary>
+      <div class:list={["capture-detail-frame", `capture-detail-frame--${detail.view}`]}>
+        <img
+          src={src.src}
+          width={src.width}
+          height={src.height}
+          alt={detail.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </details>
+  )}
   <figcaption>
     <span>{caption}</span>
     <a class="text-link" href={src.src}>

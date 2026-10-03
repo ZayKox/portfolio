@@ -1,3 +1,4 @@
+import { profile } from "../src/data/profile.ts";
 import { publicRoutes, languagePairs, expectedSchemaTypes } from "./route-catalog.mjs";
 import { access, readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
@@ -18,9 +19,9 @@ const routeSocialImages = new Map(
 );
 const expectedPerson = {
   "@type": "Person",
-  name: "Ethan Brosselard",
-  homeLocation: { "@type": "Place", name: "Paris, France" },
-  sameAs: ["https://github.com/ZayKox", "https://www.linkedin.com/in/ethan-brosselard/"],
+  name: profile.name,
+  homeLocation: { "@type": "Place", name: profile.location },
+  sameAs: Object.values(profile.socials),
 };
 
 const forbiddenPlaceholders = [

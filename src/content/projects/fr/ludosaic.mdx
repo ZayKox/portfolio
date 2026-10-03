@@ -70,6 +70,10 @@ Ces captures montrent le catalogue et une partie de démonstration exécutés lo
 
 <ProjectCapture
   src={gridDuelCapture}
+  detail={{
+    view: "game-board",
+    alt: "Détail du plateau de Grid Duel et du choix de colonne pendant la partie locale de démonstration.",
+  }}
   alt="Partie locale de Grid Duel montrant le plateau, les jetons joués et l’indication du joueur actif."
   caption="Grid Duel pendant une partie locale de démonstration à deux joueurs."
   locale="fr"
@@ -98,6 +102,8 @@ Le monorepo sépare l’application Next.js, le serveur de jeu, chaque jeu et le
 Les règles restent indépendantes du rendu et peuvent être rejouées à partir d’une graine et d’une suite d’actions. Pour un résultat connecté, le serveur reconstitue la partie au lieu d’accepter directement le score annoncé par le navigateur. Les jeux sont chargés uniquement lorsqu’ils sont ouverts, et le service worker permet de relancer certains modes déjà chargés sans connexion.
 
 ### Reprendre après une interruption
+
+Par exemple, une connexion interrompue après une partie ne doit pas faire perdre son résultat, ni le compter deux fois lorsque l’envoi est retenté. La file locale et la prévention des doublons répondent à cette contrainte.
 
 Les résultats en attente sont conservés localement puis renvoyés après reconnexion. Leur vérification côté serveur et la prévention des doublons permettent de traiter les nouvelles tentatives d’envoi sans compter plusieurs fois la même partie.
 

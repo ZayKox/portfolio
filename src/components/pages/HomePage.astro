@@ -6,6 +6,7 @@ import { profile } from "@/data/profile";
 import { getResume } from "@/data/resume";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Portrait from "@/components/Portrait.astro";
 
 interface Props {
   locale: Locale;
@@ -65,31 +66,13 @@ const projects = (
         </nav>
       </div>
 
-      <aside class="hero-field reveal" aria-labelledby="explore-title">
-        <div class="hero-field-grid" aria-hidden="true"></div>
-        <div class="hero-panel-identity">
-          <p class="hero-panel-label">{t.home.exploreLabel}</p>
-          <h2 id="explore-title">{t.home.exploreTitle}</h2>
-          <span>{profile.location}</span>
-        </div>
-        <div class="hero-panel-projects">
-          <a href={localizedRoutes.resume}>
-            <strong>{t.home.resumeOnlineCta}</strong>
-            <span class="hero-panel-project-arrow" aria-hidden="true">
-              ↗
-            </span>
-          </a>
-          <a href={localizedRoutes.projects}>
-            <strong>{t.home.allProjectsCta}</strong>
-            <span class="hero-panel-project-arrow" aria-hidden="true">
-              ↗
-            </span>
-          </a>
-          <a href={`${localizedRoutes.projects}zaykohub/`}>
-            <strong>{t.home.homelabCta}</strong>
-            <span class="hero-panel-project-arrow" aria-hidden="true">
-              ↗
-            </span>
+      <aside class="hero-portrait reveal" aria-label={t.nav.about}>
+        <Portrait {locale} compact />
+        <div>
+          <p class="portrait-name">{profile.name}</p>
+          <p class="portrait-location">{profile.location}</p>
+          <a class="text-link" href={localizedRoutes.about}>
+            {t.home.aboutCta} ↗
           </a>
         </div>
       </aside>
@@ -115,11 +98,9 @@ const projects = (
             <p class="experience-period">{entry.period}</p>
           </div>
           <ul>
-            {entry.highlights
-              ?.filter((_, index) => entry.id !== "beyowi" || [0, 1, 4].includes(index))
-              .map((highlight) => (
-                <li>{highlight}</li>
-              ))}
+            {entry.highlights?.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
           </ul>
         </article>
       ))}

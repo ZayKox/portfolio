@@ -33,6 +33,12 @@ I’m preparing a homelab to bring together personal and family services, practi
 
 The catalogue is a roadmap, not a claim that every service can run simultaneously. Activation will be gradual, based on available resources and tests on the actual hardware.
 
+## Work already completed in the repository
+
+Inventories and architecture decisions are versioned. Compose stacks and Ansible roles have been prepared for some services, including identity, observability, file exchange, MQTT, music, and development tools.
+
+Python tools validate metadata, configurations, and execution prerequisites. Isolated rehearsals cover service startup, authentication, anonymous access refusal, permission revocation, and encrypted backup and recovery cycles. Continuous validation checks the artifacts without deploying the homelab. These are local technical results, not validation on the target server.
+
 ## Target architecture
 
 Proxmox VE is intended to host three Debian virtual machines running Docker: a foundation for DNS, identity, and access; an environment for private and shared applications; and a separate environment for public ingress and personal projects. Home Assistant OS and Proxmox Backup Server each have a dedicated virtual machine.
@@ -44,6 +50,9 @@ Planned storage separates a 1 TB SSD for systems and application state from a ZF
 ## Planned services and uses
 
 The following services are installation goals with documented requirements. Inclusion in the catalogue is not evidence that they are operational.
+
+<details class="service-catalog">
+<summary>View the planned service catalogue</summary>
 
 | Area                            | Planned services and purpose                                                                                                                                                                              |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,6 +68,8 @@ The following services are installation goals with documented requirements. Incl
 | Everyday tools                  | IT-Tools, CyberChef, PrivateBin, ChangeDetection.io, Speedtest Tracker, Homebox, ConvertX, and Zipline for utilities, sharing, monitoring changes, inventory, and conversion.                             |
 | Backups and projects            | Proxmox Backup Server for local recovery; Restic for independent encrypted copies; future Ludosaic and Palimia hosting, subject to their own release conditions.                                          |
 
+</details>
+
 ## Access and data protection
 
 The access model uses default denial and permissions by use case. Administrative interfaces and sensitive applications stay private. Authentik manages homelab identity; Ludosaic and Palimia retain their own product authentication for public users.
@@ -70,12 +81,6 @@ Infrastructure secrets are prepared with SOPS and age, then handed off to protec
 Proxmox Backup Server provides local recovery for selected virtual machine disks. Restic is intended to keep encrypted copies of important data at an independent destination that has not yet been selected. A copy on the same server cannot protect against complete loss of that server.
 
 Procedures pair consistent database exports with their corresponding files. They include integrity checks, recovery of an exact snapshot, and verification of the recovered service before returning it to operation. Recovery keys and instructions must remain accessible without the homelab.
-
-## Work already completed in the repository
-
-Inventories and architecture decisions are versioned. Compose stacks and Ansible roles have been prepared for some services, including identity, observability, file exchange, MQTT, music, and development tools.
-
-Python tools validate metadata, configurations, and execution prerequisites. Isolated rehearsals cover service startup, authentication, anonymous access refusal, permission revocation, and encrypted backup and recovery cycles. Continuous validation checks the artifacts without deploying the homelab. These are local technical results, not validation on the target server.
 
 ## Remaining steps and limitations
 

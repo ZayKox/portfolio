@@ -27,6 +27,13 @@ This file records approved publication decisions that are not already fully repr
 - The production portfolio is a static site with no form, browser-side analytics, tracking cookies, user account, database, or embedded third-party content.
 - The canonical public origin is `https://ethanbrosselard.com`; `www` redirects to the apex domain.
 
+- On October 3, 2026, Ethan requested implementation of the portfolio audit recommendations and supplied his portrait for public display. The optimized, unretouched portrait may appear on the French and English homepage and About page; metadata is removed and identity/media remain outside the source-code license.
+- That remediation request adopts “Expérience en alternance depuis 2022” / “Apprenticeship experience since 2022” in place of the earlier duration statement, using the existing structured dates. It also authorizes clearer presentation of existing contributions and project limitations, real approved capture previews, and a folded service catalogue without changing the Homelab roadmap or publication states.
+
+- The same remediation request includes the audit’s attribution improvement: the official TMDB logo may accompany the existing screenshot credits, with its trademark provenance and the English attribution notice. This is attribution only and does not establish permission for additional provider data or standalone posters.
+
+- On October 3, 2026, Ethan confirmed that `https://www.linkedin.com/in/ethan-brosselard/` is his profile after opening it himself. Automated HTTP 999 responses remain inconclusive and do not replace this human confirmation. The shared public URL remains unchanged.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.

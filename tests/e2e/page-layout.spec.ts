@@ -14,6 +14,30 @@ test("home keeps the resume and contact actions in the first mobile viewport", a
   }
 });
 
+test("contact actions and approved portraits remain usable on small screens", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const route of ["/contact/", "/en/contact/"]) {
+    await page.goto(route);
+    await expect(page.locator(".contact-hero-actions .button").first()).toBeInViewport({
+      ratio: 1,
+    });
+  }
+  for (const route of ["/", "/en/", "/a-propos/", "/en/about/"]) {
+    await page.goto(route);
+    const portrait = page.locator("img.portrait");
+    await expect(portrait).toHaveAttribute("alt", /Ethan Brosselard/);
+    expect(
+      await portrait.evaluate(
+        (image: HTMLImageElement) => image.complete && image.naturalWidth > 0,
+      ),
+    ).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+});
+
 test("resume and contact introductions keep actions below readable text at tablet widths", async ({
   page,
 }, testInfo) => {
@@ -52,6 +76,10 @@ for (const route of [
   test(`${route} lets readers jump to every case-study section`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(route);
+    const contents = page.locator(".case-contents");
+    if (!(await contents.evaluate((element) => (element as HTMLDetailsElement).open))) {
+      await contents.locator("summary").click();
+    }
     const links = page.locator(".case-contents a");
     expect(await links.count()).toBeGreaterThan(1);
     for (const link of await links.all()) {
@@ -69,6 +97,53 @@ for (const route of [
 }
 
 const pageRoutes = routeCatalog.map((entry) => entry.path);
+
+test("capture details provide readable excerpts without JavaScript on mobile", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 320, height: 720 },
+  });
+  const page = await context.newPage();
+  try {
+    for (const route of [
+      "/projets/palimia/",
+      "/en/projects/palimia/",
+      "/projets/ludosaic/",
+      "/en/projects/ludosaic/",
+    ]) {
+      await page.goto(route);
+      const detail = page.locator(".capture-detail");
+      await detail.locator("summary").click();
+      await expect(detail).toHaveAttribute("open", "");
+      const frame = detail.locator(".capture-detail-frame");
+      await expect(frame).toBeVisible();
+      const image = frame.locator("img");
+      await expect(image).toHaveAttribute(
+        "alt",
+        route.includes("palimia") ? /Interstellar/ : /Grid Duel/,
+      );
+      await expect
+        .poll(() =>
+          image.evaluate(
+            (element: HTMLImageElement) => element.complete && element.naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+      const bounds = await frame.boundingBox();
+      const imageBounds = await image.boundingBox();
+      expect(bounds!.width).toBeLessThanOrEqual(280);
+      expect(bounds!.height).toBeGreaterThan(100);
+      expect(imageBounds!.width / bounds!.width).toBeGreaterThan(2);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    }
+  } finally {
+    await context.close();
+  }
+});
 
 test("page headings including both homepages share alignment and typography across routes", async ({
   page,
@@ -162,6 +237,14 @@ test("project cards align their visuals and actions while preserving mobile read
             top: card.top,
             bottom: card.bottom,
             visualBottom: visual.bottom,
+            visualRight: visual.right,
+            contentLeft: content.left,
+            followsVisual: Boolean(
+              element
+                .querySelector(".project-card-visual")!
+                .compareDocumentPosition(element.querySelector(".project-card-content")!) &
+              Node.DOCUMENT_POSITION_FOLLOWING,
+            ),
             contentTop: content.top,
             actionBottom: action.bottom,
           };
@@ -171,10 +254,15 @@ test("project cards align their visuals and actions while preserving mobile read
       const [first, second] = cards;
 
       for (const card of cards) {
-        expect(
-          card.contentTop,
-          `${route} at ${width}px: visual precedes content`,
-        ).toBeGreaterThanOrEqual(card.visualBottom - 1);
+        expect(card.followsVisual, `${route}: visual precedes content in reading order`).toBe(true);
+        if (width > 768 && card.contentLeft >= card.visualRight - 1) {
+          expect(card.contentTop).toBeGreaterThanOrEqual(card.top);
+        } else {
+          expect(
+            card.contentTop,
+            `${route} at ${width}px: vertical card reading order`,
+          ).toBeGreaterThanOrEqual(card.visualBottom - 1);
+        }
         expect(card.actionBottom).toBeLessThanOrEqual(card.bottom);
       }
       if (first && second && width > 768) {

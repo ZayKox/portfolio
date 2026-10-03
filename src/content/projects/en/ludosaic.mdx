@@ -70,6 +70,10 @@ These screenshots show the catalog and a demonstration game running locally, wit
 
 <ProjectCapture
   src={gridDuelCapture}
+  detail={{
+    view: "game-board",
+    alt: "Detail of the Grid Duel board and column selection during the local demonstration game.",
+  }}
   alt="Local Grid Duel game showing the board, played pieces, and the active player indicator."
   caption="Grid Duel during a local two-player demonstration game."
   locale="en"
@@ -98,6 +102,8 @@ The monorepo separates the Next.js application, game server, each game, and thei
 Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 
 ### Resume after an interruption
+
+For example, a connection lost after a game should neither discard its result nor count it twice when sending is retried. The local queue and duplicate prevention address this requirement.
 
 Pending results are stored locally and resent after reconnection. Server-side verification and duplicate prevention allow submission retries without counting the same run more than once.
 

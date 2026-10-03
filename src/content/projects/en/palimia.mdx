@@ -38,6 +38,7 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Violet Field sharing card for Palimia, with cultural domains arranged around the PA monogram.
 ---
 
+import TmdbCredit from "../../../components/projects/TmdbCredit.astro";
 import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
 import libraryCapture from "../../../assets/projects/palimia/library.webp";
 import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
@@ -59,6 +60,10 @@ These screenshots show the application running locally in dark mode, with its Fr
 
 <ProjectCapture
   src={libraryCapture}
+  detail={{
+    view: "library-entry",
+    alt: "Interstellar detail: completed status, a demonstration rating of 9/10, and favorite status in the Palimia library.",
+  }}
   alt="Palimia library in dark mode: 12 tracked movies and six visible entries with their posters, statuses, ratings, and progress."
   caption="Interstellar, Inception, Dune, and other tracked movies with their posters, ratings, favorites, and progress."
   locale="en"
@@ -71,9 +76,7 @@ These screenshots show the application running locally in dark mode, with its Fr
   locale="en"
 />
 
-Titles and posters: [The Movie Database (TMDB)](https://www.themoviedb.org). Poster copyright remains with the respective rights holders.
-
-This product uses the TMDB API but is not endorsed or certified by TMDB.
+<TmdbCredit locale="en" />
 
 ## A personal cultural library
 
@@ -94,6 +97,8 @@ Developed social features — public profiles, reviews, lists, and relationships
 The project is a modular monolith built with Next.js and strict TypeScript. PostgreSQL and Prisma support the catalog, provider references, and personal states, while Better Auth handles authentication. Provider calls remain server-side, and their data is validated and normalized before import.
 
 ### Separate catalog data from personal data
+
+For example, repeating a provider import should find the same catalog work while preserving each person’s ratings and progress. Idempotent imports and the data separation address this requirement.
 
 This architecture gives each work a shared identity without flattening the characteristics of each media type. Imports are designed to be idempotent and safe under concurrency, while data provenance stays separate from the ratings, progress, and lists created by users.
 

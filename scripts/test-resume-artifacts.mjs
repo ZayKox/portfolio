@@ -14,10 +14,11 @@ import {
 test("PDF validation rejects changed, added, removed sources and missing or tampered PDFs", async (t) => {
   const root = await mkdtemp(path.join(tmpdir(), "resume-proof-"));
   t.after(() => rm(root, { recursive: true, force: true }));
-  for (const dir of ["src/nested", "scripts", "docs", "public/cv"])
+  for (const dir of ["src/nested", "vendor/cache", "scripts", "docs", "public/cv"])
     await mkdir(path.join(root, dir), { recursive: true });
   for (const file of [
     "src/nested/content.ts",
+    "vendor/cache/index.js",
     "astro.config.mjs",
     "tsconfig.json",
     "package.json",
@@ -36,6 +37,9 @@ test("PDF validation rejects changed, added, removed sources and missing or tamp
   await writeFile(path.join(root, manifestPath), JSON.stringify({ ...saved, version: 2 }));
   await assert.rejects(validateResumeArtifacts(root), /stale/);
   await writeFile(path.join(root, manifestPath), JSON.stringify({ ...saved, outputs: undefined }));
+  await assert.rejects(validateResumeArtifacts(root), /stale/);
+  await record();
+  await writeFile(path.join(root, "vendor/cache/index.js"), "patched dependency");
   await assert.rejects(validateResumeArtifacts(root), /stale/);
   await record();
   await writeFile(path.join(root, "src/nested/content.ts"), "changed");

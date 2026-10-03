@@ -3,7 +3,7 @@
   "policy": {
     "fonts": "system-only",
     "icons": "text-and-css-only",
-    "thirdPartyMedia": "approved-captures-only"
+    "thirdPartyMedia": "approved-captures-and-attribution"
   },
   "assets": [
     {
@@ -237,6 +237,66 @@
       "height": 1242,
       "maxBytes": 204800,
       "sha256": "ffefdb918e8d5f055aa47914df164088d38356b5e15c9ca96a551ce78c6386ca"
+    },
+    {
+      "path": "public/images/ethan-brosselard-320.webp",
+      "kind": "approved-portrait",
+      "provenance": "User-supplied portrait published at Ethan’s explicit request on 2026-10-03. Resized and encoded as WebP without retouching; embedded metadata removed.",
+      "sourceVersion": "User attachment received 2026-10-03",
+      "rights": "Ethan Brosselard supplied his portrait and explicitly requested its inclusion in this portfolio on 2026-10-03. No third-party identity is depicted.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "approved-public-identity",
+      "alt": {
+        "fr": "Portrait d’Ethan Brosselard",
+        "en": "Portrait of Ethan Brosselard"
+      },
+      "width": 320,
+      "height": 320,
+      "maxBytes": 65536,
+      "sha256": "d1b9d38d749ce5ece87cce5ffa9e0346875bad44daa4a89578c24fde0fdfc84a"
+    },
+    {
+      "path": "public/images/ethan-brosselard-640.webp",
+      "kind": "approved-portrait",
+      "provenance": "User-supplied portrait published at Ethan’s explicit request on 2026-10-03. Resized and encoded as WebP without retouching; embedded metadata removed.",
+      "sourceVersion": "User attachment received 2026-10-03",
+      "rights": "Ethan Brosselard supplied his portrait and explicitly requested its inclusion in this portfolio on 2026-10-03. No third-party identity is depicted.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "approved-public-identity",
+      "alt": {
+        "fr": "Portrait d’Ethan Brosselard",
+        "en": "Portrait of Ethan Brosselard"
+      },
+      "width": 640,
+      "height": 640,
+      "maxBytes": 65536,
+      "sha256": "1efa0043e8297021c487311408399cdf78b327fd8ef20fe3f8ddcb7082363b83"
+    },
+    {
+      "path": "public/images/tmdb-attribution.png",
+      "kind": "approved-attribution",
+      "provenance": "Official unmodified TMDB alternate short blue logo, obtained from https://www.themoviedb.org/about/logos-attribution on 2026-10-03. Rasterized locally preserving proportions and colors; used solely for source attribution.",
+      "sourceVersion": "Official logo blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg",
+      "rights": "TMDB trademark. Attribution use permitted by the official developer FAQ and Logos & Attribution guidelines: https://developer.themoviedb.org/docs/faq and https://www.themoviedb.org/about/logos-attribution. This identifies screenshot sources without suggesting endorsement.",
+      "approval": {
+        "by": "Ethan Brosselard",
+        "date": "2026-10-03"
+      },
+      "contentSafety": "third-party-attribution",
+      "alt": {
+        "fr": "The Movie Database (TMDB)",
+        "en": "The Movie Database (TMDB)"
+      },
+      "width": 280,
+      "height": 36,
+      "maxBytes": 8192,
+      "sha256": "ebeef2a11d966b799449ef8bc354a3362bc186605244893e9e108a73a43196d0"
     }
   ]
 }

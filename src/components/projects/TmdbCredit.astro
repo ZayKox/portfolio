@@ -1,0 +1,29 @@
+---
+import type { Locale } from "@/i18n/copy";
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<aside
+  class="tmdb-credit"
+  aria-label={locale === "fr" ? "Crédits des captures" : "Screenshot credits"}
+>
+  <a href="https://www.themoviedb.org">
+    <img
+      src="/images/tmdb-attribution.png"
+      width="280"
+      height="36"
+      alt="The Movie Database (TMDB)"
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+  <p>
+    {locale === "fr"
+      ? "Titres et affiches : TMDB. Les affiches restent la propriété de leurs ayants droit."
+      : "Titles and posters: TMDB. Poster copyright remains with the respective rights holders."}
+  </p>
+  <p lang="en">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+</aside>

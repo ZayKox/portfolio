@@ -1,0 +1,9 @@
+{
+  "name": "@portfolio/http-cache-semantics",
+  "version": "4.2.0-portfolio.1",
+  "private": true,
+  "description": "Local security-patched fork of http-cache-semantics 4.2.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "BSD-2-Clause"
+}

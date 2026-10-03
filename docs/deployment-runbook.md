@@ -204,10 +204,10 @@ Both CI deployment workflows supply these artifact options. The report records S
 
 ## Reproducing WebKit checks locally
 
-Playwright's test server uses Astro's programmatic preview API to stay in the test process group even in agent environments. If the host is missing WebKit's system libraries, the already available matching browser image can run the suite without changing the host:
+Playwright's test server uses Astro's programmatic preview API to stay in the test process group even in agent environments. If the host is missing WebKit's system libraries, the matching browser image can run the suite without changing the host:
 
 ```sh
-docker run --rm --init --ipc=host --user 1000:1000 --volume "$PWD:/work" --workdir /work mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e node node_modules/@playwright/test/cli.js test --project=webkit --project=mobile-webkit --workers=4
+docker run --rm --init --ipc=host --user 1000:1000 --volume "$PWD:/work" --workdir /work mcr.microsoft.com/playwright:v1.63.0-noble@sha256:bc6ab0d6d44ff4826e4cb8c1e6d801e185bfc42bb0753f8e2a30efc70db054c7 node node_modules/@playwright/test/cli.js test --project=webkit --project=mobile-webkit --workers=4
 ```
 
 Use the image matching the pinned Playwright version and the local user's UID. This is a test environment, not a deployment container. Run after native browser tests, since both suites own the same preview port and reports.
@@ -215,3 +215,5 @@ Use the image matching the pinned Playwright version and the local user's UID. T
 Review every `inconclusive` entry in the CI external-link report in a normal browser. Record the URL, observation date and outcome; HTTP 999 from LinkedIn is an anti-bot response, not a successful verification. Recheck real broken links before replacing an approved public URL.
 
 The preview deploy job reads the requested revision's MDX, route JSON, CSS tokens and design documentation from a separate sparse checkout (`PORTFOLIO_CONTENT_ROOT`). Trusted validation scripts and schemas still execute from `main`. This lets a preview add a bilingual project without comparing its route catalog against an older `main`; no preview JavaScript is executed with deployment credentials.
+
+Dependency release checks include `npm run test:cache-security` and the unchanged `npm audit --audit-level=high`. The temporary local cache-policy fork and its replacement procedure are documented in [dependency security](dependency-security.md). Ethan confirmed the canonical LinkedIn profile on October 3, 2026; automated HTTP 999 responses still remain inconclusive.

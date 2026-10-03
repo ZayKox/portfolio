@@ -44,6 +44,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify installed cache security patch
+        run: npm run test:cache-security
+
       - name: Audit installed dependencies
         run: npm audit --audit-level=high
 

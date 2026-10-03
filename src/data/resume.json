@@ -44,23 +44,23 @@
   "fr": {
     "role": "Développeur logiciel junior",
     "objective": "CDI ou CDD · Télétravail",
-    "summary": "Diplômé d’un master informatique en 2026, avec une expérience en alternance depuis 2022. Développement d’API Python, traitements et migrations de données SQL, et contribution à un logiciel de CAO en C++.",
+    "summary": "Diplômé d’un master informatique en ingénierie de l’IA en 2026. Expérience en alternance depuis 2022 : API Python, traitements et migrations SQL, cloud AWS et logiciel de CAO en C++.",
     "experience": [
       {
         "title": "Développeur logiciel Python — Alternance",
         "highlights": [
-          "Conception d’API REST et de traitements de données avec Python, Flask et AWS Lambda.",
-          "Contribution à 3 projets portant sur plusieurs Go de données : référentiel ANSM, ETL Thesorimed et API/workflows IA de Primotheus.",
-          "Développement et maintenance de pipelines de migration et de synchronisation entre bases SQL avec AWS DMS.",
-          "Intégration de RAG et de recherche vectorielle avec PGVector, Qdrant et les services OpenAI.",
-          "Déploiement et maintenance sur AWS et sur site avec Docker ; automatisation des tests et des déploiements par CI/CD."
+          "Conception d’API REST et de traitements de données : Python, Flask, AWS Lambda.",
+          "Contribution à 3 projets (plusieurs Go de données) : référentiel ANSM, ETL Thesorimed, API et workflows IA de Primotheus.",
+          "Développement et maintenance de pipelines de migration et de synchronisation SQL avec AWS DMS.",
+          "Intégration de RAG et de recherche vectorielle : PGVector, Qdrant, services OpenAI.",
+          "Déploiement et maintenance sur AWS et sur site : Docker, tests et déploiements automatisés par CI/CD."
         ],
         "id": "beyowi"
       },
       {
         "title": "Développeur backend C++ — Alternance",
         "highlights": [
-          "Développement de fonctionnalités et contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore, logiciel de CAO en C++.",
+          "Développement de fonctionnalités C++ ; contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore (CAO).",
           "Contribution aux tests unitaires, à la compatibilité multi-technologies et à la documentation technique."
         ],
         "id": "intento"
@@ -122,13 +122,13 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "Application de suivi et d’organisation de films, séries et jeux vidéo : Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
+            "description": "Bibliothèque culturelle personnelle : catalogue normalisé, données privées séparées, recommandations explicables. Développement autonome ; lancement bloqué.",
             "id": "palimia",
             "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Mini-jeux web en développement, avec modes solo et multijoueurs selon le jeu : Next.js, TypeScript, React, PostgreSQL, Colyseus.",
+            "description": "Mini-jeux web : règles rejouables, vérification des résultats côté serveur et reprise après interruption. Développement autonome ; MVP en cours.",
             "id": "ludosaic",
             "slug": "ludosaic"
           }
@@ -139,23 +139,23 @@
   "en": {
     "role": "Junior Software Developer",
     "objective": "Permanent or fixed-term employment · Remote",
-    "summary": "Computer science master’s graduate (2026) with apprenticeship experience since 2022. Development of Python APIs, SQL data processing and migrations, and contributions to a C++ CAD application.",
+    "summary": "Computer science master’s graduate in AI engineering (2026). Apprenticeship experience since 2022: Python APIs, SQL processing and migrations, AWS cloud services, and C++ CAD software.",
     "experience": [
       {
         "title": "Python Software Developer — Apprenticeship",
         "highlights": [
-          "Designed REST APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
-          "Contributed to 3 projects involving several GB of data: ANSM reference data, Thesorimed ETL, and Primotheus API/AI workflows.",
-          "Developed and maintained data migration and synchronization pipelines between SQL databases with AWS DMS.",
-          "Integrated RAG and vector search with PGVector, Qdrant, and OpenAI services.",
-          "Deployed and maintained services on AWS and on premises with Docker; automated tests and deployments through CI/CD."
+          "Designed REST APIs and data-processing workflows: Python, Flask, AWS Lambda.",
+          "Contributed to 3 projects (several GB of data): ANSM reference data, Thesorimed ETL, and Primotheus API/AI workflows.",
+          "Developed and maintained SQL migration and synchronization pipelines with AWS DMS.",
+          "Integrated RAG and vector search: PGVector, Qdrant, OpenAI services.",
+          "Deployed and maintained services on AWS and on premises: Docker, automated tests and deployments through CI/CD."
         ],
         "id": "beyowi"
       },
       {
         "title": "C++ Backend Developer — Apprenticeship",
         "highlights": [
-          "Developed features and contributed to circuit-generation and validation algorithms for ID-Xplore, a C++ CAD application.",
+          "Developed C++ features; contributed to circuit-generation and validation algorithms for the ID-Xplore CAD application.",
           "Contributed to unit tests, compatibility across circuit technologies, and technical documentation."
         ],
         "id": "intento"
@@ -217,13 +217,13 @@
         "items": [
           {
             "title": "Palimia",
-            "description": "App to track and organize movies, TV series, and video games: Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
+            "description": "Personal cultural library: normalized catalog, separate private data, and explainable recommendations. Independently developed; launch blocked.",
             "id": "palimia",
             "slug": "palimia"
           },
           {
             "title": "Ludosaic",
-            "description": "Web mini-games under development, with solo and multiplayer modes depending on the game: Next.js, TypeScript, React, PostgreSQL, Colyseus.",
+            "description": "Web mini-games: replayable rules, server-side result verification, and recovery after interruption. Independently developed; MVP in progress.",
             "id": "ludosaic",
             "slug": "ludosaic"
           }

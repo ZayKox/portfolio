@@ -31,7 +31,10 @@ const isActive = (href: string) =>
       aria-label={`${profile.brand} — ${profile.name} — ${t.nav.home}`}
     >
       <span class="brand-mark" aria-hidden="true"></span>
-      <span>{profile.brand}</span>
+      <span class="brand-identity">
+        {profile.name}
+        <small>{profile.brand}</small>
+      </span>
     </a>
 
     <nav class="main-nav" aria-label={t.nav.label}>
@@ -53,6 +56,9 @@ const isActive = (href: string) =>
         {t.alternateLocale}
       </a>
       <span class="theme-control" data-theme-control hidden>
+        <span class="theme-text" aria-hidden="true">
+          {t.themeLabel}
+        </span>
         <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
           <option value="system">{t.themeSystem}</option>
           <option value="light">{t.themeLight}</option>
@@ -121,6 +127,9 @@ const isActive = (href: string) =>
       root.classList.add("theme-switching");
       root.dataset.theme =
         visitorTheme === "system" ? (systemPreference.matches ? "dark" : "light") : visitorTheme;
+      // Commit the new palette while transitions are disabled, including child links.
+      // Removing the class before styles are resolved can animate from the old palette.
+      void root.offsetHeight;
       requestAnimationFrame(() => root.classList.remove("theme-switching"));
     }
 

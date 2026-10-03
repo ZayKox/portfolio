@@ -3,6 +3,8 @@ import { render, type CollectionEntry } from "astro:content";
 import ProjectVisual from "@/components/projects/ProjectVisual.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectPreview from "@/components/projects/ProjectPreview.astro";
+import { profile } from "@/data/profile";
 
 interface Props {
   locale: Locale;
@@ -22,7 +24,7 @@ const sections = headings.filter((heading) => heading.depth === 2);
     locale === "fr" ? `/projets/${entry.data.slug}/` : `/en/projects/${entry.data.slug}/`
   }
   {alternatePath}
-  title={entry.data.title}
+  title={`${entry.data.title} — ${entry.data.kind}`}
   description={entry.data.summary}
   socialImage={entry.data.socialImage}
   socialImageAlt={entry.data.socialImageAlt}
@@ -35,6 +37,9 @@ const sections = headings.filter((heading) => heading.depth === 2);
             <p class="eyebrow">{entry.data.eyebrow}</p>
             <h1>{entry.data.title}</h1>
             <p class="page-lead">{entry.data.summary}</p>
+            <p class="case-author">
+              {profile.name} · {t.project.authorship}
+            </p>
             <div class="case-hero-nav">
               <a class="back-link" href={routes[locale].projects}>
                 ← {t.project.back}
@@ -51,12 +56,16 @@ const sections = headings.filter((heading) => heading.depth === 2);
             </div>
           </div>
           <div class="case-hero-visual reveal">
-            <ProjectVisual
-              visual={entry.data.visual}
-              title={entry.data.title}
-              items={entry.data.visualItems ?? entry.data.stack}
-              {locale}
-            />
+            {entry.data.slug === "palimia" || entry.data.slug === "ludosaic" ? (
+              <ProjectPreview slug={entry.data.slug} {locale} eager />
+            ) : (
+              <ProjectVisual
+                visual={entry.data.visual}
+                title={entry.data.title}
+                items={entry.data.visualItems ?? entry.data.stack}
+                {locale}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -93,11 +102,14 @@ const sections = headings.filter((heading) => heading.depth === 2);
       <div class="container">
         <p class="eyebrow">{t.project.decision}</p>
         <h2 id="case-flow-title">{t.project.flow}</h2>
-        <ol class="case-flow">
-          {entry.data.flow.map((step) => (
-            <li>{step}</li>
-          ))}
-        </ol>
+        <details class="case-flow-details">
+          <summary>{entry.data.cardDecision}</summary>
+          <ol class="case-flow">
+            {entry.data.flow.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </details>
       </div>
     </section>
 
@@ -110,16 +122,18 @@ const sections = headings.filter((heading) => heading.depth === 2);
         ]}
       >
         {sections.length > 1 && (
-          <nav class="case-contents" aria-label={t.project.contents}>
-            <p class="eyebrow">{t.project.contents}</p>
-            <ol>
-              {sections.map((heading) => (
-                <li>
-                  <a href={`#${heading.slug}`}>{heading.text}</a>
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <details class="case-contents">
+            <summary>{t.project.contents}</summary>
+            <nav aria-label={t.project.contents}>
+              <ol>
+                {sections.map((heading) => (
+                  <li>
+                    <a href={`#${heading.slug}`}>{heading.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </details>
         )}
         <div class="case-prose prose reveal">
           <Content />
@@ -136,3 +150,8 @@ const sections = headings.filter((heading) => heading.depth === 2);
     </section>
   </article>
 </BaseLayout>
+
+<script>
+  const contents = document.querySelector<HTMLDetailsElement>(".case-contents");
+  if (contents && matchMedia("(min-width: 64.01rem)").matches) contents.open = true;
+</script>

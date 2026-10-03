@@ -32,7 +32,7 @@ export const copy = {
       title: "Développeur logiciel.",
       titleEmphasis: "Développeur logiciel.",
       intro:
-        "Plus de quatre ans d’expérience en alternance, entre API Python, données SQL, cloud et logiciel de CAO en C++. Un parcours complété par un master en ingénierie de l’intelligence artificielle.",
+        "Expérience en alternance depuis 2022, entre API Python, données SQL, cloud et CAO en C++. Diplômé d’un master en ingénierie de l’intelligence artificielle.",
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
@@ -104,6 +104,8 @@ export const copy = {
       teaser: "Aperçu technique",
     },
     about: {
+      description:
+        "Parcours d’Ethan Brosselard : API Python et données chez Studio Beyowi, CAO en C++ chez Intento Design, master en IA et projets personnels.",
       eyebrow: "À propos",
       title: "Mon parcours et ma façon de travailler.",
       lead: "Je suis Ethan Brosselard, développeur logiciel basé à Paris.",
@@ -122,6 +124,8 @@ export const copy = {
         "Des projets, un parcours et des choix techniques expliqués avec leurs validations et leurs limites connues.",
     },
     resume: {
+      description:
+        "CV d’Ethan Brosselard, développeur logiciel junior : expériences Python et C++, master en IA, compétences et PDF. Recherche CDI ou CDD en télétravail.",
       eyebrow: "Parcours",
       title: "CV et expériences",
       intro:
@@ -138,10 +142,12 @@ export const copy = {
       projects: "Projets",
     },
     contact: {
+      description:
+        "Contacter Ethan Brosselard pour un poste en développement logiciel. Recherche CDI ou CDD en télétravail. Email, liens professionnels et CV.",
       eyebrow: "Contact",
       title: "Parlons de votre équipe.",
       intro:
-        "Vous recrutez en développement logiciel ? Écrivez-moi pour échanger sur le poste, les défis techniques et votre équipe. Mon parcours couvre le backend, les données, le cloud et l’IA appliquée ; je reste ouvert à d’autres sujets logiciels.",
+        "Vous recrutez en développement logiciel ? Échangeons sur votre équipe et ses défis techniques. Je recherche un CDI ou CDD en télétravail et reste ouvert à des sujets variés.",
       searchLabel: "Recherche actuelle",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
@@ -236,6 +242,7 @@ export const copy = {
       },
     },
     project: {
+      authorship: "Projet personnel",
       next: "Poursuivre la découverte",
       contact: "Échanger sur ce projet",
       back: "Tous les projets",
@@ -252,6 +259,7 @@ export const copy = {
       flow: "Comment ça fonctionne",
       contents: "Dans cette étude",
       enlargeCapture: "Agrandir la capture",
+      captureDetail: "Voir un détail de l’interface",
     },
     footer: {
       navigationLabel: "Liens de navigation",
@@ -295,7 +303,7 @@ export const copy = {
       title: "Software developer.",
       titleEmphasis: "Software developer.",
       intro:
-        "Over four years of apprenticeship experience spanning Python APIs, SQL data workflows, cloud services, and C++ CAD software, complemented by a master’s degree in AI engineering.",
+        "Apprenticeship experience since 2022: Python APIs, SQL data workflows, cloud services, and C++ CAD software. Master’s graduate in AI engineering.",
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
@@ -367,6 +375,8 @@ export const copy = {
       teaser: "Technical overview",
     },
     about: {
+      description:
+        "Ethan Brosselard’s background: Python APIs and data at Studio Beyowi, C++ CAD at Intento Design, an AI master’s degree, and personal projects.",
       eyebrow: "About",
       title: "My background and how I work.",
       lead: "I’m Ethan Brosselard, a software developer based in Paris.",
@@ -385,6 +395,8 @@ export const copy = {
         "Projects, a professional path, and technical choices explained with their validation and known limitations.",
     },
     resume: {
+      description:
+        "Ethan Brosselard’s resume: junior software developer, Python and C++ experience, AI master’s degree, skills, and PDF. Seeking permanent or fixed-term remote work.",
       eyebrow: "Background",
       title: "Resume and experience",
       intro: "A structured overview of my background, skills, and the projects that support them.",
@@ -400,10 +412,12 @@ export const copy = {
       projects: "Projects",
     },
     contact: {
+      description:
+        "Contact Ethan Brosselard about a software developer role. Seeking permanent or fixed-term remote work. Email, professional links, and resume.",
       eyebrow: "Contact",
       title: "Let’s talk about your team.",
       intro:
-        "Hiring a software developer? Email me to discuss the role, technical challenges, and your team. My background covers backend systems, data, cloud, and applied AI; I’m also open to other software challenges.",
+        "Hiring a software developer? Let’s discuss your team and its technical challenges. I’m seeking a permanent or fixed-term remote role and remain open to varied software work.",
       searchLabel: "Current job search",
       emailLabel: "Email",
       copyEmail: "Copy address",
@@ -496,6 +510,7 @@ export const copy = {
       },
     },
     project: {
+      authorship: "Personal project",
       next: "Continue exploring",
       contact: "Discuss this project",
       back: "All projects",
@@ -512,6 +527,7 @@ export const copy = {
       flow: "How it works",
       contents: "In this case study",
       enlargeCapture: "Enlarge screenshot",
+      captureDetail: "View an interface detail",
     },
     footer: {
       navigationLabel: "Navigation links",
