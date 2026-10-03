@@ -1042,14 +1042,22 @@ h3 {
 
 .project-card-decision {
   margin-bottom: var(--space-4);
-  color: var(--text-muted);
+  padding: var(--space-3);
+  border-inline-start: 2px solid var(--accent);
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  color: var(--text);
+  background: var(--surface-subtle);
 }
 
 .project-card-decision strong {
   display: block;
-  margin-bottom: 0.2rem;
-  color: var(--text);
-  font-size: var(--text-small);
+  margin-bottom: var(--space-2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .case-flow-section {
