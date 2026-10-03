@@ -52,11 +52,18 @@ const isActive = (href: string) =>
       >
         {t.alternateLocale}
       </a>
-      <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
-        <option value="system">{t.themeSystem}</option>
-        <option value="light">{t.themeLight}</option>
-        <option value="dark">{t.themeDark}</option>
-      </select>
+      <span class="theme-control" data-theme-control hidden>
+        <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
+          <option value="system">{t.themeSystem}</option>
+          <option value="light">{t.themeLight}</option>
+          <option value="dark">{t.themeDark}</option>
+        </select>
+        <span class="theme-icon" aria-hidden="true">
+          <span class="theme-icon-sun"></span>
+          <span class="theme-icon-moon"></span>
+          <span class="theme-icon-system"></span>
+        </span>
+      </span>
     </div>
   </div>
 </header>
@@ -95,7 +102,10 @@ const isActive = (href: string) =>
   }
 
   const themeSelect = document.querySelector<HTMLSelectElement>("[data-theme-select]");
-  if (themeSelect) {
+  const themeControl = document.querySelector<HTMLElement>("[data-theme-control]");
+  if (themeSelect && themeControl) {
+    const control = themeControl;
+    const select = themeSelect;
     const systemPreference = matchMedia("(prefers-color-scheme: dark)");
     let visitorTheme: "light" | "dark" | "system" = "system";
     try {
@@ -106,6 +116,8 @@ const isActive = (href: string) =>
     }
 
     function applyTheme() {
+      control.dataset.preference = visitorTheme;
+      select.title = `${select.getAttribute("aria-label")}: ${select.selectedOptions[0]?.textContent}`;
       root.classList.add("theme-switching");
       root.dataset.theme =
         visitorTheme === "system" ? (systemPreference.matches ? "dark" : "light") : visitorTheme;
@@ -115,6 +127,7 @@ const isActive = (href: string) =>
     themeSelect.value = visitorTheme;
     applyTheme();
     themeSelect.hidden = false;
+    themeControl.hidden = false;
     systemPreference.addEventListener("change", () => {
       if (visitorTheme === "system") applyTheme();
     });

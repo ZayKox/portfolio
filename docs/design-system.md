@@ -42,6 +42,8 @@ The system theme reuses dark values exactly when `prefers-color-scheme: dark` is
 
 Large compositions are no longer inverted to light in the dark theme: the hero's exploration panel as well as the contact strip remain on anthracite surfaces. The panel offers direct links to the online resume, projects and homelab. The validated employment objective stays beside the introduction and its CV and contact actions. Highly inverted contrasts are reserved for small controls and accents to limit luminance peaks.
 
+The header theme selector uses CSS-only screen, sun and moon icons inside a 44 px native select. Its menu keeps localized system/light/dark labels, keyboard interaction and a visible focus outline. It stays hidden without JavaScript.
+
 ## Typography
 
 Fonts remain local to the system, without third-party requests:
