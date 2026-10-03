@@ -36,7 +36,7 @@ export const copy = {
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
-      homelabCta: "Aperçu du homelab ZaykoHub",
+      homelabCta: "Aperçu du homelab",
       resumeOnlineCta: "Lire mon CV en ligne",
       educationLabel: "Formation",
       experienceCta: "Voir mon expérience",
@@ -110,7 +110,7 @@ export const copy = {
       paragraphs: [
         "Mon parcours en alternance m’a amené à contribuer à un logiciel de CAO en C++ chez Intento Design, puis à développer des API Python, des traitements de données et des services sur AWS chez Studio Beyowi. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
         "Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
-        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Je prépare également ZaykoHub, mon homelab personnel, avec des configurations versionnées et des validations locales.",
+        "Avec Palimia et Ludosaic, j’explore aussi la conception de produits : modèles de données, interfaces, logique métier et contraintes de déploiement. Je prépare également mon homelab personnel, avec des configurations versionnées et des validations locales.",
       ],
       nowLabel: "Maintenant",
       nowText:
@@ -213,6 +213,10 @@ export const copy = {
       updatedValue: "8 septembre 2026",
     },
     visual: {
+      infrastructure: {
+        heading: "CONFIGURATIONS VERSIONNÉES",
+        footer: "PRÉPARATION ET ESSAIS LOCAUX",
+      },
       library: {
         profile: "UN SEUL PROFIL",
         library: "BIBLIOTHÈQUE CULTURELLE",
@@ -285,7 +289,7 @@ export const copy = {
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
-      homelabCta: "ZaykoHub homelab overview",
+      homelabCta: "Homelab overview",
       resumeOnlineCta: "Read my resume online",
       educationLabel: "Education",
       experienceCta: "View my experience",
@@ -359,7 +363,7 @@ export const copy = {
       paragraphs: [
         "My apprenticeships took me from contributing to C++ CAD software at Intento Design to developing Python APIs, data workflows, and AWS services at Studio Beyowi. I completed my computer science master’s degree in AI engineering in 2026.",
         "I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security, and performance.",
-        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. I’m also preparing ZaykoHub, my personal homelab, with versioned configurations and local validation.",
+        "With Palimia and Ludosaic, I also explore product development: data models, interfaces, business logic, and deployment constraints. I’m also preparing my personal homelab, with versioned configurations and local validation.",
       ],
       nowLabel: "Now",
       nowText:
@@ -459,6 +463,10 @@ export const copy = {
       updatedValue: "8 September 2026",
     },
     visual: {
+      infrastructure: {
+        heading: "VERSIONED CONFIGURATIONS",
+        footer: "LOCAL PREPARATION AND TESTING",
+      },
       library: {
         profile: "ONE PROFILE",
         library: "CULTURAL LIBRARY",

@@ -24,7 +24,7 @@ const visualLabel = `${entry.data.title} — ${actionLabel}`;
     <ProjectVisual
       visual={entry.data.visual}
       title={entry.data.title}
-      items={entry.data.visualItems}
+      items={entry.data.visualItems ?? entry.data.stack}
       {locale}
     />
   </a>

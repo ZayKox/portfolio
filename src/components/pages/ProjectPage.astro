@@ -54,7 +54,7 @@ const sections = headings.filter((heading) => heading.depth === 2);
             <ProjectVisual
               visual={entry.data.visual}
               title={entry.data.title}
-              items={entry.data.visualItems}
+              items={entry.data.visualItems ?? entry.data.stack}
               {locale}
             />
           </div>

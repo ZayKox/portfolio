@@ -116,19 +116,21 @@ test("page headings including both homepages share alignment and typography acro
 
       // A page can avoid horizontal overflow while a fixed-ratio project
       // illustration silently crops its own labels at narrow widths.
-      for (const library of await page.locator(".palimia-library").all()) {
-        const bounds = await library.evaluate((element) => {
+      for (const illustration of await page
+        .locator(".palimia-library, .infrastructure-blueprint")
+        .all()) {
+        const bounds = await illustration.evaluate((element) => {
           const content = element.getBoundingClientRect();
           const frame = element.closest(".project-visual")!.getBoundingClientRect();
           return { top: content.top - frame.top, bottom: frame.bottom - content.bottom };
         });
         expect(
           bounds.top,
-          `${label}: Palimia header remains inside its visual`,
+          `${label}: Illustration header remains inside its visual`,
         ).toBeGreaterThanOrEqual(0);
         expect(
           bounds.bottom,
-          `${label}: Palimia footer remains inside its visual`,
+          `${label}: Illustration footer remains inside its visual`,
         ).toBeGreaterThanOrEqual(0);
       }
     }

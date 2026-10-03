@@ -1266,6 +1266,125 @@ h3 {
   content: "·";
 }
 
+.project-visual--infrastructure {
+  aspect-ratio: auto;
+  min-height: 24rem;
+  padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.infrastructure-blueprint {
+  width: min(100%, 26rem);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-card) - 0.2rem);
+  background: var(--surface);
+  box-shadow: 0 1rem 2.5rem var(--shadow);
+}
+
+.infrastructure-heading,
+.infrastructure-footer {
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+}
+
+.infrastructure-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.infrastructure-mark {
+  display: flex;
+  align-items: end;
+  gap: 0.15rem;
+  height: 1rem;
+}
+
+.infrastructure-mark i {
+  width: 0.25rem;
+  height: 75%;
+  background: var(--accent);
+}
+
+.infrastructure-mark i:nth-child(2) {
+  height: 100%;
+}
+
+.infrastructure-mark i:nth-child(3) {
+  height: 50%;
+}
+
+.infrastructure-nodes {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem 1.5rem 2.5rem;
+}
+
+.infrastructure-nodes::before {
+  position: absolute;
+  top: 3rem;
+  bottom: 3rem;
+  left: 1.15rem;
+  width: 1px;
+  background: var(--accent);
+  content: "";
+}
+
+.infrastructure-node {
+  position: relative;
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface-subtle);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+}
+
+.infrastructure-node::before {
+  position: absolute;
+  left: -1.65rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--surface);
+  content: "";
+}
+
+.infrastructure-node::after {
+  position: absolute;
+  left: -1.05rem;
+  width: 1.05rem;
+  height: 1px;
+  background: var(--accent);
+  content: "";
+}
+
+.infrastructure-ports {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.2rem;
+}
+
+.infrastructure-ports i {
+  width: 0.25rem;
+  height: 0.6rem;
+  border: 1px solid var(--muted);
+}
+
+.infrastructure-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
 .project-visual--game-tiles {
   min-height: 24rem;
   aspect-ratio: auto;
@@ -2792,7 +2911,8 @@ h3 {
   }
 
   .project-visual--cultural-library,
-  .project-visual--game-tiles {
+  .project-visual--game-tiles,
+  .project-visual--infrastructure {
     min-height: 20rem;
   }
 
@@ -2975,7 +3095,8 @@ h3 {
   }
 
   .project-visual--cultural-library,
-  .project-visual--game-tiles {
+  .project-visual--game-tiles,
+  .project-visual--infrastructure {
     min-height: 17rem;
   }
 
