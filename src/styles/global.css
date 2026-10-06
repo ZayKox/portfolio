@@ -3525,7 +3525,7 @@ h3 {
   }
 
   .resume-section {
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     break-inside: auto;
   }
 
@@ -3585,7 +3585,7 @@ h3 {
   .resume-skill-list div,
   .resume-language-list div {
     display: block;
-    padding-block: 0.15rem;
+    padding-block: 0.1rem;
     font-size: 9.5pt;
   }
 

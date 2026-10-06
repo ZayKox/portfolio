@@ -84,8 +84,18 @@
       },
       {
         "id": "ai",
-        "category": "IA appliquée",
-        "items": "RAG, recherche vectorielle, PGVector, Qdrant, API OpenAI"
+        "category": "IA & LLM",
+        "items": "RAG, Embeddings, Fine-tuning LLM, Agents LLM, LangChain, API OpenAI"
+      },
+      {
+        "id": "machine-learning",
+        "category": "Machine learning & MLOps",
+        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
+      },
+      {
+        "id": "search",
+        "category": "Recherche & indexation",
+        "items": "Recherche vectorielle, ColBERT, pgvector, Qdrant, Elasticsearch"
       },
       {
         "id": "databases",
@@ -179,8 +189,18 @@
       },
       {
         "id": "ai",
-        "category": "Applied AI",
-        "items": "RAG, vector search, PGVector, Qdrant, OpenAI API"
+        "category": "AI & LLMs",
+        "items": "RAG, Embeddings, LLM fine-tuning, LLM agents, LangChain, OpenAI API"
+      },
+      {
+        "id": "machine-learning",
+        "category": "Machine learning & MLOps",
+        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
+      },
+      {
+        "id": "search",
+        "category": "Search & indexing",
+        "items": "Vector search, ColBERT, pgvector, Qdrant, Elasticsearch"
       },
       {
         "id": "databases",

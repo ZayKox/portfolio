@@ -40,6 +40,8 @@ This file records approved publication decisions that are not already fully repr
 - On October 6, 2026, Ethan requested replacing named client projects in the Studio Beyowi contribution summary with their activity domains: digital health and wealth management. The bilingual summary retains the approved project count, data scale and technical contributions. A shared job-search block on the homepage and contact page makes the existing backend, remote CDI/CDD and Paris criteria explicit.
 - In the same task, Ethan approved publishing that he has no preference for company type. This complements the existing search criteria without asserting availability or a preferred employer or industry.
 
+- On October 6, 2026, Ethan explicitly requested adding Embeddings, MLOps, LLM fine-tuning, LLM agents, ColBERT, PyTorch, TensorFlow, Hugging Face, scikit-learn, LangChain, pgvector and Elasticsearch to both resume languages. They may be listed as skills, without inventing proficiency levels, employer or project attribution, or production results. The existing pgvector skill is retained once in the skills section with its requested spelling.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.
