@@ -4,6 +4,7 @@ import { getResume } from "@/data/resume";
 import PageHero from "@/components/layout/PageHero.astro";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import JobSearch from "@/components/JobSearch.astro";
 
 interface Props {
   locale: Locale;
@@ -81,9 +82,7 @@ const resume = getResume(locale);
         </div>
       </div>
       <div class="contact-card reveal">
-        <span>{t.contact.searchLabel}</span>
-        <strong>{resume.objective}</strong>
-        <span>{profile.location} · FR · EN</span>
+        <JobSearch {locale} />
       </div>
     </div>
     <p class="container privacy-note">{t.contact.note}</p>

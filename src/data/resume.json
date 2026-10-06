@@ -52,7 +52,7 @@
           "API backend — Conception d’API REST et de traitements de données : Python, Flask, AWS Lambda.",
           "IA appliquée — Intégration de RAG et de recherche vectorielle : PGVector, Qdrant, services OpenAI.",
           "Données SQL — Développement et maintenance de pipelines de migration et de synchronisation avec AWS DMS.",
-          "Contributions — Contribution à 3 projets (plusieurs Go de données) : référentiel ANSM, ETL Thesorimed, API et workflows IA de Primotheus.",
+          "Contributions — 3 projets en e-santé et gestion de patrimoine : référentiels de données, ETL, API et workflows IA, sur plusieurs Go de données.",
           "Cloud & tests — Déploiement et maintenance sur AWS et sur site : Docker, tests et déploiements automatisés par CI/CD."
         ],
         "id": "beyowi"
@@ -147,7 +147,7 @@
           "Backend APIs — Designed REST APIs and data-processing workflows: Python, Flask, AWS Lambda.",
           "Applied AI — Integrated RAG and vector search: PGVector, Qdrant, OpenAI services.",
           "SQL data — Developed and maintained migration and synchronization pipelines with AWS DMS.",
-          "Contributions — Contributed to 3 projects (several GB of data): ANSM reference data, Thesorimed ETL, and Primotheus API/AI workflows.",
+          "Contributions — Contributed to 3 projects in digital health and wealth management: reference data, ETL, APIs and AI workflows, working with several GB of data.",
           "Cloud & testing — Deployed and maintained services on AWS and on premises: Docker, automated tests and deployments through CI/CD."
         ],
         "id": "beyowi"

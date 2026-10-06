@@ -1,0 +1,35 @@
+---
+import { profile } from "@/data/profile";
+import { getResume } from "@/data/resume";
+import { getCopy, type Locale } from "@/i18n/copy";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getCopy(locale).jobSearch;
+const resume = getResume(locale);
+---
+
+<section class="job-search" aria-labelledby="job-search-title">
+  <h2 id="job-search-title">{t.title}</h2>
+  <dl>
+    <div>
+      <dt>{t.missionLabel}</dt>
+      <dd>{t.mission}</dd>
+    </div>
+    <div>
+      <dt>{t.contractLabel}</dt>
+      <dd>{resume.objective}</dd>
+    </div>
+    <div>
+      <dt>{t.locationLabel}</dt>
+      <dd>{profile.location}</dd>
+    </div>
+    <div>
+      <dt>{t.companyLabel}</dt>
+      <dd>{profile.jobSearch.companyPreference[locale]}</dd>
+    </div>
+  </dl>
+</section>

@@ -95,6 +95,14 @@ export const copy = {
         "Je recherche un poste en développement backend, avec un intérêt pour l’IA appliquée, les données et le cloud, et une ouverture à différents langages. Vous pouvez m’écrire directement.",
       contactCta: "M’écrire",
     },
+    jobSearch: {
+      title: "Ce que je recherche",
+      missionLabel: "Missions",
+      mission: "Développement backend : API, données, IA appliquée et cloud",
+      contractLabel: "Contrat et organisation",
+      companyLabel: "Type d’entreprise",
+      locationLabel: "Basé à",
+    },
     projects: {
       eyebrow: "Projets",
       title: "De l’idée aux choix techniques.",
@@ -365,6 +373,14 @@ export const copy = {
       contactText:
         "I’m looking for a backend development role, with an interest in applied AI, data and cloud, and openness to different languages. You can email me directly.",
       contactCta: "Get in touch",
+    },
+    jobSearch: {
+      title: "What I’m looking for",
+      missionLabel: "Work",
+      mission: "Backend development: APIs, data, applied AI and cloud",
+      contractLabel: "Employment and work setup",
+      companyLabel: "Company type",
+      locationLabel: "Based in",
     },
     projects: {
       eyebrow: "Projects",

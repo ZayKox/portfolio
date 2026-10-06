@@ -7,6 +7,7 @@ import { getResume } from "@/data/resume";
 import { getCopy, routes, type Locale } from "@/i18n/copy";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Portrait from "@/components/Portrait.astro";
+import JobSearch from "@/components/JobSearch.astro";
 
 interface Props {
   locale: Locale;
@@ -64,6 +65,7 @@ const projects = (
             LinkedIn ↗{" "}
           </a>
         </nav>
+        <JobSearch {locale} />
       </div>
 
       <aside class="hero-portrait reveal" aria-label={t.nav.about}>

@@ -37,6 +37,9 @@ This file records approved publication decisions that are not already fully repr
 
 - On October 3, 2026, Ethan confirmed that `https://www.linkedin.com/in/ethan-brosselard/` is his profile after opening it himself. Automated HTTP 999 responses remain inconclusive and do not replace this human confirmation. The shared public URL remains unchanged.
 
+- On October 6, 2026, Ethan requested replacing named client projects in the Studio Beyowi contribution summary with their activity domains: digital health and wealth management. The bilingual summary retains the approved project count, data scale and technical contributions. A shared job-search block on the homepage and contact page makes the existing backend, remote CDI/CDD and Paris criteria explicit.
+- In the same task, Ethan approved publishing that he has no preference for company type. This complements the existing search criteria without asserting availability or a preferred employer or industry.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.

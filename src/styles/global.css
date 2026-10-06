@@ -629,6 +629,38 @@ h3 {
   text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
+.job-search {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.job-search h2 {
+  margin-bottom: var(--space-3);
+  font-size: 1.125rem;
+}
+
+.job-search dl {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.job-search dt {
+  color: var(--text-muted);
+  font-size: var(--text-meta);
+}
+
+.job-search dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-card .job-search {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 .experience-list {
   display: grid;
   gap: var(--space-3);
