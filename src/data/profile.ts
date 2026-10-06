@@ -4,6 +4,12 @@ export const profile = {
   siteUrl: "https://ethanbrosselard.com",
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
+  jobSearch: {
+    companyPreference: {
+      fr: "Sans préférence",
+      en: "No preference",
+    },
+  },
   languages: ["fr", "en"],
   socials: {
     github: "https://github.com/ZayKox",
