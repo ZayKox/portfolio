@@ -14,15 +14,16 @@ const expectations = {
     headings: [
       "Profil",
       "Expériences professionnelles",
+      "Projets",
       "Compétences",
       "Formation",
-      "Projets",
       "Langues",
     ],
     localLinks: [
       "https://ethanbrosselard.com/",
       "https://ethanbrosselard.com/projets/ludosaic/",
       "https://ethanbrosselard.com/projets/palimia/",
+      "https://ethanbrosselard.com/projets/zaykohub/",
     ],
   },
   "ethan-brosselard-resume-en.pdf": {
@@ -30,11 +31,12 @@ const expectations = {
     title: "Resume — Ethan Brosselard",
     role: "Junior Software Developer",
     objective: "Permanent or fixed-term employment · Remote",
-    headings: ["Profile", "Work experience", "Skills", "Education", "Projects", "Languages"],
+    headings: ["Profile", "Work experience", "Projects", "Skills", "Education", "Languages"],
     localLinks: [
       "https://ethanbrosselard.com/en/",
       "https://ethanbrosselard.com/en/projects/ludosaic/",
       "https://ethanbrosselard.com/en/projects/palimia/",
+      "https://ethanbrosselard.com/en/projects/zaykohub/",
     ],
   },
 };
@@ -83,7 +85,7 @@ for (const job of jobs) {
       let previousHeading = -1;
       for (const heading of expected.headings) {
         // Preserve word boundaries: stripping every space masked letter-spaced headings.
-        const position = normalizedText.indexOf(heading);
+        const position = normalizedText.indexOf(heading, previousHeading + 1);
         assert(position > previousHeading, `${heading} must extract intact and in reading order`);
         previousHeading = position;
       }

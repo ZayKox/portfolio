@@ -44,14 +44,14 @@
   "fr": {
     "role": "Développeur logiciel junior",
     "objective": "CDI ou CDD · Télétravail",
-    "summary": "Diplômé d’un master informatique en 2026, avec une expérience en alternance depuis 2022. Développement d’API Python, traitements et migrations de données SQL, et contribution à un logiciel de CAO en C++.",
+    "summary": "Diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022 : API Python, traitements de données SQL et logiciel de CAO en C++. Projets personnels conçus en autonomie.",
     "experience": [
       {
         "title": "Développeur logiciel Python — Alternance",
         "highlights": [
           "Conception d’API REST et de traitements de données avec Python, Flask et AWS Lambda.",
-          "Contribution à 3 projets portant sur plusieurs Go de données : référentiel ANSM, ETL Thesorimed et API/workflows IA de Primotheus.",
-          "Développement et maintenance de pipelines de migration et de synchronisation entre bases SQL avec AWS DMS.",
+          "Traitements de données pour le référentiel ANSM et l’ETL Thesorimed ; API et workflows IA de Primotheus (3 projets, plusieurs Go de données).",
+          "Développement et maintenance de migrations et de synchronisations entre bases SQL avec AWS DMS.",
           "Intégration de RAG et de recherche vectorielle avec PGVector, Qdrant et les services OpenAI.",
           "Déploiement et maintenance sur AWS et sur site avec Docker ; automatisation des tests et des déploiements par CI/CD."
         ],
@@ -121,16 +121,22 @@
         "title": "Projets personnels",
         "items": [
           {
-            "title": "Palimia",
-            "description": "Application de suivi et d’organisation de films, séries et jeux vidéo : Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
             "id": "palimia",
-            "slug": "palimia"
+            "slug": "palimia",
+            "title": "Palimia",
+            "description": "Bibliothèque culturelle développée en autonomie : catalogue séparé des données personnelles, recommandations explicables. Next.js, TypeScript, PostgreSQL, Prisma ; sans lancement public."
           },
           {
-            "title": "Ludosaic",
-            "description": "Mini-jeux web en développement, avec modes solo et multijoueurs selon le jeu : Next.js, TypeScript, React, PostgreSQL, Colyseus.",
             "id": "ludosaic",
-            "slug": "ludosaic"
+            "slug": "ludosaic",
+            "title": "Ludosaic",
+            "description": "Mini-jeux développés en autonomie : règles rejouables, résultats vérifiés côté serveur et reprise après interruption. Next.js, TypeScript, Colyseus ; MVP en développement, sans déploiement externe."
+          },
+          {
+            "id": "zaykohub",
+            "slug": "zaykohub",
+            "title": "ZaykoHub",
+            "description": "Homelab en préparation : Docker Compose, Ansible et validations Python locales ; aucun service déployé."
           }
         ]
       }
@@ -139,14 +145,14 @@
   "en": {
     "role": "Junior Software Developer",
     "objective": "Permanent or fixed-term employment · Remote",
-    "summary": "Computer science master’s graduate (2026) with apprenticeship experience since 2022. Development of Python APIs, SQL data processing and migrations, and contributions to a C++ CAD application.",
+    "summary": "Master’s graduate in Artificial Intelligence Engineering (2026), with apprenticeship experience since 2022: Python APIs, SQL data processing and a C++ CAD application. Independently designed personal projects.",
     "experience": [
       {
         "title": "Python Software Developer — Apprenticeship",
         "highlights": [
           "Designed REST APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
-          "Contributed to 3 projects involving several GB of data: ANSM reference data, Thesorimed ETL, and Primotheus API/AI workflows.",
-          "Developed and maintained data migration and synchronization pipelines between SQL databases with AWS DMS.",
+          "Data processing for ANSM reference data and Thesorimed ETL; Primotheus API and AI workflows (3 projects, several GB of data).",
+          "Developed and maintained SQL database migrations and synchronization with AWS DMS.",
           "Integrated RAG and vector search with PGVector, Qdrant, and OpenAI services.",
           "Deployed and maintained services on AWS and on premises with Docker; automated tests and deployments through CI/CD."
         ],
@@ -216,16 +222,22 @@
         "title": "Personal projects",
         "items": [
           {
-            "title": "Palimia",
-            "description": "App to track and organize movies, TV series, and video games: Next.js, TypeScript, PostgreSQL, Prisma, Better Auth.",
             "id": "palimia",
-            "slug": "palimia"
+            "slug": "palimia",
+            "title": "Palimia",
+            "description": "Independently developed cultural library: catalog separated from personal data, explainable recommendations. Next.js, TypeScript, PostgreSQL, Prisma; no public launch."
           },
           {
-            "title": "Ludosaic",
-            "description": "Web mini-games under development, with solo and multiplayer modes depending on the game: Next.js, TypeScript, React, PostgreSQL, Colyseus.",
             "id": "ludosaic",
-            "slug": "ludosaic"
+            "slug": "ludosaic",
+            "title": "Ludosaic",
+            "description": "Independently developed mini-games: replayable rules, server-verified results and recovery after interruption. Next.js, TypeScript, Colyseus; MVP under development, no external deployment."
+          },
+          {
+            "id": "zaykohub",
+            "slug": "zaykohub",
+            "title": "ZaykoHub",
+            "description": "Homelab in preparation: Docker Compose, Ansible and local Python validation; no deployed services."
           }
         ]
       }

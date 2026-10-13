@@ -124,6 +124,38 @@ const resumeUrl = profile.resume[locale];
     </section>
 
     <section class="resume-section">
+      <h2>{t.resume.projects}</h2>
+      <div class="resume-project-groups">
+        {document.projectGroups.map((group) => (
+          <div class="resume-project-group">
+            <h3>{group.title}</h3>
+            <div class="resume-project-list">
+              {group.items.map((project) => (
+                <article>
+                  <h4>
+                    {project.slug ? (
+                      <a
+                        href={
+                          new URL(`${routes[locale].projects}${project.slug}/`, profile.siteUrl)
+                            .href
+                        }
+                      >
+                        {project.title}
+                      </a>
+                    ) : (
+                      project.title
+                    )}
+                  </h4>
+                  <p>{project.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="resume-section">
       <h2>{t.resume.skills}</h2>
       <dl class="resume-skill-list">
         {document.skillGroups.map((group) => (
@@ -157,38 +189,6 @@ const resumeUrl = profile.resume[locale];
             </div>
             {"summary" in entry && entry.summary && <p>{entry.summary}</p>}
           </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="resume-section">
-      <h2>{t.resume.projects}</h2>
-      <div class="resume-project-groups">
-        {document.projectGroups.map((group) => (
-          <div class="resume-project-group">
-            <h3>{group.title}</h3>
-            <div class="resume-project-list">
-              {group.items.map((project) => (
-                <article>
-                  <h4>
-                    {project.slug ? (
-                      <a
-                        href={
-                          new URL(`${routes[locale].projects}${project.slug}/`, profile.siteUrl)
-                            .href
-                        }
-                      >
-                        {project.title}
-                      </a>
-                    ) : (
-                      project.title
-                    )}
-                  </h4>
-                  <p>{project.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
         ))}
       </div>
     </section>

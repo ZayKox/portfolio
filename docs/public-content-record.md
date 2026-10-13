@@ -23,6 +23,8 @@ This file records approved publication decisions that are not already fully repr
 - The production portfolio is a static site with no form, browser-side analytics, tracking cookies, user account, database, or embedded third-party content.
 - The canonical public origin is `https://ethanbrosselard.com`; `www` redirects to the apex domain.
 
+- On October 13, 2026, Ethan reaffirmed permanent or fixed-term remote employment (CDI/CDD) as his search preference and requested a general bilingual resume on the portfolio, with targeted application versions kept separately in a local folder outside the public repository. The general resume retains broad software-developer positioning and summarizes the existing approved Palimia, Ludosaic and ZaykoHub work without introducing new project facts.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.
