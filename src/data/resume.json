@@ -20,8 +20,8 @@
       "start": "2022-09",
       "end": "2023-08",
       "location": {
-        "fr": "Paris, France",
-        "en": "Paris, France"
+        "fr": "Paris 1er, France",
+        "en": "Paris 1st arrondissement, France"
       }
     },
     "master-paris8": {
@@ -42,25 +42,25 @@
     }
   },
   "fr": {
-    "role": "Développeur logiciel junior",
+    "role": "Développeur backend junior",
     "objective": "CDI ou CDD · Télétravail",
-    "summary": "Diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022 : API Python, traitements de données SQL et logiciel de CAO en C++. Projets personnels conçus en autonomie.",
+    "summary": "Développeur backend, master en ingénierie de l’IA (2026). Alternance depuis 2022 : API Python, SQL, AWS, RAG et C++, avec des projets TypeScript. Ouvert à différents langages et environnements backend.",
     "experience": [
       {
         "title": "Développeur logiciel Python — Alternance",
         "highlights": [
-          "Conception d’API REST et de traitements de données avec Python, Flask et AWS Lambda.",
-          "Traitements de données pour le référentiel ANSM et l’ETL Thesorimed ; API et workflows IA de Primotheus (3 projets, plusieurs Go de données).",
-          "Développement et maintenance de migrations et de synchronisations entre bases SQL avec AWS DMS.",
-          "Intégration de RAG et de recherche vectorielle avec PGVector, Qdrant et les services OpenAI.",
-          "Déploiement et maintenance sur AWS et sur site avec Docker ; automatisation des tests et des déploiements par CI/CD."
+          "API backend — Conception d’API REST et de traitements de données : Python, Flask, AWS Lambda.",
+          "IA appliquée — Intégration de RAG et de recherche vectorielle : PGVector, Qdrant, services OpenAI.",
+          "Données SQL — Développement et maintenance de pipelines de migration et de synchronisation avec AWS DMS.",
+          "Contributions — 3 projets en e-santé et gestion de patrimoine : référentiels de données, ETL, API et workflows IA, sur plusieurs Go de données.",
+          "Cloud & tests — Déploiement et maintenance sur AWS et sur site : Docker, tests et déploiements automatisés par CI/CD."
         ],
         "id": "beyowi"
       },
       {
         "title": "Développeur backend C++ — Alternance",
         "highlights": [
-          "Développement de fonctionnalités et contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore, logiciel de CAO en C++.",
+          "Développement de fonctionnalités C++ ; contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore (CAO).",
           "Contribution aux tests unitaires, à la compatibilité multi-technologies et à la documentation technique."
         ],
         "id": "intento"
@@ -79,28 +79,38 @@
     "skillGroups": [
       {
         "id": "backend",
-        "category": "Développement & API",
-        "items": "Python, C++, SQL, API REST, Flask, FastAPI"
-      },
-      {
-        "id": "delivery",
-        "category": "Tests & déploiement",
-        "items": "Tests unitaires, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
-      },
-      {
-        "id": "databases",
-        "category": "Bases de données",
-        "items": "PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+        "category": "Backend & API",
+        "items": "API REST, Python, Flask, FastAPI, C++, TypeScript"
       },
       {
         "id": "ai",
-        "category": "Data & IA",
-        "items": "ETL, Pandas, NumPy, RAG, PGVector, Qdrant, API OpenAI"
+        "category": "IA & LLM",
+        "items": "RAG, Embeddings, Fine-tuning LLM, Agents LLM, LangChain, API OpenAI"
+      },
+      {
+        "id": "machine-learning",
+        "category": "Machine learning & MLOps",
+        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
+      },
+      {
+        "id": "search",
+        "category": "Recherche & indexation",
+        "items": "Recherche vectorielle, ColBERT, pgvector, Qdrant, Elasticsearch"
+      },
+      {
+        "id": "databases",
+        "category": "Données & SQL",
+        "items": "ETL, Pandas, NumPy, PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+      },
+      {
+        "id": "delivery",
+        "category": "Cloud & automatisation",
+        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, tests unitaires, pytest"
       },
       {
         "id": "complementary",
         "category": "Connaissances complémentaires",
-        "items": "Java, JavaScript/TypeScript, Linux"
+        "items": "Java, JavaScript, Linux"
       }
     ],
     "languages": [
@@ -124,44 +134,44 @@
             "id": "palimia",
             "slug": "palimia",
             "title": "Palimia",
-            "description": "Bibliothèque culturelle développée en autonomie : catalogue séparé des données personnelles, recommandations explicables. Next.js, TypeScript, PostgreSQL, Prisma ; sans lancement public."
+            "description": "Bibliothèque culturelle : catalogue séparé des données privées, recommandations explicables. Next.js, TypeScript, PostgreSQL ; développement autonome, sans lancement public."
           },
           {
             "id": "ludosaic",
             "slug": "ludosaic",
             "title": "Ludosaic",
-            "description": "Mini-jeux développés en autonomie : règles rejouables, résultats vérifiés côté serveur et reprise après interruption. Next.js, TypeScript, Colyseus ; MVP en développement, sans déploiement externe."
+            "description": "Mini-jeux web : règles rejouables, vérification serveur et reprise après interruption. Next.js, TypeScript, Colyseus ; développement autonome, MVP en cours."
           },
           {
             "id": "zaykohub",
             "slug": "zaykohub",
-            "title": "ZaykoHub",
-            "description": "Homelab en préparation : Docker Compose, Ansible et validations Python locales ; aucun service déployé."
+            "title": "Homelab",
+            "description": "Infrastructure en préparation : Docker Compose, Ansible et validations Python locales ; aucun service déployé."
           }
         ]
       }
     ]
   },
   "en": {
-    "role": "Junior Software Developer",
+    "role": "Junior Backend Developer",
     "objective": "Permanent or fixed-term employment · Remote",
-    "summary": "Master’s graduate in Artificial Intelligence Engineering (2026), with apprenticeship experience since 2022: Python APIs, SQL data processing and a C++ CAD application. Independently designed personal projects.",
+    "summary": "Backend developer with a master’s in AI engineering (2026). Apprenticeships since 2022: Python APIs, SQL, AWS, RAG and C++. Personal TypeScript projects; open to different backend languages and environments.",
     "experience": [
       {
         "title": "Python Software Developer — Apprenticeship",
         "highlights": [
-          "Designed REST APIs and data-processing workflows with Python, Flask, and AWS Lambda.",
-          "Data processing for ANSM reference data and Thesorimed ETL; Primotheus API and AI workflows (3 projects, several GB of data).",
-          "Developed and maintained SQL database migrations and synchronization with AWS DMS.",
-          "Integrated RAG and vector search with PGVector, Qdrant, and OpenAI services.",
-          "Deployed and maintained services on AWS and on premises with Docker; automated tests and deployments through CI/CD."
+          "Backend APIs — Designed REST APIs and data-processing workflows: Python, Flask, AWS Lambda.",
+          "Applied AI — Integrated RAG and vector search: PGVector, Qdrant, OpenAI services.",
+          "SQL data — Developed and maintained migration and synchronization pipelines with AWS DMS.",
+          "Contributions — Contributed to 3 projects in digital health and wealth management: reference data, ETL, APIs and AI workflows, working with several GB of data.",
+          "Cloud & testing — Deployed and maintained services on AWS and on premises: Docker, automated tests and deployments through CI/CD."
         ],
         "id": "beyowi"
       },
       {
         "title": "C++ Backend Developer — Apprenticeship",
         "highlights": [
-          "Developed features and contributed to circuit-generation and validation algorithms for ID-Xplore, a C++ CAD application.",
+          "Developed C++ features; contributed to circuit-generation and validation algorithms for the ID-Xplore CAD application.",
           "Contributed to unit tests, compatibility across circuit technologies, and technical documentation."
         ],
         "id": "intento"
@@ -180,28 +190,38 @@
     "skillGroups": [
       {
         "id": "backend",
-        "category": "Development & APIs",
-        "items": "Python, C++, SQL, REST APIs, Flask, FastAPI"
-      },
-      {
-        "id": "delivery",
-        "category": "Testing & deployment",
-        "items": "Unit testing, pytest, Git, Docker, CI/CD, GitHub Actions, AWS (Lambda, DMS)"
-      },
-      {
-        "id": "databases",
-        "category": "Databases",
-        "items": "PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+        "category": "Backend & APIs",
+        "items": "REST APIs, Python, Flask, FastAPI, C++, TypeScript"
       },
       {
         "id": "ai",
-        "category": "Data & AI",
-        "items": "ETL, Pandas, NumPy, RAG, PGVector, Qdrant, OpenAI API"
+        "category": "AI & LLMs",
+        "items": "RAG, Embeddings, LLM fine-tuning, LLM agents, LangChain, OpenAI API"
+      },
+      {
+        "id": "machine-learning",
+        "category": "Machine learning & MLOps",
+        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
+      },
+      {
+        "id": "search",
+        "category": "Search & indexing",
+        "items": "Vector search, ColBERT, pgvector, Qdrant, Elasticsearch"
+      },
+      {
+        "id": "databases",
+        "category": "Data & SQL",
+        "items": "ETL, Pandas, NumPy, PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+      },
+      {
+        "id": "delivery",
+        "category": "Cloud & automation",
+        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, unit testing, pytest"
       },
       {
         "id": "complementary",
         "category": "Additional knowledge",
-        "items": "Java, JavaScript/TypeScript, Linux"
+        "items": "Java, JavaScript, Linux"
       }
     ],
     "languages": [
@@ -225,19 +245,19 @@
             "id": "palimia",
             "slug": "palimia",
             "title": "Palimia",
-            "description": "Independently developed cultural library: catalog separated from personal data, explainable recommendations. Next.js, TypeScript, PostgreSQL, Prisma; no public launch."
+            "description": "Cultural library: catalog separated from private data, explainable recommendations. Next.js, TypeScript, PostgreSQL; independently developed, no public launch."
           },
           {
             "id": "ludosaic",
             "slug": "ludosaic",
             "title": "Ludosaic",
-            "description": "Independently developed mini-games: replayable rules, server-verified results and recovery after interruption. Next.js, TypeScript, Colyseus; MVP under development, no external deployment."
+            "description": "Web mini-games: replayable rules, server verification and recovery after interruption. Next.js, TypeScript, Colyseus; independently developed, MVP in progress."
           },
           {
             "id": "zaykohub",
             "slug": "zaykohub",
-            "title": "ZaykoHub",
-            "description": "Homelab in preparation: Docker Compose, Ansible and local Python validation; no deployed services."
+            "title": "Homelab",
+            "description": "Infrastructure in preparation: Docker Compose, Ansible and local Python validation; no deployed services."
           }
         ]
       }

@@ -31,7 +31,10 @@ const isActive = (href: string) =>
       aria-label={`${profile.brand} — ${profile.name} — ${t.nav.home}`}
     >
       <span class="brand-mark" aria-hidden="true"></span>
-      <span>{profile.brand}</span>
+      <span class="brand-identity">
+        {profile.name}
+        <small>{profile.brand}</small>
+      </span>
     </a>
 
     <nav class="main-nav" aria-label={t.nav.label}>
@@ -52,11 +55,21 @@ const isActive = (href: string) =>
       >
         {t.alternateLocale}
       </a>
-      <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
-        <option value="system">{t.themeSystem}</option>
-        <option value="light">{t.themeLight}</option>
-        <option value="dark">{t.themeDark}</option>
-      </select>
+      <span class="theme-control" data-theme-control hidden>
+        <span class="theme-text" aria-hidden="true">
+          {t.themeLabel}
+        </span>
+        <select class="theme-select" aria-label={t.themeLabel} data-theme-select hidden>
+          <option value="system">{t.themeSystem}</option>
+          <option value="light">{t.themeLight}</option>
+          <option value="dark">{t.themeDark}</option>
+        </select>
+        <span class="theme-icon" aria-hidden="true">
+          <span class="theme-icon-sun"></span>
+          <span class="theme-icon-moon"></span>
+          <span class="theme-icon-system"></span>
+        </span>
+      </span>
     </div>
   </div>
 </header>
@@ -95,7 +108,10 @@ const isActive = (href: string) =>
   }
 
   const themeSelect = document.querySelector<HTMLSelectElement>("[data-theme-select]");
-  if (themeSelect) {
+  const themeControl = document.querySelector<HTMLElement>("[data-theme-control]");
+  if (themeSelect && themeControl) {
+    const control = themeControl;
+    const select = themeSelect;
     const systemPreference = matchMedia("(prefers-color-scheme: dark)");
     let visitorTheme: "light" | "dark" | "system" = "system";
     try {
@@ -106,15 +122,21 @@ const isActive = (href: string) =>
     }
 
     function applyTheme() {
+      control.dataset.preference = visitorTheme;
+      select.title = `${select.getAttribute("aria-label")}: ${select.selectedOptions[0]?.textContent}`;
       root.classList.add("theme-switching");
       root.dataset.theme =
         visitorTheme === "system" ? (systemPreference.matches ? "dark" : "light") : visitorTheme;
+      // Commit the new palette while transitions are disabled, including child links.
+      // Removing the class before styles are resolved can animate from the old palette.
+      void root.offsetHeight;
       requestAnimationFrame(() => root.classList.remove("theme-switching"));
     }
 
     themeSelect.value = visitorTheme;
     applyTheme();
     themeSelect.hidden = false;
+    themeControl.hidden = false;
     systemPreference.addEventListener("change", () => {
       if (visitorTheme === "system") applyTheme();
     });

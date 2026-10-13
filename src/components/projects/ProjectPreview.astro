@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import { projectPreviews } from "@/data/project-previews";
+import type { Locale } from "@/i18n/copy";
+interface Props {
+  slug: string;
+  locale: Locale;
+  eager?: boolean;
+}
+const { slug, locale, eager = false } = Astro.props;
+const preview = projectPreviews[slug as keyof typeof projectPreviews];
+---
+
+{preview && (
+  <Image
+    class="project-preview"
+    src={preview.image}
+    alt={preview.alt[locale]}
+    widths={[320, 640, 960]}
+    sizes="(max-width: 48rem) calc(100vw - 2.5rem), (max-width: 64rem) 70vw, 560px"
+    format="webp"
+    quality={82}
+    loading={eager ? "eager" : "lazy"}
+    decoding="async"
+  />
+)}

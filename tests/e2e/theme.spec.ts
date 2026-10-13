@@ -26,10 +26,20 @@ for (const route of ["/", "/en/"] as const) {
       const root = page.locator("html");
       const select = page.getByRole("combobox", { name: route === "/" ? "Thème" : "Theme" });
       await expect(select).toHaveValue("system");
+      await expect(page.locator(".theme-icon-system")).toBeVisible();
+      await expect(select).toHaveAttribute(
+        "title",
+        route === "/" ? "Thème: Système" : "Theme: System",
+      );
+      const controlBounds = await select.boundingBox();
+      expect(controlBounds?.width).toBeGreaterThanOrEqual(44);
+      expect(controlBounds?.height).toBeGreaterThanOrEqual(44);
       await expect(root).toHaveAttribute("data-theme", "dark");
       await page.emulateMedia({ colorScheme: "light" });
       await expect(root).toHaveAttribute("data-theme", "light");
       await select.selectOption("dark");
+      await expect(page.locator(".theme-icon-moon")).toBeVisible();
+      await expect(page.locator(".theme-icon-sun")).toBeHidden();
       await expect(root).toHaveAttribute("data-theme", "dark");
       if (!blockedStorage) {
         expect(await page.evaluate(() => localStorage.getItem("portfolio-theme"))).toBe("dark");
@@ -38,9 +48,14 @@ for (const route of ["/", "/en/"] as const) {
         await expect(root).toHaveAttribute("data-theme", "dark");
       }
       await select.selectOption("light");
+      await expect(page.locator(".theme-icon-sun")).toBeVisible();
+      await expect(page.locator(".theme-icon-moon")).toBeHidden();
+      await select.focus();
+      await expect(select).toBeFocused();
       await page.emulateMedia({ colorScheme: "dark" });
       await expect(root).toHaveAttribute("data-theme", "light");
       await select.selectOption("system");
+      await expect(page.locator(".theme-icon-system")).toBeVisible();
       await expect(root).toHaveAttribute("data-theme", "dark");
       if (!blockedStorage) {
         expect(await page.evaluate(() => localStorage.getItem("portfolio-theme"))).toBeNull();
@@ -62,6 +77,7 @@ test.describe("without JavaScript", () => {
     }) => {
       await page.goto(route);
       await expect(page.locator("[data-theme-select]")).toBeHidden();
+      await expect(page.locator("[data-theme-control]")).toBeHidden();
       await expect(page.locator(".language-switch")).toBeVisible();
       await expect(page.locator(".site-header")).toHaveCSS("position", "relative");
     });

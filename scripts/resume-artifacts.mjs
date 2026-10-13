@@ -26,6 +26,7 @@ export async function sourceFingerprint(root) {
   // Conservative dependency closure: new imports, styles and assets invalidate the PDFs too.
   const files = [
     ...(await walk(root, "src")),
+    ...(await walk(root, "vendor")),
     "astro.config.mjs",
     "tsconfig.json",
     "package.json",

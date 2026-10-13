@@ -41,8 +41,12 @@ if (manifest.policy?.fonts !== "system-only") {
 if (manifest.policy?.icons !== "text-and-css-only") {
   errors.push("media manifest must keep the current text-and-CSS-only icon policy");
 }
-if (manifest.policy?.thirdPartyMedia !== false) {
-  errors.push("third-party media must remain disabled until its rights and credits are reviewed");
+if (
+  ![false, "approved-captures-only", "approved-captures-and-attribution"].includes(
+    manifest.policy?.thirdPartyMedia,
+  )
+) {
+  errors.push("third-party media is restricted to reviewed application captures");
 }
 if (!Array.isArray(manifest.assets)) errors.push("media manifest assets must be an array");
 

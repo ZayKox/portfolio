@@ -6,7 +6,7 @@ order: 2
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-10-02"
+  reviewedOn: "2026-10-03"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
@@ -16,10 +16,10 @@ review:
   evidence:
     status: included
     note: Technical case study reviewed and approved by Ethan, without a public demo, public repository or published metrics.
-eyebrow: Mini-game platform
+eyebrow: Backend & real time
 kind: Modular web application
-summary: A web mini-game platform under active development, playable without an account in solo, against bots, or with others depending on the game.
-shortSummary: Web mini-games for solo play, against a bot, or with other players.
+summary: A mini-game platform under development with replayable rules, server-verified results and recovery after interruption.
+shortSummary: Mini-games with replayable rules, server-verified results and recovery after interruption.
 cardDecision: Rules are separate from rendering; the server replays runs to verify connected results.
 currentStatus: MVP under development, with no external deployment.
 flow:
@@ -70,6 +70,10 @@ These screenshots show the catalog and a demonstration game running locally, wit
 
 <ProjectCapture
   src={gridDuelCapture}
+  detail={{
+    view: "game-board",
+    alt: "Detail of the Grid Duel board and column selection during the local demonstration game.",
+  }}
   alt="Local Grid Duel game showing the board, played pieces, and the active player indicator."
   caption="Grid Duel during a local two-player demonstration game."
   locale="en"
@@ -98,6 +102,8 @@ The monorepo separates the Next.js application, game server, each game, and thei
 Rules remain independent from rendering and can be replayed from a seed and action sequence. For a connected result, the server reconstructs the run instead of directly trusting a score reported by the browser. Games load only when opened, and the service worker can reopen selected previously loaded modes without a connection.
 
 ### Resume after an interruption
+
+For example, a connection lost after a game should neither discard its result nor count it twice when sending is retried. The local queue and duplicate prevention address this requirement.
 
 Pending results are stored locally and resent after reconnection. Server-side verification and duplicate prevention allow submission retries without counting the same run more than once.
 

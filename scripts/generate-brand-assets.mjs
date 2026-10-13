@@ -99,7 +99,7 @@ const socialMarkup = `
     <div class="identity">
       <p class="kicker">PORTFOLIO / VIOLET FIELD</p>
       <h1>ETHAN<br>BROSSELARD</h1>
-      <p class="fields">WEB <span>·</span> DATA <span>·</span> SYSTEMS <span>·</span> AI / NEXT</p>
+      <p class="fields">BACKEND <span>·</span> DATA <span>·</span> CLOUD <span>·</span> APPLIED AI</p>
     </div>
     <div class="field" aria-hidden="true">
       <div class="orbit orbit-outer"></div>

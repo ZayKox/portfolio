@@ -1,0 +1,21 @@
+---
+import { profile } from "@/data/profile";
+import type { Locale } from "@/i18n/copy";
+interface Props {
+  locale: Locale;
+  compact?: boolean;
+}
+const { locale, compact = false } = Astro.props;
+const portrait = profile.portrait;
+---
+
+<img
+  class="portrait"
+  src={portrait.src}
+  srcset={`${portrait.smallSrc} 320w, ${portrait.src} 640w`}
+  sizes={compact ? "(max-width: 64rem) 88px, 240px" : "(max-width: 48rem) 240px, 320px"}
+  width={portrait.width}
+  height={portrait.height}
+  alt={portrait.alt[locale]}
+  decoding="async"
+/>

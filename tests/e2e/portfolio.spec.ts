@@ -49,6 +49,33 @@ test("theme follows the system preference and persists the visitor choice", asyn
   await context.close();
 });
 
+test("theme changes keep link text on the active palette from the first frame", async ({
+  page,
+}) => {
+  await page.goto("/en/projects/");
+  const frames = await page.evaluate(async () => {
+    const select = document.querySelector<HTMLSelectElement>("[data-theme-select]")!;
+    const link = document.querySelector<HTMLElement>("main .text-link")!;
+    const samples: { actual: string; expected: string }[] = [];
+    const sample = () =>
+      samples.push({
+        actual: getComputedStyle(link).color,
+        expected: getComputedStyle(document.body).color,
+      });
+    for (const theme of ["light", "dark", "light", "dark"]) {
+      select.value = theme;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      sample();
+      for (let frame = 0; frame < 4; frame++) {
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        sample();
+      }
+    }
+    return samples;
+  });
+  for (const frame of frames) expect(frame.actual).toBe(frame.expected);
+});
+
 test("localized navigation controls expose names and states", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "chromium", "One browser proof is enough");
 
@@ -223,6 +250,7 @@ test("keyboard focus follows DOM order and stays visible in both themes", async 
     "input:not([disabled]):not([type='hidden'])",
     "select:not([disabled])",
     "textarea:not([disabled])",
+    "details > summary:first-of-type",
     "[tabindex]:not([tabindex='-1'])",
   ].join(",");
 

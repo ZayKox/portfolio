@@ -6,20 +6,20 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-10-02"
+  reviewedOn: "2026-10-03"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
   media:
     status: included
-    note: Captures de l’application locale avec des données fictives, autorisées par Ethan le 2 octobre 2026.
+    note: Captures de l’application locale en mode sombre avec de vrais films et leurs affiches TMDB, demandées par Ethan le 3 octobre 2026.
   evidence:
     status: included
     note: Étude technique relue et validée par Ethan, sans démonstration publique, dépôt public ni métriques publiées.
-eyebrow: Profil culturel
+eyebrow: Backend & données
 kind: Application web full-stack
-summary: Une plateforme pour suivre, noter et organiser films, séries et jeux vidéo dans une bibliothèque culturelle personnelle.
-shortSummary: Films, séries et jeux vidéo réunis dans une bibliothèque personnelle.
+summary: Une bibliothèque culturelle personnelle avec un catalogue normalisé côté serveur, des données privées séparées et des recommandations explicables.
+shortSummary: Un catalogue culturel normalisé, des données personnelles séparées et des recommandations explicables.
 cardDecision: Catalogue externe normalisé côté serveur, séparé des données personnelles.
 currentStatus: Lancement bloqué dans l’attente d’autorisations liées aux données fournisseurs.
 flow:
@@ -38,6 +38,7 @@ socialImage: /palimia-social-card.png
 socialImageAlt: Carte de partage Violet Field de Palimia, avec les domaines culturels organisés autour du monogramme PA.
 ---
 
+import TmdbCredit from "../../../components/projects/TmdbCredit.astro";
 import ProjectCapture from "../../../components/projects/ProjectCapture.astro";
 import libraryCapture from "../../../assets/projects/palimia/library.webp";
 import recommendationsCapture from "../../../assets/projects/palimia/recommendations.webp";
@@ -55,21 +56,27 @@ Les choix techniques et les limites présentés ci-dessous décrivent le travail
 
 ## L’application en images
 
-Ces captures proviennent de l’application exécutée localement. Les œuvres, notes et compteurs visibles sont des données fictives de démonstration.
+Ces captures proviennent de l’application exécutée localement en mode sombre, avec une bibliothèque de 12 films suivis et 9 suggestions calculées. Les titres et affiches proviennent de TMDB ; les notes, favoris et progressions sont des données de démonstration.
 
 <ProjectCapture
   src={libraryCapture}
-  alt="Bibliothèque Palimia montrant trois œuvres fictives, leurs statuts, notes et progression."
-  caption="La bibliothèque privée réunit films, séries et jeux vidéo avec leurs repères de suivi."
+  detail={{
+    view: "library-entry",
+    alt: "Détail d’Interstellar : statut terminé, note de démonstration de 9/10 et favori dans la bibliothèque Palimia.",
+  }}
+  alt="Bibliothèque Palimia en mode sombre : 12 films suivis et six entrées visibles avec leurs affiches, statuts, notes et progressions."
+  caption="Interstellar, Inception, Dune et d’autres films suivis avec leurs affiches, notes, favoris et progressions."
   locale="fr"
 />
 
 <ProjectCapture
   src={recommendationsCapture}
-  alt="Trois recommandations Palimia accompagnées de raisons liées aux genres et aux types de médias appréciés."
-  caption="Détail des recommandations : chaque suggestion affiche les raisons de sa sélection."
+  alt="Six recommandations de films Palimia en mode sombre, avec leurs affiches et les raisons de leur sélection."
+  caption="Extrait des neuf recommandations : chaque suggestion affiche les raisons de sa sélection."
   locale="fr"
 />
+
+<TmdbCredit locale="fr" />
 
 ## Une bibliothèque culturelle personnelle
 
@@ -90,6 +97,8 @@ Les fonctions sociales développées — profils publics, avis, listes et relati
 Le projet utilise un monolithe modulaire construit avec Next.js et TypeScript strict. PostgreSQL et Prisma portent le catalogue, les références vers les fournisseurs et les états personnels, tandis que Better Auth gère l’authentification. Les appels aux fournisseurs restent côté serveur et leurs données sont validées puis normalisées avant import.
 
 ### Séparer le catalogue et les données personnelles
+
+Par exemple, relancer un import fournisseur doit retrouver la même œuvre dans le catalogue, tout en conservant les notes et la progression propres à chaque personne. C’est le rôle de l’import idempotent et de la séparation des données.
 
 Cette architecture conserve une identité commune pour chaque œuvre sans effacer les particularités de chaque média. Les imports sont conçus pour être idempotents et résistants à la concurrence, et la provenance des données reste séparée des notes, progressions et listes créées par l’utilisateur.
 

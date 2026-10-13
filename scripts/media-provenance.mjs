@@ -12,7 +12,12 @@ export async function validateMediaAsset(asset, root) {
   if (!/^[a-f0-9]{64}$/.test(asset.sha256 ?? "")) fail("invalid SHA-256");
   if (!asset.provenance?.trim()) fail("missing provenance");
   if (!Number.isSafeInteger(asset.maxBytes) || asset.maxBytes <= 0) fail("invalid byte budget");
-  if (asset.kind === "approved-capture") {
+  const reviewedKinds = {
+    "approved-capture": "demo-data-only",
+    "approved-portrait": "approved-public-identity",
+    "approved-attribution": "third-party-attribution",
+  };
+  if (Object.hasOwn(reviewedKinds, asset.kind)) {
     if (asset.generator) fail("captures must not claim a generator");
     const approval = asset.approval;
     if (
@@ -24,8 +29,9 @@ export async function validateMediaAsset(asset, root) {
       fail("capture needs explicit dated publication approval");
     if (!asset.sourceVersion?.trim() || !asset.rights?.trim())
       fail("capture needs its source version and rights");
-    if (asset.contentSafety !== "demo-data-only")
-      fail("capture must use reviewed demonstration data");
+    const expectedSafety = reviewedKinds[asset.kind];
+    if (asset.contentSafety !== expectedSafety)
+      fail("media must use its reviewed content safety category");
     if (!asset.alt?.fr?.trim() || !asset.alt?.en?.trim())
       fail("capture needs French and English alternatives");
   } else if (["generated-brand", "generated-project-brand"].includes(asset.kind)) {
@@ -37,7 +43,7 @@ export async function validateMediaAsset(asset, root) {
   if (createHash("sha256").update(contents).digest("hex") !== asset.sha256)
     fail("SHA-256 differs from reviewed media");
   const metadata = await sharp(contents).metadata();
-  if (asset.kind === "approved-capture" && (metadata.exif || metadata.xmp || metadata.iptc))
+  if (Object.hasOwn(reviewedKinds, asset.kind) && (metadata.exif || metadata.xmp || metadata.iptc))
     fail("remove embedded EXIF/XMP/IPTC metadata before review");
   const expectedFormat = /\.jpe?g$/.test(asset.path) ? "jpeg" : path.extname(asset.path).slice(1);
   if (metadata.format !== expectedFormat || (metadata.pages ?? 1) > 1)
