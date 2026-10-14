@@ -2322,40 +2322,93 @@ h3 {
 }
 
 .experience-details {
+  min-width: 0;
   margin-top: var(--space-3);
   border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-control);
+}
+
+.experience-card > .experience-details {
+  grid-column: 1 / -1;
+  margin-top: 0;
 }
 
 .experience-details > summary {
-  min-height: 44px;
-  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: var(--space-3);
+  border-radius: var(--radius-control);
   color: var(--text);
+  background: var(--surface-subtle);
   font-weight: 650;
+  line-height: 1.4;
+  list-style: none;
   cursor: pointer;
+}
+
+.experience-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.experience-details > summary::after {
+  content: "";
+  flex: 0 0 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-inline: var(--space-1);
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.experience-details[open] > summary {
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-control) var(--radius-control) 0 0;
+}
+
+.experience-details[open] > summary::after {
+  transform: rotate(45deg);
 }
 
 .experience-details-list {
   display: grid;
-  gap: var(--space-3);
-  padding: 0 1rem 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-3);
 }
 
-.experience-details-list article + article {
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--border);
+.experience-details-list article {
+  min-width: 0;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--border);
 }
 
 .experience-details-list h4 {
-  margin: 0 0 0.4rem;
-  font-size: 1rem;
+  margin: 0 0 var(--space-2);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .experience-details-list p {
   margin: 0;
   color: var(--text-muted);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 56rem) {
+  .experience-details-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
 }
 
 .resume-section--profile {

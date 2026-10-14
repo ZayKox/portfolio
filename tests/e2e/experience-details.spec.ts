@@ -29,6 +29,26 @@ for (const route of ["/", "/en/", "/cv/", "/en/resume/"]) {
     await expect(details).toHaveJSProperty("open", false);
     await summary.click();
     await expect(details).toHaveJSProperty("open", true);
+    await page.setViewportSize({ width: 1280, height: 900 });
+    const layout = await details.evaluate((element) => {
+      const parent = element.parentElement!;
+      const style = getComputedStyle(parent);
+      const items = [...element.querySelectorAll("article")].map((item) => {
+        const rect = item.getBoundingClientRect();
+        return { top: rect.top, left: rect.left, right: rect.right };
+      });
+      return {
+        width: element.getBoundingClientRect().width,
+        availableWidth:
+          parent.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
+        items,
+      };
+    });
+    expect(layout.width).toBeGreaterThanOrEqual(layout.availableWidth * 0.98);
+    const [first, second] = layout.items;
+    if (!first || !second) throw new Error("Expected at least two professional examples");
+    expect(Math.abs(first.top - second.top)).toBeLessThan(1);
+    expect(second.left).toBeGreaterThanOrEqual(first.right);
     await page.emulateMedia({ media: "print" });
     await expect(details).toBeHidden();
   });
