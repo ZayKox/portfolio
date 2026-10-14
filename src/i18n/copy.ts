@@ -63,21 +63,21 @@ export const copy = {
         {
           index: "02",
           title: "IA appliquée",
-          text: "RAG et recherche vectorielle avec PGVector et Qdrant chez Studio Beyowi, complétés par un master en ingénierie de l’IA.",
+          text: "RAG pour interroger des notices/RCP de médicaments et les biens ou documents immobiliers fournis par l’utilisateur, avec extraction OCR.",
           linkLabel: "Intégration de l’IA",
           href: "#experience-beyowi",
         },
         {
           index: "03",
           title: "Données & SQL",
-          text: "ETL et migrations SQL en entreprise ; catalogue normalisé et données personnelles séparées dans Palimia.",
-          linkLabel: "Modélisation dans Palimia",
-          href: "/projets/palimia/",
+          text: "Transactions DVF nettoyées dans PostgreSQL pour l’estimation immobilière ; ETL de données médicament avec Pandas chez Thésorimed.",
+          linkLabel: "Traitements de données",
+          href: "#experience-beyowi",
         },
         {
           index: "04",
           title: "Cloud & automatisation",
-          text: "AWS, DigitalOcean, Docker et CI/CD chez Beyowi ; configurations Docker Compose et Ansible préparées pour mon homelab.",
+          text: "Workflows n8n chez Primotheus, stockage des documents sur AWS S3 chez Thésorimed, livraison avec Docker et CI/CD.",
           linkLabel: "Compétences et expérience",
           href: "/cv/",
         },
@@ -121,7 +121,7 @@ export const copy = {
       title: "Mon parcours et ma façon de travailler.",
       lead: "Je suis Ethan Brosselard, développeur backend basé à Paris.",
       paragraphs: [
-        "Mon parcours en alternance depuis 2022 associe le backend Python chez Studio Beyowi à une première expérience C++ chez Intento Design. J’ai réalisé la majeure partie du backend de la plateforme interne Thésorimed, avec ses règles métier, et travaillé avec le CTO sur le backend immobilier de Primotheus. Mes contributions comprennent aussi les traitements SQL et l’intégration de RAG. J’ai obtenu mon master en ingénierie de l’intelligence artificielle en 2026.",
+        "Mon parcours en alternance depuis 2022 associe le backend Python chez Studio Beyowi à une première expérience C++ chez Intento Design. J’ai réalisé la majeure partie du backend interne Thésorimed, notamment les traitements de notices/RCP et de données médicament. Avec le CTO, j’ai travaillé sur le backend Primotheus et l’estimation de biens à partir de transactions DVF nettoyées. Mes contributions RAG permettent d’interroger des documents médicament ou les informations immobilières fournies par l’utilisateur, avec extraction OCR. J’ai obtenu mon master en ingénierie de l’intelligence artificielle en 2026.",
         "Je recherche un poste backend, avec Python comme expérience principale et une ouverture à d’autres langages et environnements. Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
         "Je développe mes projets par passion et pour répondre à des besoins concrets. Palimia rassemble mes suivis culturels dans un même outil ; Ludosaic propose des jeux rapides sans installation. Construire ces applications moi-même me permet d’en travailler toutes les couches. Mon homelab doit accueillir des services utiles à mes proches et héberger mes projets publics, avec une préférence pour des outils gratuits.",
       ],
@@ -151,6 +151,7 @@ export const copy = {
       skills: "Compétences",
       languages: "Langues",
       projects: "Projets",
+      details: "Exemples de réalisations",
     },
     contact: {
       description:
@@ -345,21 +346,21 @@ export const copy = {
         {
           index: "02",
           title: "Applied AI",
-          text: "RAG and vector search with PGVector and Qdrant at Studio Beyowi, complemented by a master’s in AI engineering.",
+          text: "RAG for questions over medicine leaflets and product information, and user-provided property data and documents, with OCR extraction.",
           linkLabel: "AI integration",
           href: "#experience-beyowi",
         },
         {
           index: "03",
           title: "Data & SQL",
-          text: "ETL and SQL migrations at work; a normalized catalog and separate personal data in Palimia.",
-          linkLabel: "Palimia data modeling",
-          href: "/en/projects/palimia/",
+          text: "Cleaned DVF transactions in PostgreSQL for property valuation; medicine-data ETL with Pandas at Thésorimed.",
+          linkLabel: "Data workflows",
+          href: "#experience-beyowi",
         },
         {
           index: "04",
           title: "Cloud & automation",
-          text: "AWS, DigitalOcean, Docker and CI/CD at Beyowi; Docker Compose and Ansible configurations prepared for my homelab.",
+          text: "n8n workflows at Primotheus, document storage in AWS S3 at Thésorimed, and delivery with Docker and CI/CD.",
           linkLabel: "Skills and experience",
           href: "/en/resume/",
         },
@@ -402,7 +403,7 @@ export const copy = {
       title: "My background and how I work.",
       lead: "I’m Ethan Brosselard, a backend developer based in Paris.",
       paragraphs: [
-        "My apprenticeships since 2022 combine Python backend development at Studio Beyowi with earlier C++ experience at Intento Design. I developed most of the internal Thésorimed platform’s backend and its business rules, and worked alongside the CTO on the Primotheus real-estate backend. My contributions also include SQL workflows and RAG integration. I completed my master’s in AI engineering in 2026.",
+        "My apprenticeships since 2022 combine Python backend development at Studio Beyowi with earlier C++ experience at Intento Design. I developed most of the internal Thésorimed backend, including medicine documents and data processing. Alongside the CTO, I worked on the Primotheus backend and property valuation using cleaned DVF transactions. My RAG contributions support questions over medicine documents or user-provided real-estate information, with OCR extraction. I completed my master’s in AI engineering in 2026.",
         "I’m looking for a backend role, with experience primarily in Python and openness to other languages and environments. I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security and performance.",
         "I build personal projects out of enthusiasm for technology and practical needs. Palimia brings cultural tracking into one tool; Ludosaic offers quick games without installation. Building these applications myself lets me work across their layers. My homelab is intended to provide useful services for people close to me and host my public projects, with a preference for free tools.",
       ],
@@ -431,6 +432,7 @@ export const copy = {
       skills: "Skills",
       languages: "Languages",
       projects: "Projects",
+      details: "Examples of contributions",
     },
     contact: {
       description:

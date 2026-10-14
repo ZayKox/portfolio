@@ -172,3 +172,21 @@ test("resume rejects unknown contacts, missing timeline facts, invalid chronolog
     assert.equal(resumeSchema.safeParse(invalid).success, false);
   }
 });
+
+test("resume experience details require complete paired translations with unique identifiers", () => {
+  const resume = JSON.parse(readFileSync("src/data/resume.json", "utf8"));
+  assert.equal(resumeSchema.safeParse(resume).success, true);
+  for (const change of [
+    (value) => delete value.en.experience[0].details,
+    (value) => value.en.experience[0].details.reverse(),
+    (value) => (value.en.experience[0].details[0].description = ""),
+    (value) => {
+      for (const locale of ["fr", "en"])
+        value[locale].experience[0].details.push(value[locale].experience[0].details[0]);
+    },
+  ]) {
+    const invalid = structuredClone(resume);
+    change(invalid);
+    assert.equal(resumeSchema.safeParse(invalid).success, false);
+  }
+});

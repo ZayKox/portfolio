@@ -1,0 +1,22 @@
+---
+import { getCopy, type Locale } from "@/i18n/copy";
+
+interface Props {
+  locale: Locale;
+  details: { id: string; title: string; description: string }[];
+}
+
+const { locale, details } = Astro.props;
+---
+
+<details class="experience-details">
+  <summary>{getCopy(locale).resume.details}</summary>
+  <div class="experience-details-list">
+    {details.map((detail) => (
+      <article>
+        <h4>{detail.title}</h4>
+        <p>{detail.description}</p>
+      </article>
+    ))}
+  </div>
+</details>

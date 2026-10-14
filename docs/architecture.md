@@ -124,7 +124,7 @@ Production mode checks canonical URLs, alternates, JSON-LD, social cards, and th
 
 ## Resume artifacts
 
-The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
+The HTML and PDF resumes share `src/data/resume.json`. Bilingual experience details also live in that source, with matching identifiers enforced by the schema. The homepage and HTML resume show them in native disclosure controls; print styles omit those longer descriptions to preserve the concise one-page PDF. The portfolio never reads employer repositories during its build. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
 
 `check:resume`, included in `verify`, compares each PDF with a conservative manifest covering relevant sources, Astro and TypeScript configuration, npm manifests, the lockfile, vendored dependency sources, and the generator. A source change may therefore require `npm run generate:resume-pdfs` even when the visible resume does not change. Freshness validation detects stale artifacts; it does not certify visual quality or PDF/UA compliance.
 

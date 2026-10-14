@@ -2321,6 +2321,43 @@ h3 {
   margin-top: var(--space-5);
 }
 
+.experience-details {
+  margin-top: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.experience-details > summary {
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.experience-details-list {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0 1rem 1rem;
+}
+
+.experience-details-list article + article {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.experience-details-list h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.experience-details-list p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .resume-section--profile {
   margin-top: var(--space-4);
 }
@@ -3482,6 +3519,7 @@ h3 {
   .skip-link,
   .site-header,
   .site-footer,
+  .experience-details,
   .resume-hero {
     display: none;
   }

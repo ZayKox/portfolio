@@ -82,6 +82,9 @@ for (const job of jobs) {
       assert.match(normalizedText, /Thésorimed/);
       assert.match(normalizedText, /Primotheus/);
       assert.match(normalizedText, /Monte[ -]Carlo/);
+      for (const skill of ["DVF", "FastAPI", "Pandas", "n8n", "OCR"])
+        assert(normalizedText.includes(skill), `Missing contextualized skill ${skill}`);
+      assert(!/Exemples de réalisations|Examples of contributions/.test(normalizedText));
       assert(normalizedText.includes(profile.jobSearch.workingLanguage[expected.language]));
       assert(normalizedText.includes(profile.jobSearch.attendance[expected.language]));
       assert(!/\bjunior\b|Professional working proficiency|Lancement bloqué/i.test(normalizedText));

@@ -9,7 +9,7 @@ for (const route of ["/", "/en/", "/cv/", "/en/resume/", "/contact/", "/en/conta
       const count = await page.evaluate(() => {
         const controls = [
           ...document.querySelectorAll<HTMLElement>(
-            "a[href], button:not([disabled]), select:not([disabled])",
+            "a[href], button:not([disabled]), select:not([disabled]), details > summary:first-of-type",
           ),
         ].filter((element) => element.getClientRects().length);
         controls.forEach((element, index) => (element.dataset.auditOrder = String(index)));

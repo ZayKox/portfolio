@@ -44,18 +44,40 @@
   "fr": {
     "role": "Développeur backend · Python, API et données",
     "objective": "Télétravail à 100 % · CDI privilégié ou CDD > 6 mois",
-    "summary": "Développeur backend diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022. Réalisation de backends métier en Python, de traitements SQL et d’intégrations RAG ; expérience C++ et projets personnels TypeScript. Ouvert à différents langages backend.",
+    "summary": "Développeur backend diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022. Backends Python en santé et immobilier : traitements de notices/RCP, estimations à partir de données DVF et intégrations RAG. Expérience C++ et projets TypeScript ; ouvert à différents langages backend.",
     "experience": [
       {
         "title": "Développeur logiciel Python — Alternance",
         "highlights": [
-          "Santé — Réalisation de la majeure partie du backend interne Thésorimed et de ses règles métier.",
-          "Immobilier — Backend de Primotheus développé avec le CTO, destiné notamment aux propriétaires.",
-          "Données — ETL, migrations et synchronisations SQL (AWS DMS) ; 3 projets, plusieurs Go de données.",
-          "IA appliquée — RAG et recherche vectorielle avec pgvector, Qdrant et les services OpenAI.",
-          "Livraison — AWS, DigitalOcean, Docker, CI/CD ; sprints et environnements dev, staging et production."
+          "Santé — Backend Thésorimed réalisé en majeure partie : extraction et mise à jour des notices/RCP.",
+          "Immobilier — Estimation de biens avec le CTO : transactions DVF nettoyées et stockées en PostgreSQL.",
+          "Données — ETL de données médicament (RCP, prix et remboursements) ; migrations SQL avec AWS DMS.",
+          "RAG & OCR — Questions sur les notices/RCP et les données immobilières apportées par l’utilisateur.",
+          "Livraison — AWS, DigitalOcean, Docker, CI/CD et n8n ; environnements dev, staging et production."
         ],
-        "id": "beyowi"
+        "id": "beyowi",
+        "details": [
+          {
+            "id": "property-valuation",
+            "title": "Primotheus : estimer un bien à partir de transactions comparables",
+            "description": "J’ai contribué avec le CTO au backend FastAPI d’une plateforme immobilière. Les données de transactions DVF sont nettoyées puis stockées dans PostgreSQL. L’estimation recherche des ventes comparables selon la localisation, le type de bien et la surface, filtre les valeurs atypiques et calcule une valeur estimée. Le backend permet aussi de recalculer les estimations après une modification du bien ou par traitement groupé."
+          },
+          {
+            "id": "medicine-data",
+            "title": "Thésorimed : automatiser la préparation des données médicament",
+            "description": "J’ai réalisé la majeure partie du backend Flask de la plateforme interne Thésorimed. Les traitements récupèrent et mettent à jour les notices et les résumés des caractéristiques du produit (RCP), extraient leurs sections et préparent les données pour les bases SQL. Des pipelines avec Pandas traitent aussi les prix et remboursements des médicaments ; les documents et résultats d’extraction sont stockés sur AWS S3."
+          },
+          {
+            "id": "retrieval-use-cases",
+            "title": "RAG : interroger les documents utiles dans leur contexte",
+            "description": "En santé, j’ai contribué à un RAG pour poser des questions sur les notices et RCP des médicaments. Pour Primotheus, le RAG sert à interroger les informations immobilières fournies par l’utilisateur : ses biens et ses documents, dont le contenu est extrait par OCR. Ces contributions associent recherche vectorielle et services OpenAI ; l’objectif immobilier est de travailler sur les données apportées par chaque utilisateur."
+          },
+          {
+            "id": "workflow-integration",
+            "title": "Primotheus : relier le backend aux workflows n8n",
+            "description": "Le backend Primotheus s’intègre à des workflows n8n pour traiter des événements et synchroniser des informations avec des outils métier. Ce contexte complète ma pratique de Python, FastAPI, des API REST et des traitements de données, avec des tests pytest et une livraison par Docker et CI/CD."
+          }
+        ]
       },
       {
         "title": "Développeur backend C++ — Alternance",
@@ -80,22 +102,22 @@
       {
         "id": "backend",
         "category": "Backend & API",
-        "items": "Python, Flask, API REST ; C++ chez Intento Design"
+        "items": "Python, FastAPI (Primotheus), Flask (Thésorimed) ; C++ chez Intento Design"
       },
       {
         "id": "databases",
         "category": "Données & SQL",
-        "items": "SQL, ETL, AWS DMS ; PostgreSQL et Prisma dans Palimia"
+        "items": "PostgreSQL (DVF), Pandas (Thésorimed), ETL, AWS DMS"
       },
       {
         "id": "ai",
         "category": "IA appliquée & RAG",
-        "items": "RAG, recherche vectorielle, pgvector, Qdrant, API OpenAI chez Beyowi"
+        "items": "RAG, OCR, pgvector, Qdrant, API OpenAI ; notices/RCP et documents immobiliers"
       },
       {
         "id": "delivery",
         "category": "Cloud & livraison",
-        "items": "AWS, DigitalOcean, Docker, CI/CD, Git, GitHub"
+        "items": "AWS (S3, DMS), DigitalOcean, Docker, CI/CD, n8n, pytest"
       },
       {
         "id": "complementary",
@@ -145,18 +167,40 @@
   "en": {
     "role": "Backend Developer · Python, APIs and Data",
     "objective": "Fully remote · Permanent preferred or fixed-term > 6 months",
-    "summary": "Backend developer with a master’s in AI engineering (2026) and apprenticeship experience since 2022. Developed business backends in Python, SQL workflows and RAG integrations, alongside C++ experience and personal TypeScript projects. Open to different backend languages.",
+    "summary": "Backend developer with a master’s in AI engineering (2026) and apprenticeship experience since 2022. Python backends in healthcare and real estate: medicine-document processing, DVF-based property valuations and RAG integrations. C++ experience and TypeScript projects; open to different backend languages.",
     "experience": [
       {
         "title": "Python Software Developer — Apprenticeship",
         "highlights": [
-          "Healthcare — Developed most of the internal Thésorimed backend and its business rules.",
-          "Real estate — Developed the Primotheus backend alongside the CTO, serving property owners among other users.",
-          "Data — ETL, SQL migrations and synchronization (AWS DMS); 3 projects involving several GB of data.",
-          "Applied AI — RAG and vector search with pgvector, Qdrant and OpenAI services.",
-          "Delivery — AWS, DigitalOcean, Docker, CI/CD; sprints and development, staging and production environments."
+          "Healthcare — Developed most of the Thésorimed backend, including medicine-document processing.",
+          "Real estate — Property valuations with the CTO using cleaned DVF transactions in PostgreSQL.",
+          "Data — Medicine-document, price and reimbursement ETL; SQL migrations with AWS DMS.",
+          "RAG & OCR — Queries over medicine leaflets/SmPCs and user-provided real-estate information.",
+          "Delivery — AWS, DigitalOcean, Docker, CI/CD, n8n; development, staging and production."
         ],
-        "id": "beyowi"
+        "id": "beyowi",
+        "details": [
+          {
+            "id": "property-valuation",
+            "title": "Primotheus: value properties using comparable transactions",
+            "description": "I contributed alongside the CTO to the FastAPI backend of a real-estate platform. DVF transaction data is cleaned and stored in PostgreSQL. Valuation retrieves comparable sales by location, property type and floor area, filters outliers and calculates an estimated value. The backend also supports refreshing valuations after property changes or through a batch process."
+          },
+          {
+            "id": "medicine-data",
+            "title": "Thésorimed: automate medicine-data preparation",
+            "description": "I developed most of the Flask backend for the internal Thésorimed platform. Processing retrieves and updates medicine leaflets and summaries of product characteristics (SmPCs), extracts their sections and prepares data for SQL databases. Pandas pipelines also process medicine prices and reimbursement data; documents and extraction outputs are stored in AWS S3."
+          },
+          {
+            "id": "retrieval-use-cases",
+            "title": "RAG: query relevant documents in context",
+            "description": "In healthcare, I contributed to RAG for questions over medicine leaflets and SmPCs. For Primotheus, RAG queries real-estate information supplied by the user: their properties and documents, including content extracted through OCR. These contributions combine vector search and OpenAI services; the real-estate use case aims to work with each user’s own supplied data."
+          },
+          {
+            "id": "workflow-integration",
+            "title": "Primotheus: connect the backend to n8n workflows",
+            "description": "The Primotheus backend integrates with n8n workflows to process events and synchronize information with business tools. This provides context for my Python, FastAPI, REST API and data-processing work, alongside pytest tests and delivery through Docker and CI/CD."
+          }
+        ]
       },
       {
         "title": "C++ Backend Developer — Apprenticeship",
@@ -181,22 +225,22 @@
       {
         "id": "backend",
         "category": "Backend & APIs",
-        "items": "Python, Flask, REST APIs; C++ at Intento Design"
+        "items": "Python, FastAPI (Primotheus), Flask (Thésorimed); C++ at Intento Design"
       },
       {
         "id": "databases",
         "category": "Data & SQL",
-        "items": "SQL, ETL, AWS DMS; PostgreSQL and Prisma in Palimia"
+        "items": "PostgreSQL (DVF), Pandas (Thésorimed), ETL, AWS DMS"
       },
       {
         "id": "ai",
         "category": "Applied AI & RAG",
-        "items": "RAG, vector search, pgvector, Qdrant, OpenAI API at Beyowi"
+        "items": "RAG, OCR, pgvector, Qdrant, OpenAI API; medicine and real-estate documents"
       },
       {
         "id": "delivery",
         "category": "Cloud & delivery",
-        "items": "AWS, DigitalOcean, Docker, CI/CD, Git, GitHub"
+        "items": "AWS (S3, DMS), DigitalOcean, Docker, CI/CD, n8n, pytest"
       },
       {
         "id": "complementary",
