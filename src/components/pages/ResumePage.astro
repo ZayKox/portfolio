@@ -59,6 +59,9 @@ const resumeUrl = profile.resume[locale];
         <h2>{profile.name}</h2>
         <p class="resume-role">{document.role}</p>
         <p class="resume-objective">{document.objective}</p>
+        <p class="resume-work-setup">
+          {profile.jobSearch.workingLanguage[locale]} · {profile.jobSearch.attendance[locale]}
+        </p>
       </div>
       <ul class="resume-contact-list" aria-label={t.resume.contact}>
         {contacts.map((item) => (

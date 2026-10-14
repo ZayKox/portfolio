@@ -10,8 +10,8 @@ const expectations = {
   "ethan-brosselard-cv-fr.pdf": {
     language: "fr",
     title: "CV — Ethan Brosselard",
-    role: "Développeur backend junior",
-    objective: "CDI ou CDD · Télétravail",
+    role: "Développeur backend · Python, API et données",
+    objective: "Télétravail à 100 % · CDI privilégié ou CDD > 6 mois",
     headings: [
       "Profil",
       "Expériences professionnelles",
@@ -30,8 +30,8 @@ const expectations = {
   "ethan-brosselard-resume-en.pdf": {
     language: "en",
     title: "Resume — Ethan Brosselard",
-    role: "Junior Backend Developer",
-    objective: "Permanent or fixed-term employment · Remote",
+    role: "Backend Developer · Python, APIs and Data",
+    objective: "Fully remote · Permanent preferred or fixed-term > 6 months",
     headings: ["Profile", "Work experience", "Projects", "Skills", "Education", "Languages"],
     localLinks: [
       "https://ethanbrosselard.com/en/",
@@ -79,6 +79,12 @@ for (const job of jobs) {
       assert.match(normalizedText, /Ethan Brosselard/);
       assert(normalizedText.includes(expected.role));
       assert(normalizedText.includes(expected.objective));
+      assert.match(normalizedText, /Thésorimed/);
+      assert.match(normalizedText, /Primotheus/);
+      assert.match(normalizedText, /Monte[ -]Carlo/);
+      assert(normalizedText.includes(profile.jobSearch.workingLanguage[expected.language]));
+      assert(normalizedText.includes(profile.jobSearch.attendance[expected.language]));
+      assert(!/\bjunior\b|Professional working proficiency|Lancement bloqué/i.test(normalizedText));
       let previousHeading = -1;
       for (const heading of expected.headings) {
         // Preserve word boundaries: stripping every space masked letter-spaced headings.

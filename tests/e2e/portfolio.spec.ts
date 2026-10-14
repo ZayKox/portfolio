@@ -136,7 +136,9 @@ test("primary links expose the expected destinations", async ({ page }) => {
     await page.goto(route);
     const hero = page.locator(".hero-copy");
     await expect(hero.locator(".hero-objective")).toContainText(
-      route === "/" ? "CDI ou CDD · Télétravail" : "Permanent or fixed-term employment · Remote",
+      route === "/"
+        ? "Télétravail à 100 % · CDI privilégié ou CDD > 6 mois"
+        : "Fully remote · Permanent preferred or fixed-term > 6 months",
     );
     await expect(hero.getByRole("link", { name: /PDF/ })).toHaveAttribute(
       "href",

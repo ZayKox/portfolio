@@ -42,26 +42,26 @@
     }
   },
   "fr": {
-    "role": "Développeur backend junior",
-    "objective": "CDI ou CDD · Télétravail",
-    "summary": "Développeur backend, master en ingénierie de l’IA (2026). Alternance depuis 2022 : API Python, SQL, AWS, RAG et C++, avec des projets TypeScript. Ouvert à différents langages et environnements backend.",
+    "role": "Développeur backend · Python, API et données",
+    "objective": "Télétravail à 100 % · CDI privilégié ou CDD > 6 mois",
+    "summary": "Développeur backend diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022. Réalisation de backends métier en Python, de traitements SQL et d’intégrations RAG ; expérience C++ et projets personnels TypeScript. Ouvert à différents langages backend.",
     "experience": [
       {
         "title": "Développeur logiciel Python — Alternance",
         "highlights": [
-          "API backend — Conception d’API REST et de traitements de données : Python, Flask, AWS Lambda.",
-          "IA appliquée — Intégration de RAG et de recherche vectorielle : PGVector, Qdrant, services OpenAI.",
-          "Données SQL — Développement et maintenance de pipelines de migration et de synchronisation avec AWS DMS.",
-          "Contributions — 3 projets en e-santé et gestion de patrimoine : référentiels de données, ETL, API et workflows IA, sur plusieurs Go de données.",
-          "Cloud & tests — Déploiement et maintenance sur AWS et sur site : Docker, tests et déploiements automatisés par CI/CD."
+          "Santé — Réalisation de la majeure partie du backend interne Thésorimed et de ses règles métier.",
+          "Immobilier — Backend de Primotheus développé avec le CTO, destiné notamment aux propriétaires.",
+          "Données — ETL, migrations et synchronisations SQL (AWS DMS) ; 3 projets, plusieurs Go de données.",
+          "IA appliquée — RAG et recherche vectorielle avec pgvector, Qdrant et les services OpenAI.",
+          "Livraison — AWS, DigitalOcean, Docker, CI/CD ; sprints et environnements dev, staging et production."
         ],
         "id": "beyowi"
       },
       {
         "title": "Développeur backend C++ — Alternance",
         "highlights": [
-          "Développement de fonctionnalités C++ ; contribution aux algorithmes de génération et de validation de circuits d’ID-Xplore (CAO).",
-          "Contribution aux tests unitaires, à la compatibilité multi-technologies et à la documentation technique."
+          "ID-Xplore — Implémentation C++ d’une méthode Monte-Carlo sur les paramètres d’entrée d’un outil d’exploration de circuits analogiques.",
+          "Maintenance — Optimisation du code, tests unitaires et documentation ; travail autonome et implémentations en collaboration avec le CTO."
         ],
         "id": "intento"
       }
@@ -80,37 +80,27 @@
       {
         "id": "backend",
         "category": "Backend & API",
-        "items": "API REST, Python, Flask, FastAPI, C++, TypeScript"
-      },
-      {
-        "id": "ai",
-        "category": "IA & LLM",
-        "items": "RAG, Embeddings, Fine-tuning LLM, Agents LLM, LangChain, API OpenAI"
-      },
-      {
-        "id": "machine-learning",
-        "category": "Machine learning & MLOps",
-        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
-      },
-      {
-        "id": "search",
-        "category": "Recherche & indexation",
-        "items": "Recherche vectorielle, ColBERT, pgvector, Qdrant, Elasticsearch"
+        "items": "Python, Flask, API REST ; C++ chez Intento Design"
       },
       {
         "id": "databases",
         "category": "Données & SQL",
-        "items": "ETL, Pandas, NumPy, PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+        "items": "SQL, ETL, AWS DMS ; PostgreSQL et Prisma dans Palimia"
+      },
+      {
+        "id": "ai",
+        "category": "IA appliquée & RAG",
+        "items": "RAG, recherche vectorielle, pgvector, Qdrant, API OpenAI chez Beyowi"
       },
       {
         "id": "delivery",
-        "category": "Cloud & automatisation",
-        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, tests unitaires, pytest"
+        "category": "Cloud & livraison",
+        "items": "AWS, DigitalOcean, Docker, CI/CD, Git, GitHub"
       },
       {
         "id": "complementary",
-        "category": "Connaissances complémentaires",
-        "items": "Java, JavaScript, Linux"
+        "category": "Projets personnels",
+        "items": "TypeScript, Next.js, Colyseus ; Docker Compose, Ansible et Python pour le homelab"
       }
     ],
     "languages": [
@@ -121,7 +111,7 @@
       },
       {
         "name": "Anglais",
-        "level": "Professionnel",
+        "level": "À consolider pour travailler uniquement en anglais",
         "id": "en"
       }
     ],
@@ -134,45 +124,45 @@
             "id": "palimia",
             "slug": "palimia",
             "title": "Palimia",
-            "description": "Bibliothèque culturelle : catalogue séparé des données privées, recommandations explicables. Next.js, TypeScript, PostgreSQL ; développement autonome, sans lancement public."
+            "description": "Rassembler films, séries et jeux dans une bibliothèque : catalogue séparé des données privées, recommandations explicables. Next.js, TypeScript, PostgreSQL ; développement autonome."
           },
           {
             "id": "ludosaic",
             "slug": "ludosaic",
             "title": "Ludosaic",
-            "description": "Mini-jeux web : règles rejouables, vérification serveur et reprise après interruption. Next.js, TypeScript, Colyseus ; développement autonome, MVP en cours."
+            "description": "Des mini-jeux rapides sans installation : règles rejouables, vérification serveur et reprise après interruption. Next.js, TypeScript, Colyseus ; MVP en développement."
           },
           {
             "id": "zaykohub",
             "slug": "zaykohub",
             "title": "Homelab",
-            "description": "Infrastructure en préparation : Docker Compose, Ansible et validations Python locales ; aucun service déployé."
+            "description": "Services personnels et partagés, hébergement futur de mes projets : Docker Compose, Ansible et validations Python locales. Matériel prévu fin 2026 ; aucun service déployé."
           }
         ]
       }
     ]
   },
   "en": {
-    "role": "Junior Backend Developer",
-    "objective": "Permanent or fixed-term employment · Remote",
-    "summary": "Backend developer with a master’s in AI engineering (2026). Apprenticeships since 2022: Python APIs, SQL, AWS, RAG and C++. Personal TypeScript projects; open to different backend languages and environments.",
+    "role": "Backend Developer · Python, APIs and Data",
+    "objective": "Fully remote · Permanent preferred or fixed-term > 6 months",
+    "summary": "Backend developer with a master’s in AI engineering (2026) and apprenticeship experience since 2022. Developed business backends in Python, SQL workflows and RAG integrations, alongside C++ experience and personal TypeScript projects. Open to different backend languages.",
     "experience": [
       {
         "title": "Python Software Developer — Apprenticeship",
         "highlights": [
-          "Backend APIs — Designed REST APIs and data-processing workflows: Python, Flask, AWS Lambda.",
-          "Applied AI — Integrated RAG and vector search: PGVector, Qdrant, OpenAI services.",
-          "SQL data — Developed and maintained migration and synchronization pipelines with AWS DMS.",
-          "Contributions — Contributed to 3 projects in digital health and wealth management: reference data, ETL, APIs and AI workflows, working with several GB of data.",
-          "Cloud & testing — Deployed and maintained services on AWS and on premises: Docker, automated tests and deployments through CI/CD."
+          "Healthcare — Developed most of the internal Thésorimed backend and its business rules.",
+          "Real estate — Developed the Primotheus backend alongside the CTO, serving property owners among other users.",
+          "Data — ETL, SQL migrations and synchronization (AWS DMS); 3 projects involving several GB of data.",
+          "Applied AI — RAG and vector search with pgvector, Qdrant and OpenAI services.",
+          "Delivery — AWS, DigitalOcean, Docker, CI/CD; sprints and development, staging and production environments."
         ],
         "id": "beyowi"
       },
       {
         "title": "C++ Backend Developer — Apprenticeship",
         "highlights": [
-          "Developed C++ features; contributed to circuit-generation and validation algorithms for the ID-Xplore CAD application.",
-          "Contributed to unit tests, compatibility across circuit technologies, and technical documentation."
+          "ID-Xplore — Implemented a Monte Carlo method in C++ on the input parameters of an analog circuit exploration tool.",
+          "Maintenance — Code optimization, unit tests and documentation; independent work and implementations alongside the CTO."
         ],
         "id": "intento"
       }
@@ -191,37 +181,27 @@
       {
         "id": "backend",
         "category": "Backend & APIs",
-        "items": "REST APIs, Python, Flask, FastAPI, C++, TypeScript"
-      },
-      {
-        "id": "ai",
-        "category": "AI & LLMs",
-        "items": "RAG, Embeddings, LLM fine-tuning, LLM agents, LangChain, OpenAI API"
-      },
-      {
-        "id": "machine-learning",
-        "category": "Machine learning & MLOps",
-        "items": "MLOps, PyTorch, TensorFlow, Hugging Face, scikit-learn"
-      },
-      {
-        "id": "search",
-        "category": "Search & indexing",
-        "items": "Vector search, ColBERT, pgvector, Qdrant, Elasticsearch"
+        "items": "Python, Flask, REST APIs; C++ at Intento Design"
       },
       {
         "id": "databases",
         "category": "Data & SQL",
-        "items": "ETL, Pandas, NumPy, PostgreSQL, MySQL, Oracle, SQL Server (MSSQL), SQLite"
+        "items": "SQL, ETL, AWS DMS; PostgreSQL and Prisma in Palimia"
+      },
+      {
+        "id": "ai",
+        "category": "Applied AI & RAG",
+        "items": "RAG, vector search, pgvector, Qdrant, OpenAI API at Beyowi"
       },
       {
         "id": "delivery",
-        "category": "Cloud & automation",
-        "items": "AWS, n8n, Docker, CI/CD, GitHub Actions, Git, unit testing, pytest"
+        "category": "Cloud & delivery",
+        "items": "AWS, DigitalOcean, Docker, CI/CD, Git, GitHub"
       },
       {
         "id": "complementary",
-        "category": "Additional knowledge",
-        "items": "Java, JavaScript, Linux"
+        "category": "Personal projects",
+        "items": "TypeScript, Next.js, Colyseus; Docker Compose, Ansible and Python for the homelab"
       }
     ],
     "languages": [
@@ -232,7 +212,7 @@
       },
       {
         "name": "English",
-        "level": "Professional working proficiency",
+        "level": "Not yet sufficient for an English-only role",
         "id": "en"
       }
     ],
@@ -245,19 +225,19 @@
             "id": "palimia",
             "slug": "palimia",
             "title": "Palimia",
-            "description": "Cultural library: catalog separated from private data, explainable recommendations. Next.js, TypeScript, PostgreSQL; independently developed, no public launch."
+            "description": "Bring movies, series and games into one library: catalog separated from private data, explainable recommendations. Next.js, TypeScript, PostgreSQL; independently developed."
           },
           {
             "id": "ludosaic",
             "slug": "ludosaic",
             "title": "Ludosaic",
-            "description": "Web mini-games: replayable rules, server verification and recovery after interruption. Next.js, TypeScript, Colyseus; independently developed, MVP in progress."
+            "description": "Quick mini-games without installation: replayable rules, server verification and recovery after interruption. Next.js, TypeScript, Colyseus; MVP in development."
           },
           {
             "id": "zaykohub",
             "slug": "zaykohub",
             "title": "Homelab",
-            "description": "Infrastructure in preparation: Docker Compose, Ansible and local Python validation; no deployed services."
+            "description": "Personal and shared services, future hosting for my projects: Docker Compose, Ansible and local Python validation. Hardware planned for late 2026; no deployed services."
           }
         ]
       }

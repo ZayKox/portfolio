@@ -2268,6 +2268,13 @@ h3 {
   font-weight: 650;
 }
 
+.resume-work-setup {
+  margin-top: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .resume-contact-list {
   display: flex;
   flex-wrap: wrap;
@@ -3506,6 +3513,12 @@ h3 {
     font-size: 10pt;
   }
 
+  .resume-work-setup {
+    margin-top: 0.2rem;
+    font-size: 9.5pt;
+    line-height: 1.25;
+  }
+
   .resume-contact-list {
     gap: 0.1rem 0.8rem;
   }
@@ -3595,7 +3608,7 @@ h3 {
   .resume-skill-list div,
   .resume-language-list div {
     display: block;
-    padding-block: 0.1rem;
+    padding-block: 0.15rem;
     font-size: 9.5pt;
   }
 
