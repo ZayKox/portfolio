@@ -14,6 +14,7 @@ interface Props {
 const { locale, alternatePath } = Astro.props;
 const t = getCopy(locale);
 const resume = getResume(locale);
+const [emailLocalPart, emailDomain] = profile.email.split("@");
 ---
 
 <BaseLayout
@@ -45,42 +46,56 @@ const resume = getResume(locale);
 
   <section class="section section--bordered contact-panel">
     <div class="container contact-grid">
-      <div class="contact-card contact-card--email reveal">
-        <span>{t.contact.emailLabel}</span>
-        <strong>{profile.email}</strong>
-        <div class="contact-email-actions">
-          <button
-            type="button"
-            hidden
-            data-copy-email
-            data-email={profile.email}
-            data-copied-label={t.contact.copiedEmail}
-            data-copy-error-label={t.contact.copyEmailError}
-            aria-controls="email-copy-status"
-          >
-            {t.contact.copyEmail}
-          </button>
-          <a href={`mailto:${profile.email}`}>
-            {t.contact.openEmail}
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-        <p id="email-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="contact-methods">
+        <section
+          class="contact-card contact-card--email reveal"
+          aria-labelledby="contact-email-title"
+        >
+          <h2 id="contact-email-title" class="contact-label">
+            {t.contact.emailLabel}
+          </h2>
+          <!-- Keep the email contiguous when selected or read by assistive technology. -->
+          <!-- prettier-ignore -->
+          <strong>{emailLocalPart}<wbr />@{emailDomain}</strong>
+          <div class="contact-email-actions">
+            <button
+              type="button"
+              hidden
+              data-copy-email
+              data-email={profile.email}
+              data-copied-label={t.contact.copiedEmail}
+              data-copy-error-label={t.contact.copyEmailError}
+              aria-controls="email-copy-status"
+            >
+              {t.contact.copyEmail}
+            </button>
+            <a href={`mailto:${profile.email}`}>
+              {t.contact.openEmail}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p id="email-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+        <section
+          class="contact-card contact-card--social reveal"
+          aria-labelledby="contact-social-title"
+        >
+          <h2 id="contact-social-title" class="contact-label">
+            {t.contact.socialLabel}
+          </h2>
+          <div class="contact-socials">
+            <a href={profile.socials.github} rel="me">
+              {" "}
+              GitHub ↗{" "}
+            </a>
+            <a href={profile.socials.linkedin} rel="me">
+              {" "}
+              LinkedIn ↗{" "}
+            </a>
+          </div>
+        </section>
       </div>
-      <div class="contact-card reveal">
-        <span>{t.contact.socialLabel}</span>
-        <div class="contact-socials">
-          <a href={profile.socials.github} rel="me">
-            {" "}
-            GitHub ↗{" "}
-          </a>
-          <a href={profile.socials.linkedin} rel="me">
-            {" "}
-            LinkedIn ↗{" "}
-          </a>
-        </div>
-      </div>
-      <div class="contact-card reveal">
+      <div class="contact-card contact-card--search reveal">
         <JobSearch {locale} />
       </div>
     </div>
