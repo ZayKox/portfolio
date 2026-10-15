@@ -169,7 +169,7 @@ export const copy = {
       openEmail: "Ouvrir la messagerie",
       socialLabel: "Ailleurs",
       locationLabel: "Localisation",
-      note: "Aucun formulaire, aucun suivi et aucune donnée de contact stockée par ce site.",
+      note: "Contact direct par email, sans formulaire ni suivi. Ce site ne stocke pas vos coordonnées.",
     },
     legal: {
       eyebrow: "Informations légales",
@@ -449,7 +449,7 @@ export const copy = {
       openEmail: "Open email app",
       socialLabel: "Elsewhere",
       locationLabel: "Location",
-      note: "No form, tracking, or contact data is stored by this website.",
+      note: "Email me directly, with no form or tracking. This site does not store your contact details.",
     },
     legal: {
       eyebrow: "Legal information",

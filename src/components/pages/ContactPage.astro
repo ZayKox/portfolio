@@ -75,6 +75,7 @@ const [emailLocalPart, emailDomain] = profile.email.split("@");
             </a>
           </div>
           <p id="email-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <p class="contact-email-note">{t.contact.note}</p>
         </section>
         <section
           class="contact-card contact-card--social reveal"
@@ -99,7 +100,6 @@ const [emailLocalPart, emailDomain] = profile.email.split("@");
         <JobSearch {locale} />
       </div>
     </div>
-    <p class="container privacy-note">{t.contact.note}</p>
   </section>
 </BaseLayout>
 

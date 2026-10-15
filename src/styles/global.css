@@ -1985,10 +1985,6 @@ h3 {
   background-size: 4rem 4rem;
 }
 
-.contact-panel .privacy-note {
-  margin-top: 0;
-}
-
 .contact-card {
   display: grid;
   min-width: 0;
@@ -2068,6 +2064,14 @@ h3 {
 
 .contact-card--email [role="status"]:empty {
   margin-top: calc(-1 * var(--space-4));
+}
+
+.contact-email-note {
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, currentcolor 24%, transparent);
+  font-size: var(--text-small);
+  line-height: 1.6;
 }
 
 .contact-socials {
