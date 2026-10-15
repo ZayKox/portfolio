@@ -23,7 +23,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur backend",
       description:
-        "Développeur backend à Paris : API, données, IA appliquée et cloud. Expérience principale en Python, ouvert à d’autres langages. CDI ou CDD en télétravail.",
+        "Développeur backend à Paris : Python, API, données et IA appliquée. Recherche en télétravail dans une équipe francophone, CDI privilégié ou CDD de plus de 6 mois.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
@@ -32,7 +32,7 @@ export const copy = {
       title: "Développeur backend.",
       titleEmphasis: "Développeur backend.",
       intro:
-        "API, logique métier et données. Expérience en alternance depuis 2022, principalement en Python, complétée par le C++ et des projets TypeScript. Master en ingénierie de l’IA ; ouvert à différents langages backend.",
+        "Depuis 2022, mon parcours en alternance relie le backend Python en santé et immobilier à une première expérience C++. Diplômé d’un master en ingénierie de l’IA, je développe aussi mes propres applications et reste ouvert à différents langages backend.",
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
@@ -56,28 +56,28 @@ export const copy = {
         {
           index: "01",
           title: "Backend & API",
-          text: "API REST en Python chez Studio Beyowi ; logique serveur en TypeScript dans mes projets personnels.",
+          text: "Majeure partie du backend d’une plateforme interne de santé en Python ; backend immobilier développé avec le CTO chez Studio Beyowi.",
           linkLabel: "Expérience backend",
           href: "#experience-beyowi",
         },
         {
           index: "02",
           title: "IA appliquée",
-          text: "RAG et recherche vectorielle avec PGVector et Qdrant chez Studio Beyowi, complétés par un master en ingénierie de l’IA.",
+          text: "RAG pour interroger des notices/RCP de médicaments et les biens ou documents immobiliers fournis par l’utilisateur, avec extraction OCR.",
           linkLabel: "Intégration de l’IA",
           href: "#experience-beyowi",
         },
         {
           index: "03",
           title: "Données & SQL",
-          text: "ETL et migrations SQL en entreprise ; catalogue normalisé et données personnelles séparées dans Palimia.",
-          linkLabel: "Modélisation dans Palimia",
-          href: "/projets/palimia/",
+          text: "Transactions DVF nettoyées dans PostgreSQL pour l’estimation immobilière ; ETL de données médicament avec Pandas chez Thésorimed.",
+          linkLabel: "Traitements de données",
+          href: "#experience-beyowi",
         },
         {
           index: "04",
           title: "Cloud & automatisation",
-          text: "Maîtrise de plusieurs services AWS et de n8n. Pratique des tests, de Docker et de la CI/CD en entreprise.",
+          text: "Workflows n8n chez Primotheus, stockage des documents sur AWS S3 chez Thésorimed, livraison avec Docker et CI/CD.",
           linkLabel: "Compétences et expérience",
           href: "/cv/",
         },
@@ -98,9 +98,12 @@ export const copy = {
     jobSearch: {
       title: "Ce que je recherche",
       missionLabel: "Missions",
-      mission: "Développement backend : API, données, IA appliquée et cloud",
+      mission:
+        "Backend Python et API en priorité, puis IA appliquée / RAG, puis données et intégration",
       contractLabel: "Contrat et organisation",
       companyLabel: "Type d’entreprise",
+      workingLanguageLabel: "Langue de travail",
+      attendanceLabel: "Déplacements",
       locationLabel: "Basé à",
     },
     projects: {
@@ -118,13 +121,13 @@ export const copy = {
       title: "Mon parcours et ma façon de travailler.",
       lead: "Je suis Ethan Brosselard, développeur backend basé à Paris.",
       paragraphs: [
-        "Mon parcours en alternance depuis 2022 associe des API Python, des traitements SQL et des services AWS chez Studio Beyowi à une première expérience en C++ chez Intento Design. Chez Studio Beyowi, j’ai aussi contribué à l’intégration de RAG et de recherche vectorielle. J’ai obtenu mon master informatique en ingénierie de l’intelligence artificielle en 2026.",
+        "Mon parcours en alternance depuis 2022 associe le backend Python chez Studio Beyowi à une première expérience C++ chez Intento Design. J’ai réalisé la majeure partie du backend interne Thésorimed, notamment les traitements de notices/RCP et de données médicament. Avec le CTO, j’ai travaillé sur le backend Primotheus et l’estimation de biens à partir de transactions DVF nettoyées. Mes contributions RAG permettent d’interroger des documents médicament ou les informations immobilières fournies par l’utilisateur, avec extraction OCR. J’ai obtenu mon master en ingénierie de l’intelligence artificielle en 2026.",
         "Je recherche un poste backend, avec Python comme expérience principale et une ouverture à d’autres langages et environnements. Je préfère comprendre le besoin avant de choisir une technologie, puis avancer par étapes vérifiables. En équipe comme en autonomie, j’accorde de l’importance à la communication, aux tests, à l’accessibilité, à la sécurité et à la performance.",
-        "Avec Palimia et Ludosaic, j’explore les modèles de données, la validation côté serveur, les règles métier et les contraintes de déploiement. Mon homelab en préparation complète cette pratique avec des configurations versionnées, de l’automatisation et des validations locales.",
+        "Je développe mes projets par passion et pour répondre à des besoins concrets. Palimia rassemble mes suivis culturels dans un même outil ; Ludosaic propose des jeux rapides sans installation. Construire ces applications moi-même me permet d’en travailler toutes les couches. Mon homelab doit accueillir des services utiles à mes proches et héberger mes projets publics, avec une préférence pour des outils gratuits.",
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Je recherche un poste en développement backend, avec un intérêt pour l’IA appliquée, les données et le cloud. Je reste ouvert à différents langages et environnements.",
+        "Je privilégie les postes backend Python et API, puis l’IA appliquée / RAG et les données / intégration. Je recherche une équipe travaillant en français, en télétravail avec de rares déplacements ponctuels, en CDI ou en CDD de plus de six mois.",
       resumeCta: "Découvrir mon parcours et mon CV",
       projectsCta: "Voir les projets et leurs choix techniques",
       proofLabel: "Ce que montre ce portfolio",
@@ -133,7 +136,7 @@ export const copy = {
     },
     resume: {
       description:
-        "CV d’Ethan Brosselard, développeur backend junior : API Python, données, RAG, AWS, C++ et projets TypeScript. Recherche CDI ou CDD en télétravail.",
+        "CV d’Ethan Brosselard, développeur backend : Python, API et données, expérience métier, RAG et projets personnels. Télétravail, CDI privilégié ou CDD de plus de 6 mois.",
       eyebrow: "Parcours",
       title: "CV et expériences",
       intro:
@@ -148,14 +151,15 @@ export const copy = {
       skills: "Compétences",
       languages: "Langues",
       projects: "Projets",
+      details: "Exemples de réalisations",
     },
     contact: {
       description:
-        "Contacter Ethan Brosselard pour un poste backend : API, IA appliquée, données et cloud, avec une ouverture à différents langages. CDI ou CDD en télétravail.",
+        "Contacter Ethan Brosselard pour un poste backend en équipe francophone : Python, API, IA appliquée ou données. Télétravail, CDI privilégié ou CDD de plus de 6 mois.",
       eyebrow: "Contact",
       title: "Parlons de votre équipe.",
       intro:
-        "Vous recrutez en développement backend ? Je recherche un CDI ou CDD en télétravail, avec Python comme expérience principale et une ouverture à d’autres langages, ainsi qu’aux sujets IA, données et cloud.",
+        "Je recherche un poste backend en télétravail dans une équipe francophone : CDI privilégié ou CDD de plus de six mois. Mon expérience principale est en Python ; je reste ouvert à d’autres langages.",
       searchLabel: "Recherche actuelle",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
@@ -302,7 +306,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Backend developer",
       description:
-        "Backend developer in Paris: APIs, data, applied AI and cloud. Experience primarily in Python, open to other languages. Seeking permanent or fixed-term remote work.",
+        "Backend developer in Paris: Python, APIs, data and applied AI. Seeking remote work with a French-speaking team, permanent preferred or fixed-term over 6 months.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
@@ -311,7 +315,7 @@ export const copy = {
       title: "Backend developer.",
       titleEmphasis: "Backend developer.",
       intro:
-        "APIs, business logic and data. Apprenticeship experience since 2022, primarily in Python, complemented by C++ and personal TypeScript projects. Master’s in AI engineering; open to different backend languages.",
+        "My apprenticeships since 2022 span Python backends in healthcare and real estate, following C++ experience. With a master’s in AI engineering, I also build my own applications and remain open to different backend languages.",
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
@@ -335,28 +339,28 @@ export const copy = {
         {
           index: "01",
           title: "Backend & APIs",
-          text: "Python REST APIs at Studio Beyowi; server-side logic in my personal TypeScript projects.",
+          text: "Most of an internal healthcare platform’s Python backend; a real-estate backend developed alongside the CTO at Studio Beyowi.",
           linkLabel: "Backend experience",
           href: "#experience-beyowi",
         },
         {
           index: "02",
           title: "Applied AI",
-          text: "RAG and vector search with PGVector and Qdrant at Studio Beyowi, complemented by a master’s in AI engineering.",
+          text: "RAG for questions over medicine leaflets and product information, and user-provided property data and documents, with OCR extraction.",
           linkLabel: "AI integration",
           href: "#experience-beyowi",
         },
         {
           index: "03",
           title: "Data & SQL",
-          text: "ETL and SQL migrations at work; a normalized catalog and separate personal data in Palimia.",
-          linkLabel: "Palimia data modeling",
-          href: "/en/projects/palimia/",
+          text: "Cleaned DVF transactions in PostgreSQL for property valuation; medicine-data ETL with Pandas at Thésorimed.",
+          linkLabel: "Data workflows",
+          href: "#experience-beyowi",
         },
         {
           index: "04",
           title: "Cloud & automation",
-          text: "Proficient with multiple AWS services and n8n. Testing, Docker and CI/CD experience at work.",
+          text: "n8n workflows at Primotheus, document storage in AWS S3 at Thésorimed, and delivery with Docker and CI/CD.",
           linkLabel: "Skills and experience",
           href: "/en/resume/",
         },
@@ -377,9 +381,11 @@ export const copy = {
     jobSearch: {
       title: "What I’m looking for",
       missionLabel: "Work",
-      mission: "Backend development: APIs, data, applied AI and cloud",
+      mission: "Python backends and APIs first, then applied AI / RAG, then data and integration",
       contractLabel: "Employment and work setup",
       companyLabel: "Company type",
+      workingLanguageLabel: "Working language",
+      attendanceLabel: "In-person attendance",
       locationLabel: "Based in",
     },
     projects: {
@@ -397,13 +403,13 @@ export const copy = {
       title: "My background and how I work.",
       lead: "I’m Ethan Brosselard, a backend developer based in Paris.",
       paragraphs: [
-        "My apprenticeships since 2022 combine Python APIs, SQL workflows and AWS services at Studio Beyowi with earlier C++ experience at Intento Design. At Studio Beyowi, I also contributed to RAG and vector search integration. I completed my computer science master’s degree in AI engineering in 2026.",
+        "My apprenticeships since 2022 combine Python backend development at Studio Beyowi with earlier C++ experience at Intento Design. I developed most of the internal Thésorimed backend, including medicine documents and data processing. Alongside the CTO, I worked on the Primotheus backend and property valuation using cleaned DVF transactions. My RAG contributions support questions over medicine documents or user-provided real-estate information, with OCR extraction. I completed my master’s in AI engineering in 2026.",
         "I’m looking for a backend role, with experience primarily in Python and openness to other languages and environments. I prefer understanding the need before choosing a technology, then progressing through steps I can verify. Whether I work with a team or independently, I care about communication, testing, accessibility, security and performance.",
-        "With Palimia and Ludosaic, I explore data models, server-side validation, business rules and deployment constraints. My homelab in preparation complements this work with versioned configurations, automation and local validation.",
+        "I build personal projects out of enthusiasm for technology and practical needs. Palimia brings cultural tracking into one tool; Ludosaic offers quick games without installation. Building these applications myself lets me work across their layers. My homelab is intended to provide useful services for people close to me and host my public projects, with a preference for free tools.",
       ],
       nowLabel: "Now",
       nowText:
-        "I’m looking for a backend development role, with an interest in applied AI, data and cloud. I’m open to different languages and environments.",
+        "I prioritize Python backend and API roles, then applied AI / RAG and data / integration. I’m seeking a French-speaking team, remote work with rare in-person attendance, and permanent employment or a fixed-term contract over six months.",
       resumeCta: "Explore my experience and resume",
       projectsCta: "Explore the projects and their technical choices",
       proofLabel: "What this portfolio shows",
@@ -412,7 +418,7 @@ export const copy = {
     },
     resume: {
       description:
-        "Ethan Brosselard’s resume: junior backend developer, Python APIs, data, RAG, AWS, C++ and TypeScript projects. Seeking permanent or fixed-term remote work.",
+        "Ethan Brosselard’s backend resume: Python, APIs and data, business experience, RAG and personal projects. Remote, permanent preferred or fixed-term over 6 months.",
       eyebrow: "Background",
       title: "Resume and experience",
       intro: "A structured overview of my background, skills, and the projects that support them.",
@@ -426,14 +432,15 @@ export const copy = {
       skills: "Skills",
       languages: "Languages",
       projects: "Projects",
+      details: "Examples of contributions",
     },
     contact: {
       description:
-        "Contact Ethan Brosselard about a backend role: APIs, applied AI, data and cloud, with openness to different languages. Seeking permanent or fixed-term remote work.",
+        "Contact Ethan Brosselard for a backend role with a French-speaking team: Python, APIs, applied AI or data. Remote, permanent preferred or fixed-term over 6 months.",
       eyebrow: "Contact",
       title: "Let’s talk about your team.",
       intro:
-        "Hiring a backend developer? I’m seeking permanent or fixed-term remote work, with experience primarily in Python and openness to other languages, as well as AI, data and cloud work.",
+        "I’m seeking a remote backend role with a French-speaking team: permanent preferred or fixed-term over six months. My experience is primarily in Python; I remain open to other languages.",
       searchLabel: "Current job search",
       emailLabel: "Email",
       copyEmail: "Copy address",

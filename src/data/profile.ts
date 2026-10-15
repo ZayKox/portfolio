@@ -5,6 +5,14 @@ export const profile = {
   email: "ethan.brosselard@gmail.com",
   location: "Paris, France",
   jobSearch: {
+    workingLanguage: {
+      fr: "Équipe travaillant en français",
+      en: "French-speaking team",
+    },
+    attendance: {
+      fr: "Présentiel exceptionnel possible pour l’intégration, les réunions ou les séminaires.",
+      en: "Occasional in-person attendance possible for onboarding, meetings or team events.",
+    },
     companyPreference: {
       fr: "Sans préférence",
       en: "No preference",

@@ -38,7 +38,7 @@ Supported publication states:
 - `teaser`: a short technical overview based only on validated facts;
 - `published`: a reviewed complete case study.
 
-Solo contribution is validated for the Palimia and Ludosaic case studies. Homelab (with the retained `zaykohub` route slug) is a personal infrastructure overview published as a `teaser`, with local preparation and tests and no deployed services. Project dates remain intentionally omitted. Further maturity, dates and product metrics remain absent until Ethan explicitly validates them for publication in a task. A `teaser` does not imply production readiness.
+Solo contribution is validated for the Palimia and Ludosaic case studies. Homelab (with the retained `zaykohub` route slug) is a personal infrastructure overview published as a `teaser`, with local preparation and tests and no deployed services. On October 14, Ethan approved a late-2026 target for hardware purchase and assembly and future hosting of his applications; this is a plan, not a deployment date. Other project dates and product metrics remain absent until explicitly validated. A `teaser` does not imply production readiness.
 
 `scripts/validate-content-parity.mjs` requires one French and one English entry for every slug. It checks publication state, order, featured state, stack, visual, metric values, and equivalent narrative depth. Titles, labels, summaries, and narratives remain naturally localizable.
 
@@ -124,11 +124,17 @@ Production mode checks canonical URLs, alternates, JSON-LD, social cards, and th
 
 ## Resume artifacts
 
-The HTML and PDF resumes share `src/data/resume.json`. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
+The HTML and PDF resumes share `src/data/resume.json`. Bilingual experience details also live in that source, with matching identifiers enforced by the schema. The homepage and HTML resume show them in native disclosure controls; print styles omit those longer descriptions to preserve the concise one-page PDF. The portfolio never reads employer repositories during its build. PDF generation uses Playwright's `tagged` and `outline` options to preserve language and navigation structure.
 
 `check:resume`, included in `verify`, compares each PDF with a conservative manifest covering relevant sources, Astro and TypeScript configuration, npm manifests, the lockfile, vendored dependency sources, and the generator. A source change may therefore require `npm run generate:resume-pdfs` even when the visible resume does not change. Freshness validation detects stale artifacts; it does not certify visual quality or PDF/UA compliance.
 
 PDF semantic tests independently extract both documents, require one readable page, verify the declared language and title, check the role and employment objective, require intact section headings in reading order without removing spaces, check localized links, reject forms and placeholders, and require a structure tree. Print styles use normal letter spacing and a 10pt body with 9.5pt supporting text. These checks do not certify compatibility with every applicant tracking system, formal PDF/UA compliance, or a manual assistive-technology review.
+
+## Application resume variants
+
+`candidatures/` contains the three approved application bases in FR/EN, their PDF/HTML outputs and a portable generator. `npm run generate:resume-variants` builds the current site, then derives all six variants from `src/data/resume.json`, applying only the titles, summaries and order declared in `candidatures/variantes.json`. The generator validates one page, document language, tagging and key resume content for every PDF. Generated HTML carries its own styles for offline use and is excluded from formatting; the source JSON and generator remain formatted. The local validation report is ignored.
+
+This folder is outside Astro's public artifact and adds no route or public download. The general resume remains the only website CV. The generator resolves all paths from its own location and uses the project's installed dependencies, without a dependency on the original Documents folder.
 
 ## Future content
 
@@ -153,6 +159,6 @@ Primary references: [Astro AVIF advisory](https://github.com/withastro/astro/sec
 
 The portrait URLs, dimensions and localized alternatives are shared in `profile.ts`. Two metadata-free WebP files are served locally; `Portrait.astro` selects the suitable resolution. `project-previews.ts` maps the two reviewed applications to their existing capture assets; no sibling repository or runtime service is needed. Build/deployment Person checks and PDF social links now read approved facts from `profile.ts`, while independently enforcing schema shape, privacy and PDF/document behavior. Node 24 runs this data-only TypeScript module with native type stripping.
 
-The October 2026 patch updates use Astro 7.3.5, MDX 8.0.2 and Wrangler 4.147.0. The historical baseline above is not a current audit clearance: see [the dependency security gate](dependency-security.md) for the unresolved upstream advisory and production blocker.
+The October 2026 patch updates use Astro 7.3.5 and MDX 8.0.2. Merge validation on October 13 updates Wrangler to 4.150.0, Sharp to 0.35.5 and the resolved source-map-js dependency to 1.2.2. The historical baseline above is not a current audit clearance: see [the dependency security gate](dependency-security.md) for the applied fixes, remaining upstream advisory and release requirements.
 
 The temporary local `http-cache-semantics` security fork is installed through a root dependency and npm override. Its security regressions run before the unchanged CI audit and within `verify`; provenance and replacement instructions are in [dependency security](dependency-security.md).

@@ -24,6 +24,10 @@ const entry = z
     summary: text.optional(),
     highlights: z.array(text).min(1).optional(),
     technologies: text.optional(),
+    details: z
+      .array(z.object({ id, title: text, description: text }).strict())
+      .min(1)
+      .optional(),
   })
   .strict();
 const language = z
@@ -83,6 +87,18 @@ export const resumeSchema = z
     }
     for (const key of Object.keys(resume.timeline))
       if (!used.has(key)) issue(`Unused timeline fact ${key}`);
+    for (const section of ["experience", "education"]) {
+      for (const entry of resume.fr[section]) {
+        const equivalent = resume.en[section].find((item) => item.id === entry.id);
+        const detailIds = (entry.details ?? []).map((detail) => detail.id);
+        const equivalentIds = (equivalent?.details ?? []).map((detail) => detail.id);
+        if (
+          new Set(detailIds).size !== detailIds.length ||
+          JSON.stringify(detailIds) !== JSON.stringify(equivalentIds)
+        )
+          issue(`${section}: unique matching FR/EN detail identifiers required for ${entry.id}`);
+      }
+    }
     for (const group of resume.fr.projectGroups) {
       const equivalent = resume.en.projectGroups.find((item) => item.id === group.id);
       const facts = (items) => items.map(({ id, slug }) => [id, slug ?? null]);

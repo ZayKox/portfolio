@@ -6,7 +6,7 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-10-03"
+  reviewedOn: "2026-10-14"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
@@ -21,7 +21,7 @@ kind: Application web full-stack
 summary: Une bibliothèque culturelle personnelle avec un catalogue normalisé côté serveur, des données privées séparées et des recommandations explicables.
 shortSummary: Un catalogue culturel normalisé, des données personnelles séparées et des recommandations explicables.
 cardDecision: Catalogue externe normalisé côté serveur, séparé des données personnelles.
-currentStatus: Lancement bloqué dans l’attente d’autorisations liées aux données fournisseurs.
+currentStatus: Développement en cours ; hébergement prévu sur mon homelab.
 flow:
   - Catalogues fournisseurs
   - Validation et normalisation côté serveur
@@ -80,13 +80,15 @@ Ces captures proviennent de l’application exécutée localement en mode sombre
 
 ## Une bibliothèque culturelle personnelle
 
+J’ai commencé Palimia par passion pour la technologie et parce que mes suivis culturels étaient dispersés entre plusieurs outils. Je voulais les réunir dans une application utile pour moi et pour d’autres, en la développant moi-même.
+
 Palimia rassemble films, séries et jeux vidéo dans un même espace personnel. L’objectif est de remplacer les listes dispersées par une bibliothèque privée où chaque œuvre conserve son état, sa progression, sa note sur dix, son statut de favori et ses notes personnelles.
 
 Le parcours principal va de la recherche dans un catalogue alimenté par des fournisseurs externes à l’ajout dans la bibliothèque, puis au suivi et aux statistiques personnelles. L’application est pensée comme un profil culturel qui pourra s’enrichir progressivement sans mélanger les données du catalogue avec les choix privés de l’utilisateur.
 
 ## Un périmètre volontairement progressif
 
-La première bêta prévue se concentre sur les films, les séries et les jeux vidéo. Les modèles de données et certaines intégrations anticipent aussi les anime, les manga et les livres, mais ces médias restent hors du périmètre public tant que leurs sources et leurs droits d’utilisation ne sont pas validés.
+La première bêta prévue se concentre sur les films, les séries et les jeux vidéo. Les modèles de données et certaines intégrations anticipent aussi les anime, les manga et les livres, mais ces médias restent hors du périmètre de cette première bêta.
 
 Les fonctions sociales développées — profils publics, avis, listes et relations — restent elles aussi désactivées. Le cœur du produit demeure donc un outil privé. Les recommandations sont implémentées : chaque suggestion est accompagnée de raisons compréhensibles pour expliquer sa sélection.
 
@@ -106,6 +108,6 @@ L’utilisateur peut également exporter ses données personnelles ou supprimer 
 
 ## Validation et limites actuelles
 
-Palimia n’est pas en production et son statut de lancement reste bloqué. Les autorisations écrites nécessaires à certains usages des données de fournisseurs ne sont pas encore toutes obtenues et examinées. Le périmètre public doit notamment exclure les sources qui n’autorisent pas encore le suivi, le stockage ou l’affichage envisagés.
+Palimia est en développement, sans lancement public. Le projet est préparé pour un accès gratuit, avec un bouton de soutien facultatif prévu. L’hébergement est envisagé sur mon futur homelab ; le déploiement et la validation sur cette infrastructure restent à réaliser.
 
-Le dépôt comprend des tests unitaires, composants, PostgreSQL et Playwright, ainsi que des contrôles de sécurité, de confidentialité et de release. L’architecture de déploiement est préparée, mais les preuves sur un environnement cible — configuration, migrations, sauvegarde et restauration, supervision, tests de staging et revue juridique finale — restent à compléter. Ces validations locales décrivent l’état technique du projet ; elles ne constituent ni une mise en production ni des métriques d’utilisateurs.
+Le dépôt comprend des tests unitaires, composants, PostgreSQL et Playwright, ainsi que des contrôles de sécurité, de confidentialité et de release. L’architecture de déploiement est préparée, mais les preuves sur un environnement cible — configuration, migrations, sauvegarde et restauration, supervision, tests de staging et contrôles de release — restent à compléter. Ces validations locales décrivent l’état technique du projet ; elles ne constituent ni une mise en production ni des métriques d’utilisateurs.

@@ -6,7 +6,7 @@ order: 1
 featured: true
 publication: published
 review:
-  reviewedOn: "2026-10-03"
+  reviewedOn: "2026-10-14"
   approvedBy: Ethan Brosselard
   factsApproved: true
   translationApproved: true
@@ -21,7 +21,7 @@ kind: Full-stack web application
 summary: A personal cultural library with a catalog normalized on the server, separate private data and explainable recommendations.
 shortSummary: A normalized cultural catalog, separate personal data and explainable recommendations.
 cardDecision: Provider catalogs are normalized on the server and kept separate from personal data.
-currentStatus: Launch blocked pending permissions for provider data.
+currentStatus: In development; hosting planned on my homelab.
 flow:
   - Provider catalogs
   - Server-side validation and normalization
@@ -80,13 +80,15 @@ These screenshots show the application running locally in dark mode, with its Fr
 
 ## A personal cultural library
 
+I started Palimia out of enthusiasm for technology and because my cultural tracking was scattered across several tools. I wanted to bring it into an application useful to me and others, building it myself.
+
 Palimia brings movies, TV series, and video games together in one personal space. Its goal is to replace scattered lists with a private library where every work keeps its status, progress, rating out of ten, favorite state, and personal notes.
 
 The main journey starts with searching a catalog supplied by external providers, continues with adding a work to the library, and leads to personal tracking and statistics. The application is designed as a cultural profile that can expand over time without mixing catalog data with each user's private choices.
 
 ## A deliberately gradual scope
 
-The planned first beta focuses on movies, TV series, and video games. The data model and some integrations also anticipate anime, manga, and books, but these media remain outside the public scope until their sources and usage rights have been reviewed.
+The planned first beta focuses on movies, TV series, and video games. The data model and some integrations also anticipate anime, manga, and books, but these media remain outside the scope of this first beta.
 
 Developed social features — public profiles, reviews, lists, and relationships — also remain disabled. The product therefore stays centered on a private tracker. Recommendations are implemented: each suggestion includes understandable reasons explaining why it was selected.
 
@@ -106,6 +108,6 @@ Users can also export their personal data or delete their account. These flows a
 
 ## Validation and current limitations
 
-Palimia is not in production, and its launch status remains blocked. The written permissions required for some uses of provider data have not all been obtained and reviewed. In particular, the public scope must exclude sources that do not yet allow the intended tracking, storage, or display.
+Palimia is in development, with no public launch. Free access is planned, with an optional support button. Hosting is planned on my future homelab; deployment and validation on that infrastructure remain to be completed.
 
-The repository includes unit, component, PostgreSQL, and Playwright tests, alongside security, privacy, and release checks. Its deployment architecture is prepared, but evidence from a target environment — configuration, migrations, backup and restore, monitoring, staging tests, and final legal review — is still incomplete. These local checks describe the project's engineering state; they are neither a production release nor user metrics.
+The repository includes unit, component, PostgreSQL, and Playwright tests, alongside security, privacy, and release checks. Its deployment architecture is prepared, but evidence from a target environment — configuration, migrations, backup and restore, monitoring, staging tests, and release checks — is still incomplete. These local checks describe the project's engineering state; they are neither a production release nor user metrics.
