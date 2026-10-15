@@ -42,7 +42,8 @@
     "test:deployment-artifacts": "node --test scripts/test-deployment-artifacts.mjs",
     "test:document-guards": "npm run verify:site && node --test scripts/test-document-guards.mjs",
     "test:resume-pdf-content": "node --test scripts/test-resume-pdf-content.mjs",
-    "test:cache-security": "node --test scripts/test-cache-security.mjs"
+    "test:cache-security": "node --test scripts/test-cache-security.mjs",
+    "generate:resume-variants": "npm run build && node candidatures/generer.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "8.0.2",

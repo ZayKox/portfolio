@@ -1,0 +1,41 @@
+[
+  {
+    "id": "backend-python-api",
+    "fr": {
+      "role": "Développeur backend Python · API",
+      "summary": "Développeur backend diplômé d’un master en ingénierie de l’IA, avec une expérience en alternance depuis 2022. FastAPI chez Primotheus pour l’estimation de biens à partir de données DVF ; backend Flask Thésorimed réalisé en majeure partie pour les traitements de données médicament. API REST, PostgreSQL et livraison automatisée."
+    },
+    "en": {
+      "role": "Python Backend Developer · APIs",
+      "summary": "Backend developer with a master’s in AI engineering and apprenticeship experience since 2022. FastAPI at Primotheus for DVF-based property valuations; developed most of the Flask Thésorimed backend for medicine-data processing. REST APIs, PostgreSQL and automated delivery."
+    },
+    "highlights": [0, 1, 2, 4, 3],
+    "skills": ["backend", "databases", "delivery", "ai", "complementary"]
+  },
+  {
+    "id": "backend-ia-rag",
+    "fr": {
+      "role": "Développeur backend · IA appliquée & RAG",
+      "summary": "Développeur backend diplômé d’un master en ingénierie de l’IA (2026), avec une expérience en alternance depuis 2022. RAG pour interroger les notices/RCP de médicaments et les biens ou documents immobiliers fournis par l’utilisateur, avec extraction OCR. Python, recherche vectorielle et services OpenAI chez Beyowi."
+    },
+    "en": {
+      "role": "Backend Developer · Applied AI & RAG",
+      "summary": "Backend developer with a master’s in AI engineering (2026) and apprenticeship experience since 2022. RAG for questions over medicine leaflets and product information, and user-provided property data and documents with OCR extraction. Python, vector search and OpenAI services at Beyowi."
+    },
+    "highlights": [3, 0, 1, 2, 4],
+    "skills": ["ai", "backend", "databases", "delivery", "complementary"]
+  },
+  {
+    "id": "backend-donnees-integration",
+    "fr": {
+      "role": "Développeur backend · Données & intégration",
+      "summary": "Développeur backend avec une expérience en alternance depuis 2022 et un master en ingénierie de l’IA. Données DVF nettoyées dans PostgreSQL pour l’estimation immobilière ; ETL Pandas pour les RCP, prix et remboursements des médicaments. Migrations SQL avec AWS DMS et intégrations de workflows n8n."
+    },
+    "en": {
+      "role": "Backend Developer · Data & Integration",
+      "summary": "Backend developer with apprenticeship experience since 2022 and a master’s in AI engineering. Cleaned DVF data in PostgreSQL for property valuations; Pandas ETL for medicine documents, prices and reimbursement. SQL migrations with AWS DMS and n8n workflow integrations."
+    },
+    "highlights": [2, 0, 1, 4, 3],
+    "skills": ["databases", "backend", "delivery", "ai", "complementary"]
+  }
+]

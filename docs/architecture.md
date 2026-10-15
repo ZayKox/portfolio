@@ -130,6 +130,12 @@ The HTML and PDF resumes share `src/data/resume.json`. Bilingual experience deta
 
 PDF semantic tests independently extract both documents, require one readable page, verify the declared language and title, check the role and employment objective, require intact section headings in reading order without removing spaces, check localized links, reject forms and placeholders, and require a structure tree. Print styles use normal letter spacing and a 10pt body with 9.5pt supporting text. These checks do not certify compatibility with every applicant tracking system, formal PDF/UA compliance, or a manual assistive-technology review.
 
+## Application resume variants
+
+`candidatures/` contains the three approved application bases in FR/EN, their PDF/HTML outputs and a portable generator. `npm run generate:resume-variants` builds the current site, then derives all six variants from `src/data/resume.json`, applying only the titles, summaries and order declared in `candidatures/variantes.json`. The generator validates one page, document language, tagging and key resume content for every PDF. Generated HTML carries its own styles for offline use and is excluded from formatting; the source JSON and generator remain formatted. The local validation report is ignored.
+
+This folder is outside Astro's public artifact and adds no route or public download. The general resume remains the only website CV. The generator resolves all paths from its own location and uses the project's installed dependencies, without a dependency on the original Documents folder.
+
 ## Future content
 
 The content model can add future AI work, tools, articles, and projects from other domains without changing the overall architecture. Ethan's positioning must not depend on one stack or the two initial projects.

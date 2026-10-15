@@ -35,3 +35,6 @@ docs/audit-remediation.md
 *.key
 *.p12
 *.pfx
+
+# Local application-resume validation report
+/candidatures/validation.json

@@ -67,6 +67,11 @@ This file records approved publication decisions that are not already fully repr
 - FastAPI is contextualized by Primotheus, Flask and Pandas by Thésorimed, and n8n by Primotheus backend event/workflow integrations. pytest, PostgreSQL and AWS S3 are corroborated by the inspected source/dependency declarations. Existing approved pgvector, Qdrant and OpenAI skills remain; pgvector is not asserted to implement the inspected comparable-sale calculation. No context is invented for unrelated ML libraries or model training.
 - The general FR/EN CV keeps concise examples and a one-page PDF. Longer descriptions are shared between the homepage and HTML resume through typed bilingual disclosures sourced from `resume.json`. The three local application bases are refreshed from the same approved facts. No job offer was supplied, so they remain application bases rather than offer-specific applications.
 
+## Application variants in the repository — October 15, 2026
+
+- Ethan explicitly requested bringing the three existing FR/EN application bases into this project. Their approved text, portable generator and six PDF/HTML pairs are now tracked under `candidatures/`. This supersedes the earlier requirement to keep those bases outside the repository; their facts, priorities and publication scope otherwise remain unchanged.
+- The variants remain outside `public/` and `src/pages/`: the portfolio still exposes only its general FR/EN resume. No application is sent, no new route or navigation link is added, and no external publication is performed. The original local folder is preserved; its history and previews are not imported.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.
