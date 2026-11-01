@@ -58,7 +58,7 @@
     "@playwright/test": "1.63.0",
     "cross-env": "10.1.0",
     "http-cache-semantics": "file:vendor/http-cache-semantics",
-    "js-yaml": "5.4.2",
+    "js-yaml": "5.5.0",
     "lighthouse": "13.5.0",
     "pdfjs-dist": "6.3.289",
     "prettier": "3.9.8",
