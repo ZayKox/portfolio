@@ -46,14 +46,14 @@
     "generate:resume-variants": "npm run build && node candidatures/generer.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "8.0.2",
+    "@astrojs/mdx": "8.1.2",
     "@astrojs/sitemap": "3.7.4",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.3.5",
+    "astro": "7.4.4",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/check": "0.9.12",
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0",
     "cross-env": "10.1.0",
