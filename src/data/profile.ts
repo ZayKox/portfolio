@@ -10,8 +10,8 @@ export const profile = {
       en: "French-speaking team",
     },
     attendance: {
-      fr: "Présentiel exceptionnel possible pour l’intégration, les réunions ou les séminaires.",
-      en: "Occasional in-person attendance possible for onboarding, meetings or team events.",
+      fr: "En télétravail intégral, des déplacements ponctuels sont possibles pour l’intégration, les réunions ou les séminaires.",
+      en: "For fully remote roles, I can attend onboarding, meetings or team events in person occasionally.",
     },
     companyPreference: {
       fr: "Sans préférence",

@@ -72,6 +72,10 @@ This file records approved publication decisions that are not already fully repr
 - Ethan explicitly requested bringing the three existing FR/EN application bases into this project. Their approved text, portable generator and six PDF/HTML pairs are now tracked under `candidatures/`. This supersedes the earlier requirement to keep those bases outside the repository; their facts, priorities and publication scope otherwise remain unchanged.
 - The variants remain outside `public/` and `src/pages/`: the portfolio still exposes only its general FR/EN resume. No application is sent, no new route or navigation link is added, and no external publication is performed. The original local folder is preserved; its history and previews are not imported.
 
+## Validated update — November 16, 2026
+
+- Ethan approved these work arrangement preferences for the public portfolio and its bilingual resumes, in order: fully remote, hybrid in Lille, then hybrid in Paris. Occasional in-person attendance applies to fully remote roles. This updates the work arrangement preference recorded on October 14.
+
 ## Publication rules
 
 - Only facts already present in a canonical tracked source or explicitly approved by Ethan as public may be published.

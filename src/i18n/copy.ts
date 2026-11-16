@@ -23,7 +23,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Développeur backend",
       description:
-        "Développeur backend à Paris : Python, API, données et IA appliquée. Recherche en télétravail dans une équipe francophone, CDI privilégié ou CDD de plus de 6 mois.",
+        "Développeur backend Python, API, données et IA appliquée. Télétravail intégral en priorité, puis hybride à Lille, puis à Paris. CDI privilégié ou CDD de plus de 6 mois.",
       socialImageAlt:
         "Carte de partage Violet Field du portfolio d’Ethan Brosselard, avec sa signature ZayKo.",
     },
@@ -32,7 +32,7 @@ export const copy = {
       title: "Développeur backend.",
       titleEmphasis: "Développeur backend.",
       intro:
-        "Depuis 2022, mon parcours en alternance relie le backend Python en santé et immobilier à une première expérience C++. Diplômé d’un master en ingénierie de l’IA, je développe aussi mes propres applications et reste ouvert à différents langages backend.",
+        "Depuis 2022, mes alternances m’ont mené du C++ au backend Python en santé et dans l’immobilier. Diplômé d’un master en ingénierie de l’IA, je crée mes applications et reste ouvert à d’autres langages backend.",
       exploreLabel: "Pour aller plus loin",
       exploreTitle: "Du parcours aux projets.",
       allProjectsCta: "Découvrir tous les projets",
@@ -127,7 +127,7 @@ export const copy = {
       ],
       nowLabel: "Maintenant",
       nowText:
-        "Je privilégie les postes backend Python et API, puis l’IA appliquée / RAG et les données / intégration. Je recherche une équipe travaillant en français, en télétravail avec de rares déplacements ponctuels, en CDI ou en CDD de plus de six mois.",
+        "Je privilégie les postes backend Python et API, puis l’IA appliquée / RAG et les données / intégration. Je recherche une équipe travaillant en français, avec une préférence pour le CDI ou un CDD de plus de six mois. Je privilégie le télétravail intégral, puis les postes hybrides à Lille, puis à Paris.",
       resumeCta: "Découvrir mon parcours et mon CV",
       projectsCta: "Voir les projets et leurs choix techniques",
       proofLabel: "Ce que montre ce portfolio",
@@ -136,7 +136,7 @@ export const copy = {
     },
     resume: {
       description:
-        "CV d’Ethan Brosselard, développeur backend : Python, API et données, expérience métier, RAG et projets personnels. Télétravail, CDI privilégié ou CDD de plus de 6 mois.",
+        "CV d’Ethan Brosselard, développeur backend Python, API et données. Télétravail intégral en priorité, puis hybride à Lille, puis à Paris. CDI privilégié ou CDD de plus de 6 mois.",
       eyebrow: "Parcours",
       title: "CV et expériences",
       intro:
@@ -155,11 +155,11 @@ export const copy = {
     },
     contact: {
       description:
-        "Contacter Ethan Brosselard pour un poste backend en équipe francophone : Python, API, IA appliquée ou données. Télétravail, CDI privilégié ou CDD de plus de 6 mois.",
+        "Contacter Ethan Brosselard pour un poste backend en équipe francophone. Télétravail intégral en priorité, puis hybride à Lille, puis à Paris. CDI privilégié ou CDD de plus de 6 mois.",
       eyebrow: "Contact",
       title: "Parlons de votre équipe.",
       intro:
-        "Je recherche un poste backend en télétravail dans une équipe francophone : CDI privilégié ou CDD de plus de six mois. Mon expérience principale est en Python ; je reste ouvert à d’autres langages.",
+        "Je recherche un poste backend dans une équipe francophone. Mon expérience principale est en Python et je reste ouvert à d’autres langages.",
       searchLabel: "Recherche actuelle",
       emailLabel: "Email",
       copyEmail: "Copier l’adresse",
@@ -306,7 +306,7 @@ export const copy = {
     meta: {
       title: "Ethan Brosselard — Backend developer",
       description:
-        "Backend developer in Paris: Python, APIs, data and applied AI. Seeking remote work with a French-speaking team, permanent preferred or fixed-term over 6 months.",
+        "Backend developer working with Python, APIs, data and applied AI. Fully remote first, then hybrid in Lille, then Paris. Permanent preferred or fixed-term over 6 months.",
       socialImageAlt:
         "Violet Field sharing card for Ethan Brosselard’s portfolio, featuring his ZayKo signature.",
     },
@@ -315,7 +315,7 @@ export const copy = {
       title: "Backend developer.",
       titleEmphasis: "Backend developer.",
       intro:
-        "My apprenticeships since 2022 span Python backends in healthcare and real estate, following C++ experience. With a master’s in AI engineering, I also build my own applications and remain open to different backend languages.",
+        "Since 2022, my apprenticeships have taken me from C++ to Python backends in healthcare and real estate. I have a master’s in AI engineering, build my own apps and am open to other backend languages.",
       exploreLabel: "Explore my work",
       exploreTitle: "From experience to projects.",
       allProjectsCta: "Explore all projects",
@@ -409,7 +409,7 @@ export const copy = {
       ],
       nowLabel: "Now",
       nowText:
-        "I prioritize Python backend and API roles, then applied AI / RAG and data / integration. I’m seeking a French-speaking team, remote work with rare in-person attendance, and permanent employment or a fixed-term contract over six months.",
+        "I prioritize Python backend and API roles, then applied AI / RAG and data / integration. I’m looking to join a French-speaking team, ideally in a permanent role or on a fixed-term contract of more than six months. I prefer fully remote roles, followed by hybrid roles in Lille, then Paris.",
       resumeCta: "Explore my experience and resume",
       projectsCta: "Explore the projects and their technical choices",
       proofLabel: "What this portfolio shows",
@@ -418,7 +418,7 @@ export const copy = {
     },
     resume: {
       description:
-        "Ethan Brosselard’s backend resume: Python, APIs and data, business experience, RAG and personal projects. Remote, permanent preferred or fixed-term over 6 months.",
+        "Ethan Brosselard’s backend resume: Python, APIs and data. Fully remote first, then hybrid in Lille, then Paris. Permanent preferred or fixed-term over 6 months.",
       eyebrow: "Background",
       title: "Resume and experience",
       intro: "A structured overview of my background, skills, and the projects that support them.",
@@ -436,11 +436,11 @@ export const copy = {
     },
     contact: {
       description:
-        "Contact Ethan Brosselard for a backend role with a French-speaking team: Python, APIs, applied AI or data. Remote, permanent preferred or fixed-term over 6 months.",
+        "Contact Ethan Brosselard for a backend role with a French-speaking team. Fully remote first, then hybrid in Lille, then Paris. Permanent preferred or fixed-term over 6 months.",
       eyebrow: "Contact",
       title: "Let’s talk about your team.",
       intro:
-        "I’m seeking a remote backend role with a French-speaking team: permanent preferred or fixed-term over six months. My experience is primarily in Python; I remain open to other languages.",
+        "I’m looking for a backend role with a French-speaking team. My experience is primarily in Python, and I’m open to other languages.",
       searchLabel: "Current job search",
       emailLabel: "Email",
       copyEmail: "Copy address",

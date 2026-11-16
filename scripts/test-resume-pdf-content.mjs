@@ -11,7 +11,8 @@ const expectations = {
     language: "fr",
     title: "CV — Ethan Brosselard",
     role: "Développeur backend · Python, API et données",
-    objective: "Télétravail à 100 % · CDI privilégié ou CDD > 6 mois",
+    objective:
+      "Télétravail intégral, puis hybride à Lille, puis à Paris · CDI privilégié ou CDD > 6 mois",
     headings: [
       "Profil",
       "Expériences professionnelles",
@@ -31,7 +32,8 @@ const expectations = {
     language: "en",
     title: "Resume — Ethan Brosselard",
     role: "Backend Developer · Python, APIs and Data",
-    objective: "Fully remote · Permanent preferred or fixed-term > 6 months",
+    objective:
+      "Fully remote, then hybrid in Lille, then Paris · Permanent preferred or fixed-term > 6 months",
     headings: ["Profile", "Work experience", "Projects", "Skills", "Education", "Languages"],
     localLinks: [
       "https://ethanbrosselard.com/en/",
